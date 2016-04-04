@@ -58,7 +58,7 @@ public class ClientConnectionHandler extends Thread {
 		mPort = port;
 		connect();
 	}
-	
+
 	public void connect() {
 		StickmanStage.mLogger.info("StickmanStage tries to connect with control application...");
 		try {
@@ -89,8 +89,10 @@ public class ClientConnectionHandler extends Thread {
 		while (mRunning) {
 			try {
 				inputLine = mIn.readLine();
-				
-				StickmanStage.parseStickmanMLCmd(inputLine);
+
+				if (inputLine != null) {
+					StickmanStage.parseStickmanMLCmd(inputLine);
+				}
 			} catch (IOException ex) {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
 			}
