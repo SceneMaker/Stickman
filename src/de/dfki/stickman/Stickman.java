@@ -277,19 +277,19 @@ public class Stickman extends JComponent {
 
         int width = new Float(mSize.width * mScale).intValue();
         int height = new Float(mSize.height * mScale).intValue();
-        
-        if (StickmanStage.sShowStickmanName) {
-            if (!mName.equalsIgnoreCase("")) {
-                g2.setColor(sFOREGROUND);
-                g2.fillRect(0, 0, width, height);
 
-                // draw Stickman's name
-                final int hOffset = mFontMetrics.getAscent() + mFontMetrics.getDescent();
-                final int wOffset = mFontMetrics.stringWidth(mName);
+        if (!mName.equalsIgnoreCase("")) {
+            g2.setColor(sFOREGROUND);
+            g2.fillRect(0, 0, width, height);
 
-                g2.setColor(sFOREGROUND.darker());
-                g2.fillRect(0, height - hOffset * 4, width, height);
-                g2.setColor(mBody.mColor.darker());
+            // draw Stickman's name
+            final int hOffset = mFontMetrics.getAscent() + mFontMetrics.getDescent();
+            final int wOffset = mFontMetrics.stringWidth(mName);
+
+            g2.setColor(sFOREGROUND.darker());
+            g2.fillRect(0, height - hOffset * 4, width, height);
+            g2.setColor(mBody.mColor.darker());
+            if (StickmanStage.sShowStickmanName) {
                 g2.drawString(mName, 10, height - hOffset);
             }
         }
