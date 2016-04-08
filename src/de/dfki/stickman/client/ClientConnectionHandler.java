@@ -60,7 +60,7 @@ public class ClientConnectionHandler extends Thread {
 	}
 	
 	public void connect() {
-		StickmanStage.mLogger.info("StickmanStage tries to connect with control application...");
+		StickmanStage.mLogger.info("StickmanStage tries to connect with control application ...");
 		try {
 			InetAddress inteAddress = InetAddress.getByName(mHost);
 			SocketAddress socketAddress = new InetSocketAddress(inteAddress, mPort);

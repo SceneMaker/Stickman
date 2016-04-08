@@ -33,201 +33,206 @@ import javax.swing.WindowConstants;
  */
 public class StickmanStage extends JFrame implements MouseListener {
 
-	static private final HashMap<String, Stickman> sStickmansOnStage = new HashMap<>();
-	static private JPanel sStickmanPanel;
-	static private StickmanStage sInstance;
-	private static double sScale = 1.0d;
-	// network interface
-	public static ClientConnectionHandler mConnection;
-	public static boolean mUseNetwork = false;
-	private static String sHost = "127.0.0.1";
-	private static int sPort = 7777;
-	// logging
-	public static final Logger mLogger = Logger.getAnonymousLogger();
+    static private final HashMap<String, Stickman> sStickmansOnStage = new HashMap<>();
+    static private JPanel sStickmanPanel;
+    static private StickmanStage sInstance;
+    private static double sScale = 1.0d;
+    protected static boolean sShowStickmanName = true;
+    // network interface
+    public static ClientConnectionHandler mConnection;
+    public static boolean mUseNetwork = false;
+    private static String sHost = "127.0.0.1";
+    private static int sPort = 7777;
+    // logging
+    public static final Logger mLogger = Logger.getAnonymousLogger();
 
-	private StickmanStage() {
-		super("Stickman Stage");
-		//setResizable(false);
+    private StickmanStage() {
+        super("Stickman Stage");
+        //setResizable(false);
 
-		sStickmanPanel = new JPanel() {
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
+        sStickmanPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
 
-				Graphics2D g2 = (Graphics2D) g;
-				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-				AffineTransform at = g2.getTransform();
-				at.scale(sScale, sScale);
-				g2.setTransform(at);
-			}
-		};
+                AffineTransform at = g2.getTransform();
+                at.scale(sScale, sScale);
+                g2.setTransform(at);
+            }
+        };
 
-		sStickmanPanel.setLayout(new StickmanStageLayout());
-		add(sStickmanPanel);
+        sStickmanPanel.setLayout(new StickmanStageLayout());
+        add(sStickmanPanel);
 
-		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
-		ConsoleHandler ch = new ConsoleHandler();
-		ch.setFormatter(new StickmanStageLogFormatter());
+        ConsoleHandler ch = new ConsoleHandler();
+        ch.setFormatter(new StickmanStageLogFormatter());
 
-		if (mUseNetwork) {
-			mConnection = new ClientConnectionHandler();
-			mConnection.connect(sHost, sPort);
+        if (mUseNetwork) {
+            mConnection = new ClientConnectionHandler();
+            mConnection.connect(sHost, sPort);
 
-			while (!mConnection.mConnected) {
-				try {
-					mLogger.info("Waiting for connection to control application ...");
-					Thread.sleep(250);
-				} catch (InterruptedException ex) {
-					mLogger.severe(ex.getMessage());
-				}
-			}
-		}
+            while (!mConnection.mConnected) {
+                try {
+                    mLogger.info("Waiting for connection to control application ...");
+                    Thread.sleep(250);
+                } catch (InterruptedException ex) {
+                    mLogger.severe(ex.getMessage());
+                }
+            }
+        }
 
-		addMouseListener(this);
-	}
+        addMouseListener(this);
+    }
 
-	public static StickmanStage getInstance() {
+    public static StickmanStage getInstance() {
 
-		if (sInstance == null) {
-			sInstance = new StickmanStage();
-		}
-		return sInstance;
-	}
+        if (sInstance == null) {
+            sInstance = new StickmanStage();
+        }
+        return sInstance;
+    }
 
-	public static StickmanStage getNetworkInstance() {
-		mUseNetwork = true;
-		return getInstance();
-	}
+    public static StickmanStage getNetworkInstance() {
+        mUseNetwork = true;
+        return getInstance();
+    }
 
-	public static StickmanStage getNetworkInstance(String host, int port) {
-		sHost = host;
-		sPort = port;
-		
-		mUseNetwork = true;
-		return getInstance();
-	}
+    public static StickmanStage getNetworkInstance(String host, int port) {
+        sHost = host;
+        sPort = port;
 
-	public static void addStickman(String name) {
-		Stickman.TYPE gender = null;
-		if (Names.sFemaleNames.contains(name.toLowerCase())) {
-			gender = Stickman.TYPE.FEMALE;
-		}
+        mUseNetwork = true;
+        return getInstance();
+    }
 
-		if (Names.sMaleNames.contains(name.toLowerCase())) {
-			gender = (gender == null) ? Stickman.TYPE.MALE : gender;
-		}
+    public static void addStickman(String name) {
+        Stickman.TYPE gender = null;
+        if (Names.sFemaleNames.contains(name.toLowerCase())) {
+            gender = Stickman.TYPE.FEMALE;
+        }
 
-		addStickman(name, gender);
-	}
+        if (Names.sMaleNames.contains(name.toLowerCase())) {
+            gender = (gender == null) ? Stickman.TYPE.MALE : gender;
+        }
 
-	public static void addStickman(String name, Stickman.TYPE gender) {
-		if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
-			sStickmansOnStage.put(name.toLowerCase(), new Stickman(name, gender));
-			sStickmanPanel.add(getStickman(name));
-			sStickmanPanel.revalidate();
-		}
+        addStickman(name, gender);
+    }
 
-		// resize the stuff ...
-		StickmanStage.getInstance().pack();
-		StickmanStage.getInstance().setVisible(true);
-	}
+    public static void addStickman(String name, Stickman.TYPE gender) {
+        if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
+            sStickmansOnStage.put(name.toLowerCase(), new Stickman(name, gender));
+            sStickmanPanel.add(getStickman(name));
+            sStickmanPanel.revalidate();
+        }
 
-	public static Stickman getStickman(String name) {
-		Stickman sm;
-		if (sStickmansOnStage.containsKey(name.toLowerCase())) {
-			return sStickmansOnStage.get(name.toLowerCase());
-		} else {
-			return null;
-		}
-	}
+        // resize the stuff ...
+        StickmanStage.getInstance().pack();
+        StickmanStage.getInstance().setVisible(true);
+    }
 
-	public static void clearStage() {
-		Set<String> deleteStickman = new HashSet<>();
-		sStickmansOnStage.keySet().stream().map((s) -> {
-			deleteStickman.add(s);
-			return s;
-		}).forEach((s) -> {
-			getStickman(s).mAnimationScheduler.end();
-		});
-		deleteStickman.stream().map((s) -> {
-			sStickmanPanel.remove(getStickman(s));
-			return s;
-		}).forEach((s) -> {
-			sStickmansOnStage.remove(s);
-		});
+    public static Stickman getStickman(String name) {
+        Stickman sm;
+        if (sStickmansOnStage.containsKey(name.toLowerCase())) {
+            return sStickmansOnStage.get(name.toLowerCase());
+        } else {
+            return null;
+        }
+    }
 
-		// resize the stuff ...
-		StickmanStage.getInstance().pack();
-		StickmanStage.getInstance().setVisible(false);
+    public static void clearStage() {
+        Set<String> deleteStickman = new HashSet<>();
+        sStickmansOnStage.keySet().stream().map((s) -> {
+            deleteStickman.add(s);
+            return s;
+        }).forEach((s) -> {
+            getStickman(s).mAnimationScheduler.end();
+        });
+        deleteStickman.stream().map((s) -> {
+            sStickmanPanel.remove(getStickman(s));
+            return s;
+        }).forEach((s) -> {
+            sStickmansOnStage.remove(s);
+        });
 
-		if (mUseNetwork) {
-			mConnection.end();
-		}
+        // resize the stuff ...
+        StickmanStage.getInstance().pack();
+        StickmanStage.getInstance().setVisible(false);
 
-		sInstance = null;
-	}
+        if (mUseNetwork) {
+            mConnection.end();
+        }
 
-	public static void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
-		Stickman sm = getStickman(stickmanname);
-		sm.doAnimation(name, duration, text, block);
-	}
+        sInstance = null;
+    }
 
-	public static void parseStickmanMLCmd(String cmd) {
-		// TODO cut the crap with the two animation types ...
-		Animation a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimation() : new Animation();
+    public static void showStickmanName(boolean show) {
+        sShowStickmanName = show;
+    }
 
-		boolean r = XMLUtilities.parseFromXMLStream(a, new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
+    public static void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
+        Stickman sm = getStickman(stickmanname);
+        sm.doAnimation(name, duration, text, block);
+    }
 
-		String stickmanname = a.mStickmanName;
-		String animationname = a.mName;
-		String id = a.mID;
-		int duration = a.mDuration;
-		boolean blocking = a.mBlocking;
-		Object parameter = a.mParameter;
+    public static void parseStickmanMLCmd(String cmd) {
+        // TODO cut the crap with the two animation types ...
+        Animation a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimation() : new Animation();
 
-		a = (a instanceof EventAnimation)
-		  ? AnimationLoader.getInstance().loadEventAnimation(getStickman(stickmanname), animationname, duration, blocking)
-		  : AnimationLoader.getInstance().loadAnimation(getStickman(stickmanname), animationname, duration, blocking);
+        boolean r = XMLUtilities.parseFromXMLStream(a, new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
 
-		a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
-		a.mParameter = parameter;
+        String stickmanname = a.mStickmanName;
+        String animationname = a.mName;
+        String id = a.mID;
+        int duration = a.mDuration;
+        boolean blocking = a.mBlocking;
+        Object parameter = a.mParameter;
 
-		a.mStickman.playAnimation(a);
-	}
+        a = (a instanceof EventAnimation)
+                ? AnimationLoader.getInstance().loadEventAnimation(getStickman(stickmanname), animationname, duration, blocking)
+                : AnimationLoader.getInstance().loadAnimation(getStickman(stickmanname), animationname, duration, blocking);
 
-	public static void sendTimeMarkInformation(String timemark) {
-		if (mConnection.mConnected) {
-			mConnection.sendToServer(timemark);
-		}
-	}
+        a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
+        a.mParameter = parameter;
 
-	public static void sendAnimationUpdate(String state, String id) {
-		if (mConnection.mConnected) {
-			mConnection.sendToServer("#ANIM#" + state + "#" + id);
-		}
-	}
+        a.mStickman.playAnimation(a);
+    }
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) {
-		StickmanStage.getInstance();
-		StickmanStage.addStickman("Anna");
-		StickmanStage.addStickman("Bob");
-	}
+    public static void sendTimeMarkInformation(String timemark) {
+        if (mConnection.mConnected) {
+            mConnection.sendToServer(timemark);
+        }
+    }
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		//getStickman("Anna").mLogger.info("mouse clicked");
-		//getStickman("Anna").doAnimation("environment", "Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+    public static void sendAnimationUpdate(String state, String id) {
+        if (mConnection.mConnected) {
+            mConnection.sendToServer("#ANIM#" + state + "#" + id);
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        StickmanStage.getInstance();
+        StickmanStage.addStickman("Anna");
+        StickmanStage.addStickman("Bob");
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        //getStickman("Anna").mLogger.info("mouse clicked");
+        //getStickman("Anna").doAnimation("environment", "Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //////		//smM.doAnimation("gesture", "waveleft", false);
-		//getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
+        //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
 //		getStickman("Anna").doAnimation("head", "lookleft", 300, true);
-		//getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
+        //getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
 //		getStickman("Anna").doAnimation("head", "Blink", true);
 ////		//smM.doAnimation("environment", "speak", "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //		getStickman("Anna").doAnimation("environment", "speak", 300, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
@@ -260,7 +265,7 @@ public class StickmanStage extends JFrame implements MouseListener {
 //
 //		smF.doAnimation("face", "smile", true);
 //		smF.doAnimation("head", "TiltLeftBack", true);
-		//smF.doAnimation("face", "smile", true);
+        //smF.doAnimation("face", "smile", true);
 //		smF.doAnimation("head", "Blink", false);
 //		smF.doAnimation("head", "Nod", true);
 //
@@ -270,33 +275,33 @@ public class StickmanStage extends JFrame implements MouseListener {
 ////
 //		smF.doAnimation("head", "TiltLeftBack", true);
 //		smF.doAnimation("head", "nod", true);
-	}
+    }
 
-	@Override
-	public void mousePressed(MouseEvent e) {
+    @Override
+    public void mousePressed(MouseEvent e) {
 
-	}
+    }
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
+    @Override
+    public void mouseReleased(MouseEvent e) {
 
-	}
+    }
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
+    @Override
+    public void mouseEntered(MouseEvent e) {
 
-	}
+    }
 
-	@Override
-	public void mouseExited(MouseEvent e) {
+    @Override
+    public void mouseExited(MouseEvent e) {
 
-	}
+    }
 
-	private static class StickmanStageLogFormatter extends Formatter {
+    private static class StickmanStageLogFormatter extends Formatter {
 
-		@Override
-		public String format(LogRecord record) {
-			return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
-		}
-	}
+        @Override
+        public String format(LogRecord record) {
+            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
+        }
+    }
 }

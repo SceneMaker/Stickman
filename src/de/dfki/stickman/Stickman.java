@@ -56,278 +56,281 @@ import javax.swing.JComponent;
  */
 public class Stickman extends JComponent {
 
-	// general stuff
-	public static enum ORIENTATION {
+    // general stuff
+    public static enum ORIENTATION {
 
-		FRONT, LEFT, RIGHT
-	};
+        FRONT, LEFT, RIGHT
+    };
 
-	public static enum TYPE {
+    public static enum TYPE {
 
-		FEMALE, MALE
-	};
+        FEMALE, MALE
+    };
 
-	static public final Color sFOREGROUND = new Color(188, 188, 188, 128);
-	public TYPE mType = TYPE.FEMALE;
-	public String mName = "Stickman";
-	public ORIENTATION mOrientation = ORIENTATION.FRONT;
-	public float mScale = 1.0f;
-	public float mGeneralXTranslation = 0;
-	public float mGeneralYTranslation = 0;
+    static public final Color sFOREGROUND = new Color(188, 188, 188, 128);
+    public TYPE mType = TYPE.FEMALE;
+    public String mName = "Stickman";
+    public ORIENTATION mOrientation = ORIENTATION.FRONT;
+    public float mScale = 1.0f;
+    public float mGeneralXTranslation = 0;
+    public float mGeneralYTranslation = 0;
 
-	public static Dimension mSize = new Dimension(400, 600);
-	FontMetrics mFontMetrics;
-	Font mFont;
+    public static Dimension mSize = new Dimension(400, 600);
+    FontMetrics mFontMetrics;
+    Font mFont;
 
-	// amimation stuff
-	public Semaphore mAnimationLaunchControl = new Semaphore(1);
-	public AnimationScheduler mAnimationScheduler;
-	private final List<AnimationListener> mAnimationListeners =  new CopyOnWriteArrayList<AnimationListener>();;
+    // amimation stuff
+    public Semaphore mAnimationLaunchControl = new Semaphore(1);
+    public AnimationScheduler mAnimationScheduler;
+    private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
+    ;
 
 	// body parts
 	public Head mHead;
-	public LeftEyebrow mLeftEyebrow;
-	public LeftEye mLeftEye;
-	public RightEyebrow mRightEyebrow;
-	public RightEye mRightEye;
-	public Mouth mMouth;
-	public Neck mNeck;
-	public Body mBody;
-	public LeftShoulder mLeftShoulder;
-	public LeftUpperArm mLeftUpperArm;
-	public LeftForeArm mLeftForeArm;
-	public LeftHand mLeftHand;
-	public RightShoulder mRightShoulder;
-	public RightUpperArm mRightUpperArm;
-	public RightForeArm mRightForeArm;
-	public RightHand mRightHand;
-	public LeftLeg mLeftLeg;
-	public RightLeg mRightLeg;
-	// environment
-	public SpeechBubble mSpeechBubble;
+    public LeftEyebrow mLeftEyebrow;
+    public LeftEye mLeftEye;
+    public RightEyebrow mRightEyebrow;
+    public RightEye mRightEye;
+    public Mouth mMouth;
+    public Neck mNeck;
+    public Body mBody;
+    public LeftShoulder mLeftShoulder;
+    public LeftUpperArm mLeftUpperArm;
+    public LeftForeArm mLeftForeArm;
+    public LeftHand mLeftHand;
+    public RightShoulder mRightShoulder;
+    public RightUpperArm mRightUpperArm;
+    public RightForeArm mRightForeArm;
+    public RightHand mRightHand;
+    public LeftLeg mLeftLeg;
+    public RightLeg mRightLeg;
+    // environment
+    public SpeechBubble mSpeechBubble;
 
-	// logging
-	public final Logger mLogger = Logger.getAnonymousLogger();
+    // logging
+    public final Logger mLogger = Logger.getAnonymousLogger();
 
-	// id
-	private long mID = 0;
+    // id
+    private long mID = 0;
 
-	public Stickman(String name, TYPE gender, float scale) {
-		this(name, gender);
-		mScale = scale;
-	}
+    public Stickman(String name, TYPE gender, float scale) {
+        this(name, gender);
+        mScale = scale;
+    }
 
-	public Stickman(String name, TYPE gender) {
-		mName = name;
-		mType = gender;
+    public Stickman(String name, TYPE gender) {
+        mName = name;
+        mType = gender;
 
-		mHead = new Head(this);
-		mLeftEyebrow = new LeftEyebrow(mHead);
-		mLeftEye = new LeftEye(mHead);
-		mRightEyebrow = new RightEyebrow(mHead);
-		mRightEye = new RightEye(mHead);
-		mMouth = new Mouth(mHead);
-		mNeck = new Neck(mHead);
-		mBody = new Body(mNeck);
-		mLeftShoulder = new LeftShoulder(mBody);
-		mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
-		mLeftForeArm = new LeftForeArm(mLeftUpperArm);
-		mLeftHand = new LeftHand(mLeftForeArm);
-		mRightShoulder = new RightShoulder(mBody);
-		mRightUpperArm = new RightUpperArm(mRightShoulder);
-		mRightForeArm = new RightForeArm(mRightUpperArm);
-		mRightHand = new RightHand(mRightForeArm);
-		mLeftLeg = new LeftLeg(mBody);
-		mRightLeg = new RightLeg(mBody);
+        mHead = new Head(this);
+        mLeftEyebrow = new LeftEyebrow(mHead);
+        mLeftEye = new LeftEye(mHead);
+        mRightEyebrow = new RightEyebrow(mHead);
+        mRightEye = new RightEye(mHead);
+        mMouth = new Mouth(mHead);
+        mNeck = new Neck(mHead);
+        mBody = new Body(mNeck);
+        mLeftShoulder = new LeftShoulder(mBody);
+        mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
+        mLeftForeArm = new LeftForeArm(mLeftUpperArm);
+        mLeftHand = new LeftHand(mLeftForeArm);
+        mRightShoulder = new RightShoulder(mBody);
+        mRightUpperArm = new RightUpperArm(mRightShoulder);
+        mRightForeArm = new RightForeArm(mRightUpperArm);
+        mRightHand = new RightHand(mRightForeArm);
+        mLeftLeg = new LeftLeg(mBody);
+        mRightLeg = new RightLeg(mBody);
 
-		mSpeechBubble = new SpeechBubble(mHead);
+        mSpeechBubble = new SpeechBubble(mHead);
 
-		init();
-	}
+        init();
+    }
 
-	private void init() {
-		setLayout(null);
-		setPreferredSize(mSize);
-		setMinimumSize(mSize);
-		setSize(mSize);
+    private void init() {
+        setLayout(null);
+        setPreferredSize(mSize);
+        setMinimumSize(mSize);
+        setSize(mSize);
 
-		// font stuff
-		Map<TextAttribute, Object> map = new HashMap<>();
-		map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
-		map.put(TextAttribute.FAMILY, Font.SANS_SERIF);
-		//map.put(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
-		map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
-		map.put(TextAttribute.SIZE, 14);
+        // font stuff
+        Map<TextAttribute, Object> map = new HashMap<>();
+        map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
+        map.put(TextAttribute.FAMILY, Font.SANS_SERIF);
+        //map.put(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
+        map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
+        map.put(TextAttribute.SIZE, 14);
 
-		mFont = Font.getFont(map);
-		mFontMetrics = getFontMetrics(mFont);
-		setFont(mFont);
+        mFont = Font.getFont(map);
+        mFontMetrics = getFontMetrics(mFont);
+        setFont(mFont);
 
-		ConsoleHandler ch = new ConsoleHandler();
-		ch.setFormatter(new StickmanLogFormatter());
+        ConsoleHandler ch = new ConsoleHandler();
+        ch.setFormatter(new StickmanLogFormatter());
 
-		mLogger.addHandler(ch);
-		mLogger.setUseParentHandlers(false);
+        mLogger.addHandler(ch);
+        mLogger.setUseParentHandlers(false);
 
-		mAnimationScheduler = new AnimationScheduler(this);
-		mAnimationScheduler.start();
-	}
+        mAnimationScheduler = new AnimationScheduler(this);
+        mAnimationScheduler.start();
+    }
 
-	public void addListener(AnimationListener al) {
-		mAnimationListeners.add(al);
-	}
+    public void addListener(AnimationListener al) {
+        mAnimationListeners.add(al);
+    }
 
-	public void removeListener(AnimationListener al) {
-		synchronized (mAnimationListeners) {
-			if (mAnimationListeners.contains(al)) {
-				mAnimationListeners.remove(al);
-			}
-		}
-	}
+    public void removeListener(AnimationListener al) {
+        synchronized (mAnimationListeners) {
+            if (mAnimationListeners.contains(al)) {
+                mAnimationListeners.remove(al);
+            }
+        }
+    }
 
-	public void notifyListeners(String animationId) {
-		synchronized (mAnimationListeners) {
-			mAnimationListeners.stream().forEach((al) -> {
-				al.update(animationId);
-			});
-		}
-	}
+    public void notifyListeners(String animationId) {
+        synchronized (mAnimationListeners) {
+            mAnimationListeners.stream().forEach((al) -> {
+                al.update(animationId);
+            });
+        }
+    }
 
-	public String getID() {
-		return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
-	}
+    public String getID() {
+        return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
+    }
 
-	@Override
-	public String getName() {
-		return mName;
-	}
+    @Override
+    public String getName() {
+        return mName;
+    }
 
-	// Sets the orientation of the character, allowed values are: LEFT, RIGHT, FRONT
-	public void setOrientation(String orientation) {
-		if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
-			mOrientation = ORIENTATION.LEFT;
-		} else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
-			mOrientation = ORIENTATION.RIGHT;
-		} else {
-			mOrientation = ORIENTATION.FRONT;
-		}
-	}
+    // Sets the orientation of the character, allowed values are: LEFT, RIGHT, FRONT
+    public void setOrientation(String orientation) {
+        if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
+            mOrientation = ORIENTATION.LEFT;
+        } else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
+            mOrientation = ORIENTATION.RIGHT;
+        } else {
+            mOrientation = ORIENTATION.FRONT;
+        }
+    }
 
-	public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+    public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
 
-		EventAnimation a = AnimationLoader.getInstance().loadEventAnimation(this, name, duration, block);
+        EventAnimation a = AnimationLoader.getInstance().loadEventAnimation(this, name, duration, block);
 
-		a.setParameter(wts);
+        a.setParameter(wts);
 
-		try {
-			mAnimationLaunchControl.acquire();
-			a.start();
-		} catch (InterruptedException ex) {
-			mLogger.severe(ex.getMessage());
-		}
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
 
-		return a;
-	}
+        return a;
+    }
 
-	public Animation doAnimation(String name, int duration, boolean block) {
-		return doAnimation(name, duration, "", block);
-	}
+    public Animation doAnimation(String name, int duration, boolean block) {
+        return doAnimation(name, duration, "", block);
+    }
 
-	public Animation doAnimation(String name, Object param, boolean block) {
-		return doAnimation(name, -1, param, block);
-	}
+    public Animation doAnimation(String name, Object param, boolean block) {
+        return doAnimation(name, -1, param, block);
+    }
 
-	public Animation doAnimation(String name, boolean block) {
-		return doAnimation(name, -1, "", block);
-	}
+    public Animation doAnimation(String name, boolean block) {
+        return doAnimation(name, -1, "", block);
+    }
 
-	public Animation doAnimation(String name, int duration, Object param, boolean block) {
-		Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
+    public Animation doAnimation(String name, int duration, Object param, boolean block) {
+        Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
 
-		a.setParameter(param); // this is for now onyl used by the Speech Bubble
+        a.setParameter(param); // this is for now onyl used by the Speech Bubble
 
-		try {
-			mAnimationLaunchControl.acquire();
-			a.start();
-		} catch (InterruptedException ex) {
-			mLogger.severe(ex.getMessage());
-		}
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
 
-		return a;
-	}
+        return a;
+    }
 
-	public void playAnimation(Animation a) {
-		try {
-			//mLogger.info("Waiting for allowance to play animation " + a.toString());
-			mAnimationLaunchControl.acquire();
-			//mLogger.info("\tgranted!");
-			a.start();
-		} catch (InterruptedException ex) {
-			mLogger.severe(ex.getMessage());
-		}
-	}
+    public void playAnimation(Animation a) {
+        try {
+            //mLogger.info("Waiting for allowance to play animation " + a.toString());
+            mAnimationLaunchControl.acquire();
+            //mLogger.info("\tgranted!");
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+    }
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		//super.paintComponent(g);
+    @Override
+    protected void paintComponent(Graphics g) {
+        //super.paintComponent(g);
 
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		int width = new Float(mSize.width * mScale).intValue();
-		int height = new Float(mSize.height * mScale).intValue();
-		
-		if (!mName.equalsIgnoreCase("")) {
-			g2.setColor(sFOREGROUND);
-			g2.fillRect(0, 0, width , height);
+        int width = new Float(mSize.width * mScale).intValue();
+        int height = new Float(mSize.height * mScale).intValue();
+        
+        if (StickmanStage.sShowStickmanName) {
+            if (!mName.equalsIgnoreCase("")) {
+                g2.setColor(sFOREGROUND);
+                g2.fillRect(0, 0, width, height);
 
-			// draw Stickman's name
-			final int hOffset = mFontMetrics.getAscent() + mFontMetrics.getDescent();
-			final int wOffset = mFontMetrics.stringWidth(mName);
+                // draw Stickman's name
+                final int hOffset = mFontMetrics.getAscent() + mFontMetrics.getDescent();
+                final int wOffset = mFontMetrics.stringWidth(mName);
 
-			g2.setColor(sFOREGROUND.darker());
-			g2.fillRect(0, height - hOffset * 4, width, height);
-			g2.setColor(mBody.mColor.darker());
-			g2.drawString(mName, 10, height - hOffset);
-		}
+                g2.setColor(sFOREGROUND.darker());
+                g2.fillRect(0, height - hOffset * 4, width, height);
+                g2.setColor(mBody.mColor.darker());
+                g2.drawString(mName, 10, height - hOffset);
+            }
+        }
 
-		// draw everthing in the middle and scaled
-		AffineTransform at = g2.getTransform();
-		mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;
-		mGeneralYTranslation = getBounds().height - 470 * mScale;
-		at.translate(mGeneralXTranslation, mGeneralYTranslation);
-		at.scale(mScale, mScale);
-		g2.setTransform(at);
+        // draw everthing in the middle and scaled
+        AffineTransform at = g2.getTransform();
+        mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;
+        mGeneralYTranslation = getBounds().height - 470 * mScale;
+        at.translate(mGeneralXTranslation, mGeneralYTranslation);
+        at.scale(mScale, mScale);
+        g2.setTransform(at);
 
-		// draw body parts
-		mHead.update(g);
-		mLeftEyebrow.update(g);
-		mLeftEye.update(g);
-		mRightEyebrow.update(g);
-		mRightEye.update(g);
-		mMouth.update(g);
-		mNeck.update(g);
-		mBody.update(g);
-		mLeftShoulder.update(g);
-		mLeftUpperArm.update(g);
-		mLeftForeArm.update(g);
-		mLeftHand.update(g);
-		mRightShoulder.update(g);
-		mRightUpperArm.update(g);
-		mRightForeArm.update(g);
-		mRightHand.update(g);
-		mLeftLeg.update(g);
-		mRightLeg.update(g);
+        // draw body parts
+        mHead.update(g);
+        mLeftEyebrow.update(g);
+        mLeftEye.update(g);
+        mRightEyebrow.update(g);
+        mRightEye.update(g);
+        mMouth.update(g);
+        mNeck.update(g);
+        mBody.update(g);
+        mLeftShoulder.update(g);
+        mLeftUpperArm.update(g);
+        mLeftForeArm.update(g);
+        mLeftHand.update(g);
+        mRightShoulder.update(g);
+        mRightUpperArm.update(g);
+        mRightForeArm.update(g);
+        mRightHand.update(g);
+        mLeftLeg.update(g);
+        mRightLeg.update(g);
 
-		// draw environment
-		mSpeechBubble.update(g);
-	}
+        // draw environment
+        mSpeechBubble.update(g);
+    }
 
-	private static class StickmanLogFormatter extends Formatter {
+    private static class StickmanLogFormatter extends Formatter {
 
-		@Override
-		public String format(LogRecord record) {
-			return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
-		}
-	}
+        @Override
+        public String format(LogRecord record) {
+            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
+        }
+    }
 }
