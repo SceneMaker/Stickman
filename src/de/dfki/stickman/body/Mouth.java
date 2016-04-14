@@ -16,7 +16,7 @@ public class Mouth extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, SMILE, SAD, O
+		DEFAULT, SMILE, SAD, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
 	};
 
 	Head mHead;
@@ -79,6 +79,65 @@ public class Mouth extends BodyPart {
 				gp.quadTo(mStart.x, mStart.y - mLength / 2, mEnd.x, mStart.y);
 				gp.quadTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2, mStart.y);
 				break;
+                                
+                        case ONE:
+			case SIX:
+			case FOURTEEN:
+			case NINETEEN:
+				gp.moveTo(mStart.x - mLength / 2, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - mLength / 5, mEnd.x, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 5, mStart.x - mLength / 2, mStart.y);
+				break;
+
+			case TWO:
+				gp.moveTo(mStart.x - mLength / 2.8, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - mLength / 1.6, mEnd.x - mLength / 6, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 1.6, mStart.x - mLength / 2.8, mStart.y);
+				break;
+
+
+			case THREE:
+			case TWENTY:
+				gp.moveTo(mStart.x - mLength / 2.8, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - mLength / 2.5, mEnd.x - mLength / 6, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 2.5, mStart.x - mLength / 2.8, mStart.y);
+				break;
+
+			case FOUR:
+				gp.moveTo(mStart.x - mLength / 2, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - 3, mEnd.x, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2, mStart.y);
+				break;
+
+
+
+			case FIVE:
+			case EIGHT:
+				gp.moveTo(mStart.x - mLength / 2.8, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - mLength / 2, mEnd.x - mLength / 6, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2.8, mStart.y);
+				break;
+
+			case SEVEN:
+				gp.moveTo(mStart.x - mLength / 3, mStart.y);
+				gp.quadTo(mStart.x, mStart.y -  3, mEnd.x - mLength / 5, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + 3, mStart.x - mLength / 3, mStart.y);
+				break;
+
+
+			case NINE:
+				gp.moveTo(mStart.x - mLength / 3, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - mLength / 2.8, mEnd.x - mLength / 5, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 1.6, mStart.x - mLength / 3, mStart.y);
+				break;
+
+			case TEN:
+				gp.moveTo(mStart.x - mLength / 2.8, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - mLength / 2.8, mEnd.x - mLength / 6, mStart.y);
+				gp.quadTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2.8, mStart.y);
+				break;
+
+		
 		}
 
 		addToDrawObjects(gp);
