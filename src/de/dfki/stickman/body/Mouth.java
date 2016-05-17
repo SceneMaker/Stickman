@@ -16,7 +16,7 @@ public class Mouth extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, SMILE, SAD, ANGRY, SURPRIESD,O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
+		DEFAULT, SMILE, SAD, ANGRY, SURPRIESD, HAPPY, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
 	};
 
 	Head mHead;
@@ -85,7 +85,15 @@ public class Mouth extends BodyPart {
 				gp.quadTo(mStart.x, mStart.y - mLength / 2-6, mEnd.x-2, mStart.y);
 				gp.quadTo(mStart.x, mStart.y + mLength / 2+6, mStart.x - mLength / 2+2, mStart.y);
 				break;
-							
+				
+			case HAPPY:
+				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
+
+				gp.moveTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				break;	
+				
 			case O:
 				gp.moveTo(mStart.x - mLength / 2, mStart.y);
 				gp.quadTo(mStart.x, mStart.y - mLength / 2, mEnd.x, mStart.y);

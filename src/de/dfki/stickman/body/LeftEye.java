@@ -16,7 +16,7 @@ public class LeftEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRIESD
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRIESD, HAPPY
 	};
 
 	Head mHead;
@@ -88,6 +88,12 @@ public class LeftEye extends BodyPart {
 				gp.moveTo(mStart.x+2, mStart.y);
 				gp.quadTo(mStart.x - 2, mStart.y - 5, mEnd.x-2, mStart.y);
 				gp.quadTo(mStart.x - 2, mStart.y + 5, mStart.x+2, mStart.y);
+				break;
+				
+			case HAPPY:
+				gp = new GeneralPath();
+				gp.moveTo(mStart.x+2, mStart.y);
+				gp.quadTo((mStart.x+2 + mEnd.x-2) / 2, mStart.y - 3, mEnd.x-2, mEnd.y);
 				break;
 				
 		}
