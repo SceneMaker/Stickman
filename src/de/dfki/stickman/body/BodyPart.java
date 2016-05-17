@@ -63,7 +63,7 @@ public abstract class BodyPart extends JComponent {
 	}
 
 	public void setTranslation(int length) {
-		mToTranslation = mTranslation + length;
+		mToTranslation = mTranslation + length;		
 		mTranslationStep = Math.abs(Math.abs(mTranslation) - Math.abs(mToTranslation)) / Animator.sMAX_ANIM_STEPS * (length / Math.abs(length));
 	}
 

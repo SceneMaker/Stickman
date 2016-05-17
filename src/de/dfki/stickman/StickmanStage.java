@@ -67,8 +67,8 @@ public class StickmanStage extends JFrame implements MouseListener {
         sStickmanPanel.setLayout(new StickmanStageLayout());
         add(sStickmanPanel);
 
-        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-
+       setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
 
@@ -220,20 +220,25 @@ public class StickmanStage extends JFrame implements MouseListener {
     public static void main(String[] args) {
         StickmanStage.getInstance();
         StickmanStage.addStickman("Anna");
+        StickmanStage.addStickman("character");
         StickmanStage.addStickman("Bob");
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         //getStickman("Anna").mLogger.info("mouse clicked");
-        //getStickman("Anna").doAnimation("environment", "Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//////		//smM.doAnimation("gesture", "waveleft", false);
-        //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
+    	//getStickman("Bob").mLogger.info("mouse clicked");
+       //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+    	//getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        //////		//smM.doAnimation("gesture", "waveleft", false);
+       //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
+      getStickman("Bob").doAnimation("Angry", 70, false); //
+      //getStickman("character").doAnimation("HeadShake", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
-//		getStickman("Anna").doAnimation("head", "lookleft", 300, true);
+// getStickman("Anna").doAnimation("head", "lookleft", 300, true);
         //getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
-//		getStickman("Anna").doAnimation("head", "Blink", true);
+	//getStickman("Anna").doAnimation("head", "Blink", true);
 ////		//smM.doAnimation("environment", "speak", "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //		getStickman("Anna").doAnimation("environment", "speak", 300, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //////		//smM.doAnimation("face", "Mouth_O", true);
@@ -244,6 +249,9 @@ public class StickmanStage extends JFrame implements MouseListener {
 //////		smF.doAnimation("head", "Blink", false);
 //////		//smM.doAnimation("face", "Mouth_Default", false);
 //////		smF.doAnimation("face", "Mouth_Default", false);
+ //getStickman("Bob").doAnimation("Sad", " ", false);  ///
+ 	//getStickman("Anna").doAnimation("TiltLeftBack", " ", false);
+ 	//
 //////		//smM.doAnimation("head", "TiltLeftBack", true);
 //////		smF.doAnimation("head", "TiltLeftBack", true);
 //

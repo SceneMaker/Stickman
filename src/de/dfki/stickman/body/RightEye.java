@@ -17,10 +17,11 @@ public class RightEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRIESD
 	};
 
 	Head mHead;
+	int adjustFactor = 3; // Used to adjust the movement of the eye
 	public RightEye.SHAPE mShape = RightEye.SHAPE.DEFAULT;
 
 	public RightEye(Head head) {
@@ -73,6 +74,19 @@ public class RightEye extends BodyPart {
 				gp = new GeneralPath();
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo(linear((mStart.x + mEnd.x) / 2, mStart.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
+				break;
+				
+			case ANGRY:
+				gp = new GeneralPath();
+				gp.moveTo(mStart.x, mStart.y - adjustFactor);
+				gp.lineTo(mEnd.x, mEnd.y);
+				break;
+				
+			case SURPRIESD:
+				gp = new GeneralPath();
+				gp.moveTo(mStart.x-2, mStart.y);
+				gp.quadTo(mStart.x + 2, mStart.y - 5, mEnd.x+2, mStart.y);
+				gp.quadTo(mStart.x + 2, mStart.y + 5, mStart.x-2, mStart.y);
 				break;
 		}
 

@@ -25,7 +25,7 @@ public class Body extends JComponent {
 
 	Neck mNeck;
 
-	Dimension mSize = new Dimension(120, 300);
+	Dimension mSize = new Dimension(120, 300); 
 	int mHalfSizeX = mSize.width / 2;
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
@@ -54,7 +54,8 @@ public class Body extends JComponent {
 		mStart = mNeck.getBodyStartPosition();
 
 		mFemaleBodyFront = new GeneralPath();
-		mFemaleBodyFront.moveTo(mStart.x, mStart.y);
+		mFemaleBodyFront.moveTo(mStart.x, mStart.y); 
+		
 		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX, mSize.height + 10);
 
 		mFemaleBodyFront.curveTo(mStart.x + mHalfSizeX - 40, mSize.height - 10, mStart.x - mHalfSizeX + 40, mSize.height + 20, mStart.x - mHalfSizeX, mSize.height);
