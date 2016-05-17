@@ -78,7 +78,11 @@ public class RightEye extends BodyPart {
 				
 			case ANGRY:
 				gp = new GeneralPath();
-				gp.moveTo(mStart.x, mStart.y - adjustFactor);
+				//gp.moveTo(mStart.x, mStart.y - adjustFactor);
+				gp.moveTo(mStart.x+2, mStart.y);
+				gp.quadTo((mStart.x+2 + mEnd.x) / 2, mStart.y - 2, mEnd.x+2, mStart.y);
+				gp.quadTo((mStart.x+2 + mEnd.x) / 2, mStart.y + 2, mStart.x+2, mStart.y);
+				
 				gp.lineTo(mEnd.x, mEnd.y);
 				break;
 				
