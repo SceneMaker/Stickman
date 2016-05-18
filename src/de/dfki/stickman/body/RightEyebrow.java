@@ -15,10 +15,11 @@ public class RightEyebrow extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT
+		DEFAULT, ANGRY
 	};
 
 	Head mHead;
+	int adjustFactor = 5; // Used to adjust the movement of the eyebrow
 	public RightEyebrow.SHAPE mShape = RightEyebrow.SHAPE.DEFAULT;
 
 	public RightEyebrow(Head head) {
@@ -56,6 +57,11 @@ public class RightEyebrow extends BodyPart {
 				gp = new GeneralPath();
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				break;
+				
+			case ANGRY:
+				gp.moveTo(mStart.x, mStart.y);
+				gp.lineTo(mEnd.x, mEnd.y-adjustFactor);
 				break;
 		}
 

@@ -16,10 +16,11 @@ public class LeftEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRIESD, HAPPY
 	};
 
 	Head mHead;
+	int adjustFactor = 3; // Used to adjust the movement of the eye
 	public LeftEye.SHAPE mShape = LeftEye.SHAPE.DEFAULT;
 
 	public LeftEye(Head head) {
@@ -75,6 +76,30 @@ public class LeftEye extends BodyPart {
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
 				break;
+				
+			case ANGRY:
+				gp = new GeneralPath();
+				//gp.moveTo(mStart.x, mStart.y - adjustFactor);
+				gp.moveTo(mStart.x-2, mStart.y);
+				gp.quadTo((mStart.x-2 + mEnd.x) / 2, mStart.y - 2, mEnd.x-2, mStart.y);
+				gp.quadTo((mStart.x-2 + mEnd.x) / 2, mStart.y + 2, mStart.x-2, mStart.y);
+				
+				gp.lineTo(mEnd.x, mEnd.y);
+				break;
+			
+			case SURPRIESD:
+				gp = new GeneralPath();
+				gp.moveTo(mStart.x+2, mStart.y);
+				gp.quadTo(mStart.x - 2, mStart.y - 5, mEnd.x-2, mStart.y);
+				gp.quadTo(mStart.x - 2, mStart.y + 5, mStart.x+2, mStart.y);
+				break;
+				
+			case HAPPY:
+				gp = new GeneralPath();
+				gp.moveTo(mStart.x+2, mStart.y);
+				gp.quadTo((mStart.x+2 + mEnd.x-2) / 2, mStart.y - 3, mEnd.x-2, mEnd.y);
+				break;
+				
 		}
 
 		addToDrawObjects(gp);

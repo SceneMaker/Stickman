@@ -18,7 +18,6 @@ import java.awt.geom.GeneralPath;
 public class Head extends BodyPart {
 
 	public Dimension mSize = new Dimension(120, 100);
-
 	public Stickman mStickman;
 
 	int mHalfHeight = mSize.height / 2;

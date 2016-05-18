@@ -20,10 +20,11 @@ public class LeftEyebrow extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT
+		DEFAULT, ANGRY
 	};
 
 	Head mHead;
+	int adjustFactor = 5; // Used to adjust the movement of the eyebrow
 	public LeftEyebrow.SHAPE mShape = LeftEyebrow.SHAPE.DEFAULT;
 
 	public LeftEyebrow(Head head) {
@@ -60,6 +61,11 @@ public class LeftEyebrow extends BodyPart {
 			case DEFAULT:
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				break;
+			
+			case ANGRY:
+				gp.moveTo(mStart.x, mStart.y);
+				gp.lineTo(mEnd.x, mEnd.y - adjustFactor);
 				break;
 		}
 
