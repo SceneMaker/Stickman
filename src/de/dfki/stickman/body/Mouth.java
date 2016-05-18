@@ -16,7 +16,7 @@ public class Mouth extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, SMILE, SAD, ANGRY, SURPRIESD, HAPPY, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
+		DEFAULT, SMILE, SAD, ANGRY, SURPRIESD, HAPPY, DISGUSTED, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
 	};
 
 	Head mHead;
@@ -89,9 +89,25 @@ public class Mouth extends BodyPart {
 			case HAPPY:
 				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
 
-				gp.moveTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
-				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement, mStart.y - mLength / 2 - movement / 4 + 5);
-				gp.lineTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.moveTo(mStart.x - mLength / 2 - movement+4, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement-4, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mStart.x - mLength / 2 - movement+4, mStart.y - mLength / 2 - movement / 4 + 5);
+				break;	
+				
+			case DISGUSTED:
+				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
+//				First choice
+//				gp.moveTo(mStart.x-mLength, mStart.y);
+//				gp.quadTo(mStart.x-mLength*4/5, mStart.y-10 , mStart.x-mLength*3/5, mStart.y);
+//				gp.quadTo(mStart.x-mLength*2/5, mStart.y+10 , mStart.x-mLength/5, mStart.y);
+//				gp.quadTo(mStart.x, mStart.y-10 ,mStart.x+mLength/5, mStart.y);
+//				gp.quadTo(mStart.x+mLength*2/5, mStart.y+10 ,mStart.x+mLength*3/5, mEnd.y);
+//				gp.quadTo(mStart.x+mLength*4/5, mStart.y-10 ,mStart.x+mLength, mEnd.y);
+				
+				gp.moveTo(mStart.x-mLength, mStart.y);
+				gp.quadTo(mStart.x-mLength*2/3, mStart.y-10 , mStart.x-mLength/3, mStart.y);
+				gp.quadTo(mStart.x, mStart.y+10 , mStart.x+mLength/3, mStart.y);
+				gp.quadTo(mStart.x+mLength*2/3, mStart.y-10 ,mStart.x+mLength, mEnd.y);
 				break;	
 				
 			case O:

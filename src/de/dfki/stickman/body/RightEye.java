@@ -17,7 +17,7 @@ public class RightEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRIESD, HAPPY
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRIESD, HAPPY, DISGUSTED, LOVED
 	};
 
 	Head mHead;
@@ -66,10 +66,12 @@ public class RightEye extends BodyPart {
 				gp.moveTo(mStart.x, mStart.y);
 				gp.lineTo(mEnd.x, mEnd.y);
 				break;
+				
 			case LOOKLEFT:
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
 				break;
+				
 			case LOOKRIGHT:
 				gp = new GeneralPath();
 				gp.moveTo(mStart.x, mStart.y);
@@ -77,7 +79,7 @@ public class RightEye extends BodyPart {
 				break;
 				
 			case ANGRY:
-				gp = new GeneralPath();
+//				gp = new GeneralPath();
 				//gp.moveTo(mStart.x, mStart.y - adjustFactor);
 				gp.moveTo(mStart.x+2, mStart.y);
 				gp.quadTo((mStart.x+2 + mEnd.x) / 2, mStart.y - 2, mEnd.x+2, mStart.y);
@@ -87,16 +89,30 @@ public class RightEye extends BodyPart {
 				break;
 				
 			case SURPRIESD:
-				gp = new GeneralPath();
+//				gp = new GeneralPath();
 				gp.moveTo(mStart.x-2, mStart.y);
 				gp.quadTo(mStart.x + 2, mStart.y - 5, mEnd.x+2, mStart.y);
 				gp.quadTo(mStart.x + 2, mStart.y + 5, mStart.x-2, mStart.y);
 				break;
 				
 			case HAPPY:
-				gp = new GeneralPath();
+//				gp = new GeneralPath();
 				gp.moveTo(mStart.x-2, mStart.y);
 				gp.quadTo((mStart.x-2 + mEnd.x+2) / 2, mStart.y - 3, mEnd.x+2, mEnd.y);
+				break;
+				
+			case DISGUSTED:
+//				gp = new GeneralPath();
+				gp.moveTo(mStart.x-5, mStart.y-5);
+				gp.lineTo(mEnd.x+3, mEnd.y+3);
+				gp.lineTo(mStart.x-5, mEnd.y+3);
+				break;
+				
+			case LOVED:
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo(mStart.x+15, mEnd.y-6,mStart.x, mEnd.y+15);
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo(mStart.x-15, mEnd.y-6,mStart.x, mEnd.y+15);
 				break;
 		}
 

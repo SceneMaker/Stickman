@@ -15,7 +15,7 @@ public class RightEyebrow extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, ANGRY
+		DEFAULT, ANGRY, DISGUSTED
 	};
 
 	Head mHead;
@@ -62,6 +62,11 @@ public class RightEyebrow extends BodyPart {
 			case ANGRY:
 				gp.moveTo(mStart.x, mStart.y);
 				gp.lineTo(mEnd.x, mEnd.y-adjustFactor);
+				break;
+				
+			case DISGUSTED:
+				gp.moveTo(mStart.x, mStart.y-5);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y , mEnd.x, mEnd.y);
 				break;
 		}
 
