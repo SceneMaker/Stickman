@@ -26,7 +26,7 @@ public class HeadShake extends Animation
 	@Override
 	public void playAnimation()
 	{
-		int rotationUnit = 8;
+		int rotationUnit = 10;
 		
 		// Its action is strange for the first time!		
 		mAnimationPart = new ArrayList<>();
@@ -38,10 +38,17 @@ public class HeadShake extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", -rotationUnit));
 
 		playAnimationPart(100);
-		pauseAnimation(100);
-
+		pauseAnimation(100);	
+		
+		mStickman.mRightEye.setDefaulRotation(0);
+		mStickman.mRightEyebrow.setDefaulRotation(0);
+		mStickman.mLeftEye.setDefaulRotation(0);
+		mStickman.mLeftEyebrow.setDefaulRotation(0);
+		mStickman.mHead.setDefaulRotation(0);
+		mStickman.mMouth.setDefaulRotation(0);
+		
 		// shaking head 5 times from Robbie
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			mAnimationPart = new ArrayList<>();
 			mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", rotationUnit * 2));
@@ -50,9 +57,15 @@ public class HeadShake extends Animation
 			mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", rotationUnit * 2));
 			mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", rotationUnit * 2));
 			mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", rotationUnit * 2));
-			
 			playAnimationPart(200);
 			pauseAnimation(100);
+			
+			mStickman.mRightEye.setDefaulRotation(0);
+			mStickman.mRightEyebrow.setDefaulRotation(0);
+			mStickman.mLeftEye.setDefaulRotation(0);
+			mStickman.mLeftEyebrow.setDefaulRotation(0);
+			mStickman.mHead.setDefaulRotation(0);
+			mStickman.mMouth.setDefaulRotation(0);
 			
 			mAnimationPart = new ArrayList<>();
 			mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", -rotationUnit * 2));
@@ -64,20 +77,33 @@ public class HeadShake extends Animation
 			
 			playAnimationPart(200);
 			pauseAnimation(100);
-
+			
+			mStickman.mRightEye.setDefaulRotation(0);
+			mStickman.mRightEyebrow.setDefaulRotation(0);
+			mStickman.mLeftEye.setDefaulRotation(0);
+			mStickman.mLeftEyebrow.setDefaulRotation(0);
+			mStickman.mHead.setDefaulRotation(0);
+			mStickman.mMouth.setDefaulRotation(0);
+			
 		}
 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", 1));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", 1));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "rotate", 1));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", 1));
+		mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", 1));
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", 1));
 
-		playAnimationPart(100);
+		playAnimationPart(1);
 		pauseAnimation(100);
-
+		
+		mStickman.mRightEye.setDefaulRotation(0);
+		mStickman.mRightEyebrow.setDefaulRotation(0);
+		mStickman.mLeftEye.setDefaulRotation(0);
+		mStickman.mLeftEyebrow.setDefaulRotation(0);
+		mStickman.mHead.setDefaulRotation(0);
+		mStickman.mMouth.setDefaulRotation(0);
 	}
 
 }

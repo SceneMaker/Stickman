@@ -98,7 +98,6 @@ public abstract class BodyPart extends JComponent {
 	public synchronized void calculateRotation(int step) {
 		mRotation += mRotationStep;
 		mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
-
 		calculate(step);
 	}
 
