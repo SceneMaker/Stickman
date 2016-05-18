@@ -105,9 +105,9 @@ public class LeftEye extends BodyPart {
 			
 			case LOVED:
 				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo(mStart.x-15, mEnd.y-6,mStart.x, mEnd.y+15);
+				gp.quadTo(mStart.x-12, mEnd.y-6,mStart.x, mEnd.y+12);
 				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo(mStart.x+15, mEnd.y-6,mStart.x, mEnd.y+15);
+				gp.quadTo(mStart.x+12, mEnd.y-6,mStart.x, mEnd.y+12);
 				break;
 				
 		}
