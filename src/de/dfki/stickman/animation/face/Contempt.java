@@ -17,32 +17,28 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Angry extends Animation {
+public class Contempt extends Animation {
 
-	public Angry(Stickman sm, int duration, boolean block) {
+	public Contempt(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// angry
+		// Contempt
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPT"));
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 
-		// no angry
+		// no Contempt
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
 		playAnimationPart(20);
 	}
 }

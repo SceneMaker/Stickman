@@ -25,25 +25,20 @@ public class Loved extends Animation {
 
 	@Override
 	public void playAnimation() {
-		int translationUnit = 3;
-		// angry
+		// loved
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILE"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "LOVED"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "LOVED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "LOVED"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "LOVED"));
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 
-		// no smile
+		// no loved
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
 		playAnimationPart(20);
 	}
 }

@@ -25,20 +25,18 @@ public class Disgusted extends Animation {
 
 	@Override
 	public void playAnimation() {
-		int translationUnit = 3;
-		// angry
+		// disgusted
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
-//		playAnimationPart(20);
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 
-		// no smile
+		// no disgusted
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));

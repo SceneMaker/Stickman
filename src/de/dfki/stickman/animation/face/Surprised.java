@@ -25,27 +25,25 @@ public class Surprised extends Animation {
 
 	@Override
 	public void playAnimation() {
-		int translationUnit = 3;
 		
 		// surprised
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SURPRIESD"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "SURPRIESD"));
-		//mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRIESD"));
-		//mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
-		playAnimationPart(20);
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SURPRISED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "SURPRISED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "SURPRISED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "SURPRISED"));
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 
-		// no smile
+		// no surprised
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-		//mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
-		//mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
 		playAnimationPart(20);
 	}
 }
