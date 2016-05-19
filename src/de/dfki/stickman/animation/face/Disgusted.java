@@ -17,26 +17,26 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Angry extends Animation {
+public class Disgusted extends Animation {
 
-	public Angry(Stickman sm, int duration, boolean block) {
+	public Disgusted(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// angry
+		// disgusted
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DISGUSTED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DISGUSTED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DISGUSTED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 
-		// no angry
+		// no disgusted
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));

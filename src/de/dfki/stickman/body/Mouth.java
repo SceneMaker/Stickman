@@ -16,7 +16,7 @@ public class Mouth extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, SMILE, SAD, ANGRY, SURPRIESD, HAPPY, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
+		DEFAULT, SMILE, SAD, ANGRY, SURPRISED, HAPPY, DISGUSTED, CONTEMPT, O, FEAR, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
 	};
 
 	Head mHead;
@@ -80,18 +80,68 @@ public class Mouth extends BodyPart {
 				//gp.quadTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2, mStart.y);
 				break;
 			
-			case SURPRIESD:
-				gp.moveTo(mStart.x - mLength / 2+2, mStart.y);
-				gp.quadTo(mStart.x, mStart.y - mLength / 2-6, mEnd.x-2, mStart.y);
-				gp.quadTo(mStart.x, mStart.y + mLength / 2+6, mStart.x - mLength / 2+2, mStart.y);
+			case SURPRISED:
+				
+//				First option
+//				gp.moveTo(mStart.x - mLength / 2+2, mStart.y);
+//				gp.quadTo(mStart.x, mStart.y - mLength / 2-6, mEnd.x-2, mStart.y);
+//				gp.quadTo(mStart.x, mStart.y + mLength / 2+6, mStart.x - mLength / 2+2, mStart.y);
+				
+//				Second option
+				gp.moveTo(mStart.x - mLength / 2, mStart.y);
+				gp.quadTo(mStart.x-mLength / 4-4, mStart.y - mLength / 4-6, mStart.x, mStart.y - mLength / 2-2);
+				gp.quadTo(mStart.x+mLength / 4+4, mStart.y - mLength / 4-6, mEnd.x, mStart.y);
+				gp.quadTo(mStart.x+mLength / 4+4, mStart.y + mLength / 4+6, mStart.x, mStart.y + mLength / 2+2);
+				gp.quadTo(mStart.x-mLength / 4-4, mStart.y + mLength / 4+6, mStart.x - mLength / 2, mStart.y);
+				
 				break;
 				
 			case HAPPY:
 				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
 
-				gp.moveTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
-				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement, mStart.y - mLength / 2 - movement / 4 + 5);
-				gp.lineTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.moveTo(mStart.x - mLength / 2 - movement+4, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement-4, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mStart.x - mLength / 2 - movement+4, mStart.y - mLength / 2 - movement / 4 + 5);
+				break;	
+				
+			case DISGUSTED:
+				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
+				
+//				First option
+//				gp.moveTo(mStart.x-mLength, mStart.y);
+//				gp.quadTo(mStart.x-mLength*4/5, mStart.y-10 , mStart.x-mLength*3/5, mStart.y);
+//				gp.quadTo(mStart.x-mLength*2/5, mStart.y+10 , mStart.x-mLength/5, mStart.y);
+//				gp.quadTo(mStart.x, mStart.y-10 ,mStart.x+mLength/5, mStart.y);
+//				gp.quadTo(mStart.x+mLength*2/5, mStart.y+10 ,mStart.x+mLength*3/5, mEnd.y);
+//				gp.quadTo(mStart.x+mLength*4/5, mStart.y-10 ,mStart.x+mLength, mEnd.y);
+				
+//				Second option
+				gp.moveTo(mStart.x-mLength, mStart.y);
+				gp.quadTo(mStart.x-mLength*2/3, mStart.y-6 , mStart.x-mLength/3, mStart.y);
+				gp.quadTo(mStart.x, mStart.y+6 , mStart.x+mLength/3, mStart.y);
+				gp.quadTo(mStart.x+mLength*2/3, mStart.y-6 ,mStart.x+mLength, mEnd.y);
+				break;	
+		
+			case CONTEMPT:
+				gp.moveTo(mStart.x - mLength / 2, mStart.y);
+				
+//				Fitst option
+//				gp.quadTo(mStart.x, mStart.y + 1, mEnd.x+10, mEnd.y-10);
+//				gp.quadTo(mStart.x, mStart.y + 7, mStart.x - mLength / 2, mStart.y);
+					
+//				Second option
+//				gp.quadTo(mStart.x+5, mStart.y + 1, mEnd.x+10, mEnd.y-10);
+//				gp.quadTo(mStart.x+15, mStart.y + 6, mStart.x - mLength / 2, mStart.y);
+				
+//				Third option
+				gp.quadTo(mStart.x, mStart.y -15, mEnd.x+10, mEnd.y-10);
+				
+				break;	
+				
+			case FEAR:
+				gp.moveTo(mStart.x - mLength / 2-5, mStart.y);
+				gp.quadTo(mStart.x, mStart.y - 10, mEnd.x+5, mEnd.y);
+				gp.quadTo(mStart.x, mStart.y -1, mStart.x - mLength / 2-5, mStart.y);
 				break;	
 				
 			case O:

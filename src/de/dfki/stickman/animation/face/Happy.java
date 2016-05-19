@@ -18,25 +18,20 @@ public class Happy extends Animation {
 
 	@Override
 	public void playAnimation() {
-		// smile
+		// happy
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPY"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
-//		
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));		
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 		
-		// no smile
+		// no happy
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
 		
 		playAnimationPart(20);
 	}

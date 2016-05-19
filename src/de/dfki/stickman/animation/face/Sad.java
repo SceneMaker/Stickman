@@ -23,18 +23,20 @@ public class Sad extends Animation {
 
 	@Override
 	public void playAnimation() {
-		int translationUnit = 3;
-
-		// smile
+		// sad
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SAD"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
 		playAnimationPart(20);
 		
 		pauseAnimation(1200);
 
-		// no smile
+		// no sad
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));  // add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT")); // add by Robbie
 		playAnimationPart(20);
 	}
 }
