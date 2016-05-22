@@ -16,7 +16,7 @@ public class LeftEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRISED, HAPPY, DISGUSTED, LOVED, CONTEMPT
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRISED, HAPPY, DISGUSTED, LOVED, CONTEMPT, EXCITED, EMBARRASSED
 	};
 
 	Head mHead;
@@ -48,6 +48,8 @@ public class LeftEye extends BodyPart {
 
 	@Override
 	public void createShape() {
+//		mStart: right side
+//		mEnd:left side
 		mStart = mHead.getLeftEyePostion();
 		mEnd = new Point(mStart.x - mLength, mStart.y);
 
@@ -113,6 +115,16 @@ public class LeftEye extends BodyPart {
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 2, mEnd.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + 2, mStart.x, mStart.y);
+				break;
+				
+			case EXCITED:
+				gp.moveTo(mStart.x+2, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x-2, mEnd.y);
+				break;
+				
+			case EMBARRASSED:
+				gp.moveTo(mStart.x+9, mStart.y+8);
+				gp.quadTo((mStart.x+9 + mEnd.x+9) / 2, mStart.y+6, mEnd.x+9, mEnd.y+8);
 				break;
 				
 		}
