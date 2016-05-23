@@ -79,8 +79,9 @@ public class Mouth extends BodyPart {
 			case ANGRY:
 				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
 				
-				gp.moveTo(mStart.x - mLength / 2 - movement/2, mStart.y + movement/14);
-				gp.quadTo(mStart.x, mStart.y - mLength/2-3, mEnd.x + movement/2, mStart.y + movement/14);	
+				gp.moveTo(mStart.x - mLength/2 - movement/10, mStart.y + movement/10);
+				gp.quadTo(mStart.x, mStart.y - mLength/3, mEnd.x + movement/10, mStart.y + movement/10);
+				
 				break;
 			
 			case SURPRISED:
