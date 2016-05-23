@@ -67,7 +67,9 @@ public class StickmanStage extends JFrame implements MouseListener {
         sStickmanPanel.setLayout(new StickmanStageLayout());
         add(sStickmanPanel);
 
-       setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+//      setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // change by Robbie. Close the window directly.
+        
         
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
@@ -224,6 +226,8 @@ public class StickmanStage extends JFrame implements MouseListener {
         StickmanStage.addStickman("Bob");
     }
 
+//  emotion: Angry, Contempt, Disgusted. Fear, Happy, Loved, Sad, Smile, Surprised, Embarrassed
+//  action: HeadShake, Nod2
     @Override
     public void mouseClicked(MouseEvent e) {
         //getStickman("Anna").mLogger.info("mouse clicked");
@@ -234,10 +238,10 @@ public class StickmanStage extends JFrame implements MouseListener {
        //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
 //      getStickman("Bob").doAnimation("TiltLeft", 70, true); 
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
-      getStickman("Anna").doAnimation("Surprised", 70, true);
+     // getStickman("Anna").doAnimation("Surprised", 70, true);
       //getStickman("Bob").doAnimation("TiltLeft", 70, true);
       //getStickman("Bob").doAnimation("Nod2", 70, false); //
-      //getStickman("character").doAnimation("HeadShake", 70, false); //
+      getStickman("Bob").doAnimation("Excited", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
 // getStickman("Anna").doAnimation("head", "lookleft", 300, true);

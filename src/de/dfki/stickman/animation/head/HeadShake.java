@@ -26,7 +26,7 @@ public class HeadShake extends Animation
 	@Override
 	public void playAnimation()
 	{
-		int rotationUnit = 10;
+		int rotationUnit = 6;
 		
 		// Its action is strange for the first time!		
 		mAnimationPart = new ArrayList<>();

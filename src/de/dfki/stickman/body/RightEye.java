@@ -17,7 +17,7 @@ public class RightEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRISED, HAPPY, DISGUSTED, LOVED, CONTEMPT
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRISED, HAPPY, DISGUSTED, LOVED, CONTEMPT, EXCITED, EMBARRASSED
 	};
 
 	Head mHead;
@@ -50,6 +50,8 @@ public class RightEye extends BodyPart {
 
 	@Override
 	public void createShape() {
+//		mStart: left side
+//		nEmd: right side
 		mStart = mHead.getRightEyePostion();
 		mEnd = new Point(mStart.x + mLength, mStart.y);
 
@@ -115,6 +117,17 @@ public class RightEye extends BodyPart {
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 2, mEnd.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + 2, mStart.x, mStart.y);
 				break;
+				
+			case EXCITED:
+				gp.moveTo(mStart.x-2, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x+2, mEnd.y);
+				break;
+				
+			case EMBARRASSED:
+				gp.moveTo(mStart.x+10, mStart.y+7);
+				gp.quadTo((mStart.x+10 + mEnd.x+10) / 2, mStart.y+5, mEnd.x+10, mEnd.y+7);
+				break;
+						
 		}
 
 		addToDrawObjects(gp);

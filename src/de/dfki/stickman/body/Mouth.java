@@ -16,7 +16,7 @@ public class Mouth extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, SMILE, SAD, ANGRY, SURPRISED, HAPPY, DISGUSTED, CONTEMPT, O, FEAR, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
+		DEFAULT, SMILE, SAD, ANGRY, SURPRISED, HAPPY, DISGUSTED, CONTEMPT, EXCITED, EMBARRASSED, O, FEAR, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN,NINETEEN, TWENTY
 	};
 
 	Head mHead;
@@ -46,6 +46,8 @@ public class Mouth extends BodyPart {
 
 	@Override
 	public void createShape() {
+//		mStart:middle
+//		mEnd:right side
 		mStart = mHead.getMouthPostion();
 		mEnd = new Point(mStart.x + mLength / 2, mStart.y);
 
@@ -143,6 +145,31 @@ public class Mouth extends BodyPart {
 				gp.quadTo(mStart.x, mStart.y - 10, mEnd.x+5, mEnd.y);
 				gp.quadTo(mStart.x, mStart.y -1, mStart.x - mLength / 2-5, mStart.y);
 				break;	
+				
+			case EXCITED:
+				movement = mLength / 2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep) / 3;
+
+				gp.moveTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mStart.x - mLength / 2 - movement, mStart.y - mLength / 2 - movement / 4 + 5);
+				
+//				teeth
+				gp.moveTo(mStart.x - mLength / 2 - movement+15, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mStart.x - mLength / 2 - movement+15, mStart.y - mLength / 2 - movement / 4 + 15);
+				gp.moveTo(mStart.x - mLength / 2 - movement+25, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mStart.x - mLength / 2 - movement+25, mStart.y - mLength / 2 - movement / 4 + 15);			
+				gp.moveTo(mEnd.x + movement-15, mStart.y - mLength / 2 - movement / 4 + 5);
+				gp.lineTo(mEnd.x + movement-15, mStart.y - mLength / 2 - movement / 4 + 15);				
+				gp.moveTo(mStart.x - mLength / 2 - movement+8, mStart.y - mLength / 2 - movement / 4 + 11);
+				gp.lineTo(mStart.x - mLength / 2 - movement+45, mStart.y - mLength / 2 - movement / 4 + 11);
+				
+				break;	
+				
+			case EMBARRASSED:
+				gp.moveTo(mStart.x+8, mStart.y+1);
+				gp.quadTo((mStart.x+8+mEnd.x+7)/2, mStart.y, mEnd.x+7, mEnd.y+1);
+//				gp.lineTo(mEnd.x+7, mEnd.y+1);
+				break;
 				
 			case O:
 				gp.moveTo(mStart.x - mLength / 2, mStart.y);

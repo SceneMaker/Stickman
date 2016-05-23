@@ -15,7 +15,7 @@ public class RightEyebrow extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, ANGRY, DISGUSTED, SURPRISED
+		DEFAULT, ANGRY, DISGUSTED, SURPRISED, EXCITED, EMBARRASSED
 	};
 
 	Head mHead;
@@ -46,6 +46,8 @@ public class RightEyebrow extends BodyPart {
 
 	@Override
 	public void createShape() {
+//		mStart: right side
+//		mEnd: left side
 		mStart = mHead.getRightEyebrowPostion();
 		mEnd = new Point(mStart.x - mLength, mStart.y);
 
@@ -72,6 +74,16 @@ public class RightEyebrow extends BodyPart {
 			case SURPRISED:
 				gp.moveTo(mStart.x, mStart.y-3);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y-6 , mEnd.x, mEnd.y-3);
+				break;
+				
+			case EXCITED:
+				gp.moveTo(mStart.x, mStart.y-3-4);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y-8 , mEnd.x, mEnd.y-3-4);
+				break;
+				
+			case EMBARRASSED:
+				gp.moveTo(mStart.x+10, mStart.y+7);
+				gp.quadTo((mStart.x+10 + mEnd.x+10) / 2, mStart.y+10, mEnd.x+10, mEnd.y+9);
 				break;
 		}
 
