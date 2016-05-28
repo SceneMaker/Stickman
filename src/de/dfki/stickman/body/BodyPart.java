@@ -53,6 +53,7 @@ public abstract class BodyPart extends JComponent {
 	List<GeneralPath> mGraphicPaths = Collections.synchronizedList(new ArrayList());
 
 	public Color mColor = new Color(0, 0, 0);
+	
 	public BasicStroke mStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 
 	public void init() {

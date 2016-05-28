@@ -33,8 +33,8 @@ public class Surprised extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "SURPRISED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "SURPRISED"));
-		playAnimationPart(20);
-		
+//		playAnimationPart(20);mDuration
+		playAnimationPart(mDuration);
 		pauseAnimation(1200);
 
 		// no surprised

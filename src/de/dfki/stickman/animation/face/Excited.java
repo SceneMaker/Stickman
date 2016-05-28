@@ -25,8 +25,8 @@ public class Excited extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITED"));		
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 		
 		// no excited

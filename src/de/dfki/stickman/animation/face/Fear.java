@@ -32,8 +32,8 @@ public class Fear extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 
 		// no fear

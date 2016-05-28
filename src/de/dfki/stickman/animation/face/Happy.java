@@ -23,8 +23,8 @@ public class Happy extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));		
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 		
 		// no happy

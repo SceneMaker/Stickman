@@ -204,7 +204,6 @@ public class Animator {
     private class WaitThread extends Thread {
 
         int mSleepTime = 0;
-
         public WaitThread(int time) {
             mSleepTime = time;
         }
@@ -213,7 +212,6 @@ public class Animator {
         public void run() {
             // directly go to sleep
             try {
-
                 sleep(mSleepTime, 0);
             } catch (InterruptedException ex) {
                 mStickman.mLogger.severe(ex.getMessage());

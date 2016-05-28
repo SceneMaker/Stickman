@@ -31,10 +31,11 @@ public class Embarrassed extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EMBARRASSED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EMBARRASSED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EMBARRASSED"));
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EMBARRASSED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EMBARRASSED"));
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 
 		// no embarrassed
@@ -42,6 +43,7 @@ public class Embarrassed extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "DEFAULT"));   ///Add by Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
 		playAnimationPart(20);

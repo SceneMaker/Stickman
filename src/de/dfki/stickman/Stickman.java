@@ -9,6 +9,7 @@ import de.dfki.stickman.body.Body;
 import de.dfki.stickman.body.Head;
 import de.dfki.stickman.body.LeftEye;
 import de.dfki.stickman.body.LeftEyebrow;
+import de.dfki.stickman.body.FaceWrinkle;
 import de.dfki.stickman.body.LeftForeArm;
 import de.dfki.stickman.body.LeftHand;
 import de.dfki.stickman.body.LeftLeg;
@@ -88,6 +89,7 @@ public class Stickman extends JComponent {
 	// body parts
 	public Head mHead;
     public LeftEyebrow mLeftEyebrow;
+    public FaceWrinkle mFaceWrinkle;  // added by Robbie FaceWrinkle 
     public LeftEye mLeftEye;
     public RightEyebrow mRightEyebrow;
     public RightEye mRightEye;
@@ -127,6 +129,7 @@ public class Stickman extends JComponent {
         mLeftEye = new LeftEye(mHead);
         mRightEyebrow = new RightEyebrow(mHead);
         mRightEye = new RightEye(mHead);
+        mFaceWrinkle = new FaceWrinkle(mHead);    /// added by Robbie
         mMouth = new Mouth(mHead);
         mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
@@ -140,7 +143,7 @@ public class Stickman extends JComponent {
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
         mRightLeg = new RightLeg(mBody);
-
+        
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
@@ -245,7 +248,7 @@ public class Stickman extends JComponent {
     public Animation doAnimation(String name, int duration, Object param, boolean block) {
         Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
 
-        a.setParameter(param); // this is for now onyl used by the Speech Bubble
+        a.setParameter(param); // this is for now only used by the Speech Bubble
 
         try {
             mAnimationLaunchControl.acquire();
@@ -307,6 +310,7 @@ public class Stickman extends JComponent {
         mLeftEyebrow.update(g);
         mLeftEye.update(g);
         mRightEyebrow.update(g);
+        mFaceWrinkle.update(g);      /// added by Robbie
         mRightEye.update(g);
         mMouth.update(g);
         mNeck.update(g);

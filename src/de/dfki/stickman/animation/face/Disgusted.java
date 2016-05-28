@@ -33,7 +33,7 @@ public class Disgusted extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
 		playAnimationPart(20);
-		
+
 		pauseAnimation(1200);
 
 		// no disgusted

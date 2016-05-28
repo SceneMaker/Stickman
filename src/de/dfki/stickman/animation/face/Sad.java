@@ -28,8 +28,8 @@ public class Sad extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SAD"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 
 		// no sad
@@ -37,6 +37,6 @@ public class Sad extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));  // add by Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT")); // add by Robbie
-		playAnimationPart(20);
+		playAnimationPart(mDuration);
 	}
 }

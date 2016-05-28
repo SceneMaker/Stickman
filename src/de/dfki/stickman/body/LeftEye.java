@@ -1,6 +1,8 @@
 package de.dfki.stickman.body;
 
 import de.dfki.stickman.Stickman;
+import de.dfki.stickman.animationlogic.Animator;
+
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
@@ -53,6 +55,8 @@ public class LeftEye extends BodyPart {
 		mStart = mHead.getLeftEyePostion();
 		mEnd = new Point(mStart.x - mLength, mStart.y);
 
+		double movement;
+		
 		clearDrawObjects();
 		GeneralPath gp = new GeneralPath();
 
@@ -82,49 +86,70 @@ public class LeftEye extends BodyPart {
 				break;
 				
 			case ANGRY:
-				gp.moveTo(mStart.x-2, mStart.y);
-				gp.quadTo((mStart.x-2 + mEnd.x) / 2, mStart.y - 2, mEnd.x-2, mStart.y);
-				gp.quadTo((mStart.x-2 + mEnd.x) / 2, mStart.y + 2, mStart.x-2, mStart.y);
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
+				gp.moveTo(mStart.x - movement/10, mStart.y);
+				gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y - movement/6, mEnd.x - movement/8, mEnd.y);
+				gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y + movement/6, mStart.x - movement/10, mStart.y);
+
 				break;
 			
 			case SURPRISED:
-				gp.moveTo(mStart.x+2, mStart.y);
-				gp.quadTo(mStart.x - 2, mStart.y - 5, mEnd.x-2, mStart.y);
-				gp.quadTo(mStart.x - 2, mStart.y + 5, mStart.x+2, mStart.y);
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
+				gp.moveTo(mStart.x + movement/10, mStart.y);
+				gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y - movement/2, mEnd.x-movement/10, mStart.y);
+				gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y + movement/2, mStart.x+movement/10, mStart.y);
 				break;
 				
 			case HAPPY:
-				gp.moveTo(mStart.x+2, mStart.y);
-				gp.quadTo((mStart.x+2 + mEnd.x-2) / 2, mStart.y - 3, mEnd.x-2, mEnd.y);
-				break;		
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+								
+				gp.moveTo(mStart.x + movement/10, mStart.y);
+				gp.quadTo((mStart.x + movement/10 + mEnd.x - movement/10)/2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
+				break;	
 				
 			case DISGUSTED:
-				gp.moveTo(mStart.x+5, mStart.y-5);
-				gp.lineTo(mEnd.x-3, mEnd.y+3);
-				gp.lineTo(mStart.x+5, mEnd.y+3);
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
+				gp.moveTo(mStart.x + movement/4, mStart.y - movement/4);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/8, mEnd.x - movement/8, mEnd.y + movement/8);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/4, mStart.x + movement/4, mStart.y + movement/8);				
 				break;
 			
 			case LOVED:
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
+				double xMovement = movement/10*6;
+				double yMovement1 = movement/10*6;
+				double yMovement2 = movement/10*3;
+				
 				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo(mStart.x-12, mEnd.y-6,mStart.x, mEnd.y+12);
+				gp.quadTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
 				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo(mStart.x+12, mEnd.y-6,mStart.x, mEnd.y+12);
+				gp.quadTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
 				break;		
 				
 			case CONTEMPT:
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
 				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 2, mEnd.x, mStart.y);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + 2, mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - movement/10, mEnd.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y + movement/10, mStart.x, mStart.y);
 				break;
 				
 			case EXCITED:
-				gp.moveTo(mStart.x+2, mStart.y);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x-2, mEnd.y);
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
+				gp.moveTo(mStart.x + movement/10, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
 				break;
 				
 			case EMBARRASSED:
-				gp.moveTo(mStart.x+9, mStart.y+8);
-				gp.quadTo((mStart.x+9 + mEnd.x+9) / 2, mStart.y+6, mEnd.x+9, mEnd.y+8);
+				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				
+				gp.moveTo(mStart.x + movement/2, mStart.y + movement/5*2);
+				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 4 + movement/2, mEnd.x + movement/2, mEnd.y + movement/5*2);			
 				break;
 				
 		}
