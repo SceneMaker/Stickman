@@ -65,22 +65,11 @@ public class RightEyebrow extends BodyPart {
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
 				break;
 				
-			case ANGRY:		
+			case ANGRY:	
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x + movement/4, mStart.y + movement/4);
 				gp.quadTo((mStart.x + movement/4 + mEnd.x + movement/3) / 2, mStart.y + movement/4 - 3, mEnd.x + movement/4, mEnd.y);
-				
-//				Add wrinkle for angry face:
-				int angryColorChange = (int)(movement/4*16);
-				mColor = new Color(0, 0, 0, angryColorChange);
-				gp.moveTo(mStart.x + 10, mStart.y + 7);
-				gp.lineTo(mStart.x + 10, mStart.y - 1);
-				gp.moveTo(mStart.x + 17, mStart.y + 9);
-				gp.lineTo(mStart.x + 17, mStart.y);
-				gp.moveTo(mStart.x + 24, mStart.y + 7);
-				gp.lineTo(mStart.x + 24, mStart.y - 1);
-				
 				break;
 				
 			case DISGUSTED:			
@@ -108,15 +97,7 @@ public class RightEyebrow extends BodyPart {
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 				gp.moveTo(mStart.x + movement/2, mStart.y + movement/3);
-				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 3 + movement/10*7, mEnd.x + movement/2, mEnd.y + movement/2);
-
-//				Add wrinkles for embarrassed face:
-				int embarrassedColorChange = (int)(movement/4*16);
-				mColor = new Color(0, 0, 0, embarrassedColorChange);
-				gp.moveTo(mStart.x - 15, mStart.y);
-				gp.lineTo(mStart.x - 15, mStart.y + 10);			
-				gp.moveTo(mStart.x - 25, mStart.y + 5);
-				gp.lineTo(mStart.x - 25, mStart.y + 20);				
+				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 3 + movement/10*7, mEnd.x + movement/2, mEnd.y + movement/2);				
 				break;
 		}
 

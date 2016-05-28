@@ -68,7 +68,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         add(sStickmanPanel);
 
 //      setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // change by Robbie. Close the window directly.
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
         
         
         ConsoleHandler ch = new ConsoleHandler();
@@ -226,22 +226,23 @@ public class StickmanStage extends JFrame implements MouseListener {
         StickmanStage.addStickman("Bob");
     }
 
-//  emotion: Angry, Contempt, Disgusted. Fear, Happy, Loved, Sad, Smile, Surprised, Embarrassed
+//  emotion: Angry, Contempt, Disgusted. Fear, Happy, Loved, Sad, Smile, Surprised, Embarrassed, Excited
 //  action: HeadShake, Nod2
     @Override
     public void mouseClicked(MouseEvent e) {
         //getStickman("Anna").mLogger.info("mouse clicked");
     	//getStickman("Bob").mLogger.info("mouse clicked");
-       //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-    	//getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//       getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+      	//getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //////		//smM.doAnimation("gesture", "waveleft", false);
        //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
 //      getStickman("Bob").doAnimation("TiltLeft", 70, true); 
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
      // getStickman("Anna").doAnimation("Surprised", 70, true);
       //getStickman("Bob").doAnimation("TiltLeft", 70, true);
-      //getStickman("Bob").doAnimation("Nod2", 70, false); //
-      getStickman("Bob").doAnimation("Angry", 70, false); //
+      getStickman("Bob").doAnimation("Embarrassed", 2000, false); //
+//      getStickman("Bob").doAnimation("Angry", 200, false); //
+//      getStickman("Anna").doAnimation("Loved", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
 // getStickman("Anna").doAnimation("head", "lookleft", 300, true);

@@ -30,8 +30,8 @@ public class Loved extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILE"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "LOVED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "LOVED"));
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 
 		// no loved

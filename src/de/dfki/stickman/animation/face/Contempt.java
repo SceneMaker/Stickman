@@ -30,8 +30,8 @@ public class Contempt extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPT"));
-		playAnimationPart(20);
-		
+		playAnimationPart(mDuration);
+
 		pauseAnimation(1200);
 
 		// no Contempt
