@@ -17,28 +17,21 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Loved extends Animation {
+public class LovedEnd extends Animation {
 
-	public Loved(Stickman sm, int duration, boolean block) {
+	public LovedEnd(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// loved
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILE"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "LOVED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "LOVED"));
-		playAnimationPart(mDuration);
-
-		pauseAnimation(1200);
-
-		// no loved
+		// loved end
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILEEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "LOVEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "LOVEDEND"));
-		playAnimationPart(20);
+		playAnimationPart(mDuration);
+
+		pauseAnimation(10);
 	}
 }

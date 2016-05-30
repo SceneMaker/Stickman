@@ -17,15 +17,15 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Fear extends Animation {
+public class FearStart extends Animation {
 
-	public Fear(Stickman sm, int duration, boolean block) {
+	public FearStart(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// fear
+		// fear start
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "FEAR"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "SURPRISED"));
@@ -34,15 +34,6 @@ public class Fear extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
 		playAnimationPart(mDuration);
 
-		pauseAnimation(1200);
-
-		// no fear
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "FEAREND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND"));
-		playAnimationPart(20);
+		pauseAnimation(10);
 	}
 }

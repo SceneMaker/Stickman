@@ -24,6 +24,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 /**
@@ -226,8 +227,14 @@ public class StickmanStage extends JFrame implements MouseListener {
         StickmanStage.addStickman("Bob");
     }
 
-//  emotion: Angry, Contempt, Disgusted. Fear, Happy, Loved, Sad, Smile, Surprised, Embarrassed, Excited
+//  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Fear, Happy, Loved, Sad, Smile, Surprised, 
+//           Embarrassed, Excited, AngrySmallMouth
+//  emotionStart: AngryStart, ContemptStart, DisgustedStart, FearStart, AngrySmallMouthStart,
+//                HappyStart, LovedStart, SadStart, SmileStart, SurprisedStart, EmbarrassedStart, ExcitedStart
+//  emotionEnd: AngryEnd, ContemptEnd, DisgustedEnd, FearEnd, HappyEnd, AngrySmallMouthEnd,
+//              LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
 //  action: HeadShake, Nod2
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         //getStickman("Anna").mLogger.info("mouse clicked");
@@ -240,8 +247,17 @@ public class StickmanStage extends JFrame implements MouseListener {
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
      // getStickman("Anna").doAnimation("Surprised", 70, true);
       //getStickman("Bob").doAnimation("TiltLeft", 70, true);
-      getStickman("Bob").doAnimation("Embarrassed", 2000, false); //
-//      getStickman("Bob").doAnimation("Angry", 200, false); //
+//    	getStickman("Bob").doAnimation("Smile", 500, true);
+    	
+//    	getStickman("Bob").doAnimation("AngrySmallMouth", 1000, true);
+    	
+    	if(SwingUtilities.isLeftMouseButton(e)){
+    		getStickman("Bob").doAnimation("AngrySmallMouthStart", 500, true);
+    	}else{
+    		getStickman("Bob").doAnimation("AngrySmallMouthEnd", 500, true);
+    	}
+      
+//      getStickman("Bob").doAnimation("Happy", 200, false);
 //      getStickman("Anna").doAnimation("Loved", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);

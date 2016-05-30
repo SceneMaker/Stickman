@@ -25,7 +25,7 @@ public class Body extends JComponent {
 
 	Neck mNeck;
 
-	Dimension mSize = new Dimension(120, 300); 
+	Dimension mSize = new Dimension(120, 300);
 	int mHalfSizeX = mSize.width / 2;
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;

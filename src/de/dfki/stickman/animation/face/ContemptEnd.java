@@ -17,28 +17,21 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Contempt extends Animation {
+public class ContemptEnd extends Animation {
 
-	public Contempt(Stickman sm, int duration, boolean block) {
+	public ContemptEnd(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// Contempt
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPT"));
-		playAnimationPart(mDuration);
-
-		pauseAnimation(1200);
-
-		// no Contempt
+		// Contempt end
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPTEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPTEND"));
-		playAnimationPart(20);
+		playAnimationPart(mDuration);
+
+		pauseAnimation(10);
 	}
 }

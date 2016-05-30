@@ -34,9 +34,9 @@ public class Sad extends Animation {
 
 		// no sad
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DEFAULT"));  // add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT")); // add by Robbie
-		playAnimationPart(mDuration);
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SADEND"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));  // add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add by Robbie
+		playAnimationPart(20);
 	}
 }

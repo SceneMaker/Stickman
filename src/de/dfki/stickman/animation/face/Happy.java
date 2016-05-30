@@ -29,9 +29,9 @@ public class Happy extends Animation {
 		
 		// no happy
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPYEND"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPYEND"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPYEND"));
 		
 		playAnimationPart(20);
 	}

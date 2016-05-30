@@ -17,36 +17,25 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Embarrassed extends Animation {
+public class EmbarrassedEnd extends Animation {
 
-	public Embarrassed(Stickman sm, int duration, boolean block) {
+	public EmbarrassedEnd(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
 		
-		// embarrassed
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EMBARRASSED"));
-		playAnimationPart(mDuration);
-//		playAnimationPart(20);
-		
-		pauseAnimation(1200);
-
-		// no embarrassed
+		// embarrassed end
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EMBARRASSEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EMBARRASSEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "EMBARRASSEDEND"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "EMBARRASSEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EMBARRASSEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EMBARRASSEDEND"));
-		playAnimationPart(20);
+		playAnimationPart(mDuration);
+		
+		pauseAnimation(10);
 	}
 }

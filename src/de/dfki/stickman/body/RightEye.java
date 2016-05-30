@@ -19,11 +19,10 @@ public class RightEye extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, SURPRISED, HAPPY, DISGUSTED, LOVED, CONTEMPT, EXCITED, EMBARRASSED
+		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	Head mHead;
-	int adjustFactor = 3; // Used to adjust the movement of the eye
 	public RightEye.SHAPE mShape = RightEye.SHAPE.DEFAULT;
 
 	public RightEye(Head head) {
@@ -93,12 +92,39 @@ public class RightEye extends BodyPart {
 				
 				break;
 				
+			case ANGRYEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x + movement/10, mStart.y);
+					gp.quadTo((mStart.x + movement/10 + mEnd.x + movement/8) / 2, mStart.y - movement/6, mEnd.x + movement/8, mEnd.y);
+					gp.quadTo((mStart.x + movement/10 + mEnd.x + movement/8) / 2, mStart.y + movement/6, mStart.x + movement/10, mStart.y);
+				}
+				break;
+				
+				
 			case SURPRISED:
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x - movement/10, mStart.y);
 				gp.quadTo((mStart.x - movement/10 + mEnd.x+movement/10)/2, mStart.y - movement/2, mEnd.x+movement/10, mStart.y);
 				gp.quadTo((mStart.x - movement/10 + mEnd.x+movement/10)/2, mStart.y + movement/2, mStart.x-movement/10, mStart.y);
+				break;
+				
+			case SURPRISEDEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x - movement/10, mStart.y);
+					gp.quadTo((mStart.x - movement/10 + mEnd.x+movement/10)/2, mStart.y - movement/2, mEnd.x+movement/10, mStart.y);
+					gp.quadTo((mStart.x - movement/10 + mEnd.x+movement/10)/2, mStart.y + movement/2, mStart.x-movement/10, mStart.y);
+				}
 				break;
 				
 			case HAPPY:
@@ -108,13 +134,37 @@ public class RightEye extends BodyPart {
 				gp.quadTo((mStart.x - movement/10 + mEnd.x + movement/10) / 2, mStart.y - 3, mEnd.x + movement/10, mEnd.y);			
 				break;
 				
+			case HAPPYEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x - movement/10, mStart.y);
+					gp.quadTo((mStart.x - movement/10 + mEnd.x + movement/10) / 2, mStart.y - 3, mEnd.x + movement/10, mEnd.y);			
+				}
+				break;
+				
 			case DISGUSTED:
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x-movement/4, mStart.y-movement/4);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/8, mEnd.x+ movement/8, mEnd.y+ movement/8);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/4, mStart.x-movement/4, mStart.y+movement/8);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/4, mStart.x-movement/4, mStart.y+movement/8);				
+				break;
 				
+			case DISGUSTEDEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x-movement/4, mStart.y-movement/4);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/8, mEnd.x+ movement/8, mEnd.y+ movement/8);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/4, mStart.x-movement/4, mStart.y+movement/8);				
+				}
 				break;
 				
 			case LOVED:
@@ -130,12 +180,43 @@ public class RightEye extends BodyPart {
 				gp.quadTo(mStart.x-xMovement, mEnd.y-yMovement2,mStart.x, mEnd.y+yMovement1);
 				break;
 				
+			case LOVEDEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					xMovement= movement/10*6;
+					yMovement1= movement/10*6;
+					yMovement2= movement/10*3;
+					
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo(mStart.x+xMovement, mEnd.y-yMovement2,mStart.x, mEnd.y+yMovement1);
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo(mStart.x-xMovement, mEnd.y-yMovement2,mStart.x, mEnd.y+yMovement1);
+				}
+				break;
+				
 			case CONTEMPT:
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - movement/10, mEnd.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + movement/10, mStart.x, mStart.y);
+				break;
+				
+			case CONTEMPTEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - movement/10, mEnd.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + movement/10, mStart.x, mStart.y);
+				}
 				break;
 				
 			case EXCITED:
@@ -145,11 +226,35 @@ public class RightEye extends BodyPart {
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x+movement/10, mEnd.y);
 				break;
 				
+			case EXCITEDEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x-movement/10, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x+movement/10, mEnd.y);
+				}
+				break;
+				
 			case EMBARRASSED:
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x + movement/2, mStart.y + movement/5*2);
 				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 4 + movement/2, mEnd.x + movement/2, mEnd.y + movement/5*2);
+				break;
+				
+			case EMBARRASSEDEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1){
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else{
+					gp.moveTo(mStart.x + movement/2, mStart.y + movement/5*2);
+					gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 4 + movement/2, mEnd.x + movement/2, mEnd.y + movement/5*2);
+				}
 				break;
 						
 		}

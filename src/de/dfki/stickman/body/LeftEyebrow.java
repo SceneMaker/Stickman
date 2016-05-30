@@ -22,11 +22,10 @@ public class LeftEyebrow extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, ANGRY, DISGUSTED, SURPRISED, EXCITED, EMBARRASSED
+		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	Head mHead;
-	int adjustFactor = 5; // Used to adjust the movement of the eyebrow
 	public LeftEyebrow.SHAPE mShape = LeftEyebrow.SHAPE.DEFAULT;
 
 	public LeftEyebrow(Head head) {
@@ -76,11 +75,39 @@ public class LeftEyebrow extends BodyPart {
 				gp.quadTo((mStart.x - movement/4 + mEnd.x - movement/3) / 2, mStart.y + movement/4 - 3, mEnd.x - movement/4, mEnd.y);
 				break;
 				
+			case ANGRYEND:
+				movement = mShapeAnimationStep - 1;
+				if(movement<=1)
+				{
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else
+				{
+					gp.moveTo(mStart.x - movement/4, mStart.y + movement/4);
+					gp.quadTo((mStart.x - movement/4 + mEnd.x - movement/3) / 2, mStart.y + movement/4 - 3, mEnd.x - movement/4, mEnd.y);
+				}
+				break;
+				
 			case DISGUSTED:
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x, mStart.y - movement/4);
 				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - 3 + movement/7 , mEnd.x - movement/10, mEnd.y);
+				break;
+				
+			case DISGUSTEDEND:
+				movement = mShapeAnimationStep - 1;
+				if(movement<=1)
+				{
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else
+				{
+					gp.moveTo(mStart.x, mStart.y - movement/4);
+					gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - 3 + movement/7 , mEnd.x - movement/10, mEnd.y);
+				}
 				break;
 				
 			case SURPRISED:
@@ -90,11 +117,39 @@ public class LeftEyebrow extends BodyPart {
 				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - 3 - movement/7 , mEnd.x, mEnd.y - movement/7);
 				break;
 				
+			case SURPRISEDEND:
+				movement = mShapeAnimationStep - 1;
+				if(movement<=1)
+				{
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else
+				{
+					gp.moveTo(mStart.x, mStart.y-movement/7);
+					gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - 3 - movement/7 , mEnd.x, mEnd.y - movement/7);
+				}
+				break;
+				
 			case EXCITED:
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x, mStart.y-movement/4);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y-3 -movement/5, mEnd.x, mEnd.y-movement/4);
+				break;
+				
+			case EXCITEDEND:
+				movement = mShapeAnimationStep - 1;
+				if(movement<=1)
+				{
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else
+				{
+					gp.moveTo(mStart.x, mStart.y-movement/4);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y-3 -movement/5, mEnd.x, mEnd.y-movement/4);
+				}
 				break;
 				
 			case EMBARRASSED:
@@ -103,8 +158,21 @@ public class LeftEyebrow extends BodyPart {
 				gp.moveTo(mStart.x + movement/2, mStart.y + movement/3);
 				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 3 + movement/5*4, mEnd.x + movement/2, mEnd.y + movement/2);
 				break;
-		}
-
+				
+			case EMBARRASSEDEND:
+				movement = mShapeAnimationStep - 1;
+				if(movement<=1)
+				{
+					gp.moveTo(mStart.x, mStart.y);
+					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+				}
+				else
+				{
+					gp.moveTo(mStart.x + movement/2, mStart.y + movement/3);
+					gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 3 + movement/5*4, mEnd.x + movement/2, mEnd.y + movement/2);
+				}
+				break;
+		}		
 		addToDrawObjects(gp);
 	}
 }

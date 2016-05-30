@@ -154,7 +154,7 @@ public class Stickman extends JComponent {
         setPreferredSize(mSize);
         setMinimumSize(mSize);
         setSize(mSize);
-
+    
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
         map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
@@ -310,7 +310,7 @@ public class Stickman extends JComponent {
         mLeftEyebrow.update(g);
         mLeftEye.update(g);
         mRightEyebrow.update(g);
-        mFaceWrinkle.update(g);      /// added by Robbie
+        mFaceWrinkle.update(g);      // added by Robbie
         mRightEye.update(g);
         mMouth.update(g);
         mNeck.update(g);

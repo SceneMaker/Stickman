@@ -10,15 +10,15 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Excited extends Animation {
+public class ExcitedStart extends Animation {
 
-	public Excited(Stickman sm, int duration, boolean block) {
+	public ExcitedStart(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// excited
+		// excited start
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EXCITED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EXCITED"));
@@ -27,16 +27,6 @@ public class Excited extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITED"));		
 		playAnimationPart(mDuration);
 
-		pauseAnimation(1200);
-		
-		// no excited
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITEDEND"));
-		
-		playAnimationPart(20);
+		pauseAnimation(10);
 	}
 }

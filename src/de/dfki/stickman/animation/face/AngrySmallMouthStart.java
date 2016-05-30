@@ -17,17 +17,17 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Angry extends Animation {
+public class AngrySmallMouthStart extends Animation {
 
-	public Angry(Stickman sm, int duration, boolean block) {
+	public AngrySmallMouthStart(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// angry
+		// angry with small mouth start
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYSMALLMOUTH"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
@@ -36,16 +36,6 @@ public class Angry extends Animation {
 //		playAnimationPart(20);
 		playAnimationPart(mDuration);
 		
-		pauseAnimation(1200);
-
-		// no angry
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRYEND"));
-		playAnimationPart(20);
+		pauseAnimation(10);
 	}
 }

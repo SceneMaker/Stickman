@@ -17,7 +17,7 @@ public class FaceWrinkle extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, ANGRY, DISGUSTED, SURPRISED, EXCITED, EMBARRASSED
+		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	Head mHead;
@@ -58,7 +58,6 @@ public class FaceWrinkle extends BodyPart {
 
 		switch (mShape) {
 			case DEFAULT:
-				gp = new GeneralPath();
 				gp.moveTo(mStart.x+5, mStart.y);
 				mColor = new Color(0, 0, 0, 0);
 				break;
@@ -69,12 +68,30 @@ public class FaceWrinkle extends BodyPart {
 //				Add wrinkle for angry face:
 				int angryColorChange = (int)(movement/4*16);
 				mColor = new Color(0, 0, 0, angryColorChange);
-				gp.moveTo(mStart.x + 10, mStart.y + 7);
-				gp.lineTo(mStart.x + 10, mStart.y - 1);
-				gp.moveTo(mStart.x + 17, mStart.y + 9);
-				gp.lineTo(mStart.x + 17, mStart.y);
-				gp.moveTo(mStart.x + 24, mStart.y + 7);
-				gp.lineTo(mStart.x + 24, mStart.y - 1);				
+				gp.moveTo(mStart.x + 14, mStart.y + 7);
+				gp.lineTo(mStart.x + 14, mStart.y - 1);
+				gp.moveTo(mStart.x + 20, mStart.y + 7);
+				gp.lineTo(mStart.x + 20, mStart.y - 1);				
+				break;
+				
+//				End wrinkle for angry face:
+			case ANGRYEND:	
+				movement = mShapeAnimationStep-1;
+				if(movement<=1)
+				{
+					mColor = new Color(0, 0, 0, 0);
+					gp.moveTo(mStart.x+5, mStart.y);					
+				}
+				else
+				{
+					angryColorChange = (int)(movement/4*16);
+					mColor = new Color(0, 0, 0, angryColorChange);
+					gp.moveTo(mStart.x + 14, mStart.y + 7);
+					gp.lineTo(mStart.x + 14, mStart.y - 1);
+					gp.moveTo(mStart.x + 20, mStart.y + 7);
+					gp.lineTo(mStart.x + 20, mStart.y - 1);	
+				}
+							
 				break;
 				
 			case DISGUSTED:			
@@ -100,8 +117,26 @@ public class FaceWrinkle extends BodyPart {
 				gp.moveTo(mStart.x - 25, mStart.y + 5);
 				gp.lineTo(mStart.x - 25, mStart.y + 20);				
 				break;
+				
+			case EMBARRASSEDEND:
+				movement = mShapeAnimationStep-1;
+				if(movement<=1)
+				{
+					mColor = new Color(0, 0, 0, 0);
+					gp.moveTo(mStart.x+5, mStart.y);					
+				}
+				else
+				{
+//				Add wrinkles for embarrassed face:
+					embarrassedColorChange = (int)(movement/4*16);
+					mColor = new Color(0, 0, 0, embarrassedColorChange);
+					gp.moveTo(mStart.x - 15, mStart.y);
+					gp.lineTo(mStart.x - 15, mStart.y + 10);			
+					gp.moveTo(mStart.x - 25, mStart.y + 5);
+					gp.lineTo(mStart.x - 25, mStart.y + 20);
+				}
+				break;
 		}
-
 		addToDrawObjects(gp);
 	}
 

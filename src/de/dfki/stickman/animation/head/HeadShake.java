@@ -37,7 +37,7 @@ public class HeadShake extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", -rotationUnit));
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", -rotationUnit));
 
-		playAnimationPart(100);
+		playAnimationPart(200);
 		pauseAnimation(100);	
 		
 		mStickman.mRightEye.setDefaulRotation(0);
@@ -95,15 +95,9 @@ public class HeadShake extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", 1));
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", 1));
 
-		playAnimationPart(1);
+		playAnimationPart(200);
 		pauseAnimation(100);
 		
-		mStickman.mRightEye.setDefaulRotation(0);
-		mStickman.mRightEyebrow.setDefaulRotation(0);
-		mStickman.mLeftEye.setDefaulRotation(0);
-		mStickman.mLeftEyebrow.setDefaulRotation(0);
-		mStickman.mHead.setDefaulRotation(0);
-		mStickman.mMouth.setDefaulRotation(0);
 	}
 
 }

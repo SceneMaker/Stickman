@@ -10,25 +10,21 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Smile extends Animation {
+public class HappyEnd extends Animation {
 
-	public Smile(Stickman sm, int duration, boolean block) {
+	public HappyEnd(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		// smile
+		// happy end
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILE"));
-//		playAnimationPart(20);
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPYEND"));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPYEND"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPYEND"));		
 		playAnimationPart(mDuration);
-		pauseAnimation(1200);
-		
-		// no smile
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILEEND"));
-		
-		playAnimationPart(20);
+
+		pauseAnimation(10);
 	}
 }
