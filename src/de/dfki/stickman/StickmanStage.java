@@ -66,8 +66,8 @@ public class StickmanStage extends JFrame implements MouseListener {
             setPreferredSize(size);
         }
 
-//      setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE); // This one is needed by SceneMaker
+        // setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
@@ -156,10 +156,10 @@ public class StickmanStage extends JFrame implements MouseListener {
     public static void addStickman(String name, Stickman.TYPE gender) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             if (sFullScreen) {
-                sStickmansOnStage.put(name.toLowerCase(), 
-                        new Stickman(name, 
-                                gender, 
-                                mHeight /(float)Stickman.mDefaultSize.height * sScale, 
+                sStickmansOnStage.put(name.toLowerCase(),
+                        new Stickman(name,
+                                gender,
+                                mHeight / (float) Stickman.mDefaultSize.height * sScale,
                                 new Dimension(new Float(mHeight * 2 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())));
                 getStickman(name).mShowBackground = false;
                 getStickman(name).mShowStage = false;
@@ -213,7 +213,7 @@ public class StickmanStage extends JFrame implements MouseListener {
 
     public static void showStickmanName(boolean show) {
         for (Stickman s : sStickmansOnStage.values()) {
-          s.mShowName = show;
+            s.mShowName = show;
         }
     }
 
