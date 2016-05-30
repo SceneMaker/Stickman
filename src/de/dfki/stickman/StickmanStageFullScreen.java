@@ -7,7 +7,6 @@ import de.dfki.stickman.client.ClientConnectionHandler;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickman.util.StickmanStageLayout;
 import de.dfki.util.xml.XMLUtilities;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -29,45 +28,45 @@ import javax.swing.WindowConstants;
  * @author Patrick Gebhard
  *
  */
-public class StickmanStage extends JFrame implements MouseListener {
+public class StickmanStageFullScreen extends JFrame implements MouseListener {
 
     static private final HashMap<String, Stickman> sStickmansOnStage = new HashMap<>();
     static private JPanel sStickmanPanel;
-    static private StickmanStage sInstance;
-    //grahics
-    private static float sScale = 1.0f;
-    protected static boolean sFullScreen = false;
-    protected static int mHeight = 0;
-    protected static int mWidth = 0;
+    static private StickmanStageFullScreen sInstance;
+    private static double sScale = 1.0d;
+    protected static boolean sShowStickmanName = true;
     // network interface
     public static ClientConnectionHandler mConnection;
     public static boolean mUseNetwork = false;
     private static String sHost = "127.0.0.1";
     private static int sPort = 7777;
+    // graphics
+    static int mHeight = 0;
+    static int mWidth = 0;
     // logging
     public static final Logger mLogger = Logger.getAnonymousLogger();
 
-    private StickmanStage() {
-        super("Stickman Stage");
+    private StickmanStageFullScreen() {
+        super("Stickman Stage Full Screen ");
+        //setResizable(false);
+
+        Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        mWidth = size.width;
+        mHeight = size.height;
 
         sStickmanPanel = new JPanel();
-        sStickmanPanel.setLayout(new StickmanStageLayout());
         sStickmanPanel.setOpaque(false);
+
+        sStickmanPanel.setLayout(new StickmanStageLayout());
         add(sStickmanPanel);
 
-        if (sFullScreen) {
-            mLogger.info("Full Screen Mode ...");
-            Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-            mWidth = size.width;
-            mHeight = size.height;
-            setUndecorated(true);
-            setBackground(new Color(128, 128, 128, 255));
-            setMinimumSize(size);
-            setPreferredSize(size);
-        }
-
+        setUndecorated(true);
+        
 //      setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // change by Robbie. Close the window directly.
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
@@ -89,54 +88,24 @@ public class StickmanStage extends JFrame implements MouseListener {
         addMouseListener(this);
     }
 
-    public static StickmanStage getInstance() {
+    public static StickmanStageFullScreen getInstance() {
+
         if (sInstance == null) {
-            sInstance = new StickmanStage();
+            sInstance = new StickmanStageFullScreen();
         }
         return sInstance;
     }
 
-    public static StickmanStage getInstanceFullScreen() {
-        sFullScreen = true;
-
-        if (sInstance == null) {
-            sInstance = new StickmanStage();
-        }
-
-        return sInstance;
-    }
-
-    public static StickmanStage getNetworkInstance() {
+    public static StickmanStageFullScreen getNetworkInstance() {
         mUseNetwork = true;
-
         return getInstance();
     }
 
-    public static StickmanStage getNetworkInstanceFullScreen() {
-        sFullScreen = true;
-
-        mUseNetwork = true;
-
-        return getInstance();
-    }
-
-    public static StickmanStage getNetworkInstance(String host, int port) {
+    public static StickmanStageFullScreen getNetworkInstance(String host, int port) {
         sHost = host;
         sPort = port;
 
         mUseNetwork = true;
-
-        return getInstance();
-    }
-
-    public static StickmanStage getNetworkInstanceFullScreen(String host, int port) {
-        sHost = host;
-        sPort = port;
-
-        mUseNetwork = true;
-
-        sFullScreen = true;
-
         return getInstance();
     }
 
@@ -150,31 +119,21 @@ public class StickmanStage extends JFrame implements MouseListener {
             gender = (gender == null) ? Stickman.TYPE.MALE : gender;
         }
 
-        addStickman(name, gender);
+        //addStickman(name, gender);
     }
 
-    public static void addStickman(String name, Stickman.TYPE gender) {
-        if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
-            if (sFullScreen) {
-                sStickmansOnStage.put(name.toLowerCase(), 
-                        new Stickman(name, 
-                                gender, 
-                                mHeight /(float)Stickman.mDefaultSize.height * sScale, 
-                                new Dimension(new Float(mHeight * 2 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())));
-                getStickman(name).mShowBackground = false;
-                getStickman(name).mShowStage = false;
-                getStickman(name).mShowName = false;
-            } else {
-                sStickmansOnStage.put(name.toLowerCase(), new Stickman(name, gender, sScale));
-            }
-            sStickmanPanel.add(getStickman(name));
-            sStickmanPanel.revalidate();
-        }
-
-        // resize the stuff ...
-        StickmanStage.getInstance().pack();
-        StickmanStage.getInstance().setVisible(true);
-    }
+//    public static void addStickman(String name, Stickman.TYPE gender) {
+//       if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
+//            sStickmansOnStage.put(name.toLowerCase(), new Stickman(name, gender, mHeight / 600.0f, new Dimension(mHeight * 2 / 3, mHeight)));
+//            sStickmanPanel.add(getStickman(name));
+//            getStickman(name).mShowStickmanBackground = false;
+//            sStickmanPanel.revalidate();
+//        }
+//
+//        // resize the stuff ...
+//        //StickmanStageFullScreen.getInstance().pack();
+//        StickmanStageFullScreen.getInstance().setVisible(true);
+//    }
 
     public static Stickman getStickman(String name) {
         Stickman sm;
@@ -201,8 +160,8 @@ public class StickmanStage extends JFrame implements MouseListener {
         });
 
         // resize the stuff ...
-        StickmanStage.getInstance().pack();
-        StickmanStage.getInstance().setVisible(false);
+        StickmanStageFullScreen.getInstance().pack();
+        StickmanStageFullScreen.getInstance().setVisible(false);
 
         if (mUseNetwork) {
             mConnection.end();
@@ -212,9 +171,7 @@ public class StickmanStage extends JFrame implements MouseListener {
     }
 
     public static void showStickmanName(boolean show) {
-        for (Stickman s : sStickmansOnStage.values()) {
-          s.mShowName = show;
-        }
+        sShowStickmanName = show;
     }
 
     public static void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
@@ -261,20 +218,19 @@ public class StickmanStage extends JFrame implements MouseListener {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        StickmanStage.getInstanceFullScreen();
-        //StickmanStage.getInstance();
-        StickmanStage.addStickman("Anna");
+        StickmanStageFullScreen.getInstance();
+        StickmanStageFullScreen.addStickman("Anna");
         //StickmanStage.addStickman("character");
-        StickmanStage.addStickman("Bob");
+        StickmanStageFullScreen.addStickman("Bob");
     }
 
-//  emotion: Angry, Contempt, Disgusted. Fear, Happy, Loved, Sad, Smile, Surprised, Embarrassed, Excited
+//  emotion: Angry, Contempt, Disgusted. Fear, Happy, Loved, Sad, Smile, Surprised, Embarrassed
 //  action: HeadShake, Nod2
     @Override
     public void mouseClicked(MouseEvent e) {
         //getStickman("Anna").mLogger.info("mouse clicked");
         //getStickman("Bob").mLogger.info("mouse clicked");
-//       getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //////		//smM.doAnimation("gesture", "waveleft", false);
         //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
@@ -282,9 +238,8 @@ public class StickmanStage extends JFrame implements MouseListener {
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
         // getStickman("Anna").doAnimation("Surprised", 70, true);
         //getStickman("Bob").doAnimation("TiltLeft", 70, true);
-        getStickman("Bob").doAnimation("Angry", 200, false); //
-//      getStickman("Bob").doAnimation("Angry", 200, false); //
-//      getStickman("Anna").doAnimation("Loved", 70, false); //
+        //getStickman("Bob").doAnimation("Nod2", 70, false); //
+        //getStickman("Bob").doAnimation("Excited", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
 // getStickman("Anna").doAnimation("head", "lookleft", 300, true);
