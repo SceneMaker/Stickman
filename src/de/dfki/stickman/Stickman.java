@@ -73,10 +73,14 @@ public class Stickman extends JComponent {
     public String mName = "Stickman";
     public ORIENTATION mOrientation = ORIENTATION.FRONT;
     public float mScale = 1.0f;
+    public boolean mShowBackground = true;
+    public boolean mShowStage = true;
+    public boolean mShowName = true;
     public float mGeneralXTranslation = 0;
     public float mGeneralYTranslation = 0;
 
-    public static Dimension mSize = new Dimension(400, 600);
+    public static Dimension mDefaultSize = new Dimension(400, 600);
+    public static Dimension mSize = new Dimension(mDefaultSize);
     FontMetrics mFontMetrics;
     Font mFont;
 
@@ -84,10 +88,9 @@ public class Stickman extends JComponent {
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
     public AnimationScheduler mAnimationScheduler;
     private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
-    ;
 
-	// body parts
-	public Head mHead;
+    // body parts
+    public Head mHead;
     public LeftEyebrow mLeftEyebrow;
     public FaceWrinkle mFaceWrinkle;  // added by Robbie FaceWrinkle 
     public LeftEye mLeftEye;
@@ -115,9 +118,67 @@ public class Stickman extends JComponent {
     // id
     private long mID = 0;
 
-    public Stickman(String name, TYPE gender, float scale) {
-        this(name, gender);
+    public Stickman(String name, TYPE gender, float scale, Dimension size) {
+        mSize = size;
         mScale = scale;
+
+        mName = name;
+        mType = gender;
+
+        mHead = new Head(this);
+        mLeftEyebrow = new LeftEyebrow(mHead);
+        mLeftEye = new LeftEye(mHead);
+        mRightEyebrow = new RightEyebrow(mHead);
+        mRightEye = new RightEye(mHead);
+        mFaceWrinkle = new FaceWrinkle(mHead);    /// added by Robbie
+        mMouth = new Mouth(mHead);
+        mNeck = new Neck(mHead);
+        mBody = new Body(mNeck);
+        mLeftShoulder = new LeftShoulder(mBody);
+        mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
+        mLeftForeArm = new LeftForeArm(mLeftUpperArm);
+        mLeftHand = new LeftHand(mLeftForeArm);
+        mRightShoulder = new RightShoulder(mBody);
+        mRightUpperArm = new RightUpperArm(mRightShoulder);
+        mRightForeArm = new RightForeArm(mRightUpperArm);
+        mRightHand = new RightHand(mRightForeArm);
+        mLeftLeg = new LeftLeg(mBody);
+        mRightLeg = new RightLeg(mBody);
+
+        mSpeechBubble = new SpeechBubble(mHead);
+
+        init();
+    }
+
+    public Stickman(String name, TYPE gender, float scale) {
+        mScale = scale;
+
+        mName = name;
+        mType = gender;
+
+        mHead = new Head(this);
+        mLeftEyebrow = new LeftEyebrow(mHead);
+        mLeftEye = new LeftEye(mHead);
+        mRightEyebrow = new RightEyebrow(mHead);
+        mRightEye = new RightEye(mHead);
+        mFaceWrinkle = new FaceWrinkle(mHead);    /// added by Robbie
+        mMouth = new Mouth(mHead);
+        mNeck = new Neck(mHead);
+        mBody = new Body(mNeck);
+        mLeftShoulder = new LeftShoulder(mBody);
+        mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
+        mLeftForeArm = new LeftForeArm(mLeftUpperArm);
+        mLeftHand = new LeftHand(mLeftForeArm);
+        mRightShoulder = new RightShoulder(mBody);
+        mRightUpperArm = new RightUpperArm(mRightShoulder);
+        mRightForeArm = new RightForeArm(mRightUpperArm);
+        mRightHand = new RightHand(mRightForeArm);
+        mLeftLeg = new LeftLeg(mBody);
+        mRightLeg = new RightLeg(mBody);
+
+        mSpeechBubble = new SpeechBubble(mHead);
+
+        init();
     }
 
     public Stickman(String name, TYPE gender) {
@@ -143,7 +204,7 @@ public class Stickman extends JComponent {
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
         mRightLeg = new RightLeg(mBody);
-        
+
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
@@ -278,21 +339,27 @@ public class Stickman extends JComponent {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        int width = new Float(mSize.width * mScale).intValue();
-        int height = new Float(mSize.height * mScale).intValue();
+        int width = new Float(mSize.width).intValue();
+        int height = new Float(mSize.height).intValue();
 
         if (!mName.equalsIgnoreCase("")) {
-            g2.setColor(sFOREGROUND);
-            g2.fillRect(0, 0, width, height);
-
+            if (mShowBackground) {
+                g2.setColor(sFOREGROUND);
+                g2.fillRect(0, 0, width, height);
+            }
             // draw Stickman's name
             final int hOffset = mFontMetrics.getAscent() + mFontMetrics.getDescent();
             final int wOffset = mFontMetrics.stringWidth(mName);
 
-            g2.setColor(sFOREGROUND.darker());
-            g2.fillRect(0, height - hOffset * 4, width, height);
-            g2.setColor(mBody.mColor.darker());
-            if (StickmanStage.sShowStickmanName) {
+            if (mShowStage) {
+                g2.setColor(sFOREGROUND.darker());
+                mLogger.info("" + (height - hOffset * 4) + ", " + height);
+
+                g2.fillRect(0, height - new Float(hOffset * 4 * mScale).intValue(), width, height);
+            }
+
+            if (mShowName) {
+                g2.setColor(mBody.mColor.darker());
                 g2.drawString(mName, 10, height - hOffset);
             }
         }
@@ -300,7 +367,7 @@ public class Stickman extends JComponent {
         // draw everthing in the middle and scaled
         AffineTransform at = g2.getTransform();
         mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;
-        mGeneralYTranslation = getBounds().height - 470 * mScale;
+        mGeneralYTranslation = getBounds().height - 477 * mScale;
         at.translate(mGeneralXTranslation, mGeneralYTranslation);
         at.scale(mScale, mScale);
         g2.setTransform(at);

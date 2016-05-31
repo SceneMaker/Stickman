@@ -30,8 +30,7 @@ public class Word extends Entry implements XMLParseable, XMLWriteable {
 
 	@Override
 	public void writeXML(IOSIndentWriter out) throws XMLWriteError {
-		out.println("<WordEntry>").push();
-		out.println(mContent);
+		out.println("<WordEntry>").push();out.println(mContent);
 		out.pop().println("</WordEntry>");
 	}
 
