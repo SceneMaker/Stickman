@@ -235,15 +235,16 @@ public class StickmanStage extends JFrame implements MouseListener {
         int duration = a.mDuration;
         boolean blocking = a.mBlocking;
         Object parameter = a.mParameter;
+        if(stickmanname != null){
+            a = (a instanceof EventAnimation)
+                    ? AnimationLoader.getInstance().loadEventAnimation(getStickman(stickmanname), animationname, duration, blocking)
+                    : AnimationLoader.getInstance().loadAnimation(getStickman(stickmanname), animationname, duration, blocking);
 
-        a = (a instanceof EventAnimation)
-                ? AnimationLoader.getInstance().loadEventAnimation(getStickman(stickmanname), animationname, duration, blocking)
-                : AnimationLoader.getInstance().loadAnimation(getStickman(stickmanname), animationname, duration, blocking);
+            a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
+            a.mParameter = parameter;
 
-        a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
-        a.mParameter = parameter;
-
-        a.mStickman.playAnimation(a);
+            a.mStickman.playAnimation(a);
+        }
     }
 
     public static void sendTimeMarkInformation(String timemark) {
