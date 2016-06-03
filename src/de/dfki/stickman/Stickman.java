@@ -79,6 +79,8 @@ public class Stickman extends JComponent {
     public static Dimension mSize = new Dimension(400, 600);
     FontMetrics mFontMetrics;
     Font mFont;
+    
+    public double leaveSpeed = 0; ////Added by Robbie
 
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -108,6 +110,7 @@ public class Stickman extends JComponent {
     public RightLeg mRightLeg;
     // environment
     public SpeechBubble mSpeechBubble;
+ 
 
     // logging
     public final Logger mLogger = Logger.getAnonymousLogger();
@@ -303,6 +306,9 @@ public class Stickman extends JComponent {
         mGeneralYTranslation = getBounds().height - 470 * mScale;
         at.translate(mGeneralXTranslation, mGeneralYTranslation);
         at.scale(mScale, mScale);
+        
+        at.translate(0, leaveSpeed); // Added by Robbie
+        
         g2.setTransform(at);
 
         // draw body parts

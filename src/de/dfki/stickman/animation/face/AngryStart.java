@@ -13,16 +13,15 @@ import de.dfki.stickman.body.LeftEyebrow;
 import java.util.ArrayList;
 
 /**
- *
+ * 
  * @author Patrick Gebhard
- *
  */
-public class AngryStart extends Animation {
 
+public class AngryStart extends Animation {
 	public AngryStart(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
-
+	
 	@Override
 	public void playAnimation() {
 		// angry start
@@ -35,7 +34,6 @@ public class AngryStart extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
 //		playAnimationPart(20);
 		playAnimationPart(mDuration);
-		
 		pauseAnimation(10);
 	}
 }
