@@ -96,7 +96,9 @@ public class AnimationLoader {
 			sm.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
 		}
 
-		a.mID = getNextID();
+		if(a != null){
+                    a.mID = getNextID();
+                }
 		return a;
 	}
 

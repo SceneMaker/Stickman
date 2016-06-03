@@ -7,12 +7,10 @@ import de.dfki.stickman.client.ClientConnectionHandler;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickman.util.StickmanStageLayout;
 import de.dfki.util.xml.XMLUtilities;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.AffineTransform;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -37,8 +35,11 @@ public class StickmanStage extends JFrame implements MouseListener {
     static private final HashMap<String, Stickman> sStickmansOnStage = new HashMap<>();
     static private JPanel sStickmanPanel;
     static private StickmanStage sInstance;
-    private static double sScale = 1.0d;
-    protected static boolean sShowStickmanName = true;
+    //grahics
+    private static float sScale = 1.0f;
+    protected static boolean sFullScreen = false;
+    protected static int mHeight = 0;
+    protected static int mWidth = 0;
     // network interface
     public static ClientConnectionHandler mConnection;
     public static boolean mUseNetwork = false;
@@ -49,29 +50,26 @@ public class StickmanStage extends JFrame implements MouseListener {
 
     private StickmanStage() {
         super("Stickman Stage");
-        //setResizable(false);
 
-        sStickmanPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-
-                Graphics2D g2 = (Graphics2D) g;
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                AffineTransform at = g2.getTransform();
-                at.scale(sScale, sScale);
-                g2.setTransform(at);
-            }
-        };
-
+        sStickmanPanel = new JPanel();
         sStickmanPanel.setLayout(new StickmanStageLayout());
+        sStickmanPanel.setOpaque(false);
         add(sStickmanPanel);
 
-//      setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
-        
-        
+        if (sFullScreen) {
+            mLogger.info("Full Screen Mode ...");
+            Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+            mWidth = size.width;
+            mHeight = size.height;
+            setUndecorated(true);
+            setBackground(new Color(128, 128, 128, 255));
+            setMinimumSize(size);
+            setPreferredSize(size);
+        }
+
+        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE); // This one is needed by SceneMaker
+        // setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
+
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
 
@@ -93,15 +91,33 @@ public class StickmanStage extends JFrame implements MouseListener {
     }
 
     public static StickmanStage getInstance() {
-
         if (sInstance == null) {
             sInstance = new StickmanStage();
         }
         return sInstance;
     }
 
+    public static StickmanStage getInstanceFullScreen() {
+        sFullScreen = true;
+
+        if (sInstance == null) {
+            sInstance = new StickmanStage();
+        }
+
+        return sInstance;
+    }
+
     public static StickmanStage getNetworkInstance() {
         mUseNetwork = true;
+
+        return getInstance();
+    }
+
+    public static StickmanStage getNetworkInstanceFullScreen() {
+        sFullScreen = true;
+
+        mUseNetwork = true;
+
         return getInstance();
     }
 
@@ -110,6 +126,18 @@ public class StickmanStage extends JFrame implements MouseListener {
         sPort = port;
 
         mUseNetwork = true;
+
+        return getInstance();
+    }
+
+    public static StickmanStage getNetworkInstanceFullScreen(String host, int port) {
+        sHost = host;
+        sPort = port;
+
+        mUseNetwork = true;
+
+        sFullScreen = true;
+
         return getInstance();
     }
 
@@ -128,7 +156,18 @@ public class StickmanStage extends JFrame implements MouseListener {
 
     public static void addStickman(String name, Stickman.TYPE gender) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
-            sStickmansOnStage.put(name.toLowerCase(), new Stickman(name, gender));
+            if (sFullScreen) {
+                sStickmansOnStage.put(name.toLowerCase(),
+                        new Stickman(name,
+                                gender,
+                                mHeight / (float) Stickman.mDefaultSize.height * sScale,
+                                new Dimension(new Float(mHeight * 2 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())));
+                getStickman(name).mShowBackground = false;
+                getStickman(name).mShowStage = false;
+                getStickman(name).mShowName = false;
+            } else {
+                sStickmansOnStage.put(name.toLowerCase(), new Stickman(name, gender, sScale));
+            }
             sStickmanPanel.add(getStickman(name));
             sStickmanPanel.revalidate();
         }
@@ -174,7 +213,9 @@ public class StickmanStage extends JFrame implements MouseListener {
     }
 
     public static void showStickmanName(boolean show) {
-        sShowStickmanName = show;
+        for (Stickman s : sStickmansOnStage.values()) {
+            s.mShowName = show;
+        }
     }
 
     public static void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
@@ -194,15 +235,16 @@ public class StickmanStage extends JFrame implements MouseListener {
         int duration = a.mDuration;
         boolean blocking = a.mBlocking;
         Object parameter = a.mParameter;
+        if(stickmanname != null){
+            a = (a instanceof EventAnimation)
+                    ? AnimationLoader.getInstance().loadEventAnimation(getStickman(stickmanname), animationname, duration, blocking)
+                    : AnimationLoader.getInstance().loadAnimation(getStickman(stickmanname), animationname, duration, blocking);
 
-        a = (a instanceof EventAnimation)
-                ? AnimationLoader.getInstance().loadEventAnimation(getStickman(stickmanname), animationname, duration, blocking)
-                : AnimationLoader.getInstance().loadAnimation(getStickman(stickmanname), animationname, duration, blocking);
+            a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
+            a.mParameter = parameter;
 
-        a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
-        a.mParameter = parameter;
-
-        a.mStickman.playAnimation(a);
+            a.mStickman.playAnimation(a);
+        }
     }
 
     public static void sendTimeMarkInformation(String timemark) {
@@ -221,7 +263,8 @@ public class StickmanStage extends JFrame implements MouseListener {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        StickmanStage.getInstance();
+        StickmanStage.getInstanceFullScreen();
+        //StickmanStage.getInstance();
         StickmanStage.addStickman("Anna");
 //        StickmanStage.addStickman("character");
         StickmanStage.addStickman("Bob");
@@ -237,16 +280,19 @@ public class StickmanStage extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         //getStickman("Anna").mLogger.info("mouse clicked");
-    	//getStickman("Bob").mLogger.info("mouse clicked");
+        //getStickman("Bob").mLogger.info("mouse clicked");
 //       getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-      	//getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //////		//smM.doAnimation("gesture", "waveleft", false);
 //       getStickman("Anna").doAnimation("gesture", 70, "waveleft",  false);
     	getStickman("Bob").doAnimation("Disappear", 70, true); 
         getStickman("Bob").doAnimation("ComeBack", 70, true); 
 //    	getStickman("Bob").doAnimation("WaveLeft", 70, true); 
 //      getStickman("Bob").repaint();
+        //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
+//      getStickman("Bob").doAnimation("TiltLeft", 70, true); 
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
+
      // getStickman("Anna").doAnimation("Surprised", 70, true);
 //      getStickman("Bob").doAnimation("TiltLeft", 70, true);
 //    	getStickman("Bob").doAnimation("Smile", 500, true);
@@ -260,13 +306,16 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    		getStickman("Bob").doAnimation("AngrySmallMouthEnd", 500, true);
 //    	}
       
-//      getStickman("Bob").doAnimation("Happy", 200, false);
+
 //      getStickman("Anna").doAnimation("Loved", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
 //    	getStickman("Anna").doAnimation("LookLeft", 300, true); //
 //        getStickman("Anna").doAnimation("WaveLeft", 50, true);//
 	//getStickman("Anna").doAnimation("head", "Blink", true);
+// getStickman("Anna").doAnimation("head", "lookleft", 300, true);
+        //getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
+        //getStickman("Anna").doAnimation("head", "Blink", true);
 ////		//smM.doAnimation("environment", "speak", "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //		getStickman("Anna").doAnimation("environment", "speak", 300, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //////		//smM.doAnimation("face", "Mouth_O", true);
@@ -277,9 +326,9 @@ public class StickmanStage extends JFrame implements MouseListener {
 //////		smF.doAnimation("head", "Blink", false);
 //////		//smM.doAnimation("face", "Mouth_Default", false);
 //////		smF.doAnimation("face", "Mouth_Default", false);
- //getStickman("Bob").doAnimation("Sad", " ", false);  ///
- 	//getStickman("Anna").doAnimation("TiltLeftBack", " ", false);
- 	//
+        //getStickman("Bob").doAnimation("Sad", " ", false);  ///
+        //getStickman("Anna").doAnimation("TiltLeftBack", " ", false);
+        //
 //////		//smM.doAnimation("head", "TiltLeftBack", true);
 //////		smF.doAnimation("head", "TiltLeftBack", true);
 //
