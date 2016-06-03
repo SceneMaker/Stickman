@@ -60,6 +60,7 @@ public class LeftShoulder extends BodyPart {
 
 		AffineTransform t = new AffineTransform();
 		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
+		
 		mShoulder.transform(t);
 	}
 

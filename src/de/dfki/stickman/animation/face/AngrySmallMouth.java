@@ -18,7 +18,6 @@ import java.util.ArrayList;
  *
  */
 public class AngrySmallMouth extends Animation {
-
 	public AngrySmallMouth(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

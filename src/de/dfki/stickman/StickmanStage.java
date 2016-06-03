@@ -266,12 +266,11 @@ public class StickmanStage extends JFrame implements MouseListener {
         StickmanStage.getInstanceFullScreen();
         //StickmanStage.getInstance();
         StickmanStage.addStickman("Anna");
-        //StickmanStage.addStickman("character");
+//        StickmanStage.addStickman("character");
         StickmanStage.addStickman("Bob");
     }
 
-//  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Fear, Happy, Loved, Sad, Smile, Surprised, 
-//           Embarrassed, Excited, AngrySmallMouth
+//  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
 //  emotionStart: AngryStart, ContemptStart, DisgustedStart, FearStart, AngrySmallMouthStart,
 //                HappyStart, LovedStart, SadStart, SmileStart, SurprisedStart, EmbarrassedStart, ExcitedStart
 //  emotionEnd: AngryEnd, ContemptEnd, DisgustedEnd, FearEnd, HappyEnd, AngrySmallMouthEnd,
@@ -285,26 +284,35 @@ public class StickmanStage extends JFrame implements MouseListener {
 //       getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //////		//smM.doAnimation("gesture", "waveleft", false);
+//       getStickman("Anna").doAnimation("gesture", 70, "waveleft",  false);
+    	getStickman("Bob").doAnimation("Disappear", 70, true); 
+        getStickman("Bob").doAnimation("ComeBack", 70, true); 
+//    	getStickman("Bob").doAnimation("WaveLeft", 70, true); 
+//      getStickman("Bob").repaint();
         //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
 //      getStickman("Bob").doAnimation("TiltLeft", 70, true); 
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
 
      // getStickman("Anna").doAnimation("Surprised", 70, true);
-      //getStickman("Bob").doAnimation("TiltLeft", 70, true);
+//      getStickman("Bob").doAnimation("TiltLeft", 70, true);
 //    	getStickman("Bob").doAnimation("Smile", 500, true);
     	
-//    	getStickman("Bob").doAnimation("AngrySmallMouth", 1000, true);
+//    	getStickman("Anna").doAnimation("Leave", 50, true);
+//    	getStickman("Bob").doAnimation("Surprised", 100, true);
     	
-    	if(SwingUtilities.isLeftMouseButton(e)){
-    		getStickman("Bob").doAnimation("AngrySmallMouthStart", 500, true);
-    	}else{
-    		getStickman("Bob").doAnimation("AngrySmallMouthEnd", 500, true);
-    	}
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("AngrySmallMouthStart", 500, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("AngrySmallMouthEnd", 500, true);
+//    	}
       
 
 //      getStickman("Anna").doAnimation("Loved", 70, false); //
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
+//    	getStickman("Anna").doAnimation("LookLeft", 300, true); //
+//        getStickman("Anna").doAnimation("WaveLeft", 50, true);//
+	//getStickman("Anna").doAnimation("head", "Blink", true);
 // getStickman("Anna").doAnimation("head", "lookleft", 300, true);
         //getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
         //getStickman("Anna").doAnimation("head", "Blink", true);
