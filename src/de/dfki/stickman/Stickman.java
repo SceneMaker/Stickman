@@ -13,6 +13,7 @@ import de.dfki.stickman.body.FaceWrinkle;
 import de.dfki.stickman.body.LeftForeArm;
 import de.dfki.stickman.body.LeftHand;
 import de.dfki.stickman.body.LeftLeg;
+import de.dfki.stickman.body.WordShow;
 import de.dfki.stickman.body.LeftShoulder;
 import de.dfki.stickman.body.LeftUpperArm;
 import de.dfki.stickman.body.Mouth;
@@ -84,7 +85,8 @@ public class Stickman extends JComponent {
     FontMetrics mFontMetrics;
     Font mFont;
     
-    public double leaveSpeed = 0; ////Added by Robbie
+    public double leaveSpeed = 0;             ////Added by Robbie
+    public boolean  wordShowControler = false;  ////Added by Robbie,  to control the word appear or not
 
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -110,6 +112,7 @@ public class Stickman extends JComponent {
     public RightForeArm mRightForeArm;
     public RightHand mRightHand;
     public LeftLeg mLeftLeg;
+    public WordShow mWordShow;         // added by Robbie Create Say bye or hi
     public RightLeg mRightLeg;
     // environment
     public SpeechBubble mSpeechBubble;
@@ -133,7 +136,7 @@ public class Stickman extends JComponent {
         mLeftEye = new LeftEye(mHead);
         mRightEyebrow = new RightEyebrow(mHead);
         mRightEye = new RightEye(mHead);
-        mFaceWrinkle = new FaceWrinkle(mHead);    /// added by Robbie
+        mFaceWrinkle = new FaceWrinkle(mHead);                 /// added by Robbie
         mMouth = new Mouth(mHead);
         mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
@@ -146,6 +149,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
+        mWordShow = new WordShow(mBody);                   /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -177,6 +181,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
+        mWordShow = new WordShow(mBody);            /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -206,6 +211,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
+        mWordShow = new WordShow(mBody);           /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -372,32 +378,37 @@ public class Stickman extends JComponent {
         mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;
         mGeneralYTranslation = getBounds().height - 477 * mScale;
         at.translate(mGeneralXTranslation, mGeneralYTranslation);
-        at.scale(mScale, mScale);
-        
-        at.translate(0, leaveSpeed); // Added by Robbie
+    
+        at.scale(mScale, mScale);   
+        at.translate(0, leaveSpeed);   // Added by Robbie
         
         g2.setTransform(at);
 
         // draw body parts
-        mHead.update(g);
-        mLeftEyebrow.update(g);
-        mLeftEye.update(g);
-        mRightEyebrow.update(g);
-        mFaceWrinkle.update(g);      // added by Robbie
-        mRightEye.update(g);
-        mMouth.update(g);
-        mNeck.update(g);
-        mBody.update(g);
-        mLeftShoulder.update(g);
-        mLeftUpperArm.update(g);
-        mLeftForeArm.update(g);
-        mLeftHand.update(g);
-        mRightShoulder.update(g);
-        mRightUpperArm.update(g);
-        mRightForeArm.update(g);
-        mRightHand.update(g);
-        mLeftLeg.update(g);
-        mRightLeg.update(g);
+        if(wordShowControler == true)
+        	mWordShow.update(g);
+        else{
+//        	mWordShow.update(g);
+	        mHead.update(g);
+	        mLeftEyebrow.update(g);
+	        mLeftEye.update(g);
+	        mRightEyebrow.update(g);
+	        mFaceWrinkle.update(g);      // added by Robbie
+	        mRightEye.update(g);
+	        mMouth.update(g);
+	        mNeck.update(g);
+	        mBody.update(g);
+	        mLeftShoulder.update(g);
+	        mLeftUpperArm.update(g);
+	        mLeftForeArm.update(g);
+	        mLeftHand.update(g);
+	        mRightShoulder.update(g);
+	        mRightUpperArm.update(g);
+	        mRightForeArm.update(g);
+	        mRightHand.update(g);
+	        mLeftLeg.update(g);
+	        mRightLeg.update(g);
+        }
 
         // draw environment
         mSpeechBubble.update(g);
