@@ -35,11 +35,11 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class ComeBack2 extends Animation
+public class ComeBackFromSmall extends Animation
 {
 	private Stickman mStickman;
 	
-	public ComeBack2(Stickman sm, int duration, boolean block)
+	public ComeBackFromSmall(Stickman sm, int duration, boolean block)
 	{	
 		super(sm, duration, block);
 		mStickman = sm;
@@ -55,7 +55,7 @@ public class ComeBack2 extends Animation
 			mStickman.mScale = mStickman.mScale*0.95f;
 		
 		mScaleRecord = mStickman.mScale;	
-		mStickman.wordShowControler = true;
+		mStickman.starShowControler = true;
 		
 //		Show words		
 //		for(int i=0; i<15;i++)
@@ -71,15 +71,15 @@ public class ComeBack2 extends Animation
 //		show stars
 		mStickman.mScale = 1.334445f;
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "STARSDISAPPEAR"));
-		playAnimationPart(1000);	
+		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "STARSDISAPPEAR"));
+		playAnimationPart(1000);
 		
 //		disappeared words or stars
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "DEFAULT"));
 		playAnimationPart(2);
 		
-		mStickman.wordShowControler = false;
+		mStickman.starShowControler = false;
 		mStickman.mScale = mScaleRecord;
 		
 		int rotationUnit = 5;

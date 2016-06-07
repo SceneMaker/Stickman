@@ -285,10 +285,27 @@ public class StickmanStage extends JFrame implements MouseListener {
         //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
         //////		//smM.doAnimation("gesture", "waveleft", false);
 //       getStickman("Anna").doAnimation("gesture", 70, "waveleft",  false);
-    	getStickman("Bob").doAnimation("Disappear2", 70, true); 
-        getStickman("Bob").doAnimation("ComeBack2", 70, true);
-//    	getStickman("Bob").doAnimation("Disappear", 70, true); 
-//        getStickman("Bob").doAnimation("ComeBack", 70, true); 
+    	
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("DisappearToSmall", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("ComeBackFromSmall", 70, true);
+//    	}
+    	
+    	if(SwingUtilities.isLeftMouseButton(e)){
+    		getStickman("Bob").doAnimation("FadeOut", 70, true);
+    	}else{
+    		getStickman("Bob").doAnimation("FadeIn", 70, true);
+    	}
+    	
+    	
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("GoDown", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("ComeUp", 70, true);
+//    	}
+//    	
+   	
 //    	getStickman("Bob").doAnimation("Angry", 500, true);
 //    	getStickman("Bob").doAnimation("Disgusted", 500, true);
 //    	getStickman("Bob").doAnimation("Fear", 500, true);

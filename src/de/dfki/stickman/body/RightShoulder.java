@@ -65,10 +65,28 @@ public class RightShoulder extends BodyPart {
 		//create();
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		// draw outlines
+		// draw outlines		
 		g2.setColor(new Color(80, 80, 80));
+		
+		if(mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
+		{
+			if(mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+			{
+				int fadeFactor = mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
+				if(fadeFactor<=24) fadeFactor=0;
+				g2.setColor(new Color(80, 80, 80,fadeFactor));
+			}
+			else
+			{
+				int fadeFactor = (20-mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
+				if(fadeFactor >= 216) fadeFactor=255;
+				g2.setColor(new Color(80, 80, 80,fadeFactor));
+			}
+		}
+		
 		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
+		
 		g2.draw(mShoulder);
 	}
 }

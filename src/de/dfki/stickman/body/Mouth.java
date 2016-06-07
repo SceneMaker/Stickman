@@ -61,6 +61,23 @@ public class Mouth extends BodyPart {
 
 		switch (mShape) {
 			case DEFAULT:
+				
+				if(mHead.mStickman.setCharacterInvisible == true)
+				{
+					if(mHead.mStickman.fadeControler==true)             //Added by Robbie
+					{
+						int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep*6;
+						if(fadeFactor<=12) fadeFactor=0;
+						mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 64 : 32, 0, 0, fadeFactor);
+					}
+					else
+					{
+						int fadeFactor = (20-mHead.mStickman.mMouth.mShapeAnimationStep)*6;
+						if(fadeFactor >= 107) fadeFactor=128;
+						mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 64 : 32, 0, 0, fadeFactor);
+					}
+				}
+				
 				gp.moveTo(mStart.x - mLength / 2, mStart.y);
 				gp.quadTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y);							
 				break;

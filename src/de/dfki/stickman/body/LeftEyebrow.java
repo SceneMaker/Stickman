@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
 
+import de.dfki.stickman.Stickman;
+import de.dfki.stickman.animationlogic.AnimationContent;
 import de.dfki.stickman.animationlogic.Animator;
 
 /**
@@ -64,6 +66,24 @@ public class LeftEyebrow extends BodyPart {
 
 		switch (mShape) {
 			case DEFAULT:
+				
+				if(mHead.mStickman.setCharacterInvisible == true)
+				{
+					if(mHead.mStickman.fadeControler==true)             //Added by Robbie
+					{
+						int fadeFactor = (int) (mHead.mStickman.mMouth.mShapeAnimationStep*3.2);
+						if(fadeFactor<=6) fadeFactor=0;
+						mColor = new Color(0, 0, 0, fadeFactor);
+					}
+					else
+					{
+						int fadeFactor = (int)((20-mHead.mStickman.mMouth.mShapeAnimationStep)*3.2);
+						if(fadeFactor >= 57) fadeFactor=0;
+						if(fadeFactor >= 54) fadeFactor=64;
+						mColor = new Color(0, 0, 0, fadeFactor);
+					}
+				}
+				
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
 				break;

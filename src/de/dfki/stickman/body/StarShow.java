@@ -13,19 +13,19 @@ import de.dfki.stickman.animationlogic.Animator;
  * @author Patrick Gebhard
  *
  */
-public class WordShow extends BodyPart
+public class StarShow extends BodyPart
 {
 
 	public static enum SHAPE
 	{
 
-		DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSCOMBACK
+		DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADE
 	};
 
 	Body mBody;
-	public WordShow.SHAPE mShape = WordShow.SHAPE.DEFAULT;
+	public StarShow.SHAPE mShape = StarShow.SHAPE.DEFAULT;
 
-	public WordShow(Body body)
+	public StarShow(Body body)
 	{
 
 		mBody = body;
@@ -40,14 +40,39 @@ public class WordShow extends BodyPart
 	@Override
 	public void setShape(String s)
 	{
-		WordShow.SHAPE shape = WordShow.SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : WordShow.SHAPE.DEFAULT;
+		StarShow.SHAPE shape = StarShow.SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : StarShow.SHAPE.DEFAULT;
 	}
 
 	@Override
 	public void resetShape()
 	{
-		mShape = WordShow.SHAPE.DEFAULT;
+		mShape = StarShow.SHAPE.DEFAULT;
+	}
+
+	private void creatStar(int radius, Point center, GeneralPath gp)
+	{
+		int r = radius;
+		double ch = 72 * Math.PI / 180;
+		int x0 = center.x;
+		int y0 = center.y;
+		int x1 = x0;
+		int x2 = (int) (x0 - Math.sin(ch) * r);
+		int x3 = (int) (x0 + Math.sin(ch) * r);
+		int x4 = (int) (x0 - Math.sin(ch / 2) * r);
+		int x5 = (int) (x0 + Math.sin(ch / 2) * r);
+		int y1 = y0 - r;
+		int y2 = (int) (y0 - Math.cos(ch) * r);
+		int y3 = y2;
+		int y4 = (int) (y0 + Math.cos(ch / 2) * r);
+		int y5 = y4;
+	
+		gp.moveTo(x1, y1);
+		gp.lineTo(x4, y4);
+		gp.lineTo(x3, y3);
+		gp.lineTo(x2, y2);
+		gp.lineTo(x5, y5);
+		gp.lineTo(x1, y1);
 	}
 
 	// Start.x left leg side
@@ -125,7 +150,6 @@ public class WordShow extends BodyPart
 				if (movement <= 1)
 				{
 					mColor = new Color(0, 0, 0, 0);
-					gp.moveTo(mStart.x, mStart.y);
 				}
 				else
 				{
@@ -202,79 +226,31 @@ public class WordShow extends BodyPart
 				}
 				break;
 
-			case STARSCOMBACK:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				starColorChange = (int) (movement / 10);
-				mColor = new Color(240, 212, 0, starColorChange);
+			case STARSFADE:
+				movement = mShapeAnimationStep - 1;
+				starColorChange = (int) (movement * 10);
+				if (movement <= 1)
+				{
+					mColor = new Color(0, 0, 0, 0);
+				}
+				else
+				{		
+					mColor = new Color(240, 212, 0, starColorChange);
+					
+					mStart = mBody.getLeftLegStartPostion();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.getBodyStartPosition();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.mHead.getLeftEyePostion();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.mHead.getRightEyebrowPostion();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.mHead.mStickman.mRightUpperArm.getRightUpperArmEndPosition();
+					creatStar(15,mStart,gp);				
+				}
+				break;
 
-				// STAR 1
-				int r = 30;
-				double ch = 72 * Math.PI / 180;
-				int x0 = mEnd.x;
-				int y0 = mEnd.y - mLength / 6;
-				int x1 = x0;
-				int x2 = (int) (x0 - Math.sin(ch) * r);
-				int x3 = (int) (x0 + Math.sin(ch) * r);
-				int x4 = (int) (x0 - Math.sin(ch / 2) * r);
-				int x5 = (int) (x0 + Math.sin(ch / 2) * r);
-				int y1 = y0 - r;
-				int y2 = (int) (y0 - Math.cos(ch) * r);
-				int y3 = y2;
-				int y4 = (int) (y0 + Math.cos(ch / 2) * r);
-				int y5 = y4;
-
-				gp.moveTo(x1, y1);
-				gp.lineTo(x4, y4);
-				gp.lineTo(x3, y3);
-				gp.lineTo(x2, y2);
-				gp.lineTo(x5, y5);
-				gp.lineTo(x1, y1);
-
-				// STAR 2 right side
-				r = 15;
-				ch = 72 * Math.PI / 180;
-				x0 = x3 - 10;
-				y0 = y1 - mLength / 2;
-				x1 = x0;
-				x2 = (int) (x0 - Math.sin(ch) * r);
-				x3 = (int) (x0 + Math.sin(ch) * r);
-				x4 = (int) (x0 - Math.sin(ch / 2) * r);
-				x5 = (int) (x0 + Math.sin(ch / 2) * r);
-				y1 = y0 - r;
-				y2 = (int) (y0 - Math.cos(ch) * r);
-				y3 = y2;
-				y4 = (int) (y0 + Math.cos(ch / 2) * r);
-				y5 = y4;
-
-				gp.moveTo(x1, y1);
-				gp.lineTo(x4, y4);
-				gp.lineTo(x3, y3);
-				gp.lineTo(x2, y2);
-				gp.lineTo(x5, y5);
-				gp.lineTo(x1, y1);
-
-				// STAR 3 left side
-				r = 15;
-				ch = 72 * Math.PI / 180;
-				x0 = x0 - 60;
-				y0 = y0 + 50;
-				x1 = x0;
-				x2 = (int) (x0 - Math.sin(ch) * r);
-				x3 = (int) (x0 + Math.sin(ch) * r);
-				x4 = (int) (x0 - Math.sin(ch / 2) * r);
-				x5 = (int) (x0 + Math.sin(ch / 2) * r);
-				y1 = y0 - r;
-				y2 = (int) (y0 - Math.cos(ch) * r);
-				y3 = y2;
-				y4 = (int) (y0 + Math.cos(ch / 2) * r);
-				y5 = y4;
-
-				gp.moveTo(x1, y1);
-				gp.lineTo(x4, y4);
-				gp.lineTo(x3, y3);
-				gp.lineTo(x2, y2);
-				gp.lineTo(x5, y5);
-				gp.lineTo(x1, y1);
+				
 		}
 		addToDrawObjects(gp);
 	}

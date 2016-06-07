@@ -13,7 +13,7 @@ import de.dfki.stickman.body.FaceWrinkle;
 import de.dfki.stickman.body.LeftForeArm;
 import de.dfki.stickman.body.LeftHand;
 import de.dfki.stickman.body.LeftLeg;
-import de.dfki.stickman.body.WordShow;
+import de.dfki.stickman.body.StarShow;
 import de.dfki.stickman.body.LeftShoulder;
 import de.dfki.stickman.body.LeftUpperArm;
 import de.dfki.stickman.body.Mouth;
@@ -85,9 +85,12 @@ public class Stickman extends JComponent {
     FontMetrics mFontMetrics;
     Font mFont;
     
-    public double leaveSpeed = 0;             ////Added by Robbie
-    public boolean  wordShowControler = false;  ////Added by Robbie,  to control the word appear or not
-
+    public double leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
+    public boolean  starShowControler = false;     //Added by Robbie,  to control the star appear or not
+    public boolean  fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
+    public boolean  setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
+    												//True: visible False:invisible
+    
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
     public AnimationScheduler mAnimationScheduler;
@@ -112,7 +115,7 @@ public class Stickman extends JComponent {
     public RightForeArm mRightForeArm;
     public RightHand mRightHand;
     public LeftLeg mLeftLeg;
-    public WordShow mWordShow;         // added by Robbie Create Say bye or hi
+    public StarShow mStarShow;         // added by Robbie Create Say bye or hi
     public RightLeg mRightLeg;
     // environment
     public SpeechBubble mSpeechBubble;
@@ -149,7 +152,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
-        mWordShow = new WordShow(mBody);                   /// added by Robbie
+        mStarShow = new StarShow(mBody);                   /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -181,7 +184,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
-        mWordShow = new WordShow(mBody);            /// added by Robbie
+        mStarShow = new StarShow(mBody);            /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -211,7 +214,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
-        mWordShow = new WordShow(mBody);           /// added by Robbie
+        mStarShow = new StarShow(mBody);           /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -385,10 +388,9 @@ public class Stickman extends JComponent {
         g2.setTransform(at);
 
         // draw body parts
-        if(wordShowControler == true)
-        	mWordShow.update(g);
+        if(starShowControler == true)
+        	mStarShow.update(g);     // Added by Robbie, to show stars or words here.
         else{
-//        	mWordShow.update(g);
 	        mHead.update(g);
 	        mLeftEyebrow.update(g);
 	        mLeftEye.update(g);

@@ -63,6 +63,29 @@ public class RightEye extends BodyPart {
 
 		switch (mShape) {
 			case DEFAULT:
+				
+				if(mHead.mStickman.setCharacterInvisible == true)
+				{
+					if(mHead.mStickman.fadeControler==true)             //Added by Robbie
+					{
+						int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep*7;
+						if(fadeFactor<=14) fadeFactor=0;	
+						mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0, 
+								mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
+								mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, fadeFactor);
+					}
+					else
+					{
+						int fadeFactor = (20-mHead.mStickman.mMouth.mShapeAnimationStep)*7;
+						if(fadeFactor == 126) fadeFactor=0;
+						if(fadeFactor >= 119) fadeFactor=144;
+						mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0,
+						  mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
+								  mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, fadeFactor);
+					}
+				}
+				
+				
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
 				break;

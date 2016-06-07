@@ -36,7 +36,7 @@ public abstract class BodyPart extends JComponent {
 	public Point mStart = new Point(0, 0), mEnd = new Point(0, 0);
 	public int mLength = 0;
 
-	public double mAnimationStep = 0;
+	public double mAnimationStep = 0;   
 	public int mShapeAnimationStep = 0;
 
 	public int mDefaultTranslation = 0;
@@ -150,10 +150,9 @@ public abstract class BodyPart extends JComponent {
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D) g;
-
 		g2.setColor(mColor);
 		g2.setStroke(mStroke);
-
+		
 		for (GeneralPath gp : mGraphicPaths) {
 			g2.draw(gp);
 		}

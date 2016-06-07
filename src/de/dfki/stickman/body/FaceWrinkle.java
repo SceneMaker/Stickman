@@ -59,8 +59,7 @@ public class FaceWrinkle extends BodyPart {
 
 		switch (mShape) {
 			case DEFAULT:
-				gp.moveTo(mStart.x+5, mStart.y);
-				mColor = new Color(0, 0, 0, 0);
+
 				break;
 				
 			case ANGRY:	
@@ -81,7 +80,6 @@ public class FaceWrinkle extends BodyPart {
 				if(movement<=1)
 				{
 					mColor = new Color(0, 0, 0, 0);
-					gp.moveTo(mStart.x+5, mStart.y);					
 				}
 				else
 				{
@@ -124,7 +122,6 @@ public class FaceWrinkle extends BodyPart {
 				if(movement<=1)
 				{
 					mColor = new Color(0, 0, 0, 0);
-					gp.moveTo(mStart.x+5, mStart.y);					
 				}
 				else
 				{

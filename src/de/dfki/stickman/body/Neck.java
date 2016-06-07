@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
 
+import de.dfki.stickman.Stickman;
+
 /**
  *
  * @author Patrick Gebhard
@@ -38,6 +40,22 @@ public class Neck extends BodyPart {
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearDrawObjects();
+		
+		if(mHead.mStickman.setCharacterInvisible == true)
+		{
+			if(mHead.mStickman.fadeControler==true)             //Added by Robbie
+			{
+				int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep*12;
+				if(fadeFactor<=24) fadeFactor=0;
+				mColor = new Color(80, 80, 80, fadeFactor);
+			}
+			else
+			{
+				int fadeFactor = (20-mHead.mStickman.mMouth.mShapeAnimationStep)*12;
+				if(fadeFactor >= 216) fadeFactor=255;
+				mColor = new Color(80, 80, 80, fadeFactor);
+			}
+		}
 		
 		GeneralPath gp = new GeneralPath();
 		gp.moveTo(mStart.x, mStart.y);

@@ -35,10 +35,11 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Disappear2 extends Animation
+public class ComeUp extends Animation
 {
 	private Stickman mStickman;
-	public Disappear2(Stickman sm, int duration, boolean block)
+	
+	public ComeUp(Stickman sm, int duration, boolean block)
 	{	
 		super(sm, duration, block);
 		mStickman = sm;
@@ -48,52 +49,41 @@ public class Disappear2 extends Animation
 	@Override
 	public void playAnimation()
 	{
-		mStickman.wordShowControler = false;
 		int rotationUnit = 5;
+		int speed = 4;
+		
+		mStickman.leaveSpeed = 480;
 
 		// bring upper arm and fore arm in position
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit*2));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit*32));
-		playAnimationPart(200);
-		pauseAnimation(100);
+		playAnimationPart(100);
 		
-		// wave right
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 8));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 8));
-		playAnimationPart(180);
-
-		// wave left
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 8));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 8));
-		playAnimationPart(180);
-		
-		for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 8; i++)
 		{		
-			// wave right		
-			for (int j = 0; j < 9; j++)
+			// wave right
+			for (int j = 0; j < 8; j++)
 			{
 				mAnimationPart = new ArrayList<>();
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
 				
-				mStickman.mScale = mStickman.mScale*0.95f;
-				playAnimationPart(20);		
+				playComeSpeed(speed);
+				playAnimationPart(20);
 			}
-					
+			
 			// wave left
-			for (int j = 0; j < 9; j++)
+			for (int j = 0; j < 8; j++)
 			{
 				mAnimationPart = new ArrayList<>();
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
-			
-				mStickman.mScale = mStickman.mScale*0.95f;
-				playAnimationPart(20);			
-			}			
+				
+				playComeSpeed(speed);
+				playAnimationPart(20);
+			}
 		}
 		
 		// go back in the default position
@@ -101,31 +91,14 @@ public class Disappear2 extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit*2));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
-		playAnimationPart(20);
+		playAnimationPart(200);
+	}
 	
-//		Show words syebye
-//		mStickman.wordShowControler = true;
-//		for(int i=0; i<15;i++)
-//		{
-//			mStickman.mScale = mStickman.mScale*1.05f;
-//			if(mStickman.mScale >= 1.3)
-//				mStickman.mScale = 1.334445f;
-//			mAnimationPart = new ArrayList<>();
-//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYBYE"));
-//			playAnimationPart(2);	
-//		}
-//		pauseAnimation(200);
-//		
-////		disappeared words
-//		mAnimationPart = new ArrayList<>();
-//		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "DEFAULT"));
-//		playAnimationPart(2);	
-		
-//		show stars
-		mStickman.wordShowControler = true;
-		mStickman.mScale = 1.334445f;
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "STARSDISAPPEAR"));
-		playAnimationPart(1000);	
+	private void playComeSpeed(int Speed)
+	{
+		if(mStickman.leaveSpeed > 0)
+			mStickman.leaveSpeed = mStickman.leaveSpeed - Speed;
+		else
+			mStickman.leaveSpeed = 0;
 	}
 }
