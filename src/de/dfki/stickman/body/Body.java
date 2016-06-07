@@ -31,7 +31,7 @@ public class Body extends JComponent {
 	int mDrawOffset = 20;
 	Point mStart;
 
-	Color mFemaleColor = new Color(154, 83, 198, 240);
+	Color mFemaleColor = new Color(154, 83, 198, 240);    // The color is changed in paintComponent
 	Color mMaleColor = new Color(14, 134, 122, 240);
 	public Color mColor  = mFemaleColor;
 
@@ -183,12 +183,31 @@ public class Body extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+		if(mNeck.mHead.mStickman.setCharacterInvisible == true)
+		{
+			if(mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+			{
+			
+				int fadeFactor = mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
+				if(fadeFactor<=24) fadeFactor=0;
+				mFemaleColor = new Color(154, 83, 198, fadeFactor);
+				mMaleColor = new Color(14, 134, 122, fadeFactor);
+			}
+			else
+			{
+				int fadeFactor = (20-mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*9;
+				if(fadeFactor >= 160) fadeFactor=240;
+				mFemaleColor = new Color(154, 83, 198, fadeFactor);
+				mMaleColor = new Color(14, 134, 122, fadeFactor);
+			}
+		}
+		
 		if (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) {
 			g2.setColor(mFemaleColor);
 		} else {
 			g2.setColor(mMaleColor);
-		}
-
+		}		
+		
 		if (mNeck.mHead.mStickman.mOrientation == Stickman.ORIENTATION.LEFT) {
 			paintLeftOrientation(g2);
 		} else if (mNeck.mHead.mStickman.mOrientation == Stickman.ORIENTATION.RIGHT) {

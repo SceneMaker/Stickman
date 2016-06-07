@@ -35,10 +35,10 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Disappear extends Animation
+public class DisappearToSmall extends Animation
 {
 	private Stickman mStickman;
-	public Disappear(Stickman sm, int duration, boolean block)
+	public DisappearToSmall(Stickman sm, int duration, boolean block)
 	{	
 		super(sm, duration, block);
 		mStickman = sm;
@@ -48,8 +48,8 @@ public class Disappear extends Animation
 	@Override
 	public void playAnimation()
 	{
+		mStickman.starShowControler = false;
 		int rotationUnit = 5;
-		int speed = 4;
 
 		// bring upper arm and fore arm in position
 		mAnimationPart = new ArrayList<>();
@@ -57,30 +57,43 @@ public class Disappear extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit*32));
 		playAnimationPart(200);
+		pauseAnimation(100);
 		
-		for (int i = 0; i < 8; i++)
+		// wave right
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 8));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 8));
+		playAnimationPart(180);
+
+		// wave left
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 8));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 8));
+		playAnimationPart(180);
+		
+		for (int i = 0; i < 1; i++)
 		{		
 			// wave right		
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 9; j++)
 			{
 				mAnimationPart = new ArrayList<>();
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
 				
-				mStickman.leaveSpeed = mStickman.leaveSpeed +speed;
+				mStickman.mScale = mStickman.mScale*0.95f;
 				playAnimationPart(20);		
 			}
 					
 			// wave left
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 9; j++)
 			{
 				mAnimationPart = new ArrayList<>();
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
 			
-				mStickman.leaveSpeed = mStickman.leaveSpeed +speed;
+				mStickman.mScale = mStickman.mScale*0.95f;
 				playAnimationPart(20);			
-			}
+			}			
 		}
 		
 		// go back in the default position
@@ -89,7 +102,30 @@ public class Disappear extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
 		playAnimationPart(20);
-	}
 	
-
+//		Show words syebye
+//		mStickman.wordShowControler = true;
+//		for(int i=0; i<15;i++)
+//		{
+//			mStickman.mScale = mStickman.mScale*1.05f;
+//			if(mStickman.mScale >= 1.3)
+//				mStickman.mScale = 1.334445f;
+//			mAnimationPart = new ArrayList<>();
+//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYBYE"));
+//			playAnimationPart(2);	
+//		}
+//		pauseAnimation(200);
+//		
+////		disappeared words
+//		mAnimationPart = new ArrayList<>();
+//		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "DEFAULT"));
+//		playAnimationPart(2);	
+		
+//		show stars
+		mStickman.starShowControler = true;
+		mStickman.mScale = 1.334445f;
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "STARSDISAPPEAR"));
+		playAnimationPart(1000);	
+	}
 }

@@ -35,11 +35,10 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class ComeBack extends Animation
+public class GoDown extends Animation
 {
 	private Stickman mStickman;
-	
-	public ComeBack(Stickman sm, int duration, boolean block)
+	public GoDown(Stickman sm, int duration, boolean block)
 	{	
 		super(sm, duration, block);
 		mStickman = sm;
@@ -51,38 +50,36 @@ public class ComeBack extends Animation
 	{
 		int rotationUnit = 5;
 		int speed = 4;
-		
-		mStickman.leaveSpeed = 480;
 
 		// bring upper arm and fore arm in position
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit*2));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit*32));
-		playAnimationPart(100);
+		playAnimationPart(200);
 		
 		for (int i = 0; i < 8; i++)
 		{		
-			// wave right
+			// wave right		
 			for (int j = 0; j < 8; j++)
 			{
 				mAnimationPart = new ArrayList<>();
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
 				
-				playComeSpeed(speed);
-				playAnimationPart(20);
+				mStickman.leaveSpeed = mStickman.leaveSpeed +speed;
+				playAnimationPart(20);		
 			}
-			
+					
 			// wave left
 			for (int j = 0; j < 8; j++)
 			{
 				mAnimationPart = new ArrayList<>();
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
-				
-				playComeSpeed(speed);
-				playAnimationPart(20);
+			
+				mStickman.leaveSpeed = mStickman.leaveSpeed +speed;
+				playAnimationPart(20);			
 			}
 		}
 		
@@ -91,14 +88,8 @@ public class ComeBack extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit*2));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
-		playAnimationPart(200);
+		playAnimationPart(20);
 	}
 	
-	private void playComeSpeed(int Speed)
-	{
-		if(mStickman.leaveSpeed > 0)
-			mStickman.leaveSpeed = mStickman.leaveSpeed - Speed;
-		else
-			mStickman.leaveSpeed = 0;
-	}
+
 }

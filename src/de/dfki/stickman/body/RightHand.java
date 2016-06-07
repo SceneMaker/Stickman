@@ -40,6 +40,22 @@ public class RightHand extends BodyPart {
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearDrawObjects();
+		
+		if(mRightForeArm.mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
+		{
+			if(mRightForeArm.mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+			{
+				int fadeFactor = mRightForeArm.mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
+				if(fadeFactor<=24) fadeFactor=0;
+				mColor = new Color(80, 80, 80, fadeFactor);
+			}
+			else
+			{
+				int fadeFactor = (20-mRightForeArm.mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
+				if(fadeFactor >= 216) fadeFactor=255;
+				mColor = new Color(80, 80, 80, fadeFactor);
+			}
+		}
 
 		GeneralPath gp = new GeneralPath();
 		gp.moveTo(mStart.x, mStart.y);

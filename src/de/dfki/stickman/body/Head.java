@@ -145,7 +145,24 @@ public class Head extends BodyPart {
 		Graphics2D g2 = (Graphics2D) g;
 
 		// fill
-		g2.setColor(new Color(242, 227, 217, 200));
+		if(mStickman.setCharacterInvisible == true)
+		{
+			if(mStickman.fadeControler==true)             //Added by Robbie
+			{
+			
+				int fadeFactor = mStickman.mMouth.mShapeAnimationStep*10;
+				if(fadeFactor<=20) fadeFactor=0;
+				g2.setColor(new Color(242, 227, 217, fadeFactor));
+			}
+			else
+			{
+				int fadeFactor = (20-mStickman.mMouth.mShapeAnimationStep)*9;
+				if(fadeFactor >= 160) fadeFactor=200;
+				g2.setColor(new Color(242, 227, 217, fadeFactor));
+			}
+		}
+		else
+			g2.setColor(new Color(242, 227, 217, 200));
 		// head
 		g2.fill(mHead);
 
@@ -164,7 +181,26 @@ public class Head extends BodyPart {
 
 		// hair
 		if (mStickman.mType == Stickman.TYPE.FEMALE) {
-			g2.setColor(new Color(240, 212, 0, 255));
+			if(mStickman.setCharacterInvisible == true)
+			{
+				if(mStickman.fadeControler==true)             //Added by Robbie
+				{
+				
+					int fadeFactor = mStickman.mMouth.mShapeAnimationStep*10;
+					if(fadeFactor<=20) fadeFactor=0;
+					g2.setColor(new Color(240, 212, 0, fadeFactor));
+				}
+				else
+				{
+					int fadeFactor = (20-mStickman.mMouth.mShapeAnimationStep)*9;
+					if(fadeFactor >= 160) fadeFactor=255;
+					g2.setColor(new Color(240, 212, 0, fadeFactor));
+				}
+			}
+			else
+				g2.setColor(new Color(240, 212, 0, 255));
+			
+			
 			g2.fill(mFemaleHair);
 			// draw outlines
 			g2.setColor(g2.getColor().darker());
@@ -172,7 +208,24 @@ public class Head extends BodyPart {
 			g2.draw(mFemaleHair);
 		} else {
 
-			g2.setColor(new Color(97, 58, 0, 255));
+			if(mStickman.setCharacterInvisible == true)
+			{
+				if(mStickman.fadeControler==true)             //Added by Robbie
+				{
+				
+					int fadeFactor = mStickman.mMouth.mShapeAnimationStep*10;
+					if(fadeFactor<=20) fadeFactor=0;
+					g2.setColor(new Color(97, 58, 0,  fadeFactor));
+				}
+				else
+				{
+					int fadeFactor = (20-mStickman.mMouth.mShapeAnimationStep)*9;
+					if(fadeFactor >= 160) fadeFactor=255;
+					g2.setColor(new Color(97, 58, 0, fadeFactor));
+				}
+			}
+			else
+				g2.setColor(new Color(97, 58, 0, 255));		
 			g2.fill(mMaleHair);
 			// draw outlines
 			g2.setColor(g2.getColor().darker());
