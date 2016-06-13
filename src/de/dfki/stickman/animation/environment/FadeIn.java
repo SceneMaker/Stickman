@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dfki.stickman.animation.gesture;
+package de.dfki.stickman.animation.environment;
 
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
@@ -48,13 +48,15 @@ public class FadeIn extends Animation
 	@Override
 	public void playAnimation()
 	{
-		
+//		star fade in
 		mStickman.starShowControler = true;
+		mStickman.starShowC = true;
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "STARSFADE"));
-		playAnimationPart(1000);	
-		mStickman.starShowControler = false;
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSFADEIN"));
+		playAnimationPart(1000);
 		
+//		character fade in
+		mStickman.starShowControler = false;		
 		mStickman.setCharacterInvisible = true;
 		mStickman.fadeControler = false;
 		mAnimationPart = new ArrayList<>();
@@ -68,15 +70,16 @@ public class FadeIn extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mRightLeg, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftLeg, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mNeck, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftShoulder, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightShoulder, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "shape", "DEFAULT"));	
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightLeg, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightShoulder, "shape", "DEFAULT"));	
 		playAnimationPart(1000);	
 		mStickman.setCharacterInvisible = false;
-			
+		
+//		stars fade out
+		mStickman.starShowC = true;
+		mStickman.setCharacterInvisible = false;
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSFADEOUT"));
+		playAnimationPart(500);
+
 		// bring upper arm and fore arm in position
 		int rotationUnit = 10;
 		mAnimationPart = new ArrayList<>();
@@ -117,5 +120,10 @@ public class FadeIn extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 16));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 16));
 		playAnimationPart(20);
+		
+		mStickman.setCharacterInvisible = false;
+		mStickman.starShowControler = false;
+		mStickman.starShowC = false;
+
 	}
 }

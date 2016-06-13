@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dfki.stickman.animation.gesture;
+package de.dfki.stickman.animation.environment;
 
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
@@ -35,53 +35,20 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class ComeBackFromSmall extends Animation
+public class DisappearToSmall extends Animation
 {
 	private Stickman mStickman;
-	
-	public ComeBackFromSmall(Stickman sm, int duration, boolean block)
+	public DisappearToSmall(Stickman sm, int duration, boolean block)
 	{	
 		super(sm, duration, block);
 		mStickman = sm;
 	}
 
+	// WaveLeft
 	@Override
 	public void playAnimation()
 	{
-		float mScaleRecord = 0.0f;
-		
-
-		for (int j = 0; j < 19; j++)
-			mStickman.mScale = mStickman.mScale*0.95f;
-		
-		mScaleRecord = mStickman.mScale;	
-		mStickman.starShowControler = true;
-		
-//		Show words		
-//		for(int i=0; i<15;i++)
-//		{
-//			mStickman.mScale = mStickman.mScale*1.05f;
-//			if(mStickman.mScale >= 1)
-//				mStickman.mScale = 1;
-//			mAnimationPart = new ArrayList<>();
-//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYHI"));
-//			playAnimationPart(2);	
-//		}
-		
-//		show stars
-		mStickman.mScale = 1.334445f;
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "STARSDISAPPEAR"));
-		playAnimationPart(1000);
-		
-//		disappeared words or stars
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "DEFAULT"));
-		playAnimationPart(2);
-		
 		mStickman.starShowControler = false;
-		mStickman.mScale = mScaleRecord;
-		
 		int rotationUnit = 5;
 
 		// bring upper arm and fore arm in position
@@ -89,11 +56,22 @@ public class ComeBackFromSmall extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit*2));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit*32));
-		playAnimationPart(20);
-		pauseAnimation(20);
-
+		playAnimationPart(200);
+		pauseAnimation(100);
 		
-		for (int i = 0; i < 2; i++)
+		// wave right
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 8));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 8));
+		playAnimationPart(180);
+
+		// wave left
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 8));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 8));
+		playAnimationPart(180);
+		
+		for (int i = 0; i < 1; i++)
 		{		
 			// wave right		
 			for (int j = 0; j < 9; j++)
@@ -102,9 +80,7 @@ public class ComeBackFromSmall extends Animation
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
 				
-				mStickman.mScale = mStickman.mScale*1.05f;
-				if(mStickman.mScale >= 1.3)
-					mStickman.mScale = 1.334445f;
+				mStickman.mScale = mStickman.mScale*0.95f;
 				playAnimationPart(20);		
 			}
 					
@@ -115,9 +91,7 @@ public class ComeBackFromSmall extends Animation
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
 				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
 			
-				mStickman.mScale = mStickman.mScale*1.05f;
-				if(mStickman.mScale >= 1.3)
-					mStickman.mScale = 1.334445f;
+				mStickman.mScale = mStickman.mScale*0.95f;
 				playAnimationPart(20);			
 			}			
 		}
@@ -127,6 +101,31 @@ public class ComeBackFromSmall extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit*2));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
-		playAnimationPart(20);	
+		playAnimationPart(20);
+	
+//		Show words syebye
+//		mStickman.wordShowControler = true;
+//		for(int i=0; i<15;i++)
+//		{
+//			mStickman.mScale = mStickman.mScale*1.05f;
+//			if(mStickman.mScale >= 1.3)
+//				mStickman.mScale = 1.334445f;
+//			mAnimationPart = new ArrayList<>();
+//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYBYE"));
+//			playAnimationPart(2);	
+//		}
+//		pauseAnimation(200);
+//		
+////		disappeared words
+//		mAnimationPart = new ArrayList<>();
+//		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "DEFAULT"));
+//		playAnimationPart(2);	
+		
+//		show stars
+		mStickman.starShowControler = true;
+		mStickman.mScale = 1.334445f;
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSDISAPPEAR"));
+		playAnimationPart(1000);	
 	}
 }

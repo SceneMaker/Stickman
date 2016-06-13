@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dfki.stickman.animation.gesture;
+package de.dfki.stickman.animation.environment;
 
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
@@ -48,7 +48,7 @@ public class FadeOut extends Animation
 	@Override
 	public void playAnimation()
 	{		
-		// bring upper arm and fore arm in position
+		// bring upper arm and fore arm in position	
 		int rotationUnit = 10;
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit));
@@ -80,6 +80,12 @@ public class FadeOut extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 4));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 4));
 		playAnimationPart(100);
+		
+//		star fade in
+		mStickman.starShowC = true;
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSFADEIN"));
+		playAnimationPart(200);
 
 		//make body fade out
 		mStickman.setCharacterInvisible = true;
@@ -98,10 +104,10 @@ public class FadeOut extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mNeck, "shape", "DEFAULT"));				
 		playAnimationPart(1000);
 		
-		// show stars
+		// stars fade out
 		mStickman.starShowControler = true;
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mStarShow, "shape", "STARSFADE"));
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSFADEOUT"));
 		playAnimationPart(1000);
 				
 		// arm go back in the default position
@@ -110,5 +116,9 @@ public class FadeOut extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 16));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 16));
 		playAnimationPart(2);
+		
+//		mStickman.setCharacterInvisible = false;
+		mStickman.starShowControler = false;
+		mStickman.starShowC = false;
 	}
 }

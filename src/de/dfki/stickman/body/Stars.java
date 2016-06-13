@@ -13,19 +13,19 @@ import de.dfki.stickman.animationlogic.Animator;
  * @author Patrick Gebhard
  *
  */
-public class StarShow extends BodyPart
+public class Stars extends BodyPart
 {
 
 	public static enum SHAPE
 	{
 
-		DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADE
+		DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADEOUT, STARSFADEIN
 	};
 
 	Body mBody;
-	public StarShow.SHAPE mShape = StarShow.SHAPE.DEFAULT;
+	public Stars.SHAPE mShape = Stars.SHAPE.DEFAULT;
 
-	public StarShow(Body body)
+	public Stars(Body body)
 	{
 
 		mBody = body;
@@ -40,14 +40,14 @@ public class StarShow extends BodyPart
 	@Override
 	public void setShape(String s)
 	{
-		StarShow.SHAPE shape = StarShow.SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : StarShow.SHAPE.DEFAULT;
+		Stars.SHAPE shape = Stars.SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : Stars.SHAPE.DEFAULT;
 	}
 
 	@Override
 	public void resetShape()
 	{
-		mShape = StarShow.SHAPE.DEFAULT;
+		mShape = Stars.SHAPE.DEFAULT;
 	}
 
 	private void creatStar(int radius, Point center, GeneralPath gp)
@@ -226,7 +226,7 @@ public class StarShow extends BodyPart
 				}
 				break;
 
-			case STARSFADE:
+			case STARSFADEOUT:
 				movement = mShapeAnimationStep - 1;
 				starColorChange = (int) (movement * 10);
 				if (movement <= 1)
@@ -249,7 +249,30 @@ public class StarShow extends BodyPart
 					creatStar(15,mStart,gp);				
 				}
 				break;
-
+				
+			case STARSFADEIN:
+				movement = 21-mShapeAnimationStep;
+				starColorChange = (int) (movement * 10);
+				if (movement >= 20)
+				{
+					mColor = new Color(240, 212, 0, 255);
+				}
+				else
+				{		
+					mColor = new Color(240, 212, 0, starColorChange);
+					
+					mStart = mBody.getLeftLegStartPostion();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.getBodyStartPosition();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.mHead.getLeftEyePostion();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.mHead.getRightEyebrowPostion();
+					creatStar(15,mStart,gp);
+					mStart = mBody.mNeck.mHead.mStickman.mRightUpperArm.getRightUpperArmEndPosition();
+					creatStar(15,mStart,gp);				
+				}
+				break;
 				
 		}
 		addToDrawObjects(gp);
