@@ -311,7 +311,6 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    	getStickman("Bob").doAnimation("Fear", 500, true);
   
 //    	getStickman("Bob").doAnimation("WaveLeft", 70, true); 
-//      getStickman("Bob").repaint();
         //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
 //      getStickman("Bob").doAnimation("TiltLeft", 70, true); 
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);
