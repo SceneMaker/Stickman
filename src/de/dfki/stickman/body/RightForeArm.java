@@ -57,7 +57,7 @@ public class RightForeArm extends BodyPart {
 		mArm.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
 
 		AffineTransform t = new AffineTransform();
-		t.rotate(Math.toRadians(mDefaultRotation), mStart.x, mStart.y);
+		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
 		mArm.transform(t);
 	}
 
@@ -70,17 +70,17 @@ public class RightForeArm extends BodyPart {
 		// draw outlines
 		g2.setColor(new Color(80, 80, 80));
 		
-		if(mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
+		if(mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
 		{
-			if(mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+			if(mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
 			{
-				int fadeFactor = mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
+				int fadeFactor = mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
 				if(fadeFactor<=24) fadeFactor=0;
 				g2.setColor(new Color(80, 80, 80,fadeFactor));
 			}
 			else
 			{
-				int fadeFactor = (20-mUpperArm.mShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
+				int fadeFactor = (20-mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
 				if(fadeFactor >= 216) fadeFactor=255;
 				g2.setColor(new Color(80, 80, 80,fadeFactor));
 			}

@@ -296,11 +296,20 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    		getStickman("Bob").doAnimation("ComeBackFromSmall", 70, true);
 //    	}
     	
-    	if(SwingUtilities.isLeftMouseButton(e)){
-    		getStickman("Bob").doAnimation("FadeOut", 70, true);
-    	}else{
-    		getStickman("Bob").doAnimation("FadeIn", 70, true);
-    	}    	
+<<<<<<< HEAD
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("FadeOut", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("FadeIn", 70, true);
+//    	}    	
+=======
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("FadeOut", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("FadeIn", 70, true);
+//    	}
+    	
+>>>>>>> upstream/master
     	
 //    	if(SwingUtilities.isLeftMouseButton(e)){
 //    		getStickman("Bob").doAnimation("GoDown", 70, true);
@@ -314,7 +323,7 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    	getStickman("Bob").doAnimation("Disgusted", 500, true);
 //    	getStickman("Bob").doAnimation("Fear", 500, true);
   
-//    	getStickman("Bob").doAnimation("WaveLeft", 70, true); 
+    	getStickman("Bob").doAnimation("WaveRight", 500, true); 
         //getStickman("Anna").doAnimation("gesture", "waveleft", 70, false);
 //      getStickman("Bob").doAnimation("TiltLeft", 70, true); 
 //      getStickman("Bob").doAnimation("TiltLeftBack", 70, true);

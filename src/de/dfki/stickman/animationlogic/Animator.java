@@ -74,8 +74,15 @@ public class Animator {
                 }
                 text = text.trim();
 
-                mStickman.mSpeechBubble.mText = mWTS.getText();
-                mStickman.mSpeechBubble.mCurrentlySpokenText = text;
+                String currentlySpokenText = "";
+                currentlySpokenText = text.replace("oe", "ö").replace("ae", "ä").replace("ue", "ü").replace("Oe", "Ö").replace("Ae", "Ä").replace("Ue", "Ü").replace("ss", "ß").replace("\n", " ").replace("   ", " ").replace("  ", " ");
+
+                String allText = "";
+                allText = mWTS.getText().replace("oe", "ö").replace("ae", "ä").replace("ue", "ü").replace("Oe", "Ö").replace("Ae", "Ä").replace("Ue", "Ü").replace("ss", "ß").replace("\n", " ").replace("   ", " ").replace("  ", " ");
+
+                
+                mStickman.mSpeechBubble.mText = allText;
+                mStickman.mSpeechBubble.mCurrentlySpokenText = currentlySpokenText;
 
                 //clusterTiming.add(TimingInfo.spokenStringDuration(text));
                 //mStickman.mLogger.info("utterance " + text);
@@ -204,6 +211,7 @@ public class Animator {
     private class WaitThread extends Thread {
 
         int mSleepTime = 0;
+
         public WaitThread(int time) {
             mSleepTime = time;
         }
