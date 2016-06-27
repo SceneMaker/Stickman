@@ -23,6 +23,7 @@ public class Head extends BodyPart {
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
 	int mEarWidth = 10;
+	
 	int mDrawOffset = 10;
 	int mXCenterOffset = mEarWidth / 2;
 	int mYCenterOffset = mEarWidth / 2;
@@ -68,6 +69,7 @@ public class Head extends BodyPart {
 	}
 
 	public void calculate(int step) {
+		
 		// head
 		mHead = new GeneralPath();
 		mHead.moveTo(mEarWidth, mHalfHeight);

@@ -57,6 +57,8 @@ public class HeadShake extends Animation
 			mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", rotationUnit * 2));
 			mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", rotationUnit * 2));
 			mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", rotationUnit * 2));
+			
+			
 			playAnimationPart(200);
 			pauseAnimation(100);
 			

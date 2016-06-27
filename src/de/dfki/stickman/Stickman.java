@@ -91,6 +91,7 @@ public class Stickman extends JComponent {
     public boolean  fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
     public boolean  setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
     												//True: visible False:invisible
+    public double mWobble=0;
     
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -120,7 +121,6 @@ public class Stickman extends JComponent {
     public RightLeg mRightLeg;
     // environment
     public SpeechBubble mSpeechBubble;
- 
 
     // logging
     public final Logger mLogger = Logger.getAnonymousLogger();
@@ -185,7 +185,7 @@ public class Stickman extends JComponent {
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
         mLeftLeg = new LeftLeg(mBody);
-        mStars = new Stars(mBody);            /// added by Robbie
+        mStars = new Stars(mBody);                /// added by Robbie
         mRightLeg = new RightLeg(mBody);
 
         mSpeechBubble = new SpeechBubble(mHead);
@@ -379,12 +379,14 @@ public class Stickman extends JComponent {
 
         // draw everthing in the middle and scaled
         AffineTransform at = g2.getTransform();
-        mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;
-        mGeneralYTranslation = getBounds().height - 477 * mScale;
+        mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;        		
+        mGeneralYTranslation = getBounds().height - 477 * mScale;      
         at.translate(mGeneralXTranslation, mGeneralYTranslation);
-    
+        
+        at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
+ 
         at.scale(mScale, mScale);   
-        at.translate(0, leaveSpeed);   // Added by Robbie
+        at.translate(0, leaveSpeed);   // Added by Robbie, GoDown
         
         g2.setTransform(at);
 
