@@ -24,6 +24,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
+import de.dfki.stickman.animationlogic.WobbleThread;
+import de.dfki.stickman.animation.environment.SimplexNoise;
 
 /**
  *
@@ -68,7 +70,6 @@ public class StickmanStage extends JFrame implements MouseListener {
         }
 
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE); // This one is needed by SceneMaker
-        // setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); // changed by Robbie. Close the window directly.
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
@@ -170,6 +171,9 @@ public class StickmanStage extends JFrame implements MouseListener {
             }
             sStickmanPanel.add(getStickman(name));
             sStickmanPanel.revalidate();
+            SimplexNoise simplexNoise = new SimplexNoise(4,0.1,(int)(Math.random()*100));
+            new WobbleThread(getStickman(name),simplexNoise).start();                                  ///Added by Robbie
+            
         }
 
         // resize the stuff ...
@@ -292,12 +296,20 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    		getStickman("Bob").doAnimation("ComeBackFromSmall", 70, true);
 //    	}
     	
+<<<<<<< HEAD
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("FadeOut", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("FadeIn", 70, true);
+//    	}    	
+=======
 //    	if(SwingUtilities.isLeftMouseButton(e)){
 //    		getStickman("Bob").doAnimation("FadeOut", 70, true);
 //    	}else{
 //    		getStickman("Bob").doAnimation("FadeIn", 70, true);
 //    	}
     	
+>>>>>>> upstream/master
     	
 //    	if(SwingUtilities.isLeftMouseButton(e)){
 //    		getStickman("Bob").doAnimation("GoDown", 70, true);
@@ -306,7 +318,8 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    	}
 //    	
    	
-//    	getStickman("Bob").doAnimation("Angry", 500, true);
+//    	getStickman("Bob").doAnimation("Wobble", 500, true);
+    	
 //    	getStickman("Bob").doAnimation("Disgusted", 500, true);
 //    	getStickman("Bob").doAnimation("Fear", 500, true);
   
