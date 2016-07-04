@@ -11,15 +11,13 @@ import java.util.ArrayList;
  *
  */
 public class CoverMouth extends Animation {
-
+   
 	public CoverMouth(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		//mStickman.mLogger.info("\tplaying animation");
-
 		int rotationUnit = 16;
 
 		// bring upper arm and fore arm in position

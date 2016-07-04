@@ -5,6 +5,7 @@ import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickman.animationlogic.AnimationScheduler;
 import de.dfki.stickman.animationlogic.EventAnimation;
+import de.dfki.stickman.animationlogic.IdleBehavior;
 import de.dfki.stickman.body.Body;
 import de.dfki.stickman.body.Head;
 import de.dfki.stickman.body.LeftEye;
@@ -46,6 +47,7 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
+import de.dfki.stickman.animation.environment.SimplexNoise;
 
 /**
  *
@@ -92,6 +94,10 @@ public class Stickman extends JComponent {
     public boolean  setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
     												//True: visible False:invisible
     public double mWobble=0;
+    public Boolean mIdleRun = true;                        // the shared variable to decide the while loop in IdleBehavior break or not
+    private IdleBehavior mIdleBehavior;
+    private SimplexNoise simplexNoise;             // Perlin noise
+    
     
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -159,6 +165,9 @@ public class Stickman extends JComponent {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
+        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+        mIdleBehavior.start();
     }
 
     public Stickman(String name, TYPE gender, float scale) {
@@ -191,6 +200,9 @@ public class Stickman extends JComponent {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
+        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+        mIdleBehavior.start();
     }
 
     public Stickman(String name, TYPE gender) {
@@ -221,6 +233,9 @@ public class Stickman extends JComponent {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
+        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+        mIdleBehavior.start();
     }
 
     private void init() {
@@ -343,6 +358,20 @@ public class Stickman extends JComponent {
         } catch (InterruptedException ex) {
             mLogger.severe(ex.getMessage());
         }
+    }
+    
+    // Control IdleBehavior start(mStart == true) or not(mStart == false).
+    public void startIdleBehavior(){
+    	if(!mIdleBehavior.isAlive()){
+    		mIdleRun=true;
+    		mIdleBehavior = new IdleBehavior(this,simplexNoise);
+    		mIdleBehavior.start();
+    	}
+    }
+    		
+    public void stopIdleBehavior(){
+    		mIdleRun=false;
+    		while(mIdleBehavior.isAlive());
     }
 
     @Override
