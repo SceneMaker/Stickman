@@ -47,7 +47,7 @@ public class FadeOut extends Animation
 	// WaveLeft
 	@Override
 	public void playAnimation()
-	{		
+	{	
 		// bring upper arm and fore arm in position	
 		int rotationUnit = 10;
 		mAnimationPart = new ArrayList<>();
