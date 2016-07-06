@@ -14,11 +14,12 @@ public class IdleBehavior extends Thread {
 	private int count1 = 1;    // index of perlin noise Array
 	private int count2 = 1;    // index of perlin noise Array
 	private UnconsciouslyAction mUnconsciouslyAction;
-		
-	public IdleBehavior(Stickman s, SimplexNoise noise){
+	private String mbehavior;
+	
+	public IdleBehavior(Stickman s, SimplexNoise noise, String g){
 		mStickman = s;
 		mSimplexNoise=noise;
-		mUnconsciouslyAction = new UnconsciouslyAction(mStickman, mSimplexNoise);
+		mUnconsciouslyAction = new UnconsciouslyAction(mStickman, mSimplexNoise, g);
 		mUnconsciouslyAction.start();
 	}
 
@@ -34,7 +35,7 @@ public class IdleBehavior extends Thread {
         if(count2 == 200)
         	count2 =1;
         
-        mStickman.mWobble = ((mSimplexNoise.getNoise(count2,count1)*10))/20; 
+        mStickman.mWobble = ((mSimplexNoise.getNoise(count2,count1)*10))/20;
         System.out.printf("%.5f",mSimplexNoise.getNoise(count1,count2));
         System.out.println();
        	double mAdjust = mStickman.mWobble;  
