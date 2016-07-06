@@ -16,11 +16,19 @@ public class UnconsciouslyAction extends Thread {
 	private int count3 = 0;
 	private int NoiseNumber;
 	private int mSleepTime;
+	private GESTURE mGesture;
+	
+	public static enum GESTURE {
+
+		DEFAULT, TouchHead, CoverMouth
+	};
 		
-	public UnconsciouslyAction(Stickman s, SimplexNoise noise){
+	public UnconsciouslyAction(Stickman s, SimplexNoise noise, String g){
 		mStickman = s;
 		mSimplexNoise=noise;
 		mSleepTime=10;
+		GESTURE gesture = GESTURE.valueOf(g);
+		mGesture = (gesture != null) ? gesture : GESTURE.DEFAULT;
 	}
 
     @Override
@@ -35,11 +43,29 @@ public class UnconsciouslyAction extends Thread {
     			count2 =1;
         
     		NoiseNumber = (int) (mSimplexNoise.getNoise(count2,count1)*100);
+    		
     		if (NoiseNumber == 5){
     			count3++;
     			if(count3==100){
-    				mStickman.doAnimation("CoverMouth", 500, true);
-    				count3=0;
+    				
+    				switch (mGesture) {
+    	    			case DEFAULT:
+    	    				try {
+    	                        sleep(mSleepTime, 0);
+    	                 } catch (InterruptedException ex) {
+    	                        mStickman.mLogger.severe(ex.getMessage());
+    	                   }     
+    	    			break;
+    	    				
+    	    			case CoverMouth:
+    	    				mStickman.doAnimation("CoverMouth", 500, true);
+    	    				count3=0;
+    	    				break;
+    	    				
+    	    			case TouchHead:
+    	    				mStickman.doAnimation("TouchHead", 500, true);
+    	    				count3=0;
+    	    				break;
     			}
     			
     		}
@@ -50,6 +76,13 @@ public class UnconsciouslyAction extends Thread {
                     mStickman.mLogger.severe(ex.getMessage());
                }     		
     	}
+    	else
+    		try {
+                 sleep(mSleepTime, 0);
+            } catch (InterruptedException ex) {
+            	mStickman.mLogger.severe(ex.getMessage());
+            	}     		
         	
+    	}
     }
 }

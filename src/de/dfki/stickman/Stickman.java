@@ -166,7 +166,7 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+        mIdleBehavior = new IdleBehavior(this,simplexNoise, "DEFAULT");
         mIdleBehavior.start();
     }
 
@@ -201,7 +201,7 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+        mIdleBehavior = new IdleBehavior(this,simplexNoise, "DEFAULT");
         mIdleBehavior.start();
     }
 
@@ -234,7 +234,7 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+        mIdleBehavior = new IdleBehavior(this,simplexNoise,"DEFAULT");
         mIdleBehavior.start();
     }
 
@@ -361,10 +361,10 @@ public class Stickman extends JComponent {
     }
     
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
-    public void startIdleBehavior(){
+    public void startIdleBehavior(String g){
     	if(!mIdleBehavior.isAlive()){
     		mIdleRun=true;
-    		mIdleBehavior = new IdleBehavior(this,simplexNoise);
+    		mIdleBehavior = new IdleBehavior(this,simplexNoise, g);
     		mIdleBehavior.start();
     	}
     }
