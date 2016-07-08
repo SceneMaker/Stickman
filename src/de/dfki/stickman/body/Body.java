@@ -26,17 +26,25 @@ public class Body extends JComponent {
 	Neck mNeck;
 
 	Dimension mSize = new Dimension(120, 300);
+        
 	int mHalfSizeX = mSize.width / 2;
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
+        int mDekollteeDepth = 40;       //Added by Beka
+        
 	Point mStart;
+        Point mLefShoulderPosition;     //Added by Beka
+        Point mRightShoulderPosition;   //Added by Beka
+        Point dekolleteePosition;
 
 	Color mFemaleColor = new Color(154, 83, 198, 240);    // The color is changed in paintComponent
 	Color mMaleColor = new Color(14, 134, 122, 240);
+        Color mDekollteeColor = new Color(242, 227, 217);
 	public Color mColor  = mFemaleColor;
 
 	GeneralPath mFemaleBodyFront, mFemaleBodyLeft, mFemaleBodyRight;
 	GeneralPath mMaleBodyFront, mMaleBodyLeft, mMaleBodyRight;
+        GeneralPath mDekolletee;
 
 	public Body(Neck neck) {
 		mNeck = neck;
@@ -52,17 +60,31 @@ public class Body extends JComponent {
 
 	private void calculate() {
 		mStart = mNeck.getBodyStartPosition();
+                
+                this.mLefShoulderPosition = mNeck.mHead.mStickman.mLeftShoulder.getLeftShoulderEndPosition();       //Added by Beka
+                this.mRightShoulderPosition = mNeck.mHead.mStickman.mRightShoulder.getRightShoulderEndPosition();
 
 		mFemaleBodyFront = new GeneralPath();
 		mFemaleBodyFront.moveTo(mStart.x, mStart.y); 
+                
+                mFemaleBodyFront.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
 		
 		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX, mSize.height + 10);
 
 		mFemaleBodyFront.curveTo(mStart.x + mHalfSizeX - 40, mSize.height - 10, mStart.x - mHalfSizeX + 40, mSize.height + 20, mStart.x - mHalfSizeX, mSize.height);
 
 		//mFemaleBodyFront.lineTo(mStart.x - mHalfSizeX, mSize.height);
-		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y);
+		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
 
+                //Dekolletee        Added by Beka
+                mDekolletee = new GeneralPath();
+                dekolleteePosition = mNeck.getBodyStartPosition();
+                mDekolletee.moveTo(dekolleteePosition.x, dekolleteePosition.y);
+                mDekolletee.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
+                mDekolletee.curveTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1, mStart.x, mStart.y + mDekollteeDepth, mRightShoulderPosition.x, mRightShoulderPosition.y);
+                mDekolletee.closePath();
+                //mDekolletee.lineTo(mStart.x, mStart.y);
+                
 		mFemaleBodyLeft = new GeneralPath();
 		mFemaleBodyLeft.moveTo(mStart.x, mStart.y);
 		mFemaleBodyLeft.quadTo(mStart.x + mDrawOffset, mSize.height / 3 * 2, mStart.x, mSize.height);
@@ -77,9 +99,12 @@ public class Body extends JComponent {
 
 		mMaleBodyFront = new GeneralPath();
 		mMaleBodyFront.moveTo(mStart.x, mStart.y);
+                
+                mMaleBodyFront.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
+                
 		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
 		mMaleBodyFront.lineTo(mStart.x - mHalfSizeX + mDrawOffset, mSize.height);
-		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y);
+		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
 
 		mMaleBodyLeft = new GeneralPath();
 		mMaleBodyLeft.moveTo(mStart.x, mStart.y);
@@ -157,14 +182,18 @@ public class Body extends JComponent {
 	}
 
 	private void paintFrontOrientation(Graphics2D g2) {
+            Color clothingColor = g2.getColor();    //Added by Beka
+            
 		if (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) {
 			g2.fill(mFemaleBodyFront);
+                        g2.setColor(mDekollteeColor);
+                        g2.fill(mDekolletee);
 		} else {
 			g2.fill(mMaleBodyFront);
 		}
 
 		// draw outlines
-		g2.setColor(g2.getColor().darker());
+		g2.setColor(clothingColor.darker());
 		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
 		if (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) {

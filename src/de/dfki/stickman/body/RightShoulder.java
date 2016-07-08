@@ -1,5 +1,6 @@
 package de.dfki.stickman.body;
 
+import de.dfki.stickman.Stickman;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -66,7 +67,16 @@ public class RightShoulder extends BodyPart {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		// draw outlines		
-		g2.setColor(new Color(80, 80, 80));
+		if(mBody.mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) //Added by Beka
+                {
+                    //new Color(242, 227, 217, 200)
+                    Color c = mBody.mFemaleColor;
+                    g2.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue()).darker() );
+                }
+                else
+                {
+                    g2.setColor(mBody.mMaleColor.darker());
+                }
 		
 		if(mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
 		{
