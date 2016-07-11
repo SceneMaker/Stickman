@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman.body;
 
+import de.dfki.stickman.Stickman;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -21,7 +22,10 @@ public class RightLeg extends BodyPart {
 
 	public RightLeg(Body body) {
 		mBody = body;
-		mLength = 150;
+                if(mBody.mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE)
+                    mLength = 150;
+                else 
+                    mLength = 100;
 		mSize = new Dimension(10, mLength);
 		mColor = new Color(80, 80, 80);
 

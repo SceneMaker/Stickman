@@ -35,7 +35,8 @@ public class Body extends JComponent {
 	Point mStart;
         Point mLefShoulderPosition;     //Added by Beka
         Point mRightShoulderPosition;   //Added by Beka
-        Point dekolleteePosition;
+        Point mDekolleteePosition;
+        Point mMaleShortsStartPosition;
 
 	Color mFemaleColor = new Color(154, 83, 198, 240);    // The color is changed in paintComponent
 	Color mMaleColor = new Color(14, 134, 122, 240);
@@ -45,6 +46,7 @@ public class Body extends JComponent {
 	GeneralPath mFemaleBodyFront, mFemaleBodyLeft, mFemaleBodyRight;
 	GeneralPath mMaleBodyFront, mMaleBodyLeft, mMaleBodyRight;
         GeneralPath mDekolletee;
+        GeneralPath mMaleShorts;
 
 	public Body(Neck neck) {
 		mNeck = neck;
@@ -78,8 +80,8 @@ public class Body extends JComponent {
 
                 //Dekolletee        Added by Beka
                 mDekolletee = new GeneralPath();
-                dekolleteePosition = mNeck.getBodyStartPosition();
-                mDekolletee.moveTo(dekolleteePosition.x, dekolleteePosition.y);
+                mDekolleteePosition = mNeck.getBodyStartPosition();
+                mDekolletee.moveTo(mDekolleteePosition.x, mDekolleteePosition.y);
                 mDekolletee.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
                 mDekolletee.curveTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1, mStart.x, mStart.y + mDekollteeDepth, mRightShoulderPosition.x, mRightShoulderPosition.y);
                 mDekolletee.closePath();
@@ -102,9 +104,25 @@ public class Body extends JComponent {
                 
                 mMaleBodyFront.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
                 
-		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
-		mMaleBodyFront.lineTo(mStart.x - mHalfSizeX + mDrawOffset, mSize.height);
+		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height-46);
+		mMaleBodyFront.curveTo(mStart.x + mHalfSizeX - mDrawOffset, mSize.height-46, mStart.x, mSize.height - 20, mStart.x - mHalfSizeX + mDrawOffset, mSize.height-46);
 		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
+                
+                //Male shorts
+                mMaleShorts = new GeneralPath();
+                mMaleShortsStartPosition = new Point(mStart.x - mHalfSizeX + mDrawOffset, mSize.height-46);
+                mMaleShorts.moveTo(mMaleShortsStartPosition.x, mMaleShortsStartPosition.y);
+               
+                mMaleShorts.curveTo(mMaleShortsStartPosition.x, mMaleShortsStartPosition.y, mMaleShortsStartPosition.x - 15, mMaleShortsStartPosition.y + 30, mMaleShortsStartPosition.x+3, mMaleShortsStartPosition.y + 100);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+3+30, mMaleShortsStartPosition.y + 100);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+37, mMaleShortsStartPosition.y + 40);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+44, mMaleShortsStartPosition.y + 100);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+74, mMaleShortsStartPosition.y + 100);
+                mMaleShorts.curveTo(mMaleShortsStartPosition.x+74, mMaleShortsStartPosition.y + 100, mMaleShortsStartPosition.x + 95, mMaleShortsStartPosition.y + 30, mMaleShortsStartPosition.x+80, mMaleShortsStartPosition.y);
+                mMaleShorts.curveTo(mMaleShortsStartPosition.x+80, mMaleShortsStartPosition.y, mMaleShortsStartPosition.x + 40, mMaleShortsStartPosition.y+25, mMaleShortsStartPosition.x, mMaleShortsStartPosition.y);
+                
+                //mMaleShorts.lineTo(mMaleShortsStartPosition.x + 20, mMaleShortsStartPosition.y + 20);
+                //mMaleShorts.closePath();
 
 		mMaleBodyLeft = new GeneralPath();
 		mMaleBodyLeft.moveTo(mStart.x, mStart.y);
@@ -131,8 +149,12 @@ public class Body extends JComponent {
 		if (mNeck.mHead.mStickman.mOrientation == Stickman.ORIENTATION.LEFT) {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
 		} else {
-			return new Point(mStart.x + mHalfSizeX - mDrawOffset,
-			  (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+//			return new Point(mStart.x + mHalfSizeX - mDrawOffset,
+//			  (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+                        return new Point((mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE)? 
+                                            mStart.x + mHalfSizeX - mDrawOffset : mStart.x + mHalfSizeX - mDrawOffset - 20,
+                                          (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE)?
+                                             mSize.height + 3 : mSize.height + 52);
 		}
 	}
 
@@ -140,8 +162,12 @@ public class Body extends JComponent {
 		if (mNeck.mHead.mStickman.mOrientation == Stickman.ORIENTATION.RIGHT) {
 			return new Point(mStart.x, mSize.height);
 		} else {
-			return new Point(mStart.x - mHalfSizeX + mDrawOffset,
-			  (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+//			return new Point(mStart.x - mHalfSizeX + mDrawOffset,
+//			  (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+                       return new Point ((mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE)? 
+                                          mStart.x - mHalfSizeX + mDrawOffset : mStart.x - mHalfSizeX + mDrawOffset + 20,
+                                         (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE)?
+                                          mSize.height + 5 : mSize.height + 52);
 		}
 	}
 
@@ -182,7 +208,8 @@ public class Body extends JComponent {
 	}
 
 	private void paintFrontOrientation(Graphics2D g2) {
-            Color clothingColor = g2.getColor();    //Added by Beka
+            
+                Color clothingColor = g2.getColor();    //Added by Beka
             
 		if (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) {
 			g2.fill(mFemaleBodyFront);
@@ -190,6 +217,8 @@ public class Body extends JComponent {
                         g2.fill(mDekolletee);
 		} else {
 			g2.fill(mMaleBodyFront);
+                        g2.setColor(Color.BLUE);
+                        g2.fill(mMaleShorts);
 		}
 
 		// draw outlines
@@ -200,6 +229,8 @@ public class Body extends JComponent {
 			g2.draw(mFemaleBodyFront);
 		} else {
 			g2.draw(mMaleBodyFront);
+                        g2.setColor(Color.BLUE.darker());
+                        g2.draw(mMaleShorts);
 		}
 	}
 
@@ -221,6 +252,7 @@ public class Body extends JComponent {
 				if(fadeFactor<=24) fadeFactor=0;
 				mFemaleColor = new Color(154, 83, 198, fadeFactor);
 				mMaleColor = new Color(14, 134, 122, fadeFactor);
+                                
 			}
 			else
 			{
