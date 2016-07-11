@@ -27,14 +27,18 @@ public class Trouble extends Animation {
 		
 		// RightForeArm rotate to right
 		mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", rotationUnit*8));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit*8));
 		playAnimationPart(200);
 
 		pauseAnimation(200);
 		
 		// RightForeArm rotate to left
 		mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit*8));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit*8));
 		playAnimationPart(200);
 		
 		// LeftForeArm rotate to left
