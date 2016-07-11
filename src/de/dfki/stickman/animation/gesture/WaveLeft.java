@@ -23,7 +23,7 @@ public class WaveLeft extends Animation {
 
 	@Override
 	public void playAnimation() {
-		mStickman.stopIdleBehavior();
+//		mStickman.stopIdleBehavior();
 //		mStickman.startIdleBehavior("TouchHead");
 		int rotationUnit = 10;
 
@@ -62,6 +62,6 @@ public class WaveLeft extends Animation {
 		playAnimationPart(200);
 		
 //		mStickman.stopIdleBehavior();
-		mStickman.startIdleBehavior("CoverMouth");
+//		mStickman.startIdleBehavior("TouchHead");
 	}
 }
