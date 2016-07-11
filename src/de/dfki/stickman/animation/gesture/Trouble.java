@@ -48,7 +48,6 @@ public class Trouble extends Animation {
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*8));
 		playAnimationPart(200);
-		
-		
+			
 	}
 }

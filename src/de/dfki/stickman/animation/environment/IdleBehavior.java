@@ -1,10 +1,9 @@
-package de.dfki.stickman.animationlogic;
+package de.dfki.stickman.animation.environment;
 
 import de.dfki.stickman.Stickman;
-import de.dfki.stickman.animation.environment.SimplexNoise;
 /**
  *
- * @author Patrick Gebhard
+ * @author Robbie
  *
  */
 public class IdleBehavior extends Thread {
@@ -14,18 +13,17 @@ public class IdleBehavior extends Thread {
 	private int count1 = 1;    // index of perlin noise Array
 	private int count2 = 1;    // index of perlin noise Array
 	private UnconsciouslyAction mUnconsciouslyAction;
-	private String mbehavior;
 	
-	public IdleBehavior(Stickman s, SimplexNoise noise, String g){
+	public IdleBehavior(Stickman s, SimplexNoise noise){
 		mStickman = s;
 		mSimplexNoise=noise;
-		mUnconsciouslyAction = new UnconsciouslyAction(mStickman, mSimplexNoise, g);
+		mUnconsciouslyAction = new UnconsciouslyAction(mStickman, mSimplexNoise);
 		mUnconsciouslyAction.start();
 	}
 
     @Override
     public void run() {
-      	a:while(mStickman.mIdleRun){
+      while(mStickman.mIdleRun){
       	// to generate index of perlin noise Array
         count1++;
         if(count1 == 200){ 
@@ -36,8 +34,8 @@ public class IdleBehavior extends Thread {
         	count2 =1;
         
         mStickman.mWobble = ((mSimplexNoise.getNoise(count2,count1)*10))/20;
-        System.out.printf("%.5f",mSimplexNoise.getNoise(count1,count2));
-        System.out.println();
+//        System.out.printf("%.5f",mSimplexNoise.getNoise(count1,count2));
+//        System.out.println();
        	double mAdjust = mStickman.mWobble;  
        	
        	// 40 segments to achieve the wobble: come and back
