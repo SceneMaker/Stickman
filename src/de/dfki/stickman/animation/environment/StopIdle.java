@@ -7,17 +7,18 @@ import de.dfki.stickman.Stickman;
  * @author Robbie
  *
  */
-public class StopIdle{
-	public StopIdle(Stickman sm) {
-		mStickman = sm;
-	}
+public class StopIdle {
 
-	Stickman mStickman;
-	
-	public void stopIdleBehavior() {
-		
-		mStickman.mIdleRun=false;
-		while(mStickman.mIdleBehavior.isAlive());
+    public StopIdle(Stickman sm) {
+        mStickman = sm;
+    }
 
-	}
+    Stickman mStickman;
+
+    public void stopIdleBehavior() {
+
+        mStickman.mIdleRun = false;
+        while (mStickman.mIdleBehavior.isAlive());
+
+    }
 }
