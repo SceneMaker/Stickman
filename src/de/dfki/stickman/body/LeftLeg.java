@@ -26,7 +26,8 @@ public class LeftLeg extends BodyPart {
         GeneralPath mLeftLeg;
         GeneralPath mLeftShoe;
 
-	public LeftLeg(Body body) {
+	public LeftLeg(Body body) 
+        {
 		mBody = body;
                 if(mBody.mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE)
                     mLength = 150;

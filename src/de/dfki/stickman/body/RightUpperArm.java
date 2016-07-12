@@ -56,6 +56,12 @@ public class RightUpperArm extends BodyPart {
 		mArm = new GeneralPath();
 		mArm.moveTo(mStart.x, mStart.y + 2);
 		mArm.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
+                
+//                mArm = new GeneralPath();
+//		mArm.moveTo(mStart.x, mStart.y + 2);
+//		mArm.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
+//                mArm.quadTo(mEnd.x + 3, mEnd.y + 2, mEnd.x+15, mEnd.y);
+//                mArm.lineTo(mStart.x+12, mStart.y+15);
 
 		AffineTransform t = new AffineTransform();
 		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);

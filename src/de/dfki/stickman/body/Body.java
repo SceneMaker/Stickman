@@ -103,23 +103,23 @@ public class Body extends JComponent {
 		mMaleBodyFront.moveTo(mStart.x, mStart.y);
                 
                 mMaleBodyFront.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
-                
-		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height-46);
-		mMaleBodyFront.curveTo(mStart.x + mHalfSizeX - mDrawOffset, mSize.height-46, mStart.x, mSize.height - 20, mStart.x - mHalfSizeX + mDrawOffset, mSize.height-46);
-		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
+                int hightLevel = 50;
+		mMaleBodyFront.quadTo(mStart.x+20, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height-hightLevel);
+		mMaleBodyFront.curveTo(mStart.x + mHalfSizeX - mDrawOffset, mSize.height-hightLevel, mStart.x, mSize.height - 20, mStart.x - mHalfSizeX + mDrawOffset, mSize.height-hightLevel);
+		mMaleBodyFront.quadTo(mStart.x-20, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
                 
                 //Male shorts
                 mMaleShorts = new GeneralPath();
-                mMaleShortsStartPosition = new Point(mStart.x - mHalfSizeX + mDrawOffset, mSize.height-46);
+                mMaleShortsStartPosition = new Point(mStart.x - mHalfSizeX + mDrawOffset, mSize.height-hightLevel);
                 mMaleShorts.moveTo(mMaleShortsStartPosition.x, mMaleShortsStartPosition.y);
                
-                mMaleShorts.curveTo(mMaleShortsStartPosition.x, mMaleShortsStartPosition.y, mMaleShortsStartPosition.x - 15, mMaleShortsStartPosition.y + 30, mMaleShortsStartPosition.x+3, mMaleShortsStartPosition.y + 100);
-                mMaleShorts.lineTo(mMaleShortsStartPosition.x+3+30, mMaleShortsStartPosition.y + 100);
+                mMaleShorts.curveTo(mMaleShortsStartPosition.x, mMaleShortsStartPosition.y, mMaleShortsStartPosition.x - 15, mMaleShortsStartPosition.y + 30, mMaleShortsStartPosition.x+3, mMaleShortsStartPosition.y + 105);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+3+30, mMaleShortsStartPosition.y + 105);
                 mMaleShorts.lineTo(mMaleShortsStartPosition.x+37, mMaleShortsStartPosition.y + 40);
-                mMaleShorts.lineTo(mMaleShortsStartPosition.x+44, mMaleShortsStartPosition.y + 100);
-                mMaleShorts.lineTo(mMaleShortsStartPosition.x+74, mMaleShortsStartPosition.y + 100);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+44, mMaleShortsStartPosition.y + 105);
+                mMaleShorts.lineTo(mMaleShortsStartPosition.x+74, mMaleShortsStartPosition.y + 105);
                 mMaleShorts.curveTo(mMaleShortsStartPosition.x+74, mMaleShortsStartPosition.y + 100, mMaleShortsStartPosition.x + 95, mMaleShortsStartPosition.y + 30, mMaleShortsStartPosition.x+80, mMaleShortsStartPosition.y);
-                mMaleShorts.curveTo(mMaleShortsStartPosition.x+80, mMaleShortsStartPosition.y, mMaleShortsStartPosition.x + 40, mMaleShortsStartPosition.y+25, mMaleShortsStartPosition.x, mMaleShortsStartPosition.y);
+                mMaleShorts.curveTo(mMaleShortsStartPosition.x+80, mMaleShortsStartPosition.y, mMaleShortsStartPosition.x + 40, mMaleShortsStartPosition.y+34, mMaleShortsStartPosition.x, mMaleShortsStartPosition.y);
                 
                 //mMaleShorts.lineTo(mMaleShortsStartPosition.x + 20, mMaleShortsStartPosition.y + 20);
                 //mMaleShorts.closePath();
