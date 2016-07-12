@@ -65,7 +65,9 @@ public abstract class BodyPart extends JComponent {
 
 	public void setTranslation(int length) {
 		mToTranslation = mTranslation + length;		
-		mTranslationStep = Math.abs(Math.abs(mTranslation) - Math.abs(mToTranslation)) / Animator.sMAX_ANIM_STEPS * (length / Math.abs(length));
+//		mTranslationStep = Math.abs(Math.abs(mTranslation) - Math.abs(mToTranslation)) / Animator.sMAX_ANIM_STEPS * (length / Math.abs(length));
+		mTranslationStep = (double)length / Animator.sMAX_ANIM_STEPS;
+
 	}
 
 	public synchronized void calculateTranslation(int step) {
@@ -88,12 +90,14 @@ public abstract class BodyPart extends JComponent {
 
 	public void setRotation(int degree) {
 		mToDegree = mRotation + degree;
-		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+		mRotationStep = (double)degree / Animator.sMAX_ANIM_STEPS;	    
 	}
 
 	public void setTilt(int degree) {
 		mToDegree = mRotation + degree;
-		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+		mRotationStep = (double)degree / Animator.sMAX_ANIM_STEPS;
 	}
 
 	public synchronized void calculateRotation(int step) {

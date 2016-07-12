@@ -171,8 +171,6 @@ public class Stickman extends JComponent {
         
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
         mIdleBehavior = new IdleBehavior(this,simplexNoise);
-//        new StopIdle(this).stopIdleBehavior();
-//        mIdleBehavior.start();
     }
 
     public Stickman(String name, TYPE gender, float scale) {
@@ -206,8 +204,6 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-//        mIdleBehavior = new IdleBehavior(this,simplexNoise);
-//        mIdleBehavior.start();
     }
 
     public Stickman(String name, TYPE gender) {
@@ -239,8 +235,6 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-//        mIdleBehavior = new IdleBehavior(this,simplexNoise);
-//        mIdleBehavior.start();
     }
 
     private void init() {
