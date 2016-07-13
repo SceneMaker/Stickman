@@ -1,26 +1,34 @@
 package de.dfki.stickman.animation.environment;
 
 import de.dfki.stickman.Stickman;
+import de.dfki.stickman.animationlogic.Animation;
 
 /**
  *
  * @author Robbie
  *
  */
-public class StartIdle {
 
-    public StartIdle(Stickman sm) {
-        mStickman = sm;
-    }
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-    Stickman mStickman;
+public class StartIdle extends Animation {
 
-    public void startIdleBehavior() {
+	public StartIdle(Stickman sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-        if (!mStickman.mIdleBehavior.isAlive()) {
-            mStickman.mIdleRun = true;
-            mStickman.mIdleBehavior = new IdleBehavior(mStickman, mStickman.simplexNoise);
-            mStickman.mIdleBehavior.start();
-        }
-    }
+
+	@Override
+	public void playAnimation() {
+		if (!mStickman.mIdleBehavior.isAlive()) {
+          mStickman.mIdleRun = true;
+          mStickman.mIdleBehavior = new IdleBehavior(mStickman, mStickman.simplexNoise);
+          mStickman.mIdleBehavior.start();
+		}
+	}
 }
+

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Patrick Gebhard
+ * @author Robbie
  *
  */
 public class Happy extends Animation {

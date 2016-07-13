@@ -1,24 +1,23 @@
 package de.dfki.stickman.animation.environment;
 
 import de.dfki.stickman.Stickman;
+import de.dfki.stickman.animationlogic.Animation;
 
 /**
  *
  * @author Robbie
  *
  */
-public class StopIdle {
+public class StopIdle extends Animation {
 
-    public StopIdle(Stickman sm) {
-        mStickman = sm;
-    }
+	public StopIdle(Stickman sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    Stickman mStickman;
 
-    public void stopIdleBehavior() {
-
-        mStickman.mIdleRun = false;
-        while (mStickman.mIdleBehavior.isAlive());
-
-    }
+	@Override
+	public void playAnimation() {
+		mStickman.mIdleRun = false;
+		while (mStickman.mIdleBehavior.isAlive());
+	}
 }
