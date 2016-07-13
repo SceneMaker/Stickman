@@ -303,7 +303,7 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    		getStickman("Bob").doAnimation("ComeUp", 70, true);
 //    	}
 //    	
-    	getStickman("Bob").doAnimation("Applause", 500, true);
+    	getStickman("Bob").doAnimation("Angry2", 500, true);
     	
 //    	getStickman("Bob").doAnimation("Disgusted", 500, true);
 //    	getStickman("Bob").doAnimation("Fear", 500, true);

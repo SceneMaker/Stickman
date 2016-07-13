@@ -48,6 +48,12 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import de.dfki.stickman.animation.environment.SimplexNoise;
+import de.dfki.stickman.body.LeftFoot;
+import de.dfki.stickman.body.LeftUpperLeg;
+import de.dfki.stickman.body.RightFoot;
+import de.dfki.stickman.body.RightForeLeg;
+import de.dfki.stickman.body.RightUpperLeg;
+import de.dfki.stickman.body.LeftForeLeg;
 
 /**
  *
@@ -122,9 +128,16 @@ public class Stickman extends JComponent {
     public RightUpperArm mRightUpperArm;
     public RightForeArm mRightForeArm;
     public RightHand mRightHand;
-    public LeftLeg mLeftLeg;
+   // public LeftLeg mLeftLeg;
     public Stars mStars;         // added by Robbie Create Say bye or hi
-    public RightLeg mRightLeg;
+    //public RightLeg mRightLeg;
+    public RightUpperLeg mRightUpperLeg;
+    public RightForeLeg mRightForeLeg;
+    public RightFoot mRightFoot;
+    
+    public LeftUpperLeg mLeftUpperLeg;
+    public LeftForeLeg mLeftForeLeg;
+    public LeftFoot mLeftFoot;
     // environment
     public SpeechBubble mSpeechBubble;
 
@@ -158,9 +171,16 @@ public class Stickman extends JComponent {
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
-        mLeftLeg = new LeftLeg(mBody);
+        //mLeftLeg = new LeftLeg(mBody);
         mStars = new Stars(mBody);                   /// added by Robbie
-        mRightLeg = new RightLeg(mBody);
+        //mRightLeg = new RightLeg(mBody);
+        mRightUpperLeg = new RightUpperLeg(mBody);
+        mRightForeLeg = new RightForeLeg(mRightUpperLeg);
+        mRightFoot = new RightFoot(mRightForeLeg);
+        
+        mLeftUpperLeg = new LeftUpperLeg(mBody);
+        mLeftForeLeg = new LeftForeLeg(mLeftUpperLeg);
+        mLeftFoot = new LeftFoot(mLeftForeLeg);
 
         mSpeechBubble = new SpeechBubble(mHead);
 
@@ -193,9 +213,16 @@ public class Stickman extends JComponent {
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
-        mLeftLeg = new LeftLeg(mBody);
+        //mLeftLeg = new LeftLeg(mBody);
         mStars = new Stars(mBody);                /// added by Robbie
-        mRightLeg = new RightLeg(mBody);
+        //mRightLeg = new RightLeg(mBody);
+        mRightUpperLeg = new RightUpperLeg(mBody);
+        mRightForeLeg = new RightForeLeg(mRightUpperLeg);
+        mRightFoot = new RightFoot(mRightForeLeg);
+        
+        mLeftUpperLeg = new LeftUpperLeg(mBody);
+        mLeftForeLeg = new LeftForeLeg(mLeftUpperLeg);
+        mLeftFoot = new LeftFoot(mLeftForeLeg);
 
         mSpeechBubble = new SpeechBubble(mHead);
 
@@ -226,9 +253,16 @@ public class Stickman extends JComponent {
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
         mRightHand = new RightHand(mRightForeArm);
-        mLeftLeg = new LeftLeg(mBody);
+        //mLeftLeg = new LeftLeg(mBody);
         mStars = new Stars(mBody);           /// added by Robbie
-        mRightLeg = new RightLeg(mBody);
+        //mRightLeg = new RightLeg(mBody);
+        mRightUpperLeg = new RightUpperLeg(mBody);
+        mRightForeLeg = new RightForeLeg(mRightUpperLeg);
+        mRightFoot = new RightFoot(mRightForeLeg);
+        
+        mLeftUpperLeg = new LeftUpperLeg(mBody);
+        mLeftForeLeg = new LeftForeLeg(mLeftUpperLeg);
+        mLeftFoot = new LeftFoot(mLeftForeLeg);
 
         mSpeechBubble = new SpeechBubble(mHead);
 
@@ -412,7 +446,7 @@ public class Stickman extends JComponent {
         mGeneralYTranslation = getBounds().height - 477 * mScale;      
         at.translate(mGeneralXTranslation, mGeneralYTranslation);
         
-        at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
+        at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+/*mLeftLeg.mLength*/ + 150);
  
         at.scale(mScale, mScale);   
         at.translate(0, leaveSpeed);   // Added by Robbie, GoDown
@@ -442,8 +476,14 @@ public class Stickman extends JComponent {
 	        mRightUpperArm.update(g);
 	        mRightForeArm.update(g);
 	        mRightHand.update(g);
-	        mLeftLeg.update(g);
-	        mRightLeg.update(g);
+	        //mLeftLeg.update(g);
+	        mRightUpperLeg.update(g);
+                mRightForeLeg.update(g);
+                mRightFoot.update(g);
+                
+                mLeftUpperLeg.update(g);
+                mLeftForeLeg.update(g);
+                mLeftFoot.update(g);
 	        
 	        if(starShowC == true)
             	mStars.update(g);     // Added by Robbie, to show stars or words here.
