@@ -38,13 +38,30 @@ public class Angry2 extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftFoot, "rotate", -40));
-//                mAnimationPart.add(new AnimationContent(mStickman.mRightForeLeg, "rotate", -20));
-mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", 40));
-//		playAnimationPart(20);
-		playAnimationPart(mDuration);
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
+                
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -27));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", 20));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", 20));
+                playAnimationPart(mDuration);
+                
+                //foot
+                for(int i = 0; i<8; i++)
+                {
+                    mAnimationPart = new ArrayList<>();
+                    mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", 40));
+                    playAnimationPart(200);
+                    
+                    mAnimationPart = new ArrayList<>();
+                    mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", -40));
+                    playAnimationPart(100);
+                }
+                
+                
+		
 		
 		pauseAnimation(1200);
 
@@ -53,11 +70,13 @@ mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", 40));
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRYEND"));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND"));   ///Add by Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRYEND"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperLeg, "rotate", -10));
-//                mAnimationPart.add(new AnimationContent(mStickman.mRightForeLeg, "rotate", 20));
-mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", -40));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", 27));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -20));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -20));
 		playAnimationPart(20);
 	}
 }
