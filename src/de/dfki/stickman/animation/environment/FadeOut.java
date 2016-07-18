@@ -98,7 +98,11 @@ public class FadeOut extends Animation
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "shape", "DEFAULT"));
+		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "shape", "DEFAULT"));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "shape", "DEFAULT"));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "shape", "DEFAULT"));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "shape", "DEFAULT"));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "shape", "DEFAULT"));
 //		mAnimationPart.add(new AnimationContent(mStickman.mRightLeg, "shape", "DEFAULT"));
 		//mAnimationPart.add(new AnimationContent(mStickman.mLeftLeg, "shape", "DEFAULT"));
 		mAnimationPart.add(new AnimationContent(mStickman.mNeck, "shape", "DEFAULT"));				

@@ -53,12 +53,7 @@ public class RightFoot extends BodyPart {
       		mLeg = new GeneralPath();
 		mLeg.moveTo(mEnd.x - 10, mEnd.y + 4);
 		mLeg.quadTo(mEnd.x, mEnd.y + 2, mEnd.x + 5, mEnd.y + 4);
-		//addToDrawObjects(gp);
-
-//		mFoot = new GeneralPath();
-//		mLeg.moveTo(mStart.x, mStart.y + 2);
-//		mLeg.quadTo(mStart.x - 2, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
-
+		
 		AffineTransform t = new AffineTransform();
 		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
 		mLeg.transform(t);

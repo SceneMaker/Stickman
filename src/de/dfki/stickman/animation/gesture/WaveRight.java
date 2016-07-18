@@ -32,7 +32,11 @@ public class WaveRight extends Animation {
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit * 16));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 16));
+		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationUnit * 16));
 		playAnimationPart(200);
 
 		pauseAnimation(200);
@@ -40,13 +44,21 @@ public class WaveRight extends Animation {
 		// wave right
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationUnit * 4));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit * 4));
+		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", rotationUnit * 4));
 		playAnimationPart(100);
 
 		// wave left
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit * 4));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 4));
+		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", -rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", -rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationUnit * 4));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationUnit * 4));
 		playAnimationPart(100);
 
 		pauseAnimation(200);
@@ -55,7 +67,11 @@ public class WaveRight extends Animation {
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", rotationUnit));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationUnit * 16));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit * 16));
+		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", rotationUnit * 16));
 		playAnimationPart(200);
 	}
 }

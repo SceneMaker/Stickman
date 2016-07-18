@@ -20,9 +20,12 @@ import java.awt.geom.GeneralPath;
 public class RightHand extends BodyPart {
 
 	RightForeArm mRightForeArm;
+        
 
-	public RightHand(RightForeArm rfa) {
+	public RightHand(RightForeArm rfa) 
+        {
 		mRightForeArm = rfa;
+                
 		mLength = 10;
 		mSize = new Dimension(mLength, mLength);
 

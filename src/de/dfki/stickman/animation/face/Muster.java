@@ -18,14 +18,14 @@ import java.util.ArrayList;
  * 
  * @author Patrick Gebhard
  */
-public class Angry2 extends Animation {
+public class Muster extends Animation {
 /**
  * 
  * @param sm Stickman
  * @param duration Control the speed of the movement from one emotion state to another emotion state.
  * @param block block or not the others movements, when one movement is not finished.
  */
-	public Angry2(Stickman sm, int duration, boolean block) {
+	public Muster(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 	/**
@@ -33,50 +33,34 @@ public class Angry2 extends Animation {
 	 */
 	@Override
 	public void playAnimation() {
+            int rotationUnit = 10;
 		// angry
+                
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit * 16));
+		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", -rotationUnit * 16));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationUnit * 16));
                 
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -27));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", 20));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", 20));
-                playAnimationPart(mDuration);
-                
-                //foot
-                for(int i = 0; i<8; i++)
-                {
-                    mAnimationPart = new ArrayList<>();
-                    mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", 40));
-                    playAnimationPart(200);
-                    
-                    mAnimationPart = new ArrayList<>();
-                    mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", -40));
-                    playAnimationPart(100);
-                }
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationUnit * 16));
+		 //mStickman.mRightFinger1LengthController = true;
+               //mStickman.mRightFinger2LengthController = true;
+               //mStickman.mRightFinger3LengthController = true;
+               //mStickman.mRightFinger4LengthController = true;
+                playAnimationPart(1000);
                 
                 
-		
-		
-		pauseAnimation(1200);
-
-		// no angry
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRYEND"));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRYEND"));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", 27));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -20));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -20));
-		playAnimationPart(20);
+                
+               pauseAnimation(1200);
+              
+               
+//
+//		// no angry
+//		mAnimationPart = new ArrayList<>();
+//		mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -40));
+//		mStickman.mRightFinger4LengthController = false;
+//		playAnimationPart(20);
 	}
 }

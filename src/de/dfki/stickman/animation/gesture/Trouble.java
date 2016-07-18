@@ -29,7 +29,10 @@ public class Trouble extends Animation {
 		mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", rotationUnit*8));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationUnit*8));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit*8));
+                //mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", rotationUnit*8));
 		playAnimationPart(200);
 
 		pauseAnimation(200);
@@ -38,7 +41,10 @@ public class Trouble extends Animation {
 		mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit*8));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit*8));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit*8));
+                //mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", -rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", -rotationUnit*8));
+                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationUnit*8));
 		playAnimationPart(200);
 		
 		// LeftForeArm rotate to left

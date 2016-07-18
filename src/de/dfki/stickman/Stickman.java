@@ -54,6 +54,10 @@ import de.dfki.stickman.body.RightFoot;
 import de.dfki.stickman.body.RightForeLeg;
 import de.dfki.stickman.body.RightUpperLeg;
 import de.dfki.stickman.body.LeftForeLeg;
+import de.dfki.stickman.body.RightHandFinger_1;
+import de.dfki.stickman.body.RightHandFinger_3;
+import de.dfki.stickman.body.RightHandFinger_2;
+import de.dfki.stickman.body.RightHandFinger_4;
 
 /**
  *
@@ -98,7 +102,11 @@ public class Stickman extends JComponent {
     public boolean  starShowC = false; 				//Added by Robbie,  star with character appear at the same time or not
     public boolean  fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
     public boolean  setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
-    												//True: visible False:invisible
+    public boolean mRightFinger4LengthController = false; 
+    public boolean mRightFinger3LengthController = false;
+    public boolean mRightFinger2LengthController = false;
+    public boolean mRightFinger1LengthController = false;
+    //True: visible False:invisible
     public double mWobble=0;
     public Boolean mIdleRun = true;                        // the shared variable to decide the while loop in IdleBehavior break or not
     private IdleBehavior mIdleBehavior;
@@ -127,7 +135,14 @@ public class Stickman extends JComponent {
     public RightShoulder mRightShoulder;
     public RightUpperArm mRightUpperArm;
     public RightForeArm mRightForeArm;
-    public RightHand mRightHand;
+    
+    public RightHandFinger_1 mRightHandFinger_1;
+    public RightHandFinger_2 mRightHandFinger_2;
+    public RightHandFinger_3 mRightHandFinger_3;
+    public RightHandFinger_4 mRightHandFinger_4;
+    //public RightHand mRightHand;
+    
+    
    // public LeftLeg mLeftLeg;
     public Stars mStars;         // added by Robbie Create Say bye or hi
     //public RightLeg mRightLeg;
@@ -170,7 +185,13 @@ public class Stickman extends JComponent {
         mRightShoulder = new RightShoulder(mBody);
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
-        mRightHand = new RightHand(mRightForeArm);
+        
+        mRightHandFinger_1 = new RightHandFinger_1(mRightForeArm);
+        mRightHandFinger_2 = new RightHandFinger_2(mRightForeArm);
+        mRightHandFinger_3 = new RightHandFinger_3(mRightForeArm);
+        mRightHandFinger_4 = new RightHandFinger_4(mRightForeArm);
+        //mRightHand = new RightHand(mRightForeArm;
+        
         //mLeftLeg = new LeftLeg(mBody);
         mStars = new Stars(mBody);                   /// added by Robbie
         //mRightLeg = new RightLeg(mBody);
@@ -212,7 +233,12 @@ public class Stickman extends JComponent {
         mRightShoulder = new RightShoulder(mBody);
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
-        mRightHand = new RightHand(mRightForeArm);
+        
+        mRightHandFinger_1 = new RightHandFinger_1(mRightForeArm);
+        mRightHandFinger_2 = new RightHandFinger_2(mRightForeArm);
+        mRightHandFinger_3 = new RightHandFinger_3(mRightForeArm);
+        mRightHandFinger_4 = new RightHandFinger_4(mRightForeArm);
+        //mRightHand = new RightHand(mRightForeArm);
         //mLeftLeg = new LeftLeg(mBody);
         mStars = new Stars(mBody);                /// added by Robbie
         //mRightLeg = new RightLeg(mBody);
@@ -252,7 +278,12 @@ public class Stickman extends JComponent {
         mRightShoulder = new RightShoulder(mBody);
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
-        mRightHand = new RightHand(mRightForeArm);
+        
+        mRightHandFinger_1 = new RightHandFinger_1(mRightForeArm);
+        mRightHandFinger_2 = new RightHandFinger_2(mRightForeArm);
+        mRightHandFinger_3 = new RightHandFinger_3(mRightForeArm);
+        mRightHandFinger_4 = new RightHandFinger_4(mRightForeArm);
+        //mRightHand = new RightHand(mRightForeArm);
         //mLeftLeg = new LeftLeg(mBody);
         mStars = new Stars(mBody);           /// added by Robbie
         //mRightLeg = new RightLeg(mBody);
@@ -475,7 +506,12 @@ public class Stickman extends JComponent {
 	        mRightShoulder.update(g);
 	        mRightUpperArm.update(g);
 	        mRightForeArm.update(g);
-	        mRightHand.update(g);
+	        
+                mRightHandFinger_1.update(g);
+                mRightHandFinger_2.update(g);
+                mRightHandFinger_3.update(g);
+                mRightHandFinger_4.update(g);
+                //mRightHand.update(g);
 	        //mLeftLeg.update(g);
 	        mRightUpperLeg.update(g);
                 mRightForeLeg.update(g);
