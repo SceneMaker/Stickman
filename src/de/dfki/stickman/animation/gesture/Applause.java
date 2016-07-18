@@ -38,10 +38,10 @@ public class Applause extends Animation
                 mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationUnit*3));
                 mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationUnit*3));
               
-                playAnimationPart(200);
+                //playAnimationPart(200);
                 
                 //LeftArm up
-                mAnimationPart = new ArrayList<>();
+                //mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftShoulder, "rotate", -rotationUnit));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit*-1));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*13+5));

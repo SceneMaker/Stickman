@@ -33,8 +33,6 @@ public class Angry2End extends Animation {
 	 */
 	@Override
 	public void playAnimation() {
-		
-		pauseAnimation(1200);
 
 		// no angry
 		mAnimationPart = new ArrayList<>();
@@ -48,6 +46,6 @@ public class Angry2End extends Animation {
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", 21));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -20));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -20));
-		playAnimationPart(20);
+		playAnimationPart(mDuration);
 	}
 }

@@ -37,18 +37,8 @@ public class Muster extends Animation {
 		// angry
                 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit * 16));
-		//mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 16));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", -rotationUnit * 16));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", -rotationUnit * 16));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationUnit * 16));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperLeg, "rotate", -40));
                 
-                mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationUnit * 16));
-		 //mStickman.mRightFinger1LengthController = true;
-               //mStickman.mRightFinger2LengthController = true;
-               //mStickman.mRightFinger3LengthController = true;
-               //mStickman.mRightFinger4LengthController = true;
                 playAnimationPart(1000);
                 
                 
@@ -58,9 +48,9 @@ public class Muster extends Animation {
                
 //
 //		// no angry
-//		mAnimationPart = new ArrayList<>();
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -40));
+		mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContent(mStickman.mRightUpperLeg, "rotate", 40));
 //		mStickman.mRightFinger4LengthController = false;
-//		playAnimationPart(20);
+		playAnimationPart(1000);
 	}
 }

@@ -42,9 +42,10 @@ public class Meditation extends Animation
             mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", rotationsUnit*5));
             mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationsUnit*19));
             //mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationsUnit*20));
-            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "shape", "DEFAULT"));
-            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "shape", "DEFAULT"));
-            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "shape", "DEFAULT"));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", -rotationsUnit*20));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", -rotationsUnit*20));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", -rotationsUnit*20));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationsUnit*20));
                         
             mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationsUnit*5));
             mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationsUnit*19));
@@ -71,9 +72,10 @@ public class Meditation extends Animation
             mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationsUnit*5));
             mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationsUnit*19));
             //mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationsUnit*20));
-            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "shape", "DEFAULT"));
-            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "shape", "DEFAULT"));
-            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "shape", "DEFAULT"));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_1, "rotate", rotationsUnit*20));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_2, "rotate", rotationsUnit*20));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_3, "rotate", rotationsUnit*20));
+            mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", rotationsUnit*20));
                         
             mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationsUnit*5));
             mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationsUnit*19));
