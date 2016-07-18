@@ -45,7 +45,11 @@ public class Applause extends Animation
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftShoulder, "rotate", -rotationUnit));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit*-1));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit*13+5));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit*3));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", rotationUnit*3));
 		playAnimationPart(200);
                 
                 
@@ -61,7 +65,11 @@ public class Applause extends Animation
                     mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", -rotationUnit));
 
                     mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                    //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", rotationUnit));
                     
                     //Head down
                     mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "translate", translationUnit));
@@ -83,7 +91,11 @@ public class Applause extends Animation
                     mAnimationPart.add(new AnimationContent(mStickman.mRightHandFinger_4, "rotate", rotationUnit));
 
                     mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                    //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", -rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", -rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", -rotationUnit));
+                    mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -rotationUnit));
                     
                     //Head up
                     mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "translate", -translationUnit));
@@ -113,7 +125,11 @@ public class Applause extends Animation
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftShoulder, "rotate", rotationUnit));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit*-1));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit*13-5));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit*3));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", -rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", -rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", -rotationUnit*3));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -rotationUnit*3));
                 
 		playAnimationPart(200);
 		

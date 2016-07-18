@@ -63,6 +63,10 @@ import de.dfki.stickman.body.RightHandFinger_4;
 
 import de.dfki.stickman.animation.environment.StartIdle;
 import de.dfki.stickman.animation.environment.StopIdle;
+import de.dfki.stickman.body.LeftHandFinger1;
+import de.dfki.stickman.body.LeftHandFinger2;
+import de.dfki.stickman.body.LeftHandFinger3;
+import de.dfki.stickman.body.LeftHandFinger4;
 
 
 /**
@@ -137,7 +141,13 @@ public class Stickman extends JComponent {
     public LeftShoulder mLeftShoulder;
     public LeftUpperArm mLeftUpperArm;
     public LeftForeArm mLeftForeArm;
-    public LeftHand mLeftHand;
+    
+    public LeftHandFinger1 mLeftHandFinger1;
+    public LeftHandFinger2 mLeftHandFinger2;
+    public LeftHandFinger3 mLeftHandFinger3;
+    public LeftHandFinger4 mLeftHandFinger4;
+    //public LeftHand mLeftHand;
+    
     public RightShoulder mRightShoulder;
     public RightUpperArm mRightUpperArm;
     public RightForeArm mRightForeArm;
@@ -187,7 +197,13 @@ public class Stickman extends JComponent {
         mLeftShoulder = new LeftShoulder(mBody);
         mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
         mLeftForeArm = new LeftForeArm(mLeftUpperArm);
-        mLeftHand = new LeftHand(mLeftForeArm);
+        
+        mLeftHandFinger1 = new LeftHandFinger1(mLeftForeArm);
+        mLeftHandFinger2 = new LeftHandFinger2(mLeftForeArm);
+        mLeftHandFinger3 = new LeftHandFinger3(mLeftForeArm);
+        mLeftHandFinger4 = new LeftHandFinger4(mLeftForeArm);
+        //mLeftHand = new LeftHand(mLeftForeArm);
+        
         mRightShoulder = new RightShoulder(mBody);
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
@@ -235,7 +251,13 @@ public class Stickman extends JComponent {
         mLeftShoulder = new LeftShoulder(mBody);
         mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
         mLeftForeArm = new LeftForeArm(mLeftUpperArm);
-        mLeftHand = new LeftHand(mLeftForeArm);
+        
+        mLeftHandFinger1 = new LeftHandFinger1(mLeftForeArm);
+        mLeftHandFinger2 = new LeftHandFinger2(mLeftForeArm);
+        mLeftHandFinger3 = new LeftHandFinger3(mLeftForeArm);
+        mLeftHandFinger4 = new LeftHandFinger4(mLeftForeArm);
+        //mLeftHand = new LeftHand(mLeftForeArm);
+        
         mRightShoulder = new RightShoulder(mBody);
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
@@ -278,7 +300,13 @@ public class Stickman extends JComponent {
         mLeftShoulder = new LeftShoulder(mBody);
         mLeftUpperArm = new LeftUpperArm(mLeftShoulder);
         mLeftForeArm = new LeftForeArm(mLeftUpperArm);
-        mLeftHand = new LeftHand(mLeftForeArm);
+        
+        mLeftHandFinger1 = new LeftHandFinger1(mLeftForeArm);
+        mLeftHandFinger2 = new LeftHandFinger2(mLeftForeArm);
+        mLeftHandFinger3 = new LeftHandFinger3(mLeftForeArm);
+        mLeftHandFinger4 = new LeftHandFinger4(mLeftForeArm);
+        //mLeftHand = new LeftHand(mLeftForeArm);
+        
         mRightShoulder = new RightShoulder(mBody);
         mRightUpperArm = new RightUpperArm(mRightShoulder);
         mRightForeArm = new RightForeArm(mRightUpperArm);
@@ -500,7 +528,13 @@ public class Stickman extends JComponent {
 	        mLeftShoulder.update(g);
 	        mLeftUpperArm.update(g);
 	        mLeftForeArm.update(g);
-	        mLeftHand.update(g);
+                
+                mLeftHandFinger1.update(g);
+                mLeftHandFinger2.update(g);
+                mLeftHandFinger3.update(g);
+                mLeftHandFinger4.update(g);
+	        //mLeftHand.update(g);
+                
 	        mRightShoulder.update(g);
 	        mRightUpperArm.update(g);
 	        mRightForeArm.update(g);

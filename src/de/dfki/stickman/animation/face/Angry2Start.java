@@ -45,7 +45,11 @@ public class Angry2Start extends Animation {
                 
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -21));
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", 20));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", 20));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", 20));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", 20));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", 20));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", 20));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", 20));
                 playAnimationPart(mDuration);
                 
                 //foot

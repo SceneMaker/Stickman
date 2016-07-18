@@ -16,14 +16,16 @@ import de.dfki.stickman.Stickman;
 
 /**
  *
- * @author Patrick Gebahrd
+ * @author Beka Aptsiauri
  *
  */
-public class LeftHand extends BodyPart {
+public class LeftHandFinger1 extends BodyPart 
+{
 
 	LeftForeArm mLeftForeArm;
+        public int animationsStep = 0;
 
-	public LeftHand(LeftForeArm lfa) {
+	public LeftHandFinger1(LeftForeArm lfa) {
 		mLeftForeArm = lfa;
 		mLength = 10;
 		mSize = new Dimension(mLength, mLength);
@@ -63,21 +65,23 @@ public class LeftHand extends BodyPart {
                 //Finger 1
 		gp.moveTo(mStart.x, mStart.y);
 		gp.lineTo(mStart.x - 5, mStart.y);
-                //Finger 3
-		gp.moveTo(mStart.x, mStart.y);
-		gp.lineTo(mEnd.x, mEnd.y);
-                //Finger 2
-		gp.moveTo(mStart.x - 1, mStart.y);
-		gp.lineTo(mEnd.x - 3, mEnd.y - 2f);
-                //Finger4
-		gp.moveTo(mStart.x + 1, mStart.y);
-		gp.lineTo(mEnd.x + 4, mEnd.y - 2f);
+//                //Finger 3
+//		gp.moveTo(mStart.x, mStart.y);
+//		gp.lineTo(mEnd.x, mEnd.y);
+//                //Finger 2
+//		gp.moveTo(mStart.x - 1, mStart.y);
+//		gp.lineTo(mEnd.x - 3, mEnd.y - 2f);
+//                //Finger4
+//		gp.moveTo(mStart.x + 1, mStart.y);
+//		gp.lineTo(mEnd.x + 4, mEnd.y - 2f);
 
 		addToDrawObjects(gp);
 	}
 
 	@Override
-	public void calculate(int step) {
+	public void calculate(int step) 
+        {
+                animationsStep = step;
 		createShape();
 
 		AffineTransform t = new AffineTransform();

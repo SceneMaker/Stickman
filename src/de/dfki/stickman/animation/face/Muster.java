@@ -37,9 +37,9 @@ public class Muster extends Animation {
 		// angry
                 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperLeg, "rotate", -40));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", 20));
                 
-                playAnimationPart(1000);
+                playAnimationPart(20);
                 
                 
                 
@@ -49,8 +49,8 @@ public class Muster extends Animation {
 //
 //		// no angry
 		mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mRightUpperLeg, "rotate", 40));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -20));
 //		mStickman.mRightFinger4LengthController = false;
-		playAnimationPart(1000);
+		playAnimationPart(20);
 	}
 }

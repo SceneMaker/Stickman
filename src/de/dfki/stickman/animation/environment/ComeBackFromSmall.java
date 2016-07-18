@@ -66,7 +66,11 @@ public class ComeBackFromSmall extends Animation {
         mAnimationPart = new ArrayList<>();
         mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
         mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+        //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", rotationUnit * 32));
         playAnimationPart(20);
         pauseAnimation(20);
 
@@ -75,7 +79,12 @@ public class ComeBackFromSmall extends Animation {
             for (int j = 0; j < 9; j++) {
                 mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -rotationUnit));
+                
 
                 mStickman.mScale = mStickman.mScale * 1.05f;
                 if (mStickman.mScale >= 1.3) {
@@ -88,7 +97,12 @@ public class ComeBackFromSmall extends Animation {
             for (int j = 0; j < 9; j++) {
                 mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", rotationUnit));
+                
 
                 mStickman.mScale = mStickman.mScale * 1.05f;
                 if (mStickman.mScale >= 1.3) {
@@ -102,7 +116,11 @@ public class ComeBackFromSmall extends Animation {
         mAnimationPart = new ArrayList<>();
         mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
         mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+        //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -rotationUnit * 32));
         playAnimationPart(20);
     }
 }

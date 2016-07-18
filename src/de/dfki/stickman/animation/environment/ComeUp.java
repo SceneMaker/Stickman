@@ -37,7 +37,12 @@ public class ComeUp extends Animation {
         mAnimationPart = new ArrayList<>();
         mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
         mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+        //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", rotationUnit * 32));
+        
         playAnimationPart(100);
 
         for (int i = 0; i < 8; i++) {
@@ -45,7 +50,11 @@ public class ComeUp extends Animation {
             for (int j = 0; j < 8; j++) {
                 mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -rotationUnit));
 
                 playComeSpeed(speed);
                 playAnimationPart(20);
@@ -55,7 +64,12 @@ public class ComeUp extends Animation {
             for (int j = 0; j < 8; j++) {
                 mAnimationPart = new ArrayList<>();
                 mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", rotationUnit));
+                
 
                 playComeSpeed(speed);
                 playAnimationPart(20);
@@ -66,7 +80,11 @@ public class ComeUp extends Animation {
         mAnimationPart = new ArrayList<>();
         mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
         mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+        //mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger1, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger2, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger3, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContent(mStickman.mLeftHandFinger4, "rotate", -rotationUnit * 32));
         playAnimationPart(200);
     }
 
