@@ -18,14 +18,14 @@ import java.util.ArrayList;
  * 
  * @author Patrick Gebhard
  */
-public class Angry2 extends Animation {
+public class Angry2End extends Animation {
 /**
  * 
  * @param sm Stickman
  * @param duration Control the speed of the movement from one emotion state to another emotion state.
  * @param block block or not the others movements, when one movement is not finished.
  */
-	public Angry2(Stickman sm, int duration, boolean block) {
+	public Angry2End(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 	/**
@@ -33,35 +33,6 @@ public class Angry2 extends Animation {
 	 */
 	@Override
 	public void playAnimation() {
-		// angry
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-                mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
-                
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -21));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", 20));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", 20));
-                playAnimationPart(mDuration);
-                
-                //foot
-                for(int i = 0; i<8; i++)
-                {
-                    mAnimationPart = new ArrayList<>();
-                    mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", 40));
-                    playAnimationPart(200);
-                    
-                    mAnimationPart = new ArrayList<>();
-                    mAnimationPart.add(new AnimationContent(mStickman.mRightFoot, "rotate", -40));
-                    playAnimationPart(100);
-                }
-                
-                
-		
 		
 		pauseAnimation(1200);
 

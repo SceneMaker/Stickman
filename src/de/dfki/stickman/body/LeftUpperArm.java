@@ -35,7 +35,7 @@ public class LeftUpperArm extends BodyPart {
 	public LeftUpperArm(LeftShoulder shoulder) {
 		mLeftShoulder = shoulder;
 
-		mDefaultRotation = -30;
+		mDefaultRotation = -23;
 		mRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;

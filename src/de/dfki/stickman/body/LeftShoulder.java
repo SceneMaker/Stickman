@@ -25,7 +25,7 @@ public class LeftShoulder extends BodyPart {
 
 	Body mBody;
 
-	int mShoulderLength = 15;
+	int mShoulderLength;
 	Dimension mSize = new Dimension(mShoulderLength, mShoulderLength);
 
 	Point mStart;
@@ -35,7 +35,10 @@ public class LeftShoulder extends BodyPart {
 
 	public LeftShoulder(Body body) {
 		mBody = body;
-
+                if(mBody.mNeck.mHead.mStickman.mType == Stickman.TYPE.MALE)
+                    mShoulderLength = 25;
+                else
+                    mShoulderLength = 15;
 		mDefaultRotation = -70;
 		mRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;

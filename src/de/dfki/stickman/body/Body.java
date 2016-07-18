@@ -68,11 +68,8 @@ public class Body extends JComponent {
 		mFemaleBodyFront.moveTo(mStart.x, mStart.y); 
                 
                 mFemaleBodyFront.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
-		
 		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX, mSize.height + 10);
-
 		mFemaleBodyFront.curveTo(mStart.x + mHalfSizeX - 40, mSize.height - 10, mStart.x - mHalfSizeX + 40, mSize.height + 20, mStart.x - mHalfSizeX, mSize.height);
-
 		//mFemaleBodyFront.lineTo(mStart.x - mHalfSizeX, mSize.height);
 		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
 
@@ -102,8 +99,8 @@ public class Body extends JComponent {
                 
                 mMaleBodyFront.lineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1);
                 
-		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
-		mMaleBodyFront.lineTo(mStart.x - mHalfSizeX + mDrawOffset, mSize.height);
+		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset-10, mSize.height);
+		mMaleBodyFront.lineTo(mStart.x - mHalfSizeX + mDrawOffset+10, mSize.height);
 		mMaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y);
 
 		mMaleBodyLeft = new GeneralPath();
