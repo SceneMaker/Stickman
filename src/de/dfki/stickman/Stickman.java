@@ -5,7 +5,6 @@ import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickman.animationlogic.AnimationScheduler;
 import de.dfki.stickman.animationlogic.EventAnimation;
-import de.dfki.stickman.animationlogic.IdleBehavior;
 import de.dfki.stickman.body.Body;
 import de.dfki.stickman.body.Head;
 import de.dfki.stickman.body.LeftEye;
@@ -47,7 +46,10 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
+
+import de.dfki.stickman.animation.environment.IdleBehavior;
 import de.dfki.stickman.animation.environment.SimplexNoise;
+
 import de.dfki.stickman.body.LeftFoot;
 import de.dfki.stickman.body.LeftUpperLeg;
 import de.dfki.stickman.body.RightFoot;
@@ -58,6 +60,10 @@ import de.dfki.stickman.body.RightHandFinger_1;
 import de.dfki.stickman.body.RightHandFinger_3;
 import de.dfki.stickman.body.RightHandFinger_2;
 import de.dfki.stickman.body.RightHandFinger_4;
+
+import de.dfki.stickman.animation.environment.StartIdle;
+import de.dfki.stickman.animation.environment.StopIdle;
+
 
 /**
  *
@@ -108,9 +114,9 @@ public class Stickman extends JComponent {
     public boolean mRightFinger1LengthController = false;
     //True: visible False:invisible
     public double mWobble=0;
-    public Boolean mIdleRun = true;                        // the shared variable to decide the while loop in IdleBehavior break or not
-    private IdleBehavior mIdleBehavior;
-    private SimplexNoise simplexNoise;             // Perlin noise
+    public Boolean mIdleRun = false;                        // the shared variable to decide the while loop in IdleBehavior break or not
+    public IdleBehavior mIdleBehavior;
+    public SimplexNoise simplexNoise;             // Perlin noise
     
     
     // amimation stuff
@@ -206,9 +212,9 @@ public class Stickman extends JComponent {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
+        
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise, "DEFAULT");
-        mIdleBehavior.start();
+        mIdleBehavior = new IdleBehavior(this,simplexNoise);
     }
 
     public Stickman(String name, TYPE gender, float scale) {
@@ -254,8 +260,6 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise, "DEFAULT");
-        mIdleBehavior.start();
     }
 
     public Stickman(String name, TYPE gender) {
@@ -299,8 +303,6 @@ public class Stickman extends JComponent {
 
         init();
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise,"DEFAULT");
-        mIdleBehavior.start();
     }
 
     private void init() {
@@ -426,17 +428,13 @@ public class Stickman extends JComponent {
     }
     
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
-    public void startIdleBehavior(String g){
-    	if(!mIdleBehavior.isAlive()){
-    		mIdleRun=true;
-    		mIdleBehavior = new IdleBehavior(this,simplexNoise, g);
-    		mIdleBehavior.start();
-    	}
+    
+    public void startIdleBehavior(){
+    	new StartIdle(this).startIdleBehavior();
     }
     		
     public void stopIdleBehavior(){
-    		mIdleRun=false;
-    		while(mIdleBehavior.isAlive());
+    	new StopIdle(this).stopIdleBehavior();
     }
 
     @Override
