@@ -361,14 +361,6 @@ public class Stickman extends JComponent {
     
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
     
-    public void startIdleBehavior(){
-    	new StartIdle(this).startIdleBehavior();
-    }
-    		
-    public void stopIdleBehavior(){
-    	new StopIdle(this).stopIdleBehavior();
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
         //super.paintComponent(g);

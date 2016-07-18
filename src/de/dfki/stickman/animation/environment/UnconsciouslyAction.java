@@ -18,20 +18,22 @@ public class UnconsciouslyAction extends Thread {
     private int countBlink = 0;
     private int countTileHead = 0;
     private int NoiseNumber;
-    private int mSleepTime;
+    private int mSleepTime=0;
 
     public UnconsciouslyAction(Stickman s, SimplexNoise noise) {
         mStickman = s;
         mSimplexNoise = noise;
-        mSleepTime = 10;
+        mSleepTime = 60;
     }
 
     private void coverMouth() {
         if (NoiseNumber == 1) {
             countCoverMouth++;
-            if (countCoverMouth == 200) {
-                mStickman.doAnimation("CoverMouth", 500, true);
-                countCoverMouth = 0;
+            if (countCoverMouth == 20) {
+            	countCoverMouth = 0;
+            	countTouchHead = 0;
+            	countTileHead = 0;
+            	mStickman.doAnimation("CoverMouth", 500, true);               
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -45,9 +47,11 @@ public class UnconsciouslyAction extends Thread {
     private void touchHead() {
         if (NoiseNumber == 2) {
             countTouchHead++;
-            if (countTouchHead == 100) {
-                mStickman.doAnimation("TouchHead", 500, true);
-                countTouchHead = 0;
+            if (countTouchHead == 20) {
+            	countCoverMouth = 0;
+            	countTouchHead = 0;
+            	countTileHead = 0;
+            	mStickman.doAnimation("TouchHead", 500, true);             
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -61,10 +65,10 @@ public class UnconsciouslyAction extends Thread {
     private void blink() {
         if (NoiseNumber == 3) {
             countBlink++;
-            if (countBlink == 80) {
-                mStickman.doAnimation("Blink", 500, true);
-                System.out.println("BLINK");
-                countBlink = 0;
+            if (countBlink == 8) {
+            	countBlink = 0;
+            	System.out.println("Blink");
+            	mStickman.doAnimation("Blink", 500, true);
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -78,9 +82,12 @@ public class UnconsciouslyAction extends Thread {
     private void tileHead() {
         if (NoiseNumber == 4) {
             countTileHead++;
-            if (countTileHead == 250) {
-                mStickman.doAnimation("HeadTilt", 500, true);
-                countTileHead = 0;
+            if (countTileHead == 25) {           	
+            	countCoverMouth = 0;
+            	countTouchHead = 0;
+            	countTileHead = 0;
+//            	if(mStickman.mAnimationScheduler.mTheBlockOfHell.availablePermits() != 0)
+            	mStickman.doAnimation("HeadTilt", 500, true);              
             } else {
                 try {
                     sleep(mSleepTime, 0);
