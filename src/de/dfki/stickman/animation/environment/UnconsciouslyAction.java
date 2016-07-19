@@ -11,8 +11,8 @@ public class UnconsciouslyAction extends Thread {
 
     private Stickman mStickman;
     private SimplexNoise mSimplexNoise;  // generate perlin noise Array 2d
-    private int count1 = 1;    // index of perlin noise Array
-    private int count2 = 1;    // index of perlin noise Array
+    private int count1 = 1;    			// index of perlin noise Array
+    private int count2 = 1;    			// index of perlin noise Array
     private int countCoverMouth = 0;
     private int countTouchHead = 0;
     private int countBlink = 0;
@@ -33,7 +33,8 @@ public class UnconsciouslyAction extends Thread {
             	countCoverMouth = 0;
             	countTouchHead = 0;
             	countTileHead = 0;
-            	mStickman.doAnimation("CoverMouth", 500, true);               
+            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())   // to ignore to many actions put in mAnimationQueue
+            		mStickman.doAnimation("CoverMouth", 500, true);               
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -51,7 +52,8 @@ public class UnconsciouslyAction extends Thread {
             	countCoverMouth = 0;
             	countTouchHead = 0;
             	countTileHead = 0;
-            	mStickman.doAnimation("TouchHead", 500, true);             
+            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())
+            		mStickman.doAnimation("TouchHead", 500, true);             
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -67,8 +69,8 @@ public class UnconsciouslyAction extends Thread {
             countBlink++;
             if (countBlink == 8) {
             	countBlink = 0;
-            	System.out.println("Blink");
-            	mStickman.doAnimation("Blink", 500, true);
+            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())
+            		mStickman.doAnimation("Blink", 500, true);
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -86,8 +88,8 @@ public class UnconsciouslyAction extends Thread {
             	countCoverMouth = 0;
             	countTouchHead = 0;
             	countTileHead = 0;
-//            	if(mStickman.mAnimationScheduler.mTheBlockOfHell.availablePermits() != 0)
-            	mStickman.doAnimation("HeadTilt", 500, true);              
+            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())
+            		mStickman.doAnimation("HeadTilt", 500, true);              
             } else {
                 try {
                     sleep(mSleepTime, 0);

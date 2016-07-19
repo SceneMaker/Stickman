@@ -49,8 +49,6 @@ import javax.swing.JComponent;
 
 import de.dfki.stickman.animation.environment.IdleBehavior;
 import de.dfki.stickman.animation.environment.SimplexNoise;
-import de.dfki.stickman.animation.environment.StartIdle;
-import de.dfki.stickman.animation.environment.StopIdle;
 
 /**
  *

@@ -8,8 +8,6 @@ package de.dfki.stickman.animation.face;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.AnimationContent;
-import de.dfki.stickman.body.LeftEyebrow;
-
 import java.util.ArrayList;
 
 /**
