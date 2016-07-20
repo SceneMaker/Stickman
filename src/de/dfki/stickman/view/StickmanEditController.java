@@ -31,11 +31,11 @@ public class StickmanEditController {
 	@FXML
 	private Label BodyColour;
 	@FXML
-	private Label Gesture;
+	private Label Environment;
 	@FXML
 	private Label EmotionExpression;
 	@FXML
-	private Label Environment;
+	private Label IdleSection;
 	@FXML
 	private Label Posture;
 	
@@ -63,16 +63,16 @@ public class StickmanEditController {
 	@FXML
     private GridPane gridPaneControlEmotion;
 	@FXML
-    private GridPane gridPaneControlEnvironment;
+    private GridPane gridPaneControlIdleSection;
 	@FXML
-    private GridPane gridPaneControlGesture;
+    private GridPane gridPaneControlEnvironment;
 	@FXML
     private GridPane gridPaneControlPosture;
 
 	@FXML
 	public void initialize()
 	{
-	   
+		setIdForLabel();
 		HeadComboBoxColor.setValue("Beige");
 		HeadComboBoxColor.getItems().addAll(
 	              "Blue",
@@ -110,8 +110,8 @@ public class StickmanEditController {
 	          );
 	    gridPaneControlColor.setVisible(true);
     	gridPaneControlEmotion.setVisible(false);
+    	gridPaneControlIdleSection.setVisible(false);
     	gridPaneControlEnvironment.setVisible(false);
-    	gridPaneControlGesture.setVisible(false);
     	gridPaneControlPosture.setVisible(false);
 	    
 	    BodyColour.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -119,8 +119,8 @@ public class StickmanEditController {
 	        public void handle(MouseEvent e) {
 	        	gridPaneControlColor.setVisible(true);
 	        	gridPaneControlEmotion.setVisible(false);
+	        	gridPaneControlIdleSection.setVisible(false);
 	        	gridPaneControlEnvironment.setVisible(false);
-	        	gridPaneControlGesture.setVisible(false);
 	        	gridPaneControlPosture.setVisible(false);
 	        }
 	      });
@@ -130,8 +130,19 @@ public class StickmanEditController {
 	        public void handle(MouseEvent e) {
 	        	gridPaneControlColor.setVisible(false);
 	        	gridPaneControlEmotion.setVisible(true);
+	        	gridPaneControlIdleSection.setVisible(false);
 	        	gridPaneControlEnvironment.setVisible(false);
-	        	gridPaneControlGesture.setVisible(false);
+	        	gridPaneControlPosture.setVisible(false);
+	        }
+	      });
+	    
+	    IdleSection.setOnMouseClicked(new EventHandler<MouseEvent>() {
+	        @Override
+	        public void handle(MouseEvent e) {
+	        	gridPaneControlColor.setVisible(false);
+	        	gridPaneControlEmotion.setVisible(false);
+	        	gridPaneControlIdleSection.setVisible(true);
+	        	gridPaneControlEnvironment.setVisible(false);
 	        	gridPaneControlPosture.setVisible(false);
 	        }
 	      });
@@ -141,19 +152,8 @@ public class StickmanEditController {
 	        public void handle(MouseEvent e) {
 	        	gridPaneControlColor.setVisible(false);
 	        	gridPaneControlEmotion.setVisible(false);
+	        	gridPaneControlIdleSection.setVisible(false);
 	        	gridPaneControlEnvironment.setVisible(true);
-	        	gridPaneControlGesture.setVisible(false);
-	        	gridPaneControlPosture.setVisible(false);
-	        }
-	      });
-	    
-	    Gesture.setOnMouseClicked(new EventHandler<MouseEvent>() {
-	        @Override
-	        public void handle(MouseEvent e) {
-	        	gridPaneControlColor.setVisible(false);
-	        	gridPaneControlEmotion.setVisible(false);
-	        	gridPaneControlEnvironment.setVisible(false);
-	        	gridPaneControlGesture.setVisible(true);
 	        	gridPaneControlPosture.setVisible(false);
 	        }
 	      });
@@ -163,10 +163,19 @@ public class StickmanEditController {
 	        public void handle(MouseEvent e) {
 	        	gridPaneControlColor.setVisible(false);
 	        	gridPaneControlEmotion.setVisible(false);
+	        	gridPaneControlIdleSection.setVisible(false);
 	        	gridPaneControlEnvironment.setVisible(false);
-	        	gridPaneControlGesture.setVisible(false);
 	        	gridPaneControlPosture.setVisible(true);
 	        }
 	      });
 	} 
+	private void setIdForLabel()
+	{
+		BodyColour.setId("Menu");
+		Environment.setId("Menu");
+		EmotionExpression.setId("Menu");
+		IdleSection.setId("Menu");
+		Posture.setId("Menu");
+		
+	}
 }

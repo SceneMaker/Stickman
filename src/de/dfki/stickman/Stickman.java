@@ -88,7 +88,7 @@ public class Stickman extends JComponent {
     FontMetrics mFontMetrics;
     Font mFont;
     
-    public double leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
+    public double 	leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
     public boolean  starShowControler = false;     //Added by Robbie,  to control the star appear or not
     public boolean  starShowC = false; 				//Added by Robbie,  star with character appear at the same time or not
     public boolean  fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out

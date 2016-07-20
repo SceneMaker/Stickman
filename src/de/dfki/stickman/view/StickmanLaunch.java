@@ -8,10 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class main extends Application {
+public class StickmanLaunch extends Application {
 
     private Stage primaryStage;
     private AnchorPane rootLayout;
+    
+    public StickmanLaunch()
+    {
+    	
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -21,37 +26,32 @@ public class main extends Application {
         initRootLayout();
     }
 
-    /**
-     * Initializes the root layout.
-     */
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("StickmanEdit.fxml"));
             rootLayout = (AnchorPane) loader.load();
             
-            StickmanEditController controller = loader.getController();
-//            controller.setMainApp(this);
-
-            // Show the scene containing the root layout.
+//            StickmanEditController controller = loader.getController();
             Scene scene = new Scene(rootLayout);
+             
             primaryStage.setScene(scene);
+            scene.getStylesheets().add(this.getClass().getResource("StickmanEdit.css").toExternalForm());
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Returns the main stage.
-     * @return
-     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    public static void main(String[] args) {
-        launch(args);
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+    
+    public void tryLaunch() {
+        launch();
     }
 }
