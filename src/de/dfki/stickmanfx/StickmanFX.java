@@ -6,29 +6,8 @@ import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickman.animationlogic.AnimationScheduler;
 import de.dfki.stickman.animationlogic.EventAnimation;
-import de.dfki.stickman.body.Body;
-import de.dfki.stickman.body.Head;
-import de.dfki.stickman.body.LeftEye;
-import de.dfki.stickman.body.LeftEyebrow;
-import de.dfki.stickman.body.FaceWrinkle;
-import de.dfki.stickman.body.LeftForeArm;
-import de.dfki.stickman.body.LeftHand;
-import de.dfki.stickman.body.LeftLeg;
-import de.dfki.stickman.body.Stars;
-import de.dfki.stickman.body.LeftShoulder;
-import de.dfki.stickman.body.LeftUpperArm;
-import de.dfki.stickman.body.Mouth;
-import de.dfki.stickman.body.Neck;
-import de.dfki.stickman.body.RightEye;
-import de.dfki.stickman.body.RightEyebrow;
-import de.dfki.stickman.body.RightForeArm;
-import de.dfki.stickman.body.RightHand;
-import de.dfki.stickman.body.RightLeg;
-import de.dfki.stickman.body.RightShoulder;
-import de.dfki.stickman.body.RightUpperArm;
 import de.dfki.stickman.environment.SpeechBubble;
 import de.dfki.stickman.animationlogic.AnimationLoader;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -56,13 +35,22 @@ import de.dfki.stickman.bodyfx.LeftEyeFX;
 import de.dfki.stickman.bodyfx.LeftEyebrowFX;
 import de.dfki.stickman.bodyfx.LeftForeArmFX;
 import de.dfki.stickman.bodyfx.LeftHandFX;
+import de.dfki.stickman.bodyfx.LeftLegFX;
 import de.dfki.stickman.bodyfx.LeftShoulderFX;
 import de.dfki.stickman.bodyfx.LeftUpperArmFX;
 import de.dfki.stickman.bodyfx.MouthFX;
 import de.dfki.stickman.bodyfx.NeckFX;
 import de.dfki.stickman.bodyfx.RightEyeFX;
 import de.dfki.stickman.bodyfx.RightEyebrowFX;
+import de.dfki.stickman.bodyfx.RightForeArmFX;
+import de.dfki.stickman.bodyfx.RightHandFX;
+import de.dfki.stickman.bodyfx.RightLegFX;
 import de.dfki.stickman.bodyfx.RightShoulderFX;
+import de.dfki.stickman.bodyfx.RightUpperArmFX;
+import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.transform.Affine;
+import javafx.stage.Screen;
 
 /**
  *
@@ -73,8 +61,8 @@ import de.dfki.stickman.bodyfx.RightShoulderFX;
  * by Ross Ching in 2012
  *
  */
-public class StickmanFX extends JComponent {
-
+public class StickmanFX extends Group 
+{
     // general stuff
     public static enum ORIENTATION {
 
@@ -86,7 +74,7 @@ public class StickmanFX extends JComponent {
         FEMALE, MALE
     };
 
-    static public final Color sFOREGROUND = new Color(188, 188, 188, 128);
+    static public final Color sFOREGROUND = Color.rgb(188, 188, 188, (128*100/255)/100f);
     public TYPE mType = TYPE.FEMALE;
     public String mName = "Stickman";
     public ORIENTATION mOrientation = ORIENTATION.FRONT;
@@ -101,19 +89,18 @@ public class StickmanFX extends JComponent {
     public static Dimension mSize = new Dimension(mDefaultSize);
     FontMetrics mFontMetrics;
     Font mFont;
-    
-    public double 	leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
-    public boolean  starShowControler = false;     //Added by Robbie,  to control the star appear or not
-    public boolean  starShowC = false; 				//Added by Robbie,  star with character appear at the same time or not
-    public boolean  fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
-    public boolean  setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
-    												//True: visible False:invisible
-    public double mWobble=0;
+
+    public double leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
+    public boolean starShowControler = false;     //Added by Robbie,  to control the star appear or not
+    public boolean starShowC = false; 				//Added by Robbie,  star with character appear at the same time or not
+    public boolean fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
+    public boolean setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
+    //True: visible False:invisible
+    public double mWobble = 0;
     public Boolean mIdleRun = false;                        // the shared variable to decide the while loop in IdleBehavior break or not
     public IdleBehavior mIdleBehavior;
     public SimplexNoise simplexNoise;             // Perlin noise
-    
-    
+
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
     public AnimationScheduler mAnimationScheduler;
@@ -134,12 +121,12 @@ public class StickmanFX extends JComponent {
     public LeftForeArmFX mLeftForeArmFX;
     public LeftHandFX mLeftHandFX;
     public RightShoulderFX mRightShoulderFX;
-//    public RightUpperArm mRightUpperArm;
-//    public RightForeArm mRightForeArm;
-//    public RightHand mRightHand;
-//    public LeftLeg mLeftLeg;
+    public RightUpperArmFX mRightUpperArmFX;
+    public RightForeArmFX mRightForeArmFX;
+    public RightHandFX mRightHandFX;
+    public LeftLegFX mLeftLegFX;
 //    public Stars mStars;         // added by Robbie Create Say bye or hi
-//    public RightLeg mRightLeg;
+    public RightLegFX mRightLegFX;
     // environment
     //public SpeechBubble mSpeechBubble;
 
@@ -170,18 +157,17 @@ public class StickmanFX extends JComponent {
         mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
         mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
         mRightShoulderFX = new RightShoulderFX(mBodyFX);
-//        mRightUpperArm = new RightUpperArm(mRightShoulder);
-//        mRightForeArm = new RightForeArm(mRightUpperArm);
-//        mRightHand = new RightHand(mRightForeArm);
-//        mLeftLeg = new LeftLeg(mBody);
+        mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightHandFX = new RightHandFX(mRightForeArmFX);
+        mLeftLegFX = new LeftLegFX(mBodyFX);
 //        mStars = new Stars(mBody);                   /// added by Robbie
-//        mRightLeg = new RightLeg(mBody);
+        mRightLegFX = new RightLegFX(mBodyFX);
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
-
         init();
-        
-        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
         //mIdleBehavior = new IdleBehavior(this,simplexNoise);
     }
 
@@ -205,17 +191,16 @@ public class StickmanFX extends JComponent {
         mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
         mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
         mRightShoulderFX = new RightShoulderFX(mBodyFX);
-//        mRightUpperArm = new RightUpperArm(mRightShoulder);
-//        mRightForeArm = new RightForeArm(mRightUpperArm);
-//        mRightHand = new RightHand(mRightForeArm);
-//        mLeftLeg = new LeftLeg(mBody);
+        mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightHandFX = new RightHandFX(mRightForeArmFX);
+        mLeftLegFX = new LeftLegFX(mBodyFX);
 //        mStars = new Stars(mBody);                /// added by Robbie
-//        mRightLeg = new RightLeg(mBody);
+        mRightLegFX = new RightLegFX(mBodyFX);
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
-
         init();
-        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
     public StickmanFX(String name, TYPE gender) {
@@ -236,25 +221,36 @@ public class StickmanFX extends JComponent {
         mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
         mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
         mRightShoulderFX = new RightShoulderFX(mBodyFX);
-//        mRightUpperArm = new RightUpperArm(mRightShoulder);
-//        mRightForeArm = new RightForeArm(mRightUpperArm);
-//        mRightHand = new RightHand(mRightForeArm);
-//        mLeftLeg = new LeftLeg(mBody);
+        mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightHandFX = new RightHandFX(mRightForeArmFX);
+        mLeftLegFX = new LeftLegFX(mBodyFX);
 //        mStars = new Stars(mBody);           /// added by Robbie
-//        mRightLeg = new RightLeg(mBody);
+        mRightLegFX = new RightLegFX(mBodyFX);
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
-
         init();
-        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        
+        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
+                                mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
+                                mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
+                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+        update();
+        
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
-    private void init() {
-        setLayout(null);
-        setPreferredSize(mSize);
-        setMinimumSize(mSize);
-        setSize(mSize);
-    
+    private void init() 
+    {
+        this.prefHeight(mSize.height);
+        this.prefWidth(mSize.width);
+        this.minHeight(mSize.height);
+        this.minWidth(mSize.width);
+//        setLayout(null);
+//        setPreferredSize(mSize);
+//        setMinimumSize(mSize);
+//        setSize(mSize);
+
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
         map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
@@ -263,9 +259,9 @@ public class StickmanFX extends JComponent {
         map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
         map.put(TextAttribute.SIZE, 14);
 
-        mFont = Font.getFont(map);
-        mFontMetrics = getFontMetrics(mFont);
-        setFont(mFont);
+//        mFont = Font.getFont(map);
+//        mFontMetrics = getFontMetrics(mFont);
+//        setFont(mFont);
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanLogFormatter());
@@ -301,10 +297,10 @@ public class StickmanFX extends JComponent {
         return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
     }
 
-    @Override
-    public String getName() {
-        return mName;
-    }
+//    @Override
+//    public String getName() {
+//        return mName;
+//    }
 
     // Sets the orientation of the character, allowed values are: LEFT, RIGHT, FRONT
     public void setOrientation(String orientation) {
@@ -332,7 +328,6 @@ public class StickmanFX extends JComponent {
 //
 //        return a;
 //    }
-
 //    public Animation doAnimation(String name, int duration, boolean block) {
 //        return doAnimation(name, duration, "", block);
 //    }
@@ -344,7 +339,6 @@ public class StickmanFX extends JComponent {
 //    public Animation doAnimation(String name, boolean block) {
 //        return doAnimation(name, -1, "", block);
 //    }
-
 //    public Animation doAnimation(String name, int duration, Object param, boolean block) {
 //        Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
 //
@@ -359,7 +353,6 @@ public class StickmanFX extends JComponent {
 //
 //        return a;
 //    }
-
     public void playAnimation(Animation a) {
         try {
             //mLogger.info("Waiting for allowance to play animation " + a.toString());
@@ -370,83 +363,56 @@ public class StickmanFX extends JComponent {
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
     
-    @Override
-    protected void paintComponent(Graphics g) {
-        //super.paintComponent(g);
-
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
+    
+    public void update() 
+    {
+        Color currColor = sFOREGROUND;
         int width = new Float(mSize.width).intValue();
         int height = new Float(mSize.height).intValue();
 
-        if (!mName.equalsIgnoreCase("")) {
-            if (mShowBackground) {
-                g2.setColor(sFOREGROUND);
-                g2.fillRect(0, 0, width, height);
-            }
-            // draw Stickman's name
-            final int hOffset = mFontMetrics.getAscent() + mFontMetrics.getDescent();
-            final int wOffset = mFontMetrics.stringWidth(mName);
-
-            if (mShowStage) {
-                g2.setColor(sFOREGROUND.darker());
-                mLogger.info("" + (height - hOffset * 4) + ", " + height);
-
-                g2.fillRect(0, height - new Float(hOffset * 4 * mScale).intValue(), width, height);
-            }
-
-            if (mShowName) {
-                //g2.setColor(mBody.mColor.darker());
-                g2.drawString(mName, 10, height - hOffset);
-            }
-        }
+        
 
         // draw everthing in the middle and scaled
-        AffineTransform at = g2.getTransform();
-        mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;        		
-        mGeneralYTranslation = getBounds().height - 477 * mScale;      
-        at.translate(mGeneralXTranslation, mGeneralYTranslation);
-        
+        Affine af = new Affine();
+        mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
+        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
+        af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
+
         //at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
- 
-        at.scale(mScale, mScale);   
-        at.translate(0, leaveSpeed);   // Added by Robbie, GoDown
-        
-        g2.setTransform(at);
+        af.appendScale(mScale, mScale);
+        af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
+
+        //this.getTransforms().add(af);
 
         // draw body parts
-        if(starShowControler == true)
-        {
+        if (starShowControler == true) {
             //mStars.update(g);     // Added by Robbie, to show stars or words here.
-        }
-        
-        else{     	
+        } else {
 //        	if(starShowC == true)
 //            	mStars.update(g);   	
-	        mHeadFX.update();
-	        mLeftEyebrowFX.update();
-	        mLeftEyeFX.update();
-	        mRightEyebrowFX.update();
+            mHeadFX.update();
+            mLeftEyebrowFX.update();
+            mLeftEyeFX.update();
+            mRightEyebrowFX.update();
 //	        mFaceWrinkle.update(g);      // added by Robbie
-	        mRightEyeFX.update();
-	        mMouthFX.update();
-	        mNeckFX.update();
-	        mBodyFX.update();
-	        mLeftShoulderFX.update();
-	        mLeftUpperArmFX.update();
-	        mLeftForeArmFX.update();
-	        mLeftHandFX.update();
-	        mRightShoulderFX.update();
-//	        mRightUpperArm.update(g);
-//	        mRightForeArm.update(g);
-//	        mRightHand.update(g);
-//	        mLeftLeg.update(g);
-//	        mRightLeg.update(g);
-	        
+            mRightEyeFX.update();
+            mMouthFX.update();
+            mNeckFX.update();
+            mBodyFX.update();
+            mLeftShoulderFX.update();
+            mLeftUpperArmFX.update();
+            mLeftForeArmFX.update();
+            mLeftHandFX.update();
+            mRightShoulderFX.update();
+            mRightUpperArmFX.update();
+            mRightForeArmFX.update();
+            mRightHandFX.update();
+            mLeftLegFX.update();
+            mRightLegFX.update();
+
 //	        if(starShowC == true)
 //            	mStars.update(g);     // Added by Robbie, to show stars or words here.
         }

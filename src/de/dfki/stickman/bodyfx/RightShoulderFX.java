@@ -50,7 +50,8 @@ public class RightShoulderFX extends BodyPartFX
 
 	public Point getRightShoulderEndPosition() 
         {
-                return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() ), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+            //??????????????????
+                return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX() ), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
 		//return (mShoulder != null) ? new Point((int) mShoulder.getCurrentPoint().getX(), (int) mShoulder.getCurrentPoint().getY()) : new Point(0, 0);
 	}
 
