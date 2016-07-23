@@ -60,7 +60,7 @@ public class LeftShoulderFX extends BodyPartFX
         {
             //alternative ?????
             //return (mShoulder != null) ? new Point((int) (mShoulder.impl_getPivotX() + mShoulderLength ), (int) mShoulder.impl_configShape().getCurrentY()-10) : new Point(0, 0);
-            return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() ), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+            return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()-1), (int) mShoulder.boundsInParentProperty().get().getMaxY()-1) : new Point(0, 0);
         }
 
 	@Override

@@ -32,6 +32,8 @@ import javafx.stage.Stage;
 public class TEST extends Application
 {
     private static FlowPane sFlowPane;
+    public static StickmanFX sMale = new StickmanFX("Bob", StickmanFX.TYPE.MALE);
+    public static StickmanFX sFemale = new StickmanFX("Anna", StickmanFX.TYPE.FEMALE);
 
     @Override
     public void start(Stage stage) throws Exception 
@@ -44,9 +46,8 @@ public class TEST extends Application
         Scene scene = new Scene(root);
         sFlowPane = (FlowPane) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
         //******************************TEST********************************//
-        StickmanFX s = new StickmanFX("Anna", StickmanFX.TYPE.MALE);
-        StickmanFX s1 = new StickmanFX("Anna", StickmanFX.TYPE.FEMALE);
-        sFlowPane.getChildren().addAll(s, s1);
+        
+        sFlowPane.getChildren().addAll(sMale, sFemale);
         //****************************END TEST*****************************//
         stage.setScene(scene);
         stage.setResizable(false);

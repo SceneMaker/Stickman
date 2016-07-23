@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx;
 
 import de.dfki.stickman.view.*;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -28,6 +30,9 @@ public class StickmanStageController {
 //        "Option 2",
 //        "Option 3"
 //    );
+    
+    public static StickmanFX sStickman;
+    
     @FXML
     private Label BodyColour;
     @FXML
@@ -74,6 +79,7 @@ public class StickmanStageController {
     @FXML
     public void initialize() 
     {
+        sStickman = TEST.sMale;
         setIdForLabel();
         HeadComboBoxColor.setValue("Beige");
         HeadComboBoxColor.getItems().addAll("Blue", "Black");
@@ -95,7 +101,41 @@ public class StickmanStageController {
         gridPaneControlIdleSection.setVisible(false);
         gridPaneControlEnvironment.setVisible(false);
         gridPaneControlPosture.setVisible(false);
+        
+        //change bodyColor
+        BodyComboBoxColor.setOnAction((event) -> 
+        {
+            String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
+            
+            Platform.runLater(() -> 
+            {
+                sStickman.mBodyFX.mMaleColor = switchColor(color);
+                sStickman.mBodyFX.update();
+            });
+            
+        });
 
+    }
+    
+    private Color switchColor(String color)
+    {
+        Color c = null;
+        switch(color)
+        {
+            case "Beige": 
+                c = Color.BEIGE;
+                break;
+            case "Yellow":
+                c = Color.YELLOW;
+                break;
+            case "White":
+                c = Color.WHITE;
+                break;
+            case "Black":
+                c = Color.BLACK;
+                break;
+        }
+        return c;
     }
     
     @FXML

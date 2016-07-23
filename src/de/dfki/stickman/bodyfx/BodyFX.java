@@ -40,9 +40,10 @@ public class BodyFX extends Group
 	int mDrawOffset = 20;
 	Point mStart;
 
-	Color mFemaleColor = Color.rgb(154, 83, 198, (240*100/255)/100f);    // The color is changed in paintComponent
-        Color mMaleColor = Color.rgb(14, 134, 122, (240*100/255)/100f);
+	public Color mFemaleColor = Color.rgb(154, 83, 198, (240*100/255)/100f);    // The color is changed in paintComponent
+        public Color mMaleColor = Color.rgb(14, 134, 122, (240*100/255)/100f);
 	public Color mColor  = mFemaleColor;
+        public Color currentColor = null;
 
 	Path mFemaleBodyFront, mFemaleBodyLeft, mFemaleBodyRight;
 	Path mMaleBodyFront, mMaleBodyLeft, mMaleBodyRight;
@@ -107,11 +108,11 @@ public class BodyFX extends Group
         }
 
 	public Point getLeftArmStartPostion() {
-		return new Point(mStart.x + 1, mStart.y);
+		return new Point(mStart.x + 1, mStart.y+4);
 	}
 
 	public Point getRightArmStartPostion() {
-		return new Point(mStart.x - 1, mStart.y);
+		return new Point(mStart.x - 1, mStart.y+4);
 	}
 
 	public Point getLeftLegStartPostion() 
@@ -235,8 +236,7 @@ public class BodyFX extends Group
 
 	
 	public void update() {
-
-                Color currentColor = null;
+            
 		calculate();
 
 		if(mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true)
