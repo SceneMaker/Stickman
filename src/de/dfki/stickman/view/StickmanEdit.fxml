@@ -88,7 +88,7 @@
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
@@ -149,11 +149,11 @@
                      <children>
                         <RadioButton mnemonicParsing="false" text="TouchHead" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <toggleGroup>
-                              <ToggleGroup fx:id="GestureGroup" />
+                              <ToggleGroup fx:id="Environmnet" />
                            </toggleGroup></RadioButton>
-                        <RadioButton mnemonicParsing="false" text="WaveLeft" toggleGroup="$GestureGroup" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <RadioButton mnemonicParsing="false" text="WaveRight" toggleGroup="$GestureGroup" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <RadioButton mnemonicParsing="false" text="CoverMouth" toggleGroup="$GestureGroup" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <RadioButton mnemonicParsing="false" text="WaveLeft" toggleGroup="$Environmnet" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <RadioButton mnemonicParsing="false" text="WaveRight" toggleGroup="$Environmnet" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <RadioButton mnemonicParsing="false" text="CoverMouth" toggleGroup="$Environmnet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Environment" GridPane.columnSpan="2">
                            <font>
                               <Font size="18.0" />
@@ -173,10 +173,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <RadioButton mnemonicParsing="false" text="With Perlin Noise" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="Environmnet" />
-                           </toggleGroup></RadioButton>
+                        <RadioButton mnemonicParsing="false" text="With Perlin Noise" toggleGroup="$Environmnet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <RadioButton mnemonicParsing="false" text="Without Perlin Noise" toggleGroup="$Environmnet" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Idle Section" GridPane.columnSpan="2">
                            <font>
