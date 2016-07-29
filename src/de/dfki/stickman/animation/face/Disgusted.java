@@ -16,6 +16,10 @@ import java.util.ArrayList;
  *
  */
 public class Disgusted extends Animation {
+	
+	public Disgusted() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
 
 	public Disgusted(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
