@@ -11,6 +11,10 @@ import java.util.ArrayList;
  *
  */
 public class Happy extends Animation {
+	
+	public Happy() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
 
 	public Happy(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);

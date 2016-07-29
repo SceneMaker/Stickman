@@ -25,8 +25,7 @@ import org.w3c.dom.Element;
  */
 public class Animation extends Thread implements XMLParseable, XMLWriteable {
 
-//	enum ANIMTYPE = { EmotionExpression, Gesture};
-	
+	public enum ANIMTYPE { EmotionExpression, Gesture}	
 	public String mName = "";
 	public ArrayList<AnimationContent> mAnimationPart = new ArrayList<>();
 	public Semaphore mAnimationPartStart = new Semaphore(0);
@@ -39,11 +38,13 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	public int mDuration = -1;
 	public String mID;
 	public Object mParameter = "";
-//	public ANIMTYPE mType = null;
 	
-
+	public ANIMTYPE mAnimType = null;
+	
 	public Animation() {
+		
 	}
+
 
 	public Animation(Stickman sm, int duration, boolean block) {
 		mName = getClass().getSimpleName();

@@ -5,8 +5,13 @@ package de.dfki.stickman.view;
 public class test
 {
 	private static StickmanLaunch mStickmanLaunch;
-	public static void main(String[] args) {
-		mStickmanLaunch = new StickmanLaunch();
+	  
+	public static void main(String[] args) throws Exception {
+		
+	    
+	    mStickmanLaunch = new StickmanLaunch();
 		mStickmanLaunch.tryLaunch();
-	}
+	  }
 }
+
+

@@ -16,6 +16,10 @@ import java.util.ArrayList;
  *
  */
 public class Surprised extends Animation {
+	
+	public Surprised() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
 
 	public Surprised(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);

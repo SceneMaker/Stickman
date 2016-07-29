@@ -19,6 +19,11 @@ public class Fear extends Animation {
 
 //	mType ) ANIMTYPE.EmotionExpression;
 	
+	public Fear() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
+	
+	
 	public Fear(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

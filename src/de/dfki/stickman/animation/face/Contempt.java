@@ -16,6 +16,10 @@ import java.util.ArrayList;
  *
  */
 public class Contempt extends Animation {
+	
+	public Contempt() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
 
 	public Contempt(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);

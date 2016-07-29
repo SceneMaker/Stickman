@@ -1,5 +1,9 @@
 package de.dfki.stickmanfx;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import de.dfki.stickman.*;
+
 import de.dfki.stickman.view.*;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
@@ -31,6 +35,9 @@ public class StickmanStageController {
 //        "Option 3"
 //    );
     
+	private static String packEmotionExpression = "de.dfki.stickman.animation.face";
+	private static String packGesture = "de.dfki.stickman.animation.gesture";
+	
     public static StickmanFX sStickman;
     
     @FXML
@@ -75,6 +82,9 @@ public class StickmanStageController {
     private GridPane gridPaneControlPosture;
     @FXML
     private FlowPane StickmanFlowPane;
+    
+    @FXML
+    private ComboBox<String> EmotionExpressionComboBox;
 
     @FXML
     public void initialize() 
@@ -102,6 +112,8 @@ public class StickmanStageController {
         gridPaneControlEnvironment.setVisible(false);
         gridPaneControlPosture.setVisible(false);
         
+        fillComboForEmotionExpression();
+        
         //change bodyColor
         BodyComboBoxColor.setOnAction((event) -> 
         {
@@ -114,7 +126,30 @@ public class StickmanStageController {
             });
             
         });
+        
+      //emotion express by Robbie Animation is not added to FX
+//        EmotionExpressionComboBox.setOnAction((event) -> 
+//        {
+//            String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
+//            
+//            Platform.runLater(() -> 
+//            {
+//                sStickman.doAnimation("StartIdle", 70, true);
+//            });
+//            
+//        });
+        
 
+    }
+    
+    private void fillComboForEmotionExpression()
+    {
+    	ArrayList<String> getClassesNames;
+    	StickmanFillCombo mStickmanFillCombo = new StickmanFillCombo(packEmotionExpression);
+    	getClassesNames = mStickmanFillCombo.getComboList();
+    	ObservableList<String> classNames = FXCollections.observableArrayList();
+    	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
+    	EmotionExpressionComboBox.getItems().addAll(classNames);
     }
     
     private Color switchColor(String color)
@@ -197,4 +232,6 @@ public class StickmanStageController {
         Posture.setId("Menu");
 
     }
+    
+    
 }

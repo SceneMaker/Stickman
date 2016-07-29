@@ -262,10 +262,12 @@ public class StickmanStage extends JFrame implements MouseListener {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        ExtensionsFromJar e = new ExtensionsFromJar("de.dfki.stickman.animation.face",false);
+//		e.loadClass();
         StickmanStage.getInstanceFullScreen();
         //StickmanStage.getInstance();
         StickmanStage.addStickman("Anna");
-//        StickmanStage.addStickman("character");
+        StickmanStage.addStickman("character");
         StickmanStage.addStickman("Bob");
     }
 
