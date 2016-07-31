@@ -1,21 +1,13 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickman.*;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickman.animationlogic.AnimationScheduler;
-import de.dfki.stickman.animationlogic.EventAnimation;
-import de.dfki.stickman.environment.SpeechBubble;
-import de.dfki.stickman.animationlogic.AnimationLoader;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.font.TextAttribute;
-import java.awt.geom.AffineTransform;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,52 +17,57 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import javax.swing.JComponent;
 
 import de.dfki.stickman.animation.environment.IdleBehavior;
 import de.dfki.stickman.animation.environment.SimplexNoise;
-import de.dfki.stickman.bodyfx.BodyFX;
-import de.dfki.stickman.bodyfx.HeadFX;
-import de.dfki.stickman.bodyfx.LeftEyeFX;
-import de.dfki.stickman.bodyfx.LeftEyebrowFX;
-import de.dfki.stickman.bodyfx.LeftForeArmFX;
-import de.dfki.stickman.bodyfx.LeftHandFX;
-import de.dfki.stickman.bodyfx.LeftLegFX;
-import de.dfki.stickman.bodyfx.LeftShoulderFX;
-import de.dfki.stickman.bodyfx.LeftUpperArmFX;
-import de.dfki.stickman.bodyfx.MouthFX;
-import de.dfki.stickman.bodyfx.NeckFX;
-import de.dfki.stickman.bodyfx.RightEyeFX;
-import de.dfki.stickman.bodyfx.RightEyebrowFX;
-import de.dfki.stickman.bodyfx.RightForeArmFX;
-import de.dfki.stickman.bodyfx.RightHandFX;
-import de.dfki.stickman.bodyfx.RightLegFX;
-import de.dfki.stickman.bodyfx.RightShoulderFX;
-import de.dfki.stickman.bodyfx.RightUpperArmFX;
+import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
+import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
+import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
+import de.dfki.stickmanfx.bodyfx.BodyFX;
+import de.dfki.stickmanfx.bodyfx.HeadFX;
+import de.dfki.stickmanfx.bodyfx.LeftEyeFX;
+import de.dfki.stickmanfx.bodyfx.LeftEyebrowFX;
+import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
+import de.dfki.stickmanfx.bodyfx.LeftHandFX;
+import de.dfki.stickmanfx.bodyfx.LeftLegFX;
+import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
+import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
+import de.dfki.stickmanfx.bodyfx.MouthFX;
+import de.dfki.stickmanfx.bodyfx.NeckFX;
+import de.dfki.stickmanfx.bodyfx.RightEyeFX;
+import de.dfki.stickmanfx.bodyfx.RightEyebrowFX;
+import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
+import de.dfki.stickmanfx.bodyfx.RightHandFX;
+import de.dfki.stickmanfx.bodyfx.RightLegFX;
+import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
+import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
+import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
 import javafx.stage.Screen;
 
 /**
  *
- * @author Patrick Gebhard
+ * @author Beka Aptsiauri
  *
  * This work is inspired by the stickmans drawn by Sarah Johnson
  * (www.sarah-johnson.com) in the Valentine music video from Kina Grannis shot
  * by Ross Ching in 2012
  *
  */
-public class StickmanFX extends Group 
+public class StickmanFX extends Pane 
 {
     // general stuff
-    public static enum ORIENTATION {
-
+    public static enum ORIENTATION 
+    {
         FRONT, LEFT, RIGHT
     };
 
-    public static enum TYPE {
-
+    public static enum TYPE 
+    {
         FEMALE, MALE
     };
 
@@ -103,7 +100,7 @@ public class StickmanFX extends Group
 
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
-    public AnimationScheduler mAnimationScheduler;
+    public AnimationSchedulerFX mAnimationSchedulerFX;
     private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
 
     // body parts
@@ -132,11 +129,11 @@ public class StickmanFX extends Group
 
     // logging
     public final Logger mLogger = Logger.getAnonymousLogger();
-
     // id
     private long mID = 0;
-
-    public StickmanFX(String name, TYPE gender, float scale, Dimension size) {
+    
+    public StickmanFX(String name, TYPE gender, float scale, Dimension size) 
+    {
         mSize = size;
         mScale = scale;
 
@@ -166,12 +163,15 @@ public class StickmanFX extends Group
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
         init();
+        this.addAllParts();
+        update();
 
         simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
         //mIdleBehavior = new IdleBehavior(this,simplexNoise);
     }
 
-    public StickmanFX(String name, TYPE gender, float scale) {
+    public StickmanFX(String name, TYPE gender, float scale) 
+    {
         mScale = scale;
 
         mName = name;
@@ -200,10 +200,13 @@ public class StickmanFX extends Group
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
         init();
+        this.addAllParts();
+        update();
         simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
-    public StickmanFX(String name, TYPE gender) {
+    public StickmanFX(String name, TYPE gender) 
+    {
         mName = name;
         mType = gender;
 
@@ -230,11 +233,7 @@ public class StickmanFX extends Group
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
         init();
-        
-        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
-                                mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
-                                mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
-                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+        this.addAllParts();
         update();
         
         simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
@@ -246,10 +245,6 @@ public class StickmanFX extends Group
         this.prefWidth(mSize.width);
         this.minHeight(mSize.height);
         this.minWidth(mSize.width);
-//        setLayout(null);
-//        setPreferredSize(mSize);
-//        setMinimumSize(mSize);
-//        setSize(mSize);
 
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
@@ -269,31 +264,36 @@ public class StickmanFX extends Group
         mLogger.addHandler(ch);
         mLogger.setUseParentHandlers(false);
 
-        //mAnimationScheduler = new AnimationScheduler(this);
-        //mAnimationScheduler.start();
+        mAnimationSchedulerFX = new AnimationSchedulerFX(this);
+        mAnimationSchedulerFX.start();
     }
 
-    public void addListener(AnimationListener al) {
+    public void addListener(AnimationListener al) 
+    {
         mAnimationListeners.add(al);
     }
 
-    public void removeListener(AnimationListener al) {
-        synchronized (mAnimationListeners) {
-            if (mAnimationListeners.contains(al)) {
+    public void removeListener(AnimationListener al) 
+    {
+        synchronized (mAnimationListeners) 
+        {
+            if (mAnimationListeners.contains(al)) 
+            {
                 mAnimationListeners.remove(al);
             }
         }
     }
 
-    public void notifyListeners(String animationId) {
-        synchronized (mAnimationListeners) {
-            mAnimationListeners.stream().forEach((al) -> {
-                al.update(animationId);
-            });
+    public void notifyListeners(String animationId) 
+    {
+        synchronized (mAnimationListeners) 
+        {
+            mAnimationListeners.stream().forEach((al) -> {al.update(animationId);});
         }
     }
 
-    public String getID() {
+    public String getID() 
+    {
         return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
     }
 
@@ -303,70 +303,86 @@ public class StickmanFX extends Group
 //    }
 
     // Sets the orientation of the character, allowed values are: LEFT, RIGHT, FRONT
-    public void setOrientation(String orientation) {
-        if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
+    public void setOrientation(String orientation) 
+    {
+        if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) 
+        {
             mOrientation = ORIENTATION.LEFT;
-        } else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
+        } 
+        else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) 
+        {
             mOrientation = ORIENTATION.RIGHT;
-        } else {
+        } 
+        else 
+        {
             mOrientation = ORIENTATION.FRONT;
         }
     }
 
-//    public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
-//
-//        EventAnimation a = AnimationLoader.getInstance().loadEventAnimation(this, name, duration, block);
-//
-//        a.setParameter(wts);
-//
-//        try {
-//            mAnimationLaunchControl.acquire();
-//            a.start();
-//        } catch (InterruptedException ex) {
-//            mLogger.severe(ex.getMessage());
-//        }
-//
-//        return a;
-//    }
-//    public Animation doAnimation(String name, int duration, boolean block) {
-//        return doAnimation(name, duration, "", block);
-//    }
-//
-//    public Animation doAnimation(String name, Object param, boolean block) {
-//        return doAnimation(name, -1, param, block);
-//    }
-//
-//    public Animation doAnimation(String name, boolean block) {
-//        return doAnimation(name, -1, "", block);
-//    }
-//    public Animation doAnimation(String name, int duration, Object param, boolean block) {
-//        Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
-//
-//        a.setParameter(param); // this is for now only used by the Speech Bubble
-//
-//        try {
-//            mAnimationLaunchControl.acquire();
-//            a.start();
-//        } catch (InterruptedException ex) {
-//            mLogger.severe(ex.getMessage());
-//        }
-//
-//        return a;
-//    }
-    public void playAnimation(Animation a) {
-        try {
-            //mLogger.info("Waiting for allowance to play animation " + a.toString());
+    public AnimationFX doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) 
+    {
+        EventAnimationFX a = AnimationLoaderFX.getInstance().loadEventAnimation(this, name, duration, block);
+
+        a.setParameter(wts);
+
+        try 
+        {
             mAnimationLaunchControl.acquire();
-            //mLogger.info("\tgranted!");
             a.start();
-        } catch (InterruptedException ex) {
+        } 
+        catch (InterruptedException ex) 
+        {
+            mLogger.severe(ex.getMessage());
+        }
+
+        return a;
+    }
+    public AnimationFX doAnimation(String name, int duration, boolean block) 
+    {
+        return doAnimation(name, duration, "", block);
+    }
+
+    public AnimationFX doAnimation(String name, Object param, boolean block) 
+    {
+        return doAnimation(name, -1, param, block);
+    }
+
+    public AnimationFX doAnimation(String name, boolean block) 
+    {
+        return doAnimation(name, -1, "", block);
+    }
+    public AnimationFX doAnimation(String name, int duration, Object param, boolean block) 
+    {
+        AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
+
+        a.setParameter(param); // this is for now only used by the Speech Bubble
+
+        try 
+        {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) 
+        {
+            mLogger.severe(ex.getMessage());
+        }
+
+        return a;
+    }
+    public void playAnimation(Animation a) 
+    {
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } 
+        catch (InterruptedException ex) 
+        {
             mLogger.severe(ex.getMessage());
         }
     }
 
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
     
-    
+    private static boolean isAnimationTimerStartet = false;
     public void update() 
     {
         Color currColor = sFOREGROUND;
@@ -386,7 +402,41 @@ public class StickmanFX extends Group
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
 
         //this.getTransforms().add(af);
+        updateAll();
+//        if(!isAnimationTimerStartet)
+//        {
+//            isAnimationTimerStartet = true;
+//           new AnimationTimer() 
+//        {
+//            @Override
+//            public void handle(long l) 
+//            {
+//                updateAll();
+//            }
+//        }.start(); 
+//        }
+        
+        
+    }
 
+    private static class StickmanLogFormatter extends Formatter {
+
+        @Override
+        public String format(LogRecord record) {
+            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
+        }
+    }
+    
+    private void addAllParts()
+    {
+        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
+                                mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
+                                mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
+                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+    }
+    
+    private void updateAll()
+    {
         // draw body parts
         if (starShowControler == true) {
             //mStars.update(g);     // Added by Robbie, to show stars or words here.
@@ -419,13 +469,5 @@ public class StickmanFX extends Group
 
         // draw environment
         //mSpeechBubble.update(g);
-    }
-
-    private static class StickmanLogFormatter extends Formatter {
-
-        @Override
-        public String format(LogRecord record) {
-            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
-        }
     }
 }
