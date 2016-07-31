@@ -5,7 +5,6 @@ import java.awt.Point;
 import static de.dfki.stickman.animationlogic.util.Interpolator.linear;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import java.awt.BasicStroke;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
