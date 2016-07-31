@@ -52,7 +52,7 @@ public class StickmanStageFX extends Application
             @Override
             public void handle(MouseEvent t) 
             {
-                getStickman("Bob").doAnimation("Sad", 70, true);
+                getStickman("Bob").doAnimation("Embarrassed", 70, true);
             }
         });
         
