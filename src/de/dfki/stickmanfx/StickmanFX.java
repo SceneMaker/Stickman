@@ -3,7 +3,6 @@ package de.dfki.stickmanfx;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
-import de.dfki.stickman.animationlogic.AnimationScheduler;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -43,11 +42,16 @@ import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import javafx.animation.AnimationTimer;
-import javafx.scene.Group;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
 import javafx.stage.Screen;
+import javafx.util.Duration;
 
 /**
  *
@@ -82,7 +86,7 @@ public class StickmanFX extends Pane
     public float mGeneralXTranslation = 0;
     public float mGeneralYTranslation = 0;
 
-    public static Dimension mDefaultSize = new Dimension(400, 600);
+    public static Dimension mDefaultSize = new Dimension(200, 600); // 400
     public static Dimension mSize = new Dimension(mDefaultSize);
     FontMetrics mFontMetrics;
     Font mFont;
@@ -241,10 +245,11 @@ public class StickmanFX extends Pane
 
     private void init() 
     {
-        this.prefHeight(mSize.height);
-        this.prefWidth(mSize.width);
-        this.minHeight(mSize.height);
-        this.minWidth(mSize.width);
+        this.setPrefHeight(mSize.height);
+        this.setPrefWidth(mSize.width);
+        this.setMinHeight(mSize.height);
+        this.setMinWidth(mSize.width);
+        this.setStyle("-fx-border-color: black");
 
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
@@ -403,18 +408,6 @@ public class StickmanFX extends Pane
 
         //this.getTransforms().add(af);
         updateAll();
-//        if(!isAnimationTimerStartet)
-//        {
-//            isAnimationTimerStartet = true;
-//           new AnimationTimer() 
-//        {
-//            @Override
-//            public void handle(long l) 
-//            {
-//                updateAll();
-//            }
-//        }.start(); 
-//        }
         
         
     }

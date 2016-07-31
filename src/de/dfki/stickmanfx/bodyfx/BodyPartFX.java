@@ -171,7 +171,6 @@ public abstract class BodyPartFX extends Group
     {
         for (Path gp : mGraphicPaths) 
         {
-            //gp.setFill(mColor);
             gp.setStroke(mColor);
             gp.setStrokeLineCap(StrokeLineCap.ROUND);
             gp.setStrokeLineJoin(StrokeLineJoin.ROUND);

@@ -166,7 +166,7 @@ public class HeadFX extends BodyPartFX
 //                mHead.getLayoutY() + new Float(mStickmanFX.mGeneralYTranslation).intValue(),
 //                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
 //                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
-update();
+//update();
 
     }
 

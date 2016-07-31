@@ -10,6 +10,9 @@ import de.dfki.stickmanfx.bodyfx.BodyPartFX;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import static java.lang.Thread.sleep;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 /**
  *
@@ -173,7 +176,6 @@ public class AnimatorFX
                     }
                 }
  
-
                 new WaitThread(mRenderPauseDuration).start();
                 // block this until WaitThread will unblock 
                 try 
@@ -206,9 +208,7 @@ public class AnimatorFX
                         bodypartFX.resetTranslation();
                     }
                 }
-
                
-
                 new WaitThread(mRenderPauseDuration).start();
                 // block this until WaitThread will unblock 
                 try 
