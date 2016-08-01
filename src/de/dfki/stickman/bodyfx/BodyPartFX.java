@@ -164,7 +164,6 @@ public abstract class BodyPartFX extends Group {
 		for (Path gp : mGraphicPaths) {
 			gp.getTransforms().add(af);
 		}
-
 	}
 
 	
@@ -175,8 +174,8 @@ public abstract class BodyPartFX extends Group {
 //		g2.setStroke(mStroke);
 		for (Path gp : mGraphicPaths) {
 			gp.setFill(mColor);
-                        gp.setStroke(mColor);
-                        gp.setStrokeWidth(3);
+            gp.setStroke(mColor);
+            gp.setStrokeWidth(3);
 		}
 	}
 }

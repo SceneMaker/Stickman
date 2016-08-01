@@ -1,12 +1,9 @@
 package de.dfki.stickman.bodyfx;
 
-import de.dfki.stickman.body.*;
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.animationlogic.Animator;
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickman.animationlogicfx.Animator;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -56,6 +53,8 @@ public class MouthFX extends BodyPartFX {
 	@Override
 	public void createShape() 
         {
+//        System.out.println("test");
+
 //          mStart:middle
 //          mEnd:right side
             mStart = mHeadFX.getMouthPostion();
@@ -64,8 +63,9 @@ public class MouthFX extends BodyPartFX {
             double movement;
 
             clearDrawObjects();
+            
             Path gp = new Path();
-
+            
             switch (mShape) {
                     case DEFAULT:
                         if(mHeadFX.mStickmanFX.setCharacterInvisible == true)
@@ -133,11 +133,10 @@ public class MouthFX extends BodyPartFX {
                             this.getChildren().add(gp);
                             break;
 
-                    case ANGRY:				
-                            movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                            
+                    case ANGRY:	
+                            movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;                          
                             gp.getElements().add(new MoveTo(mStart.x - mLength/2 - movement/4, mStart.y + movement/10));
-                            gp.getElements().add(new QuadCurveTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10));
+                            gp.getElements().add(new QuadCurveTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10));                       
                             this.getChildren().add(gp);
                             break;
 

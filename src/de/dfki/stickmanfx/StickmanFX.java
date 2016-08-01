@@ -1,13 +1,13 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickman.*;
+//import de.dfki.stickman.*;
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.animationlogic.Animation;
+import de.dfki.stickman.animationlogicfx.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
-import de.dfki.stickman.animationlogic.AnimationScheduler;
-import de.dfki.stickman.animationlogic.EventAnimation;
+import de.dfki.stickman.animationlogicfx.AnimationScheduler;
+import de.dfki.stickman.animationlogicfx.EventAnimation;
 import de.dfki.stickman.environment.SpeechBubble;
-import de.dfki.stickman.animationlogic.AnimationLoader;
+import de.dfki.stickman.animationlogicfx.AnimationLoader;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -166,6 +166,14 @@ public class StickmanFX extends Group
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
         init();
+        
+        //// added by Robbie
+        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
+                mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
+                mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
+                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+        update();
+        ///////
 
         simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
         //mIdleBehavior = new IdleBehavior(this,simplexNoise);
@@ -200,6 +208,15 @@ public class StickmanFX extends Group
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
         init();
+        
+        //// added by Robbie
+        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
+                mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
+                mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
+                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+        update();
+        ///////
+
         simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
@@ -269,8 +286,8 @@ public class StickmanFX extends Group
         mLogger.addHandler(ch);
         mLogger.setUseParentHandlers(false);
 
-        //mAnimationScheduler = new AnimationScheduler(this);
-        //mAnimationScheduler.start();
+        mAnimationScheduler = new AnimationScheduler(this);
+        mAnimationScheduler.start();
     }
 
     public void addListener(AnimationListener al) {
@@ -313,46 +330,49 @@ public class StickmanFX extends Group
         }
     }
 
-//    public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
-//
-//        EventAnimation a = AnimationLoader.getInstance().loadEventAnimation(this, name, duration, block);
-//
-//        a.setParameter(wts);
-//
-//        try {
-//            mAnimationLaunchControl.acquire();
-//            a.start();
-//        } catch (InterruptedException ex) {
-//            mLogger.severe(ex.getMessage());
-//        }
-//
-//        return a;
-//    }
-//    public Animation doAnimation(String name, int duration, boolean block) {
-//        return doAnimation(name, duration, "", block);
-//    }
-//
-//    public Animation doAnimation(String name, Object param, boolean block) {
-//        return doAnimation(name, -1, param, block);
-//    }
-//
-//    public Animation doAnimation(String name, boolean block) {
-//        return doAnimation(name, -1, "", block);
-//    }
-//    public Animation doAnimation(String name, int duration, Object param, boolean block) {
-//        Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
-//
-//        a.setParameter(param); // this is for now only used by the Speech Bubble
-//
-//        try {
-//            mAnimationLaunchControl.acquire();
-//            a.start();
-//        } catch (InterruptedException ex) {
-//            mLogger.severe(ex.getMessage());
-//        }
-//
-//        return a;
-//    }
+    public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+
+        EventAnimation a = AnimationLoader.getInstance().loadEventAnimation(this, name, duration, block);
+
+        a.setParameter(wts);
+
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+
+        return a;
+    }
+    
+    public Animation doAnimation(String name, int duration, boolean block) {
+        return doAnimation(name, duration, "", block);
+    }
+
+    public Animation doAnimation(String name, Object param, boolean block) {
+        return doAnimation(name, -1, param, block);
+    }
+
+    public Animation doAnimation(String name, boolean block) {
+        return doAnimation(name, -1, "", block);
+    }
+    
+    public Animation doAnimation(String name, int duration, Object param, boolean block) {
+        Animation a = AnimationLoader.getInstance().loadAnimationfx(this, name, duration, block);
+
+        a.setParameter(param); // this is for now only used by the Speech Bubble
+
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+
+        return a;
+    }
+    
     public void playAnimation(Animation a) {
         try {
             //mLogger.info("Waiting for allowance to play animation " + a.toString());
@@ -373,19 +393,20 @@ public class StickmanFX extends Group
         int width = new Float(mSize.width).intValue();
         int height = new Float(mSize.height).intValue();
 
-        
 
         // draw everthing in the middle and scaled
         Affine af = new Affine();
         mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
+//        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
+        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 500 * mScale);
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 
         //at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
         af.appendScale(mScale, mScale);
+
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
 
-        //this.getTransforms().add(af);
+        this.getTransforms().add(af);
 
         // draw body parts
         if (starShowControler == true) {
@@ -413,6 +434,8 @@ public class StickmanFX extends Group
             mLeftLegFX.update();
             mRightLegFX.update();
 
+//            System.out.println("test2");
+//    		System.out.println("test2");
 //	        if(starShowC == true)
 //            	mStars.update(g);     // Added by Robbie, to show stars or words here.
         }
