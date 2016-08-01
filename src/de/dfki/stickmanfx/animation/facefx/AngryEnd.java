@@ -46,8 +46,7 @@ public class AngryEnd extends AnimationFX
         //mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkle, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
-//		playAnimationPart(20);
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
         pauseAnimation(10);
 
     }
