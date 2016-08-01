@@ -26,7 +26,7 @@ public class Excited extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITED"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 
@@ -37,6 +37,6 @@ public class Excited extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
-        Platform.runLater(() -> playAnimationPart(20));
+        playAnimationPart(20);
     }
 }

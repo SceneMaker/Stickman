@@ -26,7 +26,7 @@ public class ExcitedEnd extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
 
         pauseAnimation(10);
     }
