@@ -28,15 +28,9 @@ import javafx.scene.paint.Color;
  */
 public class StickmanStageController {
 
-//    ObservableList<String> options = 
-//    FXCollections.observableArrayList(
-//        "Option 1",
-//        "Option 2",
-//        "Option 3"
-//    );
     
-	private static String packEmotionExpression = "de.dfki.stickman.animation.face";
-	private static String packGesture = "de.dfki.stickman.animation.gesture";
+    private static String packEmotionExpression = "de.dfki.stickman.animation.face";
+    private static String packGesture = "de.dfki.stickman.animation.gesture";
 	
     public static StickmanFX sStickman;
     
@@ -89,7 +83,7 @@ public class StickmanStageController {
     @FXML
     public void initialize() 
     {
-        sStickman = TEST.sMale;
+        sStickman = StickmanStageFX.sMale;
         setIdForLabel();
         HeadComboBoxColor.setValue("Beige");
         HeadComboBoxColor.getItems().addAll("Blue", "Black");
@@ -121,8 +115,20 @@ public class StickmanStageController {
             
             Platform.runLater(() -> 
             {
-                sStickman.mBodyFX.mMaleColor = switchColor(color);
-                sStickman.mBodyFX.update();
+                for(String key : StickmanStageFX.sStickmansOnStage.keySet())
+                {
+                    StickmanFX stickman =StickmanStageFX.sStickmansOnStage.get(key);
+                    if(stickman.mType == StickmanFX.TYPE.MALE)
+                    {
+                        stickman.mBodyFX.mMaleColor = switchColor(color);
+                        stickman.update();
+                    }
+                    else
+                    {
+                       stickman.mBodyFX.mFemaleColor = switchColor(color); 
+                       stickman.update();
+                    }   
+                }
             });
             
         });

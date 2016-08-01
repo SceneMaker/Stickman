@@ -3,24 +3,6 @@ package de.dfki.stickman.view;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.body.Head;
 import de.dfki.stickman.body.RightEye;
-import de.dfki.stickman.bodyfx.BodyFX;
-import de.dfki.stickman.bodyfx.HeadFX;
-import de.dfki.stickman.bodyfx.LeftEyeFX;
-import de.dfki.stickman.bodyfx.LeftEyebrowFX;
-import de.dfki.stickman.bodyfx.LeftForeArmFX;
-import de.dfki.stickman.bodyfx.LeftHandFX;
-import de.dfki.stickman.bodyfx.LeftLegFX;
-import de.dfki.stickman.bodyfx.LeftShoulderFX;
-import de.dfki.stickman.bodyfx.LeftUpperArmFX;
-import de.dfki.stickman.bodyfx.MouthFX;
-import de.dfki.stickman.bodyfx.NeckFX;
-import de.dfki.stickman.bodyfx.RightEyeFX;
-import de.dfki.stickman.bodyfx.RightEyebrowFX;
-import de.dfki.stickman.bodyfx.RightForeArmFX;
-import de.dfki.stickman.bodyfx.RightHandFX;
-import de.dfki.stickman.bodyfx.RightLegFX;
-import de.dfki.stickman.bodyfx.RightShoulderFX;
-import de.dfki.stickman.bodyfx.RightUpperArmFX;
 import de.dfki.stickmanfx.StickmanFX;
 import java.io.IOException;
 
@@ -54,47 +36,6 @@ public class StickmanLaunch extends Application {
             loader.setLocation(getClass().getResource("StickmanEdit.fxml"));
             rootLayout = (AnchorPane) loader.load();
             
-            
-            //Test//////////////////////////////////////////////////////
-            StickmanFX s = new StickmanFX("Anna", StickmanFX.TYPE.MALE);
-            HeadFX h = new HeadFX(s);
-            RightEyeFX r = new RightEyeFX(h);
-            MouthFX m = new MouthFX(h);
-            LeftEyebrowFX l = new LeftEyebrowFX(h);
-            LeftEyeFX le = new LeftEyeFX(h);
-            RightEyebrowFX ri = new RightEyebrowFX(h);
-            NeckFX neck = new NeckFX(h);
-            BodyFX b = new BodyFX(neck);
-            LeftShoulderFX ls = new LeftShoulderFX(b);
-            LeftUpperArmFX lu = new LeftUpperArmFX(ls);
-            LeftForeArmFX lf = new LeftForeArmFX(lu);
-            LeftHandFX lh = new LeftHandFX(lf);
-            RightShoulderFX rs = new RightShoulderFX(b);
-            RightUpperArmFX ra = new RightUpperArmFX(rs);
-            RightForeArmFX rf = new RightForeArmFX(ra);
-            RightHandFX rh = new RightHandFX(rf);
-            LeftLegFX ll = new LeftLegFX(b);
-            RightLegFX rl = new RightLegFX(b);
-            h.update();
-            r.update();
-            m.update();
-            l.update();
-            le.update();
-            ri.update();
-            neck.update();
-            b.update();
-            ls.update();
-            lu.update();
-            lf.update();
-            lh.update();
-            rs.update();
-            ra.update();
-            rf.update();
-            rh.update();
-            ll.update();
-            rl.update();
-            rootLayout.getChildren().addAll(h, r, m, l, le, ri, neck, b, ls, lu, lf, lh, rs, ra, rf, rh, ll, rl);
-            //End Test/////////////////////////////////////////////////////////////
             
             
 //            StickmanEditController controller = loader.getController();

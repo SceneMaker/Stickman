@@ -293,11 +293,11 @@ public class StickmanStage extends JFrame implements MouseListener {
 //    		getStickman("Bob").doAnimation("FadeIn", 70, true);
 //    	}
     	    	
-    	if(SwingUtilities.isLeftMouseButton(e)){
-    		getStickman("Bob").doAnimation("StartIdle", 70, true);
-    	}else{
-    		getStickman("Bob").doAnimation("StopIdle", 70, true);
-    	}
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("StartIdle", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("StopIdle", 70, true);
+//    	}
     	  
 //      getStickman("Bob").doAnimation("Angry", 70, true);
 
@@ -306,7 +306,7 @@ public class StickmanStage extends JFrame implements MouseListener {
 
 //		getStickman("Anna").doAnimation("head", "lookright", 300, true);
 //		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
-//    	getStickman("Anna").doAnimation("LookLeft", 300, true); //
+    	getStickman("Anna").doAnimation("Smile", 300, true); //
 //        getStickman("Anna").doAnimation("WaveLeft", 50, true);//
 	//getStickman("Anna").doAnimation("head", "Blink", true);
 // getStickman("Anna").doAnimation("head", "lookleft", 300, true);

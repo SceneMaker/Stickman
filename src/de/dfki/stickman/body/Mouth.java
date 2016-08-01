@@ -49,8 +49,7 @@ public class Mouth extends BodyPart {
 
 	@Override
 	public void createShape() {
-//		mStart:middle
-//		mEnd:right side
+
 		mStart = mHead.getMouthPostion();
 		mEnd = new Point(mStart.x + mLength / 2, mStart.y);
 
