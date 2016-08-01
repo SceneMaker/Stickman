@@ -22,7 +22,7 @@ public class SmileStart extends AnimationFX {
         // smile start
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
         pauseAnimation(10);
 
     }

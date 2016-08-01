@@ -22,7 +22,7 @@ public class SmileEnd extends AnimationFX {
         // smile end
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
         pauseAnimation(10);
     }
 }

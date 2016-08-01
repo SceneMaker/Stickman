@@ -6,6 +6,7 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickman.animationlogic.Animator;
+import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -63,8 +64,8 @@ public abstract class BodyPartFX extends Pane
 
     public void init() 
     {
-        this.prefHeight(mSize.height);
-        this.prefWidth(mSize.width);
+        this.setPrefHeight(mSize.height);
+        this.setPrefWidth(mSize.width);
 
         calculate(0);
     }
@@ -72,7 +73,7 @@ public abstract class BodyPartFX extends Pane
     public void setTranslation(int length) 
     {
         mToTranslation = mTranslation + length;
-        mTranslationStep = (double) length / Animator.sMAX_ANIM_STEPS;
+        mTranslationStep = (double) length / AnimatorFX.sMAX_ANIM_STEPS;
     }
 
     public synchronized void calculateTranslation(int step) 
@@ -99,32 +100,28 @@ public abstract class BodyPartFX extends Pane
     public void setRotation(int degree) 
     {
         mToDegree = mRotation + degree;
-        mRotationStep = (double) degree / Animator.sMAX_ANIM_STEPS;
+        mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
     }
 
     public void setTilt(int degree) 
     {
         mToDegree = mRotation + degree;
-        mRotationStep = (double) degree / Animator.sMAX_ANIM_STEPS;
+        mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
     }
 
     public synchronized void calculateRotation(int step) 
     {
-        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-        {
             mRotation += mRotationStep;
             mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
             calculate(step);
-        })).play();
-        
+            
     }
 
     public void resetRotation() 
     {
-        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-        {
+        
             mTranslationStep = 0.0d;
-        })).play();
+        
     }
 
     public void setShape(String s) 

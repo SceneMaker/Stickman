@@ -1,11 +1,13 @@
 package de.dfki.stickmanfx;
 
-//import de.dfki.stickman.view.StickmanLaunch;
 
 import de.dfki.stickman.client.ClientConnectionHandler;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.HashMap;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,12 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-//import de.dfki.stickman.view.StickmanLaunch;
+import javafx.stage.StageStyle;
 
 public class StickmanStageFX extends Application
 {
-    private static FlowPane sFlowPane;
+    private static HBox sHBox;
     public static StickmanFX sMale = new StickmanFX("Bob", StickmanFX.TYPE.MALE);
     public static StickmanFX sFemale = new StickmanFX("Anna", StickmanFX.TYPE.FEMALE);
     
@@ -37,34 +40,41 @@ public class StickmanStageFX extends Application
     	this.primaryStage=stage;
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
-        Parent root = loader.load();
+        HBox root = loader.load();
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+        
         
         FXMLLoader loader1 = new FXMLLoader();
         loader1.setLocation(getClass().getResource("RootLayoutStickmanFX.fxml"));
         BorderPane root1 = loader1.load();
         
         
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, width, height);
 //        Scene scene1 = new Scene(root1);
-        sFlowPane = (FlowPane) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
+        sHBox = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
+        sHBox.prefWidthProperty().bind(root.widthProperty());
         //******************************Test********************************//
         getStickman("Bob").setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) 
             {
-                getStickman("Bob").doAnimation("Embarrassed", 70, true);
+                 getStickman("Bob").doAnimation("Surprised", 300, true);
             }
         });
         
         //Add Stickmans in FlowPane
         for(String key : sStickmansOnStage.keySet())
         {
-            sFlowPane.getChildren().add(sStickmansOnStage.get(key));
+            sHBox.getChildren().add(sStickmansOnStage.get(key));
         }
         
         //****************************End Test*****************************//
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.initStyle(StageStyle.UNDECORATED);
         scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
         stage.show();
         

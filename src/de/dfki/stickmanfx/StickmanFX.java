@@ -44,6 +44,7 @@ import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -86,7 +87,7 @@ public class StickmanFX extends Pane
     public float mGeneralXTranslation = 0;
     public float mGeneralYTranslation = 0;
 
-    public static Dimension mDefaultSize = new Dimension(200, 600); // 400
+    public static Dimension mDefaultSize = new Dimension(300, 600); // 400
     public static Dimension mSize = new Dimension(mDefaultSize);
     FontMetrics mFontMetrics;
     Font mFont;
@@ -249,7 +250,7 @@ public class StickmanFX extends Pane
         this.setPrefWidth(mSize.width);
         this.setMinHeight(mSize.height);
         this.setMinWidth(mSize.width);
-        this.setStyle("-fx-border-color: black");
+        //this.setStyle("-fx-border-color: black");
 
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
@@ -365,7 +366,7 @@ public class StickmanFX extends Pane
         try 
         {
             mAnimationLaunchControl.acquire();
-            a.start();
+            Platform.runLater(() -> a.start());
         } catch (InterruptedException ex) 
         {
             mLogger.severe(ex.getMessage());
