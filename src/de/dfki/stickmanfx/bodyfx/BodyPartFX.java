@@ -12,6 +12,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -19,6 +21,7 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
+import javafx.util.Duration;
 
 /**
  *
@@ -107,14 +110,21 @@ public abstract class BodyPartFX extends Pane
 
     public synchronized void calculateRotation(int step) 
     {
-        mRotation += mRotationStep;
-        mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
-        calculate(step);
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
+        {
+            mRotation += mRotationStep;
+            mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
+            calculate(step);
+        })).play();
+        
     }
 
     public void resetRotation() 
     {
-        mTranslationStep = 0.0d;
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
+        {
+            mTranslationStep = 0.0d;
+        })).play();
     }
 
     public void setShape(String s) 

@@ -4,12 +4,15 @@ import de.dfki.stickmanfx.StickmanFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.transform.Affine;
+import javafx.util.Duration;
 
 /**
  *
@@ -36,7 +39,16 @@ public class HeadFX extends BodyPartFX
         mStickmanFX = sm;
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
         mStroke = new BasicStroke(2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-
+        mHead = new Path();
+        mLeftEar = new Path();
+        mRightEar = new Path();
+        mFemaleHair = new Path();
+        mMaleHair = new Path();
+        this.getChildren().addAll(mHead, mLeftEar, mRightEar);
+        if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+            this.getChildren().add(mFemaleHair);
+        else
+            this.getChildren().add(mMaleHair);
         init();
 
         calculate(0);
@@ -79,85 +91,92 @@ public class HeadFX extends BodyPartFX
 
     public void calculate(int step) 
     {
-        clearChildren(this);
-        // head
-        mHead = new Path();
-        mHead.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
-        mHead.getElements().add(new CubicCurveTo(mEarWidth, -mHalfHeight / 5, mSize.width, -mHalfHeight / 5, mSize.width, mHalfHeight));
-        mHead.getElements().add(new CubicCurveTo(mSize.width, 120, mEarWidth, 120, mEarWidth, mHalfHeight));
-        this.getChildren().add(mHead);
-
         Affine af = new Affine();
+        // head
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
+        {
+            mHead.getElements().clear();
+            mHead.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
+            mHead.getElements().add(new CubicCurveTo(mEarWidth, -mHalfHeight / 5, mSize.width, -mHalfHeight / 5, mSize.width, mHalfHeight));
+            mHead.getElements().add(new CubicCurveTo(mSize.width, 120, mEarWidth, 120, mEarWidth, mHalfHeight));
+        })).play();
+
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
         af.appendTranslation(0, mTranslation);
+        mHead.getTransforms().clear();
         mHead.getTransforms().add(af);
 
         //left ear
-        mLeftEar = new Path();
-        mLeftEar.getElements().add(new MoveTo(10, mSize.height / 2 + 10));
-        mLeftEar.getElements().add(new QuadCurveTo(7, mSize.height / 2, 10, mSize.height / 2 - 10));
-        mLeftEar.getElements().add(new CubicCurveTo(0, mSize.height / 2 - 10, 0, mSize.height / 2 + 10, 10, mSize.height / 2 + 10));
-        this.getChildren().add(mLeftEar);
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
+        {
+            mLeftEar.getElements().clear();
+            mLeftEar.getElements().add(new MoveTo(10, mSize.height / 2 + 10));
+            mLeftEar.getElements().add(new QuadCurveTo(7, mSize.height / 2, 10, mSize.height / 2 - 10));
+            mLeftEar.getElements().add(new CubicCurveTo(0, mSize.height / 2 - 10, 0, mSize.height / 2 + 10, 10, mSize.height / 2 + 10));
+        })).play();
 
         af = new Affine();
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
         af.appendTranslation(1, 3 + mTranslation);
+        mLeftEar.getTransforms().clear();
         mLeftEar.getTransforms().add(af);
 
         //right ear
-        mRightEar = new Path();
-        mRightEar.getElements().add(new MoveTo(mSize.width, mSize.height / 2 + 10));
-        mRightEar.getElements().add(new QuadCurveTo(mSize.width + 3, mSize.height / 2, mSize.width, mSize.height / 2 - 10));
-        mRightEar.getElements().add(new CubicCurveTo(mSize.width + 10, mSize.height / 2 - 10, mSize.width + 10, mSize.height / 2 + 10, mSize.width, mSize.height / 2 + 10));
-        this.getChildren().add(mRightEar);
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
+        {
+            mRightEar.getElements().clear();
+            mRightEar.getElements().add(new MoveTo(mSize.width, mSize.height / 2 + 10));
+            mRightEar.getElements().add(new QuadCurveTo(mSize.width + 3, mSize.height / 2, mSize.width, mSize.height / 2 - 10));
+            mRightEar.getElements().add(new CubicCurveTo(mSize.width + 10, mSize.height / 2 - 10, mSize.width + 10, mSize.height / 2 + 10, mSize.width, mSize.height / 2 + 10));
+        })).play();
 
         af = new Affine();
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
         af.appendTranslation(-1, 3 + mTranslation);
+        mRightEar.getTransforms().clear();
         mRightEar.getTransforms().add(af);
 
         // female hair
-        mFemaleHair = new Path();
-        mFemaleHair.getElements().add(new MoveTo(mStart.x, mSize.height + 20));
-        // right top locke
-        mFemaleHair.getElements().add(new QuadCurveTo(mEarWidth + 10, mSize.height, mEarWidth, mHalfHeight));
-        // top hair
-        mFemaleHair.getElements().add(new CubicCurveTo(mEarWidth + 20, -mHalfHeight / 8, mSize.width - 20, -mHalfHeight / 8, mSize.width, mHalfHeight));
-        // left top locke
-        mFemaleHair.getElements().add(new QuadCurveTo(mEarWidth + mSize.width - 20, mSize.height, mSize.width + mEarWidth, mSize.height + 20));
-        // left down locke
-        mFemaleHair.getElements().add(new QuadCurveTo(mSize.width - 10, mSize.height + 30, mSize.width - 10, mSize.height + 20));
-        // forehead hair
-        mFemaleHair.getElements().add(new CubicCurveTo(mSize.width + 30, -mHalfHeight / 4, mStart.x - 20, -mHalfHeight / 4, mEarWidth + 10, mSize.height + 20));
-        // right down locke
-        mFemaleHair.getElements().add(new QuadCurveTo(20, mSize.height + 30, mStart.x, mSize.height + 20));
-        
-        if (mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
         {
-            this.getChildren().add(mFemaleHair);
-        }
+            mFemaleHair.getElements().clear();
+            mFemaleHair.getElements().add(new MoveTo(mStart.x, mSize.height + 20));
+            // right top locke
+            mFemaleHair.getElements().add(new QuadCurveTo(mEarWidth + 10, mSize.height, mEarWidth, mHalfHeight));
+            // top hair
+            mFemaleHair.getElements().add(new CubicCurveTo(mEarWidth + 20, -mHalfHeight / 8, mSize.width - 20, -mHalfHeight / 8, mSize.width, mHalfHeight));
+            // left top locke
+            mFemaleHair.getElements().add(new QuadCurveTo(mEarWidth + mSize.width - 20, mSize.height, mSize.width + mEarWidth, mSize.height + 20));
+            // left down locke
+            mFemaleHair.getElements().add(new QuadCurveTo(mSize.width - 10, mSize.height + 30, mSize.width - 10, mSize.height + 20));
+            // forehead hair
+            mFemaleHair.getElements().add(new CubicCurveTo(mSize.width + 30, -mHalfHeight / 4, mStart.x - 20, -mHalfHeight / 4, mEarWidth + 10, mSize.height + 20));
+            // right down locke
+            mFemaleHair.getElements().add(new QuadCurveTo(20, mSize.height + 30, mStart.x, mSize.height + 20));
+        })).play();
+        
         // move it upwards a bit
         af = new Affine();
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
         af.appendTranslation(0, -15 + mTranslation);
+        mFemaleHair.getTransforms().clear();
         mFemaleHair.getTransforms().add(af);
 
         // male hair
-        mMaleHair = new Path();
-        mMaleHair.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
-        mMaleHair.getElements().add(new QuadCurveTo(mHalfWidth - 30, -mHalfHeight / 3, mHalfWidth + 20, mHalfHeight - 30));
-        mMaleHair.getElements().add(new QuadCurveTo((mHalfWidth + 40 + mSize.width) / 2, 0, mSize.width, mHalfHeight));
-        mMaleHair.getElements().add(new CubicCurveTo(mSize.width, -mHalfHeight / 2, mEarWidth, -mHalfHeight / 2, mEarWidth, mHalfHeight));
-        
-        if (mStickmanFX.mType == StickmanFX.TYPE.MALE) 
+        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
         {
-            this.getChildren().add(mMaleHair);
-        }
-
+            mMaleHair.getElements().clear();
+            mMaleHair.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
+            mMaleHair.getElements().add(new QuadCurveTo(mHalfWidth - 30, -mHalfHeight / 3, mHalfWidth + 20, mHalfHeight - 30));
+            mMaleHair.getElements().add(new QuadCurveTo((mHalfWidth + 40 + mSize.width) / 2, 0, mSize.width, mHalfHeight));
+            mMaleHair.getElements().add(new CubicCurveTo(mSize.width, -mHalfHeight / 2, mEarWidth, -mHalfHeight / 2, mEarWidth, mHalfHeight));
+        })).play();
+        
         // move it downwards a bit
         af = new Affine();
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
         af.appendTranslation(0, 2 + mTranslation);
+        mMaleHair.getTransforms().clear();
         mMaleHair.getTransforms().add(af);
 
         // TODO - This schould be done in all bodyparts
@@ -166,7 +185,7 @@ public class HeadFX extends BodyPartFX
 //                mHead.getLayoutY() + new Float(mStickmanFX.mGeneralYTranslation).intValue(),
 //                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
 //                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
-//update();
+        update();
 
     }
 
