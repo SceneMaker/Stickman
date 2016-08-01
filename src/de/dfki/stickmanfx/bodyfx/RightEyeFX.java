@@ -8,6 +8,7 @@ import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.BasicStroke;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -28,7 +29,7 @@ public class RightEyeFX extends BodyPartFX
     };
 
     HeadFX mHead;
-    Path path;
+    Path mPath;
     public RightEyeFX.SHAPE mShape = RightEyeFX.SHAPE.DEFAULT;
 
     public RightEyeFX(HeadFX head) 
@@ -41,8 +42,8 @@ public class RightEyeFX extends BodyPartFX
                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
         
-        path = new Path();
-        this.getChildren().add(path);
+        mPath = new Path();
+        this.getChildren().add(mPath);
         init();
     }
 
@@ -68,6 +69,9 @@ public class RightEyeFX extends BodyPartFX
         double movement;
 
         clearDrawObjects();
+        Platform.runLater(() -> clearChildren(this));
+		
+		mPath = new Path();
 
         switch (mShape) 
         {
@@ -103,158 +107,115 @@ public class RightEyeFX extends BodyPartFX
                     }
                 }
 
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                 break;
 
             case BLINK:
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new LineTo(mEnd.x, mEnd.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new LineTo(mEnd.x, mEnd.y));
                 break;
 
             case LOOKLEFT:
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y));
                 break;
 
             case LOOKRIGHT:
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo(linear((mStart.x + mEnd.x) / 2, mStart.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y));
-                    this.getChildren().add(path);
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo(linear((mStart.x + mEnd.x) / 2, mStart.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y));
                 break;
 
             case ANGRY:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x + movement / 10, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y - movement / 6, mEnd.x + movement / 8, mEnd.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y + movement / 6, mStart.x + movement / 10, mStart.y));
-                })).play();
+                
+                	mPath.getElements().clear();
+                    mPath.getElements().add(new MoveTo(mStart.x + movement / 10, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y - movement / 6, mEnd.x + movement / 8, mEnd.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y + movement / 6, mStart.x + movement / 10, mStart.y));
                 break;
 
             case ANGRYEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
+                
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x + movement / 10, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y - movement / 6, mEnd.x + movement / 8, mEnd.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y + movement / 6, mStart.x + movement / 10, mStart.y));
+                        mPath.getElements().add(new MoveTo(mStart.x + movement / 10, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y - movement / 6, mEnd.x + movement / 8, mEnd.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2, mStart.y + movement / 6, mStart.x + movement / 10, mStart.y));
                     }
-                })).play();
+                
+                    
+                
                 break;
 
             case SURPRISED:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - movement / 2, mEnd.x + movement / 10, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y + movement / 2, mStart.x - movement / 10, mStart.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - movement / 2, mEnd.x + movement / 10, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y + movement / 2, mStart.x - movement / 10, mStart.y));
                 break;
 
             case SURPRISEDEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - movement / 2, mEnd.x + movement / 10, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y + movement / 2, mStart.x - movement / 10, mStart.y));
+                        mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - movement / 2, mEnd.x + movement / 10, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y + movement / 2, mStart.x - movement / 10, mStart.y));
                     }
-                })).play();
                 break;
 
             case HAPPY:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
                 break;
 
             case HAPPYEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
                     }
-                })).play();
                 break;
 
             case DISGUSTED:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x - movement / 4, mStart.y - movement / 4));
-                    path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8, mEnd.x + movement / 8, mEnd.y + movement / 8));
-                    path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4, mStart.x - movement / 4, mStart.y + movement / 8));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x - movement / 4, mStart.y - movement / 4));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8, mEnd.x + movement / 8, mEnd.y + movement / 8));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4, mStart.x - movement / 4, mStart.y + movement / 8));
                 break;
 
             case DISGUSTEDEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x - movement / 4, mStart.y - movement / 4));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8, mEnd.x + movement / 8, mEnd.y + movement / 8));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4, mStart.x - movement / 4, mStart.y + movement / 8));
+                        mPath.getElements().add(new MoveTo(mStart.x - movement / 4, mStart.y - movement / 4));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8, mEnd.x + movement / 8, mEnd.y + movement / 8));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4, mStart.x - movement / 4, mStart.y + movement / 8));
                     }
-                })).play();
                 break;
 
             case LOVED:
@@ -264,26 +225,18 @@ public class RightEyeFX extends BodyPartFX
                 double yMovement1 = movement / 10 * 6;
                 double yMovement2 = movement / 10 * 3;
 
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
                 break;
 
             case LOVEDEND:
                 movement = mShapeAnimationStep - 1;
                 if (movement <= 1) 
                 {
-                    new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                    {
-                        path.getElements().clear();
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-                    })).play();
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                 } 
                 else 
                 {
@@ -291,104 +244,78 @@ public class RightEyeFX extends BodyPartFX
                     yMovement1 = movement / 10 * 6;
                     yMovement2 = movement / 10 * 3;
                     
-                    new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                    {
-                        path.getElements().clear();
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-                    })).play();
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
                 }
                 break;
 
             case CONTEMPT:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y));
                 break;
 
             case CONTEMPTEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y));
                     }
-                })).play();
                 break;
 
             case EXCITED:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-                    path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
                 break;
 
             case EXCITEDEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
                     }
-                })).play();
                 break;
 
             case EMBARRASSED:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
-                    path.getElements().add(new MoveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2));
-                    path.getElements().add(new QuadCurveTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2, mStart.y - 4 + movement / 2, mEnd.x + movement / 2, mEnd.y + movement / 5 * 2));
-                })).play();
+                    mPath.getElements().add(new MoveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2));
+                    mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2, mStart.y - 4 + movement / 2, mEnd.x + movement / 2, mEnd.y + movement / 5 * 2));
                 break;
 
             case EMBARRASSEDEND:
                 movement = mShapeAnimationStep - 1;
-                new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-                {
-                    path.getElements().clear();
                     if (movement <= 1) 
                     {
-                        path.getElements().add(new MoveTo(mStart.x, mStart.y));
-                        path.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                     } 
                     else 
                     {
-                        path.getElements().add(new MoveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2));
-                        path.getElements().add(new QuadCurveTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2, mStart.y - 4 + movement / 2, mEnd.x + movement / 2, mEnd.y + movement / 5 * 2));
+                        mPath.getElements().add(new MoveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2));
+                        mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2, mStart.y - 4 + movement / 2, mEnd.x + movement / 2, mEnd.y + movement / 5 * 2));
                     }
-                })).play();
                 break;
 
         }
-        addToDrawObjects(path);
+        Platform.runLater(() -> this.getChildren().add(mPath));
+        addToDrawObjects(mPath);
+        this.update();
     }
 }
