@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.StrokeLineCap;
@@ -24,7 +25,7 @@ import javafx.scene.transform.Affine;
  * @author Beka Aptsiauri
  *
  */
-public abstract class BodyPartFX extends Group 
+public abstract class BodyPartFX extends Pane 
 {
 
     public enum SHAPE 
@@ -162,7 +163,8 @@ public abstract class BodyPartFX extends Group
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
 
         for (Path gp : mGraphicPaths) 
-        {
+        {   
+            gp.getTransforms().clear();
             gp.getTransforms().add(af);
         }
     }
