@@ -34,7 +34,7 @@ public class Embarrassed extends AnimationFX
         //mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EMBARRASSED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EMBARRASSED"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 
@@ -46,6 +46,6 @@ public class Embarrassed extends AnimationFX
 //        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkle, "shape", "EMBARRASSEDEND"));   ///Add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EMBARRASSEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EMBARRASSEDEND"));
-        Platform.runLater(() -> playAnimationPart(20));
+        playAnimationPart(20);
     }
 }

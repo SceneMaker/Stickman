@@ -337,7 +337,6 @@ public class MouthFX extends BodyPartFX
 
 			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2 + movement / 10 * 7, mStart.y + movement / 20));
 			mPath.getElements().add(new QuadCurveTo((mStart.x - mLength / 2 + mEnd.x + movement / 10 * 3) / 2, mStart.y + 1, mEnd.x + movement / 10 * 3, mEnd.y + movement / 20));
-			Platform.runLater(() -> this.getChildren().add(mPath));
 			break;
 
 		case EMBARRASSEDEND:
