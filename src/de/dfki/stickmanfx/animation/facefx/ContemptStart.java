@@ -30,7 +30,7 @@ public class ContemptStart extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+       playAnimationPart(mDuration);
 
         pauseAnimation(10);
     }
