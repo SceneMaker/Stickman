@@ -24,6 +24,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
 import de.dfki.stickmanfx.bodyfx.BodyFX;
+import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
 import de.dfki.stickmanfx.bodyfx.HeadFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyeFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyebrowFX;
@@ -32,6 +33,7 @@ import de.dfki.stickmanfx.bodyfx.LeftHandFX;
 import de.dfki.stickmanfx.bodyfx.LeftLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
+import de.dfki.stickmanfx.bodyfx.MaleHairFX;
 import de.dfki.stickmanfx.bodyfx.MouthFX;
 import de.dfki.stickmanfx.bodyfx.NeckFX;
 import de.dfki.stickmanfx.bodyfx.RightEyeFX;
@@ -112,6 +114,8 @@ public class StickmanFX extends Pane
 
     // body parts
     public HeadFX mHeadFX;
+    public MaleHairFX mMaleHairFX;
+    public FemaleHairFX mFemaleHairFX;
     public LeftEyebrowFX mLeftEyebrowFX;
 //    public FaceWrinkle mFaceWrinkle;  // added by Robbie FaceWrinkle 
     public LeftEyeFX mLeftEyeFX;
@@ -148,6 +152,8 @@ public class StickmanFX extends Pane
         mType = gender;
 
         mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
@@ -185,6 +191,8 @@ public class StickmanFX extends Pane
         mType = gender;
 
         mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
@@ -218,6 +226,8 @@ public class StickmanFX extends Pane
         mType = gender;
 
         mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
@@ -431,6 +441,10 @@ public class StickmanFX extends Pane
                                 mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
                                 mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
                                 mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+        if(this.mType == StickmanFX.TYPE.MALE)
+        	this.getChildren().add(mMaleHairFX);
+        else
+        	this.getChildren().add(mFemaleHairFX);
     }
     
     private void updateAll()
@@ -442,6 +456,11 @@ public class StickmanFX extends Pane
 //        	if(starShowC == true)
 //            	mStars.update(g);   	
             mHeadFX.update();
+            
+            if(this.mType == StickmanFX.TYPE.MALE)
+            	mMaleHairFX.update();
+            else
+            	mFemaleHairFX.update();
             mLeftEyebrowFX.update();
             mLeftEyeFX.update();
             mRightEyebrowFX.update();
