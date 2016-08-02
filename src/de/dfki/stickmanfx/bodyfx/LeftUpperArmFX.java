@@ -53,6 +53,7 @@ public class LeftUpperArmFX extends BodyPartFX
     }
 
     @Override
+
     public void calculate(int step) 
     {
     	Platform.runLater(() -> clearChildren(this));
@@ -69,7 +70,9 @@ public class LeftUpperArmFX extends BodyPartFX
         mArm.getTransforms().clear();
         mArm.getTransforms().add(af);
 
+
         Platform.runLater(() -> this.getChildren().add(mArm));
+
          update();
     }
 
@@ -85,12 +88,14 @@ public class LeftUpperArmFX extends BodyPartFX
                     fadeFactor = 0;
                 }
                 currentColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+
             } else {
                 int fadeFactor = (20 - mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
                     fadeFactor = 255;
                 }
                 currentColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+
             }
         }
 

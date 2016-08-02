@@ -37,7 +37,7 @@ public class StickmanStageFX extends Application
     @Override
     public void start(Stage stage) throws Exception 
     {
-    	this.primaryStage=stage;
+//    	this.primaryStage=stage;
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
         HBox root = loader.load();
@@ -53,6 +53,7 @@ public class StickmanStageFX extends Application
         
         
         Scene scene = new Scene(root, width, height);
+
 //        Scene scene1 = new Scene(root1);
         sHBox = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
         sHBox.prefWidthProperty().bind(root.widthProperty());
@@ -61,6 +62,7 @@ public class StickmanStageFX extends Application
             @Override
             public void handle(MouseEvent t) 
             {
+
                  getStickman("Bob").doAnimation("Surprised", 300, true);
             }
         });
@@ -77,6 +79,7 @@ public class StickmanStageFX extends Application
         stage.initStyle(StageStyle.UNDECORATED);
         scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
         stage.show();
+//        stage.setFullScreen(true);
         
         
     }
