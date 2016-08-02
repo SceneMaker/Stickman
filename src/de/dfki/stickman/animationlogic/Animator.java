@@ -47,7 +47,6 @@ public class Animator {
 
         mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
         mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
-
         render();
     }
 

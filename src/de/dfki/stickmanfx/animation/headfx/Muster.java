@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animation.headfx;
 
+import de.dfki.stickman.animationlogic.AnimationContent;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -16,28 +17,43 @@ import javafx.application.Platform;
  * @author Beka Aptsiauri
  *
  */
-public class Blink extends AnimationFX 
+public class Muster extends AnimationFX 
 {
 
    
-	public Blink(StickmanFX sm, int duration, boolean block) 
+	public Muster(StickmanFX sm, int duration, boolean block) 
         {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
+            int rotationUnit = 10;
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
-		Platform.runLater(() -> playAnimationPart(20));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit));
+                //mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 16));
+//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 16));
+		playAnimationPart(200);
 		
-		 pauseAnimation(300);
+		 pauseAnimation(200);
+                 
+//                 // wave right
+//		mAnimationPartFX = new ArrayList<>();
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 4));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 4));
+//		playAnimationPart(100);
+                
+//                // wave left
+//		mAnimationPartFX = new ArrayList<>();
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 4));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 4));
+//		playAnimationPart(100);
 
 		 //blink up
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
-		Platform.runLater(() -> playAnimationPart(20));
+//		mAnimationPartFX = new ArrayList<>();
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit));
+//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 16));
+//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 16));
+		//playAnimationPart(200);
 	}
 }

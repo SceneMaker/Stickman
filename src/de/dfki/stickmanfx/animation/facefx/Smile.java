@@ -22,12 +22,12 @@ public class Smile extends AnimationFX {
         // smile
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
-        Platform.runLater(() -> playAnimationPart(mDuration));
+        playAnimationPart(mDuration);
         pauseAnimation(1200);
 
         // no smile
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        Platform.runLater(() -> playAnimationPart(20));
+        playAnimationPart(20);
     }
 }

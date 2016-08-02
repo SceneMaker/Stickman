@@ -9,6 +9,7 @@ import de.dfki.stickmanfx.StickmanFX;
 import java.awt.Dimension;
 import java.awt.Point;
 import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.LineTo;
@@ -21,7 +22,7 @@ import javafx.scene.shape.QuadCurveTo;
  * @author Beka Aptsiauri
  *
  */
-public class BodyFX extends Group {
+public class BodyFX extends Pane {
 
     NeckFX mNeckFX;
 

@@ -58,7 +58,7 @@ public class StickmanLaunch extends Application {
 //        launch(args);
 //    }
     
-    public void tryLaunch() {
+    public static void tryLaunch() {
         launch();
     }
 }
