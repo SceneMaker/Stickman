@@ -53,7 +53,7 @@ public class StickmanStageFX extends Application
         
         
         Scene scene = new Scene(root, width, height);
-//        Scene scene = new Scene(root);
+
 //        Scene scene1 = new Scene(root1);
         sHBox = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
         sHBox.prefWidthProperty().bind(root.widthProperty());
@@ -62,7 +62,8 @@ public class StickmanStageFX extends Application
             @Override
             public void handle(MouseEvent t) 
             {
-                 getStickman("Bob").doAnimation("Happy", 300, true);
+
+                 getStickman("Bob").doAnimation("Surprised", 300, true);
             }
         });
         

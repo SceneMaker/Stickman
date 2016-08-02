@@ -53,11 +53,15 @@ public class LeftUpperArmFX extends BodyPartFX
     }
 
     @Override
-    public void calculate(int step) {
+
+    public void calculate(int step) 
+    {
+    	Platform.runLater(() -> clearChildren(this));
+    	
+    	mArm = new Path();
         mStart = mLeftShoulderFX.getLeftShoulderEndPosition();
         mEnd = new Point(mStart.x, mStart.y + mArmLength);
 
-        mArm.getElements().clear();
         mArm.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
         mArm.getElements().add(new QuadCurveTo(mStart.x + 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
 
@@ -66,13 +70,15 @@ public class LeftUpperArmFX extends BodyPartFX
         mArm.getTransforms().clear();
         mArm.getTransforms().add(af);
 
+
+        Platform.runLater(() -> this.getChildren().add(mArm));
+
          update();
     }
 
     @Override
     public void update() {
         Color currentColor = Color.rgb(80, 80, 80);
-        //create();
         // draw outlines
         if (mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -82,14 +88,14 @@ public class LeftUpperArmFX extends BodyPartFX
                     fadeFactor = 0;
                 }
                 currentColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
-                //g2.setColor(new Color(80, 80, 80,fadeFactor));
+
             } else {
                 int fadeFactor = (20 - mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
                     fadeFactor = 255;
                 }
                 currentColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
-                //g2.setColor(new Color(80, 80, 80,fadeFactor));
+
             }
         }
 
@@ -97,8 +103,5 @@ public class LeftUpperArmFX extends BodyPartFX
         mArm.setStrokeWidth(3);
         mArm.setStrokeLineCap(StrokeLineCap.ROUND);
         mArm.setStrokeLineJoin(StrokeLineJoin.ROUND);
-//            g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-//
-//            g2.draw(mArm);
     }
 }
