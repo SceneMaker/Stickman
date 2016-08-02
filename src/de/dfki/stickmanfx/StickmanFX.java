@@ -48,6 +48,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
@@ -87,7 +88,8 @@ public class StickmanFX extends Pane
     public float mGeneralXTranslation = 0;
     public float mGeneralYTranslation = 0;
 
-    public static Dimension mDefaultSize = new Dimension(300, 600); // 400
+//    public static Dimension mDefaultSize = new Dimension(400, 400); // 400
+    public static Dimension mDefaultSize = new Dimension(300, 800); // 400
     public static Dimension mSize = new Dimension(mDefaultSize);
     FontMetrics mFontMetrics;
     Font mFont;
@@ -374,7 +376,7 @@ public class StickmanFX extends Pane
 
         return a;
     }
-    public void playAnimation(Animation a) 
+    public void playAnimation(AnimationFX a) 
     {
         try {
             mAnimationLaunchControl.acquire();
@@ -400,14 +402,16 @@ public class StickmanFX extends Pane
         // draw everthing in the middle and scaled
         Affine af = new Affine();
         mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
+//        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
+        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
+
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 
         //at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
 
-        //this.getTransforms().add(af);
+        this.getTransforms().add(af);
         updateAll();
         
         

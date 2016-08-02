@@ -52,7 +52,7 @@ public class AnimatorFX
 
         mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
         mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
-        System.out.println("de.dfki.stickmanfx.animationlogic.AnimatorFX.<init>() " + mRenderPauseDuration);
+//        System.out.println("de.dfki.stickmanfx.animationlogic.AnimatorFX.<init>() " + mRenderPauseDuration);
         render();
     }
 
