@@ -1,5 +1,6 @@
 package de.dfki.stickmanfx.animation.facefx;
 
+import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -13,6 +14,10 @@ import javafx.application.Platform;
  */
 public class Excited extends AnimationFX {
 
+	public Excited() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
+	
     public Excited(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

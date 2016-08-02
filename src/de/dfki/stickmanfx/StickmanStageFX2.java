@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +37,7 @@ public class StickmanStageFX2 extends Application {
     static private final HashMap<String, StickmanFX> sStickmansOnStage = new HashMap<>();
     static private HBox sStickmanPane;
     static private StickmanStageFX2 sInstance;
+    ArrayList<String> mStickmanComboList = new ArrayList<>();
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -292,8 +294,13 @@ public class StickmanStageFX2 extends Application {
         
         for(String key : sStickmansOnStage.keySet())
         {
+//        	System.out.println(key);
     		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
+    		mStickmanComboList.add(key);
         }
+        
+        StickmanStageController mStickmanStageController = loader.getController();
+        mStickmanStageController.getStickmanStageFX(this);
 
         stage.setTitle("StickmanFX");
         stage.setScene(scene);
