@@ -47,7 +47,7 @@ public class MaleHairFX extends BodyPartFX
     public void calculate(int step) 
     {
         Affine af = new Affine();
-        Platform.runLater(() -> clearChildren(this));
+        clearChildren(this);
         
         // male hair
         mMaleHair = new Path();
@@ -70,7 +70,7 @@ public class MaleHairFX extends BodyPartFX
 //                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
 //                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
         
-        Platform.runLater(() -> this.getChildren().add(mMaleHair));
+        this.getChildren().add(mMaleHair);
         
         update();
 

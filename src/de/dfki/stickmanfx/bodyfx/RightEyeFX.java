@@ -69,7 +69,7 @@ public class RightEyeFX extends BodyPartFX
         double movement;
 
         clearDrawObjects();
-        Platform.runLater(() -> clearChildren(this));
+        clearChildren(this);
 		
 		mPath = new Path();
 
@@ -314,7 +314,7 @@ public class RightEyeFX extends BodyPartFX
                 break;
 
         }
-        Platform.runLater(() -> this.getChildren().add(mPath));
+        this.getChildren().add(mPath);
         addToDrawObjects(mPath);
         this.update();
     }

@@ -52,7 +52,7 @@ public class LeftHandFX extends BodyPartFX
         mEnd = new Point(mStart.x, mStart.y + mLength);
 
         clearDrawObjects();
-        Platform.runLater(() -> clearChildren(this));
+        clearChildren(this);
         mHand = new Path();
 
         if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
@@ -83,7 +83,7 @@ public class LeftHandFX extends BodyPartFX
         mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
         mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
         
-        Platform.runLater(() -> this.getChildren().add(mHand));
+        this.getChildren().add(mHand);
         addToDrawObjects(mHand);
         this.update();
     }

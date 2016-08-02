@@ -63,7 +63,7 @@ public class LeftForeArmFX extends BodyPartFX
     public void calculate(int step) 
     {
 
-    	Platform.runLater(() -> clearChildren(this));
+    	clearChildren(this);
     	mArm = new Path();
         mStart = mUpperArmFX.getLeftUpperArmEndPosition();
         mEnd = new Point(mStart.x, mStart.y + mArmLength);
@@ -76,7 +76,7 @@ public class LeftForeArmFX extends BodyPartFX
         mArm.getTransforms().add(af);
 
 
-        Platform.runLater(() -> this.getChildren().add(mArm));
+        this.getChildren().add(mArm);
         update();
     }
 

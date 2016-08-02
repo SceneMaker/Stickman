@@ -88,7 +88,7 @@ public class HeadFX extends BodyPartFX
     public void calculate(int step) 
     {
         Affine af = new Affine();
-        Platform.runLater(() -> clearChildren(this));
+        clearChildren(this);
         
         mHead = new Path();
         // head
@@ -132,7 +132,7 @@ public class HeadFX extends BodyPartFX
 //                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
 //                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
         
-        Platform.runLater(() -> this.getChildren().addAll(mHead, mLeftEar, mRightEar));
+        this.getChildren().addAll(mHead, mLeftEar, mRightEar);
         
         update();
 
