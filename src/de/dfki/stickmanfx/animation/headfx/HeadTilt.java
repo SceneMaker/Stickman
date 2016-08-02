@@ -16,9 +16,9 @@ import javafx.application.Platform;
  * @author Beka
  *
  */
-public class HeadTiltFX extends AnimationFX {
+public class HeadTilt extends AnimationFX {
 
-    public HeadTiltFX(StickmanFX sm, int duration, boolean block) {
+    public HeadTilt(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -36,7 +36,7 @@ public class HeadTiltFX extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "tilt", translationUnit));
 
-        Platform.runLater(() -> playAnimationPart(150));
+        playAnimationPart(150);
 
         pauseAnimation(200);
 
@@ -48,7 +48,6 @@ public class HeadTiltFX extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", -translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", -translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "tilt", -translationUnit));
-
-        Platform.runLater(() -> playAnimationPart(150));
+        playAnimationPart(150);
     }
 }

@@ -10,7 +10,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -27,7 +27,8 @@ public class LeftHandFX extends BodyPartFX
 {
 
     LeftForeArmFX mLeftForeArmFX;
-    Path gp;
+    Path mHand;
+    Affine af;
     public LeftHandFX(LeftForeArmFX lfa) 
     {
         mLeftForeArmFX = lfa;
@@ -36,10 +37,11 @@ public class LeftHandFX extends BodyPartFX
 
         mColor = Color.rgb(80, 80, 80);
         mStroke = new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+        af = new Affine();
 
         setDefaulRotation(30);
-        gp = new Path();
-        this.getChildren().add(gp);
+        mHand = new Path();
+        this.getChildren().add(mHand);
         init();
     }
 
@@ -50,6 +52,8 @@ public class LeftHandFX extends BodyPartFX
         mEnd = new Point(mStart.x, mStart.y + mLength);
 
         clearDrawObjects();
+        Platform.runLater(() -> clearChildren(this));
+        mHand = new Path();
 
         if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -68,20 +72,20 @@ public class LeftHandFX extends BodyPartFX
             }
         }
 
-        new Timeline(new KeyFrame(Duration.millis(40), ae -> 
-        {
-            gp.getElements().clear();
-            gp.getElements().add(new MoveTo(mStart.x, mStart.y));
-            gp.getElements().add(new LineTo(mStart.x - 5, mStart.y));
-            gp.getElements().add(new MoveTo(mStart.x, mStart.y));
-            gp.getElements().add(new LineTo(mEnd.x, mEnd.y));
-            gp.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
-            gp.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
-            gp.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
-            gp.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
-        })).play();
-
-        addToDrawObjects(gp);
+        
+            
+        mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+        mHand.getElements().add(new LineTo(mStart.x - 5, mStart.y));
+        mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+        mHand.getElements().add(new LineTo(mEnd.x, mEnd.y));
+        mHand.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
+        mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
+        mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
+        mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
+        
+        Platform.runLater(() -> this.getChildren().add(mHand));
+        addToDrawObjects(mHand);
+        this.update();
     }
 
     @Override
@@ -97,6 +101,7 @@ public class LeftHandFX extends BodyPartFX
         }
 
         af.appendRotation(mRotation, mStart.x, mStart.y);
+        System.out.println(mRotation);
         for (Path g : mGraphicPaths) 
         {
             g.getTransforms().clear();
