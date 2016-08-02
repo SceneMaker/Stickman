@@ -1,5 +1,8 @@
 package de.dfki.stickmanfx;
 
+import static de.dfki.stickman.animationlogic.util.Interpolator.linear;
+
+import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import de.dfki.stickman.*;
@@ -33,8 +36,12 @@ public class StickmanStageController {
     private static String packEmotionExpression = "de.dfki.stickman.animation.face";
     private static String packGesture = "de.dfki.stickman.animation.gesture";
 	
-    public static StickmanFX sStickman;
+    private static StickmanFX sStickman;
+    private StickmanStageFX2 mStickmanstage;
+    private String mStickmancombobox = null;
     
+    @FXML
+    private Label Stickman;
     @FXML
     private Label BodyColour;
     @FXML
@@ -56,6 +63,8 @@ public class StickmanStageController {
     private RadioButton WaveRight;
 
     @FXML
+    private ComboBox<String> StickmanComboBox;
+    @FXML
     private ComboBox<String> HeadComboBoxColor;
     @FXML
     private ComboBox<String> HairComboBoxColor;
@@ -65,6 +74,11 @@ public class StickmanStageController {
     private ComboBox<String> BodyComboBoxColor;
     @FXML
     private ComboBox<String> LegComboBoxColor;
+    @FXML
+    private ComboBox<String> EmotionExpressionComboBox;
+    
+    @FXML
+    private GridPane gridPaneControlStickman;
     @FXML
     private GridPane gridPaneControlColor;
     @FXML
@@ -78,8 +92,7 @@ public class StickmanStageController {
     @FXML
     private HBox StickmanFlowPane;
     
-    @FXML
-    private ComboBox<String> EmotionExpressionComboBox;
+    
 
     @FXML
     public void initialize() 
@@ -101,54 +114,66 @@ public class StickmanStageController {
         LegComboBoxColor.setValue("Black");
         LegComboBoxColor.getItems().addAll("Black","Yellow","White");
         
-        gridPaneControlColor.setVisible(true);
-        gridPaneControlEmotion.setVisible(false);
-        gridPaneControlIdleSection.setVisible(false);
-        gridPaneControlEnvironment.setVisible(false);
-        gridPaneControlPosture.setVisible(false);
+        //Default show
+        handleStickman();
+       
         
         fillComboForEmotionExpression();
         
+      //Select a stickman
+        StickmanComboBox.setOnAction((event) -> 
+        {
+        	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();         
+        });
+        
+      //Show emotion
+        EmotionExpressionComboBox.setOnAction((event) -> 
+        {
+            String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
+            
+            if (mStickmancombobox != null){
+            Platform.runLater(() -> 
+            {
+            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
+            }
+            );
+            }
+        });
+
+       
         //change bodyColor
         BodyComboBoxColor.setOnAction((event) -> 
         {
             String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
-            
+            if (mStickmancombobox != null){
             Platform.runLater(() -> 
             {
-                for(String key : StickmanStageFX.sStickmansOnStage.keySet())
-                {
-                    StickmanFX stickman =StickmanStageFX.sStickmansOnStage.get(key);
-                    if(stickman.mType == StickmanFX.TYPE.MALE)
+//                for(String key : StickmanStageFX.sStickmansOnStage.keySet())
+//                {
+//                    StickmanFX stickman =StickmanStageFX.sStickmansOnStage.get(key);
+                    if(mStickmanstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
                     {
-                        stickman.mBodyFX.mMaleColor = switchColor(color);
-                        stickman.update();
+                    	mStickmanstage.getStickmanFX(mStickmancombobox).mBodyFX.mMaleColor = switchColor(color);
+                    	mStickmanstage.getStickmanFX(mStickmancombobox).update();
                     }
                     else
                     {
-                       stickman.mBodyFX.mFemaleColor = switchColor(color); 
-                       stickman.update();
+                    	mStickmanstage.getStickmanFX(mStickmancombobox).mBodyFX.mFemaleColor = switchColor(color); 
+                    	mStickmanstage.getStickmanFX(mStickmancombobox).update();
                     }   
-                }
+//                }
             });
+            }
             
         });
-        
-      //emotion express by Robbie Animation is not added to FX
-//        EmotionExpressionComboBox.setOnAction((event) -> 
-//        {
-//            String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
-//            
-//            Platform.runLater(() -> 
-//            {
-//                sStickman.doAnimation("StartIdle", 70, true);
-//            });
-//            
-//        });
-        
-
     }
     
+    public void getStickmanStageFX(StickmanStageFX2 Stickmanstage)
+    {
+    	this.mStickmanstage = Stickmanstage;
+    	fillComboForStickman();
+    	
+    }
     private void fillComboForEmotionExpression()
     {
     	ArrayList<String> getClassesNames;
@@ -157,6 +182,13 @@ public class StickmanStageController {
     	ObservableList<String> classNames = FXCollections.observableArrayList();
     	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
     	EmotionExpressionComboBox.getItems().addAll(classNames);
+    }
+    
+    private void fillComboForStickman()
+    {
+    	ObservableList<String> stickmanNames = FXCollections.observableArrayList();
+    	stickmanNames.addAll(mStickmanstage.mStickmanComboList.stream().collect(Collectors.toList()));
+    	StickmanComboBox.getItems().addAll(stickmanNames);
     }
     
     private Color switchColor(String color)
@@ -181,8 +213,20 @@ public class StickmanStageController {
     }
     
     @FXML
+    private void handleStickman()
+    { 	
+    	gridPaneControlStickman.setVisible(true);
+        gridPaneControlColor.setVisible(false);
+        gridPaneControlEmotion.setVisible(false);
+        gridPaneControlIdleSection.setVisible(false);
+        gridPaneControlEnvironment.setVisible(false);
+        gridPaneControlPosture.setVisible(false);
+    }
+    
+    @FXML
     private void handleBodyColour()
-    {
+    { 	
+    	gridPaneControlStickman.setVisible(false);
         gridPaneControlColor.setVisible(true);
         gridPaneControlEmotion.setVisible(false);
         gridPaneControlIdleSection.setVisible(false);
@@ -193,6 +237,7 @@ public class StickmanStageController {
     @FXML
     private void handleEmotionExpression()
     {
+    	gridPaneControlStickman.setVisible(false);
         gridPaneControlColor.setVisible(false);
         gridPaneControlEmotion.setVisible(true);
         gridPaneControlIdleSection.setVisible(false);
@@ -203,6 +248,7 @@ public class StickmanStageController {
     @FXML
     private void handleIdleSection()
     {
+    	gridPaneControlStickman.setVisible(false);
         gridPaneControlColor.setVisible(false);
         gridPaneControlEmotion.setVisible(false);
         gridPaneControlIdleSection.setVisible(true);
@@ -213,6 +259,7 @@ public class StickmanStageController {
     @FXML
     private void handleEnvironment()
     {
+    	gridPaneControlStickman.setVisible(false);
         gridPaneControlColor.setVisible(false);
         gridPaneControlEmotion.setVisible(false);
         gridPaneControlIdleSection.setVisible(false);
@@ -223,6 +270,7 @@ public class StickmanStageController {
     @FXML
     private void handlePosture()
     {
+    	gridPaneControlStickman.setVisible(false);
         gridPaneControlColor.setVisible(false);
         gridPaneControlEmotion.setVisible(false);
         gridPaneControlIdleSection.setVisible(false);
@@ -237,7 +285,7 @@ public class StickmanStageController {
         EmotionExpression.setId("Menu");
         IdleSection.setId("Menu");
         Posture.setId("Menu");
-
+        Stickman.setId("Menu");
     }
     
     

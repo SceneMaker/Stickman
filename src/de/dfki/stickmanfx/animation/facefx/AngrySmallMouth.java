@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
+import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import de.dfki.stickman.body.LeftEyebrow;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
@@ -20,6 +21,10 @@ import javafx.application.Platform;
  */
 public class AngrySmallMouth extends AnimationFX 
 {
+	public AngrySmallMouth() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
+	
     public AngrySmallMouth(StickmanFX sm, int duration, boolean block) 
     {
         super(sm, duration, block);

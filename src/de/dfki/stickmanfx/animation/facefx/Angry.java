@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
+import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -28,6 +29,11 @@ public class Angry extends AnimationFX
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
+	
+	public Angry() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
+	
     public Angry(StickmanFX sm, int duration, boolean block) 
     {
         super(sm, duration, block);

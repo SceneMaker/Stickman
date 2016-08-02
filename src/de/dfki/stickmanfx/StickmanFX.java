@@ -411,7 +411,7 @@ public class StickmanFX extends Pane
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
 
-        this.getTransforms().add(af);
+//        this.getTransforms().add(af);
         updateAll();
         
         

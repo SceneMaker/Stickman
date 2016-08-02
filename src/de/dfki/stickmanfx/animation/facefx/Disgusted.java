@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
+import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -18,6 +19,10 @@ import javafx.application.Platform;
  */
 public class Disgusted extends AnimationFX 
 {
+	public Disgusted() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
+	
     public Disgusted(StickmanFX sm, int duration, boolean block) 
     {
         super(sm, duration, block);

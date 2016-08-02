@@ -17,7 +17,7 @@ public class StickmanFillCombo
 {
 
 	ArrayList<String> mComboList = new ArrayList<>();
-	String packName = "de.dfki.stickman.animation.face";
+	String packName = "de.dfki.stickmanfx.animation.facefx";
 	String packDir;
 	Enumeration<URL> dir;
 
