@@ -379,7 +379,8 @@ public class StickmanFX extends Pane
         try 
         {
             mAnimationLaunchControl.acquire();
-            Platform.runLater(() -> a.start());/////////////////////////////////////////////////
+            //Platform.runLater(() -> a.start());/////////////////////////////////////////////////
+            a.start();
         } catch (InterruptedException ex) 
         {
             mLogger.severe(ex.getMessage());
