@@ -68,9 +68,8 @@ public class LeftShoulderFX extends BodyPartFX {
     {
         mStart = mBodyFX.getLeftArmStartPostion();
         mEnd = new Point(mStart.x, mStart.y + mShoulderLength);
-
+        clearChildren(this);
         
-        mShoulder.getElements().clear();
         mShoulder.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
         mShoulder.getElements().add(new QuadCurveTo(mStart.x, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
         
@@ -79,6 +78,7 @@ public class LeftShoulderFX extends BodyPartFX {
         mShoulder.getTransforms().clear();
         mShoulder.getTransforms().add(af);
         
+        this.getChildren().add(mShoulder);
         update();
     }
 
