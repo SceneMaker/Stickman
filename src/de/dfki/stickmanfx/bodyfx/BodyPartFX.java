@@ -167,7 +167,7 @@ public abstract class BodyPartFX extends Pane
         createShape();
 
         Affine af = new Affine();
-        af.appendTranslation(0, mToTranslation);
+        af.appendTranslation(0, mTranslation);
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
 
         for (Path gp : mGraphicPaths) 
