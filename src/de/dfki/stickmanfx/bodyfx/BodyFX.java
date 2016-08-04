@@ -60,6 +60,7 @@ public class BodyFX extends Pane {
         else
         	paintFrontOrientation(mColor);
         
+        
         init();
         calculate();
         //update();
@@ -71,7 +72,7 @@ public class BodyFX extends Pane {
         this.setPrefWidth(mSize.width);
     }
 
-    private void calculate() 
+    public void calculate() 
     {
         mStart = mNeckFX.getBodyStartPosition();
 
@@ -248,7 +249,6 @@ public class BodyFX extends Pane {
     public void update() {
 
         //calculate();
-
         if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
         {
             if (mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie

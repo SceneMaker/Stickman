@@ -21,6 +21,7 @@ import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
+import oracle.jrockit.jfr.events.DynamicValueDescriptor;
 
 /**
  *
@@ -87,7 +88,7 @@ public class RightUpperArmFX extends BodyPartFX {
 		// t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
 		// mArm.transform(t);
 		this.getChildren().add(mArm);
-		update();
+		this.update();
 	}
 
 	@Override

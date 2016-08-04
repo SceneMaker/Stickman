@@ -62,7 +62,7 @@ public class LeftHandFX extends BodyPartFX
                 if (fadeFactor <= 24) {
                     fadeFactor = 0;
                 }
-                mColor = new Color(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+                mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
             } else {
                 int fadeFactor = (20 - mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
@@ -101,7 +101,6 @@ public class LeftHandFX extends BodyPartFX
         }
 
         af.appendRotation(mRotation, mStart.x, mStart.y);
-        System.out.println(mRotation);
         for (Path g : mGraphicPaths) 
         {
             g.getTransforms().clear();

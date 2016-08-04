@@ -163,6 +163,10 @@ public class HeadFX extends BodyPartFX
                 }
                 mColor = Color.rgb(242, 227, 217, (fadeFactor * 100 / 255) / 100f); //fadeFactor Interval [0 - 1]
             }
+            
+            //not good. FixMe
+            //update Body (FadeIn, FadeOut)
+            mStickmanFX.mBodyFX.update();
         } 
 
         // head

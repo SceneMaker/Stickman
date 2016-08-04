@@ -38,6 +38,7 @@ public class LeftLegFX extends BodyPartFX {
         mEnd = new Point(mStart.x, mStart.y + mLength);
 
         clearDrawObjects();
+        clearChildren(this);
 
         if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
         {
@@ -71,5 +72,6 @@ public class LeftLegFX extends BodyPartFX {
         gp.getElements().add(new QuadCurveTo(mEnd.x, mEnd.y + 2, mEnd.x + 5, mEnd.y + 4));
         this.getChildren().add(gp);
         addToDrawObjects(gp);
+        this.update();
     }
 }

@@ -44,6 +44,7 @@ import de.dfki.stickmanfx.bodyfx.RightHandFX;
 import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
+import de.dfki.stickmanfx.bodyfx.StarsFX;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -134,7 +135,7 @@ public class StickmanFX extends Pane
     public RightForeArmFX mRightForeArmFX;
     public RightHandFX mRightHandFX;
     public LeftLegFX mLeftLegFX;
-//    public Stars mStars;         // added by Robbie Create Say bye or hi
+    public StarsFX mStarsFX;         // added by Robbie Create Say bye or hi
     public RightLegFX mRightLegFX;
     // environment
     //public SpeechBubble mSpeechBubble;
@@ -172,7 +173,7 @@ public class StickmanFX extends Pane
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
         mLeftLegFX = new LeftLegFX(mBodyFX);
-//        mStars = new Stars(mBody);                   /// added by Robbie
+        mStarsFX = new StarsFX(mBodyFX);                   /// added by Robbie
         mRightLegFX = new RightLegFX(mBodyFX);
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
@@ -211,7 +212,7 @@ public class StickmanFX extends Pane
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
         mLeftLegFX = new LeftLegFX(mBodyFX);
-//        mStars = new Stars(mBody);                /// added by Robbie
+        mStarsFX = new StarsFX(mBodyFX);                /// added by Robbie
         mRightLegFX = new RightLegFX(mBodyFX);
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
@@ -246,7 +247,7 @@ public class StickmanFX extends Pane
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
         mLeftLegFX = new LeftLegFX(mBodyFX);
-//        mStars = new Stars(mBody);           /// added by Robbie
+        mStarsFX = new StarsFX(mBodyFX);           /// added by Robbie
         mRightLegFX = new RightLegFX(mBodyFX);
 
         //mSpeechBubble = new SpeechBubble(mHeadFX);
@@ -445,7 +446,7 @@ public class StickmanFX extends Pane
         this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
                                 mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
                                 mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
-                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX, mFaceWrinkleFX);
+                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX, mFaceWrinkleFX, mStarsFX);
         if(this.mType == StickmanFX.TYPE.MALE)
         	this.getChildren().add(mMaleHairFX);
         else
@@ -456,10 +457,10 @@ public class StickmanFX extends Pane
     {
         // draw body parts
         if (starShowControler == true) {
-            //mStars.update(g);     // Added by Robbie, to show stars or words here.
+            mStarsFX.update();     // Added by Robbie, to show stars or words here.
         } else {
-//        	if(starShowC == true)
-//            	mStars.update(g);   	
+        	if(starShowC == true)
+            	mStarsFX.update();   	
             mHeadFX.update();
             
             if(this.mType == StickmanFX.TYPE.MALE)
@@ -485,8 +486,8 @@ public class StickmanFX extends Pane
             mLeftLegFX.update();
             mRightLegFX.update();
 
-//	        if(starShowC == true)
-//            	mStars.update(g);     // Added by Robbie, to show stars or words here.
+	        if(starShowC == true)
+            	mStarsFX.update();     // Added by Robbie, to show stars or words here.
         }
 
         // draw environment
