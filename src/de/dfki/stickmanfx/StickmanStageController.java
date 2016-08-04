@@ -123,7 +123,8 @@ public class StickmanStageController {
       //Select a stickman
         StickmanComboBox.setOnAction((event) -> 
         {
-        	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();         
+        	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem(); 
+//        	mStickmancombobox = mStickmancombobox.substring(0, 1).toUpperCase() + mStickmancombobox.substring(1);
         });
         
       //Show emotion

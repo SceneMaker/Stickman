@@ -296,7 +296,7 @@ public class StickmanStageFX2 extends Application {
         {
 //        	System.out.println(key);
     		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
-    		mStickmanComboList.add(key);
+    		mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
         }
         
         StickmanStageController mStickmanStageController = loader.getController();
@@ -312,17 +312,23 @@ public class StickmanStageFX2 extends Application {
         scene.setOnMouseClicked(mouseHandler);
              
     }
+    
+    public static void lauchStickman()
+    {
+    	launch();
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
     	addStickmanFX("Bob");
+    	addStickmanFX("Anna");
     	addStickmanFX("character");
 
-    	
+    	lauchStickman();
         
-        launch(args);
+//        launch(args);
     }
     
 //  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
@@ -337,7 +343,7 @@ public class StickmanStageFX2 extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
         	getStickmanFX("Bob").doAnimation("Angry", 70, true);
-        	getStickmanFX("character").doAnimation("Angry", 70, true);             
+        	getStickmanFX("Anna").doAnimation("Angry", 70, true);             
 
         }
      
