@@ -415,7 +415,9 @@ public class StickmanFX extends Pane
         Affine af = new Affine();
         mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
 //        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
-        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
+//        mGeneralYTranslation = (float) (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
+        //change Screen.getPrimary().getVisualBounds().getHeight() to mSize.height to avoid the location changed after update.  by Robbie
+        mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
 
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 
@@ -425,7 +427,6 @@ public class StickmanFX extends Pane
         this.getTransforms().clear();
         this.getTransforms().add(af);
 
-//        this.getTransforms().add(af);
         updateAll();
         
         

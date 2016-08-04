@@ -1,6 +1,5 @@
 package de.dfki.stickmanfx;
 
-
 import de.dfki.stickman.client.ClientConnectionHandler;
 import java.awt.Dimension;
 import java.awt.Toolkit;
