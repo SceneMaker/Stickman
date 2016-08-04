@@ -35,6 +35,7 @@ public class MaleHairFX extends BodyPartFX
     {
         mStickmanFX = sm;
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
+        mColor = Color.rgb(97, 58, 0, 1);
         
         mMaleHair = new Path();
         this.getChildren().add(mMaleHair);
@@ -78,8 +79,6 @@ public class MaleHairFX extends BodyPartFX
 
     public void update() 
     {
-        Color c;
-
         if (mStickmanFX.setCharacterInvisible == true) 
         {
             if (mStickmanFX.fadeControler == true) //Added by Robbie
@@ -89,7 +88,7 @@ public class MaleHairFX extends BodyPartFX
                 {
                     fadeFactor = 0;
                 }
-                c = Color.rgb(97, 58, 0, (fadeFactor * 100 / 255) / 100f);
+                mColor = Color.rgb(97, 58, 0, (fadeFactor * 100 / 255) / 100f);
             } 
             else 
             {
@@ -98,17 +97,13 @@ public class MaleHairFX extends BodyPartFX
                 {
                     fadeFactor = 255;
                 }
-                c = Color.rgb(97, 58, 0, (fadeFactor * 100 / 255) / 100f);
+                mColor = Color.rgb(97, 58, 0, (fadeFactor * 100 / 255) / 100f);
             }
         } 
-        else 
-        {
-            c = Color.rgb(97, 58, 0, 1);
-        }
 
-            mMaleHair.setFill(c);
+            mMaleHair.setFill(mColor);
             // draw outlines
-            mMaleHair.setStroke(c.darker());
+            mMaleHair.setStroke(mColor.darker());
             mMaleHair.setStrokeWidth(2);
         
     }
