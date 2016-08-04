@@ -56,7 +56,7 @@ public class LeftLegFX extends BodyPartFX {
                 {
                     fadeFactor = 255;
                 }
-                mColor = new Color(80, 80, 80, (fadeFactor*100/255)/100f);
+                mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
             }
         }
 

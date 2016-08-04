@@ -84,22 +84,19 @@ public class LeftEyeFX extends BodyPartFX
                         {
                             fadeFactor = 0;
                         }
-                        mColor = new Color(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+                        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
                                 mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                                 mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     } 
                     else 
                     {
                         int fadeFactor = (20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 7;
-                        if (fadeFactor == 126) 
-                        {
-                            fadeFactor = 0;
-                        }
+                       
                         if (fadeFactor >= 118) 
                         {
                             fadeFactor = 145;
                         }
-                        mColor = new Color(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+                        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
                                 mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                                 mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     }

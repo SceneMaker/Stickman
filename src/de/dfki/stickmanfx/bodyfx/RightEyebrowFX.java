@@ -83,15 +83,12 @@ public class RightEyebrowFX extends BodyPartFX
                     else 
                     {
                         int fadeFactor = (int) ((20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 3.2);
-                        if (fadeFactor >= 57) 
-                        {
-                            fadeFactor = 0;
-                        }
+                        
                         if (fadeFactor >= 54) 
                         {
                             fadeFactor = 64;
                         }
-                        mColor = new Color(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
+                        mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
                     }
                 }
 

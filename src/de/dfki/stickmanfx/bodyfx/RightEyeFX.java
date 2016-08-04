@@ -86,22 +86,19 @@ public class RightEyeFX extends BodyPartFX
                         {
                             fadeFactor = 0;
                         }
-                        mColor = new Color(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+                        mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     } 
                     else 
                     {
                         int fadeFactor = (20 - mHead.mStickmanFX.mMouthFX.mShapeAnimationStep) * 7;
-                        if (fadeFactor == 126) 
-                        {
-                            fadeFactor = 0;
-                        }
+                        
                         if (fadeFactor >= 119) 
                         {
                             fadeFactor = 144;
                         }
-                        mColor = new Color(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+                        mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     }
