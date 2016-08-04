@@ -422,6 +422,8 @@ public class StickmanFX extends Pane
         //at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
+        this.getTransforms().clear();
+        this.getTransforms().add(af);
 
 //        this.getTransforms().add(af);
         updateAll();
