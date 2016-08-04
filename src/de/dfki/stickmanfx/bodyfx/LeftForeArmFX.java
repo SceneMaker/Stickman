@@ -51,7 +51,7 @@ public class LeftForeArmFX extends BodyPartFX
     	if(mRotation >= 0 && mRotation <= 90)
     		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
     	else if(mRotation>90 && mRotation<= 180)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()-7), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()-6), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     	else if(mRotation < 0 && mRotation >= -90)
     		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()-7), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
     	else 
@@ -63,7 +63,7 @@ public class LeftForeArmFX extends BodyPartFX
     public void calculate(int step) 
     {
 
-    	Platform.runLater(() -> clearChildren(this));
+    	clearChildren(this);
     	mArm = new Path();
         mStart = mUpperArmFX.getLeftUpperArmEndPosition();
         mEnd = new Point(mStart.x, mStart.y + mArmLength);
@@ -76,7 +76,7 @@ public class LeftForeArmFX extends BodyPartFX
         mArm.getTransforms().add(af);
 
 
-        Platform.runLater(() -> this.getChildren().add(mArm));
+        this.getChildren().add(mArm);
         update();
     }
 

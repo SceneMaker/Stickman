@@ -19,92 +19,97 @@ import javafx.scene.transform.Affine;
 
 /**
  *
- * @author Patrick Gebhard
+ * @author Beka
  *
  */
-public class RightHandFX extends BodyPartFX {
+public class RightHandFX extends BodyPartFX 
+{
 
-    RightForeArmFX mRightForeArmFX;
+	RightForeArmFX mRightForeArmFX;
+	Path mHand;
+	Affine af;
 
-    public RightHandFX(RightForeArmFX rfa) {
-        mRightForeArmFX = rfa;
-        mLength = 10;
-        mSize = new Dimension(mLength, mLength);
+	public RightHandFX(RightForeArmFX rfa) {
+		mRightForeArmFX = rfa;
+		mLength = 10;
+		mSize = new Dimension(mLength, mLength);
 
-        mColor = Color.rgb(80, 80, 80);
-        mStroke = new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+		mColor = Color.rgb(80, 80, 80);
+		mStroke = new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+		af = new Affine();
 
-        setDefaulRotation(-30);
+		setDefaulRotation(-30);
+		mHand = new Path();
+		this.getChildren().add(mHand);
 
-        init();
-    }
+		init();
+	}
 
-    @Override
-    public void createShape() 
-    {
-        mStart = mRightForeArmFX.getHandStartPosition();
-        mEnd = new Point(mStart.x, mStart.y + mLength);
+	@Override
+	public void createShape() {
+		mStart = mRightForeArmFX.getHandStartPosition();
+		mEnd = new Point(mStart.x, mStart.y + mLength);
 
-        clearDrawObjects();
+		clearDrawObjects();
+		clearChildren(this);
+		mHand = new Path();
 
-        if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
-        {
-            if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
-            {
-                int fadeFactor = mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) 
-                {
-                    fadeFactor = 0;
-                }
-                mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            } 
-            else 
-            {
-                int fadeFactor = (20 - mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) 
-                {
-                    fadeFactor = 255;
-                }
-                mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            }
-        }
+		if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+			if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added by Robbie
+			{
+				int fadeFactor = mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
+				if (fadeFactor <= 24) 
+				{
+					fadeFactor = 0;
+				}
+				mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+			} 
+			else 
+			{
+				int fadeFactor = (20 - mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
+				if (fadeFactor >= 216) 
+				{
+					fadeFactor = 255;
+				}
+				mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+			}
+		}
 
-        Path gp = new Path();
-        gp.getElements().add(new MoveTo(mStart.x, mStart.y));
-        gp.getElements().add(new LineTo(mStart.x + 5, mStart.y));
-        gp.getElements().add(new MoveTo(mStart.x, mStart.y));
-        gp.getElements().add(new LineTo(mEnd.x, mEnd.y));
-        gp.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
-        gp.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
-        gp.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
-        gp.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
-        
-        this.getChildren().add(gp);
-        addToDrawObjects(gp);
-    }
+		mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+		mHand.getElements().add(new LineTo(mStart.x + 5, mStart.y));
+		mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+		mHand.getElements().add(new LineTo(mEnd.x, mEnd.y));
+		mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
+		mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
+		mHand.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
+		mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
 
-    @Override
-    public void calculate(int step) 
-    {
-        createShape();
+		this.getChildren().add(mHand);
+		addToDrawObjects(mHand);
+		update();
+	}
 
-        Affine af = new Affine();
-        //AffineTransform t = new AffineTransform();
-        // flip hand when rotation is more than 60 degrees
-        if (mRotation < -60) 
-        {
-            af.appendScale(-1.0, 1.0);
-            af.appendTranslation(-mStart.x * 2, 0);
-//            t.scale(-1.0, 1.0);
-//            t.translate(-mStart.x * 2, 0);
-        }
+	@Override
+	public void calculate(int step) {
+		createShape();
 
-        af.appendRotation(mRotation, mStart.x, mStart.y);
-        //t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
-        for (Path g : mGraphicPaths) 
-        {
-            g.getTransforms().add(af);
-            //g.transform(t);
-        }
-    }
+		Affine af = new Affine();
+		// AffineTransform t = new AffineTransform();
+		// flip hand when rotation is more than 60 degrees
+		if (mRotation < -60) {
+			af.appendScale(-1.0, 1.0);
+			af.appendTranslation(-mStart.x * 2, 0);
+			// t.scale(-1.0, 1.0);
+			// t.translate(-mStart.x * 2, 0);
+		}
+
+		af.appendRotation(mRotation, mStart.x, mStart.y);
+		// t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
+		for (Path g : mGraphicPaths) 
+		{
+			g.getTransforms().clear();
+			g.getTransforms().add(af);
+			// g.transform(t);
+		}
+	}
 }

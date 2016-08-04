@@ -24,6 +24,8 @@ import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
 import de.dfki.stickmanfx.bodyfx.BodyFX;
+import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
+import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
 import de.dfki.stickmanfx.bodyfx.HeadFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyeFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyebrowFX;
@@ -32,6 +34,7 @@ import de.dfki.stickmanfx.bodyfx.LeftHandFX;
 import de.dfki.stickmanfx.bodyfx.LeftLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
+import de.dfki.stickmanfx.bodyfx.MaleHairFX;
 import de.dfki.stickmanfx.bodyfx.MouthFX;
 import de.dfki.stickmanfx.bodyfx.NeckFX;
 import de.dfki.stickmanfx.bodyfx.RightEyeFX;
@@ -112,8 +115,10 @@ public class StickmanFX extends Pane
 
     // body parts
     public HeadFX mHeadFX;
+    public MaleHairFX mMaleHairFX;
+    public FemaleHairFX mFemaleHairFX;
     public LeftEyebrowFX mLeftEyebrowFX;
-//    public FaceWrinkle mFaceWrinkle;  // added by Robbie FaceWrinkle 
+    public FaceWrinkleFX mFaceWrinkleFX;  // added by Robbie FaceWrinkle 
     public LeftEyeFX mLeftEyeFX;
     public RightEyebrowFX mRightEyebrowFX;
     public RightEyeFX mRightEyeFX;
@@ -148,11 +153,13 @@ public class StickmanFX extends Pane
         mType = gender;
 
         mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
         mRightEyeFX = new RightEyeFX(mHeadFX);
-        //mFaceWrinkle = new FaceWrinkle(mHeadFX);                 /// added by Robbie
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX);                 /// added by Robbie
         mMouthFX = new MouthFX(mHeadFX);
         mNeckFX = new NeckFX(mHeadFX);
         mBodyFX = new BodyFX(mNeckFX);
@@ -185,11 +192,13 @@ public class StickmanFX extends Pane
         mType = gender;
 
         mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
         mRightEyeFX = new RightEyeFX(mHeadFX);
-        //mFaceWrinkle = new FaceWrinkle(mHeadFX);    /// added by Robbie
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX);    /// added by Robbie
         mMouthFX = new MouthFX(mHeadFX);
         mNeckFX = new NeckFX(mHeadFX);
         mBodyFX = new BodyFX(mNeckFX);
@@ -218,11 +227,13 @@ public class StickmanFX extends Pane
         mType = gender;
 
         mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
         mRightEyeFX = new RightEyeFX(mHeadFX);
-        //mFaceWrinkle = new FaceWrinkle(mHeadFX);    /// added by Robbie
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX);    /// added by Robbie
         mMouthFX = new MouthFX(mHeadFX);
         mNeckFX = new NeckFX(mHeadFX);
         mBodyFX = new BodyFX(mNeckFX);
@@ -368,7 +379,8 @@ public class StickmanFX extends Pane
         try 
         {
             mAnimationLaunchControl.acquire();
-            Platform.runLater(() -> a.start());
+            //Platform.runLater(() -> a.start());/////////////////////////////////////////////////
+            a.start();
         } catch (InterruptedException ex) 
         {
             mLogger.severe(ex.getMessage());
@@ -410,6 +422,8 @@ public class StickmanFX extends Pane
         //at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
+        this.getTransforms().clear();
+        this.getTransforms().add(af);
 
 //        this.getTransforms().add(af);
         updateAll();
@@ -430,7 +444,11 @@ public class StickmanFX extends Pane
         this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
                                 mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
                                 mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
-                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX);
+                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX, mFaceWrinkleFX);
+        if(this.mType == StickmanFX.TYPE.MALE)
+        	this.getChildren().add(mMaleHairFX);
+        else
+        	this.getChildren().add(mFemaleHairFX);
     }
     
     private void updateAll()
@@ -442,10 +460,15 @@ public class StickmanFX extends Pane
 //        	if(starShowC == true)
 //            	mStars.update(g);   	
             mHeadFX.update();
+            
+            if(this.mType == StickmanFX.TYPE.MALE)
+            	mMaleHairFX.update();
+            else
+            	mFemaleHairFX.update();
             mLeftEyebrowFX.update();
             mLeftEyeFX.update();
             mRightEyebrowFX.update();
-//	        mFaceWrinkle.update(g);      // added by Robbie
+	        mFaceWrinkleFX.update();      // added by Robbie
             mRightEyeFX.update();
             mMouthFX.update();
             mNeckFX.update();

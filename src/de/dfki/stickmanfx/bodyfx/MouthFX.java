@@ -63,7 +63,7 @@ public class MouthFX extends BodyPartFX
 		double movement;
 
 		clearDrawObjects();
-		Platform.runLater(() -> clearChildren(this));
+		clearChildren(this);
 		
 		mPath = new Path();
 
@@ -414,7 +414,7 @@ public class MouthFX extends BodyPartFX
 			break;
 
 		}
-		Platform.runLater(() -> this.getChildren().add(mPath));
+		getChildren().add(mPath);
 		addToDrawObjects(mPath);
 		this.update();
 	}

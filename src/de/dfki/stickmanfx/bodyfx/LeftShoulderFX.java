@@ -51,7 +51,16 @@ public class LeftShoulderFX extends BodyPartFX {
 
     public Point getLeftShoulderEndPosition() 
     {
-        return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() - 1), (int) mShoulder.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
+        //return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() - 1), (int) mShoulder.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
+    	if(mRotation >= 0 && mRotation <= 90)
+    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+    	else if(mRotation>90 && mRotation<= 180)
+    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    	else if(mRotation < 0 && mRotation >= -90)
+    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()-1), (int) mShoulder.boundsInParentProperty().get().getMaxY()-2) : new Point(0, 0);
+    	else 
+    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    
     }
 
     @Override
@@ -59,9 +68,8 @@ public class LeftShoulderFX extends BodyPartFX {
     {
         mStart = mBodyFX.getLeftArmStartPostion();
         mEnd = new Point(mStart.x, mStart.y + mShoulderLength);
-
+        clearChildren(this);
         
-        mShoulder.getElements().clear();
         mShoulder.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
         mShoulder.getElements().add(new QuadCurveTo(mStart.x, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
         
@@ -70,6 +78,7 @@ public class LeftShoulderFX extends BodyPartFX {
         mShoulder.getTransforms().clear();
         mShoulder.getTransforms().add(af);
         
+        this.getChildren().add(mShoulder);
         update();
     }
 

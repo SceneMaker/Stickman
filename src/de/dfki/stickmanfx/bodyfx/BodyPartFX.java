@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -81,7 +82,7 @@ public abstract class BodyPartFX extends Pane
         mTranslation += mTranslationStep;
         mTranslation = (double) Math.round(mTranslation * 1000d) / 1000d; // the poor man's round method
 
-        calculate(step);
+        Platform.runLater(() -> calculate(step));
     }
 
     public void resetTranslation() 
@@ -113,7 +114,7 @@ public abstract class BodyPartFX extends Pane
     {
             mRotation += mRotationStep;
             mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
-            calculate(step);
+            Platform.runLater(() -> calculate(step));
             
     }
 
@@ -138,7 +139,7 @@ public abstract class BodyPartFX extends Pane
     {
         mShapeAnimationStep = step;
 
-        calculate(step);
+        Platform.runLater(() -> calculate(step));
     }
 
     public void resetShape() 
@@ -166,7 +167,7 @@ public abstract class BodyPartFX extends Pane
         createShape();
 
         Affine af = new Affine();
-        af.appendTranslation(0, mToTranslation);
+        af.appendTranslation(0, mTranslation);
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
 
         for (Path gp : mGraphicPaths) 

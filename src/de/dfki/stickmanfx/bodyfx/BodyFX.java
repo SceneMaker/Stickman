@@ -16,6 +16,8 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeLineJoin;
 
 /**
  *
@@ -44,13 +46,29 @@ public class BodyFX extends Pane {
         mNeckFX = neck;
         mStart = mNeckFX.getBodyStartPosition();
         mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
+        mFemaleBodyFront = new Path();
+        mFemaleBodyLeft = new Path();
+        mFemaleBodyRight = new Path();
+        mMaleBodyFront = new Path();
+        mMaleBodyLeft = new Path();
+        mMaleBodyRight = new Path();
+        
+        if(mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT)
+        	paintLeftOrientation(mColor);
+        else if(mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.RIGHT)
+        	paintRightOrientation(mColor);
+        else
+        	paintFrontOrientation(mColor);
+        
         init();
+        calculate();
+        //update();
     }
 
     private void init() 
     {
-        this.prefHeight(mSize.height);
-        this.prefWidth(mSize.width);
+        this.setPrefHeight(mSize.height);
+        this.setPrefWidth(mSize.width);
     }
 
     private void calculate() 
@@ -92,6 +110,8 @@ public class BodyFX extends Pane {
         mMaleBodyRight.getElements().add(new QuadCurveTo(mStart.x - mDrawOffset, mSize.height / 3 * 2, mStart.x, mSize.height));
         mMaleBodyRight.getElements().add(new LineTo(mStart.x + mHalfSizeX - mDrawOffset, mSize.height));
         mMaleBodyRight.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y));
+        
+        update();
     }
 
     public Point getLeftArmStartPostion() 
@@ -133,11 +153,13 @@ public class BodyFX extends Pane {
     {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
+        	this.getChildren().remove(mFemaleBodyLeft);
             mFemaleBodyLeft.setFill(c);
             this.getChildren().add(mFemaleBodyLeft);
         } 
         else 
         {
+        	this.getChildren().remove(mMaleBodyLeft);
             mMaleBodyLeft.setFill(c);
             this.getChildren().add(mMaleBodyLeft);
         }
@@ -146,11 +168,15 @@ public class BodyFX extends Pane {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
             mFemaleBodyLeft.setStroke(c.darker());
+            mFemaleBodyLeft.setStrokeLineCap(StrokeLineCap.ROUND);
+            mFemaleBodyLeft.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mFemaleBodyLeft.setStrokeWidth(2);
         } 
         else 
         {
             mMaleBodyLeft.setStroke(c.darker());
+            mMaleBodyLeft.setStrokeLineCap(StrokeLineCap.ROUND);
+            mMaleBodyLeft.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mMaleBodyLeft.setStrokeWidth(2);
         }
     }
@@ -159,11 +185,13 @@ public class BodyFX extends Pane {
     {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
+        	this.getChildren().remove(mFemaleBodyRight);
             mFemaleBodyRight.setFill(c);
             this.getChildren().add(mFemaleBodyRight);
         } 
         else 
         {
+        	this.getChildren().remove(mMaleBodyRight);
             mMaleBodyRight.setFill(c);
             this.getChildren().add(mMaleBodyRight);
         }
@@ -172,11 +200,15 @@ public class BodyFX extends Pane {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
             mFemaleBodyRight.setStroke(c.darker());
+            mFemaleBodyRight.setStrokeLineCap(StrokeLineCap.ROUND);
+            mFemaleBodyRight.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mFemaleBodyRight.setStrokeWidth(2);
         } 
         else 
         {
             mMaleBodyRight.setStroke(c.darker());
+            mMaleBodyRight.setStrokeLineCap(StrokeLineCap.ROUND);
+            mMaleBodyRight.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mMaleBodyRight.setStrokeWidth(2);
         }
     }
@@ -185,11 +217,13 @@ public class BodyFX extends Pane {
     {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
+        	this.getChildren().remove(mFemaleBodyFront);
             mFemaleBodyFront.setFill(c);
             this.getChildren().add(mFemaleBodyFront);
         } 
         else 
         {
+        	this.getChildren().remove(mMaleBodyFront);
             mMaleBodyFront.setFill(c);
             this.getChildren().add(mMaleBodyFront);
         }
@@ -198,18 +232,22 @@ public class BodyFX extends Pane {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
             mFemaleBodyFront.setStroke(c.darker());
+            mFemaleBodyFront.setStrokeLineCap(StrokeLineCap.ROUND);
+            mFemaleBodyFront.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mFemaleBodyFront.setStrokeWidth(2);
         } 
         else 
         {
             mMaleBodyFront.setStroke(c.darker());
+            mMaleBodyFront.setStrokeLineCap(StrokeLineCap.ROUND);
+            mMaleBodyFront.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mMaleBodyFront.setStrokeWidth(2);
         }
     }
 
     public void update() {
 
-        calculate();
+        //calculate();
 
         if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
         {
