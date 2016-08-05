@@ -23,9 +23,12 @@ import javafx.util.Duration;
  */
 public class RightEyeFX extends BodyPartFX 
 {
+	double xMovement;
+    double yMovement1;
+    double yMovement2;
     public static enum SHAPE 
     {
-        DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+        DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
     };
 
     HeadFX mHead;
@@ -247,6 +250,21 @@ public class RightEyeFX extends BodyPartFX
                         mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
                 }
                 break;
+                
+            case LOVED1:
+	            	movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+	
+	                 xMovement = movement / 10 * 6;
+	                 yMovement1 = movement / 10 * 6;
+	                 yMovement2 = movement / 10 * 3;
+	                 
+	                 mHead.mStickmanFX.mLeftEyeFX.showHearts();
+
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
+                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+                    mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
+            	break;
 
             case CONTEMPT:
                 movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;

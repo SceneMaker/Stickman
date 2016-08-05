@@ -2,17 +2,26 @@ package de.dfki.stickmanfx.bodyfx;
 
 
 import java.awt.Point;
+import java.util.ArrayList;
+
 import static de.dfki.stickman.animationlogic.util.Interpolator.linear;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
+import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 /**
@@ -23,10 +32,13 @@ import javafx.util.Duration;
 public class LeftEyeFX extends BodyPartFX 
 {
 
+	double xMovement;
+    double yMovement1;
+    double yMovement2;
 
     public static enum SHAPE 
     {
-        DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+        DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
     };
 
     HeadFX mHeadFX;
@@ -211,11 +223,11 @@ public class LeftEyeFX extends BodyPartFX
                     break;
 
             case LOVED:
-	                movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-	
-	                double xMovement = movement / 10 * 6;
-	                double yMovement1 = movement / 10 * 6;
-	                double yMovement2 = movement / 10 * 3;
+            		movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+            		 xMovement = movement / 10 * 6;
+	                 yMovement1 = movement / 10 * 6;
+	                 yMovement2 = movement / 10 * 3;
+	                
                     mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
                     mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
                     mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
@@ -241,6 +253,20 @@ public class LeftEyeFX extends BodyPartFX
 		                        mPath.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
 		                }
 		                break;
+            case LOVED1:
+            			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+            			xMovement = movement / 10 * 6;
+            			yMovement1 = movement / 10 * 6;
+            			yMovement2 = movement / 10 * 3;
+                
+            			showHearts();
+               
+            			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+            			mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
+            			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+            			mPath.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
+               
+            			break;
 
             case CONTEMPT:
 	                	movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
@@ -310,5 +336,47 @@ public class LeftEyeFX extends BodyPartFX
         addToDrawObjects(mPath);
         this.update();
 
+    }
+    
+    public void showHearts()
+    {
+    	int numHearts = 7;
+    	
+		Ellipse path = new Ellipse(mHeadFX.mHalfWidth, mHeadFX.mHalfHeight-40, 60, 20);
+		
+		for (int i = 0; i < numHearts; i++) 
+		{
+			Path heart = new Path();
+			heart.getElements().add(new MoveTo(mStart.x-10, mStart.y));
+			heart.getElements().add(new QuadCurveTo(mStart.x-10 - xMovement-5, mEnd.y - yMovement2, mStart.x-10, mEnd.y + yMovement1+15));
+			heart.getElements().add(new MoveTo(mStart.x-10, mStart.y));
+			heart.getElements().add(new QuadCurveTo(mStart.x-10 + xMovement+5, mEnd.y - yMovement2, mStart.x-10, mEnd.y + yMovement1+15));
+			heart.setFill(Color.RED);
+			
+			this.getChildren().addAll(heart);
+			
+			FadeTransition ft = new FadeTransition(Duration.millis(200), heart);
+			ft.setFromValue(1.0);
+			ft.setToValue(0.1);
+			ft.setCycleCount(Timeline.INDEFINITE);
+			ft.setAutoReverse(true);
+			ft.play();
+			
+			PathTransition transition = createPathTransition(path, heart);
+			transition.jumpTo(Duration.seconds(10).multiply(i *1.0 / numHearts));
+			transition.play();
+        }
+		
+    }
+    
+    private PathTransition createPathTransition(Shape shape, Node node) 
+    {
+        final PathTransition transition = new PathTransition(Duration.seconds(10), shape, node);
+        
+        transition.setAutoReverse(false);
+        transition.setCycleCount(PathTransition.INDEFINITE);
+        transition.setInterpolator(Interpolator.LINEAR);
+
+        return transition;
     }
 }
