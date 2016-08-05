@@ -1,11 +1,9 @@
 package de.dfki.stickmanfx.animation.facefx;
 
-import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *

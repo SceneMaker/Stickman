@@ -6,7 +6,6 @@
 package de.dfki.stickmanfx.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.util.ios.IOSIndentWriter;
@@ -39,11 +38,11 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
 	public int mDuration = -1;
 	public String mID;
 	public Object mParameter = "";
+	public enum ANIMTYPE { EmotionExpression, Gesture}
 	public ANIMTYPE mAnimType = null;
 
 	public AnimationFX() 
         {
-            
 	}
 
 	public AnimationFX(StickmanFX sm, int duration, boolean block) 

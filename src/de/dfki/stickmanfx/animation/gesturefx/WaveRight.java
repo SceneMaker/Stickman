@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 
 /**
  *
@@ -18,6 +19,10 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  */
 public class WaveRight extends AnimationFX {
 
+	public WaveRight() {
+		mAnimType = ANIMTYPE.Gesture;
+	}
+	
 	public WaveRight(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

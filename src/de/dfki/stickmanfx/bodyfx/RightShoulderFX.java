@@ -37,6 +37,7 @@ public class RightShoulderFX extends BodyPartFX
 
 	public RightShoulderFX(BodyFX body) {
 		mBodyFX = body;
+		mColor = Color.rgb(80, 80, 80);
 
 		mDefaultRotation = 70;
 		mRotation = mDefaultRotation;
@@ -85,7 +86,7 @@ public class RightShoulderFX extends BodyPartFX
 	public void update() 
     {
 		// draw outlines
-		Color curreColor = Color.rgb(80, 80, 80);
+//		Color curreColor = Color.rgb(80, 80, 80);
 				
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true)
 		{
@@ -96,7 +97,7 @@ public class RightShoulderFX extends BodyPartFX
 				{
 					fadeFactor=0;
 				}
-                curreColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+				mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
 		}
 		else
 		{
@@ -105,12 +106,12 @@ public class RightShoulderFX extends BodyPartFX
 			{
 				fadeFactor=255;
 			}
-            curreColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+			mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
 			//g2.setColor(new Color(80, 80, 80,fadeFactor));
 		}
 	}
 	
-            mShoulder.setStroke(curreColor);
+            mShoulder.setStroke(mColor);
             mShoulder.setStrokeWidth(3);
             mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
             mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);

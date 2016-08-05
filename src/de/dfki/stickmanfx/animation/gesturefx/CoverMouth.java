@@ -13,6 +13,11 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  */
 public class CoverMouth extends AnimationFX {
    
+	
+	public CoverMouth() {
+		mAnimType = ANIMTYPE.Gesture;
+	}
+	
 	public CoverMouth(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

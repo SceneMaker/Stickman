@@ -3,15 +3,13 @@ package de.dfki.stickmanfx;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
-import de.dfki.stickman.animationlogic.Animation;
-import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
+import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 
 public class StickmanFillCombo
 {
@@ -80,10 +78,10 @@ public class StickmanFillCombo
 
 						Object object = myClass.newInstance();
 						
-						Animation class1 = null;
-						if (object instanceof Animation)
+						AnimationFX class1 = null;
+						if (object instanceof AnimationFX)
 						{
-							class1 = (Animation) object;
+							class1 = (AnimationFX) object;
 						}
 
 						if (class1 != null && class1.mAnimType == ANIMTYPE.EmotionExpression)

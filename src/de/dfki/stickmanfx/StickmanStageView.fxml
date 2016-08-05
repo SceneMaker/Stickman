@@ -139,6 +139,7 @@
                         </Label>
                         <ComboBox fx:id="EmotionExpressionComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Emotion" GridPane.rowIndex="2" />
+                        <Label fx:id="ShowEmotionName" prefHeight="17.0" prefWidth="151.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <GridPane fx:id="gridPaneControlPosture" layoutX="37.0" layoutY="241.0" prefHeight="150.0" prefWidth="215.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="5.0">
@@ -222,9 +223,8 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button layoutX="275.0" layoutY="347.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="OK" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="14.0" />
-                  <Button layoutX="202.0" layoutY="347.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Apply" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="85.0" />
-                  <Button layoutX="127.0" layoutY="347.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="160.0" />
+                  <Button layoutX="275.0" layoutY="347.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Apply" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="14.0" />
+                  <Button layoutX="202.0" layoutY="347.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="85.0" />
                </children>
             </AnchorPane>
          </items>
