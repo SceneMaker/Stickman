@@ -78,7 +78,7 @@ public class AnimationLoaderFX
             } 
             catch (ClassNotFoundException ex) 
             {
-                ex.printStackTrace();
+                //ex.printStackTrace();
             }
         }
         return classPath;

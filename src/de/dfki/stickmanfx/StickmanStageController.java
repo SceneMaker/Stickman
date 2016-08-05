@@ -150,7 +150,7 @@ public class StickmanStageController {
         {
             String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
             
-            if (mStickmancombobox != null){
+            if (mEmotion != null){
             Platform.runLater(() -> 
             {
             	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
