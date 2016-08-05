@@ -38,6 +38,7 @@ public class LeftShoulderFX extends BodyPartFX {
     public LeftShoulderFX(BodyFX body) 
     {
         mBodyFX = body;
+        mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -70;
         mRotation = mDefaultRotation;
         mToDegree = mDefaultRotation;
@@ -87,7 +88,7 @@ public class LeftShoulderFX extends BodyPartFX {
         //create();
         // draw outlines
 
-        Color currenColor = Color.rgb(80, 80, 80);
+//        Color currenColor = Color.rgb(80, 80, 80);
 
         if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -96,19 +97,19 @@ public class LeftShoulderFX extends BodyPartFX {
                 if (fadeFactor <= 24) {
                     fadeFactor = 0;
                 }
-                currenColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+                mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));
             } else {
                 int fadeFactor = (20 - mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
                     fadeFactor = 255;
                 }
-                currenColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+                mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));
             }
         }
 
-        mShoulder.setStroke(currenColor);
+        mShoulder.setStroke(mColor);
         mShoulder.setStrokeWidth(3);
         mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
         mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);

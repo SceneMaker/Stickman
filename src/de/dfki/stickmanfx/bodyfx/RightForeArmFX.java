@@ -42,7 +42,7 @@ public class RightForeArmFX extends BodyPartFX
 	public RightForeArmFX(RightUpperArmFX arm) 
 	{
 		mUpperArmFX = arm;
-
+		mColor = Color.rgb(80, 80, 80);
 		mDefaultRotation = -20;
 		mRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
@@ -92,7 +92,7 @@ public class RightForeArmFX extends BodyPartFX
 
 	@Override
 	public void update() {
-		Color currentColor = Color.rgb(80, 80, 80);
+//		Color currentColor = Color.rgb(80, 80, 80);
 		// draw outlines
 		if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
 		{
@@ -104,7 +104,7 @@ public class RightForeArmFX extends BodyPartFX
 				{
 					fadeFactor = 0;
 				}
-				currentColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+				mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
 				// g2.setColor(new Color(80, 80, 80, fadeFactor));
 			} 
 			else 
@@ -114,12 +114,12 @@ public class RightForeArmFX extends BodyPartFX
 				{
 					fadeFactor = 255;
 				}
-				currentColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+				mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
 				// g2.setColor(new Color(80, 80, 80, fadeFactor));
 			}
 		}
 
-		mArm.setStroke(currentColor);
+		mArm.setStroke(mColor);
 		mArm.setStrokeWidth(3);
 		mArm.setStrokeLineCap(StrokeLineCap.ROUND);
 		mArm.setStrokeLineJoin(StrokeLineJoin.ROUND);
