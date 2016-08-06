@@ -45,6 +45,7 @@ import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.StarsFX;
+import de.dfki.stickmanfx.environmentfx.SpeechBubbleFX;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -138,7 +139,7 @@ public class StickmanFX extends Pane
     public StarsFX mStarsFX;         // added by Robbie Create Say bye or hi
     public RightLegFX mRightLegFX;
     // environment
-    //public SpeechBubble mSpeechBubble;
+    public SpeechBubbleFX mSpeechBubbleFX;
 
     // logging
     public final Logger mLogger = Logger.getAnonymousLogger();
@@ -176,7 +177,7 @@ public class StickmanFX extends Pane
         mStarsFX = new StarsFX(mBodyFX);                   /// added by Robbie
         mRightLegFX = new RightLegFX(mBodyFX);
 
-        //mSpeechBubble = new SpeechBubble(mHeadFX);
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
         this.addAllParts();
         update();
@@ -215,7 +216,7 @@ public class StickmanFX extends Pane
         mStarsFX = new StarsFX(mBodyFX);                /// added by Robbie
         mRightLegFX = new RightLegFX(mBodyFX);
 
-        //mSpeechBubble = new SpeechBubble(mHeadFX);
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
         this.addAllParts();
         update();
@@ -250,7 +251,7 @@ public class StickmanFX extends Pane
         mStarsFX = new StarsFX(mBodyFX);           /// added by Robbie
         mRightLegFX = new RightLegFX(mBodyFX);
 
-        //mSpeechBubble = new SpeechBubble(mHeadFX);
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
         this.addAllParts();
         update();
@@ -446,7 +447,7 @@ public class StickmanFX extends Pane
         this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
                                 mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
                                 mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
-                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX, mFaceWrinkleFX, mStarsFX);
+                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX, mFaceWrinkleFX, mStarsFX, mSpeechBubbleFX);
         if(this.mType == StickmanFX.TYPE.MALE)
         	this.getChildren().add(mMaleHairFX);
         else

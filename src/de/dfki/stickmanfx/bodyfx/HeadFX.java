@@ -78,7 +78,7 @@ public class HeadFX extends BodyPartFX
 
     public Point getSpeechBubbleStartPosition() 
     {
-        return new Point(mHalfWidth + 20, mHalfHeight + 30);
+        return new Point(mHalfWidth+20, mHalfHeight + 30);
     }
 
     public Point getNeckStartPosition() 
