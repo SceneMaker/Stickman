@@ -343,7 +343,8 @@ public class StickmanStageFX2 extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
 
-        	getStickmanFX("Bob").doAnimation("Happy", 300, true);
+        	getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
+        	getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
 //        	getStickmanFX("character").doAnimation("Loved", 300, true);             
 
         }

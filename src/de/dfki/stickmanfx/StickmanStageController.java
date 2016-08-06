@@ -150,7 +150,7 @@ public class StickmanStageController {
         {
             String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
             
-            if (mEmotion != null){
+            if ((mEmotion != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
             	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
@@ -165,7 +165,7 @@ public class StickmanStageController {
         BodyComboBoxColor.setOnAction((event) -> 
         {
             String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
-            if (mStickmancombobox != null){
+            if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
             	if(mStickmanstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
@@ -187,7 +187,7 @@ public class StickmanStageController {
         HairComboBoxColor.setOnAction((event) -> 
         {
             String color = HairComboBoxColor.getSelectionModel().getSelectedItem();
-            if (mStickmancombobox != null){
+            if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
             	if(mStickmanstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
@@ -209,7 +209,7 @@ public class StickmanStageController {
         HeadComboBoxColor.setOnAction((event) -> 
         {
             String color = HeadComboBoxColor.getSelectionModel().getSelectedItem();
-            if (mStickmancombobox != null){
+            if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
             	mStickmanstage.getStickmanFX(mStickmancombobox).mHeadFX.mColor = switchColor(color);
@@ -223,7 +223,7 @@ public class StickmanStageController {
         LimbsComboBoxColor.setOnAction((event) -> 
         {
             String color = LimbsComboBoxColor.getSelectionModel().getSelectedItem();
-            if (mStickmancombobox != null){
+            if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
             	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftLegFX.mColor = switchColor(color);
