@@ -80,6 +80,11 @@ public class HeadFX extends BodyPartFX
     {
         return new Point(mHalfWidth+20, mHalfHeight + 30);
     }
+    
+    public Point getThinkhBubbleStartPosition() 
+    {
+        return new Point(mHalfWidth, mHalfHeight);
+    }
 
     public Point getNeckStartPosition() 
     {
