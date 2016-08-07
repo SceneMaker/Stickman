@@ -258,7 +258,7 @@ public class RightEyeFX extends BodyPartFX
 	                 yMovement1 = movement / 10 * 6;
 	                 yMovement2 = movement / 10 * 3;
 	                 
-	                 mHead.mStickmanFX.mLeftEyeFX.showHearts();
+	                showHearts(mHead, xMovement, yMovement1, yMovement2);
 
                     mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
                     mPath.getElements().add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));

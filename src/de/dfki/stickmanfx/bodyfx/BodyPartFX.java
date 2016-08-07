@@ -13,13 +13,22 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
+import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
@@ -186,5 +195,48 @@ public abstract class BodyPartFX extends Pane
             gp.setStrokeLineJoin(StrokeLineJoin.ROUND);
             gp.setStrokeWidth(3);
         }
+    }
+    
+    public void showHearts(HeadFX mHeadFX, double xMovement, double yMovement1, double yMovement2)
+    {
+    	int numHearts = 7;
+    	
+		Ellipse path = new Ellipse(mHeadFX.mHalfWidth+4, mHeadFX.mHalfHeight-50, 60, 20);
+		
+		for (int i = 0; i < numHearts; i++) 
+		{
+			Path heart = new Path();
+			heart.getElements().add(new MoveTo(mStart.x-10, mStart.y));
+			heart.getElements().add(new QuadCurveTo(mStart.x-10 - xMovement-5, mEnd.y - yMovement2, mStart.x-10, mEnd.y + yMovement1+15));
+			heart.getElements().add(new MoveTo(mStart.x-10, mStart.y));
+			heart.getElements().add(new QuadCurveTo(mStart.x-10 + xMovement+5, mEnd.y - yMovement2, mStart.x-10, mEnd.y + yMovement1+15));
+			heart.setFill(Color.RED);
+			
+			this.getChildren().addAll(heart);
+			
+			FadeTransition ft = new FadeTransition(Duration.millis(200), heart);
+			ft.setFromValue(1.0);
+			ft.setToValue(0.1);
+			ft.setCycleCount(Timeline.INDEFINITE);
+			ft.setAutoReverse(true);
+			ft.play();
+			
+			PathTransition transition = createPathTransition(path, heart);
+			transition.jumpTo(Duration.seconds(10).multiply(i *1.0 / numHearts));
+			this.toFront();
+			transition.play();
+        }
+		
+    }
+    
+    private PathTransition createPathTransition(Shape shape, Node node) 
+    {
+        final PathTransition transition = new PathTransition(Duration.seconds(10), shape, node);
+        
+        transition.setAutoReverse(false);
+        transition.setCycleCount(PathTransition.INDEFINITE);
+        transition.setInterpolator(Interpolator.LINEAR);
+
+        return transition;
     }
 }

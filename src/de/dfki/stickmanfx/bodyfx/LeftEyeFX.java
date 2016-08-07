@@ -259,7 +259,7 @@ public class LeftEyeFX extends BodyPartFX
             			yMovement1 = movement / 10 * 6;
             			yMovement2 = movement / 10 * 3;
                 
-            			showHearts();
+            			showHearts(mHeadFX, xMovement, yMovement1, yMovement2);
                
             			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
             			mPath.getElements().add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
@@ -338,45 +338,4 @@ public class LeftEyeFX extends BodyPartFX
 
     }
     
-    public void showHearts()
-    {
-    	int numHearts = 7;
-    	
-		Ellipse path = new Ellipse(mHeadFX.mHalfWidth, mHeadFX.mHalfHeight-40, 60, 20);
-		
-		for (int i = 0; i < numHearts; i++) 
-		{
-			Path heart = new Path();
-			heart.getElements().add(new MoveTo(mStart.x-10, mStart.y));
-			heart.getElements().add(new QuadCurveTo(mStart.x-10 - xMovement-5, mEnd.y - yMovement2, mStart.x-10, mEnd.y + yMovement1+15));
-			heart.getElements().add(new MoveTo(mStart.x-10, mStart.y));
-			heart.getElements().add(new QuadCurveTo(mStart.x-10 + xMovement+5, mEnd.y - yMovement2, mStart.x-10, mEnd.y + yMovement1+15));
-			heart.setFill(Color.RED);
-			
-			this.getChildren().addAll(heart);
-			
-			FadeTransition ft = new FadeTransition(Duration.millis(200), heart);
-			ft.setFromValue(1.0);
-			ft.setToValue(0.1);
-			ft.setCycleCount(Timeline.INDEFINITE);
-			ft.setAutoReverse(true);
-			ft.play();
-			
-			PathTransition transition = createPathTransition(path, heart);
-			transition.jumpTo(Duration.seconds(10).multiply(i *1.0 / numHearts));
-			transition.play();
-        }
-		
-    }
-    
-    private PathTransition createPathTransition(Shape shape, Node node) 
-    {
-        final PathTransition transition = new PathTransition(Duration.seconds(10), shape, node);
-        
-        transition.setAutoReverse(false);
-        transition.setCycleCount(PathTransition.INDEFINITE);
-        transition.setInterpolator(Interpolator.LINEAR);
-
-        return transition;
-    }
 }
