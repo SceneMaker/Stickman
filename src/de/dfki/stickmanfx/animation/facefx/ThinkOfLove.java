@@ -9,6 +9,8 @@ import de.dfki.stickman.animationlogic.AnimationContent;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
+
 import java.util.ArrayList;
 import javafx.application.Platform;
 
@@ -20,6 +22,9 @@ import javafx.application.Platform;
 public class ThinkOfLove extends AnimationFX 
 {
 
+	public ThinkOfLove() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
    
 	public ThinkOfLove(StickmanFX sm, int duration, boolean block) 
         {
