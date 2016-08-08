@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import de.dfki.stickman.*;
 
-import de.dfki.stickman.view.*;
 import de.dfki.stickmanfx.bodyfx.BodyFX;
 import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
 import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
@@ -29,15 +28,19 @@ import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -57,8 +60,9 @@ public class StickmanStageController {
     private static String packGesture = "de.dfki.stickmanfx.animation.esturefx";
 	
     private static StickmanFX sStickman;
-    private StickmanStageFX2 mStickmanstage;
+    private StickmanStageFX mStickmanstage;
     private String mStickmancombobox = null;
+    final private ToggleGroup groupPerlin = new ToggleGroup();;
     
     @FXML
     private Label Stickman;
@@ -83,6 +87,11 @@ public class StickmanStageController {
     private RadioButton WaveLeft;
     @FXML
     private RadioButton WaveRight;
+    
+    @FXML
+    private RadioButton WithPerlinNoise;
+    @FXML
+    private RadioButton WithoutPerlinNoise;
 
     @FXML
     private ComboBox<String> StickmanComboBox;
@@ -112,29 +121,23 @@ public class StickmanStageController {
     @FXML
     private HBox StickmanFlowPane;
     
+    @FXML
+    private Button RestButton;
+    
     
 
     @FXML
     public void initialize() 
     {
-//        sStickman = StickmanStageFX.sMale;
         setIdForLabel();
-//        HeadComboBoxColor.setValue("Beige");
         HeadComboBoxColor.getItems().addAll("Festucine","Beige","Blue", "Black","Red");
-
-//        HairComboBoxColor.setValue("Yellow");
         HairComboBoxColor.getItems().addAll("Saffron Yellow","Brown", "Yellow","Beige","Blue","Black","Red","Gold");
-
-//        BodyComboBoxColor.setValue("Beige");
         BodyComboBoxColor.getItems().addAll("Purple","Green","Beige","Black","Yellow","White");
-
-//        LimbsComboBoxColor.setValue("Black");
         LimbsComboBoxColor.getItems().addAll("Black","Yellow","White");
         
         //Default show
         handleStickman();
-       
-        
+            
         fillComboForEmotionExpression();
         
       //Select a stickman
@@ -143,6 +146,8 @@ public class StickmanStageController {
         	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();    	
         	// set the setValue of combobox
         	setComboboxValue(mStickmanstage.getStickmanFX(mStickmancombobox));
+        	WithPerlinNoise.setSelected(false);
+        	WithPerlinNoise.setSelected(true);
         });
         
       //Show emotion
@@ -240,9 +245,40 @@ public class StickmanStageController {
             });
             }         
         });
+        
+        // set the color to default value
+        RestButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	if ((mStickmancombobox != null)){
+                    Platform.runLater(() -> 
+                    {
+                    	if(mStickmanstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+                        {
+                    		HeadComboBoxColor.setValue("Festucine");
+                        	HairComboBoxColor.setValue("Brown");
+                        	BodyComboBoxColor.setValue("Green");
+                        	LimbsComboBoxColor.setValue("Black");
+                        }
+                    	else
+                        {
+                    	   HeadComboBoxColor.setValue("Festucine");
+                     	   HairComboBoxColor.setValue("Saffron Yellow");
+                     	   BodyComboBoxColor.setValue("Purple");
+                     	   LimbsComboBoxColor.setValue("Black");
+                        } 
+                    	
+                    	WithPerlinNoise.setSelected(false);
+                    	WithPerlinNoise.setSelected(true);
+                    });
+                    }
+            }
+        });
+        
+        handlePerlinNoise();
     }    
     
-    public void getStickmanStageFX(StickmanStageFX2 Stickmanstage)
+    public void getStickmanStageFX(StickmanStageFX Stickmanstage)
     {
     	this.mStickmanstage = Stickmanstage;
     	fillComboForStickman();
@@ -459,7 +495,34 @@ public class StickmanStageController {
         IdleSection.setId("Menu");
         Posture.setId("Menu");
         Stickman.setId("Menu");
+    } 
+    
+    private void handlePerlinNoise()
+    {
+    	WithPerlinNoise.setUserData("With Perlin Noise");
+        WithoutPerlinNoise.setUserData("Without Perlin Noise");
+    	WithPerlinNoise.setToggleGroup(groupPerlin);
+        WithoutPerlinNoise.setToggleGroup(groupPerlin);
+        
+        groupPerlin.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+              if ((groupPerlin.getSelectedToggle() != null)&&(mStickmancombobox != null)) {
+            	  if(groupPerlin.getSelectedToggle().getUserData().toString() == "With Perlin Noise"){       	
+            	            Platform.runLater(() -> 
+            	            {
+            	            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("StartIdle", 1000, true);            
+            	            }
+            	            );
+            	  }
+            	  else{
+            		  Platform.runLater(() -> 
+      	            {
+      	            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("StopIdle", 1000, true);            
+      	            }
+      	            );
+            	  }
+              }
+            }
+          });
     }
-    
-    
 }

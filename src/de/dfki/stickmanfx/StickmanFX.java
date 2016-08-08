@@ -1,7 +1,6 @@
 package de.dfki.stickmanfx;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,8 +16,8 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-import de.dfki.stickman.animation.environment.IdleBehavior;
-import de.dfki.stickman.animation.environment.SimplexNoise;
+import de.dfki.stickmanfx.animation.environmentfx.IdleBehavior;
+import de.dfki.stickmanfx.animation.environmentfx.SimplexNoise;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
@@ -56,6 +55,7 @@ import javafx.scene.Group;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Screen;
 import javafx.util.Duration;
 
@@ -180,9 +180,6 @@ public class StickmanFX extends Pane
         init();
         this.addAllParts();
         update();
-
-        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
-        //mIdleBehavior = new IdleBehavior(this,simplexNoise);
     }
 
     public StickmanFX(String name, TYPE gender, float scale) 
@@ -219,7 +216,6 @@ public class StickmanFX extends Pane
         init();
         this.addAllParts();
         update();
-        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
     public StickmanFX(String name, TYPE gender) 
@@ -254,8 +250,6 @@ public class StickmanFX extends Pane
         init();
         this.addAllParts();
         update();
-        
-        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
     private void init() 
@@ -286,6 +280,9 @@ public class StickmanFX extends Pane
 
         mAnimationSchedulerFX = new AnimationSchedulerFX(this);
         mAnimationSchedulerFX.start();
+        
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
+        mIdleBehavior = new IdleBehavior(this,simplexNoise);
     }
 
     public void addListener(AnimationListener al) 
@@ -422,12 +419,12 @@ public class StickmanFX extends Pane
 
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 
-        //at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
+        af.appendRotation(Math.toRadians(mWobble), (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y+mLeftLegFX.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
         this.getTransforms().clear();
         this.getTransforms().add(af);
-
+        
         updateAll();
         
         
