@@ -117,12 +117,12 @@ public class BodyFX extends Pane {
 
     public Point getLeftArmStartPostion() 
     {
-        return new Point(mStart.x + 1, mStart.y + 4);
+        return new Point(mStart.x + 1, mStart.y);
     }
 
     public Point getRightArmStartPostion() 
     {
-        return new Point(mStart.x - 1, mStart.y + 4);
+        return new Point(mStart.x - 1, mStart.y);
     }
 
     public Point getLeftLegStartPostion() 

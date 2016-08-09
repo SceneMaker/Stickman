@@ -88,7 +88,7 @@ public class HeadFX extends BodyPartFX
 
     public Point getNeckStartPosition() 
     {
-        return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset - 8);  // change 3 to 8  By Robbie
+        return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset);
     }
 
     public void calculate(int step) 

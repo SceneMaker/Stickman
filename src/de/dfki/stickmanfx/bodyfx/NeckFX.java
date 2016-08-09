@@ -25,12 +25,15 @@ import javafx.scene.shape.Path;
 public class NeckFX extends BodyPartFX {
 
 	HeadFX mHeadFX;
+	Path mPath;
 
 	public NeckFX(HeadFX head) {
 		mHeadFX = head;
 		mLength = 8;
 		mSize = new Dimension(4, mLength);
 		mColor = Color.rgb(80, 80, 80);
+		mPath = new Path();
+		this.getChildren().add(mPath);
 		
 		init();
 	}
@@ -45,6 +48,8 @@ public class NeckFX extends BodyPartFX {
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearDrawObjects();
+		clearChildren(this);
+		mPath = new Path();
 		
 		if(mHeadFX.mStickmanFX.setCharacterInvisible == true)
 		{
@@ -62,10 +67,11 @@ public class NeckFX extends BodyPartFX {
 			}
 		}
 		
-		Path gp = new Path();
-		gp.getElements().add(new MoveTo(mStart.x, mStart.y));
-		gp.getElements().add(new LineTo(mEnd.x, mEnd.y));
+		mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+		mPath.getElements().add(new LineTo(mEnd.x, mEnd.y));
 		
-		addToDrawObjects(gp);
+		this.getChildren().add(mPath);
+		addToDrawObjects(mPath);
+		this.update();
 	}
 }
