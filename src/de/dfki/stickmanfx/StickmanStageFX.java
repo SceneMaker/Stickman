@@ -347,9 +347,9 @@ public class StickmanStageFX extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
 
-//        	getStickmanFX("Bob").doAnimation("StartIdle", 1000, true);
+    	getStickmanFX("Anna").doAnimation("CoverMouth", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("StopIdle", 1000, true);
-        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        	//getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
 //        		getStickmanFX("Bob").doAnimation("StopIdle", 1000, true);
 //        	}else{

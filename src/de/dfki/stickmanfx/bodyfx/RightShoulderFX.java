@@ -80,6 +80,10 @@ public class RightShoulderFX extends BodyPartFX
 
         this.getChildren().add(mShoulder);
         update();
+        
+      //calculate and update bodyfx
+        if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightShoulderFX != null)
+        	mBodyFX.calculate();
 	}
 
 	@Override

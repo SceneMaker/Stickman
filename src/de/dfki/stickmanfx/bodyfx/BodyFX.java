@@ -33,6 +33,8 @@ public class BodyFX extends Pane {
     int mHalfSizeY = mSize.height / 2;
     int mDrawOffset = 20;
     Point mStart;
+    Point mLefShoulderPosition;     //Added by Beka
+    Point mRightShoulderPosition;   //Added by Beka
 
     public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);    // The color is changed in paintComponent
     public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
@@ -53,17 +55,7 @@ public class BodyFX extends Pane {
         mMaleBodyLeft = new Path();
         mMaleBodyRight = new Path();
         
-        if(mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT)
-        	paintLeftOrientation(mColor);
-        else if(mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.RIGHT)
-        	paintRightOrientation(mColor);
-        else
-        	paintFrontOrientation(mColor);
-        
-        
         init();
-        calculate();
-        //update();
     }
 
     private void init() 
@@ -75,12 +67,17 @@ public class BodyFX extends Pane {
     public void calculate() 
     {
         mStart = mNeckFX.getBodyStartPosition();
+        this.getChildren().clear();
+        
+        this.mLefShoulderPosition = mNeckFX.mHeadFX.mStickmanFX.mLeftShoulderFX.getLeftShoulderEndPosition();       //Added by Beka
+        this.mRightShoulderPosition = mNeckFX.mHeadFX.mStickmanFX.mRightShoulderFX.getRightShoulderEndPosition();
 
         mFemaleBodyFront = new Path();
         mFemaleBodyFront.getElements().add(new MoveTo(mStart.x, mStart.y));
+        mFemaleBodyFront.getElements().add(new LineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1));
         mFemaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX, mSize.height + 10));
         mFemaleBodyFront.getElements().add(new CubicCurveTo(mStart.x + mHalfSizeX - 40, mSize.height - 10, mStart.x - mHalfSizeX + 40, mSize.height + 20, mStart.x - mHalfSizeX, mSize.height));
-        mFemaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y));
+        mFemaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y));
 
         mFemaleBodyLeft = new Path();
         mFemaleBodyLeft.getElements().add(new MoveTo(mStart.x, mStart.y));
@@ -218,13 +215,13 @@ public class BodyFX extends Pane {
     {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
-        	this.getChildren().remove(mFemaleBodyFront);
+        	//this.getChildren().remove(mFemaleBodyFront);
             mFemaleBodyFront.setFill(c);
             this.getChildren().add(mFemaleBodyFront);
         } 
         else 
         {
-        	this.getChildren().remove(mMaleBodyFront);
+        	//this.getChildren().remove(mMaleBodyFront);
             mMaleBodyFront.setFill(c);
             this.getChildren().add(mMaleBodyFront);
         }
@@ -247,6 +244,7 @@ public class BodyFX extends Pane {
     }
 
     public void update() {
+    	
 
         //calculate();
         if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
