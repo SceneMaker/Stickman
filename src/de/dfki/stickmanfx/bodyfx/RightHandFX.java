@@ -86,6 +86,7 @@ public class RightHandFX extends BodyPartFX
 
 		this.getChildren().add(mHand);
 		addToDrawObjects(mHand);
+		this.toFront();
 		update();
 	}
 

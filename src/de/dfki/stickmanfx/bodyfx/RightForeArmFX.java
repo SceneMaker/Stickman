@@ -48,7 +48,6 @@ public class RightForeArmFX extends BodyPartFX
 		mToDegree = mDefaultRotation;
 		mArm = new Path();
 		this.getChildren().add(mArm);
-
 		init();
 
 		calculate(0);
@@ -92,6 +91,7 @@ public class RightForeArmFX extends BodyPartFX
 
 	@Override
 	public void update() {
+		this.toFront();
 //		Color currentColor = Color.rgb(80, 80, 80);
 		// draw outlines
 		if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 

@@ -30,7 +30,7 @@ import javax.swing.WindowConstants;
  * @author Patrick Gebhard
  *
  */
-public class StickmanStage extends JFrame /*implements MouseListener*/ {
+public class StickmanStage extends JFrame implements MouseListener {
 
     static private final HashMap<String, Stickman> sStickmansOnStage = new HashMap<>();
     static private JPanel sStickmanPanel;
@@ -86,7 +86,7 @@ public class StickmanStage extends JFrame /*implements MouseListener*/ {
             }
         }
 
-        //addMouseListener(this);
+        addMouseListener(this);
     }
 
     public static StickmanStage getInstance() {
@@ -261,122 +261,122 @@ public class StickmanStage extends JFrame /*implements MouseListener*/ {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String[] args) {
-////        ExtensionsFromJar e = new ExtensionsFromJar("de.dfki.stickman.animation.face",false);
-////		e.loadClass();
-//        StickmanStage.getInstanceFullScreen();
-//        //StickmanStage.getInstance();
-//        StickmanStage.addStickman("Anna");
-//        StickmanStage.addStickman("character");
-//        StickmanStage.addStickman("Bob");
-//    }
+    public static void main(String[] args) {
+//        ExtensionsFromJar e = new ExtensionsFromJar("de.dfki.stickman.animation.face",false);
+//		e.loadClass();
+        StickmanStage.getInstanceFullScreen();
+        //StickmanStage.getInstance();
+        StickmanStage.addStickman("Anna");
+        StickmanStage.addStickman("character");
+        StickmanStage.addStickman("Bob");
+    }
+
+//  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
+//  emotionStart: AngryStart, ContemptStart, DisgustedStart, FearStart, AngrySmallMouthStart,
+//                HappyStart, LovedStart, SadStart, SmileStart, SurprisedStart, EmbarrassedStart, ExcitedStart
+//  emotionEnd: AngryEnd, ContemptEnd, DisgustedEnd, FearEnd, HappyEnd, AngrySmallMouthEnd,
+//              LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
+//  action: HeadShake, Nod2
+    
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        //getStickman("Anna").mLogger.info("mouse clicked");
+        //getStickman("Bob").mLogger.info("mouse clicked");
+//       getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        //////		//smM.doAnimation("gesture", "waveleft", false);
+//       getStickman("Anna").doAnimation("gesture", 70, "waveleft",  false);	
+    	
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+    		getStickman("Anna").doAnimation("TouchHead", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("FadeIn", 70, true);
+//    	}
+    	    	
+//    	if(SwingUtilities.isLeftMouseButton(e)){
+//    		getStickman("Bob").doAnimation("StartIdle", 70, true);
+//    	}else{
+//    		getStickman("Bob").doAnimation("StopIdle", 70, true);
+//    	}
+    	  
+//      getStickman("Bob").doAnimation("Angry", 70, true);
+
+    
+    
+
+//		getStickman("Anna").doAnimation("head", "lookright", 300, true);
+//		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
+    	getStickman("Anna").doAnimation("WaveLeft", 300, true); 
+//        getStickman("Anna").doAnimation("WaveLeft", 50, true);//
+	//getStickman("Anna").doAnimation("head", "Blink", true);
+// getStickman("Anna").doAnimation("head", "lookleft", 300, true);
+        //getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
+        //getStickman("Anna").doAnimation("head", "Blink", true);
+////		//smM.doAnimation("environment", "speak", "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//		getStickman("Anna").doAnimation("environment", "speak", 300, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//////		//smM.doAnimation("face", "Mouth_O", true);
+//////		smF.doAnimation("face", "Mouth_O", true);
+//////		//smM.doAnimation("head", "TiltLeft", true);
+//////		smF.doAnimation("head", "TiltLeft", true);
+//////		//smM.doAnimation("head", "Blink", false);
+//////		smF.doAnimation("head", "Blink", false);
+//////		//smM.doAnimation("face", "Mouth_Default", false);
+//////		smF.doAnimation("face", "Mouth_Default", false);
+        //getStickman("Bob").doAnimation("Sad", " ", false);  ///
+        //getStickman("Anna").doAnimation("TiltLeftBack", " ", false);
+        //
+//////		//smM.doAnimation("head", "TiltLeftBack", true);
+//////		smF.doAnimation("head", "TiltLeftBack", true);
 //
-////  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
-////  emotionStart: AngryStart, ContemptStart, DisgustedStart, FearStart, AngrySmallMouthStart,
-////                HappyStart, LovedStart, SadStart, SmileStart, SurprisedStart, EmbarrassedStart, ExcitedStart
-////  emotionEnd: AngryEnd, ContemptEnd, DisgustedEnd, FearEnd, HappyEnd, AngrySmallMouthEnd,
-////              LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
-////  action: HeadShake, Nod2
-//    
-//    @Override
-//    public void mouseClicked(MouseEvent e) {
-//        //getStickman("Anna").mLogger.info("mouse clicked");
-//        //getStickman("Bob").mLogger.info("mouse clicked");
-////       getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//        //getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//        //////		//smM.doAnimation("gesture", "waveleft", false);
-////       getStickman("Anna").doAnimation("gesture", 70, "waveleft",  false);	
-//    	
-////    	if(SwingUtilities.isLeftMouseButton(e)){
-////    		getStickman("Bob").doAnimation("FadeOut", 70, true);
-////    	}else{
-////    		getStickman("Bob").doAnimation("FadeIn", 70, true);
-////    	}
-//    	    	
-////    	if(SwingUtilities.isLeftMouseButton(e)){
-////    		getStickman("Bob").doAnimation("StartIdle", 70, true);
-////    	}else{
-////    		getStickman("Bob").doAnimation("StopIdle", 70, true);
-////    	}
-//    	  
-////      getStickman("Bob").doAnimation("Angry", 70, true);
+//		getStickman("Anna").doAnimation("face", "Smile", 2000, false);
+//		getStickman("Anna").doAnimation("head", "TiltLeft", true);
+//		getStickman("Anna").doAnimation("head", "Blink", false);
+//		getStickman("Anna").doAnimation("gesture", "WaveLeft", 2000, false);
 //
-//    
-//    
-//
-////		getStickman("Anna").doAnimation("head", "lookright", 300, true);
-////		getStickman("Anna").doAnimation("gesture", "CoverMouth", true);
-//    	getStickman("Anna").doAnimation("WaveLeft", 300, true); //
-////        getStickman("Anna").doAnimation("WaveLeft", 50, true);//
-//	//getStickman("Anna").doAnimation("head", "Blink", true);
-//// getStickman("Anna").doAnimation("head", "lookleft", 300, true);
-//        //getStickman("Anna").doAnimation("gesture", "WaveLeft", 50, true);
-//        //getStickman("Anna").doAnimation("head", "Blink", true);
-//////		//smM.doAnimation("environment", "speak", "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-////		getStickman("Anna").doAnimation("environment", "speak", 300, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-////////		//smM.doAnimation("face", "Mouth_O", true);
-////////		smF.doAnimation("face", "Mouth_O", true);
-////////		//smM.doAnimation("head", "TiltLeft", true);
-////////		smF.doAnimation("head", "TiltLeft", true);
-////////		//smM.doAnimation("head", "Blink", false);
-////////		smF.doAnimation("head", "Blink", false);
-////////		//smM.doAnimation("face", "Mouth_Default", false);
-////////		smF.doAnimation("face", "Mouth_Default", false);
-//        //getStickman("Bob").doAnimation("Sad", " ", false);  ///
-//        //getStickman("Anna").doAnimation("TiltLeftBack", " ", false);
-//        //
-////////		//smM.doAnimation("head", "TiltLeftBack", true);
-////////		smF.doAnimation("head", "TiltLeftBack", true);
-////
-////		getStickman("Anna").doAnimation("face", "Smile", 2000, false);
-////		getStickman("Anna").doAnimation("head", "TiltLeft", true);
-////		getStickman("Anna").doAnimation("head", "Blink", false);
-////		getStickman("Anna").doAnimation("gesture", "WaveLeft", 2000, false);
-////
-////		getStickman("Anna").doAnimation("head", "TiltLeftBack", true);
-////		getStickman("Anna").doAnimation("head", "TiltLeft", true);
-////		getStickman("Anna").doAnimation("head", "TiltLeftBack", true);
-////		//smF.doAnimation("gesture", "CoverMouth", true);
-////////		smF.doAnimation("gesture", "waveleft", false);
-////////		smF.doAnimation("head", "TiltLeft", true);
-////////		smF.doAnimation("head", "TiltLeftBack", false);
+//		getStickman("Anna").doAnimation("head", "TiltLeftBack", true);
+//		getStickman("Anna").doAnimation("head", "TiltLeft", true);
+//		getStickman("Anna").doAnimation("head", "TiltLeftBack", true);
+//		//smF.doAnimation("gesture", "CoverMouth", true);
 //////		smF.doAnimation("gesture", "waveleft", false);
 //////		smF.doAnimation("head", "TiltLeft", true);
-////		getStickman("Anna").doAnimation("head", "Blink", true);
-////
-////		smF.doAnimation("face", "smile", true);
-////		smF.doAnimation("head", "TiltLeftBack", true);
-//        //smF.doAnimation("face", "smile", true);
-////		smF.doAnimation("head", "Blink", false);
-////		smF.doAnimation("head", "Nod", true);
-////
+//////		smF.doAnimation("head", "TiltLeftBack", false);
+////		smF.doAnimation("gesture", "waveleft", false);
 ////		smF.doAnimation("head", "TiltLeft", true);
+//		getStickman("Anna").doAnimation("head", "Blink", true);
+//
+//		smF.doAnimation("face", "smile", true);
+//		smF.doAnimation("head", "TiltLeftBack", true);
+        //smF.doAnimation("face", "smile", true);
+//		smF.doAnimation("head", "Blink", false);
+//		smF.doAnimation("head", "Nod", true);
+//
+//		smF.doAnimation("head", "TiltLeft", true);
+//
+//		smF.doAnimation("head", "Blink", false);
 ////
-////		smF.doAnimation("head", "Blink", false);
-//////
-////		smF.doAnimation("head", "TiltLeftBack", true);
-////		smF.doAnimation("head", "nod", true);
-//    }
+//		smF.doAnimation("head", "TiltLeftBack", true);
+//		smF.doAnimation("head", "nod", true);
+    }
 
-//    @Override
-//    public void mousePressed(MouseEvent e) {
-//
-//    }
-//
-//    @Override
-//    public void mouseReleased(MouseEvent e) {
-//
-//    }
-//
-//    @Override
-//    public void mouseEntered(MouseEvent e) {
-//
-//    }
-//
-//    @Override
-//    public void mouseExited(MouseEvent e) {
-//
-//    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 
     private static class StickmanStageLogFormatter extends Formatter {
 
