@@ -37,7 +37,7 @@ public class LeftUpperArmFX extends BodyPartFX
     public LeftUpperArmFX(LeftShoulderFX shoulder) {
         mLeftShoulderFX = shoulder;
         mColor = Color.rgb(80, 80, 80);
-        mDefaultRotation = -30;
+        mDefaultRotation = -23;
         mRotation = mDefaultRotation;
         mToDegree = mDefaultRotation;
         mRotationStep = 0.0f;

@@ -93,9 +93,10 @@ public class BodyFX extends Pane {
 
         mMaleBodyFront = new Path();
         mMaleBodyFront.getElements().add(new MoveTo(mStart.x, mStart.y));
-        mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset, mSize.height));
-        mMaleBodyFront.getElements().add(new LineTo(mStart.x - mHalfSizeX + mDrawOffset, mSize.height));
-        mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y));
+        mMaleBodyFront.getElements().add(new LineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1));
+        mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset-10, mSize.height));
+        mMaleBodyFront.getElements().add(new LineTo(mStart.x - mHalfSizeX + mDrawOffset+10, mSize.height));
+        mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y));
 
         mMaleBodyLeft = new Path();
         mMaleBodyLeft.getElements().add(new MoveTo(mStart.x, mStart.y));
@@ -130,7 +131,7 @@ public class BodyFX extends Pane {
         } 
         else 
         {
-            return new Point(mStart.x + mHalfSizeX - mDrawOffset,
+            return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
                     (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
         }
     }
@@ -142,7 +143,7 @@ public class BodyFX extends Pane {
         } 
         else 
         {
-            return new Point(mStart.x - mHalfSizeX + mDrawOffset,
+            return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
                     (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
         }
     }

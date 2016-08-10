@@ -43,7 +43,7 @@ public class RightUpperArmFX extends BodyPartFX {
 	public RightUpperArmFX(RightShoulderFX shoulder) {
 		mRightShoulderFX = shoulder;
 		mColor = Color.rgb(80, 80, 80);
-		mDefaultRotation = 35;
+		mDefaultRotation = 23;
 		mRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;

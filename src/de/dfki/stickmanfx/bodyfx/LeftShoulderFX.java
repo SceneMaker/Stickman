@@ -7,6 +7,8 @@ package de.dfki.stickmanfx.bodyfx;
 
 import java.awt.Dimension;
 import java.awt.Point;
+
+import de.dfki.stickmanfx.StickmanFX;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
@@ -27,7 +29,7 @@ public class LeftShoulderFX extends BodyPartFX {
 
     BodyFX mBodyFX;
 
-    int mShoulderLength = 15;
+    int mShoulderLength;
     Dimension mSize = new Dimension(mShoulderLength, mShoulderLength);
 
     Point mStart;
@@ -38,6 +40,10 @@ public class LeftShoulderFX extends BodyPartFX {
     public LeftShoulderFX(BodyFX body) 
     {
         mBodyFX = body;
+        if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+            mShoulderLength = 25;
+        else
+            mShoulderLength = 15;
         mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -70;
         mRotation = mDefaultRotation;
