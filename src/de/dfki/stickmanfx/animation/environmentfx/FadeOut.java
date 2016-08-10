@@ -93,8 +93,14 @@ public class FadeOut extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "shape", "DEFAULT"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "shape", "DEFAULT"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftLegFX, "shape", "DEFAULT"));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightLegFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFootFX, "shape", "DEFAULT"));
+		//mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftLegFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFootFX, "shape", "DEFAULT"));
 		//Platform.runLater(() -> mStickmanFX.mBodyFX.update());
 		playAnimationPart(1000);
 

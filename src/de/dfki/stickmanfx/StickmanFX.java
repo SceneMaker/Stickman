@@ -28,21 +28,27 @@ import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
 import de.dfki.stickmanfx.bodyfx.HeadFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyeFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyebrowFX;
+import de.dfki.stickmanfx.bodyfx.LeftFootFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
+import de.dfki.stickmanfx.bodyfx.LeftForeLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftHandFX;
 import de.dfki.stickmanfx.bodyfx.LeftLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
+import de.dfki.stickmanfx.bodyfx.LeftUpperLegFX;
 import de.dfki.stickmanfx.bodyfx.MaleHairFX;
 import de.dfki.stickmanfx.bodyfx.MouthFX;
 import de.dfki.stickmanfx.bodyfx.NeckFX;
 import de.dfki.stickmanfx.bodyfx.RightEyeFX;
 import de.dfki.stickmanfx.bodyfx.RightEyebrowFX;
+import de.dfki.stickmanfx.bodyfx.RightFootFX;
 import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
+import de.dfki.stickmanfx.bodyfx.RightForeLegFX;
 import de.dfki.stickmanfx.bodyfx.RightHandFX;
 import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
+import de.dfki.stickmanfx.bodyfx.RightUpperLegFX;
 import de.dfki.stickmanfx.bodyfx.StarsFX;
 import de.dfki.stickmanfx.bodyfx.ThinkFX;
 import de.dfki.stickmanfx.environmentfx.SpeechBubbleFX;
@@ -136,9 +142,15 @@ public class StickmanFX extends Pane
     public RightUpperArmFX mRightUpperArmFX;
     public RightForeArmFX mRightForeArmFX;
     public RightHandFX mRightHandFX;
-    public LeftLegFX mLeftLegFX;
+    //public LeftLegFX mLeftLegFX;
+    public LeftUpperLegFX mLeftUpperLegFX;
+    public LeftForeLegFX mLeftForeLegFX;
+    public LeftFootFX mLeftFootFX;
     public StarsFX mStarsFX;         // added by Robbie Create Say bye or hi
-    public RightLegFX mRightLegFX;
+    //public RightLegFX mRightLegFX;
+    public RightUpperLegFX mRightUpperLegFX;
+    public RightForeLegFX mRightForeLegFX;
+    public RightFootFX mRightFootFX;
     public ThinkFX mThinkFX;
     // environment
     public SpeechBubbleFX mSpeechBubbleFX;
@@ -175,9 +187,15 @@ public class StickmanFX extends Pane
         mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
-        mLeftLegFX = new LeftLegFX(mBodyFX);
+        //mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
         mStarsFX = new StarsFX(mBodyFX);                   /// added by Robbie
-        mRightLegFX = new RightLegFX(mBodyFX);
+        //mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
         mThinkFX = new ThinkFX(mHeadFX);
 
         mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
@@ -212,9 +230,15 @@ public class StickmanFX extends Pane
         mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
-        mLeftLegFX = new LeftLegFX(mBodyFX);
+        //mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
         mStarsFX = new StarsFX(mBodyFX);                /// added by Robbie
-        mRightLegFX = new RightLegFX(mBodyFX);
+        //mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
         mThinkFX = new ThinkFX(mHeadFX);
 
         mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
@@ -247,9 +271,15 @@ public class StickmanFX extends Pane
         mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
-        mLeftLegFX = new LeftLegFX(mBodyFX);
+        //mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
         mStarsFX = new StarsFX(mBodyFX);           /// added by Robbie
-        mRightLegFX = new RightLegFX(mBodyFX);
+        //mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
         mThinkFX = new ThinkFX(mHeadFX);
 
         mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
@@ -424,8 +454,8 @@ public class StickmanFX extends Pane
         mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
 
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-
-        af.appendRotation(Math.toRadians(mWobble), (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y+mLeftLegFX.mLength);
+//??????????????????????????????????
+        //af.appendRotation(Math.toRadians(mWobble), (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y+mLeftLegFX.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
         this.getTransforms().clear();
@@ -449,7 +479,7 @@ public class StickmanFX extends Pane
         this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, 
                                 mMouthFX, mNeckFX, mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, 
                                 mLeftForeArmFX, mLeftHandFX, mRightShoulderFX, mRightUpperArmFX, 
-                                mRightForeArmFX, mRightHandFX, mLeftLegFX, mRightLegFX, mFaceWrinkleFX, mStarsFX, mSpeechBubbleFX, mThinkFX);
+                                mRightForeArmFX, mRightHandFX, /*mLeftLegFX,*/ mLeftUpperLegFX, mLeftForeLegFX, mLeftFootFX, /*mRightLegFX,*/ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX, mStarsFX, mSpeechBubbleFX, mThinkFX);
         if(this.mType == StickmanFX.TYPE.MALE)
         	this.getChildren().add(mMaleHairFX);
         else
@@ -487,8 +517,14 @@ public class StickmanFX extends Pane
             mRightUpperArmFX.update();
             mRightForeArmFX.update();
             mRightHandFX.update();
-            mLeftLegFX.update();
-            mRightLegFX.update();
+            //mLeftLegFX.update();
+            mLeftUpperLegFX.update();
+            mLeftForeLegFX.update();
+            mLeftFootFX.update();
+            //mRightLegFX.update();
+            mRightUpperLegFX.update();
+            mRightForeLegFX.update();
+            mRightFootFX.update();
 
 	        if(starShowC == true)
             	mStarsFX.update();     // Added by Robbie, to show stars or words here.

@@ -231,8 +231,14 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftLegFX.mColor = switchColor(color);
-            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightLegFX.mColor = switchColor(color);
+            	//mStickmanstage.getStickmanFX(mStickmancombobox).mLeftLegFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftUpperLegFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftForeLegFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftFootFX.mColor = switchColor(color);
+//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightLegFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightUpperLegFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightForeLegFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightFootFX.mColor = switchColor(color);
             	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftHandFX.mColor = switchColor(color);
             	mStickmanstage.getStickmanFX(mStickmancombobox).mRightHandFX.mColor = switchColor(color);
             	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftShoulderFX.mColor = switchColor(color);
@@ -415,7 +421,7 @@ public class StickmanStageController {
      		if(sHeadComboBoxColor!=null)
      			HeadComboBoxColor.setValue(sHeadComboBoxColor);  
      		
-     	String sLimbsComboBoxColor = switchColorToString(mStick.mLeftLegFX.mColor);
+     	String sLimbsComboBoxColor = switchColorToString(mStick.mLeftUpperLegFX.mColor);
      		if(sLimbsComboBoxColor!=null)
      			LimbsComboBoxColor.setValue(sLimbsComboBoxColor);
     }

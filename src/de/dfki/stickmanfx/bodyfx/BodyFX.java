@@ -216,13 +216,13 @@ public class BodyFX extends Pane {
     {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {
-        	//this.getChildren().remove(mFemaleBodyFront);
+        	this.getChildren().clear();
             mFemaleBodyFront.setFill(c);
             this.getChildren().add(mFemaleBodyFront);
         } 
         else 
         {
-        	//this.getChildren().remove(mMaleBodyFront);
+        	this.getChildren().clear();
             mMaleBodyFront.setFill(c);
             this.getChildren().add(mMaleBodyFront);
         }

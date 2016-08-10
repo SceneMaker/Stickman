@@ -16,7 +16,7 @@ import javafx.scene.shape.QuadCurveTo;
 
 /**
  *
- * @author Patrick Gebhard
+ * @author Beka
  *
  */
 public class RightLegFX extends BodyPartFX {
