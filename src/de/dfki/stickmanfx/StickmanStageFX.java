@@ -350,12 +350,14 @@ public class StickmanStageFX extends Application {
 
     	//getStickmanFX("Anna").doAnimation("Muster", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("StopIdle", 1000, true);
-        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-//        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
-//        	}else{
-//        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
-//        	}
+//        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
+        		getStickmanFX("Anna").doAnimation("FadeIn", 1000, true);
+        	}else{
+        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
+        		getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
+        	}
     
         }
      

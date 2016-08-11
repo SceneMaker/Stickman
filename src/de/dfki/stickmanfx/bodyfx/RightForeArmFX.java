@@ -94,6 +94,8 @@ public class RightForeArmFX extends BodyPartFX
 		this.toFront();
 //		Color currentColor = Color.rgb(80, 80, 80);
 		// draw outlines
+		if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+			mColorRecorder = mColor;
 		if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
 		{
 			if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added byRobbie
@@ -113,9 +115,10 @@ public class RightForeArmFX extends BodyPartFX
 				int fadeFactor = (20 - mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
 				if (fadeFactor >= 216) 
 				{
-					fadeFactor = 255;
+					mColor = mColorRecorder;
 				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+				else
+					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
 				//mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
 				// g2.setColor(new Color(80, 80, 80, fadeFactor));
 			}

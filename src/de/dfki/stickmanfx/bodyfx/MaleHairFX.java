@@ -79,6 +79,8 @@ public class MaleHairFX extends BodyPartFX
 
     public void update() 
     {
+    	if (mStickmanFX.setCharacterInvisible == false)
+    		mColorRecorder = mColor;
         if (mStickmanFX.setCharacterInvisible == true) 
         {
             if (mStickmanFX.fadeControler == true) //Added by Robbie
@@ -96,9 +98,10 @@ public class MaleHairFX extends BodyPartFX
                 int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
                 if (fadeFactor >= 160) 
                 {
-                    fadeFactor = 255;
+                	mColor = mColorRecorder;
                 }
-                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                else
+                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 //mColor = Color.rgb(97, 58, 0, (fadeFactor * 100 / 255) / 100f);
             }
         } 

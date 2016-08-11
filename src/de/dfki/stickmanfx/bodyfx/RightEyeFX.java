@@ -79,7 +79,8 @@ public class RightEyeFX extends BodyPartFX
         switch (mShape) 
         {
             case DEFAULT:
-
+            	if (mHead.mStickmanFX.setCharacterInvisible == false)
+            		mColorRecorder = mColor;
                 if (mHead.mStickmanFX.setCharacterInvisible == true) 
                 {
                     if (mHead.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -99,9 +100,10 @@ public class RightEyeFX extends BodyPartFX
                         
                         if (fadeFactor >= 119) 
                         {
-                            fadeFactor = 144;
+                        	mColor = mColorRecorder;
                         }
-                        mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+                        else
+                        	mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     }
