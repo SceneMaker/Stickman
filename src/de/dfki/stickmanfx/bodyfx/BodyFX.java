@@ -257,8 +257,10 @@ public class BodyFX extends Pane {
                 {
                     fadeFactor = 0;
                 }
-                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
-                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
+                mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+//                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
+//                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
             } 
             else 
             {
@@ -267,8 +269,10 @@ public class BodyFX extends Pane {
                 {
                     fadeFactor = 240;
                 }
-                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
-                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
+                mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+//                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
+//                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
             }
         }
 
