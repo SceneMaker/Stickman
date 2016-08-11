@@ -91,14 +91,16 @@ public class LeftForeArmFX extends BodyPartFX
                 if (fadeFactor <= 24) {
                     fadeFactor = 0;
                 }
-                mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));
             } else {
                 int fadeFactor = (20 - mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
                     fadeFactor = 255;
                 }
-                mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));
             }
         }
