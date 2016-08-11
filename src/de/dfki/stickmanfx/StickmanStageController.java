@@ -245,6 +245,7 @@ public class StickmanStageController {
             	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftForeArmFX.mColor = switchColor(color);           	
             	mStickmanstage.getStickmanFX(mStickmancombobox).mRightUpperArmFX.mColor = switchColor(color);
             	mStickmanstage.getStickmanFX(mStickmancombobox).mRightForeArmFX.mColor = switchColor(color);
+            	mStickmanstage.getStickmanFX(mStickmancombobox).mNeckFX.mColor = switchColor(color);
                 mStickmanstage.getStickmanFX(mStickmancombobox).update();
             });
             }         
