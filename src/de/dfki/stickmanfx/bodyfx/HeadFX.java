@@ -146,6 +146,8 @@ public class HeadFX extends BodyPartFX
 
     public void update() 
     {	
+    	if (mStickmanFX.setCharacterInvisible == false) 
+    		mColorRecorder = mColor;
         // fill
         if (mStickmanFX.setCharacterInvisible == true) 
         {
@@ -165,8 +167,9 @@ public class HeadFX extends BodyPartFX
                 int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
                 if (fadeFactor >= 160) 
                 {
-                    fadeFactor = 200;
+                	mColor = mColorRecorder;
                 }
+                else
                 mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 //mColor = Color.rgb(242, 227, 217, (fadeFactor * 100 / 255) / 100f); //fadeFactor Interval [0 - 1]
             }

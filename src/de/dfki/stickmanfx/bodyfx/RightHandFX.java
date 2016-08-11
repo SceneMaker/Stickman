@@ -54,6 +54,8 @@ public class RightHandFX extends BodyPartFX
 		clearChildren(this);
 		mHand = new Path();
 
+		if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+			mColorRecorder = mColor;
 		if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
 			if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added by Robbie
 			{
@@ -70,9 +72,10 @@ public class RightHandFX extends BodyPartFX
 				int fadeFactor = (20 - mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
 				if (fadeFactor >= 216) 
 				{
-					fadeFactor = 255;
+					mColor = mColorRecorder;
 				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+				else
+					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
 				//mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
 			}
 		}

@@ -70,6 +70,8 @@ public class MouthFX extends BodyPartFX
 		switch (mShape) 
 		{
 		case DEFAULT:
+			if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
+				mColorRecorder = mColor;
 			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) 
 			{
 				if (mHeadFX.mStickmanFX.fadeControler == true) // Added by Robbie
@@ -87,9 +89,10 @@ public class MouthFX extends BodyPartFX
 					int fadeFactor = (20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 6;
 					if (fadeFactor >= 107) 
 					{
-						fadeFactor = 128;
+						mColor = mColorRecorder;
 					}
-					mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0, (fadeFactor * 100 / 255) / 100f);
+					else
+						mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0, (fadeFactor * 100 / 255) / 100f);
 				}
 			}
 

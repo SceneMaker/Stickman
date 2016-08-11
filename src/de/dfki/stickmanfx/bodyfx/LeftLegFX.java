@@ -39,7 +39,8 @@ public class LeftLegFX extends BodyPartFX {
 
         clearDrawObjects();
         clearChildren(this);
-
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+        	mColorRecorder = mColor;
         if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
         {
             if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -54,9 +55,10 @@ public class LeftLegFX extends BodyPartFX {
                 int fadeFactor = (20 - mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) 
                 {
-                    fadeFactor = 255;
+                	mColor = mColorRecorder;
                 }
-                mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+                else
+                	mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
             }
         }
 

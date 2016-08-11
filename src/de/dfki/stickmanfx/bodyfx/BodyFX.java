@@ -41,6 +41,9 @@ public class BodyFX extends Pane {
     public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
     public Color mColor = mFemaleColor;
     public Color currentColor = null;
+    
+    private Color mFemaleColorRecorder = mFemaleColor;
+	private Color mMaleColorRecorder = mMaleColor;
 
     Path mFemaleBodyFront, mFemaleBodyLeft, mFemaleBodyRight;
     Path mMaleBodyFront, mMaleBodyLeft, mMaleBodyRight;
@@ -246,8 +249,12 @@ public class BodyFX extends Pane {
     }
 
     public void update() {
-    	
 
+    	if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false){
+    		mFemaleColorRecorder = mFemaleColor;
+    		mMaleColorRecorder = mMaleColor;
+    	}
+    	
         //calculate();
         if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
         {
@@ -268,10 +275,13 @@ public class BodyFX extends Pane {
                 int fadeFactor = (20 - mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
                 if (fadeFactor >= 160) 
                 {
-                    fadeFactor = 240;
+                	mFemaleColor = mFemaleColorRecorder;
+                	mMaleColor = mMaleColorRecorder;
                 }
-                mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                else{
+                	mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                	mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                }
 //                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
 //                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
             }

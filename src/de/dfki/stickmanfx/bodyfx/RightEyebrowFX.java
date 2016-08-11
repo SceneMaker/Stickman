@@ -69,6 +69,9 @@ public class RightEyebrowFX extends BodyPartFX
         switch (mShape) 
         {
             case DEFAULT:
+            	if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
+            		mColorRecorder = mColor;
+            	
                 if (mHeadFX.mStickmanFX.setCharacterInvisible == true) 
                 {
                     if (mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -86,9 +89,10 @@ public class RightEyebrowFX extends BodyPartFX
                         
                         if (fadeFactor >= 54) 
                         {
-                            fadeFactor = 64;
+                        	mColor = mColorRecorder;
                         }
-                        mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
+                        else
+                        	mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
                     }
                 }
 
