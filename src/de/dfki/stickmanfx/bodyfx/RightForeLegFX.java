@@ -56,7 +56,7 @@ public class RightForeLegFX extends BodyPartFX {
     	else if(mRotation>90 && mRotation<= 180)
     		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()), (int) mLeg.boundsInParentProperty().get().getMinY()+3) : new Point(0, 0);
     	else if(mRotation < 0 && mRotation >= -90)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMaxY()-2) : new Point(0, 0);
     	else 
     		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     }
