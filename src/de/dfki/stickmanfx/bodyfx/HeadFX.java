@@ -157,7 +157,8 @@ public class HeadFX extends BodyPartFX
                 {
                     fadeFactor = 0;
                 }
-                mColor = Color.rgb(242, 227, 217, (fadeFactor * 100 / 255) / 100f); //fadeFactor Interval [0 - 1]
+                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                //mColor = Color.rgb(242, 227, 217, (fadeFactor * 100 / 255) / 100f); //fadeFactor Interval [0 - 1]
             } 
             else 
             {
@@ -166,7 +167,8 @@ public class HeadFX extends BodyPartFX
                 {
                     fadeFactor = 200;
                 }
-                mColor = Color.rgb(242, 227, 217, (fadeFactor * 100 / 255) / 100f); //fadeFactor Interval [0 - 1]
+                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                //mColor = Color.rgb(242, 227, 217, (fadeFactor * 100 / 255) / 100f); //fadeFactor Interval [0 - 1]
             }
             
             //not good. FixMe
