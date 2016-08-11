@@ -146,8 +146,6 @@ public class StickmanStageController {
         	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();    	
         	// set the setValue of combobox
         	setComboboxValue(mStickmanstage.getStickmanFX(mStickmancombobox));
-        	WithPerlinNoise.setSelected(false);
-        	WithPerlinNoise.setSelected(true);
         });
         
       //Show emotion
@@ -272,12 +270,10 @@ public class StickmanStageController {
                      	   HairComboBoxColor.setValue("Saffron Yellow");
                      	   BodyComboBoxColor.setValue("Purple");
                      	   LimbsComboBoxColor.setValue("Black");
-                        } 
-                    	
-                    	WithPerlinNoise.setSelected(false);
-                    	WithPerlinNoise.setSelected(true);
+                        }              	
                     });
                     }
+            	WithPerlinNoise.setSelected(true);
             }
         });
         
@@ -512,18 +508,20 @@ public class StickmanStageController {
         
         groupPerlin.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
-              if ((groupPerlin.getSelectedToggle() != null)&&(mStickmancombobox != null)) {
+              if ((groupPerlin.getSelectedToggle() != null)&&((null != mStickmanstage.mStickmanComboList) && (!mStickmanstage.mStickmanComboList.isEmpty()))) {
             	  if(groupPerlin.getSelectedToggle().getUserData().toString() == "With Perlin Noise"){       	
             	            Platform.runLater(() -> 
             	            {
-            	            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("StartIdle", 1000, true);            
+            	            	for(String key : mStickmanstage.mStickmanComboList)
+            	            		mStickmanstage.getStickmanFX(key).doAnimation("StartIdle", 1000, true);            
             	            }
             	            );
             	  }
             	  else{
             		  Platform.runLater(() -> 
       	            {
-      	            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("StopIdle", 1000, true);            
+      	            	for(String key : mStickmanstage.mStickmanComboList)
+      	            		mStickmanstage.getStickmanFX(key).doAnimation("StopIdle", 1000, true);            
       	            }
       	            );
             	  }
@@ -531,4 +529,9 @@ public class StickmanStageController {
             }
           });
     }
+    
+    public void setlePerlinNoiseOn(){
+    	WithPerlinNoise.setSelected(true);
+    }
+    
 }

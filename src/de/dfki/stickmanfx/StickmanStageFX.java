@@ -305,6 +305,7 @@ public class StickmanStageFX extends Application {
         
         StickmanStageController mStickmanStageController = loader.getController();
         mStickmanStageController.getStickmanStageFX(this);
+        mStickmanStageController.setlePerlinNoiseOn();
 
         stage.setTitle("StickmanFX");
         stage.setScene(scene);

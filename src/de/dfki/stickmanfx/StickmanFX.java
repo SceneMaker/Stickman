@@ -454,8 +454,8 @@ public class StickmanFX extends Pane
         mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
 
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-//??????????????????????????????????
-        //af.appendRotation(Math.toRadians(mWobble), (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y+mLeftLegFX.mLength);
+//Out put perlin noise
+        af.appendRotation(Math.toRadians(mWobble), (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
         this.getTransforms().clear();
