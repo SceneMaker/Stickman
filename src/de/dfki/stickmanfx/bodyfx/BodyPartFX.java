@@ -239,4 +239,13 @@ public abstract class BodyPartFX extends Pane
 
         return transition;
     }
+    
+    public void rotatePerlinNoise(double mWobble, int x, int y){
+    	Affine af = new Affine();
+    	//Out put perlin noise
+        af.appendRotation(Math.toRadians(mWobble), x,y);
+        this.getTransforms().clear();
+        this.getTransforms().add(af);
+    	
+    }
 }

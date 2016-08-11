@@ -18,6 +18,7 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.transform.Affine;
 
 /**
  *
@@ -297,6 +298,15 @@ public class BodyFX extends Pane {
         {
             paintFrontOrientation(currentColor);
         }
+    }
+    
+    public void rotatePerlinNoise(double mWobble, int x, int y){
+    	Affine af = new Affine();
+    	//Out put perlin noise
+        af.appendRotation(Math.toRadians(mWobble), x,y);
+        this.getTransforms().clear();
+        this.getTransforms().add(af);
+    	
     }
 
 }

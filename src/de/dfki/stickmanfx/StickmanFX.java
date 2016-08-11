@@ -454,16 +454,15 @@ public class StickmanFX extends Pane
         mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
 
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-//Out put perlin noise
-        af.appendRotation(Math.toRadians(mWobble), (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed);   // Added by Robbie, GoDown
         this.getTransforms().clear();
         this.getTransforms().add(af);
         
-        updateAll();
+      //Out put perlin noise
+        implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x)/2, mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
         
-        
+        updateAll();      
     }
 
     private static class StickmanLogFormatter extends Formatter {
@@ -525,6 +524,8 @@ public class StickmanFX extends Pane
             mRightUpperLegFX.update();
             mRightForeLegFX.update();
             mRightFootFX.update();
+            
+//            mSpeechBubbleFX.update();
 
 	        if(starShowC == true)
             	mStarsFX.update();     // Added by Robbie, to show stars or words here.
@@ -532,5 +533,48 @@ public class StickmanFX extends Pane
 
         // draw environment
         //mSpeechBubble.update(g);
+    }
+    
+    private void implimentPerlinNoise(double mWobble, int x, int y){
+    	if (starShowControler == true) {
+            mStarsFX.rotatePerlinNoise(mWobble, x, y);     // Added by Robbie, to show stars or words here
+        } else {
+        	if(starShowC == true)
+            	mStarsFX.rotatePerlinNoise(mWobble, x, y);  	
+            mHeadFX.rotatePerlinNoise(mWobble, x, y);
+            
+            if(this.mType == StickmanFX.TYPE.MALE)
+            	mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
+            else
+            	mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
+            mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
+	        mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y);    // added by Robbie
+            mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
+            mMouthFX.rotatePerlinNoise(mWobble, x, y);
+            mNeckFX.rotatePerlinNoise(mWobble, x, y);
+            //BodyFX is not BodyPartFX Classe
+            mBodyFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftHandFX.rotatePerlinNoise(mWobble, x, y);
+            mRightShoulderFX.rotatePerlinNoise(mWobble, x, y);
+            mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
+            mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
+            mRightHandFX.rotatePerlinNoise(mWobble, x, y);
+            //mLeftLegFX.update();
+            mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
+            //mRightLegFX.update();
+            mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
+            mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
+            mRightFootFX.rotatePerlinNoise(mWobble, x, y);
+
+	        if(starShowC == true)
+            	mStarsFX.rotatePerlinNoise(mWobble, x, y);     // Added by Robbie, to show stars or words here.
+    }
     }
 }
