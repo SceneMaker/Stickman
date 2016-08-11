@@ -87,7 +87,7 @@ public class RightShoulderFX extends BodyPartFX
         this.getChildren().add(mShoulder);
         update();
         
-      //calculate and update bodyfx
+      //calculate and update bodyfx (right shoulder area)
         if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightShoulderFX != null)
         	mBodyFX.calculate();
 	}
@@ -95,8 +95,6 @@ public class RightShoulderFX extends BodyPartFX
 	@Override
 	public void update() 
     {
-		// draw outlines
-//		Color curreColor = Color.rgb(80, 80, 80);
 				
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true)
 		{
@@ -121,13 +119,11 @@ public class RightShoulderFX extends BodyPartFX
 		}
 	}
 	
-            mShoulder.setStroke(mColor);
-            mShoulder.setStrokeWidth(3);
-            mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
-            mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);
-//		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-//
-//		
-//		g2.draw(mShoulder);
-}
+		if(mBodyFX.currentColor != null)
+            //mShoulder.setStroke(mColor);
+			mShoulder.setStroke(mBodyFX.currentColor);
+        mShoulder.setStrokeWidth(3);
+        mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
+        mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);
+    }
 }

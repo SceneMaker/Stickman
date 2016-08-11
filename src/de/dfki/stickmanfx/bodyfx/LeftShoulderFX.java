@@ -88,7 +88,7 @@ public class LeftShoulderFX extends BodyPartFX {
         this.getChildren().add(mShoulder);
         update();
         
-        //calculate and update bodyfx
+        //calculate and update bodyfx (left shoulder area)
         if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftShoulderFX != null)
         	mBodyFX.calculate();
     }
@@ -119,7 +119,9 @@ public class LeftShoulderFX extends BodyPartFX {
             }
         }
 
-        mShoulder.setStroke(mColor);
+        if(mBodyFX.currentColor != null) 
+        	//mShoulder.setStroke(mColor);
+        	mShoulder.setStroke(mBodyFX.currentColor);
         mShoulder.setStrokeWidth(3);
         mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
         mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);
