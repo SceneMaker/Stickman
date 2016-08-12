@@ -189,6 +189,7 @@ public abstract class BodyPartFX extends Pane
 
     public void update() 
     {
+    	recordColor();
         for (Path gp : mGraphicPaths) 
         {
             gp.setStroke(mColor);
@@ -196,6 +197,10 @@ public abstract class BodyPartFX extends Pane
             gp.setStrokeLineJoin(StrokeLineJoin.ROUND);
             gp.setStrokeWidth(3);
         }
+    }
+    
+    protected void recordColor(){
+    	
     }
     
     public void showHearts(HeadFX mHeadFX, double xMovement, double yMovement1, double yMovement2)
@@ -246,7 +251,6 @@ public abstract class BodyPartFX extends Pane
     	//Out put perlin noise
         af.appendRotation(Math.toRadians(mWobble), x,y);
         this.getTransforms().clear();
-        this.getTransforms().add(af);
-    	
+        this.getTransforms().add(af);  	
     }
 }

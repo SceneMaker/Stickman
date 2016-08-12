@@ -41,8 +41,8 @@ public class RightLegFX extends BodyPartFX {
 
         clearDrawObjects();
         clearChildren(this);
-        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
-        	mColorRecorder = mColor;
+//        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//        	mColorRecorder = mColor;
         if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
         {
             if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -78,5 +78,9 @@ public class RightLegFX extends BodyPartFX {
         this.getChildren().add(gp);
         addToDrawObjects(gp);
         this.update();
+    }
+    protected void recordColor(){
+    	if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+        	mColorRecorder = mColor;
     }
 }

@@ -79,8 +79,8 @@ public class RightEyeFX extends BodyPartFX
         switch (mShape) 
         {
             case DEFAULT:
-            	if (mHead.mStickmanFX.setCharacterInvisible == false)
-            		mColorRecorder = mColor;
+//            	if (mHead.mStickmanFX.setCharacterInvisible == false)
+//            		mColorRecorder = mColor;
                 if (mHead.mStickmanFX.setCharacterInvisible == true) 
                 {
                     if (mHead.mStickmanFX.fadeControler == true) //Added by Robbie
@@ -335,4 +335,9 @@ public class RightEyeFX extends BodyPartFX
         addToDrawObjects(mPath);
         this.update();
     }
+    
+    protected void recordColor(){
+    	if (mHead.mStickmanFX.setCharacterInvisible == false)
+    		mColorRecorder = mColor;
+    }  
 }

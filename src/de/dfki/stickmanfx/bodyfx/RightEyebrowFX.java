@@ -69,8 +69,8 @@ public class RightEyebrowFX extends BodyPartFX
         switch (mShape) 
         {
             case DEFAULT:
-            	if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
-            		mColorRecorder = mColor;
+//            	if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//            		mColorRecorder = mColor;
             	
                 if (mHeadFX.mStickmanFX.setCharacterInvisible == true) 
                 {
@@ -208,5 +208,8 @@ public class RightEyebrowFX extends BodyPartFX
         addToDrawObjects(mPath);
         this.update();
     }
-
+    protected void recordColor(){
+    	if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
+    		mColorRecorder = mColor;
+    }
 }

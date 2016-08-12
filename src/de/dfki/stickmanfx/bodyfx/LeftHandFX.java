@@ -54,9 +54,9 @@ public class LeftHandFX extends BodyPartFX
         clearDrawObjects();
         clearChildren(this);
         mHand = new Path();
-        if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
-        	mColorRecorder = mColor;
-        }
+//        if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+//        	mColorRecorder = mColor;
+//        }
         if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
             {
@@ -112,4 +112,11 @@ public class LeftHandFX extends BodyPartFX
             g.getTransforms().add(af);
         }
     }
+    
+    protected void recordColor(){
+    	if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+        	mColorRecorder = mColor;
+        }
+    }
+    
 }
