@@ -11,6 +11,7 @@ import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import javafx.application.Platform;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -160,8 +161,14 @@ public class BombeExplosion extends AnimationFX
         }
         
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mBombeFX, "shape", "BOMBEEXPLOSION"));  
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mBombeFX, "shape", "BOMBEEXPLOSION")); 
         playAnimationPart(mDuration);
+        
+        //mStickmanFX.mBodyFX.currentColor = Color.BLACK;
+        Platform.runLater(() -> mStickmanFX.mBodyFX.paintFrontOrientation(Color.BLACK));
+        mStickmanFX.mHeadFX.mColor = Color.BLACK;
+        
+        
         
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mBombeFX, "shape", "DEFAULT"));  
