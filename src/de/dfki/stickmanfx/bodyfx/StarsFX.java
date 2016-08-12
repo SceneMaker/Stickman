@@ -159,76 +159,20 @@ public class StarsFX extends BodyPartFX
 				}
 				else
 				{
-					mColor = new Color(240, 212, 0, (starColorChange * 100 / 255) / 100f);
+					mColor = Color.rgb(240, 212, 0, (starColorChange * 100 / 255) / 100f);
 
 					// STAR 1
-					int r = 30;
-					double ch = 72 * Math.PI / 180;
-					int x0 = mEnd.x;
-					int y0 = mEnd.y - mLength / 6;
-					int x1 = x0;
-					int x2 = (int) (x0 - Math.sin(ch) * r);
-					int x3 = (int) (x0 + Math.sin(ch) * r);
-					int x4 = (int) (x0 - Math.sin(ch / 2) * r);
-					int x5 = (int) (x0 + Math.sin(ch / 2) * r);
-					int y1 = y0 - r;
-					int y2 = (int) (y0 - Math.cos(ch) * r);
-					int y3 = y2;
-					int y4 = (int) (y0 + Math.cos(ch / 2) * r);
-					int y5 = y4;
-
-					path.getElements().add(new MoveTo(x1, y1));
-					path.getElements().add(new LineTo(x4, y4));
-					path.getElements().add(new LineTo(x3, y3));
-					path.getElements().add(new LineTo(x2, y2));
-					path.getElements().add(new LineTo(x5, y5));
-					path.getElements().add(new LineTo(x1, y1));
-
+					mStart = mBodyFX.getLeftLegStartPostion();
+					path.setFill(mColor);
+					creatStar(30, mStart, path);
+					
 					// STAR 2 right side
-					r = 15;
-					ch = 72 * Math.PI / 180;
-					x0 = x3 - 10;
-					y0 = y1 - mLength / 2;
-					x1 = x0;
-					x2 = (int) (x0 - Math.sin(ch) * r);
-					x3 = (int) (x0 + Math.sin(ch) * r);
-					x4 = (int) (x0 - Math.sin(ch / 2) * r);
-					x5 = (int) (x0 + Math.sin(ch / 2) * r);
-					y1 = y0 - r;
-					y2 = (int) (y0 - Math.cos(ch) * r);
-					y3 = y2;
-					y4 = (int) (y0 + Math.cos(ch / 2) * r);
-					y5 = y4;
-
-					path.getElements().add(new MoveTo(x1, y1));
-					path.getElements().add(new LineTo(x4, y4));
-					path.getElements().add(new LineTo(x3, y3));
-					path.getElements().add(new LineTo(x2, y2));
-					path.getElements().add(new LineTo(x5, y5));
-					path.getElements().add(new LineTo(x1, y1));
+					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftForeLegFX.getLegStartPosition();
+					creatStar(15, mStart, path);
 
 					// STAR 3 left side
-					r = 15;
-					ch = 72 * Math.PI / 180;
-					x0 = x0 - 60;
-					y0 = y0 + 50;
-					x1 = x0;
-					x2 = (int) (x0 - Math.sin(ch) * r);
-					x3 = (int) (x0 + Math.sin(ch) * r);
-					x4 = (int) (x0 - Math.sin(ch / 2) * r);
-					x5 = (int) (x0 + Math.sin(ch / 2) * r);
-					y1 = y0 - r;
-					y2 = (int) (y0 - Math.cos(ch) * r);
-					y3 = y2;
-					y4 = (int) (y0 + Math.cos(ch / 2) * r);
-					y5 = y4;
-
-					path.getElements().add(new MoveTo(x1, y1));
-					path.getElements().add(new LineTo(x4, y4));
-					path.getElements().add(new LineTo(x3, y3));
-					path.getElements().add(new LineTo(x2, y2));
-					path.getElements().add(new LineTo(x5, y5));
-					path.getElements().add(new LineTo(x1, y1));
+					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperLegFX.getRightUpperLegEndPosition();
+					creatStar(15, mStart, path);
 				}
 				break;
 
