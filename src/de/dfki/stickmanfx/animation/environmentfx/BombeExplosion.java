@@ -186,7 +186,10 @@ public class BombeExplosion extends AnimationFX
         mAnimationPartFX = new ArrayList<>();
         mStickmanFX.mHeadFX.translateRight = true;
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "Translate", -2000)); 
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "Translate", -2000)); 
+        if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+        	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "Translate", -2000)); 
+        else
+        	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "Translate", -2000)); 
         mStickmanFX.mBodyFX.setVisible(false);
         playAnimationPart(mDuration);
         
