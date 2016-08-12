@@ -23,6 +23,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
 import de.dfki.stickmanfx.bodyfx.BodyFX;
+import de.dfki.stickmanfx.bodyfx.BombeFX;
 import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
 import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
 import de.dfki.stickmanfx.bodyfx.HeadFX;
@@ -157,6 +158,7 @@ public class StickmanFX extends Pane {
 	public RightForeLegFX mRightForeLegFX;
 	public RightFootFX mRightFootFX;
 	public ThinkFX mThinkFX;
+	public BombeFX mBombeFX;
 	// environment
 	public SpeechBubbleFX mSpeechBubbleFX;
 
@@ -201,6 +203,7 @@ public class StickmanFX extends Pane {
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
+		mBombeFX = new BombeFX(mHeadFX);
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -243,6 +246,7 @@ public class StickmanFX extends Pane {
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
+		mBombeFX = new BombeFX(mHeadFX);
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -283,6 +287,7 @@ public class StickmanFX extends Pane {
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
+		mBombeFX = new BombeFX(mHeadFX);
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -463,7 +468,7 @@ public class StickmanFX extends Pane {
 				mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX, mRightShoulderFX,
 				mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-				mStarsFX, mSpeechBubbleFX, mThinkFX);
+				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX);
 		if (this.mType == StickmanFX.TYPE.MALE)
 			this.getChildren().add(mMaleHairFX);
 		else
