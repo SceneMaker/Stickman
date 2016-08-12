@@ -358,7 +358,7 @@ public class StickmanStageFX extends Application {
         		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
         		getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
         	}
-    
+//    
         }
      
     }; 
