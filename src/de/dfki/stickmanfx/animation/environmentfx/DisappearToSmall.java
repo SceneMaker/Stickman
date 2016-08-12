@@ -90,7 +90,7 @@ public class DisappearToSmall extends AnimationFX
 
 		// show stars
 		mStickmanFX.starShowControler = true;
-		Platform.runLater(() -> mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX));
+		mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX);
 		mStickmanFX.mScale = 1.0f;
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
