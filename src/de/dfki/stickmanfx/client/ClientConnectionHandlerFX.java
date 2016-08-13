@@ -1,4 +1,4 @@
-package de.dfki.stickman.client;
+package de.dfki.stickmanfx.client;
 
 import de.dfki.stickman.StickmanStage;
 import de.dfki.stickmanfx.StickmanStageFX;
