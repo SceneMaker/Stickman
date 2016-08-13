@@ -1,6 +1,6 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickman.client.ClientConnectionHandlerFX;
+import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickman.client.ClientConnectionHandlerFX;
+import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
