@@ -216,7 +216,7 @@ public class BodyFX extends Pane {
         }
     }
 
-    private void paintFrontOrientation(Color c) 
+    public void paintFrontOrientation(Color c) 
     {
         if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) 
         {

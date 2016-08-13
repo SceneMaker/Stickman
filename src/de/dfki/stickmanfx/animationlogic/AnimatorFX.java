@@ -5,6 +5,7 @@ import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.util.TimingInfo;
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.stickmanfx.StickmanStageFXTest;
 import de.dfki.stickmanfx.bodyfx.BodyPartFX;
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class AnimatorFX
                     // 1) API Call
                     // 2) send to Player
 
-                    StickmanStageFXTest.sendTimeMarkInformation(e.mContent);
+                    StickmanStageFX.sendTimeMarkInformation(e.mContent);
                 }
             }
         }

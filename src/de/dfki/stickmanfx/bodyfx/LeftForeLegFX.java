@@ -81,6 +81,7 @@ public class LeftForeLegFX extends BodyPartFX {
     	
     	Affine af = new Affine();
     	af.appendRotation(mRotation, mStart.x, mStart.y);
+    	af.appendTranslation(mToTranslation, 0);
     	mLeg.getTransforms().clear();
     	mLeg.getTransforms().add(af);
     	

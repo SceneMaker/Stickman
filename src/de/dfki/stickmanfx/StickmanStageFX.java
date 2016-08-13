@@ -1,6 +1,6 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickman.client.ClientConnectionHandler;
+import de.dfki.stickman.client.ClientConnectionHandlerFX;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
@@ -48,7 +48,7 @@ public class StickmanStageFX extends Application {
     protected static int mHeight = 0;
     protected static int mWidth = 0;
     // network interface
-    public static ClientConnectionHandler mConnection;
+    public static ClientConnectionHandlerFX mConnection;
     public static boolean mUseNetwork = false;
     private static String sHost = "127.0.0.1";
     private static int sPort = 7777;
@@ -76,7 +76,7 @@ public class StickmanStageFX extends Application {
         ch.setFormatter(new StickmanStageLogFormatter());
 
         if (mUseNetwork) {
-            mConnection = new ClientConnectionHandler();
+            mConnection = new ClientConnectionHandlerFX();
             mConnection.connect(sHost, sPort);
 
             while (!mConnection.mConnected) {

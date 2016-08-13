@@ -34,6 +34,8 @@ public class HeadFX extends BodyPartFX
     int mYCenterOffset = mEarWidth / 2;
 
     Path mHead, mLeftEar, mRightEar;
+    
+    public boolean translateRight = false;
 
     public HeadFX(StickmanFX sm) 
     {
@@ -85,6 +87,16 @@ public class HeadFX extends BodyPartFX
     {
         return new Point(mHalfWidth, mHalfHeight);
     }
+    
+    public Point getBombeStartPosition() 
+    {
+        return new Point(mHalfWidth+100, mHalfHeight-50);
+    }
+    
+    public Point getBombeEndPosition() 
+    {
+        return new Point(mHalfWidth+100, mStickmanFX.mRightForeLegFX.getLegStartPosition().y-50);
+    }
 
     public Point getNeckStartPosition() 
     {
@@ -103,7 +115,10 @@ public class HeadFX extends BodyPartFX
         mHead.getElements().add(new CubicCurveTo(mSize.width, 120, mEarWidth, 120, mEarWidth, mHalfHeight));
             
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        af.appendTranslation(0, mTranslation);
+        if(translateRight)
+        	af.appendTranslation(mTranslation-45, -45);
+        else
+        	af.appendTranslation(0, mTranslation);
         mHead.getTransforms().clear();
         mHead.getTransforms().add(af);
 
@@ -115,7 +130,10 @@ public class HeadFX extends BodyPartFX
 
         af = new Affine();
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        af.appendTranslation(1, 3 + mTranslation);
+        if(translateRight)
+        	af.appendTranslation(mTranslation-45, -45);
+        else
+        	af.appendTranslation(1, 3 + mTranslation);
         mLeftEar.getTransforms().clear();
         mLeftEar.getTransforms().add(af);
 //
@@ -127,7 +145,10 @@ public class HeadFX extends BodyPartFX
 
         af = new Affine();
         af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        af.appendTranslation(-1, 3 + mTranslation);
+        if(translateRight)
+        	af.appendTranslation(mTranslation-45, -45);
+        else
+        	af.appendTranslation(-1, 3 + mTranslation);
         mRightEar.getTransforms().clear();
         mRightEar.getTransforms().add(af);
 
