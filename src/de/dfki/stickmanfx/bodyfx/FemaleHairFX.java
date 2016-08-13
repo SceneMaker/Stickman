@@ -9,6 +9,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
@@ -54,8 +55,8 @@ public class FemaleHairFX extends BodyPartFX
     {
         Affine af = new Affine();
         clearChildren(this);
-        
-        // female hair
+        //drawFemaleHair1();
+         //female hair
         mFemaleHair = new Path();
         mFemaleHair.getElements().add(new MoveTo(mStart.x, mSize.height + 20));
         // right top locke
@@ -127,5 +128,102 @@ public class FemaleHairFX extends BodyPartFX
         mFemaleHair.setStrokeWidth(2);
         
         
+    }
+    
+    private void drawFemaleHair1()
+    {
+    	mStart = new Point(mStickmanFX.mHeadFX.getLeftEyebrowPostion().x - 10, mStickmanFX.mHeadFX.getLeftEyebrowPostion().y - 14);
+    	mFemaleHair = new Path();
+    	
+    	mFemaleHair.getElements().add(new MoveTo(mStart.x, mStart.y));
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 3, mStart.y - 8, mStart.x + 6, mStart.y - 15));
+    	mStart.x = mStart.x + 6;
+    	mStart.y = mStart.y - 15;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x + 15, mStart.y - 4, mStart.x + 30, mStart.y + 6));
+    	mStart.x = mStart.x + 30;
+    	mStart.y = mStart.y + 6;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x + 40, mStart.y + 40, mStart.x + 15, mStart.y + 80));
+    	mStart.x = mStart.x + 15;
+    	mStart.y = mStart.y + 80;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 5, mStart.y + 25, mStart.x + 2, mStart.y + 30));
+    	mStart.x = mStart.x + 2;
+    	mStart.y = mStart.y + 30;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 1, mStart.y + 3, mStart.x - 2, mStart.y + 2));
+    	mStart.x =mStart.x - 2;
+    	mStart.y = mStart.y + 2;
+    	
+    	for(int i = 0; i<20; i++)
+    	{
+    		if(i%2 == 0)
+    		{
+    			mFemaleHair.getElements().add(new LineTo(mStart.x-1, mStart.y - 2));
+    			mStart.x =mStart.x - 1;
+    	    	mStart.y = mStart.y - 2;
+    		}
+    		else
+    		{
+    			mFemaleHair.getElements().add(new LineTo(mStart.x-1, mStart.y + 2));
+    			mStart.x =mStart.x - 1;
+    	    	mStart.y = mStart.y + 2;
+    		}
+    	}
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x + 3, mStart.y - 25, mStart.x + 10, mStart.y - 60));
+    	mStart.y = mStart.y - 60;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x + 1, mStart.y - 15, mStart.x - 10, mStart.y - 20));
+    	mStart.x = mStart.x - 10;
+    	mStart.y = mStart.y - 20;
+    	
+    	
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 15, mStart.y + 3, mStickmanFX.mHeadFX.getLeftEyebrowPostion().x - 10, mStickmanFX.mHeadFX.getLeftEyebrowPostion().y - 14));
+    	mFemaleHair.getElements().add(new MoveTo(mStickmanFX.mHeadFX.getLeftEyebrowPostion().x - 8, mStickmanFX.mHeadFX.getLeftEyebrowPostion().y - 9));
+    	mStart.x = mStickmanFX.mHeadFX.getLeftEyebrowPostion().x - 7;
+    	mStart.y = mStickmanFX.mHeadFX.getLeftEyebrowPostion().y - 9;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 15, mStart.y + 10, mStart.x - 20, mStart.y + 20));
+    	mStart.x = mStart.x - 20;
+    	mStart.y = mStart.y + 20;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 3, mStart.y - 5, mStart.x - 3, mStart.y - 10));
+    	mStart.x = mStart.x - 3;
+    	mStart.y = mStart.y -10;
+    	mFemaleHair.getElements().add(new LineTo(mStart.x-5, mStart.y + 10));
+    	mStart.x = mStart.x - 5;
+    	mStart.y = mStart.y + 10;
+    	mFemaleHair.getElements().add(new LineTo(mStart.x-3, mStart.y - 9));
+    	mStart.x = mStart.x - 3;
+    	mStart.y = mStart.y - 6;
+    	mFemaleHair.getElements().add(new LineTo(mStart.x-3, mStart.y + 6));
+    	mStart.x = mStart.x - 3;
+    	mStart.y = mStart.y + 6;
+    	mFemaleHair.getElements().add(new LineTo(mStart.x-5, mStart.y - 9));
+    	mStart.x = mStart.x - 5;
+    	mStart.y = mStart.y - 6;
+    	
+    	//aqedan ragac airia
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 30, mStart.y + 20, mStart.x - 10, mStart.y + 40));
+    	mStart.x = mStart.x - 10;
+    	mStart.y = mStart.y + 40;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x + 5, mStart.y + 20, mStart.x + 10, mStart.y + 30));
+    	mStart.x = mStart.x + 15;
+    	mStart.y = mStart.y + 40;
+    	
+    	for(int i = 0; i< 20; i++)
+    	{
+    		if(i % 2 == 0)
+    		{
+    			mFemaleHair.getElements().add(new LineTo(mStart.x - 2, mStart.y - 2));
+    			mStart.x = mStart.x - 1;
+    			mStart.y = mStart.y -2;
+    		}
+    		else
+    		{
+    			mFemaleHair.getElements().add(new LineTo(mStart.x - 1, mStart.y + 2));
+    			mStart.x = mStart.x - 1;
+    			mStart.y = mStart.y + 2;
+    		}
+    	}
+    	
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x - 19, mStart.y - 30, mStart.x - 20, mStart.y - 60));
+    	mStart.x = mStart.x - 25;
+    	mStart.y = mStart.y - 60;
+    	mFemaleHair.getElements().add(new QuadCurveTo(mStart.x + 20, mStart.y - 70, mStart.x + 78, mStart.y - 50));
     }
 }
