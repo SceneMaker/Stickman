@@ -1,6 +1,6 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickman.client.ClientConnectionHandler;
+import de.dfki.stickman.client.ClientConnectionHandlerFX;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ public class StickmanStageFXTest extends Application
     public static StickmanFX sMale = new StickmanFX("Bob", StickmanFX.TYPE.MALE);
     public static StickmanFX sFemale = new StickmanFX("Anna", StickmanFX.TYPE.FEMALE);
     
-    public static ClientConnectionHandler mConnection;
+    public static ClientConnectionHandlerFX mConnection;
     public static boolean mUseNetwork = false;
     public static final Logger mLogger = Logger.getAnonymousLogger();
     
