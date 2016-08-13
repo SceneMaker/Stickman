@@ -1,6 +1,5 @@
 package de.dfki.stickmanfx;
 
-
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
