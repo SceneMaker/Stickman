@@ -203,15 +203,15 @@ public class BombeExplosion extends AnimationFX
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "rotate", 90));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "translate", 100));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", 90));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "translate", 100));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", 70));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "translate", 120));
         playAnimationPart(100);
         
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "rotate", 90));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "translate", 170));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "translate", 155));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 120));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "translate", 170));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "translate", 160));
         playAnimationPart(100);
         
         mAnimationPartFX = new ArrayList<>();
