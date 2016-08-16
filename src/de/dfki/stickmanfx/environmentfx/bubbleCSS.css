@@ -16,8 +16,8 @@
              33.00,209.75 18.00,216.78 18.00,216.78
              14.49,218.60 12.05,220.97 8.00,220.00
              22.62,211.79 43.01,195.61 52.56,182.00 Z ";
-    -fx-font: 16px "Serif";
-    -fx-background-color: red, rgba(255, 255, 255, 0.9);
+    -fx-font: 16px "Comic Sans MS";
+    -fx-background-color: grey, rgba(255, 255, 255, 0.9);
     -fx-text-alignment: center;
     -fx-background-insets: 0,3;
     -fx-padding: 40;
