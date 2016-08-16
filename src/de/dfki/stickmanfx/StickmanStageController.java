@@ -47,6 +47,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  *
@@ -61,7 +62,8 @@ public class StickmanStageController {
     private static StickmanFX sStickman;
     private StickmanStageFX mStickmanstage;
     private String mStickmancombobox = null;
-    final private ToggleGroup groupPerlin = new ToggleGroup();;
+    final private ToggleGroup groupPerlin = new ToggleGroup();
+    final private ToggleGroup groupEnvironmentRadioButton = new ToggleGroup();
     
     @FXML
     private Label Stickman;
@@ -77,7 +79,22 @@ public class StickmanStageController {
     private Label Posture;
     @FXML
     private Label ShowEmotionName;
-
+    
+    @FXML
+    private RadioButton FadeIn;
+    @FXML
+    private RadioButton FadeOut;
+    @FXML
+    private RadioButton GoDown;
+    @FXML
+    private RadioButton ComeUp;
+    @FXML
+    private RadioButton DisappearToSmall;
+    @FXML
+    private RadioButton ComeBackFromSmall;
+    @FXML
+    private RadioButton Speaking;
+    
     @FXML
     private RadioButton CoverMouth;
     @FXML
@@ -122,6 +139,8 @@ public class StickmanStageController {
     
     @FXML
     private Button RestButton;
+    @FXML
+    private Button ExitButton;
     
     
 
@@ -129,6 +148,7 @@ public class StickmanStageController {
     public void initialize() 
     {
         setIdForLabel();
+        handleGroupForEnvironmentRadioButton();
         HeadComboBoxColor.getItems().addAll("Festucine","Beige","Blue", "Black","Red");
         HairComboBoxColor.getItems().addAll("Saffron Yellow","Brown", "Yellow","Beige","Blue","Black","Red","Gold");
         BodyComboBoxColor.getItems().addAll("Purple","Green","Beige","Black","Yellow","White");
@@ -273,12 +293,23 @@ public class StickmanStageController {
                         }              	
                     });
                     }
+            	EnvironmentRadioButtonNotSelected();
             	WithPerlinNoise.setSelected(true);
             }
         });
         
+        ExitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	Stage stage = (Stage) ExitButton.getScene().getWindow();
+                stage.close();
+            }
+        }); 
+        
         handlePerlinNoise();
     }    
+    
+    
     
     public void getStickmanStageFX(StickmanStageFX Stickmanstage)
     {
@@ -533,5 +564,59 @@ public class StickmanStageController {
     public void setlePerlinNoiseOn(){
     	WithPerlinNoise.setSelected(true);
     }
+    
+    private void handleGroupForEnvironmentRadioButton()
+    {
+    	FadeIn.setUserData("FadeIn");
+    	FadeOut.setUserData("FadeOut");
+    	GoDown.setUserData("GoDown");
+    	ComeUp.setUserData("ComeUp");
+    	DisappearToSmall.setUserData("DisappearToSmall");
+    	ComeBackFromSmall.setUserData("ComeBackFromSmall");
+    	Speaking.setUserData("Speaking");
+    	
+    	FadeIn.setToggleGroup(groupEnvironmentRadioButton);
+    	FadeOut.setToggleGroup(groupEnvironmentRadioButton);
+    	GoDown.setToggleGroup(groupEnvironmentRadioButton);
+    	ComeUp.setToggleGroup(groupEnvironmentRadioButton);
+    	DisappearToSmall.setToggleGroup(groupEnvironmentRadioButton);
+    	ComeBackFromSmall.setToggleGroup(groupEnvironmentRadioButton);
+    	Speaking.setToggleGroup(groupEnvironmentRadioButton);
+    	
+    	groupEnvironmentRadioButton.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+              if ((groupEnvironmentRadioButton.getSelectedToggle() != null)&&((null != mStickmanstage.mStickmanComboList) && (!mStickmanstage.mStickmanComboList.isEmpty()))) {
+            	  String action = groupEnvironmentRadioButton.getSelectedToggle().getUserData().toString();
+            	   if(!action.equals("Speaking")){       	
+            	            Platform.runLater(() -> 
+            	            {
+            	            		mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(action, 1000, true);  
+            	            }
+            	            );
+            	  }
+            	  else{
+            		  Platform.runLater(() -> 
+      	            {
+      	            		mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(action,3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+      	            		Speaking.setSelected(false);
+      	            }
+      	            );
+            	  }
+              }
+            }
+          });
+    }
+    
+    private void EnvironmentRadioButtonNotSelected()
+    {
+    	FadeIn.setSelected(false);
+    	FadeOut.setSelected(false);
+    	GoDown.setSelected(false);
+    	ComeUp.setSelected(false);
+    	DisappearToSmall.setSelected(false);
+    	ComeBackFromSmall.setSelected(false);
+    	Speaking.setSelected(false);
+    }
+    
     
 }
