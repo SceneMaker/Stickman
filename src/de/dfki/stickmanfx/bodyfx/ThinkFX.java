@@ -87,9 +87,9 @@ public class ThinkFX extends BodyPartFX
 				
 			case THINKOFLOVE:
 				if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-					url = getClass().getClassLoader().getResource("girl1.gif");
+					url = getClass().getClassLoader().getResource("girl2.gif");
 				else
-					url = getClass().getClassLoader().getResource("boy1.jpg");
+					url = getClass().getClassLoader().getResource("boy2.jpg");
 				image = new Image(url.toString());
 				imagePattern = new ImagePattern(image);
 				
