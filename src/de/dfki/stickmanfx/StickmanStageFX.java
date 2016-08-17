@@ -210,7 +210,7 @@ public class StickmanStageFX extends Application {
             getStickmanFX(s).mAnimationSchedulerFX.end();
         });
         deleteStickman.stream().map((s) -> {
-            sStickmanPane.getChildren().remove(getStickmanFX(s).getParent());
+            sStickmanPane.getChildren().remove(getStickmanFX(s));
             return s;
         }).forEach((s) -> {
             sStickmansOnStage.remove(s);

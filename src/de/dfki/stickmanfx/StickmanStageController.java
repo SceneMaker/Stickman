@@ -292,7 +292,31 @@ public class StickmanStageController {
                      	   LimbsComboBoxColor.setValue("Black");
                         }              	
                     });
+                    
+                    if ((groupEnvironmentRadioButton.getSelectedToggle() != null))
+                    {
+                    	String action = groupEnvironmentRadioButton.getSelectedToggle().getUserData().toString();
+                    	Platform.runLater(() -> 
+                    	{
+                    		switch(action)
+                    		{
+                    			case "FadeOut": 
+                    				mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("FadeIn", 1000, true);
+                    				break; 
+                    			case "GoDown": 
+                    				mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("ComeUp", 1000, true);
+                    				break;
+                    			case "DisappearToSmall": 
+                    				mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation("ComeBackFromSmall", 1000, true);
+                    				break;
+                    			default:
+                    				break;
+                    		}
+                    	
+                    	});
                     }
+                }
+            	
             	EnvironmentRadioButtonNotSelected();
             	WithPerlinNoise.setSelected(true);
             }
@@ -585,7 +609,8 @@ public class StickmanStageController {
     	
     	groupEnvironmentRadioButton.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
-              if ((groupEnvironmentRadioButton.getSelectedToggle() != null)&&((null != mStickmanstage.mStickmanComboList) && (!mStickmanstage.mStickmanComboList.isEmpty()))) {
+              if ((groupEnvironmentRadioButton.getSelectedToggle() != null)&&(mStickmancombobox != null)) 
+              {
             	  String action = groupEnvironmentRadioButton.getSelectedToggle().getUserData().toString();
             	   if(!action.equals("Speaking")){       	
             	            Platform.runLater(() -> 
@@ -603,6 +628,16 @@ public class StickmanStageController {
       	            );
             	  }
               }
+              
+              if ((groupEnvironmentRadioButton.getSelectedToggle() != null)&&(mStickmancombobox == null)) 
+              {
+            	  String action = groupEnvironmentRadioButton.getSelectedToggle().getUserData().toString();
+            	  Platform.runLater(() -> 
+    	            {
+    	            	groupEnvironmentRadioButton.getSelectedToggle().setSelected(false);
+    	            }
+    	            );            	  
+              }          
             }
           });
     }
