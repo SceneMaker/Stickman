@@ -7,7 +7,7 @@ package de.dfki.stickmanfx.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.StickmanStageFXTest;
+import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.XMLParseAction;
 import de.dfki.util.xml.XMLParseError;
@@ -69,7 +69,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
 	public void setStickmanName(String stickmanName) 
         {
 		mStickmanName = stickmanName;
-		mStickmanFX = StickmanStageFXTest.getStickman(mStickmanName);
+		mStickmanFX = StickmanStageFX.getStickmanFX(mStickmanName);
 		setName(mStickmanName + "'s Animation " + mName);
 	}
 
@@ -168,13 +168,13 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
             // send event that AnimationFX is ended
 
             // API or TCP-Interface
-            if (!StickmanStageFXTest.mUseNetwork) 
+            if (!StickmanStageFX.mUseNetwork) 
             {
                 mStickmanFX.notifyListeners(mID);
             } 
             else 
             {
-                StickmanStageFXTest.sendAnimationUpdate("end", mID);
+                StickmanStageFX.sendAnimationUpdate("end", mID);
             }
 	}
 
