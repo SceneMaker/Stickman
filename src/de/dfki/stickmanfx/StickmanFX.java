@@ -61,6 +61,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
@@ -97,6 +98,7 @@ public class StickmanFX extends Pane {
 	public boolean mShowName = true;
 	public float mGeneralXTranslation = 0;
 	public float mGeneralYTranslation = 0;
+	private Label nameLabel = new Label();
 
 	// public static Dimension mDefaultSize = new Dimension(400, 400); // 400
 	public static Dimension mDefaultSize = new Dimension(300, 800); // 400
@@ -325,6 +327,14 @@ public class StickmanFX extends Pane {
 
 		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
 		mIdleBehavior = new IdleBehavior(this, simplexNoise);
+		
+		if(mShowName)
+		{
+//			nameLabel.toFront();
+			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
+			nameLabel.setText(mName);
+		}
+	
 	}
 
 	public void addListener(AnimationListener al) {
@@ -468,7 +478,7 @@ public class StickmanFX extends Pane {
 				mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX, mRightShoulderFX,
 				mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX);
+				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameLabel);
 		if (this.mType == StickmanFX.TYPE.MALE)
 			this.getChildren().add(mMaleHairFX);
 		else
