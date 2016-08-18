@@ -64,13 +64,7 @@ public class StickmanStageFX extends Application {
             Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
             mWidth = size.width;
             mHeight = size.height;
-//            setUndecorated(true);
-//            setBackground(new Color(128, 128, 128, 255));
-//            setMinimumSize(size);
-//            setPreferredSize(size);
         }
-
-//        setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE); // This one is needed by SceneMaker
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
@@ -88,8 +82,6 @@ public class StickmanStageFX extends Application {
                 }
             }
         }
-
-//        addMouseListener(this);
     }
 
     public static StickmanStageFX getInstance() {
@@ -164,33 +156,16 @@ public class StickmanStageFX extends Application {
                         new StickmanFX(name,
                                 gender,
                                 mHeight / (float) StickmanFX.mDefaultSize.height * sScale,
-                                new Dimension(new Float(mHeight * 1 / 2 * sScale).intValue(), new Float(mHeight * sScale).intValue())
+                                new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())
                                 ));
-//                getStickman(name).mShowBackground = false;
-//                getStickman(name).mShowStage = false;
-//                getStickman(name).mShowName = false;
+                
+                getStickmanFX(name).mShowName = true;
             } else {
                 sStickmansOnStage.put(name.toLowerCase(), new StickmanFX(name, gender, sScale));
             }
-            
-//            Pane p = new Pane();
-//            p.setPrefHeight(600);
-//            p.setPrefWidth(500);
-//            p.getChildren().add(getStickmanFX(name));
-//            sStickmanPane.getChildren().add(p);
-//            StickmanFX S= getStickmanFX(name);
-            
-//            sStickmanPane.getChildren().add(getStickmanFX(name));
-            
-           
-            //            sStickmanPane.revalidate();   
+               
         }
         
-//        sStickmanPane.getChildren().add(getStickmanFX(name));
-
-        // resize the stuff ...
-//        StickmanStageFX.getInstance().pack();
-//        StickmanStageFX.getInstance().setVisible(true);
     }
 
     public static StickmanFX getStickmanFX(String name) {
@@ -215,10 +190,6 @@ public class StickmanStageFX extends Application {
         }).forEach((s) -> {
             sStickmansOnStage.remove(s);
         });
-
-        // resize the stuff ...
-//        StickmanStageFX.getInstance().pack();
-//        StickmanStageFX.getInstance().setVisible(false);
 
         if (mUseNetwork) {
             mConnection.end();
@@ -285,12 +256,6 @@ public class StickmanStageFX extends Application {
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
         
-        //Plan to make a menu there
-//        FXMLLoader loader1 = new FXMLLoader();
-//        loader1.setLocation(getClass().getResource("RootLayoutStickmanFX.fxml"));
-//        BorderPane root1 = loader1.load();
-        
-        
         Scene scene = new Scene(root, width, height);
         
         sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
@@ -298,7 +263,6 @@ public class StickmanStageFX extends Application {
         
         for(String key : sStickmansOnStage.keySet())
         {
-//        	System.out.println(key);
     		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
     		mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
         }
@@ -327,13 +291,14 @@ public class StickmanStageFX extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    	getInstanceFullScreen();
+    	
     	addStickmanFX("Bob");
     	addStickmanFX("Anna");
     	addStickmanFX("character");
 
     	lauchStickman();
         
-//        launch(args);
     }
     
 //  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised

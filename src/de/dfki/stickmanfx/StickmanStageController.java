@@ -327,6 +327,7 @@ public class StickmanStageController {
             public void handle(ActionEvent event) {
             	Stage stage = (Stage) ExitButton.getScene().getWindow();
                 stage.close();
+                System.exit(0);
             }
         }); 
         
