@@ -32,14 +32,14 @@ public class Muster extends AnimationFX
 //            for(int i = 0; i<8; i++)
 //            {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -80));
-                playAnimationPart(300);
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 80));
+                playAnimationPart(2000);
                 
                 pauseAnimation(500);
                 
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 80));
-                playAnimationPart(300);
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -80));
+                playAnimationPart(2000);
                 
                 
 //            }

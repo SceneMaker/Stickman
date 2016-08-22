@@ -65,7 +65,7 @@ public class LeftEyeFX extends BodyPartFX {
 	    imorter.read(url);
 	    leftEyeMeshView=  (MeshView) imorter.getImport()[0];
 	    
-	    mYRotation = mHeadFX.mRotation;
+	    mYRotation = mHeadFX.mYRotation;
 		
 		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
 				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,

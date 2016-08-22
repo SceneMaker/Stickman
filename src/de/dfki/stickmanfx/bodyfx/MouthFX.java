@@ -4,13 +4,18 @@ import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.transform.Rotate;
 
 /**
  *
@@ -27,6 +32,11 @@ public class MouthFX extends BodyPartFX
 
 	HeadFX mHeadFX;
 	Path mPath;
+	
+	URL url;
+    ColModelImporter imorter;
+    MeshView mouthMeshView;
+    
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
 	public MouthFX(HeadFX head) 
@@ -34,7 +44,14 @@ public class MouthFX extends BodyPartFX
 		mHeadFX = head;
 		mLength = 20;
 		mSize = new Dimension(mLength * 2, 5);
-		mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
+
+		url  = getClass().getClassLoader().getResource("mouth3.dae");
+	    imorter = new ColModelImporter();
+	    imorter.read(url);
+	    mouthMeshView=  (MeshView) imorter.getImport()[0];
+	    
+	    mYRotation = mHeadFX.mYRotation;
+	    
 		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0, (128 * 100 / 255) / 100f);
 		mPath = new Path();
 		this.getChildren().add(mPath);
@@ -96,6 +113,17 @@ public class MouthFX extends BodyPartFX
 				}
 			}
 
+			mouthMeshView.setTranslateX(mStart.x-3);
+			mouthMeshView.setTranslateY(mStart.y+25);
+			mouthMeshView.setTranslateZ(-130);
+  		        
+	  		  Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+	  		  Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+	  		  Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+	  		    
+	  		mouthMeshView.getTransforms().clear();
+	  		mouthMeshView.getTransforms().addAll(rx, ry, rz);
+  		    
 			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
 			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
 			break;
@@ -416,9 +444,9 @@ public class MouthFX extends BodyPartFX
 			break;
 
 		}
-		getChildren().add(mPath);
-		addToDrawObjects(mPath);
-		this.update();
+		getChildren().add(mouthMeshView);
+//		addToDrawObjects(mPath);
+//		this.update();
 	}
 	protected void recordColor(){
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
