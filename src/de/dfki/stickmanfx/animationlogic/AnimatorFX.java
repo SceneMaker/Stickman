@@ -132,6 +132,14 @@ public class AnimatorFX
                     {
                         bodypartFX.setRotation(param);
                     }
+                    if(action.equalsIgnoreCase("yRotate"))
+                    {
+                    	bodypartFX.set_Y_Rotation(param);
+                    }
+                    if(action.equalsIgnoreCase("zRotate"))
+                    {
+                    	bodypartFX.set_Z_Rotation(param);
+                    }
                     if (action.equalsIgnoreCase("tilt")) 
                     {
                         bodypartFX.setTilt(param);
@@ -158,7 +166,14 @@ public class AnimatorFX
                     {
                         bodypartFX.calculateRotation(mCurrentStep);
                     }
-
+                    if (action.equalsIgnoreCase("yrotate")) 
+                    {
+                        bodypartFX.calculate_Y_Rotation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("zrotate")) 
+                    {
+                        bodypartFX.calculate_Z_Rotation(mCurrentStep);
+                    }
                     if (action.equalsIgnoreCase("tilt")) 
                     {
                         bodypartFX.calculateRotation(mCurrentStep);
@@ -196,7 +211,14 @@ public class AnimatorFX
                     {
                         bodypartFX.resetRotation();
                     }
-
+                    if (action.equalsIgnoreCase("yrotate")) 
+                    {
+                        bodypartFX.resetRotation();
+                    }
+                    if (action.equalsIgnoreCase("zrotate")) 
+                    {
+                        bodypartFX.resetRotation();
+                    }
                     if (action.equalsIgnoreCase("tilt")) 
                     {
                         bodypartFX.resetRotation();

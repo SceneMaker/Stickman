@@ -63,6 +63,8 @@ public abstract class BodyPartFX extends Pane
     public int mDefaultRotation = 0;
     public Point mDefaultRotationPoint = new Point(0, 0);
     public double mRotation = mDefaultRotation;
+    public double mYRotation = mDefaultRotation;
+    public double mZRotation = mDefaultRotation;
     public double mToDegree = mDefaultRotation;
     public double mRotationStep = 0.0f;
 
@@ -104,6 +106,10 @@ public abstract class BodyPartFX extends Pane
     {
         mDefaultRotation = degree;
         mRotation = mDefaultRotation;
+        
+        mYRotation = mDefaultRotation;
+        mZRotation = mDefaultRotation;
+        
         mToDegree = mDefaultRotation;
         mRotationStep = 0.0f;
     }
@@ -113,7 +119,19 @@ public abstract class BodyPartFX extends Pane
         mToDegree = mRotation + degree;
         mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
     }
-
+    
+    public void set_Y_Rotation(int degree) 
+    {
+        mToDegree = mYRotation + degree;
+        mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+    }
+    
+    public void set_Z_Rotation(int degree) 
+    {
+        mToDegree = mZRotation + degree;
+        mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+    }
+    
     public void setTilt(int degree) 
     {
         mToDegree = mRotation + degree;
@@ -124,6 +142,22 @@ public abstract class BodyPartFX extends Pane
     {
             mRotation += mRotationStep;
             mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
+            Platform.runLater(() -> calculate(step));
+            
+    }
+    
+    public synchronized void calculate_Y_Rotation(int step) 
+    {
+            mYRotation += mRotationStep;
+            mYRotation = (double) Math.round(mYRotation * 1000d) / 1000d; // the poor man's round method
+            Platform.runLater(() -> calculate(step));
+            
+    }
+    
+    public synchronized void calculate_Z_Rotation(int step) 
+    {
+            mZRotation += mRotationStep;
+            mZRotation = (double) Math.round(mZRotation * 1000d) / 1000d; // the poor man's round method
             Platform.runLater(() -> calculate(step));
             
     }

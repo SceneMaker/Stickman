@@ -9,7 +9,9 @@ import de.dfki.util.xml.XMLUtilities;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -256,7 +258,7 @@ public class StickmanStageFX extends Application {
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
         
-        Scene scene = new Scene(root, width, height);
+        Scene scene = new Scene(root, width, height, true, SceneAntialiasing.BALANCED);
         
         sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
@@ -313,8 +315,10 @@ public class StickmanStageFX extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
 
-    	//getStickmanFX("Anna").doAnimation("Muster", 1000, true);
-        	getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
+    	getStickmanFX("Anna").doAnimation("Muster", 1000, true);
+    	getStickmanFX("Bob").doAnimation("Muster", 1000, true);
+    	getStickmanFX("character").doAnimation("Muster", 1000, true);
+        	//getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
 //        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);

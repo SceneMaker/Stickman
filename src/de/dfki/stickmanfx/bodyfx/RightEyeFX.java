@@ -2,6 +2,10 @@ package de.dfki.stickmanfx.bodyfx;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import static de.dfki.stickman.animationlogic.util.Interpolator.linear;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
@@ -11,9 +15,11 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 /**
@@ -33,14 +39,25 @@ public class RightEyeFX extends BodyPartFX
 
     HeadFX mHead;
     Path mPath;
+    
+    URL url;
+    ColModelImporter imorter;
+    MeshView rightEyeMesh;
+    
     public RightEyeFX.SHAPE mShape = RightEyeFX.SHAPE.DEFAULT;
 
     public RightEyeFX(HeadFX head) 
     {
         mHead = head;
         mLength = 5;
-        mSize = new Dimension(5, mLength);
-        mDefaultRotationPoint = mHead.mDefaultRotationPoint;
+        
+        url  = getClass().getClassLoader().getResource("rightEye1.dae");
+	    imorter = new ColModelImporter();
+	    imorter.read(url);
+	    rightEyeMesh=  (MeshView) imorter.getImport()[0];
+	    
+	    mYRotation = mHead.mRotation;
+	    
         mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
@@ -71,7 +88,6 @@ public class RightEyeFX extends BodyPartFX
 
         double movement;
 
-        clearDrawObjects();
         clearChildren(this);
 		
 		mPath = new Path();
@@ -108,9 +124,20 @@ public class RightEyeFX extends BodyPartFX
                                 mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     }
                 }
+                
+                rightEyeMesh.setTranslateX(mStart.x+20);
+                rightEyeMesh.setTranslateY(mStart.y+70);
+                rightEyeMesh.setTranslateZ(-105);
+    		        
+    		    Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+    		    Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+    		    Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+    		    
+    		    rightEyeMesh.getTransforms().clear();
+    		    rightEyeMesh.getTransforms().addAll(rx, ry, rz);
 
-                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+//                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+//                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                 break;
 
             case BLINK:
@@ -331,9 +358,9 @@ public class RightEyeFX extends BodyPartFX
                 break;
 
         }
-        this.getChildren().add(mPath);
-        addToDrawObjects(mPath);
-        this.update();
+        this.getChildren().add(rightEyeMesh);
+//        addToDrawObjects(mPath);
+//        this.update();
     }
     
     protected void recordColor(){

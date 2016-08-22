@@ -9,13 +9,19 @@ import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 /**
@@ -32,6 +38,11 @@ public class LeftEyebrowFX extends BodyPartFX
 
     HeadFX mHeadFX;
     Path mPath;
+    
+    URL url;
+    ColModelImporter imorter;
+    MeshView leftBrowMeshView;
+    
     public LeftEyebrowFX.SHAPE mShape = LeftEyebrowFX.SHAPE.DEFAULT;
 
     public LeftEyebrowFX(HeadFX head) 
@@ -39,7 +50,14 @@ public class LeftEyebrowFX extends BodyPartFX
         mHeadFX = head;
         mLength = 16;
         mSize = new Dimension(mLength, mLength);
-        mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
+        
+        url  = getClass().getClassLoader().getResource("leftBrow2.dae");
+	    imorter = new ColModelImporter();
+	    imorter.read(url);
+	    leftBrowMeshView=  (MeshView) imorter.getImport()[0];
+        
+	    mYRotation = mHeadFX.mRotation;
+	    
         mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
         mPath = new Path();
         this.getChildren().add(mPath);
@@ -67,7 +85,6 @@ public class LeftEyebrowFX extends BodyPartFX
 
         double movement;
 
-        clearDrawObjects();
         clearChildren(this);
 		
 		mPath = new Path();
@@ -102,8 +119,19 @@ public class LeftEyebrowFX extends BodyPartFX
                     }
                 }
 
-                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+                leftBrowMeshView.setTranslateX(mStart.x-22);
+                leftBrowMeshView.setTranslateY(mStart.y+77);
+                leftBrowMeshView.setTranslateZ(-120);
+    		        
+    		    Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+    		    Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+    		    Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+    		    
+    		    leftBrowMeshView.getTransforms().clear();
+    		    leftBrowMeshView.getTransforms().addAll(rx, ry, rz);
+    		    
+//                    mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+//                    mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
                 break;
 
             case ANGRY:
@@ -209,9 +237,9 @@ public class LeftEyebrowFX extends BodyPartFX
                     }
                 break;
         }
-        this.getChildren().add(mPath);
-        addToDrawObjects(mPath);
-        this.update();
+        this.getChildren().add(leftBrowMeshView);
+//        addToDrawObjects(mPath);
+//        this.update();
     }
     
     protected void recordColor(){

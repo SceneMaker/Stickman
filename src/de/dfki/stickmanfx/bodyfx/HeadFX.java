@@ -4,15 +4,30 @@ import de.dfki.stickmanfx.StickmanFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.scene.AmbientLight;
+import javafx.scene.DepthTest;
+import javafx.scene.PointLight;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.Cylinder;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 /**
@@ -32,8 +47,13 @@ public class HeadFX extends BodyPartFX
     int mDrawOffset = 10;
     int mXCenterOffset = mEarWidth / 2;
     int mYCenterOffset = mEarWidth / 2;
-
-    Path mHead, mLeftEar, mRightEar;
+    
+    URL url;
+    ColModelImporter imorter;
+    MeshView headMeshView;
+    
+    int mHeadRadius = 60;
+    int mHeadHeight = 30;
     
     public boolean translateRight = false;
 
@@ -41,13 +61,15 @@ public class HeadFX extends BodyPartFX
     {
         mStickmanFX = sm;
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
-        mStroke = new BasicStroke(2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-        mHead = new Path();
-        mLeftEar = new Path();
-        mRightEar = new Path();
-        mColor = Color.rgb(242, 227, 217, 1);
-        this.getChildren().addAll(mHead, mLeftEar, mRightEar);
         
+        url  = getClass().getClassLoader().getResource("head.dae");
+        imorter = new ColModelImporter();
+        imorter.read(url);
+        headMeshView=  (MeshView) imorter.getImport()[0];
+        
+        mColor = Color.rgb(242, 227, 217, 1);
+        mRotation = 0;
+        mYRotation = 20;
         init();
 
         calculate(0);
@@ -100,7 +122,7 @@ public class HeadFX extends BodyPartFX
 
     public Point getNeckStartPosition() 
     {
-        return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset);
+        return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset + 4);
     }
 
     public void calculate(int step) 
@@ -108,60 +130,88 @@ public class HeadFX extends BodyPartFX
         Affine af = new Affine();
         clearChildren(this);
         
-        mHead = new Path();
+        headMeshView.setTranslateX(mHalfWidth);
+        headMeshView.setTranslateY(mHalfHeight + 55);
+        headMeshView.setTranslateZ(-100);
+        
+        Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+        
+//        PhongMaterial material = new PhongMaterial();
+//        material.setDiffuseColor(mColor);
+//        material.setSpecularColor(mColor);
+//        
+//        AmbientLight ambient = new AmbientLight(new Color(0.2, 0.2, 0.2, 0.6));
+//        ambient.setTranslateX(mHalfWidth);
+//        ambient.setTranslateY(mHalfHeight + 55); 
+//        ambient.setTranslateZ(-100);
+//        
+//        PointLight pointLight = new PointLight();
+//        pointLight.setColor(mColor);
+//        pointLight.setTranslateX(mHalfWidth - 80);
+//        pointLight.setTranslateY(mHalfHeight + 55); 
+//        pointLight.setTranslateZ(-100);
+        
+//        mHead.setMaterial(material);
+        headMeshView.getTransforms().clear();
+        headMeshView.getTransforms().addAll(rx, ry, rz);
+        
         // head
-        mHead.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
-        mHead.getElements().add(new CubicCurveTo(mEarWidth, -mHalfHeight / 5, mSize.width, -mHalfHeight / 5, mSize.width, mHalfHeight));
-        mHead.getElements().add(new CubicCurveTo(mSize.width, 120, mEarWidth, 120, mEarWidth, mHalfHeight));
-            
-        af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        if(translateRight)
-        	af.appendTranslation(mTranslation-45, -45);
-        else
-        	af.appendTranslation(0, mTranslation);
-        mHead.getTransforms().clear();
-        mHead.getTransforms().add(af);
+//        mHead.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
+//        mHead.getElements().add(new CubicCurveTo(mEarWidth, -mHalfHeight / 5, mSize.width, -mHalfHeight / 5, mSize.width, mHalfHeight));
+//        mHead.getElements().add(new CubicCurveTo(mSize.width, 120, mEarWidth, 120, mEarWidth, mHalfHeight));
+//            
+//        af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
+//        if(translateRight)
+//        	af.appendTranslation(mTranslation-45, -45);
+//        else
+//        	af.appendTranslation(0, mTranslation);
+//        mHead.getTransforms().clear();
+//        mHead.getTransforms().add(af);
 
-        //left ear
-        mLeftEar = new Path();
-        mLeftEar.getElements().add(new MoveTo(10, mSize.height / 2 + 10));
-        mLeftEar.getElements().add(new QuadCurveTo(7, mSize.height / 2, 10, mSize.height / 2 - 10));
-        mLeftEar.getElements().add(new CubicCurveTo(0, mSize.height / 2 - 10, 0, mSize.height / 2 + 10, 10, mSize.height / 2 + 10));
-
-        af = new Affine();
-        af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        if(translateRight)
-        	af.appendTranslation(mTranslation-45, -45);
-        else
-        	af.appendTranslation(1, 3 + mTranslation);
-        mLeftEar.getTransforms().clear();
-        mLeftEar.getTransforms().add(af);
-//
-        //right ear
-        mRightEar = new Path();
-        mRightEar.getElements().add(new MoveTo(mSize.width, mSize.height / 2 + 10));
-        mRightEar.getElements().add(new QuadCurveTo(mSize.width + 3, mSize.height / 2, mSize.width, mSize.height / 2 - 10));
-        mRightEar.getElements().add(new CubicCurveTo(mSize.width + 10, mSize.height / 2 - 10, mSize.width + 10, mSize.height / 2 + 10, mSize.width, mSize.height / 2 + 10));
-
-        af = new Affine();
-        af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        if(translateRight)
-        	af.appendTranslation(mTranslation-45, -45);
-        else
-        	af.appendTranslation(-1, 3 + mTranslation);
-        mRightEar.getTransforms().clear();
-        mRightEar.getTransforms().add(af);
-
-        // TODO - This schould be done in all bodyparts
-        //????????????????????????????????????????
-//        resizeRelocate(mHead.getLayoutX() + new Float(mStickmanFX.mGeneralXTranslation).intValue(),
-//                mHead.getLayoutY() + new Float(mStickmanFX.mGeneralYTranslation).intValue(),
-//                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
-//                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
+        if(mStickmanFX.mFemaleHairFX != null)
+        {
+        	mStickmanFX.mFemaleHairFX.mRotation = this.mRotation;
+        	mStickmanFX.mFemaleHairFX.mYRotation = this.mYRotation;
+        	mStickmanFX.mFemaleHairFX.mZRotation = this.mZRotation;
+        	mStickmanFX.mFemaleHairFX.calculate(step);
+        }
         
-        this.getChildren().addAll(mHead, mLeftEar, mRightEar);
+        if(mStickmanFX.mLeftEyeFX != null)
+        {
+        	mStickmanFX.mLeftEyeFX.mRotation = this.mRotation;
+        	mStickmanFX.mLeftEyeFX.mYRotation = this.mYRotation;
+        	mStickmanFX.mLeftEyeFX.mZRotation = this.mZRotation;
+        	mStickmanFX.mLeftEyeFX.calculate(step);
+        }
         
-        update();
+        if(mStickmanFX.mRightEyeFX != null)
+        {
+        	mStickmanFX.mRightEyeFX.mRotation = this.mRotation;
+        	mStickmanFX.mRightEyeFX.mYRotation = this.mYRotation;
+        	mStickmanFX.mRightEyeFX.mZRotation = this.mZRotation;
+        	mStickmanFX.mRightEyeFX.calculate(step);
+        }
+        
+        if(mStickmanFX.mLeftEyebrowFX != null)
+        {
+        	mStickmanFX.mLeftEyebrowFX.mRotation = this.mRotation;
+        	mStickmanFX.mLeftEyebrowFX.mYRotation = this.mYRotation;
+        	mStickmanFX.mLeftEyebrowFX.mZRotation = this.mZRotation;
+        	mStickmanFX.mLeftEyebrowFX.calculate(step);
+        }
+        
+        if(mStickmanFX.mRightEyebrowFX != null)
+        {
+        	mStickmanFX.mRightEyebrowFX.mRotation = this.mRotation;
+        	mStickmanFX.mRightEyebrowFX.mYRotation = this.mYRotation;
+        	mStickmanFX.mRightEyebrowFX.mZRotation = this.mZRotation;
+        	mStickmanFX.mRightEyebrowFX.calculate(step);
+        }
+        
+        this.getChildren().addAll(headMeshView);
+        //update();
 
     }
 
@@ -200,20 +250,20 @@ public class HeadFX extends BodyPartFX
             mStickmanFX.mBodyFX.update();
         } 
 
-        // head
-        mHead.setFill(mColor);
-        // ears
-        mLeftEar.setFill(mColor);
-        mRightEar.setFill(mColor);
-        // draw outlines
-        //head
-        mHead.setStroke(mColor.darker());
-        mHead.setStrokeWidth(2);
-        // ears
-        mLeftEar.setStroke(mColor.darker());
-        mLeftEar.setStrokeWidth(2);
-        mRightEar.setStroke(mColor.darker());
-        mRightEar.setStrokeWidth(2);
+//        // head
+//        mHead.setFill(mColor);
+//        // ears
+//        mLeftEar.setFill(mColor);
+//        mRightEar.setFill(mColor);
+//        // draw outlines
+//        //head
+//        mHead.setStroke(mColor.darker());
+//        mHead.setStrokeWidth(2);
+//        // ears
+//        mLeftEar.setStroke(mColor.darker());
+//        mLeftEar.setStrokeWidth(2);
+//        mRightEar.setStroke(mColor.darker());
+//        mRightEar.setStrokeWidth(2);
 
     }
 }

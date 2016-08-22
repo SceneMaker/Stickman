@@ -29,16 +29,20 @@ public class Muster extends AnimationFX
 	@Override
 	public void playAnimation() {
             int rotationUnit = 10;
-            for(int i = 0; i<8; i++)
-            {
+//            for(int i = 0; i<8; i++)
+//            {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 40));
-                playAnimationPart(200);
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -80));
+                playAnimationPart(300);
+                
+                pauseAnimation(500);
                 
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", -40));
-                playAnimationPart(100);
-            }
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 80));
+                playAnimationPart(300);
+                
+                
+//            }
                  
 
 	}
