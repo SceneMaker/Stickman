@@ -27,6 +27,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 
 import javax.swing.SwingUtilities;
 
@@ -56,6 +57,7 @@ public class StickmanStageFX extends Application {
     public static boolean mUseNetwork = false;
     private static String sHost = "127.0.0.1";
     private static int sPort = 7777;
+    private static boolean isRunning = false;
     // logging
     public static final Logger mLogger = Logger.getAnonymousLogger();
 
@@ -189,25 +191,29 @@ public class StickmanStageFX extends Application {
 
     public static void clearStage() {
         Set<String> deleteStickman = new HashSet<>();
-        sStickmansOnStage.keySet().stream().map((s) -> {
-            deleteStickman.add(s);
-            return s;
-        }).forEach((s) -> {
-            getStickmanFX(s).mAnimationSchedulerFX.end();
-        });
-        deleteStickman.stream().map((s) -> {
-            sStickmanPane.getChildren().remove(getStickmanFX(s));
-            return s;
-        }).forEach((s) -> {
-            sStickmansOnStage.remove(s);
+        Platform.runLater(() ->{
+            sStickmansOnStage.keySet().stream().map((s) -> {
+                deleteStickman.add(s);
+                return s;
+            }).forEach((s) -> {
+                getStickmanFX(s).mAnimationSchedulerFX.end();
+            });
+            deleteStickman.stream().map((s) -> {
+                sStickmanPane.getChildren().remove(getStickmanFX(s));
+                return s;
+            }).forEach((s) -> {
+                sStickmansOnStage.remove(s);
+            });
+            stage.close();
         });
 
         if (mUseNetwork) {
             mConnection.end();
+            mConnection = null;
         }
 
-        sInstance = null;
-        
+       // sInstance = null;
+            
     }
 
     public static void showStickmanNameFX(boolean show) {
@@ -276,11 +282,7 @@ public class StickmanStageFX extends Application {
 	        sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
 	        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
 	        
-	        for(String key : sStickmansOnStage.keySet())
-	        {
-	    		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
-	    		mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
-	        }
+            addStickmanToStage();
 	        
 	        StickmanStageController mStickmanStageController = loader.getController();
 	        mStickmanStageController.getStickmanStageFX(this);
@@ -311,11 +313,7 @@ public class StickmanStageFX extends Application {
           
           Scene scene = new Scene(sStickmanPane, width, height);
           
-          for(String key : sStickmansOnStage.keySet())
-          {
-      		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
-      		mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
-          }
+            addStickmanToStage();
           
           sStickmanPane.setAlignment(Pos.CENTER);
 
@@ -339,11 +337,33 @@ public class StickmanStageFX extends Application {
     	}
              
     }
+
+    private static void addStickmanToStage() {
+        for(String key : sStickmansOnStage.keySet())
+        {
+            sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
+            
+        }
+    }
     
     public static void lauchStickman()
     {
     	StageController = true;
-    	launch();
+        if(!isRunning){
+            isRunning = true;
+            launch();
+            
+        }else{
+            reLaunch();
+        }
+
+    }
+
+    private static void reLaunch() {
+        Platform.runLater(()->stage.show());
+        addStickmanToStage();
+        initConnectionToServer();
+        Platform.runLater(()->stage.toFront());
     }
     
     public static void lauchStickmanConfig()
