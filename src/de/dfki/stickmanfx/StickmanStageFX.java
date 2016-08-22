@@ -46,7 +46,7 @@ public class StickmanStageFX extends Application {
     static private StickmanStageFX sInstance;
     static ArrayList<String> mStickmanComboList = new ArrayList<>();
     private static Boolean StageController = true;
-    private static Stage stage;
+    public static Stage stage;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
