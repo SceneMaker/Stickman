@@ -1,9 +1,10 @@
 package de.dfki.stickmanfx;
 
-import java.awt.geom.GeneralPath;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
-import de.dfki.stickman.*;
+
 
 import de.dfki.stickmanfx.bodyfx.BodyFX;
 import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
@@ -26,6 +27,8 @@ import de.dfki.stickmanfx.bodyfx.RightHandFX;
 import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
+import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
+import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -47,6 +50,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -64,6 +68,9 @@ public class StickmanStageController {
     private String mStickmancombobox = null;
     final private ToggleGroup groupPerlin = new ToggleGroup();
     final private ToggleGroup groupEnvironmentRadioButton = new ToggleGroup();
+    
+    private List<StickmanDataFX> mStickmanDataFX = new ArrayList<StickmanDataFX>();
+    private XmlTransform mXmlTransform = new XmlTransform();
     
     @FXML
     private Label Stickman;
@@ -141,6 +148,8 @@ public class StickmanStageController {
     private Button RestButton;
     @FXML
     private Button ExitButton;
+    @FXML
+    private Button SaveButton;
     
     
 
@@ -158,7 +167,6 @@ public class StickmanStageController {
         handleStickman();
             
         fillComboForEmotionExpression();
-        
       //Select a stickman
         StickmanComboBox.setOnAction((event) -> 
         {
@@ -325,13 +333,14 @@ public class StickmanStageController {
         ExitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	Stage stage = (Stage) ExitButton.getScene().getWindow();
-                stage.close();
-                System.exit(0);
+            	mStickmanstage.clearStage();
             }
-        }); 
+        });
+        
+        saveToXml();
         
         handlePerlinNoise();
+        initialStickmanWithXml();
     }    
     
     
@@ -654,5 +663,173 @@ public class StickmanStageController {
     	Speaking.setSelected(false);
     }
     
+    private void saveToXml()
+    {
+    	SaveButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	if (((null != mStickmanstage.mStickmanComboList) && (!mStickmanstage.mStickmanComboList.isEmpty()))) {     	
+              	            Platform.runLater(() -> 
+              	            {
+              	            	mStickmanDataFX.clear();
+              	            	for(String key : mStickmanstage.mStickmanComboList)
+              	            	{
+              	            		String name = key;
+              	            		String bodyColor;
+              	            		String hairColor;
+              	            		StickmanFX mStick = mStickmanstage.getStickmanFX(key);
+              	            		if(mStick.mType == StickmanFX.TYPE.MALE)
+              	            		{
+              	            			bodyColor = switchColorToString(mStick.mBodyFX.mMaleColor);      		
+              	            		}
+              	            		else
+              	            		{
+              	            			bodyColor = switchColorToString(mStick.mBodyFX.mFemaleColor );		
+              	            		} 
+              	            		
+              	            		if(mStick.mType == StickmanFX.TYPE.MALE)
+              	            		{
+              	            			hairColor = switchColorToString(mStick.mMaleHairFX.mColor); 		
+              	            		}
+              	            		else
+              	               	 	{
+              	            			hairColor = switchColorToString(mStick.mFemaleHairFX.mColor);
+              	               	 	}
+              	              	 
+              	            		String headColor = switchColorToString(mStick.mHeadFX.mColor);             	                		
+              	                	String limbsColor = switchColorToString(mStick.mLeftUpperLegFX.mColor);
+              	                	
+              	                	mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor));
+              	            	}
+              	            	mXmlTransform.loadStickmanDataFXList(mStickmanDataFX);
+//              	            	handleSave();
+              	            	handleSaveAs();
+              	            });           
+              	  }
+              }
+        });
+    }
     
+    private void handleSave() {
+        File personFile = mXmlTransform.getPersonFilePath();
+//    	File personFile = new File("/Users/Robbie/Documents");
+        if (personFile != null) {
+        	mXmlTransform.saveStickmanDataToFile(personFile);
+        } else {
+            handleSaveAs();
+        }
+    }
+
+    /**
+     * Opens a FileChooser to let the user select a file to save to.
+     */
+    private void handleSaveAs() {
+        FileChooser fileChooser = new FileChooser();
+        // Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(mStickmanstage.stage);
+        
+        if (file != null) {
+            // Make sure it has the correct extension
+            if (!file.getPath().endsWith(".xml")) {
+                file = new File(file.getPath() + ".xml");
+            }
+            mXmlTransform.saveStickmanDataToFile(file);
+        }
+    }
+    
+    private void readXML()
+    {
+    	File file = mXmlTransform.getPersonFilePath();
+        if (file != null) {
+        	mXmlTransform.loadStickmanDataFromFile(file);
+        }
+    }
+    
+    private void initialStickmanWithXml()
+    {
+    	readXML();
+    	List<StickmanDataFX> mStickmanDataFX = mXmlTransform.getStickmanDataFXList();
+    	if(!(mStickmanDataFX.isEmpty()))
+    	{
+	    	for(StickmanDataFX mStick : mStickmanDataFX)
+	    	{
+	    		String name = mStick.getName();
+	    		String bodycolor = mStick.getbodyColor();
+	    		if(bodycolor != null)
+	    		{
+		            Platform.runLater(() -> 
+		            {
+		            	if(mStickmanstage.getStickmanFX(name).mType == StickmanFX.TYPE.MALE)
+		                    {
+		                    	mStickmanstage.getStickmanFX(name).mBodyFX.mMaleColor = switchColor(bodycolor);
+		                    	mStickmanstage.getStickmanFX(name).update();
+		                    }
+		                    else
+		                    {
+		                    	mStickmanstage.getStickmanFX(name).mBodyFX.mFemaleColor = switchColor(bodycolor); 
+		                    	mStickmanstage.getStickmanFX(name).update();
+		                    }
+		            });
+	    		}
+	            
+	            String haircolor = mStick.getHairColor();
+	            if((haircolor != null))
+	            {
+		            Platform.runLater(() -> 
+		            {
+		            	if(mStickmanstage.getStickmanFX(name).mType == StickmanFX.TYPE.MALE)
+		                    {
+		                    	mStickmanstage.getStickmanFX(name).mMaleHairFX.mColor = switchColor(haircolor);
+		                    	mStickmanstage.getStickmanFX(name).update();
+		                    }
+		                 else
+		                    {
+		                    	mStickmanstage.getStickmanFX(name).mFemaleHairFX.mColor = switchColor(haircolor); 
+		                    	mStickmanstage.getStickmanFX(name).update();
+		                    }   
+		            });
+	            }
+	            
+	            String headcolor = mStick.getheadColor();
+	            if(headcolor != null)
+	            {
+		            Platform.runLater(() -> 
+		            {
+		            	mStickmanstage.getStickmanFX(name).mHeadFX.mColor = switchColor(headcolor);
+		            	if(mStickmanstage.getStickmanFX(name).mHeadFX.mColor != null)
+		            		mStickmanstage.getStickmanFX(name).update();
+		            });
+	            }
+	            
+	            String limbscolor = mStick.getlimbsColor();
+	            if(limbscolor != null)
+	            {
+		            Platform.runLater(() -> 
+		            {
+		            	mStickmanstage.getStickmanFX(name).mLeftUpperLegFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mLeftForeLegFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mLeftFootFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mRightUpperLegFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mRightForeLegFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mRightFootFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mLeftHandFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mRightHandFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mLeftShoulderFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mRightShoulderFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mLeftUpperArmFX.mColor = switchColor(limbscolor);        	
+		            	mStickmanstage.getStickmanFX(name).mLeftForeArmFX.mColor = switchColor(limbscolor);           	
+		            	mStickmanstage.getStickmanFX(name).mRightUpperArmFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mRightForeArmFX.mColor = switchColor(limbscolor);
+		            	mStickmanstage.getStickmanFX(name).mNeckFX.mColor = switchColor(limbscolor);
+		                mStickmanstage.getStickmanFX(name).update();
+		            });
+	            }
+	    	}
+    	}
+    }
 }

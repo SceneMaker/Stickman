@@ -226,7 +226,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button layoutX="84.0" layoutY="465.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Apply" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="80.0" />
+                  <Button fx:id="SaveButton" layoutX="84.0" layoutY="465.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="SAVE" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="80.0" />
                   <Button fx:id="RestButton" layoutX="14.0" layoutY="465.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="150.0" />
                   <Button fx:id="ExitButton" layoutX="154.0" layoutY="465.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="EXIT" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="10.0" />
                </children>

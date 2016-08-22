@@ -44,9 +44,9 @@ public class StickmanStageFX extends Application {
     static private final HashMap<String, StickmanFX> sStickmansOnStage = new HashMap<>();
     static private HBox sStickmanPane;
     static private StickmanStageFX sInstance;
-    ArrayList<String> mStickmanComboList = new ArrayList<>();
+    static ArrayList<String> mStickmanComboList = new ArrayList<>();
     private static Boolean StageController = true;
-    private static Stage stage;
+    public static Stage stage;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -204,6 +204,7 @@ public class StickmanStageFX extends Application {
             }).forEach((s) -> {
                 sStickmansOnStage.remove(s);
             });
+            mStickmanComboList.clear();
             stage.close();
         });
 
@@ -298,8 +299,7 @@ public class StickmanStageFX extends Application {
 	        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
 	            public void handle(WindowEvent event) {
-	            	stage.close();
-	                System.exit(0);
+	            	clearStage();
 	            }
 	        });
     	   
@@ -327,8 +327,7 @@ public class StickmanStageFX extends Application {
           stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
 	            public void handle(WindowEvent event) {
-	            	stage.close();
-	                System.exit(0);
+	            	clearStage();
 	            }
 	        });
           
@@ -342,6 +341,7 @@ public class StickmanStageFX extends Application {
         for(String key : sStickmansOnStage.keySet())
         {
             sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
+            mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
             
         }
     }
