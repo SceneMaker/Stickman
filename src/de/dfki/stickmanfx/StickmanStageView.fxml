@@ -233,9 +233,9 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <HBox fx:id="StickmanFlowPane" alignment="CENTER" prefHeight="450.0" prefWidth="550.0">
+      <HBox fx:id="StickmanFlowPane" alignment="CENTER" prefHeight="572.0" prefWidth="550.0">
          <HBox.margin>
-            <Insets bottom="50.0" top="100.0" />
+            <Insets />
          </HBox.margin>
       </HBox>
    </children>
