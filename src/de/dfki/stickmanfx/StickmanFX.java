@@ -105,25 +105,24 @@ public class StickmanFX extends Pane {
 	public static Dimension mSize = new Dimension(mDefaultSize);
 	FontMetrics mFontMetrics;
 	Font mFont;
-
-	public double leaveSpeed = 0; // Added by Robbie, to control the speed of
-									// leaving
-	public boolean starShowControler = false; // Added by Robbie, to control the
-												// star appear or not
-	public boolean starShowC = false; // Added by Robbie, star with character
-										// appear at the same time or not
-	public boolean fadeControler = false; // Added by Robbie, to control the
-											// character to fade out or fade in.
-											// true: Fade out
-	public boolean setCharacterInvisible = false; // Added by Robbie, to control
-													// the character to fade
-													// out.
+	
+	// Added by Robbie, to control the speed of leaving
+	public double leaveSpeed = 0; 	
+	// Added by Robbie, to control the star appear or not
+	public boolean starShowControler = false; 
+	// Added by Robbie, star with character appear at the same time or not
+	public boolean starShowC = false; 
+	// Added by Robbie, to control the character to fade out or fade in. true: Fade out
+	public boolean fadeControler = false; 
+	// Added by Robbie, to control the character to fade out.
+	public boolean setCharacterInvisible = false; 
 	// True: visible False:invisible
 	public double mWobble = 0;
-	public Boolean mIdleRun = false; // the shared variable to decide the while
-										// loop in IdleBehavior break or not
+	// the shared variable to decide the while loop in IdleBehavior break or not
+	public Boolean mIdleRun = false; 
 	public IdleBehavior mIdleBehavior;
-	public SimplexNoise simplexNoise; // Perlin noise
+	// Perlin noise
+	public SimplexNoise simplexNoise; 
 
 	// amimation stuff
 	public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -312,10 +311,6 @@ public class StickmanFX extends Pane {
 		map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
 		map.put(TextAttribute.SIZE, 14);
 
-		// mFont = Font.getFont(map);
-		// mFontMetrics = getFontMetrics(mFont);
-		// setFont(mFont);
-
 		ConsoleHandler ch = new ConsoleHandler();
 		ch.setFormatter(new StickmanLogFormatter());
 
@@ -353,11 +348,6 @@ public class StickmanFX extends Pane {
 	public String getID() {
 		return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
 	}
-
-	// @Override
-	// public String getName() {
-	// return mName;
-	// }
 
 	// Sets the orientation of the character, allowed values are: LEFT, RIGHT,
 	// FRONT
@@ -401,12 +391,11 @@ public class StickmanFX extends Pane {
 	public AnimationFX doAnimation(String name, int duration, Object param, boolean block) {
 		AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
 
-		a.setParameter(param); // this is for now only used by the Speech Bubble
+		// this is for now only used by the Speech Bubble
+		a.setParameter(param); 
 
 		try {
 			mAnimationLaunchControl.acquire();
-			// Platform.runLater(() ->
-			// a.start());/////////////////////////////////////////////////
 			a.start();
 		} catch (InterruptedException ex) {
 			mLogger.severe(ex.getMessage());
@@ -425,7 +414,6 @@ public class StickmanFX extends Pane {
 	}
 
 	// Control IdleBehavior start(mStart == true) or not(mStart == false).
-
 	private static boolean isAnimationTimerStartet = false;
 
 	public void update() {
@@ -436,17 +424,13 @@ public class StickmanFX extends Pane {
 		// draw everthing in the middle and scaled
 		Affine af = new Affine();
 		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-		// mGeneralYTranslation = (float)
-		// (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
-		// mGeneralYTranslation = (float)
-		// (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
-		// change Screen.getPrimary().getVisualBounds().getHeight() to
-		// mSize.height to avoid the location changed after update. by Robbie
-		mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
+		mGeneralYTranslation = (float) (mSize.height/5);
+//		mGeneralYTranslation = (float) (mSize.height - 600 * mScale);
 
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
-		af.appendTranslation(0, leaveSpeed); // Added by Robbie, GoDown
+		// Added by Robbie, GoDown
+		af.appendTranslation(0, leaveSpeed); 
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
 
@@ -505,7 +489,8 @@ public class StickmanFX extends Pane {
 			mLeftEyebrowFX.update();
 			mLeftEyeFX.update();
 			mRightEyebrowFX.update();
-			mFaceWrinkleFX.update(); // added by Robbie
+			// added by Robbie
+			mFaceWrinkleFX.update();
 			mRightEyeFX.update();
 			mMouthFX.update();
 			mNeckFX.update();
@@ -531,8 +516,8 @@ public class StickmanFX extends Pane {
 			// mSpeechBubbleFX.update();
 
 			if (starShowC == true)
-				mStarsFX.update(); // Added by Robbie, to show stars or words
-									// here.
+				// Added by Robbie, to show stars or words here.
+				mStarsFX.update(); 
 		}
 
 		// draw environment
@@ -541,9 +526,8 @@ public class StickmanFX extends Pane {
 
 	private void implimentPerlinNoise(double mWobble, int x, int y) {
 		if (starShowControler == true) {
-			mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie, to
-														// show stars or words
-														// here
+			// Added by Robbie, to show stars or words here
+			mStarsFX.rotatePerlinNoise(mWobble, x, y); 
 		} else {
 			if (starShowC == true)
 				mStarsFX.rotatePerlinNoise(mWobble, x, y);
@@ -556,7 +540,7 @@ public class StickmanFX extends Pane {
 			mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
 			mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
 			mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-			mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y); // added by Robbie
+			mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y); 
 			mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
 			mMouthFX.rotatePerlinNoise(mWobble, x, y);
 			mNeckFX.rotatePerlinNoise(mWobble, x, y);
@@ -580,9 +564,8 @@ public class StickmanFX extends Pane {
 			mRightFootFX.rotatePerlinNoise(mWobble, x, y);
 
 			if (starShowC == true)
-				mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie,
-															// to show stars or
-															// words here.
+				// Added by Robbie,  to show stars or  words here.
+				mStarsFX.rotatePerlinNoise(mWobble, x, y); 
 		}
 	}
 	

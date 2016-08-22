@@ -9,9 +9,11 @@ import de.dfki.util.xml.XMLUtilities;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -280,6 +282,14 @@ public class StickmanStageFX extends Application {
 	        stage.show();
 	
 	        stage.setFullScreen(true);
+	        
+	        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	            @Override
+	            public void handle(WindowEvent event) {
+	            	stage.close();
+	                System.exit(0);
+	            }
+	        });
     	   
 //	        scene.setOnMouseClicked(mouseHandler);
     	}
@@ -296,6 +306,8 @@ public class StickmanStageFX extends Application {
       		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
       		mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
           }
+          
+          sStickmanPane.setAlignment(Pos.CENTER);
 
           stage.setTitle("StickmanFX");
           stage.setScene(scene);
@@ -303,6 +315,15 @@ public class StickmanStageFX extends Application {
           stage.show();
 
           stage.setFullScreen(true);
+          
+          stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	            @Override
+	            public void handle(WindowEvent event) {
+	            	stage.close();
+	                System.exit(0);
+	            }
+	        });
+          
 //          scene.setOnMouseClicked(mouseHandler);
 
     	}
@@ -331,6 +352,7 @@ public class StickmanStageFX extends Application {
     	addStickmanFX("Bob");
     	addStickmanFX("Anna");
     	addStickmanFX("character");
+//    	lauchStickman();
     	lauchStickmanConfig();
         
     }
@@ -342,25 +364,25 @@ public class StickmanStageFX extends Application {
 //              LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
 //  action: HeadShake, Nod2   
     
-//    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
-//   	 
-//        @Override
-//        public void handle(MouseEvent mouseEvent) {
-//
-//    	//getStickmanFX("Anna").doAnimation("Muster", 1000, true);
-////        	getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
-////        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-////        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-////        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
-////        		getStickmanFX("Anna").doAnimation("FadeIn", 1000, true);
-////        	}else{
-////        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
-////        		getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
-////        	}
-////    
-//        }
-//     
-//    }; 
+    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
+   	 
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+
+    	//getStickmanFX("Anna").doAnimation("Muster", 1000, true);
+//        	getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
+        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+//        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
+//        		getStickmanFX("Anna").doAnimation("FadeIn", 1000, true);
+//        	}else{
+//        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
+//        		getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
+//        	}
+//    
+        }
+     
+    }; 
 
     private static class StickmanStageLogFormatter extends Formatter {
 
