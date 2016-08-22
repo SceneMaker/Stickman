@@ -45,6 +45,7 @@ public class StickmanStageFX extends Application {
     static private StickmanStageFX sInstance;
     ArrayList<String> mStickmanComboList = new ArrayList<>();
     private static Boolean StageController = true;
+    private static Stage stage;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -206,6 +207,7 @@ public class StickmanStageFX extends Application {
         }
 
         sInstance = null;
+        
     }
 
     public static void showStickmanNameFX(boolean show) {
@@ -258,6 +260,7 @@ public class StickmanStageFX extends Application {
     
     public void start(Stage stage) throws Exception {
 
+    	this.stage = stage;
     	if(!StageController)
     	{
 	    	FXMLLoader loader = new FXMLLoader();
