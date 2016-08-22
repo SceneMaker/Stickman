@@ -325,11 +325,9 @@ public class StickmanStageController {
         ExitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	Stage stage = (Stage) ExitButton.getScene().getWindow();
-                stage.close();
-                System.exit(0);
+            	mStickmanstage.clearStage();
             }
-        }); 
+        });
         
         handlePerlinNoise();
     }    
