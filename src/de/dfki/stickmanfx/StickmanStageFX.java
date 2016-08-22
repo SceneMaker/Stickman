@@ -73,7 +73,12 @@ public class StickmanStageFX extends Application {
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
 
-        if (mUseNetwork) {
+       
+        
+    }
+    
+    private static void initConnectionToServer(){
+         if (mUseNetwork) {
             mConnection = new ClientConnectionHandlerFX();
             mConnection.connect(sHost, sPort);
 
@@ -91,6 +96,7 @@ public class StickmanStageFX extends Application {
     public static StickmanStageFX getInstance() {
         if (sInstance == null) {
             sInstance = new StickmanStageFX();
+            initConnectionToServer();
         }
         return sInstance;
     }
@@ -100,6 +106,7 @@ public class StickmanStageFX extends Application {
 
         if (sInstance == null) {
             sInstance = new StickmanStageFX();
+            initConnectionToServer();
         }
 
         return sInstance;
@@ -107,7 +114,7 @@ public class StickmanStageFX extends Application {
 
     public static StickmanStageFX getNetworkInstance() {
         mUseNetwork = true;
-
+        
         return getInstance();
     }
 
