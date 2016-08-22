@@ -327,13 +327,6 @@ public class StickmanFX extends Pane {
 
 		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
 		mIdleBehavior = new IdleBehavior(this, simplexNoise);
-		
-		if(mShowName)
-		{
-//			nameLabel.toFront();
-			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
-			nameLabel.setText(mName);
-		}
 	
 	}
 
@@ -460,6 +453,17 @@ public class StickmanFX extends Pane {
 		// Out put perlin noise
 		implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,
 				mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
+
+		if(mShowName)
+		{
+			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
+			nameLabel.setText(mName);
+		}
+		else
+		{
+			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
+			nameLabel.setText("");
+		}
 
 		updateAll();
 	}
