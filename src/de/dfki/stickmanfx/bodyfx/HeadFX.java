@@ -69,7 +69,7 @@ public class HeadFX extends BodyPartFX
         
         mColor = Color.rgb(242, 227, 217, 1);
         mRotation = 0;
-        mYRotation = 0;
+        mYRotation = -20;
         init();
 
         calculate(0);
@@ -216,6 +216,14 @@ public class HeadFX extends BodyPartFX
         	mStickmanFX.mMouthFX.mYRotation = this.mYRotation;
         	mStickmanFX.mMouthFX.mZRotation = this.mZRotation;
         	mStickmanFX.mMouthFX.calculate(step);
+        }
+        
+        if(mStickmanFX.mMaleHairFX != null)
+        {
+        	mStickmanFX.mMaleHairFX.mRotation = this.mRotation;
+        	mStickmanFX.mMaleHairFX.mYRotation = this.mYRotation;
+        	mStickmanFX.mMaleHairFX.mZRotation = this.mZRotation;
+        	mStickmanFX.mMaleHairFX.calculate(step);
         }
         
         this.getChildren().addAll(headMeshView);

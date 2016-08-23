@@ -4,15 +4,21 @@ import de.dfki.stickmanfx.StickmanFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 /**
@@ -30,12 +36,23 @@ public class MaleHairFX extends BodyPartFX
     int mEarWidth = 10;
 
     Path mMaleHair;
+    
+    URL url;
+    ColModelImporter importer;
+    MeshView maleHair;
 
     public MaleHairFX(StickmanFX sm) 
     {
         mStickmanFX = sm;
-        mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
         mColor = Color.rgb(97, 58, 0, 1);
+        
+        if(mStickmanFX.mHeadFX != null)
+        	mYRotation = mStickmanFX.mHeadFX.mYRotation;
+        
+        url  = getClass().getClassLoader().getResource("MaleHair1.dae");
+        importer = new ColModelImporter();
+        importer.read(url);
+        maleHair =  (MeshView) importer.getImport()[0];
         
         mMaleHair = new Path();
         this.getChildren().add(mMaleHair);
@@ -50,19 +67,30 @@ public class MaleHairFX extends BodyPartFX
         Affine af = new Affine();
         clearChildren(this);
         
-        // male hair
-        mMaleHair = new Path();
-        mMaleHair.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
-        mMaleHair.getElements().add(new QuadCurveTo(mHalfWidth - 30, -mHalfHeight / 3, mHalfWidth + 20, mHalfHeight - 30));
-        mMaleHair.getElements().add(new QuadCurveTo((mHalfWidth + 40 + mSize.width) / 2, 0, mSize.width, mHalfHeight));
-        mMaleHair.getElements().add(new CubicCurveTo(mSize.width, -mHalfHeight / 2, mEarWidth, -mHalfHeight / 2, mEarWidth, mHalfHeight));
+        maleHair.setTranslateX(mHalfWidth);
+        maleHair.setTranslateY(mHalfHeight+55);
+        maleHair.setTranslateZ(-100);
         
-        // move it downwards a bit
-        af = new Affine();
-        af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
-        af.appendTranslation(0, 2 + mTranslation);
-        mMaleHair.getTransforms().clear();
-        mMaleHair.getTransforms().add(af);
+        Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+        
+        maleHair.getTransforms().clear();
+        maleHair.getTransforms().addAll(rx, ry, rz);
+        
+        // male hair
+//        mMaleHair = new Path();
+//        mMaleHair.getElements().add(new MoveTo(mEarWidth, mHalfHeight));
+//        mMaleHair.getElements().add(new QuadCurveTo(mHalfWidth - 30, -mHalfHeight / 3, mHalfWidth + 20, mHalfHeight - 30));
+//        mMaleHair.getElements().add(new QuadCurveTo((mHalfWidth + 40 + mSize.width) / 2, 0, mSize.width, mHalfHeight));
+//        mMaleHair.getElements().add(new CubicCurveTo(mSize.width, -mHalfHeight / 2, mEarWidth, -mHalfHeight / 2, mEarWidth, mHalfHeight));
+//        
+//        // move it downwards a bit
+//        af = new Affine();
+//        af.appendRotation(mRotation, mDefaultRotationPoint.x, mDefaultRotationPoint.y);
+//        af.appendTranslation(0, 2 + mTranslation);
+//        mMaleHair.getTransforms().clear();
+//        mMaleHair.getTransforms().add(af);
 
         // TODO - This schould be done in all bodyparts
         //????????????????????????????????????????
@@ -71,7 +99,7 @@ public class MaleHairFX extends BodyPartFX
 //                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
 //                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
         
-        this.getChildren().add(mMaleHair);
+        this.getChildren().add(maleHair);
         
         update();
 

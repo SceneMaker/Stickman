@@ -45,7 +45,7 @@ public class MouthFX extends BodyPartFX
 		mLength = 20;
 		mSize = new Dimension(mLength * 2, 5);
 
-		url  = getClass().getClassLoader().getResource("mouth3.dae");
+		url  = getClass().getClassLoader().getResource("mouth5.dae");
 	    imorter = new ColModelImporter();
 	    imorter.read(url);
 	    mouthMeshView=  (MeshView) imorter.getImport()[0];

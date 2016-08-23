@@ -50,7 +50,7 @@ public class RightEyebrowFX extends BodyPartFX
 	    imorter.read(url);
 	    rightBrowMeshView=  (MeshView) imorter.getImport()[0];
 	    
-	    mYRotation = mHeadFX.mRotation;
+	    mYRotation = mHeadFX.mYRotation;
 	    
         mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
         mPath = new Path();
