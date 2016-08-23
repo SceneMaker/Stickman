@@ -37,7 +37,7 @@ public class StickmanDataFX
         this.name = name;
     }
 
-    public String getHairColor() {
+    public String gethairColor() {
         return hairColor;
     }
 

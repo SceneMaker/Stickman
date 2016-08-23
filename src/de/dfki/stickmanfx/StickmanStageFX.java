@@ -1,10 +1,13 @@
 package de.dfki.stickmanfx;
 
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
+import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
+import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
+import de.dfki.util.HandleColor;
 import de.dfki.util.xml.XMLUtilities;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -18,19 +21,18 @@ import javafx.stage.WindowEvent;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javafx.application.Platform;
-
-import javax.swing.SwingUtilities;
-
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -46,7 +48,8 @@ public class StickmanStageFX extends Application {
     static private StickmanStageFX sInstance;
     static ArrayList<String> mStickmanComboList = new ArrayList<>();
     private static Boolean StageController = true;
-    public static Stage stage;
+    private static Stage stage;
+    private static XmlTransform mXmlTransform = new XmlTransform();
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -74,9 +77,6 @@ public class StickmanStageFX extends Application {
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
-
-       
-        
     }
     
     private static void initConnectionToServer(){
@@ -165,12 +165,22 @@ public class StickmanStageFX extends Application {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             if (sFullScreen) {
             	
-                sStickmansOnStage.put(name.toLowerCase(),
-                        new StickmanFX(name,
-                                gender,
-                                mHeight / (float) StickmanFX.mDefaultSize.height * sScale,
-                                new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())
-                                ));
+            	if(!StageController)
+            	{
+	                sStickmansOnStage.put(name.toLowerCase(),
+	                        new StickmanFX(name,
+	                                gender,
+	                                mHeight / (float) StickmanFX.mDefaultSize.height * sScale,
+	                                new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())
+	                                ));
+            	}else{              
+	                sStickmansOnStage.put(name.toLowerCase(),
+	                        new StickmanFX(name,
+	                                gender,
+	                                mHeight / (float) StickmanFX.mDefaultSize.height * sScale* 1.15f,
+	                                new Dimension(new Float(mHeight * 3 / 5 * sScale).intValue(), new Float(mHeight * sScale).intValue())
+	                                ));
+            	}
                 
                 getStickmanFX(name).mShowName = true;
             } else {
@@ -263,11 +273,124 @@ public class StickmanStageFX extends Application {
             mConnection.sendToServer("#ANIM#" + state + "#" + id);
         }
     }
-   
+    
+    public XmlTransform getmXmlTransform(){
+    	return this.mXmlTransform;
+    }
+    
+
+    private static void addStickmanToStage() {
+        for(String key : sStickmansOnStage.keySet())
+        {
+            sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
+            mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
+//            if(StageController){
+//                sStickmansOnStage.get(key).mScale = mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 1.05f;
+//                sStickmansOnStage.get(key).mSize = new Dimension(new Float(mHeight * 5 / 5 * sScale).intValue(), 
+//                										new Float(mHeight * sScale).intValue());
+//            }
+            
+        }
+    }
+    
+    private static void readXML()
+    {
+    	File file = mXmlTransform.getPersonFilePath();
+        if (file != null) {
+        	mXmlTransform.loadStickmanDataFromFile(file);
+        }
+    }
+    
+    private static void initialStickmanWithXml()
+    {
+    	readXML();
+    	List<StickmanDataFX> mStickmanDataFX = mXmlTransform.getStickmanDataFXList();
+    	if(!(mStickmanDataFX.isEmpty()))
+    	{
+	    	for(StickmanDataFX mStick : mStickmanDataFX)
+	    	{
+	    		String name = mStick.getName();
+	    		String bodycolor = mStick.getbodyColor();
+	    		if(bodycolor != null)
+	    		{
+		            Platform.runLater(() -> 
+		            {
+		            	if(getStickmanFX(name).mType == StickmanFX.TYPE.MALE)
+		                    {
+		                    	getStickmanFX(name).mBodyFX.mMaleColor = HandleColor.switchColor(bodycolor);
+		                    	getStickmanFX(name).update();
+		                    }
+		                    else
+		                    {
+		                    	getStickmanFX(name).mBodyFX.mFemaleColor = HandleColor.switchColor(bodycolor); 
+		                    	getStickmanFX(name).update();
+		                    }
+		            });
+	    		}
+	            
+	            String haircolor = mStick.gethairColor();
+	            if((haircolor != null))
+	            {
+		            Platform.runLater(() -> 
+		            {
+		            	if(getStickmanFX(name).mType == StickmanFX.TYPE.MALE)
+		                    {
+		                    	getStickmanFX(name).mMaleHairFX.mColor = HandleColor.switchColor(haircolor);
+		                    	getStickmanFX(name).update();
+		                    }
+		                 else
+		                    {
+		                    	getStickmanFX(name).mFemaleHairFX.mColor = HandleColor.switchColor(haircolor); 
+		                    	getStickmanFX(name).update();
+		                    }   
+		            });
+	            }
+	            
+	            String headcolor = mStick.getheadColor();
+	            if(headcolor != null)
+	            {
+		            Platform.runLater(() -> 
+		            {
+		            	getStickmanFX(name).mHeadFX.mColor = HandleColor.switchColor(headcolor);
+		            	if(getStickmanFX(name).mHeadFX.mColor != null)
+		            		getStickmanFX(name).update();
+		            });
+	            }
+	            
+	            String limbscolor = mStick.getlimbsColor();
+	            if(limbscolor != null)
+	            {
+		            Platform.runLater(() -> 
+		            {
+		            	getStickmanFX(name).mLeftUpperLegFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mLeftForeLegFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mLeftFootFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mRightUpperLegFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mRightForeLegFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mRightFootFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mLeftHandFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mRightHandFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mLeftShoulderFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mRightShoulderFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mLeftUpperArmFX.mColor = HandleColor.switchColor(limbscolor);        	
+		            	getStickmanFX(name).mLeftForeArmFX.mColor = HandleColor.switchColor(limbscolor);           	
+		            	getStickmanFX(name).mRightUpperArmFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mRightForeArmFX.mColor = HandleColor.switchColor(limbscolor);
+		            	getStickmanFX(name).mNeckFX.mColor = HandleColor.switchColor(limbscolor);
+		                getStickmanFX(name).update();
+		            });
+	            }
+	    	}
+    	}
+    }
     
     public void start(Stage stage) throws Exception {
 
     	this.stage = stage;
+    	
+    	AddStickmanFXlist();
+    	
+    	initialStickmanWithXml();
     	if(!StageController)
     	{
 	    	FXMLLoader loader = new FXMLLoader();
@@ -303,7 +426,7 @@ public class StickmanStageFX extends Application {
 	            }
 	        });
     	   
-//	        scene.setOnMouseClicked(mouseHandler);
+	        scene.setOnMouseClicked(mouseHandler);
     	}
     	else{
           
@@ -313,7 +436,7 @@ public class StickmanStageFX extends Application {
           
           Scene scene = new Scene(sStickmanPane, width, height);
           
-            addStickmanToStage();
+          addStickmanToStage();
           
           sStickmanPane.setAlignment(Pos.CENTER);
 
@@ -331,19 +454,14 @@ public class StickmanStageFX extends Application {
 	            }
 	        });
           
-//          scene.setOnMouseClicked(mouseHandler);
+          scene.setOnMouseClicked(mouseHandler);
 
     	}
              
     }
-
-    private static void addStickmanToStage() {
-        for(String key : sStickmansOnStage.keySet())
-        {
-            sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
-            mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
-            
-        }
+    
+    public Stage getStage(){
+    	return this.stage;
     }
     
     public static void lauchStickman()
@@ -363,27 +481,41 @@ public class StickmanStageFX extends Application {
         Platform.runLater(()->stage.show());
         addStickmanToStage();
         initConnectionToServer();
+        initialStickmanWithXml();
         Platform.runLater(()->stage.toFront());
     }
     
     public static void lauchStickmanConfig()
     {
+//    	StageController = false;
+//    	launch();
+    	
     	StageController = false;
-    	launch();
+   	 	if(!isRunning){
+           isRunning = true;
+           launch();
+   	 	}else{
+           reLaunch();
+       }
+
     }
     
+    private void AddStickmanFXlist(){
+    	addStickmanFX("Bob");
+    	addStickmanFX("Anna");
+    	addStickmanFX("character");
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
     	getInstanceFullScreen();
+
+    	lauchStickman();
+//    	lauchStickmanConfig();
     	
-    	addStickmanFX("Bob");
-    	addStickmanFX("Anna");
-    	addStickmanFX("character");
-//    	lauchStickman();
-    	lauchStickmanConfig();
+    	// add Stickman to AddStickmanFXlist(). Select the lauch methods first, before adding Stickman.
         
     }
     
@@ -401,14 +533,14 @@ public class StickmanStageFX extends Application {
 
     	//getStickmanFX("Anna").doAnimation("Muster", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
-        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-//        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
-//        		getStickmanFX("Anna").doAnimation("FadeIn", 1000, true);
-//        	}else{
-//        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
-//        		getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
-//        	}
+//        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
+        	}else{
+        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
+        	}
+        	
+//        	getStickmanFX("Bob").doAnimation("StopIdle", 1000, true);
 //    
         }
      
@@ -421,4 +553,5 @@ public class StickmanStageFX extends Application {
             return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
         }
     }
+      
 }

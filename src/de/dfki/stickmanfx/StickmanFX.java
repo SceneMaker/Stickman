@@ -93,6 +93,8 @@ public class StickmanFX extends Pane {
 	public String mName = "Stickman";
 	public ORIENTATION mOrientation = ORIENTATION.FRONT;
 	public float mScale = 1.0f;
+	// Record mScale in DisappearToSmall and ComeBackFromSmall
+	public float mScaleOriginal = mScale;
 	public boolean mShowBackground = true;
 	public boolean mShowStage = true;
 	public boolean mShowName = true;
@@ -171,6 +173,7 @@ public class StickmanFX extends Pane {
 	public StickmanFX(String name, TYPE gender, float scale, Dimension size) {
 		mSize = size;
 		mScale = scale;
+		mScaleOriginal = scale;
 
 		mName = name;
 		mType = gender;
@@ -214,7 +217,8 @@ public class StickmanFX extends Pane {
 
 	public StickmanFX(String name, TYPE gender, float scale) {
 		mScale = scale;
-
+		mScaleOriginal = scale;
+		
 		mName = name;
 		mType = gender;
 
@@ -424,9 +428,8 @@ public class StickmanFX extends Pane {
 		// draw everthing in the middle and scaled
 		Affine af = new Affine();
 		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-		mGeneralYTranslation = (float) (mSize.height/5);
-//		mGeneralYTranslation = (float) (mSize.height - 600 * mScale);
-
+//		mGeneralYTranslation = (float) (mSize.height/5);
+		mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
 		// Added by Robbie, GoDown

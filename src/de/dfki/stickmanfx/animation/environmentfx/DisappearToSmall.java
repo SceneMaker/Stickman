@@ -20,7 +20,6 @@ import javafx.application.Platform;
 public class DisappearToSmall extends AnimationFX 
 {
 	private StickmanFX mStickmanFX;
-
 	public DisappearToSmall(StickmanFX sm, int duration, boolean block) 
 	{
 		super(sm, duration, block);
@@ -31,6 +30,7 @@ public class DisappearToSmall extends AnimationFX
 	@Override
 	public void playAnimation() 
 	{
+		mStickmanFX.mScaleOriginal = mStickmanFX.mScale;
 		mStickmanFX.starShowControler = false;
 		int rotationUnit = 5;
 
