@@ -40,6 +40,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
 	public Object mParameter = "";
 	public enum ANIMTYPE { EmotionExpression, Gesture}
 	public ANIMTYPE mAnimType = null;
+	
 
 	public AnimationFX() 
         {

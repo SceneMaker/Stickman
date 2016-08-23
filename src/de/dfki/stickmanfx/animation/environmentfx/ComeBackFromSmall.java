@@ -21,7 +21,7 @@ public class ComeBackFromSmall extends AnimationFX
 {
 
 	private StickmanFX mStickmanFX;
-
+	
 	public ComeBackFromSmall(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;
@@ -29,18 +29,18 @@ public class ComeBackFromSmall extends AnimationFX
 
 	@Override
 	public void playAnimation() {
+		
 		float mScaleRecord = 0.0f;
 		for (int j = 0; j < 19; j++) 
 		{
-			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
-			
+			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;			
 		}
 
 		mScaleRecord = mStickmanFX.mScale;
 		mStickmanFX.starShowControler = true;
 
 		// show stars
-		mStickmanFX.mScale = 1.0f;
+		mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
 		playAnimationPart(1000);
@@ -72,7 +72,7 @@ public class ComeBackFromSmall extends AnimationFX
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
 				if (mStickmanFX.mScale >= 1.0) {
-					mStickmanFX.mScale = 1.0f;
+					mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 				}
 				playAnimationPart(20);
 				Platform.runLater(() -> mStickmanFX.update());
@@ -87,7 +87,7 @@ public class ComeBackFromSmall extends AnimationFX
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
 				if (mStickmanFX.mScale >= 1.0) {
-					mStickmanFX.mScale = 1.0f;
+					mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 				}
 				playAnimationPart(20);
 				Platform.runLater(() -> mStickmanFX.update());
