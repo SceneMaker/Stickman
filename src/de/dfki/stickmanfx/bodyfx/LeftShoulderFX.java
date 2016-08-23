@@ -90,7 +90,7 @@ public class LeftShoulderFX extends BodyPartFX {
         
         //calculate and update bodyfx (left shoulder area)
         if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftShoulderFX != null)
-        	mBodyFX.calculate();
+        	mBodyFX.calculate(step);
     }
 
     @Override

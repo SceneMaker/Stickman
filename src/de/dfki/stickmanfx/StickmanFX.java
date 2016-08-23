@@ -507,7 +507,7 @@ public class StickmanFX extends Pane {
 			mMouthFX.update();
 			mNeckFX.update();
 			// BodyFX is not BodyPartFX Classe
-			mBodyFX.calculate();
+			mBodyFX.update();
 			mLeftShoulderFX.update();
 			mLeftUpperArmFX.update();
 			mLeftForeArmFX.update();

@@ -49,24 +49,26 @@ public class LeftEyeFX extends BodyPartFX {
 
 	HeadFX mHeadFX;
 	Path mPath;
-	
+
 	URL url;
-    ColModelImporter imorter;
-    MeshView leftEyeMeshView;
+	ColModelImporter imorter;
+	MeshView leftEyeMeshView;
+	
+	int mZTranslate = -120;
 
 	public LeftEyeFX.SHAPE mShape = LeftEyeFX.SHAPE.DEFAULT;
 
 	public LeftEyeFX(HeadFX head) {
 		mHeadFX = head;
 		mLength = 5;
-		
-		url  = getClass().getClassLoader().getResource("leftEye3.dae");
-	    imorter = new ColModelImporter();
-	    imorter.read(url);
-	    leftEyeMeshView=  (MeshView) imorter.getImport()[0];
-	    
-	    mYRotation = mHeadFX.mYRotation;
-		
+
+		url = getClass().getClassLoader().getResource("BodyParts/leftEye.dae");
+		imorter = new ColModelImporter();
+		imorter.read(url);
+		leftEyeMeshView = (MeshView) imorter.getImport()[0];
+
+		mYRotation = mHeadFX.mYRotation;
+
 		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
 				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
 				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
@@ -124,19 +126,20 @@ public class LeftEyeFX extends BodyPartFX {
 				}
 			}
 
-			leftEyeMeshView.setTranslateX(mStart.x-30);
-			leftEyeMeshView.setTranslateY(mStart.y+70);
-			leftEyeMeshView.setTranslateZ(-120);
-		        
-		    Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
-		    Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		    Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-		    
-		    leftEyeMeshView.getTransforms().clear();
-		    leftEyeMeshView.getTransforms().addAll(rx, ry, rz);
-			
-//			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-//			mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
+			leftEyeMeshView.setTranslateX(mStart.x);
+			leftEyeMeshView.setTranslateY(mStart.y);
+			leftEyeMeshView.setTranslateZ(mZTranslate);
+
+			Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+			Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+			Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+			leftEyeMeshView.getTransforms().clear();
+			leftEyeMeshView.getTransforms().addAll(rx, ry, rz);
+
+			// mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+			// mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2,
+			// mStart.y - 3, mEnd.x, mEnd.y));
 			break;
 
 		case BLINK:
@@ -359,10 +362,10 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		}
-		
+
 		this.getChildren().addAll(leftEyeMeshView);
-//		addToDrawObjects(mPath);
-//		this.update();
+		// addToDrawObjects(mPath);
+		// this.update();
 
 	}
 

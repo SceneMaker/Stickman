@@ -40,7 +40,7 @@ public class NeckFX extends BodyPartFX {
 		mHeadFX = head;
 		mLength = 8;
 		
-		url  = getClass().getClassLoader().getResource("neck1.dae");
+		url  = getClass().getClassLoader().getResource("BodyParts/neck.dae");
         imorter = new ColModelImporter();
         imorter.read(url);
         neckMeshView=  (MeshView) imorter.getImport()[0];
@@ -52,7 +52,7 @@ public class NeckFX extends BodyPartFX {
 	}
 
 	public Point getBodyStartPosition() {
-		return new Point(mEnd.x, mEnd.y);
+		return new Point(mEnd.x, mEnd.y+10);
 	}
 
 	@Override
