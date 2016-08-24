@@ -50,6 +50,7 @@ public class StickmanStageFX extends Application {
     private static Boolean StageController = true;
     private static Stage stage;
     private static XmlTransform mXmlTransform = new XmlTransform();
+    private Scene scene;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -68,12 +69,12 @@ public class StickmanStageFX extends Application {
 
         sStickmanPane = new HBox();
 
-        if (sFullScreen) {
+//        if (sFullScreen) {
             mLogger.info("Full Screen Mode ...");
             Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
             mWidth = size.width;
             mHeight = size.height;
-        }
+//        }
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
@@ -287,13 +288,36 @@ public class StickmanStageFX extends Application {
         {
             sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
             mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
-//            if(StageController){
-//                sStickmansOnStage.get(key).mScale = mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 1.05f;
-//                sStickmansOnStage.get(key).mSize = new Dimension(new Float(mHeight * 5 / 5 * sScale).intValue(), 
-//                										new Float(mHeight * sScale).intValue());
-//            }
+ 
+            if (sFullScreen) {        	          
+	            if(StageController){
+	                sStickmansOnStage.get(key).mScale = mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 1.15f;
+	                sStickmansOnStage.get(key).mScaleOriginal = sStickmansOnStage.get(key).mScale;
+	                sStickmansOnStage.get(key).mSize = new Dimension(new Float(mHeight * 3 / 5 * sScale).intValue(), 
+	                										new Float(mHeight * sScale).intValue());
+	            }else{
+	            	sStickmansOnStage.get(key).mScale = mHeight / (float) StickmanFX.mDefaultSize.height * sScale;
+	            	sStickmansOnStage.get(key).mScaleOriginal = sStickmansOnStage.get(key).mScale;
+	            	sStickmansOnStage.get(key).mSize = new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(), 
+	                										new Float(mHeight * sScale).intValue());
+            }
+	            stage.setFullScreen(true);
             
         }
+            else{
+              if(!StageController){
+          			sStickmansOnStage.get(key).mScale = 0.8f;   //lauchStickmanConfig
+          			sStickmansOnStage.get(key).mScaleOriginal = sStickmansOnStage.get(key).mScale;
+          			sStickmansOnStage.get(key).mSize=new Dimension(sStickmansOnStage.get(key).mDefaultSize);
+              }
+          		else{
+          			sStickmansOnStage.get(key).mScale = 1.0f;
+          			sStickmansOnStage.get(key).mScaleOriginal = sStickmansOnStage.get(key).mScale;
+          			sStickmansOnStage.get(key).mSize=new Dimension(sStickmansOnStage.get(key).mDefaultSize);
+          		}
+              stage.setFullScreen(false);
+            }
+         }
     }
     
     private static void readXML()
@@ -394,7 +418,6 @@ public class StickmanStageFX extends Application {
     	AddStickmanFXlist();
     	
     	initialStickmanWithXml();
-    	Scene scene;
     	if(!StageController)
     	{
 	    	FXMLLoader loader = new FXMLLoader();
@@ -406,8 +429,9 @@ public class StickmanStageFX extends Application {
 			      double width = screenSize.getWidth();
 			      double height = screenSize.getHeight();		        
 			      scene = new Scene(root, width, height);
-	        }else		      
+	        }else{		      
 	        	  scene = new Scene(root);
+	        }
 	        
 	        sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
 	        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
@@ -506,9 +530,9 @@ public class StickmanStageFX extends Application {
     }
     
     private void AddStickmanFXlist(){
-//    	addStickmanFX("Bob");
-//    	addStickmanFX("Anna");
-//    	addStickmanFX("character");
+    	addStickmanFX("Bob");
+    	addStickmanFX("Anna");
+    	addStickmanFX("character");
     }
 
     /**
@@ -518,7 +542,7 @@ public class StickmanStageFX extends Application {
 //    	getInstanceFullScreen();
 
 //    	lauchStickman();
-//    	lauchStickmanConfig();
+    	lauchStickmanConfig();
     	
     	// add Stickman to AddStickmanFXlist(). Select the lauch methods first, before adding Stickman.
         
