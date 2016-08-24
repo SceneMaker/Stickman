@@ -50,7 +50,9 @@ public class StickmanStageFX extends Application {
     private static Boolean StageController = true;
     private static Stage stage;
     private static XmlTransform mXmlTransform = new XmlTransform();
-    private Scene scene;
+    private static Scene scene;
+    // StickmanStageView
+    private static HBox root;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -415,14 +417,21 @@ public class StickmanStageFX extends Application {
 
     	this.stage = stage;
     	
-    	AddStickmanFXlist();
+    	this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+            	clearStage();
+            }
+        });
+    	
+//    	AddStickmanFXlist();
     	
     	initialStickmanWithXml();
     	if(!StageController)
     	{
 	    	FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
-	        HBox root = loader.load();
+	        root = loader.load();
 	        if (sFullScreen){	        	
 	        	  stage.setFullScreen(true);
 			      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -446,13 +455,6 @@ public class StickmanStageFX extends Application {
 	        stage.setScene(scene);
 	        scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
 	        stage.show();
-	        
-	        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-	            @Override
-	            public void handle(WindowEvent event) {
-	            	clearStage();
-	            }
-	        });
     	   
 //	        scene.setOnMouseClicked(mouseHandler);
     	}
@@ -475,14 +477,6 @@ public class StickmanStageFX extends Application {
           stage.setScene(scene);
           scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
           stage.show();
-          
-          stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-	            @Override
-	            public void handle(WindowEvent event) {
-	            	clearStage();
-	            }
-	        });
-          
 //          scene.setOnMouseClicked(mouseHandler);
 
     	}
@@ -511,15 +505,16 @@ public class StickmanStageFX extends Application {
         addStickmanToStage();
         initConnectionToServer();
         initialStickmanWithXml();
+        if(StageController)
+        	scene = new Scene(root);
+        else
+        	scene = new Scene(sStickmanPane);
         Platform.runLater(()->stage.toFront());
     }
     
     public static void lauchStickmanConfig()
     {
-//    	StageController = false;
-//    	launch();
-    	
-    	StageController = false;
+       	StageController = false;
    	 	if(!isRunning){
            isRunning = true;
            launch();
@@ -529,7 +524,7 @@ public class StickmanStageFX extends Application {
 
     }
     
-    private void AddStickmanFXlist(){
+    private static void AddStickmanFXlist(){
     	addStickmanFX("Bob");
     	addStickmanFX("Anna");
     	addStickmanFX("character");
@@ -540,7 +535,7 @@ public class StickmanStageFX extends Application {
      */
     public static void main(String[] args) {
 //    	getInstanceFullScreen();
-
+    	AddStickmanFXlist();
 //    	lauchStickman();
     	lauchStickmanConfig();
     	
