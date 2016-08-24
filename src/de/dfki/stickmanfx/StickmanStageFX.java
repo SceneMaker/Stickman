@@ -430,7 +430,7 @@ public class StickmanStageFX extends Application {
 	            }
 	        });
     	   
-	        scene.setOnMouseClicked(mouseHandler);
+//	        scene.setOnMouseClicked(mouseHandler);
     	}
     	else{
           
@@ -459,7 +459,7 @@ public class StickmanStageFX extends Application {
 	            }
 	        });
           
-          scene.setOnMouseClicked(mouseHandler);
+//          scene.setOnMouseClicked(mouseHandler);
 
     	}
              
@@ -506,9 +506,9 @@ public class StickmanStageFX extends Application {
     }
     
     private void AddStickmanFXlist(){
-    	addStickmanFX("Bob");
-    	addStickmanFX("Anna");
-    	addStickmanFX("character");
+//    	addStickmanFX("Bob");
+//    	addStickmanFX("Anna");
+//    	addStickmanFX("character");
     }
 
     /**
@@ -518,7 +518,7 @@ public class StickmanStageFX extends Application {
 //    	getInstanceFullScreen();
 
 //    	lauchStickman();
-    	lauchStickmanConfig();
+//    	lauchStickmanConfig();
     	
     	// add Stickman to AddStickmanFXlist(). Select the lauch methods first, before adding Stickman.
         
