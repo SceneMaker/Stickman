@@ -163,8 +163,7 @@ public class StickmanStageFX extends Application {
 
     public static void addStickmanFX(String name, StickmanFX.TYPE gender) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
-            if (sFullScreen) {
-            	
+            if (sFullScreen) {           	
             	if(!StageController)
             	{
 	                sStickmansOnStage.put(name.toLowerCase(),
@@ -184,6 +183,10 @@ public class StickmanStageFX extends Application {
                 
                 getStickmanFX(name).mShowName = true;
             } else {
+            	if(!StageController)
+            		sScale = 0.8f;
+            		else
+            			sScale = 1.0f;
                 sStickmansOnStage.put(name.toLowerCase(), new StickmanFX(name, gender, sScale));
             }
                
@@ -391,17 +394,20 @@ public class StickmanStageFX extends Application {
     	AddStickmanFXlist();
     	
     	initialStickmanWithXml();
+    	Scene scene;
     	if(!StageController)
     	{
 	    	FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
 	        HBox root = loader.load();
-	        
-	        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	        double width = screenSize.getWidth();
-	        double height = screenSize.getHeight();
-	        
-	        Scene scene = new Scene(root, width, height);
+	        if (sFullScreen){	        	
+	        	  stage.setFullScreen(true);
+			      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			      double width = screenSize.getWidth();
+			      double height = screenSize.getHeight();		        
+			      scene = new Scene(root, width, height);
+	        }else		      
+	        	  scene = new Scene(root);
 	        
 	        sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
 	        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
@@ -416,8 +422,6 @@ public class StickmanStageFX extends Application {
 	        stage.setScene(scene);
 	        scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
 	        stage.show();
-	
-	        stage.setFullScreen(true);
 	        
 	        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
@@ -430,11 +434,14 @@ public class StickmanStageFX extends Application {
     	}
     	else{
           
-          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-          double width = screenSize.getWidth();
-          double height = screenSize.getHeight();
-          
-          Scene scene = new Scene(sStickmanPane, width, height);
+    		if (sFullScreen){
+		          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		          double width = screenSize.getWidth();
+		          double height = screenSize.getHeight();		          
+		          scene = new Scene(sStickmanPane, width, height);
+		          stage.setFullScreen(true);
+    		}else
+    			scene = new Scene(sStickmanPane);
           
           addStickmanToStage();
           
@@ -444,8 +451,6 @@ public class StickmanStageFX extends Application {
           stage.setScene(scene);
           scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
           stage.show();
-
-          stage.setFullScreen(true);
           
           stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
@@ -510,10 +515,10 @@ public class StickmanStageFX extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    	getInstanceFullScreen();
+//    	getInstanceFullScreen();
 
-    	lauchStickman();
-//    	lauchStickmanConfig();
+//    	lauchStickman();
+    	lauchStickmanConfig();
     	
     	// add Stickman to AddStickmanFXlist(). Select the lauch methods first, before adding Stickman.
         

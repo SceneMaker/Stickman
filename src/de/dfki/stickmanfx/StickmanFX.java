@@ -104,6 +104,7 @@ public class StickmanFX extends Pane {
 
 	// public static Dimension mDefaultSize = new Dimension(400, 400); // 400
 	public static Dimension mDefaultSize = new Dimension(300, 800); // 400
+//	public static Dimension mDefaultSize = new Dimension(300, 1000); // 400
 	public static Dimension mSize = new Dimension(mDefaultSize);
 	FontMetrics mFontMetrics;
 	Font mFont;
@@ -428,8 +429,8 @@ public class StickmanFX extends Pane {
 		// draw everthing in the middle and scaled
 		Affine af = new Affine();
 		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-//		mGeneralYTranslation = (float) (mSize.height/5);
-		mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
+		mGeneralYTranslation = (float) (mSize.height/5);
+//		mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
 		// Added by Robbie, GoDown
