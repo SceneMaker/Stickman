@@ -23,7 +23,7 @@
    <children>
       <SplitPane fx:id="mSplitPane" dividerPositions="0.4657210401891253" minHeight="600.0" minWidth="451.0" prefHeight="600.0" prefWidth="451.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-background-color: pink;">
          <items>
-            <AnchorPane prefHeight="398.0" prefWidth="290.0">
+            <AnchorPane prefHeight="600.0" prefWidth="290.0">
                <children>
                   <Label layoutX="34.0" layoutY="27.0" text="Stickman Settings" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -53,7 +53,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="258.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="258.0">
                <children>
                   <GridPane fx:id="gridPaneControlStickman" layoutX="40.0" layoutY="280.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                     <columnConstraints>
@@ -233,7 +233,7 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <HBox fx:id="StickmanFlowPane" alignment="CENTER" prefHeight="572.0" prefWidth="550.0">
+      <HBox fx:id="StickmanFlowPane" alignment="CENTER" prefHeight="600.0" prefWidth="550.0">
          <HBox.margin>
             <Insets />
          </HBox.margin>
