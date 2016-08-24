@@ -223,11 +223,14 @@ public class StickmanStageFX extends Application {
             mStickmanComboList.clear();
             stage.close();
         });
-
+        
         if (mUseNetwork) {
             mConnection.end();
             mConnection = null;
         }
+    
+//        Platform.exit();
+        
 
        // sInstance = null;
             
@@ -427,17 +430,27 @@ public class StickmanStageFX extends Application {
 //    	AddStickmanFXlist();
     	
     	initialStickmanWithXml();
-    	if(!StageController)
-    	{
-	    	FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
-	        root = loader.load();
+	    FXMLLoader loader = new FXMLLoader();
+	    loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
+	    root = loader.load();
+	    
+	    StickmanStageController mStickmanStageController = loader.getController();
+        mStickmanStageController.getStickmanStageFX(this);
+        mStickmanStageController.setlePerlinNoiseOn();
+        
+        sStickmanPane = new HBox();
+//        sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
+//        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
+	    
+	    if(!StageController)
+	    	{
 	        if (sFullScreen){	        	
 	        	  stage.setFullScreen(true);
 			      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			      double width = screenSize.getWidth();
 			      double height = screenSize.getHeight();		        
 			      scene = new Scene(root, width, height);
+			      
 	        }else{		      
 	        	  scene = new Scene(root);
 	        }
@@ -445,18 +458,12 @@ public class StickmanStageFX extends Application {
 	        sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
 	        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
 	        
-            addStickmanToStage();
+//            addStickmanToStage();
 	        
-	        StickmanStageController mStickmanStageController = loader.getController();
-	        mStickmanStageController.getStickmanStageFX(this);
-	        mStickmanStageController.setlePerlinNoiseOn();
-	
-	        stage.setTitle("StickmanFX");
-	        stage.setScene(scene);
-	        scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
-	        stage.show();
+//	        StickmanStageController mStickmanStageController = loader.getController();
+//	        mStickmanStageController.getStickmanStageFX(this);
+//	        mStickmanStageController.setlePerlinNoiseOn();
     	   
-//	        scene.setOnMouseClicked(mouseHandler);
     	}
     	else{
           
@@ -468,9 +475,11 @@ public class StickmanStageFX extends Application {
 		          stage.setFullScreen(true);
     		}else
     			scene = new Scene(sStickmanPane);
-          
+    	}
+	    
           addStickmanToStage();
           
+    	
           sStickmanPane.setAlignment(Pos.CENTER);
 
           stage.setTitle("StickmanFX");
@@ -479,7 +488,7 @@ public class StickmanStageFX extends Application {
           stage.show();
 //          scene.setOnMouseClicked(mouseHandler);
 
-    	}
+    	
              
     }
     
@@ -500,15 +509,21 @@ public class StickmanStageFX extends Application {
 
     }
 
-    private static void reLaunch() {
-        Platform.runLater(()->stage.show());
+    private static void reLaunch() {       
         addStickmanToStage();
         initConnectionToServer();
-        initialStickmanWithXml();
-        if(StageController)
-        	scene = new Scene(root);
-        else
-        	scene = new Scene(sStickmanPane);
+//        initialStickmanWithXml();
+        if(!StageController){
+//        	scene = new Scene(root);
+        	stage.setScene(new Scene(root));
+        }
+        else{
+//        	scene = new Scene(sStickmanPane);
+        	stage.setScene(new Scene(sStickmanPane));
+        	
+        }
+//        stage.setScene(scene);
+        Platform.runLater(()->stage.show());
         Platform.runLater(()->stage.toFront());
     }
     
@@ -536,8 +551,8 @@ public class StickmanStageFX extends Application {
     public static void main(String[] args) {
 //    	getInstanceFullScreen();
     	AddStickmanFXlist();
-//    	lauchStickman();
-    	lauchStickmanConfig();
+    	lauchStickman();
+//    	lauchStickmanConfig();
     	
     	// add Stickman to AddStickmanFXlist(). Select the lauch methods first, before adding Stickman.
         
