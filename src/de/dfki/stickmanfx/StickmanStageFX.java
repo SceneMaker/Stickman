@@ -222,6 +222,7 @@ public class StickmanStageFX extends Application {
             });
             mStickmanComboList.clear();
             stage.close();
+            Platform.exit();
         });
 
         if (mUseNetwork) {
@@ -505,10 +506,13 @@ public class StickmanStageFX extends Application {
         addStickmanToStage();
         initConnectionToServer();
         initialStickmanWithXml();
-        if(StageController)
+        if(StageController){
         	scene = new Scene(root);
-        else
+        }
+        else{
         	scene = new Scene(sStickmanPane);
+        }
+        stage.setScene(scene);
         Platform.runLater(()->stage.toFront());
     }
     
