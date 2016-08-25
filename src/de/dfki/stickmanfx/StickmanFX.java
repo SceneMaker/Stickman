@@ -102,9 +102,7 @@ public class StickmanFX extends Pane {
 	public float mGeneralYTranslation = 0;
 	private Label nameLabel = new Label();
 
-	// public static Dimension mDefaultSize = new Dimension(400, 400); // 400
 	public static Dimension mDefaultSize = new Dimension(300, 800); // 400
-//	public static Dimension mDefaultSize = new Dimension(300, 1000); // 400
 	public static Dimension mSize = new Dimension(mDefaultSize);
 	FontMetrics mFontMetrics;
 	Font mFont;
