@@ -58,16 +58,19 @@ public class LeftShoulderFX extends BodyPartFX {
 
     public Point getLeftShoulderEndPosition() 
     {
-        //return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() - 1), (int) mShoulder.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
-    	if(mRotation >= 0 && mRotation <= 90)
-    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-    	else if(mRotation>90 && mRotation<= 180)
-    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    	else if(mRotation < 0 && mRotation >= -90)
-    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()-1), (int) mShoulder.boundsInParentProperty().get().getMaxY()-2) : new Point(0, 0);
-    	else 
-    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    
+//        //return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() - 1), (int) mShoulder.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
+//    	if(mRotation >= 0 && mRotation <= 90)
+//    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+//    	else if(mRotation>90 && mRotation<= 180)
+//    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+//    	else if(mRotation < 0 && mRotation >= -90)
+//    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()-1), (int) mShoulder.boundsInParentProperty().get().getMaxY()-2) : new Point(0, 0);
+//    	else 
+//    		return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+    	return new Point(95, 125);
+    else
+    	return new Point(85, 120); 
     }
 
     @Override

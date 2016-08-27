@@ -84,6 +84,13 @@ public class BodyFX extends BodyPartFX {
 
 		bodyMeshView.getTransforms().clear();
 		bodyMeshView.getTransforms().addAll(rx, ry, rz);
+		
+		if (mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX != null) {
+			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.mRotation = this.mRotation;
+			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.mYRotation = this.mYRotation;
+			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.mZRotation = this.mZRotation;
+			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.calculate(step);
+		}
 
 		this.getChildren().addAll(bodyMeshView);
 		// update();
