@@ -54,7 +54,7 @@ public class LeftUpperArmFX extends BodyPartFX
         mToDegree = mDefaultRotation;
         mRotationStep = 0.0f;
         
-        url = getClass().getClassLoader().getResource("BodyParts/leftUpperArm.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/leftUpperArm1.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
 		leftUpperArmMesh = (MeshView) imorter.getImport()[0];
