@@ -189,7 +189,8 @@ public class StickmanStageFX extends Application {
                 deleteStickman.add(s);
                 return s;
             }).forEach((s) -> {
-                getStickmanFX(s).mAnimationSchedulerFX.end();
+            	getStickmanFX(s).mIdleRun = false;
+                getStickmanFX(s).mAnimationSchedulerFX.end();               
             });
             deleteStickman.stream().map((s) -> {
                 sStickmanPane.getChildren().remove(getStickmanFX(s));
@@ -198,8 +199,7 @@ public class StickmanStageFX extends Application {
                 sStickmansOnStage.remove(s);
             });
             mStickmanComboList.clear();
-//            Platform.setImplicitExit(true);
-//            
+//            Platform.setImplicitExit(true);     
 //            Platform.exit();         
             primaryStage.close();
         });
@@ -440,7 +440,6 @@ public class StickmanStageFX extends Application {
         }else{
             reLaunch();
         }
-
     }
     
     public static void lauchStickmanConfig()
@@ -463,7 +462,7 @@ public class StickmanStageFX extends Application {
 
     }
 
-    private static void reLaunch() { 
+    private static void reLaunch() {
         initConnectionToServer();
 //        initialStickmanWithXml();
         Platform.runLater(()->
@@ -505,7 +504,7 @@ public class StickmanStageFX extends Application {
     	addStickmanFX("Anna");
     	addStickmanFX("character");
 //    	lauchStickman();
-    	lauchStickmanConfig();     
+    	lauchStickmanConfig();
     }
     
 //  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
