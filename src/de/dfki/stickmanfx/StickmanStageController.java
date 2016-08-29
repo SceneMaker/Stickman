@@ -487,6 +487,13 @@ public class StickmanStageController {
     
     public void setlePerlinNoiseOn(){
     	WithPerlinNoise.setSelected(true);
+    	WithoutPerlinNoise.setSelected(false);
+    }
+    
+    public void setlePerlinNoiseOff(){
+    	WithPerlinNoise.setSelected(false);
+    	WithoutPerlinNoise.setSelected(true);
+    	
     }
     
     private void handleGroupForEnvironmentRadioButton()
