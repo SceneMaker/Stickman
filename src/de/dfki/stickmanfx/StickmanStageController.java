@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -599,42 +600,26 @@ public class StickmanStageController {
               	                	mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor));
               	            	}
               	            	mStickmanstage.getmXmlTransform().loadStickmanDataFXList(mStickmanDataFX);
-//              	            	handleSave();
-              	            	handleSaveAs();
+              	            	handleSave();
               	            });           
               	  }
               }
         });
     }
-    
+
     private void handleSave() {
-        File personFile = mStickmanstage.getmXmlTransform().getPersonFilePath();
-        if (personFile != null) {
-        	mStickmanstage.getmXmlTransform().saveStickmanDataToFile(personFile);
-        } else {
-            handleSaveAs();
-        }
-    }
-
-    /**
-     * Opens a FileChooser to let the user select a file to save to.
-     */
-    private void handleSaveAs() {
-        FileChooser fileChooser = new FileChooser();
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
-
-        // Show save file dialog
-        File file = fileChooser.showSaveDialog(mStickmanstage.getStage());
+    	
+    	File filexml = null;
+    	if(mStickmanstage.mFilePath != null)
+    		filexml = new File(mStickmanstage.mFilePath + File.separator + "stickman"+ File.separator+"stickman.xml");
         
-        if (file != null) {
-            // Make sure it has the correct extension
-            if (!file.getPath().endsWith(".xml")) {
-                file = new File(file.getPath() + ".xml");
-            }
-            mStickmanstage.getmXmlTransform().saveStickmanDataToFile(file);
+        if (!filexml.exists()) 
+        	filexml.getParentFile().mkdir();
+        
+       // Make sure it has the correct extension
+        if (!filexml.getPath().endsWith(".xml")) {
+        	filexml = new File(filexml.getPath() + ".xml");
         }
+        mStickmanstage.getmXmlTransform().saveStickmanDataToFile(filexml);
     }
 }
