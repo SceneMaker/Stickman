@@ -395,7 +395,7 @@ public class StickmanFX extends Pane {
 		AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
 
 		// this is for now only used by the Speech Bubble
-		a.setParameter(param); 
+		a.setParameter(param);
 
 		try {
 			mAnimationLaunchControl.acquire();

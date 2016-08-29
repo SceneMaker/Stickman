@@ -55,6 +55,7 @@ public class StickmanStageFX extends Application {
     private static XmlTransform mXmlTransform = new XmlTransform();
     private static Scene scene;
     private static HBox root;
+    private static String mFilePath = null;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -189,7 +190,7 @@ public class StickmanStageFX extends Application {
                 deleteStickman.add(s);
                 return s;
             }).forEach((s) -> {
-            	getStickmanFX(s).mIdleRun = false;
+//            	getStickmanFX(s).mIdleRun = false;
                 getStickmanFX(s).mAnimationSchedulerFX.end();               
             });
             deleteStickman.stream().map((s) -> {
@@ -199,13 +200,14 @@ public class StickmanStageFX extends Application {
                 sStickmansOnStage.remove(s);
             });
             mStickmanComboList.clear();
-//            Platform.setImplicitExit(true);     
-//            Platform.exit();         
-            primaryStage.close();
+            
+            if(primaryStage != null){
+            	primaryStage.close();
+            }
         });
         
         
-        if (mUseNetwork) {
+        if (mUseNetwork && mConnection != null) {
             mConnection.end();
             mConnection = null;
         }  
@@ -264,19 +266,13 @@ public class StickmanStageFX extends Application {
     
 
     private static void addStickmanToStage() {
+    	sStickmanPane.getChildren().clear();
         for(String key : sStickmansOnStage.keySet())
         {
-            if (sFullScreen ) {//&& StageController
-            	primaryStage.setFullScreen(true);
-//            	sStickmansOnStage.get(key).mScale = mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 1.15f;
-//	            sStickmansOnStage.get(key).mScaleOriginal = sStickmansOnStage.get(key).mScale;
-//	            sStickmansOnStage.get(key).mSize = new Dimension(new Float(mHeight * 3 / 5 * sScale).intValue(), 
-//	                										new Float(mHeight * sScale).intValue());                              
+            if (sFullScreen ) {
+            	primaryStage.setFullScreen(true);                              
             }else{
-            	primaryStage.setFullScreen(false);
-//            	sStickmansOnStage.get(key).mScale = 0.8f;
-//          		sStickmansOnStage.get(key).mScaleOriginal = sStickmansOnStage.get(key).mScale;
-//          		sStickmansOnStage.get(key).mSize=new Dimension(sStickmansOnStage.get(key).mDefaultSize);      		
+            	primaryStage.setFullScreen(false);     		
           	} 
             sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
             mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
@@ -430,6 +426,35 @@ public class StickmanStageFX extends Application {
     	return StickmanStageFX.primaryStage;
     }
     
+    public static void lauchStickman(String filepath)
+    {
+    	mFilePath = filepath;
+    	StageController = true;
+    	
+        if(!isRunning){
+            isRunning = true;
+            launch();
+            
+        }else{
+        	initConnectionToServer();
+            reLaunch();
+        }
+    }
+    
+    public static void lauchStickmanConfig(String filepath)
+    {
+    	mFilePath = filepath;
+       	StageController = false;
+    	
+   	 	if(!isRunning){
+           isRunning = true;
+           launch();
+   	 	}else{
+           reLaunch();
+       }
+
+    }
+    
     public static void lauchStickman()
     {
     	StageController = true;
@@ -438,20 +463,14 @@ public class StickmanStageFX extends Application {
             launch();
             
         }else{
+        	initConnectionToServer();
             reLaunch();
         }
     }
     
     public static void lauchStickmanConfig()
     {
-//       	StageController = false;
-    	i++;
-    	if(i == 10)
-    		i=0;
-    	if(i%2 == 0)
-    		StageController = true;
-    	else
-    		StageController = false;
+       	StageController = false;
     	
    	 	if(!isRunning){
            isRunning = true;
@@ -463,11 +482,10 @@ public class StickmanStageFX extends Application {
     }
 
     private static void reLaunch() {
-        initConnectionToServer();
+    	
 //        initialStickmanWithXml();
         Platform.runLater(()->
         {
-        	addStickmanToStage();
 	        if(!StageController){	
 	        	if(!root.getChildren().contains(mSplitPane)){
 		        	root.getChildren().remove(sStickmanPane);
@@ -480,17 +498,14 @@ public class StickmanStageFX extends Application {
 		        	root.getChildren().remove(mSplitPane);
 	        	}
 	        }
-
-	        primaryStage.show();
+        });
+        
+        Platform.runLater(()->addStickmanToStage());
+        Platform.runLater(()->{
+        	primaryStage.show();
 	        primaryStage.toFront();
-        }
-        );
-    }
-
-    private static void AddStickmanFXlist(){
-    	addStickmanFX("Bob");
-    	addStickmanFX("Anna");
-    	addStickmanFX("character");
+        });
+        
     }
 
     /**
@@ -498,13 +513,12 @@ public class StickmanStageFX extends Application {
      */
     
     public static void main(String[] args) {
-//    	getInstanceFullScreen();
-//    	AddStickmanFXlist();
+    	getInstanceFullScreen();
     	addStickmanFX("Bob");
     	addStickmanFX("Anna");
     	addStickmanFX("character");
-//    	lauchStickman();
-    	lauchStickmanConfig();
+    	lauchStickman();
+//    	lauchStickmanConfig();
     }
     
 //  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
@@ -521,13 +535,12 @@ public class StickmanStageFX extends Application {
 
     	//getStickmanFX("Anna").doAnimation("Muster", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
-//        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
-        	}else{
-        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
-        	}
-        	
+        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+//        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
+//        	}else{
+//        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
+//        	}        	
 //        	getStickmanFX("Bob").doAnimation("StopIdle", 1000, true);
 //    
         }
