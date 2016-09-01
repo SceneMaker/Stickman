@@ -19,6 +19,10 @@ import javafx.application.Platform;
  *
  */
 public class LovedEnd extends AnimationFX {
+	
+	public LovedEnd() {
+        super();
+    }
 
     public LovedEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

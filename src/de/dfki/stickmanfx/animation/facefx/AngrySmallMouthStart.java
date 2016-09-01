@@ -18,6 +18,10 @@ import javafx.application.Platform;
  */
 public class AngrySmallMouthStart extends AnimationFX 
 {
+	public AngrySmallMouthStart() 
+    {
+        super();
+    }
 
     public AngrySmallMouthStart(StickmanFX sm, int duration, boolean block) 
     {

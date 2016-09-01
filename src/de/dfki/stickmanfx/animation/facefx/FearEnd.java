@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class FearEnd extends AnimationFX {
+	
+	public FearEnd() {
+        super();
+    }
 
     public FearEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

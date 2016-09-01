@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class SurprisedStart extends AnimationFX {
+	
+	public SurprisedStart() {
+		super();
+    }
 
     public SurprisedStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

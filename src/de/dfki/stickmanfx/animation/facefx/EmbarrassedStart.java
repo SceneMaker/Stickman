@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class EmbarrassedStart extends AnimationFX {
+	
+	public EmbarrassedStart() {
+        super();
+    }
 
     public EmbarrassedStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

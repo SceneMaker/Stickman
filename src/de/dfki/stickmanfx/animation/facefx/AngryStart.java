@@ -17,6 +17,11 @@ import javafx.application.Platform;
  * @author Beka Aptsiauri
  */
 public class AngryStart extends AnimationFX {
+	
+	public AngryStart() 
+    {
+        super();
+    }
 
     public AngryStart(StickmanFX sm, int duration, boolean block) 
     {

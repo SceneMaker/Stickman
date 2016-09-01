@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class Mouth_SEVEN extends AnimationFX {
+	
+	public Mouth_SEVEN() {
+        super();
+    }
 
     public Mouth_SEVEN(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

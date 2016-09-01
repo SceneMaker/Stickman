@@ -12,6 +12,10 @@ import javafx.application.Platform;
  *
  */
 public class ExcitedStart extends AnimationFX {
+	
+	public ExcitedStart() {
+        super();
+    }
 
     public ExcitedStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

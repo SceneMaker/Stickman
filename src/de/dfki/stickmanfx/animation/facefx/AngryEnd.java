@@ -28,6 +28,12 @@ public class AngryEnd extends AnimationFX
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
+	
+	public AngryEnd() 
+    {
+        super();
+    }
+	
     public AngryEnd(StickmanFX sm, int duration, boolean block) 
     {
         super(sm, duration, block);

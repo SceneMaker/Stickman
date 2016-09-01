@@ -12,6 +12,10 @@ import javafx.application.Platform;
  *
  */
 public class SmileEnd extends AnimationFX {
+	
+	public SmileEnd() {
+        super();
+    }
 
     public SmileEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

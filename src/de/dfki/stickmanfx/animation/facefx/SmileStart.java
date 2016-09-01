@@ -12,6 +12,10 @@ import javafx.application.Platform;
  *
  */
 public class SmileStart extends AnimationFX {
+	
+	public SmileStart() {
+        super();
+    }
 
     public SmileStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

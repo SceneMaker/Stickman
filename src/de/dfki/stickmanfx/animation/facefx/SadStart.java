@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class SadStart extends AnimationFX {
+	
+	public SadStart() {
+        super();
+    }
 
     public SadStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
