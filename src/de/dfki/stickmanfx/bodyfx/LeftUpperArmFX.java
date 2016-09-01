@@ -24,6 +24,8 @@ import javax.swing.text.html.CSS;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
+import de.dfki.stickmanfx.animationlogic.AnimatorFX;
+
 /**
  *
  * @author Beka
@@ -37,6 +39,7 @@ public class LeftUpperArmFX extends BodyPartFX
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
     Point mStart;
+    Point currentPoint;
     Point mEnd;
 
     Path mArm;
@@ -48,13 +51,12 @@ public class LeftUpperArmFX extends BodyPartFX
     public LeftUpperArmFX(LeftShoulderFX shoulder) {
         mLeftShoulderFX = shoulder;
         mColor = Color.rgb(80, 80, 80);
-//        mDefaultRotation = -23;
+        mDefaultRotation = -23;
         mZRotation = mDefaultRotation;
-        mRotation = -30;
         mToDegree = mDefaultRotation;
         mRotationStep = 0.0f;
         
-        url = getClass().getClassLoader().getResource("BodyParts/leftUpperArm1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/leftUpperArm2.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
 		leftUpperArmMesh = (MeshView) imorter.getImport()[0];
@@ -68,15 +70,32 @@ public class LeftUpperArmFX extends BodyPartFX
 
     public Point getLeftUpperArmEndPosition() 
     {
-        //return (mArm != null) ? new Point((int) mArm.boundsInParentProperty().get().getMaxX(), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-    	if(mRotation >= 0 && mRotation <= 90)
-    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMinX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-    	else if(mRotation>90 && mRotation<= 180)
-    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMinX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    	else if(mRotation < 0 && mRotation >= -90)
-    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()-3), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()-3) : new Point(0, 0);
-    	else 
-    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+//    	System.out.println(leftUpperArmMesh.localToScene(leftUpperArmMesh.getBoundsInLocal()));
+    	if(AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate"))
+    	{System.out.println("xx " + mRotation);
+	    	if(mRotation >= 0 && mRotation <= 90)
+	    		return (leftUpperArmMesh != null) ? currentPoint = new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX() - 4), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()-5) : new Point(0, 0);
+	    	else if(mRotation>90 && mRotation<= 180)
+	    		return (leftUpperArmMesh != null) ? currentPoint = new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX() - 2), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()+2) : new Point(0, 0);
+	    	else if(mRotation < 0 && mRotation >= -90)
+	    		return (leftUpperArmMesh != null) ? currentPoint = new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()-4), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()-5) : new Point(0, 0);
+	    	else 
+	    		return (leftUpperArmMesh != null) ? currentPoint = new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()-3), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+    	}
+    	else if(AnimatorFX.sCurrentAction.equals("zrotate"))
+    	{System.out.println("zz " + mZRotation);
+    	
+		
+	    	if(mZRotation >= 0 && mZRotation <= 90)
+	    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMinX()+7), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()-7) : new Point(0, 0);
+	    	else if(mZRotation>90 && mZRotation<= 180)
+	    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMinX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+	    	else if(mZRotation < 0 && mZRotation >= -90)
+	    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()-5), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()-4) : new Point(0, 0);
+	    	else 
+	    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()-5), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()+4) : new Point(0, 0);
+    	}
+    	return new Point(0,0);
     }
 
     @Override
@@ -85,7 +104,6 @@ public class LeftUpperArmFX extends BodyPartFX
     {
     	mStart = mLeftShoulderFX.getLeftShoulderEndPosition();
     	clearChildren(this);
-    	
     	leftUpperArmMesh.setTranslateX(mStart.x);
     	leftUpperArmMesh.setTranslateY(mStart.y);
     	leftUpperArmMesh.setTranslateZ(-100);
@@ -108,8 +126,9 @@ public class LeftUpperArmFX extends BodyPartFX
 //        af.appendRotation(mRotation, mStart.x, mStart.y);
 //        mArm.getTransforms().clear();
 //        mArm.getTransforms().add(af);
-
-
+//////////////////
+		if(mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftForeArmFX != null)
+		mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftForeArmFX.calculate(step);
         this.getChildren().add(leftUpperArmMesh);
 
 //         update();

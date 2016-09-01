@@ -30,6 +30,8 @@ public class AnimatorFX
     public WordTimeMarkSequence mWTS;
     private int mRenderPauseDuration = 0;
     public Semaphore mRenderingPause = new Semaphore(0);
+    
+    public static String sCurrentAction;
 
     //private long mPreparationTime = 0;
     public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps) 
@@ -126,6 +128,7 @@ public class AnimatorFX
                 {
                     BodyPartFX bodypartFX = comp.mBodyPartFX;
                     String action = comp.mAction;
+                    sCurrentAction = action;
                     int param = comp.mParam;
                     String paramString = comp.mParamString;
                     if (action.equalsIgnoreCase("rotate")) 

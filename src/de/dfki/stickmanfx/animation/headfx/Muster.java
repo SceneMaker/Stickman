@@ -32,30 +32,24 @@ public class Muster extends AnimationFX
 //            for(int i = 0; i<8; i++)
 //            {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -360));
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -70));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -30));
+                playAnimationPart(500);
                 
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 70));
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "yrotate", -360));
-                playAnimationPart(2000);
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -40));
+                playAnimationPart(300);
                 
-//                mAnimationPartFX = new ArrayList<>();
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", 70));
-////                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -70));
-//                
-////                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 70));
-////                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "yrotate", -360));
-//                playAnimationPart(2000);
                 
                 pauseAnimation(500);
                 
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 360));
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -70));
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -70));
-//                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "yrotate", 360));
-                playAnimationPart(2000);
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", 30));
+                playAnimationPart(500);
                 
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 40));
+                playAnimationPart(300);
+//                
                 
 //            }
                  

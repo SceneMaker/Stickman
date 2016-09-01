@@ -35,10 +35,7 @@ public class LeftForeArmFX extends BodyPartFX
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
     Point mStart;
-    Point mEnd;
 
-    Path mArm;
-    
     URL url;
 	ColModelImporter imorter;
 	MeshView leftForeArmMesh;
@@ -46,39 +43,33 @@ public class LeftForeArmFX extends BodyPartFX
     public LeftForeArmFX(LeftUpperArmFX arm) {
         mUpperArmFX = arm;
         mColor = Color.rgb(80, 80, 80);
-//        mDefaultRotation = 20;
         mRotation = -10;
-//        mToDegree = mDefaultRotation;
-        
-        url = getClass().getClassLoader().getResource("BodyParts/leftForeArm.dae");
+        mZRotation = 20;
+        url = getClass().getClassLoader().getResource("BodyParts/leftForeArm3.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
 		leftForeArmMesh = (MeshView) imorter.getImport()[0];
         
-        mArm = new Path();
-        this.getChildren().add(mArm);
         init();
-
         calculate(0);
     }
 
     public Point getHandStartPosition() 
     {
     	if(mRotation >= 0 && mRotation <= 90)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMinX()), (int) leftForeArmMesh.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
     	else if(mRotation>90 && mRotation<= 180)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()-6), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMinX()-6), (int) leftForeArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     	else if(mRotation < 0 && mRotation >= -90)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()-7), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX()-7), (int) leftForeArmMesh.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
     	else 
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()-7), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX()-7), (int) leftForeArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     			
     }
 
     @Override
     public void calculate(int step) 
     {
-
     	mStart = mUpperArmFX.getLeftUpperArmEndPosition();
     	clearChildren(this);
     	
@@ -93,18 +84,6 @@ public class LeftForeArmFX extends BodyPartFX
 		leftForeArmMesh.getTransforms().clear();
 		leftForeArmMesh.getTransforms().addAll(rx, ry, rz);
 		
-//    	mArm = new Path();
-//        mStart = mUpperArmFX.getLeftUpperArmEndPosition();
-//        mEnd = new Point(mStart.x, mStart.y + mArmLength);
-//        mArm.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
-//        mArm.getElements().add(new QuadCurveTo(mStart.x + 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
-//
-//        Affine af = new Affine();
-//        af.appendRotation(mRotation, mStart.x, mStart.y);
-//        mArm.getTransforms().clear();
-//        mArm.getTransforms().add(af);
-
-
         this.getChildren().add(leftForeArmMesh);
 //        update();
     }
@@ -138,10 +117,6 @@ public class LeftForeArmFX extends BodyPartFX
             }
         }
 
-        mArm.setStroke(mColor);
-        mArm.setStrokeWidth(3);
-        mArm.setStrokeLineCap(StrokeLineCap.ROUND);
-        mArm.setStrokeLineJoin(StrokeLineJoin.ROUND);
 //		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 //
 //		g2.draw(mArm);
