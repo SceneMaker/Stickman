@@ -14,13 +14,19 @@ import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import javafx.scene.paint.Color;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 
 /**
  *
@@ -33,6 +39,10 @@ public class RightForeArmFX extends BodyPartFX
 	RightUpperArmFX mUpperArmFX;
 	int mArmLength = 80;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
+	
+	URL url;
+	ColModelImporter imorter;
+	MeshView rightForeArm;
 
 	Point mStart;
 	Point mEnd;
@@ -44,10 +54,16 @@ public class RightForeArmFX extends BodyPartFX
 		mUpperArmFX = arm;
 		mColor = Color.rgb(80, 80, 80);
 		mDefaultRotation = -20;
-		mRotation = mDefaultRotation;
+		mRotation = -10;
+		mZRotation = -20;
 		mToDegree = mDefaultRotation;
 		mArm = new Path();
-		this.getChildren().add(mArm);
+		
+		url = getClass().getClassLoader().getResource("BodyParts/leftForeArm3.dae");
+		imorter = new ColModelImporter();
+		imorter.read(url);
+		rightForeArm = (MeshView) imorter.getImport()[0];
+		
 		init();
 
 		calculate(0);
@@ -69,24 +85,35 @@ public class RightForeArmFX extends BodyPartFX
 	@Override
 	public void calculate(int step) 
 	{
-		clearChildren(this);
-		mArm = new Path();
 		mStart = mUpperArmFX.getRightUpperArmEndPosition();
-		mEnd = new Point(mStart.x, mStart.y + mArmLength);
+		clearChildren(this);
+		rightForeArm.setTranslateX(mStart.x);
+		rightForeArm.setTranslateY(mStart.y);
+		rightForeArm.setTranslateZ(-100);
 
-		mArm.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
-		mArm.getElements().add(new QuadCurveTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
+		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-		Affine af = new Affine();
-		af.appendRotation(mRotation, mStart.x, mStart.y);
-		mArm.getTransforms().clear();
-		mArm.getTransforms().add(af);
+		rightForeArm.getTransforms().clear();
+		rightForeArm.getTransforms().addAll(rx, ry, rz);
+//		mArm = new Path();
+//		mStart = mUpperArmFX.getRightUpperArmEndPosition();
+//		mEnd = new Point(mStart.x, mStart.y + mArmLength);
+//
+//		mArm.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
+//		mArm.getElements().add(new QuadCurveTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
+//
+//		Affine af = new Affine();
+//		af.appendRotation(mRotation, mStart.x, mStart.y);
+//		mArm.getTransforms().clear();
+//		mArm.getTransforms().add(af);
 		// AffineTransform t = new AffineTransform();
 		// t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
 		// mArm.transform(t);
 
-		this.getChildren().add(mArm);
-		update();
+		this.getChildren().add(rightForeArm);
+		//update();
 	}
 
 	@Override
