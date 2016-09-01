@@ -70,13 +70,13 @@ public class LeftUpperArmFX extends BodyPartFX
     {
         //return (mArm != null) ? new Point((int) mArm.boundsInParentProperty().get().getMaxX(), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
     	if(mRotation >= 0 && mRotation <= 90)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMinX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
     	else if(mRotation>90 && mRotation<= 180)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMinX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     	else if(mRotation < 0 && mRotation >= -90)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()-1), (int) mArm.boundsInParentProperty().get().getMaxY()-1) : new Point(0, 0);
+    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()-3), (int) leftUpperArmMesh.boundsInParentProperty().get().getMaxY()-3) : new Point(0, 0);
     	else 
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    		return (leftUpperArmMesh != null) ? new Point((int) (leftUpperArmMesh.boundsInParentProperty().get().getMaxX()), (int) leftUpperArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     }
 
     @Override
