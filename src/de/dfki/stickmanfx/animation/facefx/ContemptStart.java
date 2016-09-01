@@ -18,6 +18,11 @@ import javafx.application.Platform;
  */
 public class ContemptStart extends AnimationFX 
 {
+	public ContemptStart() 
+    {
+        super();
+    }
+	
     public ContemptStart(StickmanFX sm, int duration, boolean block) 
     {
         super(sm, duration, block);

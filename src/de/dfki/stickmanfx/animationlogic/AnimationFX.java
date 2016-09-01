@@ -44,6 +44,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
 
 	public AnimationFX() 
         {
+		mAnimType = null;
 	}
 
 	public AnimationFX(StickmanFX sm, int duration, boolean block) 

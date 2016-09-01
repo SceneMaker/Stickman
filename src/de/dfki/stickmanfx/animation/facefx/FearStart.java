@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class FearStart extends AnimationFX {
+	
+	public FearStart() {
+        super();
+    }
 
     public FearStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

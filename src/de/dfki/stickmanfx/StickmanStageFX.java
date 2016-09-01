@@ -497,9 +497,10 @@ public class StickmanStageFX extends Application {
 
     private static void reLaunch() {
     	
-        initialStickmanWithXml();
+//        initialStickmanWithXml();
         Platform.runLater(()->
         {
+        	initialStickmanWithXml();
 	        if(!StageController){
 	        	if(!root.getChildren().contains(mSplitPane)){
 		        	root.getChildren().remove(sStickmanPane);

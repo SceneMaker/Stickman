@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class LovedStart extends AnimationFX {
+	
+	public LovedStart() {
+        super();
+    }
 
     public LovedStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

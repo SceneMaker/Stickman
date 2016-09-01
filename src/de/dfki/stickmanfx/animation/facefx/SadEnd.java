@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class SadEnd extends AnimationFX {
+	
+	public SadEnd() {
+        super();
+    }
 
     public SadEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

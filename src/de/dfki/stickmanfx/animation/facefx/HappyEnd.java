@@ -12,6 +12,10 @@ import javafx.application.Platform;
  *
  */
 public class HappyEnd extends AnimationFX {
+	
+	public HappyEnd() {
+        super();
+    }
 
     public HappyEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

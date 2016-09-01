@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class Mouth_Default extends AnimationFX {
+	
+	public Mouth_Default() {
+        super();
+    }
 
     public Mouth_Default(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

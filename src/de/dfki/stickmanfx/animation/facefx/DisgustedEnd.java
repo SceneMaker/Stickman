@@ -18,6 +18,10 @@ import javafx.application.Platform;
  */
 public class DisgustedEnd extends AnimationFX 
 {
+	public DisgustedEnd() 
+    {
+        super();
+    }
 
     public DisgustedEnd(StickmanFX sm, int duration, boolean block) 
     {

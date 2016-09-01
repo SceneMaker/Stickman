@@ -12,6 +12,10 @@ import javafx.application.Platform;
  *
  */
 public class HappyStart extends AnimationFX {
+	
+	public HappyStart() {
+        super();
+    }
 
     public HappyStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

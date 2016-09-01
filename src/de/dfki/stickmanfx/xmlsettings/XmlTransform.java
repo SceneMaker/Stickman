@@ -45,11 +45,11 @@ public class XmlTransform
 	        setPersonFilePath(file);
 
 	    } catch (Exception e) { // catches ANY exception
-	        Alert alert = new Alert(AlertType.ERROR);
-	        alert.setTitle("Error");
-	        alert.setHeaderText("Could not load data");
-	        alert.setContentText("Could not load data from file:\n" + file.getPath());
-	        alert.showAndWait();
+//	        Alert alert = new Alert(AlertType.ERROR);
+//	        alert.setTitle("Error");
+//	        alert.setHeaderText("Could not load data");
+//	        alert.setContentText("Could not load data from file:\n" + file.getPath());
+//	        alert.showAndWait();
 	    }
 	}
 

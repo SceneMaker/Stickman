@@ -17,6 +17,10 @@ import javafx.application.Platform;
  *
  */
 public class SurprisedEnd extends AnimationFX {
+	
+	public SurprisedEnd() {
+        super();
+    }
 
     public SurprisedEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

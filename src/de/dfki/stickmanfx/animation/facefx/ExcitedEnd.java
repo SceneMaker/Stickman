@@ -12,6 +12,10 @@ import javafx.application.Platform;
  *
  */
 public class ExcitedEnd extends AnimationFX {
+	
+	public ExcitedEnd() {
+        super();
+    }
 
     public ExcitedEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);

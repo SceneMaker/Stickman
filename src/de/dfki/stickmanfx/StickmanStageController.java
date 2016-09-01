@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
+import de.dfki.util.StickmanFillCombo;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
