@@ -39,15 +39,12 @@ import oracle.jrockit.jfr.events.DynamicValueDescriptor;
 public class RightUpperArmFX extends BodyPartFX {
 
 	RightShoulderFX mRightShoulderFX;
-	
+
 	int mArmLength = 70;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
 
 	Point mStart;
-	Point mEnd;
 
-	Path mArm;
-	
 	URL url;
 	ColModelImporter imorter;
 	MeshView rightUpperArm;
@@ -59,75 +56,89 @@ public class RightUpperArmFX extends BodyPartFX {
 		mZRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
+		
 		url = getClass().getClassLoader().getResource("BodyParts/leftUpperArm2.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
 		rightUpperArm = (MeshView) imorter.getImport()[0];
-		
-		mArm = new Path();
-		this.getChildren().add(mArm);
 
 		init();
-
 		calculate(0);
 	}
 
-	public Point getRightUpperArmEndPosition() 
-	{
-		//return (mArm != null) ? new Point((int) mArm.boundsInParentProperty().get().getMinX(), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-//		if(mRotation >= 0 && mRotation <= 90)
-//    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()+2), (int) mArm.boundsInParentProperty().get().getMaxY()-1) : new Point(0, 0);
-//    	else if(mRotation>90 && mRotation<= 180)
-//    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMinY()+3) : new Point(0, 0);
-//    	else if(mRotation < 0 && mRotation >= -90)
-//    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-//    	else 
-//    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-		if(AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate"))
-    	{
-    		System.out.println("RightUpperArmFX.getLeftUpperArmEndPosition() " + "X " + mRotation);
-	    	if(mRotation >= 0 && mRotation <= 90)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-5) : new Point(0, 0);
-	    	else if(mRotation>90 && mRotation<= 180)
-	    		return (rightUpperArm != null) ?  new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperArm.boundsInParentProperty().get().getMinY()+2) : new Point(0, 0);
-	    	else if(mRotation < 0 && mRotation >= -90)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX()+4), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-5) : new Point(0, 0);
-	    	else 
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX()+4), (int) rightUpperArm.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
-    	}
-    	else if(AnimatorFX.sCurrentAction.equals("zrotate"))
-    	{
-    		System.out.println("RightUpperArmFX.getLeftUpperArmEndPosition() " + "Z " + mZRotation);
-	    	if(mZRotation >= 0 && mZRotation <= 90)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX()+4), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-5) : new Point(0, 0);
-	    	else if(mZRotation>90 && mZRotation<= 180)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX()+4), (int) rightUpperArm.boundsInParentProperty().get().getMinY()+5) : new Point(0, 0);
-	    	else if(mZRotation < 0 && mZRotation >= -90)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX()-5), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-4) : new Point(0, 0);
-	    	else 
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX()-5), (int) rightUpperArm.boundsInParentProperty().get().getMinY()+4) : new Point(0, 0);
-    	}
-    	else if(AnimatorFX.sCurrentAction.equals("yrotate"))
-    	{
-    		System.out.println("RightUpperArmFX.getLeftUpperArmEndPosition() " + "Y " + mYRotation);
-	    	if(mYRotation >= 0 && mYRotation <= 90)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX()+5), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-6) : new Point(0, 0);
-	    	else if(mYRotation>90 && mYRotation<= 180)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX()-5), (int) rightUpperArm.boundsInParentProperty().get().getMaxY() -6) : new Point(0, 0);
-	    	else if(mYRotation < 0 && mYRotation >= -90)
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX()+6), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-4) : new Point(0, 0);
-	    	else 
-	    		return (rightUpperArm != null) ? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX()-5), (int) rightUpperArm.boundsInParentProperty().get().getMaxY()-4) : new Point(0, 0);
-    	}
-    	return new Point(0,0);
+	public Point getRightUpperArmEndPosition() {
+		if (AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate")) {
+			if (mRotation >= 0 && mRotation <= 90)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 5)
+						: new Point(0, 0);
+			else if (mRotation > 90 && mRotation <= 180)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4),
+								(int) rightUpperArm.boundsInParentProperty().get().getMinY() + 2)
+						: new Point(0, 0);
+			else if (mRotation < 0 && mRotation >= -90)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 5)
+						: new Point(0, 0);
+			else
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4),
+								(int) rightUpperArm.boundsInParentProperty().get().getMinY() + 4)
+						: new Point(0, 0);
+		} else if (AnimatorFX.sCurrentAction.equals("zrotate")) {
+			if (mZRotation >= 0 && mZRotation <= 90)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 5)
+						: new Point(0, 0);
+			else if (mZRotation > 90 && mZRotation <= 180)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 4),
+								(int) rightUpperArm.boundsInParentProperty().get().getMinY() + 5)
+						: new Point(0, 0);
+			else if (mZRotation < 0 && mZRotation >= -90)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX() - 5),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 4)
+						: new Point(0, 0);
+			else
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX() - 5),
+								(int) rightUpperArm.boundsInParentProperty().get().getMinY() + 4)
+						: new Point(0, 0);
+		} else if (AnimatorFX.sCurrentAction.equals("yrotate")) {
+			if (mYRotation >= 0 && mYRotation <= 90)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 5),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 6)
+						: new Point(0, 0);
+			else if (mYRotation > 90 && mYRotation <= 180)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX() - 5),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 6)
+						: new Point(0, 0);
+			else if (mYRotation < 0 && mYRotation >= -90)
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMinX() + 6),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 4)
+						: new Point(0, 0);
+			else
+				return (rightUpperArm != null)
+						? new Point((int) (rightUpperArm.boundsInParentProperty().get().getMaxX() - 5),
+								(int) rightUpperArm.boundsInParentProperty().get().getMaxY() - 4)
+						: new Point(0, 0);
+		}
+		return new Point(0, 0);
 	}
 
 	@Override
-	public void calculate(int step) 
-	{
+	public void calculate(int step) {
 		clearChildren(this);
 		mStart = mRightShoulderFX.getRightShoulderEndPosition();
-		
+
 		rightUpperArm.setTranslateX(mStart.x);
 		rightUpperArm.setTranslateY(mStart.y);
 		rightUpperArm.setTranslateZ(-100);
@@ -138,68 +149,39 @@ public class RightUpperArmFX extends BodyPartFX {
 
 		rightUpperArm.getTransforms().clear();
 		rightUpperArm.getTransforms().addAll(rx, ry, rz);
-		
-//		mArm = new Path();
-//		mStart = mRightShoulderFX.getRightShoulderEndPosition();
-//		mEnd = new Point(mStart.x, mStart.y + mArmLength);
-//
-//		mArm.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
-//		mArm.getElements().add(new QuadCurveTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
-//
-//		Affine af = new Affine();
-//		af.appendRotation(mRotation, mStart.x, mStart.y);
-//		mArm.getTransforms().clear();
-//		mArm.getTransforms().add(af);
-//		// AffineTransform t = new AffineTransform();
-//		// t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
-//		// mArm.transform(t);
-		if(mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightForeArmFX != null)
+
+		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightForeArmFX != null)
 			mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightForeArmFX.calculate(step);
 		this.getChildren().add(rightUpperArm);
-//		this.update();
+		// this.update();
 	}
 
 	@Override
-	public void update() 
-	{
-//		Color currentColor = Color.rgb(80, 80, 80);
+	public void update() {
 		// draw outlines
 		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
-		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
-		{
-			if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added by Robbie
+		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+			if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
+																							// by
+																							// Robbie
 			{
 				int fadeFactor = mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-				if (fadeFactor <= 24) 
-				{
+				if (fadeFactor <= 24) {
 					fadeFactor = 0;
 				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-				//mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
-				// g2.setColor(new Color(80, 80, 80, fadeFactor));
-			} 
-			else 
-			{
-				int fadeFactor = (20 - mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-				if (fadeFactor >= 216) 
-				{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+						(fadeFactor * 100 / 255) / 100f);
+			} else {
+				int fadeFactor = (20
+						- mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
+				if (fadeFactor >= 216) {
 					mColor = mColorRecorder;
-				}
-				else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-				//mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
-				// g2.setColor(new Color(80, 80, 80, fadeFactor));
+				} else
+					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+							(fadeFactor * 100 / 255) / 100f);
 			}
 		}
 
-		mArm.setStroke(mColor);
-		mArm.setStrokeWidth(3);
-		mArm.setStrokeLineCap(StrokeLineCap.ROUND);
-		mArm.setStrokeLineJoin(StrokeLineJoin.ROUND);
-		// g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND,
-		// BasicStroke.JOIN_ROUND));
-		//
-		// g2.draw(mArm);
 	}
 }

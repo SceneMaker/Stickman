@@ -9,13 +9,19 @@ import de.dfki.stickman.body.*;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import javafx.scene.paint.Color;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
 
 /**
  *
@@ -30,6 +36,10 @@ public class RightFootFX extends BodyPartFX {
     Point mEnd;
     
     Path mLeg;
+    
+    URL url;
+	ColModelImporter imorter;
+	MeshView rightFoot;
 
     public RightFootFX(RightForeLegFX rightForeLeg) 
     {
@@ -40,7 +50,14 @@ public class RightFootFX extends BodyPartFX {
 		
 		mLeg = new Path();
 		this.getChildren().add(mLeg);
+		
+		url = getClass().getClassLoader().getResource("BodyParts/rightFoot.dae");
+		imorter = new ColModelImporter();
+		imorter.read(url);
+		rightFoot = (MeshView) imorter.getImport()[0];
 
+		mYRotation = 50;
+		mRotation = -20;
         init();
         
         calculate(0);
@@ -61,22 +78,34 @@ public class RightFootFX extends BodyPartFX {
     @Override
     public void calculate(int step)
     {
+    	mStart = mRightForeLegFX.getLegStartPosition();
     	clearChildren(this);
     	
-    	mLeg = new Path();
+    	rightFoot.setTranslateX(mStart.x);
+    	rightFoot.setTranslateY(mStart.y);
+    	rightFoot.setTranslateZ(-100);
+
+		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+		rightFoot.getTransforms().clear();
+		rightFoot.getTransforms().addAll(rx, ry, rz);
     	
-    	mStart = mRightForeLegFX.getLegStartPosition();
-    	mEnd = new Point(mStart.x, mStart.y);
+//    	mLeg = new Path();
+//    	
+//    	mStart = mRightForeLegFX.getLegStartPosition();
+//    	mEnd = new Point(mStart.x, mStart.y);
+//    	
+//    	mLeg.getElements().add(new MoveTo(mEnd.x + 2, mEnd.y + 4));
+//    	mLeg.getElements().add(new QuadCurveTo(mEnd.x-2, mEnd.y + 2, mEnd.x - 12, mEnd.y + 4));
+//    	
+//    	Affine af = new Affine();
+//    	af.appendRotation(mRotation, mStart.x, mStart.y);
+//    	mLeg.getTransforms().clear();
+//    	mLeg.getTransforms().add(af);
     	
-    	mLeg.getElements().add(new MoveTo(mEnd.x + 2, mEnd.y + 4));
-    	mLeg.getElements().add(new QuadCurveTo(mEnd.x-2, mEnd.y + 2, mEnd.x - 12, mEnd.y + 4));
-    	
-    	Affine af = new Affine();
-    	af.appendRotation(mRotation, mStart.x, mStart.y);
-    	mLeg.getTransforms().clear();
-    	mLeg.getTransforms().add(af);
-    	
-    	this.getChildren().add(mLeg);
+    	this.getChildren().add(rightFoot);
     	this.update();
     }
     
