@@ -7,6 +7,7 @@ package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickman.body.*;
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -71,14 +72,63 @@ public class LeftForeLegFX extends BodyPartFX {
     
     public Point getLegStartPosition() 
     {
-    	if(mRotation >= 0 && mRotation <= 90)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()+2), (int) mLeg.boundsInParentProperty().get().getMaxY()-1) : new Point(0, 0);
-    	else if(mRotation>90 && mRotation<= 180)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()), (int) mLeg.boundsInParentProperty().get().getMinY()+3) : new Point(0, 0);
-    	else if(mRotation < 0 && mRotation >= -90)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMaxY()-2) : new Point(0, 0);
-    	else 
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+    	
+    	if (AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate")) 
+		{
+			if(mZRotation >= 0)
+			{
+				if (mRotation >= 0 && mRotation <= 90) 
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else if (mRotation > 90 && mRotation <= 180)
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4),(int) leftForeLeg.boundsInParentProperty().get().getMinY() + 2) : new Point(0, 0);
+				else if (mRotation < 0 && mRotation >= -90)
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+			}
+			else
+			{
+				if (mRotation >= 0 && mRotation <= 90) 
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else if (mRotation > 90 && mRotation <= 180)
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4),(int) leftForeLeg.boundsInParentProperty().get().getMinY() + 2) : new Point(0, 0);
+				else if (mRotation < 0 && mRotation >= -90)
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMaxX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else
+					return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMaxX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+			}
+		} 
+		else if (AnimatorFX.sCurrentAction.equals("zrotate")) 
+		{
+			if (mZRotation >= 0 && mZRotation <= 90)
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+			else if (mZRotation > 90 && mZRotation <= 180)
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 4), (int) leftForeLeg.boundsInParentProperty().get().getMinY() + 5) : new Point(0, 0);
+			else if (mZRotation < 0 && mZRotation >= -90)
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMaxX() - 5), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
+			else
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMaxX() - 5), (int) leftForeLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+		} 
+		else if (AnimatorFX.sCurrentAction.equals("yrotate")) 
+		{
+			if (mYRotation >= 0 && mYRotation <= 90) 
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 5), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
+			else if (mYRotation > 90 && mYRotation <= 180)
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMaxX() - 5), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
+			else if (mYRotation < 0 && mYRotation >= -90)
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMinX() + 6), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
+			else
+				return (leftForeLeg != null) ? new Point((int) (leftForeLeg.boundsInParentProperty().get().getMaxX() - 5), (int) leftForeLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
+		}
+    	return new Point(0, 0);
+//    	if(mRotation >= 0 && mRotation <= 90)
+//    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()+2), (int) mLeg.boundsInParentProperty().get().getMaxY()-1) : new Point(0, 0);
+//    	else if(mRotation>90 && mRotation<= 180)
+//    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()), (int) mLeg.boundsInParentProperty().get().getMinY()+3) : new Point(0, 0);
+//    	else if(mRotation < 0 && mRotation >= -90)
+//    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMaxY()-2) : new Point(0, 0);
+//    	else 
+//    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
     }
     
     @Override
@@ -113,6 +163,8 @@ public class LeftForeLegFX extends BodyPartFX {
 //    	mLeg.getTransforms().clear();
 //    	mLeg.getTransforms().add(af);
     	
+		if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftFootFX != null)
+			mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftFootFX.calculate(step);
     	this.getChildren().add(leftForeLeg);
 //    	this.update();
     }
