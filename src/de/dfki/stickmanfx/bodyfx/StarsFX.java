@@ -171,7 +171,7 @@ public class StarsFX extends BodyPartFX
 					creatStar(15, mStart, path);
 
 					// STAR 3 left side
-					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperLegFX.getRightUpperLegEndPosition();
+//					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperLegFX.getRightUpperLegEndPosition();
 					creatStar(15, mStart, path);
 				}
 				break;

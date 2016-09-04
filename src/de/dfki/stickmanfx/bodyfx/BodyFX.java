@@ -92,7 +92,7 @@ public class BodyFX extends BodyPartFX {
 //			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.calculate(step);
 //		}
 
-		this.getChildren().addAll(bodyMeshView);
+//		this.getChildren().addAll(bodyMeshView);
 		// update();
 	}
 
