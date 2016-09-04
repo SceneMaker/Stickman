@@ -66,85 +66,54 @@ public class LeftUpperLegFX extends BodyPartFX {
 	}
 
 	public Point getLeftUpperLegEndPosition() {
-		
-		if (AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate")) {
-			if (mRotation >= 0 && mRotation <= 90)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 4),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 5)
-						: new Point(0, 0);
-			else if (mRotation > 90 && mRotation <= 180)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 2),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 2)
-						: new Point(0, 0);
-			else if (mRotation < 0 && mRotation >= -90)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 4),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 5)
-						: new Point(0, 0);
+
+		if (AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate")) 
+		{
+			if(mZRotation <= 0)
+			{
+				if (mRotation >= 0 && mRotation <= 90)
+					return (lefttUpperLeg != null)? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 4),(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else if (mRotation > 90 && mRotation <= 180)
+					return (lefttUpperLeg != null)? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 2), (int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 2) : new Point(0, 0);
+				else if (mRotation < 0 && mRotation >= -90)
+					return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 4), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else
+					return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 3), (int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+			}
 			else
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 3),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 4)
-						: new Point(0, 0);
-		} else if (AnimatorFX.sCurrentAction.equals("zrotate")) {
+			{
+				if (mRotation >= 0 && mRotation <= 90)
+					return (lefttUpperLeg != null)? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 4),(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else if (mRotation > 90 && mRotation <= 180)
+					return (lefttUpperLeg != null)? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 2), (int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 2) : new Point(0, 0);
+				else if (mRotation < 0 && mRotation >= -90)
+					return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 6), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+				else
+					return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 3), (int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+			}
+		} 
+		else if (AnimatorFX.sCurrentAction.equals("zrotate")) 
+		{
 			if (mZRotation >= 0 && mZRotation <= 90)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 7),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 7)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 6), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 7) : new Point(0, 0);
 			else if (mZRotation > 90 && mZRotation <= 180)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX()),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMinY())
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX()), (int) lefttUpperLeg.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
 			else if (mZRotation < 0 && mZRotation >= -90)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 5),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 4)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
 			else
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 5),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 4)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) lefttUpperLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
 		} else if (AnimatorFX.sCurrentAction.equals("yrotate")) {
 			if (mYRotation >= 0 && mYRotation <= 90)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 4),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 6)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 4), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
 			else if (mYRotation > 90 && mYRotation <= 180)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 7),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 6)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 7), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
 			else if (mYRotation < 0 && mYRotation >= -90)
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 5),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 4)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
 			else
-				return (lefttUpperLeg != null)
-						? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 7),
-								(int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 6)
-						: new Point(0, 0);
+				return (lefttUpperLeg != null) ? new Point((int) (lefttUpperLeg.boundsInParentProperty().get().getMinX() + 7), (int) lefttUpperLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
 		}
 		return new Point(0, 0);
-		
-//		if (mRotation >= 0 && mRotation <= 90)
-//			return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX() + 2),
-//					(int) mLeg.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
-//		else if (mRotation > 90 && mRotation <= 180)
-//			return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()),
-//					(int) mLeg.boundsInParentProperty().get().getMinY() + 3) : new Point(0, 0);
-//		else if (mRotation < 0 && mRotation >= -90)
-//			return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()),
-//					(int) mLeg.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-//		else
-//			return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()),
-//					(int) mLeg.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+
 	}
 
 	@Override
