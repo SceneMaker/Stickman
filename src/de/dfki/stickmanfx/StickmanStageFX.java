@@ -35,6 +35,7 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -67,6 +68,7 @@ public class StickmanStageFX extends Application {
     private static String sHost = "127.0.0.1";
     private static int sPort = 7777;
     private static boolean isRunning = false;
+    private JFXPanel jfxPanel = new JFXPanel();
     // logging
     public static final Logger mLogger = Logger.getAnonymousLogger();
     
@@ -198,7 +200,7 @@ public class StickmanStageFX extends Application {
                 deleteStickman.add(s);
                 return s;
             }).forEach((s) -> {
-//            	getStickmanFX(s).mIdleRun = false;
+            	getStickmanFX(s).mIdleRun = false;
                 getStickmanFX(s).mAnimationSchedulerFX.end();               
             });
             deleteStickman.stream().map((s) -> {
