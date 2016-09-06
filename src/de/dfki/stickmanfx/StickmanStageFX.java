@@ -83,6 +83,7 @@ public class StickmanStageFX extends Application {
 
         ConsoleHandler ch = new ConsoleHandler();
         ch.setFormatter(new StickmanStageLogFormatter());
+        Platform.setImplicitExit(false);
     }
     
     private static void initConnectionToServer(){
