@@ -162,16 +162,19 @@ public class StarsFX extends BodyPartFX
 					mColor = Color.rgb(240, 212, 0, (starColorChange * 100 / 255) / 100f);
 
 					// STAR 1
-					mStart = mBodyFX.getLeftLegStartPostion();
+//					mStart = mBodyFX.getLeftLegStartPostion();
+					mStart = mBodyFX.mNeckFX.mHeadFX.getLeftEyePostion();
 					path.setFill(mColor);
 					creatStar(30, mStart, path);
 					
 					// STAR 2 right side
-					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftForeLegFX.getLegStartPosition();
+//					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftForeLegFX.getLegStartPosition();
+					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperArmFX.getRightUpperArmEndPosition();
 					creatStar(15, mStart, path);
 
 					// STAR 3 left side
-					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperLegFX.getRightUpperLegEndPosition();
+//					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperLegFX.getRightUpperLegEndPosition();
+					mStart = mBodyFX.mNeckFX.getBodyStartPosition();
 					creatStar(15, mStart, path);
 				}
 				break;

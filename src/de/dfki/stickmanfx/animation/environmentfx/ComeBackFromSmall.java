@@ -29,18 +29,18 @@ public class ComeBackFromSmall extends AnimationFX
 
 	@Override
 	public void playAnimation() {
-		
-		float mScaleRecord = 0.0f;
+		mStickmanFX.mScaleOriginal = mStickmanFX.mScale;
+		float mScaleRecord = mStickmanFX.mScale;
 		for (int j = 0; j < 19; j++) 
 		{
-			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;			
+			mScaleRecord = mScaleRecord * 0.95f;			
 		}
 
-		mScaleRecord = mStickmanFX.mScale;
+//		mScaleRecord = mStickmanFX.mScale;
 		mStickmanFX.starShowControler = true;
 
 		// show stars
-		mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
+//		mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
 		playAnimationPart(1000);
@@ -62,7 +62,7 @@ public class ComeBackFromSmall extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
 		playAnimationPart(20);
 		pauseAnimation(20);
-
+		
 		for (int i = 0; i < 2; i++) {
 			// wave right
 			for (int j = 0; j < 9; j++) {
@@ -70,8 +70,10 @@ public class ComeBackFromSmall extends AnimationFX
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
 
-				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
-				if (mStickmanFX.mScale >= 1.0) {
+				mScaleRecord = mScaleRecord * 1.05f;
+				if (mScaleRecord < mStickmanFX.mScaleOriginal) {
+					mStickmanFX.mScale = mScaleRecord;
+				}else{
 					mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 				}
 				playAnimationPart(20);
@@ -84,11 +86,14 @@ public class ComeBackFromSmall extends AnimationFX
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
-
-				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
-				if (mStickmanFX.mScale >= 1.0) {
+				
+				mScaleRecord = mScaleRecord * 1.05f;
+				if (mScaleRecord < mStickmanFX.mScaleOriginal) {
+					mStickmanFX.mScale = mScaleRecord;
+				}else{
 					mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 				}
+				
 				playAnimationPart(20);
 				Platform.runLater(() -> mStickmanFX.update());
 				mStickmanFX.showAllParts();

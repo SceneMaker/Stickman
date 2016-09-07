@@ -32,7 +32,7 @@ public class ComeUp extends AnimationFX
 	@Override
 	public void playAnimation() {
 		int rotationUnit = 5;
-		int speed = 4;
+		int speed = 7;
 
 		mStickmanFX.leaveSpeed = 480;
 
@@ -43,7 +43,7 @@ public class ComeUp extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
 		playAnimationPart(100);
 
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 6; i++) {
 			// wave right
 			for (int j = 0; j < 8; j++) {
 				mAnimationPartFX = new ArrayList<>();
