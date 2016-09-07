@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -116,6 +117,9 @@ public class StickmanStageController {
     private GridPane gridPaneControlPosture;
     @FXML
     private HBox StickmanFlowPane;
+    
+    @FXML
+    private ScrollPane stickmanScrollPane;
     
     @FXML
     private Button RestButton;

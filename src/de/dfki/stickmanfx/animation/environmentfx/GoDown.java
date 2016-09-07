@@ -30,7 +30,7 @@ public class GoDown extends AnimationFX {
     @Override
     public void playAnimation() {
         int rotationUnit = 5;
-        int speed = 5;
+        int speed = 7;
 
         // bring upper arm and fore arm in position
         mAnimationPartFX = new ArrayList<>();

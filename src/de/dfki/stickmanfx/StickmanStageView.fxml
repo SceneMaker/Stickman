@@ -233,10 +233,6 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <HBox fx:id="StickmanFlowPane" alignment="CENTER" prefHeight="600.0" prefWidth="550.0">
-         <HBox.margin>
-            <Insets />
-         </HBox.margin>
-      </HBox>
+      <ScrollPane fx:id="stickmanScrollPane" />
    </children>
 </HBox>
