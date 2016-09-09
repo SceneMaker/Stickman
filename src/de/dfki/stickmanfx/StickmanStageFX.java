@@ -181,9 +181,11 @@ public class StickmanStageFX extends Application {
             	sScale = 1.0f;
             	sStickmansOnStage.put(name.toLowerCase(),
             			new StickmanFX(name, gender,
-            					mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 1.15f,
-	                            new Dimension(new Float(mHeight * 3 / 5 * sScale).intValue(), new Float(mHeight * sScale).intValue())
-	                    ));
+//            					mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 1.15f,
+//	                            new Dimension(new Float(mHeight * 3 / 5 * sScale).intValue(), new Float(mHeight * sScale).intValue())
+            					mHeight / (float) StickmanFX.mDefaultSize.height * sScale * 0.8f,
+	                            new Dimension(new Float(mHeight * 3 / 5 * sScale).intValue(), new Float(mHeight * sScale * 0.9f ).intValue())	                    
+            					));
             	}else{
             		sScale = 0.8f;
             		sStickmansOnStage.put(name.toLowerCase(), new StickmanFX(name, gender, sScale));
@@ -520,7 +522,6 @@ public class StickmanStageFX extends Application {
 
     private static void reLaunch() {
     	
-//        initialStickmanWithXml();
         Platform.runLater(()->
         {
         	initialStickmanWithXml();
