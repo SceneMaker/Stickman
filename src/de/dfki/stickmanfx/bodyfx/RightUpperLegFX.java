@@ -68,49 +68,227 @@ public class RightUpperLegFX extends BodyPartFX {
 	{
 		if (AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate")) 
 		{
-				if(mZRotation >= 0) //Wenn der Fuss sich in der linken Seite befindet
+				if(mRotation>=0 && mRotation <=90)
 				{
-					if (mRotation >= 0 && mRotation <= 90)
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
-					else if (mRotation > 90 && mRotation <= 180)
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMinY() + 2) : new Point(0, 0);
-					else if (mRotation < 0 && mRotation >= -90)
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
-					else
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+					if(mZRotation >=0 && mZRotation <= 90)
+					{System.out.println("1");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(minX, maxY);
+					}
+					else if(mZRotation > 90 && mZRotation <=180)
+					{System.out.println("2");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4); /////////////
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(minX, minY);
+					}
+					else if(mZRotation <0 && mZRotation >= -90)//////////////
+					{System.out.println("3");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(maxX, maxY);
+					}
+					else if(mZRotation < -90 && mZRotation >= -180)
+					{System.out.println("4");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);//////////////////
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);//<-------
+						return new Point(maxX, minY);
+					}
 				}
-				else // wenn der fuss sich in der rechten seite befindet
+				else if (mRotation > 90 && mRotation <= 180)
 				{
-					if (mRotation >= 0 && mRotation <= 90) 
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
-					else if (mRotation > 90 && mRotation <= 180)
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMinY() + 2) : new Point(0, 0);
-					else if (mRotation < 0 && mRotation >= -90)
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
-					else
-						return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
+					if(mZRotation >=0 && mZRotation <= 90)
+					{System.out.println("5");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(minX, minY);
+					}
+					else if(mZRotation > 90 && mZRotation <=180)
+					{System.out.println("6");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(minX, maxY);
+					}
+					else if(mZRotation <0 && mZRotation >= -90)
+					{System.out.println("7");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(maxX, minY);
+					}
+					else if(mZRotation < -90 && mZRotation >= -180)
+					{System.out.println("8");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(maxX, maxY);
+					}
 				}
-				
+				else if (mRotation < 0 && mRotation >= -90)
+				{
+					if(mZRotation >=0 && mZRotation <= 90)
+					{System.out.println("9");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(minX, maxY);
+					}
+					else if(mZRotation > 90 && mZRotation <=180)
+					{System.out.println("10");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(minX, minY);
+					}
+					else if(mZRotation <0 && mZRotation >= -90)
+					{System.out.println("11");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(maxX, maxY);
+					}
+					else if(mZRotation < -90 && mZRotation >= -180)
+					{System.out.println("12");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(maxX, minY);
+					}
+				}
+				else if (mRotation < -90 && mRotation >= -180)
+				{
+					if(mZRotation >=0 && mZRotation <= 90)
+					{System.out.println("13");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(minX, minY);
+					}
+					else if(mZRotation > 90 && mZRotation <=180)
+					{System.out.println("14");
+						int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(minX, maxY);
+					}
+					else if(mZRotation <0 && mZRotation >= -90)
+					{System.out.println("15");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+						return new Point(maxX, minY);
+					}
+					else if(mZRotation < -90 && mZRotation >= -180)
+					{System.out.println("16");
+						int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+						int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+						return new Point(maxX, maxY);
+					}
+				}
 		} 
-		else if (AnimatorFX.sCurrentAction.equals("zrotate")) {
-			if (mZRotation >= 0 && mZRotation <= 90)
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5) : new Point(0, 0);
+		else if (AnimatorFX.sCurrentAction.equals("zrotate")) 
+		{
+			if(mZRotation>=0 && mZRotation <=90)
+			{
+				if(mRotation >=0 && mRotation <= 90)
+				{System.out.println("17");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(minX, maxY);
+				}
+				else if(mRotation > 90 && mRotation <=180)
+				{System.out.println("18");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(minX, minY);
+				}
+				else if(mRotation <0 && mRotation >= -90)
+				{System.out.println("19");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(minX, maxY);
+				}
+				else if(mRotation < -90 && mRotation >= -180)
+				{System.out.println("20");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(maxX, minY);
+				}
+			}
 			else if (mZRotation > 90 && mZRotation <= 180)
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4), (int) rightUpperLeg.boundsInParentProperty().get().getMinY() + 5) : new Point(0, 0);
+			{
+				if(mRotation >=	0 && mRotation <= 90)
+				{System.out.println("21");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(minX, minY);
+				}
+				else if(mRotation > 90 && mRotation <=180)
+				{System.out.println("22");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(maxX, maxY);
+				}
+				else if(mRotation <0 && mRotation >= -90)
+				{System.out.println("23");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(minX, minY);
+				}
+				else if(mRotation < -90 && mRotation >= -180)
+				{System.out.println("24");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(maxX, maxY);
+				}
+			}
 			else if (mZRotation < 0 && mZRotation >= -90)
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
-			else
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) rightUpperLeg.boundsInParentProperty().get().getMinY() + 4) : new Point(0, 0);
-		} else if (AnimatorFX.sCurrentAction.equals("yrotate")) {
-			if (mYRotation >= 0 && mYRotation <= 90)
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 5), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
-			else if (mYRotation > 90 && mYRotation <= 180)
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 6) : new Point(0, 0);
-			else if (mYRotation < 0 && mYRotation >= -90)
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMinX() + 6), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
-			else
-				return (rightUpperLeg != null) ? new Point((int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 5), (int) rightUpperLeg.boundsInParentProperty().get().getMaxY() - 4) : new Point(0, 0);
-		}
+			{
+				if(mRotation >=0 && mRotation <= 90)
+				{System.out.println("25");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(maxX, maxY);
+				}
+				else if(mRotation > 90 && mRotation <=180)
+				{System.out.println("26");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(minX, minY);
+				}
+				else if(mRotation <0 && mRotation >= -90)
+				{System.out.println("27");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(maxX, maxY);
+				}
+				else if(mRotation < -90 && mRotation >= -180)
+				{System.out.println("28");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(minX, minY);
+				}
+			}
+			else if (mZRotation < -90 && mZRotation >= -180)
+			{
+				if(mRotation >=0 && mRotation <= 90)
+				{System.out.println("29");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(maxX, minY);
+				}
+				else if(mRotation > 90 && mRotation <=180)
+				{System.out.println("30");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(minX, maxY);
+				}
+				else if(mRotation <0 && mRotation >= -90)
+				{System.out.println("31");
+					int maxX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int minY = (int) (rightUpperLeg.boundsInParentProperty().get().getMinY() + 5);
+					return new Point(maxX, minY);
+				}
+				else if(mRotation < -90 && mRotation >= -180)
+				{System.out.println("32");
+					int minX = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxX() - 4);
+					int maxY = (int) (rightUpperLeg.boundsInParentProperty().get().getMaxY() - 5);
+					return new Point(minX, maxY);
+				}
+			}
+			
+		} 
 		return new Point(0, 0);
 	}
 
