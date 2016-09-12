@@ -59,6 +59,7 @@ public class StickmanStageFX extends Application {
     private static Scene scene;
     private static HBox root;
     public static String mFilePath = null;
+    private static StickmanStageController mStickmanStageController;
     //grahics
     private static float sScale = 1.0f;
     protected static boolean sFullScreen = false;
@@ -417,7 +418,7 @@ public class StickmanStageFX extends Application {
         
         initialStickmanWithXml();
 	    
-	    StickmanStageController mStickmanStageController = loader.getController();
+	    mStickmanStageController = loader.getController();
         mStickmanStageController.getStickmanStageFX(this);
         mStickmanStageController.setlePerlinNoiseOn();
         
@@ -450,6 +451,8 @@ public class StickmanStageFX extends Application {
        	primaryStage.setFullScreen(false);     		
      	} 
        stage.show();
+       
+       mStickmanStageController.setDefaultStickmanComboBox();
        
        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
     	   @Override
@@ -544,6 +547,7 @@ public class StickmanStageFX extends Application {
         });
         
         Platform.runLater(()->addStickmanToStage());
+              
         Platform.runLater(()->{
         	if (sFullScreen && StageController) {
             	primaryStage.setFullScreen(true);                              
@@ -552,6 +556,12 @@ public class StickmanStageFX extends Application {
           	} 
         	primaryStage.show();
 	        primaryStage.toFront();
+        });
+        
+        Platform.runLater(()->{
+        	mStickmanStageController.setlePerlinNoiseOff();
+        	mStickmanStageController.setlePerlinNoiseOn();
+            mStickmanStageController.setDefaultStickmanComboBox();
         });
         
     }

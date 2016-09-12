@@ -343,6 +343,14 @@ public class StickmanStageController {
     	StickmanComboBox.getItems().addAll(stickmanNames);
     }
     
+    public void setDefaultStickmanComboBox()
+    {
+    	if(!(mStickmanstage.mStickmanComboList.isEmpty())){
+    		String defauldStickmanComboBox = mStickmanstage.mStickmanComboList.get(0);
+    		StickmanComboBox.setValue(defauldStickmanComboBox);
+    	}  		
+    }
+    
     
  // set the setValue of combobox
     private void setComboboxValue(StickmanFX mStick)
@@ -498,8 +506,7 @@ public class StickmanStageController {
     
     public void setlePerlinNoiseOff(){
     	WithPerlinNoise.setSelected(false);
-    	WithoutPerlinNoise.setSelected(true);
-    	
+    	WithoutPerlinNoise.setSelected(true); 	
     }
     
     private void handleGroupForEnvironmentRadioButton()
