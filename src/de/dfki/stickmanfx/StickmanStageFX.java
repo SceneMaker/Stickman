@@ -1,12 +1,12 @@
 package de.dfki.stickmanfx;
 
+import de.dfki.common.GeneralStageRoot;
 import de.dfki.common.StageStickman;
 import de.dfki.common.StickmansOnStage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
@@ -72,49 +72,14 @@ public class StickmanStageFX extends Application implements StageStickman{
         isRunning = true;
     }
 
-    public HBox getConfigRoot() throws java.io.IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
-        HBox root = loader.load();
-        ScrollPane stickmanScrollPane = (ScrollPane) root.lookup("#stickmanScrollPane");
-        SplitPane mSplitPane = (SplitPane)root.lookup("#mSplitPane");
-        HBox sStickmanPane = new HBox();
-        sStickmanPane.setId("ConfigStageHbox");
-        stickmanScrollPane.setContent(sStickmanPane);
-        StickmanStageController mStickmanStageController = loader.getController();
-        if(!root.getChildren().contains(mSplitPane)){
-            //root.getChildren().remove(stickmanScrollPane);
-            root.getChildren().add(mSplitPane);
-            root.getChildren().add(stickmanScrollPane);
-            sStickmanPane.setAlignment(Pos.CENTER_LEFT);
-        }
-        mStickmanStageController.setStickamnOnStage(stickamnsOnStage);
-        mStickmanStageController.setlePerlinNoiseOn();
-        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
-        sStickmanPane.setAlignment(Pos.CENTER);
-        return root;
+    private HBox getConfigRoot() throws java.io.IOException {
+        GeneralStageRoot generalStageRoot = new GeneralStageRoot(stickamnsOnStage);
+        return generalStageRoot.getConfigRoot();
     }
 
-
-    public HBox getStageRoot() throws java.io.IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
-        HBox root = loader.load();
-        ScrollPane stickmanScrollPane = (ScrollPane) root.lookup("#stickmanScrollPane");
-        SplitPane mSplitPane = (SplitPane)root.lookup("#mSplitPane");
-        HBox sStickmanPane = new HBox();
-        sStickmanPane.setId("StageHbox");
-        stickmanScrollPane.setContent(sStickmanPane);
-        StickmanStageController mStickmanStageController = loader.getController();
-        if(root.getChildren().contains(mSplitPane)){
-            root.getChildren().remove(mSplitPane);
-            sStickmanPane.setAlignment(Pos.CENTER);
-        }
-        mStickmanStageController.setStickamnOnStage(stickamnsOnStage);
-        mStickmanStageController.setlePerlinNoiseOn();
-        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
-        sStickmanPane.setAlignment(Pos.CENTER);
-        return root;
+    private HBox getStageRoot() throws java.io.IOException {
+        GeneralStageRoot generalStageRoot = new GeneralStageRoot(stickamnsOnStage);
+        return generalStageRoot.getStageRoot();
     }
 
     public String createNewStage() throws IOException {

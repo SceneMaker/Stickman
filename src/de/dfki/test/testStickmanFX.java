@@ -15,8 +15,7 @@ public class testStickmanFX {
 
 
         StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
-        stickmanStage2.addStickman("Bob2");
-        stickmanStage2.addStickman("Anna2");
+        stickmanStage2.addStickman("Baxter");
         ((StageStickmanControllerFX)stickmanStage2).launchStickmanStage();
 
     }
