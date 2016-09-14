@@ -107,8 +107,7 @@ public class AnimatorFX
                     // we have 2 options!
                     // 1) API Call
                     // 2) send to Player
-
-                    StickmanStageFX.sendTimeMarkInformation(e.mContent);
+                    mStickmanFX.getStickmanStageController().sendTimeMarkInformation(e.mContent);
                 }
             }
         }

@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.*;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -33,7 +34,6 @@ import de.dfki.stickmanfx.bodyfx.LeftFootFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftHandFX;
-import de.dfki.stickmanfx.bodyfx.LeftLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperLegFX;
@@ -46,28 +46,18 @@ import de.dfki.stickmanfx.bodyfx.RightFootFX;
 import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
 import de.dfki.stickmanfx.bodyfx.RightForeLegFX;
 import de.dfki.stickmanfx.bodyfx.RightHandFX;
-import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperLegFX;
 import de.dfki.stickmanfx.bodyfx.StarsFX;
 import de.dfki.stickmanfx.bodyfx.ThinkFX;
 import de.dfki.stickmanfx.environmentfx.SpeechBubbleFX;
-import javafx.animation.AnimationTimer;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
+
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
-import javafx.scene.transform.Rotate;
-import javafx.stage.Screen;
-import javafx.util.Duration;
+
 
 /**
  *
@@ -78,7 +68,7 @@ import javafx.util.Duration;
  *         Grannis shot by Ross Ching in 2012
  *
  */
-public class StickmanFX extends Pane {
+public class StickmanFX extends Pane implements CommonStickman {
 	// general stuff
 	public static enum ORIENTATION {
 		FRONT, LEFT, RIGHT
@@ -100,7 +90,7 @@ public class StickmanFX extends Pane {
 	public boolean mShowName = true;
 	public float mGeneralXTranslation = 0;
 	public float mGeneralYTranslation = 0;
-	private Label nameLabel = new Label();
+	private Label nameLabel ;
 
 //	public static Dimension mDefaultSize = new Dimension(300, 800); // 400
 	public static Dimension mDefaultSize = new Dimension(300, 550);
@@ -164,6 +154,7 @@ public class StickmanFX extends Pane {
 	public BombeFX mBombeFX;
 	// environment
 	public SpeechBubbleFX mSpeechBubbleFX;
+	private StageStickmanController stageController;
 
 	// logging
 	public final Logger mLogger = Logger.getAnonymousLogger();
@@ -301,6 +292,7 @@ public class StickmanFX extends Pane {
 	}
 
 	private void init() {
+		nameLabel = new Label();
 		this.setPrefHeight(mSize.height);
 		this.setPrefWidth(mSize.width);
 		this.setMinHeight(mSize.height);
@@ -327,6 +319,32 @@ public class StickmanFX extends Pane {
 		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
 		mIdleBehavior = new IdleBehavior(this, simplexNoise);
 	
+	}
+
+	public StageStickmanController getStickmanStageController(){
+		return stageController;
+	}
+
+
+
+	@Override
+	public void setStickmanStageController(StageStickmanController s) {
+		stageController = s;
+	}
+
+	@Override
+	public void setShowName(boolean show) {
+		mShowName = show;
+	}
+
+	@Override
+	public boolean isShowName() {
+		return mShowName;
+	}
+
+	@Override
+	public void endAnimationScheduler(){
+		mAnimationSchedulerFX.end();
 	}
 
 	public void addListener(AnimationListener al) {

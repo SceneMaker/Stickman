@@ -71,7 +71,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
 	public void setStickmanName(String stickmanName) 
         {
 		mStickmanName = stickmanName;
-		mStickmanFX = StickmanStageFX.getStickmanFX(mStickmanName);
+		//mStickmanFX = StickmanStageFX.getStickmanFX(mStickmanName);
 		setName(mStickmanName + "'s Animation " + mName);
 	}
 
@@ -170,13 +170,13 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
             // send event that AnimationFX is ended
 
             // API or TCP-Interface
-            if (!StickmanStageFX.mUseNetwork) 
+            if (!mStickmanFX.getStickmanStageController().ismNetwork())
             {
                 mStickmanFX.notifyListeners(mID);
             } 
             else 
             {
-                StickmanStageFX.sendAnimationUpdate("end", mID);
+                mStickmanFX.getStickmanStageController().sendAnimationUpdate("end", mID);
             }
 	}
 

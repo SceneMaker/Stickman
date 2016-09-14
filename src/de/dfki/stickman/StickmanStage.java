@@ -1,5 +1,7 @@
 package de.dfki.stickman;
 
+import de.dfki.common.CommonStickmanStage;
+import de.dfki.common.StageStickman;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.AnimationLoader;
 import de.dfki.stickman.animationlogic.EventAnimation;
@@ -22,7 +24,6 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 /**
@@ -30,21 +31,21 @@ import javax.swing.WindowConstants;
  * @author Patrick Gebhard
  *
  */
-public class StickmanStage extends JFrame implements MouseListener {
+public class StickmanStage extends JFrame implements MouseListener , StageStickman, CommonStickmanStage {
 
     static private final HashMap<String, Stickman> sStickmansOnStage = new HashMap<>();
     static private JPanel sStickmanPanel;
     static private StickmanStage sInstance;
     //grahics
     private static float sScale = 1.0f;
-    protected static boolean sFullScreen = false;
-    protected static int mHeight = 0;
-    protected static int mWidth = 0;
+    protected  boolean sFullScreen = false;
+    protected  int mHeight = 0;
+    protected  int mWidth = 0;
     // network interface
-    public static ClientConnectionHandler mConnection;
-    public static boolean mUseNetwork = false;
-    private static String sHost = "127.0.0.1";
-    private static int sPort = 7777;
+    public  ClientConnectionHandler mConnection;
+    public  boolean mUseNetwork = false;
+    private  String sHost = "127.0.0.1";
+    private  int sPort = 7777;
     // logging
     public static final Logger mLogger = Logger.getAnonymousLogger();
 
@@ -73,7 +74,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         ch.setFormatter(new StickmanStageLogFormatter());
 
         if (mUseNetwork) {
-            mConnection = new ClientConnectionHandler();
+            mConnection = new ClientConnectionHandler(this);
             mConnection.connect(sHost, sPort);
 
             while (!mConnection.mConnected) {
@@ -96,7 +97,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         return sInstance;
     }
 
-    public static StickmanStage getInstanceFullScreen() {
+    public  StickmanStage getInstanceFullScreen() {
         sFullScreen = true;
 
         if (sInstance == null) {
@@ -106,13 +107,13 @@ public class StickmanStage extends JFrame implements MouseListener {
         return sInstance;
     }
 
-    public static StickmanStage getNetworkInstance() {
+    public  StickmanStage getNetworkInstance() {
         mUseNetwork = true;
 
         return getInstance();
     }
 
-    public static StickmanStage getNetworkInstanceFullScreen() {
+    public  StickmanStage getNetworkInstanceFullScreen() {
         sFullScreen = true;
 
         mUseNetwork = true;
@@ -120,7 +121,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         return getInstance();
     }
 
-    public static StickmanStage getNetworkInstance(String host, int port) {
+    public  StickmanStage getNetworkInstance(String host, int port) {
         sHost = host;
         sPort = port;
 
@@ -129,7 +130,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         return getInstance();
     }
 
-    public static StickmanStage getNetworkInstanceFullScreen(String host, int port) {
+    public  StickmanStage getNetworkInstanceFullScreen(String host, int port) {
         sHost = host;
         sPort = port;
 
@@ -140,7 +141,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         return getInstance();
     }
 
-    public static void addStickman(String name) {
+    public  void addStickman(String name) {
         Stickman.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
             gender = Stickman.TYPE.FEMALE;
@@ -153,7 +154,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         addStickman(name, gender);
     }
 
-    public static void addStickman(String name, Stickman.TYPE gender) {
+    public  void addStickman(String name, Stickman.TYPE gender) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             if (sFullScreen) {
                 sStickmansOnStage.put(name.toLowerCase(),
@@ -176,7 +177,7 @@ public class StickmanStage extends JFrame implements MouseListener {
         StickmanStage.getInstance().setVisible(true);
     }
 
-    public static Stickman getStickman(String name) {
+    public  Stickman getStickman(String name) {
         Stickman sm;
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {
             return sStickmansOnStage.get(name.toLowerCase());
@@ -185,7 +186,12 @@ public class StickmanStage extends JFrame implements MouseListener {
         }
     }
 
-    public static void clearStage() {
+    @Override
+    public void lauchStickman(String filepath) {
+
+    }
+
+    public  void clearStage() {
         Set<String> deleteStickman = new HashSet<>();
         sStickmansOnStage.keySet().stream().map((s) -> {
             deleteStickman.add(s);
@@ -211,18 +217,18 @@ public class StickmanStage extends JFrame implements MouseListener {
         sInstance = null;
     }
 
-    public static void showStickmanName(boolean show) {
+    public  void showStickmanName(boolean show) {
         for (Stickman s : sStickmansOnStage.values()) {
             s.mShowName = show;
         }
     }
 
-    public static void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
+    public  void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
         Stickman sm = getStickman(stickmanname);
         sm.doAnimation(name, duration, text, block);
     }
 
-    public static void parseStickmanMLCmd(String cmd) {
+    public  void parseStickmanMLCmd(String cmd) {
         // TODO cut the crap with the two animation types ...
         Animation a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimation() : new Animation();
 
@@ -247,14 +253,14 @@ public class StickmanStage extends JFrame implements MouseListener {
     }
 
     public static void sendTimeMarkInformation(String timemark) {
-        if (mConnection.mConnected) {
-            mConnection.sendToServer(timemark);
+        if (sInstance.mConnection.mConnected) {
+            sInstance.mConnection.sendToServer(timemark);
         }
     }
 
     public static void sendAnimationUpdate(String state, String id) {
-        if (mConnection.mConnected) {
-            mConnection.sendToServer("#ANIM#" + state + "#" + id);
+        if (sInstance.mConnection.mConnected) {
+            sInstance.mConnection.sendToServer("#ANIM#" + state + "#" + id);
         }
     }
 
@@ -264,11 +270,12 @@ public class StickmanStage extends JFrame implements MouseListener {
     public static void main(String[] args) {
 //        ExtensionsFromJar e = new ExtensionsFromJar("de.dfki.stickman.animation.face",false);
 //		e.loadClass();
-        StickmanStage.getInstanceFullScreen();
+        StickmanStage stage = StickmanStage.getInstance();
+        //stage.getInstanceFullScreen();
         //StickmanStage.getInstance();
-        StickmanStage.addStickman("Anna");
-        StickmanStage.addStickman("character");
-        StickmanStage.addStickman("Bob");
+        stage.addStickman("Anna");
+        stage.addStickman("character");
+        stage.addStickman("Bob");
     }
 
 //  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
@@ -375,6 +382,21 @@ public class StickmanStage extends JFrame implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public float getFullScreenScale() {
+        return 0;
+    }
+
+    @Override
+    public Dimension getFullScreenDimension() {
+        return null;
+    }
+
+    @Override
+    public void addStickmanToStage(String stageIdentifier) {
 
     }
 

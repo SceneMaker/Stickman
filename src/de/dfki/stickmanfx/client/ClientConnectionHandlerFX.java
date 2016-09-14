@@ -1,5 +1,6 @@
 package de.dfki.stickmanfx.client;
 
+import de.dfki.common.CommandParser;
 import de.dfki.stickman.StickmanStage;
 import de.dfki.stickmanfx.StickmanStageFX;
 import java.io.BufferedReader;
@@ -27,11 +28,21 @@ public class ClientConnectionHandlerFX extends Thread {
 	private static String sIDENTIFIER = "StickmanStage";
 
 	private boolean mRunning = true;
-	public boolean mConnected = false;
+	private boolean mConnected = false;
+	private StickmanStageFX mStickmanStage;
+	private CommandParser stickmanParser;
+
+
 
 	public ClientConnectionHandlerFX() {
 		super.setName("StickmanStage Socket Connection Handler");
 	}
+
+	public ClientConnectionHandlerFX(CommandParser parser) {
+		super.setName("StickmanStage Socket Connection Handler");
+		stickmanParser = parser;
+	}
+
 
 	public void end() {
 		try {
@@ -83,6 +94,18 @@ public class ClientConnectionHandlerFX extends Thread {
 		start();
 	}
 
+	public void tryToConnect(){
+		connect(mHost, mPort);
+		while (!ismConnected()) {
+			try {
+				System.out.println("Waiting for connection to control application ...");
+				Thread.sleep(250);
+			} catch (InterruptedException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+	}
+
 	@Override
 	public void run() {
 		String inputLine = "";
@@ -92,11 +115,15 @@ public class ClientConnectionHandlerFX extends Thread {
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-                                StickmanStageFX.parseStickmanMLCmd(inputLine);
+					stickmanParser.parseStickmanMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
 			}
 		}
+	}
+
+	public boolean ismConnected() {
+		return mConnected;
 	}
 }

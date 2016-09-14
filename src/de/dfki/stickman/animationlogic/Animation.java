@@ -66,7 +66,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 
 	public void setStickmanName(String stickmanName) {
 		mStickmanName = stickmanName;
-		mStickman = StickmanStage.getStickman(mStickmanName);
+		//mStickman = StickmanStage.getStickman(mStickmanName);
 		setName(mStickmanName + "'s Animation " + mName);
 	}
 
@@ -148,7 +148,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 		// send event that Animation is ended
 
 		// API or TCP-Interface
-		if (!StickmanStage.mUseNetwork) {
+		if (!mStickman.getStage().mUseNetwork) {
 			mStickman.notifyListeners(mID);
 		} else {
 			StickmanStage.sendAnimationUpdate("end", mID);

@@ -27,11 +27,16 @@ public class ClientConnectionHandler extends Thread {
 
 	private boolean mRunning = true;
 	public boolean mConnected = false;
+	private StickmanStage mStickmanStage;
 
 	public ClientConnectionHandler() {
 		super.setName("StickmanStage Socket Connection Handler");
 	}
+	public ClientConnectionHandler(StickmanStage stage) {
 
+		super.setName("StickmanStage Socket Connection Handler");
+		mStickmanStage = stage;
+	}
 	public void end() {
 		try {
 			mSocket.shutdownInput();
@@ -91,7 +96,7 @@ public class ClientConnectionHandler extends Thread {
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-					StickmanStage.parseStickmanMLCmd(inputLine);
+					mStickmanStage.parseStickmanMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
