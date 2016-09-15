@@ -45,7 +45,7 @@ public class RightForeArmFX extends BodyPartFX
 	int mArmLength = 80;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
 	
-	MeshView rightForeArm;
+	Group rightForeArm;
 
 
 	public RightForeArmFX(RightUpperArmFX arm) 
@@ -57,7 +57,7 @@ public class RightForeArmFX extends BodyPartFX
 		mZRotation = -60;
 		mToDegree = mDefaultRotation;
 		
-		rightForeArm = (MeshView) mUpperArmFX.rightUpperArm.getChildren().get(1);
+		rightForeArm = (Group) mUpperArmFX.rightUpperArm.getChildren().get(1);
 		init();
 
 		calculate(0);

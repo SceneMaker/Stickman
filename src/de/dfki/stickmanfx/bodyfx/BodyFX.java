@@ -71,7 +71,7 @@ public class BodyFX extends BodyPartFX {
 
 		mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
 ////////
-		url = getClass().getClassLoader().getResource("BodyParts/test2.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/test14.dae");
 		importer.read(url);
 		maleBodyModel = (Group) (importer.getImport()[0]);
 

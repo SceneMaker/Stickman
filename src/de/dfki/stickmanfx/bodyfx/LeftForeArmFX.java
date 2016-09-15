@@ -13,6 +13,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.application.Platform;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
@@ -37,7 +38,7 @@ public class LeftForeArmFX extends BodyPartFX
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	MeshView leftForeArmMesh;
+	Group leftForeArmMesh;
 
     public LeftForeArmFX(LeftUpperArmFX arm) {
         mUpperArmFX = arm;
@@ -47,7 +48,7 @@ public class LeftForeArmFX extends BodyPartFX
         mZRotation = 60;
         mToDegree = mDefaultRotation;
         
-		leftForeArmMesh = (MeshView) mUpperArmFX.leftUpperArmMesh.getChildren().get(1);
+        leftForeArmMesh = (Group) mUpperArmFX.leftUpperArmMesh.getChildren().get(1);
         
         init();
         calculate(0);
