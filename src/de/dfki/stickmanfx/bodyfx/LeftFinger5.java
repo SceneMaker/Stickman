@@ -31,22 +31,25 @@ import javafx.scene.transform.Translate;
  * @author Beka
  *
  */
-public class LeftWrist extends BodyPartFX 
+public class LeftFinger5 extends BodyPartFX 
 {
 
-    LeftForeArmFX mLeftForeArmFX;
+    LeftWrist mLeftWrist;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	Group leftWrist;
+	MeshView LeftFinger_5;
 
-    public LeftWrist(LeftForeArmFX leftForeArmFX) {
-        mLeftForeArmFX = leftForeArmFX;
+    public LeftFinger5(LeftWrist leftWrist) {
+    	mLeftWrist = leftWrist;
         mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -20;
+        mRotation = 9;
+        mYRotation = -3;
+        mZRotation = -230;
         mToDegree = mDefaultRotation;
         
-        leftWrist = (Group) mLeftForeArmFX.leftForeArmMesh.getChildren().get(1);
+        LeftFinger_5 = (MeshView) mLeftWrist.leftWrist.getChildren().get(5);
         
         init();
         calculate(0);
@@ -61,12 +64,12 @@ public class LeftWrist extends BodyPartFX
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		
 		
-		Translate translate = (Translate) leftWrist.getTransforms().get(0);
-		Scale scale = (Scale) leftWrist.getTransforms().get(4);
-		leftWrist.getTransforms().clear();
-		leftWrist.getTransforms().addAll(translate, rx, ry, rz, scale);
+		Translate translate = (Translate) LeftFinger_5.getTransforms().get(0);
+		Scale scale = (Scale) LeftFinger_5.getTransforms().get(4);
+		LeftFinger_5.getTransforms().clear();
+		LeftFinger_5.getTransforms().addAll(translate, rx, ry, rz, scale);
 
-		mLeftForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
+		mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
 		
 //        update();
     }

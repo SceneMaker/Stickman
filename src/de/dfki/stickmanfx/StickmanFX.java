@@ -29,6 +29,11 @@ import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
 import de.dfki.stickmanfx.bodyfx.HeadFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyeFX;
 import de.dfki.stickmanfx.bodyfx.LeftEyebrowFX;
+import de.dfki.stickmanfx.bodyfx.LeftFinger1;
+import de.dfki.stickmanfx.bodyfx.LeftFinger2;
+import de.dfki.stickmanfx.bodyfx.LeftFinger3;
+import de.dfki.stickmanfx.bodyfx.LeftFinger4;
+import de.dfki.stickmanfx.bodyfx.LeftFinger5;
 import de.dfki.stickmanfx.bodyfx.LeftFootFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeLegFX;
@@ -153,6 +158,12 @@ public class StickmanFX extends Pane {
 	public LeftUpperArmFX mLeftUpperArmFX;
 	public LeftForeArmFX mLeftForeArmFX;
 	public LeftWrist mLeftWrist;
+	public LeftFinger1 mLeftFinger1;
+	public LeftFinger2 mLeftFinger2;
+	public LeftFinger3 mLeftFinger3;
+	public LeftFinger4 mLeftFinger4;
+	public LeftFinger5 mLeftFinger5;
+	
 	public LeftHandFX mLeftHandFX;
 	public RightShoulderFX mRightShoulderFX;
 	public RightUpperArmFX mRightUpperArmFX;
@@ -206,6 +217,12 @@ public class StickmanFX extends Pane {
 		mLeftUpperArmFX = new LeftUpperArmFX(mBodyFX);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftWrist = new LeftWrist(mLeftForeArmFX);
+		mLeftFinger1 = new LeftFinger1(mLeftWrist);
+		mLeftFinger2 = new LeftFinger2(mLeftWrist);
+		mLeftFinger3 = new LeftFinger3(mLeftWrist);
+		mLeftFinger4 = new LeftFinger4(mLeftWrist);
+		mLeftFinger5 = new LeftFinger5(mLeftWrist);
+		
 		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
 		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
@@ -257,6 +274,12 @@ public class StickmanFX extends Pane {
 		mLeftUpperArmFX = new LeftUpperArmFX(mBodyFX);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftWrist = new LeftWrist(mLeftForeArmFX);
+		mLeftFinger1 = new LeftFinger1(mLeftWrist);
+		mLeftFinger2 = new LeftFinger2(mLeftWrist);
+		mLeftFinger3 = new LeftFinger3(mLeftWrist);
+		mLeftFinger4 = new LeftFinger4(mLeftWrist);
+		mLeftFinger5 = new LeftFinger5(mLeftWrist);
+		
 		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
 		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
@@ -306,6 +329,12 @@ public class StickmanFX extends Pane {
 		mLeftUpperArmFX = new LeftUpperArmFX(mBodyFX);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftWrist = new LeftWrist(mLeftForeArmFX);
+		mLeftFinger1 = new LeftFinger1(mLeftWrist);
+		mLeftFinger2 = new LeftFinger2(mLeftWrist);
+		mLeftFinger3 = new LeftFinger3(mLeftWrist);
+		mLeftFinger4 = new LeftFinger4(mLeftWrist);
+		mLeftFinger5 = new LeftFinger5(mLeftWrist);
+		
 		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
 		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
