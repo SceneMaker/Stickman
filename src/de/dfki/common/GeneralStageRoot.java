@@ -14,27 +14,7 @@ public class GeneralStageRoot {
     private ScrollPane stickmanScrollPane;
     private SplitPane mSplitPane;
     private HBox sStickmanPane;
-    private  StickmansOnStage stickmansOnStage;
-
-    public GeneralStageRoot(StickmansOnStage stage){
-        stickmansOnStage = stage;
-    }
-
-    public HBox getRoot() {
-        return root;
-    }
-
-    public ScrollPane getStickmanScrollPane() {
-        return stickmanScrollPane;
-    }
-
-    public SplitPane getmSplitPane() {
-        return mSplitPane;
-    }
-
-    public HBox getsStickmanPane() {
-        return sStickmanPane;
-    }
+    private StickmanStageController mStickmanStageController;
 
     public HBox getConfigRoot() throws IOException {
         invoke();
@@ -63,12 +43,19 @@ public class GeneralStageRoot {
         mSplitPane = (SplitPane) root.lookup("#mSplitPane");
         sStickmanPane = new HBox();
         stickmanScrollPane.setContent(sStickmanPane);
-        StickmanStageController mStickmanStageController = loader.getController();
-        mStickmanStageController.setStickamnOnStage(stickmansOnStage);
-        mStickmanStageController.setlePerlinNoiseOn();
+        mStickmanStageController = loader.getController();
+        getmStickmanStageController().setlePerlinNoiseOn();
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
         sStickmanPane.setAlignment(Pos.CENTER);
         return this;
+    }
+
+    public StickmanStageController getmStickmanStageController() {
+        return mStickmanStageController;
+    }
+
+    public void setStickmansOnStage(StickmansOnStage stickmans){
+        mStickmanStageController.setStickamnOnStage(stickmans);
     }
 
 

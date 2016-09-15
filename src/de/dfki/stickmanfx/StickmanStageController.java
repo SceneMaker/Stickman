@@ -141,7 +141,7 @@ public class StickmanStageController {
         
         //Default show
         handleStickman();
-            
+
         fillComboForEmotionExpression();
       //Select a stickman
         StickmanComboBox.setOnAction((event) -> 
@@ -335,10 +335,10 @@ public class StickmanStageController {
     	EmotionExpressionComboBox.getItems().addAll(classNames);
     }
     
-    private void fillComboForStickman()
+    public void fillComboForStickman()
     {
     	ObservableList<String> stickmanNames = FXCollections.observableArrayList();
-    	stickmanNames.addAll(mStickmanComboList.stream().collect(Collectors.toList()));
+        stickmanNames.addAll(StickmanStageFX.getInstance().getStickmanNames().stream().collect(Collectors.toList()));
     	StickmanComboBox.getItems().addAll(stickmanNames);
     }
     

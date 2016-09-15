@@ -1,41 +1,35 @@
 package de.dfki.stickmanfx;
-
 import de.dfki.common.GeneralStageRoot;
 import de.dfki.common.StageStickman;
 import de.dfki.common.StickmansOnStage;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
-import java.awt.Dimension;
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.UUID;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-
 /**
  *
- * @author Robbie
+ * @author Robbie. Refactored by: acepero13
  *
  */
 public class StickmanStageFX extends Application implements StageStickman{
     static private StickmanStageFX sInstance;
     Stage configStage;
-    private  Scene scene;
     private StickmansOnStage stickamnsOnStage;
     private  float sScale = 1.0f;
     public static   boolean isRunning = false;
-    public static final Logger mLogger = Logger.getAnonymousLogger();
     private HashMap<String, Stage> stickmanFXStages = new HashMap<>();
+    private LinkedList<String> stickmanNames = new LinkedList<>();
+    private GeneralStageRoot generalConfigStageRoot;
 
     public StickmanStageFX() { //This cannot be private because of ApplicationFX
         Platform.setImplicitExit(false);
@@ -64,7 +58,7 @@ public class StickmanStageFX extends Application implements StageStickman{
     public void start(Stage stage) throws Exception {
         configStage = stage;
         HBox root = getConfigRoot();
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
         stage.setTitle("StickmanFX");
         stage.setScene(scene);
@@ -73,12 +67,12 @@ public class StickmanStageFX extends Application implements StageStickman{
     }
 
     private HBox getConfigRoot() throws java.io.IOException {
-        GeneralStageRoot generalStageRoot = new GeneralStageRoot(stickamnsOnStage);
-        return generalStageRoot.getConfigRoot();
+        generalConfigStageRoot = new GeneralStageRoot();
+        return generalConfigStageRoot.getConfigRoot();
     }
 
     private HBox getStageRoot() throws java.io.IOException {
-        GeneralStageRoot generalStageRoot = new GeneralStageRoot(stickamnsOnStage);
+        GeneralStageRoot generalStageRoot = new GeneralStageRoot();
         return generalStageRoot.getStageRoot();
     }
 
@@ -117,9 +111,20 @@ public class StickmanStageFX extends Application implements StageStickman{
 
     public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage) {
         this.stickamnsOnStage = stickamnsOnStage;
+        generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
     }
 
     public  void addStickmanToStage(String stageIdentifier) throws Exception {
+        HBox sStickmanPane;
+        sStickmanPane = getStickmanPane(stageIdentifier);
+        sStickmanPane.getChildren().clear();
+        for(String key : stickamnsOnStage.getStickmanNames()) {
+            sStickmanPane.getChildren().add(stickamnsOnStage.getStickmanByKey(key));
+            addStickmanName(key);
+        }
+    }
+
+    private HBox getStickmanPane(String stageIdentifier) throws Exception {
         HBox sStickmanPane;
         if(stickmanFXStages.containsKey(stageIdentifier)){
             sStickmanPane = (HBox) ((ScrollPane)stickmanFXStages.get(stageIdentifier).getScene().getRoot().lookup("#stickmanScrollPane")).getContent();
@@ -127,10 +132,13 @@ public class StickmanStageFX extends Application implements StageStickman{
         else{
             throw new Exception("Stage Not found");
         }
-        sStickmanPane.getChildren().clear();
-        for(String key : stickamnsOnStage.getStickmanNames()) {
-            sStickmanPane.getChildren().add(stickamnsOnStage.getStickmanByKey(key));
-            //mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
+        return sStickmanPane;
+    }
+
+    private void addStickmanName(String key) {
+        if(!getStickmanNames().contains(key)) {
+            getStickmanNames().add(key);
+            generalConfigStageRoot.getmStickmanStageController().fillComboForStickman();
         }
     }
 
@@ -138,6 +146,10 @@ public class StickmanStageFX extends Application implements StageStickman{
         if(stickmanFXStages.containsKey(stageIdentifier)){
             Platform.runLater(()->stickmanFXStages.get(stageIdentifier).show());
         }
+    }
+
+    public LinkedList<String> getStickmanNames() {
+        return stickmanNames;
     }
 
     private static class StickmanStageLogFormatter extends Formatter {

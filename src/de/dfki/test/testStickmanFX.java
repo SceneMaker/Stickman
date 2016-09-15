@@ -11,12 +11,12 @@ public class testStickmanFX {
         StageStickmanController stickmanStage = new StageStickmanControllerFX();
         stickmanStage.addStickman("Bob");
         stickmanStage.addStickman("Anna");
-        ((StageStickmanControllerFX)stickmanStage).launchStickmanStage();
+        ((StageStickmanControllerFX)stickmanStage).launchStickmanConfiguration();
 
 
-        StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
+       /* StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
         stickmanStage2.addStickman("Baxter");
-        ((StageStickmanControllerFX)stickmanStage2).launchStickmanStage();
+        ((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();*/
 
     }
 }

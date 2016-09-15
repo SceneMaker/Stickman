@@ -1,17 +1,11 @@
 package de.dfki.stickmanfx;
 
 import de.dfki.common.CommandParser;
-import de.dfki.common.StageStickmanController;
 import de.dfki.common.StageStickman;
+import de.dfki.common.StageStickmanController;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.io.IOException;
-
 
 /**
  * Created by alvaro on 9/12/16.
@@ -56,7 +50,6 @@ public class StageStickmanControllerFX implements StageStickmanController {
     private void createNewStickmanStage() {
         stickmanStageFX = (StageStickman) StickmanStageFX.getInstance();
         init();
-        ((StickmanStageFX) stickmanStageFX).setStickamnsOnStage(stickmansOnStage);
         try {
             stageIdentifier = ((StickmanStageFX)stickmanStageFX).createNewStage();
         } catch (IOException e) {
@@ -67,6 +60,7 @@ public class StageStickmanControllerFX implements StageStickmanController {
     protected void init() {
         stickmansOnStage = new StickmansOnStage(stickmanStageFX, this);
         commandParser = new CommandParser(stickmansOnStage);
+        ((StickmanStageFX) stickmanStageFX).setStickamnsOnStage(stickmansOnStage);
         initConnectionToServer();
     }
 
@@ -128,8 +122,6 @@ public class StageStickmanControllerFX implements StageStickmanController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void launchStickmanStage(){
