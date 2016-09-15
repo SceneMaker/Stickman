@@ -31,25 +31,25 @@ import javafx.scene.transform.Translate;
  * @author Beka
  *
  */
-public class RightFinger1 extends BodyPartFX 
+public class RightFinger3 extends BodyPartFX 
 {
 
     RightWrist mRightWrist;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	MeshView RightFinger_1;
+	MeshView RightFinger_3;
 
-    public RightFinger1(RightWrist rightWrist) {
+    public RightFinger3(RightWrist rightWrist) {
     	mRightWrist = rightWrist;
         mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -20;
-        mRotation = -2;
+        mRotation = 3;
         mYRotation = 1;
-        mZRotation = -58;
+        mZRotation = 183;
         mToDegree = mDefaultRotation;
         
-        RightFinger_1 = (MeshView) mRightWrist.rightWrist.getChildren().get(1);
+        RightFinger_3 = (MeshView) mRightWrist.rightWrist.getChildren().get(3);
         
         init();
         calculate(0);
@@ -64,10 +64,10 @@ public class RightFinger1 extends BodyPartFX
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		
 		
-		Translate translate = (Translate) RightFinger_1.getTransforms().get(0);
-		Scale scale = (Scale) RightFinger_1.getTransforms().get(4);
-		RightFinger_1.getTransforms().clear();
-		RightFinger_1.getTransforms().addAll(translate, rx, ry, rz, scale);
+		Translate translate = (Translate) RightFinger_3.getTransforms().get(0);
+		Scale scale = (Scale) RightFinger_3.getTransforms().get(4);
+		RightFinger_3.getTransforms().clear();
+		RightFinger_3.getTransforms().addAll(translate, rx, ry, rz, scale);
 
 		mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
 		

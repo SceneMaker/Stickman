@@ -44,6 +44,10 @@ import de.dfki.stickmanfx.bodyfx.NeckFX;
 import de.dfki.stickmanfx.bodyfx.RightEyeFX;
 import de.dfki.stickmanfx.bodyfx.RightEyebrowFX;
 import de.dfki.stickmanfx.bodyfx.RightFinger1;
+import de.dfki.stickmanfx.bodyfx.RightFinger2;
+import de.dfki.stickmanfx.bodyfx.RightFinger3;
+import de.dfki.stickmanfx.bodyfx.RightFinger4;
+import de.dfki.stickmanfx.bodyfx.RightFinger5;
 import de.dfki.stickmanfx.bodyfx.RightFootFX;
 import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
 import de.dfki.stickmanfx.bodyfx.RightForeLegFX;
@@ -155,6 +159,11 @@ public class StickmanFX extends Pane {
 	public RightForeArmFX mRightForeArmFX;
 	public RightWrist mRightWrist;
 	public RightFinger1 mRightFinger1;
+	public RightFinger2 mRightFinger2;
+	public RightFinger3 mRightFinger3;
+	public RightFinger4 mRightFinger4;
+	public RightFinger5 mRightFinger5;
+	
 	public RightHandFX mRightHandFX;
 	// public LeftLegFX mLeftLegFX;
 	public LeftUpperLegFX mLeftUpperLegFX;
@@ -203,6 +212,10 @@ public class StickmanFX extends Pane {
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
 		mRightFinger1 = new RightFinger1(mRightWrist);
+		mRightFinger2 = new RightFinger2(mRightWrist);
+		mRightFinger3 = new RightFinger3(mRightWrist);
+		mRightFinger4 = new RightFinger4(mRightWrist);
+		mRightFinger5 = new RightFinger5(mRightWrist);
 		
 		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
@@ -250,6 +263,10 @@ public class StickmanFX extends Pane {
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
 		mRightFinger1 = new RightFinger1(mRightWrist);
+		mRightFinger2 = new RightFinger2(mRightWrist);
+		mRightFinger3 = new RightFinger3(mRightWrist);
+		mRightFinger4 = new RightFinger4(mRightWrist);
+		mRightFinger5 = new RightFinger5(mRightWrist);
 		
 		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
@@ -295,6 +312,10 @@ public class StickmanFX extends Pane {
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
 		mRightFinger1 = new RightFinger1(mRightWrist);
+		mRightFinger2 = new RightFinger2(mRightWrist);
+		mRightFinger3 = new RightFinger3(mRightWrist);
+		mRightFinger4 = new RightFinger4(mRightWrist);
+		mRightFinger5 = new RightFinger5(mRightWrist);
 		
 		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);

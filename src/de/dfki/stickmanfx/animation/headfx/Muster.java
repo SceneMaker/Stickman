@@ -39,6 +39,18 @@ public class Muster extends AnimationFX
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "zrotate", 90));
             playAnimationPart(300);
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "zrotate", 90));
+            playAnimationPart(300);
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "zrotate", 90));
+            playAnimationPart(300);
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "zrotate", 90));
+            playAnimationPart(300);
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger5, "zrotate", 90));
+            playAnimationPart(300);
             
 //            mAnimationPartFX = new ArrayList<>();
 //            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "zrotate", 40));
@@ -51,6 +63,18 @@ public class Muster extends AnimationFX
                 
                 mAnimationPartFX = new ArrayList<>();
                 mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "zrotate", -90));
+                playAnimationPart(300);
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "zrotate", -90));
+                playAnimationPart(300);
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "zrotate", -90));
+                playAnimationPart(300);
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "zrotate", -90));
+                playAnimationPart(300);
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger5, "zrotate", -90));
                 playAnimationPart(300);
                 
 //                mAnimationPartFX = new ArrayList<>();
