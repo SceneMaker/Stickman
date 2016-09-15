@@ -48,8 +48,8 @@ public class LeftHandFX extends BodyPartFX
     @Override
     public void createShape() 
     {
-        mStart = mLeftForeArmFX.getHandStartPosition();
-        mEnd = new Point(mStart.x, mStart.y + mLength);
+//        mStart = mLeftForeArmFX.getHandStartPosition();
+//        mEnd = new Point(mStart.x, mStart.y + mLength);
 
         clearDrawObjects();
         clearChildren(this);
@@ -79,23 +79,23 @@ public class LeftHandFX extends BodyPartFX
 
         
             
-        mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
-        mHand.getElements().add(new LineTo(mStart.x - 5, mStart.y));
-        mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
-        mHand.getElements().add(new LineTo(mEnd.x, mEnd.y));
-        mHand.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
-        mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
-        mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
-        mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
-        
-        this.getChildren().add(mHand);
-        addToDrawObjects(mHand);
-        this.update();
+//        mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+//        mHand.getElements().add(new LineTo(mStart.x - 5, mStart.y));
+//        mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+//        mHand.getElements().add(new LineTo(mEnd.x, mEnd.y));
+//        mHand.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
+//        mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
+//        mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
+//        mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
+//        
+//        this.getChildren().add(mHand);
+//        addToDrawObjects(mHand);
+//        this.update();
     }
 
     @Override
     public void calculate(int step) {
-        createShape();
+//        createShape();
 
         Affine af = new Affine();
         // flip hand when rotation is more than 60 degrees

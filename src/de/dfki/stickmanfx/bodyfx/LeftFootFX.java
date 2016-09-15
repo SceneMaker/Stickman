@@ -22,6 +22,8 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -30,121 +32,70 @@ import javafx.scene.transform.Rotate;
  */
 public class LeftFootFX extends BodyPartFX {
 
-    LeftForeLegFX mLeftForeLegFX;
-    
-    Point mStart;
-    Point mEnd;
-    
-    Path mLeg;
-    
-    URL url;
-	ColModelImporter imorter;
+	LeftForeLegFX mLeftForeLegFX;
+
 	MeshView leftFoot;
 
-    public LeftFootFX(LeftForeLegFX leftForeLeg) 
-    {
-        mLeftForeLegFX = leftForeLeg;
-        mLength = 10;
+	public LeftFootFX(LeftForeLegFX leftForeLeg) {
+		mLeftForeLegFX = leftForeLeg;
+		mLength = 10;
 		mColor = Color.rgb(80, 80, 80);
 		setDefaulRotation(0);
-		
-		mLeg = new Path();
-		this.getChildren().add(mLeg);
-		
-		url = getClass().getClassLoader().getResource("BodyParts/rightFoot.dae");
-		imorter = new ColModelImporter();
-		imorter.read(url);
-		leftFoot = (MeshView) imorter.getImport()[0];
-		
-		mYRotation = 135;
-		mRotation = -10;
 
-        init();
-        
-        calculate(0);
-    }
-    
-    public Point getLegStartPosition() 
-    {
-    	if(mRotation >= 0 && mRotation <= 90)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()+2), (int) mLeg.boundsInParentProperty().get().getMaxY()-1) : new Point(0, 0);
-    	else if(mRotation>90 && mRotation<= 180)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMinX()), (int) mLeg.boundsInParentProperty().get().getMinY()+3) : new Point(0, 0);
-    	else if(mRotation < 0 && mRotation >= -90)
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-    	else 
-    		return (mLeg != null) ? new Point((int) (mLeg.boundsInParentProperty().get().getMaxX()), (int) mLeg.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    }
-    
-    @Override
-    public void calculate(int step)
-    {
-    	mStart = mLeftForeLegFX.getLegStartPosition();
-    	clearChildren(this);
-    	
-    	leftFoot.setTranslateX(mStart.x);
-    	leftFoot.setTranslateY(mStart.y);
-    	leftFoot.setTranslateZ(-100);
+		leftFoot = (MeshView) mLeftForeLegFX.leftForeLeg.getChildren().get(1);
+
+		mYRotation = -135;
+		mRotation = 10;
+
+		init();
+
+		calculate(0);
+	}
+
+	@Override
+	public void calculate(int step) {
 
 		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
+		Translate translate = (Translate) leftFoot.getTransforms().get(0);
+		Scale scale = (Scale) leftFoot.getTransforms().get(4);
 		leftFoot.getTransforms().clear();
-		leftFoot.getTransforms().addAll(rx, ry, rz);
-    	
-//    	mLeg = new Path();
-//    	
-//    	mStart = mLeftForeLegFX.getLegStartPosition();
-//    	mEnd = new Point(mStart.x, mStart.y);
-//    	
-//    	mLeg.getElements().add(new MoveTo(mEnd.x - 5, mEnd.y + 4));
-//    	mLeg.getElements().add(new QuadCurveTo(mEnd.x, mEnd.y + 2, mEnd.x + 10, mEnd.y + 4));
-//    	
-//    	Affine af = new Affine();
-//    	af.appendRotation(mRotation, mStart.x, mStart.y);
-//    	mLeg.getTransforms().clear();
-//    	mLeg.getTransforms().add(af);
-    	
-    	
-    	this.getChildren().add(leftFoot);
-//    	this.update();
-    }
-    
-    @Override
-	public void update() 
-	{
-    	if (mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
-    		mColorRecorder = mColor;
-    		
-    	if (mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
-        {
-            if (mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
-            {
-                int fadeFactor = mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) 
-                {
-                    fadeFactor = 0;
-                }
-                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            } 
-            else 
-            {
-                int fadeFactor = (20 - mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) 
-                {
-                	mColor = mColorRecorder;
-                }
-                else
-                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            }
-        }
-    	
-    	mLeg.setStroke(mColor);
-    	mLeg.setStrokeWidth(3);
-    	mLeg.setStrokeLineCap(StrokeLineCap.ROUND);
-    	mLeg.setStrokeLineJoin(StrokeLineJoin.ROUND);
+		leftFoot.getTransforms().addAll(translate, rx, ry, rz, scale);
+
+		// this.update();
+	}
+
+	@Override
+	public void update() {
+		if (mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+			mColorRecorder = mColor;
+
+		if (mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+			if (mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
+																										// by
+																										// Robbie
+			{
+				int fadeFactor = mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep
+						* 12;
+				if (fadeFactor <= 24) {
+					fadeFactor = 0;
+				}
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+						(fadeFactor * 100 / 255) / 100f);
+				// mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+			} else {
+				int fadeFactor = (20
+						- mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep)
+						* 12;
+				if (fadeFactor >= 216) {
+					mColor = mColorRecorder;
+				} else
+					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+							(fadeFactor * 100 / 255) / 100f);
+				// mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+			}
+		}
 	}
 }

@@ -22,6 +22,8 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -35,282 +37,38 @@ public class LeftForeArmFX extends BodyPartFX
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-    Point mStart;
-
-    URL url;
-	ColModelImporter imorter;
 	MeshView leftForeArmMesh;
 
     public LeftForeArmFX(LeftUpperArmFX arm) {
         mUpperArmFX = arm;
         mColor = Color.rgb(80, 80, 80);
-        mRotation = -10;
-        mZRotation = 20;
-        url = getClass().getClassLoader().getResource("BodyParts/leftForeArm3.dae");
-		imorter = new ColModelImporter();
-		imorter.read(url);
-		leftForeArmMesh = (MeshView) imorter.getImport()[0];
+        mDefaultRotation = -20;
+        mRotation = -30;
+        mZRotation = 60;
+        mToDegree = mDefaultRotation;
+        
+		leftForeArmMesh = (MeshView) mUpperArmFX.leftUpperArmMesh.getChildren().get(1);
         
         init();
         calculate(0);
     }
 
-    public Point getHandStartPosition() 
-    {
-    	
-    	if (AnimatorFX.sCurrentAction == null || AnimatorFX.sCurrentAction.equals("rotate")) 
-		{
-				if(mRotation>=0 && mRotation <=90)
-				{
-					if(mZRotation >=0 && mZRotation <= 90)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(minX, maxY);
-					}
-					else if(mZRotation > 90 && mZRotation <=180)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4); /////////////
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(minX, minY);
-					}
-					else if(mZRotation <0 && mZRotation >= -90)//////////////
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(maxX, maxY);
-					}
-					else if(mZRotation < -90 && mZRotation >= -180)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);//////////////////
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);//<-------
-						return new Point(maxX, minY);
-					}
-				}
-				else if (mRotation > 90 && mRotation <= 180)
-				{
-					if(mZRotation >=0 && mZRotation <= 90)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(minX, minY);
-					}
-					else if(mZRotation > 90 && mZRotation <=180)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(minX, maxY);
-					}
-					else if(mZRotation <0 && mZRotation >= -90)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(maxX, minY);
-					}
-					else if(mZRotation < -90 && mZRotation >= -180)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(maxX, maxY);
-					}
-				}
-				else if (mRotation < 0 && mRotation >= -90)
-				{
-					if(mZRotation >=0 && mZRotation <= 90)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(minX, maxY);
-					}
-					else if(mZRotation > 90 && mZRotation <=180)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(minX, minY);
-					}
-					else if(mZRotation <0 && mZRotation >= -90)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(maxX, maxY);
-					}
-					else if(mZRotation < -90 && mZRotation >= -180)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(maxX, minY);
-					}
-				}
-				else if (mRotation < -90 && mRotation >= -180)
-				{
-					if(mZRotation >=0 && mZRotation <= 90)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(minX, minY);
-					}
-					else if(mZRotation > 90 && mZRotation <=180)
-					{
-						int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(minX, maxY);
-					}
-					else if(mZRotation <0 && mZRotation >= -90)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-						return new Point(maxX, minY);
-					}
-					else if(mZRotation < -90 && mZRotation >= -180)
-					{
-						int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-						int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-						return new Point(maxX, maxY);
-					}
-				}
-		} 
-		else if (AnimatorFX.sCurrentAction.equals("zrotate")) 
-		{
-			if(mZRotation>=0 && mZRotation <=90)
-			{
-				if(mRotation >=0 && mRotation <= 90)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(minX, maxY);
-				}
-				else if(mRotation > 90 && mRotation <=180)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(minX, minY);
-				}
-				else if(mRotation <0 && mRotation >= -90)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(minX, maxY);
-				}
-				else if(mRotation < -90 && mRotation >= -180)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(maxX, minY);
-				}
-			}
-			else if (mZRotation > 90 && mZRotation <= 180)
-			{
-				if(mRotation >=	0 && mRotation <= 90)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(minX, minY);
-				}
-				else if(mRotation > 90 && mRotation <=180)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(maxX, maxY);
-				}
-				else if(mRotation <0 && mRotation >= -90)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(minX, minY);
-				}
-				else if(mRotation < -90 && mRotation >= -180)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinX() + 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(maxX, maxY);
-				}
-			}
-			else if (mZRotation < 0 && mZRotation >= -90)
-			{
-				if(mRotation >=0 && mRotation <= 90)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(maxX, maxY);
-				}
-				else if(mRotation > 90 && mRotation <=180)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(minX, minY);
-				}
-				else if(mRotation <0 && mRotation >= -90)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(maxX, maxY);
-				}
-				else if(mRotation < -90 && mRotation >= -180)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(minX, minY);
-				}
-			}
-			else if (mZRotation < -90 && mZRotation >= -180)
-			{
-				if(mRotation >=0 && mRotation <= 90)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(maxX, minY);
-				}
-				else if(mRotation > 90 && mRotation <=180)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(minX, maxY);
-				}
-				else if(mRotation <0 && mRotation >= -90)
-				{
-					int maxX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int minY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMinY() + 5);
-					return new Point(maxX, minY);
-				}
-				else if(mRotation < -90 && mRotation >= -180)
-				{
-					int minX = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX() - 4);
-					int maxY = (int) (leftForeArmMesh.boundsInParentProperty().get().getMaxY() - 5);
-					return new Point(minX, maxY);
-				}
-			}
-			
-		} 
-		return new Point(0, 0);
-//    	if(mRotation >= 0 && mRotation <= 90)
-//    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMinX()), (int) leftForeArmMesh.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-//    	else if(mRotation>90 && mRotation<= 180)
-//    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMinX()-6), (int) leftForeArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-//    	else if(mRotation < 0 && mRotation >= -90)
-//    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX()-7), (int) leftForeArmMesh.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-//    	else 
-//    		return (leftForeArmMesh != null) ? new Point((int) (leftForeArmMesh.boundsInParentProperty().get().getMaxX()-7), (int) leftForeArmMesh.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    			
-    }
 
     @Override
     public void calculate(int step) 
     {
-    	mStart = mUpperArmFX.getLeftUpperArmEndPosition();
-    	clearChildren(this);
-    	
-    	leftForeArmMesh.setTranslateX(mStart.x);
-    	leftForeArmMesh.setTranslateY(mStart.y);
-    	leftForeArmMesh.setTranslateZ(-100);
-
 		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-		leftForeArmMesh.getTransforms().clear();
-		leftForeArmMesh.getTransforms().addAll(rx, ry, rz);
 		
-        this.getChildren().add(leftForeArmMesh);
+		
+		Translate translate = (Translate) leftForeArmMesh.getTransforms().get(0);
+		Scale scale = (Scale) leftForeArmMesh.getTransforms().get(4);
+		leftForeArmMesh.getTransforms().clear();
+		leftForeArmMesh.getTransforms().addAll(translate, rx, ry, rz, scale);
+
+		mUpperArmFX.mBodyFX.updateAfterRotation();
+		
 //        update();
     }
 

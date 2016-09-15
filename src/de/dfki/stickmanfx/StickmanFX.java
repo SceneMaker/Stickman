@@ -188,11 +188,11 @@ public class StickmanFX extends Pane {
 		mNeckFX = new NeckFX(mHeadFX);
 		mBodyFX = new BodyFX(mNeckFX);
 		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
-		mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
+		mLeftUpperArmFX = new LeftUpperArmFX(mBodyFX);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
-		mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
@@ -231,11 +231,11 @@ public class StickmanFX extends Pane {
 		mNeckFX = new NeckFX(mHeadFX);
 		mBodyFX = new BodyFX(mNeckFX);
 		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
-		mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
+		mLeftUpperArmFX = new LeftUpperArmFX(mBodyFX);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
-		mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
@@ -272,11 +272,11 @@ public class StickmanFX extends Pane {
 		mNeckFX = new NeckFX(mHeadFX);
 		mBodyFX = new BodyFX(mNeckFX);
 		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
-		mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
+		mLeftUpperArmFX = new LeftUpperArmFX(mBodyFX);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
-		mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
@@ -331,7 +331,7 @@ public class StickmanFX extends Pane {
 		if(mShowName)
 		{
 //			nameLabel.toFront();
-			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
+//			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
 			nameLabel.setText(mName);
 		}
 	
@@ -479,8 +479,8 @@ public class StickmanFX extends Pane {
 		else
 			this.getChildren().add(mFemaleHairFX);
 		this.getChildren().addAll(mNeckFX, mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
-				mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX, mRightShoulderFX,
-				mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
+				mBodyFX, mLeftShoulderFX, /*mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX,*/ mRightShoulderFX,
+				mRightUpperArmFX, /*mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
 				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameLabel);
 		
@@ -509,13 +509,13 @@ public class StickmanFX extends Pane {
 			// BodyFX is not BodyPartFX Classe
 			mBodyFX.update();
 			mLeftShoulderFX.update();
-			mLeftUpperArmFX.update();
-			mLeftForeArmFX.update();
-			mLeftHandFX.update();
+//			mLeftUpperArmFX.update();
+//			mLeftForeArmFX.update();
+//			mLeftHandFX.update();
 			mRightShoulderFX.update();
-			mRightUpperArmFX.update();
-			mRightForeArmFX.update();
-			mRightHandFX.update();
+//			mRightUpperArmFX.update();
+//			mRightForeArmFX.update();
+//			mRightHandFX.update();
 			// mLeftLegFX.update();
 			mLeftUpperLegFX.update();
 			mLeftForeLegFX.update();

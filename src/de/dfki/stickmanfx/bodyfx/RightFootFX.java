@@ -22,6 +22,8 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -32,10 +34,6 @@ public class RightFootFX extends BodyPartFX {
 
 	RightForeLegFX mRightForeLegFX;
 
-	Point mStart;
-
-	URL url;
-	ColModelImporter imorter;
 	MeshView rightFoot;
 
 	public RightFootFX(RightForeLegFX rightForeLeg) {
@@ -44,50 +42,27 @@ public class RightFootFX extends BodyPartFX {
 		mColor = Color.rgb(80, 80, 80);
 		setDefaulRotation(0);
 
-		url = getClass().getClassLoader().getResource("BodyParts/rightFoot.dae");
-		imorter = new ColModelImporter();
-		imorter.read(url);
-		rightFoot = (MeshView) imorter.getImport()[0];
+		rightFoot = (MeshView) mRightForeLegFX.rightForeLeg.getChildren().get(1);
 
-		mYRotation = 50;
-		mRotation = -10;
+		mYRotation = -50;
+		mRotation = 10;
 		init();
 
 		calculate(0);
 	}
 
-	public Point getLegStartPosition() {
-		if (mRotation >= 0 && mRotation <= 90)
-			return (rightFoot != null) ? new Point((int) (rightFoot.boundsInParentProperty().get().getMinX() + 2),
-					(int) rightFoot.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
-		else if (mRotation > 90 && mRotation <= 180)
-			return (rightFoot != null) ? new Point((int) (rightFoot.boundsInParentProperty().get().getMinX()),
-					(int) rightFoot.boundsInParentProperty().get().getMinY() + 3) : new Point(0, 0);
-		else if (mRotation < 0 && mRotation >= -90)
-			return (rightFoot != null) ? new Point((int) (rightFoot.boundsInParentProperty().get().getMaxX()),
-					(int) rightFoot.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-		else
-			return (rightFoot != null) ? new Point((int) (rightFoot.boundsInParentProperty().get().getMaxX()),
-					(int) rightFoot.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-	}
-
 	@Override
 	public void calculate(int step) {
-		mStart = mRightForeLegFX.getLegStartPosition();
-		clearChildren(this);
-
-		rightFoot.setTranslateX(mStart.x);
-		rightFoot.setTranslateY(mStart.y);
-		rightFoot.setTranslateZ(-100);
 
 		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
+		
+		Translate translate = (Translate) rightFoot.getTransforms().get(0);
+		Scale scale = (Scale) rightFoot.getTransforms().get(4);
 		rightFoot.getTransforms().clear();
-		rightFoot.getTransforms().addAll(rx, ry, rz);
+		rightFoot.getTransforms().addAll(translate, rx, ry, rz, scale);
 
-		this.getChildren().add(rightFoot);
 		// this.update();
 	}
 

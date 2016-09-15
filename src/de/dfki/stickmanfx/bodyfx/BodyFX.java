@@ -26,6 +26,9 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Transform;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -35,6 +38,9 @@ import javafx.scene.transform.Rotate;
 public class BodyFX extends BodyPartFX {
 
 	NeckFX mNeckFX;
+	Rotate rx;
+	Rotate ry;
+	Rotate rz;
 
 	Dimension mSize = new Dimension(120, 300);
 
@@ -42,9 +48,12 @@ public class BodyFX extends BodyPartFX {
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
 
+	public String bodyPart = "default";
+
 	URL url;
 	ColModelImporter importer;
 	MeshView bodyMeshView;
+	Group maleBodyModel;
 
 	public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);
 	public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
@@ -54,46 +63,66 @@ public class BodyFX extends BodyPartFX {
 	private Color mFemaleColorRecorder = mFemaleColor;
 	private Color mMaleColorRecorder = mMaleColor;
 
-	public BodyFX(NeckFX neck) {
+	public BodyFX(NeckFX neck) 
+	{
 		mNeckFX = neck;
 		mStart = mNeckFX.getBodyStartPosition();
-		mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
-
-		 if(mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-			 url = getClass().getClassLoader().getResource("BodyParts/femaleBody.dae");
-		 else
-			 url = getClass().getClassLoader().getResource("BodyParts/MaleBody.dae");
-
 		importer = new ColModelImporter();
+
+		mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
+////////
+		url = getClass().getClassLoader().getResource("BodyParts/test2.dae");
 		importer.read(url);
-		bodyMeshView = (MeshView) importer.getImport()[0];
+		maleBodyModel = (Group) (importer.getImport()[0]);
 
 		init();
 	}
 
-	public void calculate(int step) {
+	public void calculate(int step) 
+	{
 		mStart = mNeckFX.getBodyStartPosition();
 		clearChildren(this);
-		bodyMeshView.setTranslateX(mStart.x);
-		bodyMeshView.setTranslateY(mStart.y + 135);
-		bodyMeshView.setTranslateZ(-100);
 
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		maleBodyModel.setTranslateX(mStart.x);
+		maleBodyModel.setTranslateY(mStart.y + 135);
+		maleBodyModel.setTranslateZ(-100);
 
-		bodyMeshView.getTransforms().clear();
-		bodyMeshView.getTransforms().addAll(rx, ry, rz);
-		
-//		if (mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX != null) {
-//			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.mRotation = this.mRotation;
-//			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.mYRotation = this.mYRotation;
-//			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.mZRotation = this.mZRotation;
-//			mNeckFX.mHeadFX.mStickmanFX.mLeftUpperArmFX.calculate(step);
-//		}
+		rx = new Rotate(mRotation, Rotate.X_AXIS);
+		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-		this.getChildren().addAll(bodyMeshView);
+//		switchBodyPart(rx, ry, rz);
+		maleBodyModel.getTransforms().clear();
+		maleBodyModel.getTransforms().addAll(rx, ry, rz);
+		this.getChildren().addAll(maleBodyModel);
 		// update();
+	}
+
+	public void updateAfterRotation() {
+		mStart = mNeckFX.getBodyStartPosition();
+		clearChildren(this);
+
+		maleBodyModel.setTranslateX(mStart.x);
+		maleBodyModel.setTranslateY(mStart.y + 135);
+		maleBodyModel.setTranslateZ(-100);
+
+		this.getChildren().addAll(maleBodyModel);
+	}
+
+	public void switchBodyPart(Rotate rx, Rotate ry, Rotate rz) 
+	{
+		switch (bodyPart) {
+		case "rightUpperArm":
+			Translate t = (Translate) maleBodyModel.getChildren().get(1).getTransforms().get(0);
+			Scale s = (Scale) maleBodyModel.getChildren().get(1).getTransforms().get(4);
+			maleBodyModel.getChildren().get(1).getTransforms().clear();
+			maleBodyModel.getChildren().get(1).getTransforms().addAll(t, rx, ry, rz, s);
+			break;
+		case "body":
+			maleBodyModel.getTransforms().clear();
+			maleBodyModel.getTransforms().addAll(rx, ry, rz);
+			break;
+		}
 	}
 
 	public Point getLeftArmStartPostion() {

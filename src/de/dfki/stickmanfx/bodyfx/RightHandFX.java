@@ -47,8 +47,8 @@ public class RightHandFX extends BodyPartFX
 
 	@Override
 	public void createShape() {
-		mStart = mRightForeArmFX.getHandStartPosition();
-		mEnd = new Point(mStart.x, mStart.y + mLength);
+//		mStart = mRightForeArmFX.getHandStartPosition();
+//		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearDrawObjects();
 		clearChildren(this);
@@ -80,24 +80,24 @@ public class RightHandFX extends BodyPartFX
 			}
 		}
 
-		mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
-		mHand.getElements().add(new LineTo(mStart.x + 5, mStart.y));
-		mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
-		mHand.getElements().add(new LineTo(mEnd.x, mEnd.y));
-		mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
-		mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
-		mHand.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
-		mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
-
-		this.getChildren().add(mHand);
-		addToDrawObjects(mHand);
-		this.toFront();
-		update();
+//		mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+//		mHand.getElements().add(new LineTo(mStart.x + 5, mStart.y));
+//		mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
+//		mHand.getElements().add(new LineTo(mEnd.x, mEnd.y));
+//		mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
+//		mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
+//		mHand.getElements().add(new MoveTo(mStart.x - 1, mStart.y));
+//		mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
+//
+//		this.getChildren().add(mHand);
+//		addToDrawObjects(mHand);
+//		this.toFront();
+//		update();
 	}
 
 	@Override
 	public void calculate(int step) {
-		createShape();
+//		createShape();
 
 		Affine af = new Affine();
 		// AffineTransform t = new AffineTransform();

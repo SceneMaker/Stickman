@@ -117,7 +117,8 @@ public class HeadFX extends BodyPartFX {
 
 	public Point getBombeEndPosition() 
 	{
-		return new Point(mHalfWidth + 100, mStickmanFX.mRightForeLegFX.getLegStartPosition().y - 50);
+		return new Point(0,0);
+//		return new Point(mHalfWidth + 100, mStickmanFX.mRightForeLegFX.getLegStartPosition().y - 50);
 	}
 
 	public Point getNeckStartPosition() 
