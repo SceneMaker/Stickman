@@ -80,8 +80,6 @@ public class Muster extends AnimationFX
                 
                 pauseAnimation(500);
                 
-                mStickmanFX.mBodyFX.bodyPart = "body";
-                
                 mAnimationPartFX = new ArrayList<>();
                 mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "zrotate", -90));
                 playAnimationPart(300);

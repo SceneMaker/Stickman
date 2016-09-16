@@ -66,7 +66,7 @@ public class RightUpperArmFX extends BodyPartFX {
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 
-		rightUpperArm = (Group) mBodyFX.maleBodyModel.getChildren().get(2);
+		rightUpperArm = (Group) mBodyFX.mBodyModel.getChildren().get(2);
 
 		init();
 		calculate(0);

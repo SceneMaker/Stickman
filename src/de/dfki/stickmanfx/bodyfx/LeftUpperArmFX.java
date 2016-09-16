@@ -59,7 +59,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 
-		leftUpperArmMesh = (Group) mBodyFX.maleBodyModel.getChildren().get(1);
+		leftUpperArmMesh = (Group) mBodyFX.mBodyModel.getChildren().get(1);
 
 		init();
 		calculate(0);

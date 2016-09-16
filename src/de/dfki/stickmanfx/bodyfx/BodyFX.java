@@ -13,21 +13,11 @@ import java.net.URL;
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.Group;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.CubicCurveTo;
-import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.Sphere;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
-import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 
 /**
@@ -48,12 +38,9 @@ public class BodyFX extends BodyPartFX {
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
 
-	public String bodyPart = "default";
-
 	URL url;
 	ColModelImporter importer;
-	MeshView bodyMeshView;
-	Group maleBodyModel;
+	Group mBodyModel;
 
 	public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);
 	public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
@@ -63,45 +50,40 @@ public class BodyFX extends BodyPartFX {
 	private Color mFemaleColorRecorder = mFemaleColor;
 	private Color mMaleColorRecorder = mMaleColor;
 
-	public BodyFX(NeckFX neck) 
-	{
+	public BodyFX(NeckFX neck) {
 		mNeckFX = neck;
 		mStart = mNeckFX.getBodyStartPosition();
 		importer = new ColModelImporter();
 
 		mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
-////////
-		if(mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-		{
+		
+		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
 			url = getClass().getClassLoader().getResource("BodyParts/FemaleBody.dae");
-		}
-		else
-		{
+		} else {
 			url = getClass().getClassLoader().getResource("BodyParts/MaleBody.dae");
 		}
+		
 		importer.read(url);
-		maleBodyModel = (Group) (importer.getImport()[0]);
+		mBodyModel = (Group) (importer.getImport()[0]);
 
 		init();
 	}
 
-	public void calculate(int step) 
-	{
+	public void calculate(int step) {
 		mStart = mNeckFX.getBodyStartPosition();
 		clearChildren(this);
 
-		maleBodyModel.setTranslateX(mStart.x);
-		maleBodyModel.setTranslateY(mStart.y + 135);
-		maleBodyModel.setTranslateZ(-100);
+		mBodyModel.setTranslateX(mStart.x);
+		mBodyModel.setTranslateY(mStart.y + 135);
+		mBodyModel.setTranslateZ(-100);
 
 		rx = new Rotate(mRotation, Rotate.X_AXIS);
 		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-//		switchBodyPart(rx, ry, rz);
-		maleBodyModel.getTransforms().clear();
-		maleBodyModel.getTransforms().addAll(rx, ry, rz);
-		this.getChildren().addAll(maleBodyModel);
+		mBodyModel.getTransforms().clear();
+		mBodyModel.getTransforms().addAll(rx, ry, rz);
+		this.getChildren().addAll(mBodyModel);
 		// update();
 	}
 
@@ -109,27 +91,11 @@ public class BodyFX extends BodyPartFX {
 		mStart = mNeckFX.getBodyStartPosition();
 		clearChildren(this);
 
-		maleBodyModel.setTranslateX(mStart.x);
-		maleBodyModel.setTranslateY(mStart.y + 135);
-		maleBodyModel.setTranslateZ(-100);
+		mBodyModel.setTranslateX(mStart.x);
+		mBodyModel.setTranslateY(mStart.y + 135);
+		mBodyModel.setTranslateZ(-100);
 
-		this.getChildren().addAll(maleBodyModel);
-	}
-
-	public void switchBodyPart(Rotate rx, Rotate ry, Rotate rz) 
-	{
-		switch (bodyPart) {
-		case "rightUpperArm":
-			Translate t = (Translate) maleBodyModel.getChildren().get(1).getTransforms().get(0);
-			Scale s = (Scale) maleBodyModel.getChildren().get(1).getTransforms().get(4);
-			maleBodyModel.getChildren().get(1).getTransforms().clear();
-			maleBodyModel.getChildren().get(1).getTransforms().addAll(t, rx, ry, rz, s);
-			break;
-		case "body":
-			maleBodyModel.getTransforms().clear();
-			maleBodyModel.getTransforms().addAll(rx, ry, rz);
-			break;
-		}
+		this.getChildren().addAll(mBodyModel);
 	}
 
 	public Point getLeftArmStartPostion() {

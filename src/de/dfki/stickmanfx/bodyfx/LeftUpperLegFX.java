@@ -50,7 +50,7 @@ public class LeftUpperLegFX extends BodyPartFX {
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 
-		lefttUpperLeg = (Group) mBodyFX.maleBodyModel.getChildren().get(3);
+		lefttUpperLeg = (Group) mBodyFX.mBodyModel.getChildren().get(3);
 
 		init();
 

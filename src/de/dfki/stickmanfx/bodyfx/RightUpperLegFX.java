@@ -51,7 +51,7 @@ public class RightUpperLegFX extends BodyPartFX {
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 
-		rightUpperLeg = (Group) mBodyFX.maleBodyModel.getChildren().get(4);
+		rightUpperLeg = (Group) mBodyFX.mBodyModel.getChildren().get(4);
 
 		init();
 		calculate(0);
