@@ -28,6 +28,7 @@ import javax.swing.text.html.CSS;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 
 /**
@@ -50,7 +51,10 @@ public class LeftUpperArmFX extends BodyPartFX {
 	public LeftUpperArmFX(BodyFX bodyFX) {
 		mBodyFX = bodyFX;
 		mColor = Color.rgb(80, 80, 80);
-		mDefaultRotation = -30;
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mDefaultRotation = -30;
+		else
+			mDefaultRotation = -35;
 		mZRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
