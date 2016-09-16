@@ -43,7 +43,7 @@ public class HeadFX extends BodyPartFX {
 	int mHalfWidth = mSize.width / 2;
 	int mPivotOffset = 55;
 	int mZTranslate = -100; // Bring shape in front, because of DepthTest
-	
+
 	int mEarWidth = 10;
 
 	int mDrawOffset = 10;
@@ -52,94 +52,83 @@ public class HeadFX extends BodyPartFX {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView headMeshView;
+	MeshView mHead;
 
 	int mHeadRadius = 60;
 	int mHeadHeight = 30;
 
-	public HeadFX(StickmanFX sm) 
-	{
+	public HeadFX(StickmanFX sm) {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 
 		url = getClass().getClassLoader().getResource("BodyParts/head.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
-		headMeshView = (MeshView) imorter.getImport()[0];
+		mHead = (MeshView) imorter.getImport()[0];
 
 		mColor = Color.rgb(242, 227, 217, 1);
-		
+
 		mYRotation = -0;
 		init();
 
 		calculate(0);
 	}
 
-	public Point getLeftEyebrowPostion() 
-	{
+	public Point getLeftEyebrowPostion() {
 		return new Point(mHalfWidth + 1, mHalfHeight + 61);
 	}
 
-	public Point getRightEyebrowPostion() 
-	{
+	public Point getRightEyebrowPostion() {
 		return new Point(mHalfWidth - 1, mHalfHeight + 61);
 	}
 
-	public Point getLeftEyePostion() 
-	{
+	public Point getLeftEyePostion() {
 		return new Point(mHalfWidth + 2, mHalfHeight + 62);
 	}
 
-	public Point getRightEyePostion() 
-	{
+	public Point getRightEyePostion() {
 		return new Point(mHalfWidth, mHalfHeight + 62);
 	}
 
-	public Point getMouthPostion() 
-	{
+	public Point getMouthPostion() {
 		return new Point(mHalfWidth + mEarWidth / 2 - 3, mHalfHeight + mDrawOffset * 3 + 25);
 	}
 
-	public Point getSpeechBubbleStartPosition() 
-	{
+	public Point getSpeechBubbleStartPosition() {
 		return new Point(mHalfWidth + 20, mHalfHeight + 30);
 	}
 
-	public Point getThinkhBubbleStartPosition() 
-	{
+	public Point getThinkhBubbleStartPosition() {
 		return new Point(mHalfWidth, mHalfHeight);
 	}
 
-	public Point getBombeStartPosition() 
-	{
+	public Point getBombeStartPosition() {
 		return new Point(mHalfWidth + 100, mHalfHeight - 50);
 	}
 
-	public Point getBombeEndPosition() 
-	{
-		return new Point(0,0);
-//		return new Point(mHalfWidth + 100, mStickmanFX.mRightForeLegFX.getLegStartPosition().y - 50);
+	public Point getBombeEndPosition() {
+		return new Point(0, 0);
+		// return new Point(mHalfWidth + 100,
+		// mStickmanFX.mRightForeLegFX.getLegStartPosition().y - 50);
 	}
 
-	public Point getNeckStartPosition() 
-	{
+	public Point getNeckStartPosition() {
 		return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset + 4);
 	}
 
-	public void calculate(int step) 
-	{
+	public void calculate(int step) {
 		clearChildren(this);
-		
-		headMeshView.setTranslateX(mHalfWidth);
-		headMeshView.setTranslateY(mHalfHeight + mPivotOffset);
-		headMeshView.setTranslateZ(mZTranslate);
+
+		mHead.setTranslateX(mHalfWidth);
+		mHead.setTranslateY(mHalfHeight + mPivotOffset);
+		mHead.setTranslateZ(mZTranslate);
 
 		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-		headMeshView.getTransforms().clear();
-		headMeshView.getTransforms().addAll(rx, ry, rz);
+		mHead.getTransforms().clear();
+		mHead.getTransforms().addAll(rx, ry, rz);
 
 		if (mStickmanFX.mFemaleHairFX != null) {
 			mStickmanFX.mFemaleHairFX.mXRotation = this.mXRotation;
@@ -190,7 +179,7 @@ public class HeadFX extends BodyPartFX {
 			mStickmanFX.mMaleHairFX.calculate(step);
 		}
 
-		this.getChildren().addAll(headMeshView);
+		this.getChildren().addAll(mHead);
 		// update();
 
 	}
@@ -198,28 +187,21 @@ public class HeadFX extends BodyPartFX {
 	public void update() {
 		if (mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
-		
-		if (mStickmanFX.setCharacterInvisible == true) 
-		{
-			if (mStickmanFX.fadeControler == true)
-			{
+
+		if (mStickmanFX.setCharacterInvisible == true) {
+			if (mStickmanFX.fadeControler == true) {
 
 				int fadeFactor = mStickmanFX.mMouthFX.mShapeAnimationStep * 10;
-				if (fadeFactor <= 20)
-				{
+				if (fadeFactor <= 20) {
 					fadeFactor = 0;
 				}
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
 						(fadeFactor * 100 / 255) / 100f);
-			} 
-			else 
-			{
+			} else {
 				int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-				if (fadeFactor >= 160) 
-				{
+				if (fadeFactor >= 160) {
 					mColor = mColorRecorder;
-				} 
-				else
+				} else
 					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
 							(fadeFactor * 100 / 255) / 100f);
 			}
