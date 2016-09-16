@@ -88,7 +88,7 @@ public class StarsFX extends BodyPartFX
 		mStart = mBodyFX.getLeftLegStartPostion();
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
-		clearDrawObjects();
+//		clearDrawObjects();
 		clearChildren(this);
 		Path path = new Path();
 
@@ -226,7 +226,7 @@ public class StarsFX extends BodyPartFX
 				
 		}
 		
-		addToDrawObjects(path);
+//		addToDrawObjects(path);
 		this.update();
 	}
 

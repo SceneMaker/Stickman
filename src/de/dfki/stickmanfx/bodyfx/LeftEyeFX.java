@@ -130,7 +130,7 @@ public class LeftEyeFX extends BodyPartFX {
 			leftEyeMeshView.setTranslateY(mStart.y);
 			leftEyeMeshView.setTranslateZ(mZTranslate);
 
-			Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+			Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 			Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 			Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 

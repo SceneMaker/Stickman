@@ -44,7 +44,7 @@ public class LeftForeArmFX extends BodyPartFX
         mUpperArmFX = arm;
         mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -20;
-        mRotation = -30;
+        mXRotation = -30;
         mZRotation = 60;
         mToDegree = mDefaultRotation;
         
@@ -58,7 +58,7 @@ public class LeftForeArmFX extends BodyPartFX
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		

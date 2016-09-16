@@ -45,7 +45,7 @@ public class RightFootFX extends BodyPartFX {
 		rightFoot = (MeshView) mRightForeLegFX.rightForeLeg.getChildren().get(1);
 
 		mYRotation = -50;
-		mRotation = 10;
+		mXRotation = 10;
 		init();
 
 		calculate(0);
@@ -54,7 +54,7 @@ public class RightFootFX extends BodyPartFX {
 	@Override
 	public void calculate(int step) {
 
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		

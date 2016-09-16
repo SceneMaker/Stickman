@@ -46,7 +46,7 @@ public class RightShoulderFX extends BodyPartFX
 		mColor = Color.rgb(80, 80, 80);
 
 		mDefaultRotation = 70;
-		mRotation = mDefaultRotation;
+		mXRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 		mShoulder = new Path();
@@ -84,7 +84,7 @@ public class RightShoulderFX extends BodyPartFX
 		mShoulder.getElements().add(new QuadCurveTo(mStart.x, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
 
         Affine af = new Affine();
-        af.appendRotation(mRotation, mStart.x, mStart.y);
+        af.appendRotation(mXRotation, mStart.x, mStart.y);
         mShoulder.getTransforms().clear();
         mShoulder.getTransforms().add(af);
 

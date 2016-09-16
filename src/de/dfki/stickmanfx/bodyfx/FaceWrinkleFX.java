@@ -60,7 +60,7 @@ public class FaceWrinkleFX extends BodyPartFX
 
 		double movement;
 
-		clearDrawObjects();
+//		clearDrawObjects();
 		clearChildren(this);
 		
 		mPath = new Path();
@@ -144,7 +144,7 @@ public class FaceWrinkleFX extends BodyPartFX
 			break;
 		}
 		this.getChildren().add(mPath);
-		addToDrawObjects(mPath);
+//		addToDrawObjects(mPath);
 		this.update();
 	}
 

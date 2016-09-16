@@ -47,7 +47,7 @@ public class RightUpperLegFX extends BodyPartFX {
 		mColor = Color.rgb(80, 80, 80);
 
 		mDefaultRotation = 0;
-		mRotation = mDefaultRotation;
+		mXRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 
@@ -60,7 +60,7 @@ public class RightUpperLegFX extends BodyPartFX {
 	@Override
 	public void calculate(int step) {
 
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		

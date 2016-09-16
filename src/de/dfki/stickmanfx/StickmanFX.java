@@ -37,8 +37,6 @@ import de.dfki.stickmanfx.bodyfx.LeftFinger5;
 import de.dfki.stickmanfx.bodyfx.LeftFootFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeLegFX;
-import de.dfki.stickmanfx.bodyfx.LeftHandFX;
-import de.dfki.stickmanfx.bodyfx.LeftLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperLegFX;
@@ -56,8 +54,6 @@ import de.dfki.stickmanfx.bodyfx.RightFinger5;
 import de.dfki.stickmanfx.bodyfx.RightFootFX;
 import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
 import de.dfki.stickmanfx.bodyfx.RightForeLegFX;
-import de.dfki.stickmanfx.bodyfx.RightHandFX;
-import de.dfki.stickmanfx.bodyfx.RightLegFX;
 import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperLegFX;
@@ -164,7 +160,6 @@ public class StickmanFX extends Pane {
 	public LeftFinger4 mLeftFinger4;
 	public LeftFinger5 mLeftFinger5;
 	
-	public LeftHandFX mLeftHandFX;
 	public RightShoulderFX mRightShoulderFX;
 	public RightUpperArmFX mRightUpperArmFX;
 	public RightForeArmFX mRightForeArmFX;
@@ -175,7 +170,6 @@ public class StickmanFX extends Pane {
 	public RightFinger4 mRightFinger4;
 	public RightFinger5 mRightFinger5;
 	
-	public RightHandFX mRightHandFX;
 	// public LeftLegFX mLeftLegFX;
 	public LeftUpperLegFX mLeftUpperLegFX;
 	public LeftForeLegFX mLeftForeLegFX;
@@ -223,7 +217,6 @@ public class StickmanFX extends Pane {
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
 		mLeftFinger5 = new LeftFinger5(mLeftWrist);
 		
-		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
 		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
@@ -234,7 +227,6 @@ public class StickmanFX extends Pane {
 		mRightFinger4 = new RightFinger4(mRightWrist);
 		mRightFinger5 = new RightFinger5(mRightWrist);
 		
-		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
@@ -280,7 +272,6 @@ public class StickmanFX extends Pane {
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
 		mLeftFinger5 = new LeftFinger5(mLeftWrist);
 		
-		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
 		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
@@ -291,7 +282,6 @@ public class StickmanFX extends Pane {
 		mRightFinger4 = new RightFinger4(mRightWrist);
 		mRightFinger5 = new RightFinger5(mRightWrist);
 		
-		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
@@ -335,7 +325,6 @@ public class StickmanFX extends Pane {
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
 		mLeftFinger5 = new LeftFinger5(mLeftWrist);
 		
-		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
 		mRightShoulderFX = new RightShoulderFX(mBodyFX);
 		mRightUpperArmFX = new RightUpperArmFX(mBodyFX);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
@@ -346,7 +335,6 @@ public class StickmanFX extends Pane {
 		mRightFinger4 = new RightFinger4(mRightWrist);
 		mRightFinger5 = new RightFinger5(mRightWrist);
 		
-		mRightHandFX = new RightHandFX(mRightForeArmFX);
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
@@ -630,11 +618,9 @@ public class StickmanFX extends Pane {
 			mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
 			mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
 			mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
-			mLeftHandFX.rotatePerlinNoise(mWobble, x, y);
 			mRightShoulderFX.rotatePerlinNoise(mWobble, x, y);
 			mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
 			mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
-			mRightHandFX.rotatePerlinNoise(mWobble, x, y);
 			// mLeftLegFX.update();
 			mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
 			mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);

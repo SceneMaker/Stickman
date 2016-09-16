@@ -77,7 +77,7 @@ public class BodyFX extends BodyPartFX {
 		mBodyModel.setTranslateY(mStart.y + 135);
 		mBodyModel.setTranslateZ(-100);
 
-		rx = new Rotate(mRotation, Rotate.X_AXIS);
+		rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 

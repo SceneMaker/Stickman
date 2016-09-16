@@ -59,7 +59,7 @@ public class ComeBackFromSmall extends AnimationFX
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
 		playAnimationPart(20);
 		pauseAnimation(20);
 
@@ -68,7 +68,7 @@ public class ComeBackFromSmall extends AnimationFX
 			for (int j = 0; j < 9; j++) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
+//				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
 				if (mStickmanFX.mScale >= 1.0) {
@@ -83,7 +83,7 @@ public class ComeBackFromSmall extends AnimationFX
 			for (int j = 0; j < 9; j++) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
+//				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
 				if (mStickmanFX.mScale >= 1.0) {
@@ -99,7 +99,7 @@ public class ComeBackFromSmall extends AnimationFX
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 32));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 32));
 		playAnimationPart(20);
 	}
 }

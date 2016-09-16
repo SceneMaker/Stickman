@@ -46,7 +46,7 @@ public class LeftForeLegFX extends BodyPartFX {
     {
     	mUpperLegFX = leftUpperLegFX;
         mDefaultRotation = -2;
-		mRotation = mDefaultRotation;
+		mXRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mColor = Color.rgb(80, 80, 80);
 		
@@ -59,7 +59,7 @@ public class LeftForeLegFX extends BodyPartFX {
     
     public void calculate(int step)
     {
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		

@@ -134,7 +134,7 @@ public class HeadFX extends BodyPartFX {
 		headMeshView.setTranslateY(mHalfHeight + mPivotOffset);
 		headMeshView.setTranslateZ(mZTranslate);
 
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
@@ -142,49 +142,49 @@ public class HeadFX extends BodyPartFX {
 		headMeshView.getTransforms().addAll(rx, ry, rz);
 
 		if (mStickmanFX.mFemaleHairFX != null) {
-			mStickmanFX.mFemaleHairFX.mRotation = this.mRotation;
+			mStickmanFX.mFemaleHairFX.mXRotation = this.mXRotation;
 			mStickmanFX.mFemaleHairFX.mYRotation = this.mYRotation;
 			mStickmanFX.mFemaleHairFX.mZRotation = this.mZRotation;
 			mStickmanFX.mFemaleHairFX.calculate(step);
 		}
 
 		if (mStickmanFX.mLeftEyeFX != null) {
-			mStickmanFX.mLeftEyeFX.mRotation = this.mRotation;
+			mStickmanFX.mLeftEyeFX.mXRotation = this.mXRotation;
 			mStickmanFX.mLeftEyeFX.mYRotation = this.mYRotation;
 			mStickmanFX.mLeftEyeFX.mZRotation = this.mZRotation;
 			mStickmanFX.mLeftEyeFX.calculate(step);
 		}
 
 		if (mStickmanFX.mRightEyeFX != null) {
-			mStickmanFX.mRightEyeFX.mRotation = this.mRotation;
+			mStickmanFX.mRightEyeFX.mXRotation = this.mXRotation;
 			mStickmanFX.mRightEyeFX.mYRotation = this.mYRotation;
 			mStickmanFX.mRightEyeFX.mZRotation = this.mZRotation;
 			mStickmanFX.mRightEyeFX.calculate(step);
 		}
 
 		if (mStickmanFX.mLeftEyebrowFX != null) {
-			mStickmanFX.mLeftEyebrowFX.mRotation = this.mRotation;
+			mStickmanFX.mLeftEyebrowFX.mXRotation = this.mXRotation;
 			mStickmanFX.mLeftEyebrowFX.mYRotation = this.mYRotation;
 			mStickmanFX.mLeftEyebrowFX.mZRotation = this.mZRotation;
 			mStickmanFX.mLeftEyebrowFX.calculate(step);
 		}
 
 		if (mStickmanFX.mRightEyebrowFX != null) {
-			mStickmanFX.mRightEyebrowFX.mRotation = this.mRotation;
+			mStickmanFX.mRightEyebrowFX.mXRotation = this.mXRotation;
 			mStickmanFX.mRightEyebrowFX.mYRotation = this.mYRotation;
 			mStickmanFX.mRightEyebrowFX.mZRotation = this.mZRotation;
 			mStickmanFX.mRightEyebrowFX.calculate(step);
 		}
 
 		if (mStickmanFX.mMouthFX != null) {
-			mStickmanFX.mMouthFX.mRotation = this.mRotation;
+			mStickmanFX.mMouthFX.mXRotation = this.mXRotation;
 			mStickmanFX.mMouthFX.mYRotation = this.mYRotation;
 			mStickmanFX.mMouthFX.mZRotation = this.mZRotation;
 			mStickmanFX.mMouthFX.calculate(step);
 		}
 
 		if (mStickmanFX.mMaleHairFX != null) {
-			mStickmanFX.mMaleHairFX.mRotation = this.mRotation;
+			mStickmanFX.mMaleHairFX.mXRotation = this.mXRotation;
 			mStickmanFX.mMaleHairFX.mYRotation = this.mYRotation;
 			mStickmanFX.mMaleHairFX.mZRotation = this.mZRotation;
 			mStickmanFX.mMaleHairFX.calculate(step);

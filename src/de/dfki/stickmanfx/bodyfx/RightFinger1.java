@@ -44,7 +44,7 @@ public class RightFinger1 extends BodyPartFX
     	mRightWrist = rightWrist;
         mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -20;
-        mRotation = -2;
+        mXRotation = -2;
         mYRotation = 1;
         mZRotation = -58;
         mToDegree = mDefaultRotation;
@@ -59,7 +59,7 @@ public class RightFinger1 extends BodyPartFX
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		

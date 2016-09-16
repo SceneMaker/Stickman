@@ -117,7 +117,7 @@ public class RightEyeFX extends BodyPartFX {
 			rightEyeMesh.setTranslateY(mStart.y);
 			rightEyeMesh.setTranslateZ(-105);
 
-			Rotate rx = new Rotate(mRotation, Rotate.X_AXIS);
+			Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 			Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 			Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
