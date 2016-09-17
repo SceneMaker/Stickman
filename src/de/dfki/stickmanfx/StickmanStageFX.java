@@ -23,6 +23,10 @@ import java.util.logging.LogRecord;
  *
  */
 public class StickmanStageFX extends Application implements StageStickman{
+    public static final float STICKMAN_SIZE_FACTOR = 0.8f;
+    public static final float HEIGHT_ADJUSTMENT = 3 / 5.0f;
+    public static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
+
     static private StickmanStageFX sInstance;
     Stage configStage;
     private StickmansOnStage stickamnsOnStage;
@@ -40,11 +44,11 @@ public class StickmanStageFX extends Application implements StageStickman{
     }
 
     public float getFullScreenScale(){
-        return getHeight() / (float) StickmanFX.mDefaultSize.height * sScale * 0.8f;
+        return getHeight() / (float) StickmanFX.mDefaultSize.height * sScale * STICKMAN_SIZE_FACTOR;
     }
 
     public Dimension getFullScreenDimension(){
-        return new Dimension(new Float(getHeight() * 3 / 5 * sScale).intValue(), new Float(getHeight() * sScale * 0.9f ).intValue());
+        return new Dimension(new Float(getHeight() * HEIGHT_ADJUSTMENT * sScale).intValue(), new Float(getHeight() * sScale * STICKMAN_IN_BETWEEN_DISTANCE_FACTOR).intValue());
     }
 
     private float getHeight(){
@@ -146,6 +150,23 @@ public class StickmanStageFX extends Application implements StageStickman{
     public void showStage(String stageIdentifier) {
         if(stickmanFXStages.containsKey(stageIdentifier)){
             Platform.runLater(()->stickmanFXStages.get(stageIdentifier).show());
+        }
+    }
+
+    @Override
+    public void setStageFullScreen(String stageIdentifier) {
+        setFullScreen(stageIdentifier, true);
+    }
+
+    @Override
+    public void setStageNonFullScreen(String stageIdentifier) {
+        setFullScreen(stageIdentifier, false);
+    }
+
+    private void setFullScreen(String stageIdentifier, boolean value) {
+        if (stickmanFXStages.containsKey(stageIdentifier)) {
+            int a = 0;
+            Platform.runLater(() -> stickmanFXStages.get(stageIdentifier).setFullScreen(value));
         }
     }
 

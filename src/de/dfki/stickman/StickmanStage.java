@@ -400,6 +400,16 @@ public class StickmanStage extends JFrame implements MouseListener , StageStickm
 
     }
 
+    @Override
+    public void setStageFullScreen(String stageIdentifier) {
+
+    }
+
+    @Override
+    public void setStageNonFullScreen(String stageIdentifier) {
+
+    }
+
     private static class StickmanStageLogFormatter extends Formatter {
 
         @Override

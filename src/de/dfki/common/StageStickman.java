@@ -6,7 +6,9 @@ import java.awt.*;
  * Created by alvaro on 9/4/16.
  */
 public interface StageStickman {
-    public float getFullScreenScale();
-    public Dimension getFullScreenDimension();
-    public  void addStickmanToStage(String stageIdentifier) throws Exception;
+    float getFullScreenScale();
+    Dimension getFullScreenDimension();
+    void addStickmanToStage(String stageIdentifier) throws Exception;
+    void setStageFullScreen(String stageIdentifier);
+    void setStageNonFullScreen(String stageIdentifier);
 }

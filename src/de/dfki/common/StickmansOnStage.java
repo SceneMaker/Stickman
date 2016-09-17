@@ -27,6 +27,10 @@ public class StickmansOnStage {
         stageStickmanController = controllerFX;
     }
 
+    public void setStageStickmanController(StageStickmanController controllerFX){
+        stageStickmanController = controllerFX;
+    }
+
     public void addStickman(String name, boolean fullScreen) {
         StickmanFX.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
