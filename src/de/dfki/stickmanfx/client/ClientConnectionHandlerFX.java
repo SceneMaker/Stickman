@@ -94,7 +94,9 @@ public class ClientConnectionHandlerFX extends Thread {
 		start();
 	}
 
-	public void tryToConnect(){
+	public void tryToConnect(String host, int port){
+                mHost = host;
+		mPort = port;
 		connect(mHost, mPort);
 		while (!ismConnected()) {
 			try {
