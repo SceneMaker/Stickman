@@ -1,10 +1,12 @@
-package de.dfki.stickmanfx;
+package de.dfki.stickmanfx.stagecontroller;
 
 import de.dfki.common.CommandParser;
 import de.dfki.common.CommonStickman;
 import de.dfki.common.StageStickman;
 import de.dfki.common.StageStickmanController;
 import de.dfki.common.StickmansOnStage;
+import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
 import java.io.IOException;
 
@@ -15,19 +17,16 @@ public class StageStickmanControllerFX implements StageStickmanController {
     public static final String CONFIG_STAGE = "configStage";
     private final ApplicationFXLauncher applicationFXLauncher = new ApplicationFXLauncher();
     private StageStickman stickmanStageFX;
-    private  ClientConnectionHandlerFX mConnection;
-    private StickmansOnStage stickmansOnStage;
-    private CommandParser commandParser;
-    private boolean mNetwork;
+
+    protected StickmansOnStage stickmansOnStage;
     private String stageIdentifier;
 
     public StageStickmanControllerFX(){
         getStickmanStageInstance();
         createNewStickmanStage();
-
     }
 
-    private void getStickmanStageInstance() {
+    protected void getStickmanStageInstance() {
         if(StickmanStageFX.isRunning){
             stickmanStageFX = (StageStickman) StickmanStageFX.getInstance();
 
@@ -35,15 +34,8 @@ public class StageStickmanControllerFX implements StageStickmanController {
             applicationFXLauncher.launchStickmanAndWait();
         }
     }
-    
-    public StageStickmanControllerFX(String host, int port){
-        mNetwork = true;
-        getStickmanStageInstance();
-        createNewStickmanStage();
-        initConnectionToServer(host, port);
-    }
 
-    private void createNewStickmanStage() {
+    protected void createNewStickmanStage() {
         stickmanStageFX = (StageStickman) StickmanStageFX.getInstance();
         init();
         try {
@@ -55,17 +47,12 @@ public class StageStickmanControllerFX implements StageStickmanController {
 
     protected void init() {
         stickmansOnStage = new StickmansOnStage(stickmanStageFX, this);
-        commandParser = new CommandParser(stickmansOnStage);
         ((StickmanStageFX) stickmanStageFX).setStickamnsOnStage(stickmansOnStage);
     }
 
     @Override
     public  void clearStage() {
         stickmansOnStage.clearStage();
-        if(mConnection != null){
-            mConnection.end();
-            mConnection = null;
-        }
     }
 
     public  void animate(String stickmanname,  String name, int duration, String text, boolean block) {
@@ -73,28 +60,18 @@ public class StageStickmanControllerFX implements StageStickmanController {
         sm.doAnimation(name, duration, text, block);
     }
 
-    private  void initConnectionToServer(String host, int port){
-        if(mNetwork) {
-            mConnection = new ClientConnectionHandlerFX(commandParser);
-            mConnection.tryToConnect(host, port);
-        }
-    }
-
+    @Override
     public boolean ismNetwork() {
-        return mNetwork;
+        return false;
     }
 
+    @Override
     public  void sendTimeMarkInformation(String timemark) {
-        if (mConnection.ismConnected()) {
-            mConnection.sendToServer(timemark);
-        }
+        System.out.println("SEND TIME MAR");
     }
 
-    public  void sendAnimationUpdate(String state, String id) {
-        if (mConnection.ismConnected()) {
-            mConnection.sendToServer("#ANIM#" + state + "#" + id);
-        }
-    }
+    @Override
+    public  void sendAnimationUpdate(String state, String id) {}
 
     public void launchStickmanConfiguration(){
         try {
@@ -112,15 +89,11 @@ public class StageStickmanControllerFX implements StageStickmanController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    public void launchStickmanConfiguration(String filepath){
-    }
+    public void launchStickmanConfiguration(String filepath){}
 
-    public void launchStickmanStage(String filepath){
-
-    }
+    public void launchStickmanStage(String filepath){}
 
     public void addStickman(String name){
         stickmansOnStage.addStickman(name, false);

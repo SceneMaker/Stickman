@@ -1,7 +1,7 @@
 package de.dfki.common;
 
 import de.dfki.stickman.util.Names;
-import de.dfki.stickmanfx.StageStickmanControllerFX;
+import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import de.dfki.stickmanfx.StickmanFX;
 
 import java.util.HashMap;

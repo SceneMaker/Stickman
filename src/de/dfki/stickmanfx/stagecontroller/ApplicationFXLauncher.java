@@ -1,4 +1,6 @@
-package de.dfki.stickmanfx;
+package de.dfki.stickmanfx.stagecontroller;
+
+import de.dfki.stickmanfx.StickmanStageFX;
 
 public class ApplicationFXLauncher {
     public ApplicationFXLauncher() {

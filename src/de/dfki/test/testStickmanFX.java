@@ -1,7 +1,7 @@
 package de.dfki.test;
 
 import de.dfki.common.StageStickmanController;
-import de.dfki.stickmanfx.StageStickmanControllerFX;
+import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 
 /**
  * Created by alvaro on 9/13/16.
