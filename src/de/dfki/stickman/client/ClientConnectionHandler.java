@@ -1,5 +1,6 @@
 package de.dfki.stickman.client;
 
+import de.dfki.common.CommandParser;
 import de.dfki.stickman.StickmanStage;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +29,7 @@ public class ClientConnectionHandler extends Thread {
 	private boolean mRunning = true;
 	public boolean mConnected = false;
 	private StickmanStage mStickmanStage;
+	private CommandParser stickmanParser;
 
 	public ClientConnectionHandler() {
 		super.setName("StickmanStage Socket Connection Handler");
@@ -37,6 +39,12 @@ public class ClientConnectionHandler extends Thread {
 		super.setName("StickmanStage Socket Connection Handler");
 		mStickmanStage = stage;
 	}
+
+	public ClientConnectionHandler(CommandParser parser) {
+		super.setName("StickmanStage Socket Connection Handler");
+		stickmanParser = parser;
+	}
+
 	public void end() {
 		try {
 			mSocket.shutdownInput();
@@ -96,7 +104,7 @@ public class ClientConnectionHandler extends Thread {
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-					mStickmanStage.parseStickmanMLCmd(inputLine);
+					stickmanParser.parseStickmanMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");

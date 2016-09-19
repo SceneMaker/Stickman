@@ -13,5 +13,5 @@ public interface CommonStickmanStage {
     public void addStickman(String name);
     public void clearStage();
     public CommonStickman getStickman(String name);
-    public  void lauchStickman(String filepath);
+    public  void launchStickman(String filepath);
 }

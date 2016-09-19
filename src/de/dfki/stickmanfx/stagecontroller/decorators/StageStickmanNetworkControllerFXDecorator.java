@@ -1,10 +1,8 @@
 package de.dfki.stickmanfx.stagecontroller.decorators;
 
 import de.dfki.common.CommandParser;
-import de.dfki.common.CommonStickman;
 import de.dfki.common.StageStickmanController;
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 
 /**
  * Created by alvaro on 9/17/16.
@@ -19,9 +17,9 @@ public class StageStickmanNetworkControllerFXDecorator extends StageStickmanDeco
         super(wrappedController);
         mHost = host;
         mPort = port;
-        commandParser = new CommandParser(getStickmansOnStage());
+        commandParser = new CommandParser(getCommonStickmansOnStage());
         initConnectionToServer();
-        getStickmansOnStage().setStageStickmanController(this); //We need to set this as the new controller, in order to receive the EventInfo
+        getCommonStickmansOnStage().setStageStickmanController(this); //We need to set this as the new controller, in order to receive the EventInfo
     }
 
     private  void initConnectionToServer(){
@@ -60,15 +58,7 @@ public class StageStickmanNetworkControllerFXDecorator extends StageStickmanDeco
         }
     }
 
-    @Override
-    public void launchStickmanStage(){
-        super.launchStickmanStage();
-    }
 
-    @Override
-    public void addStickman(String name){
-        super.addStickman(name);
-    }
 
 
 }

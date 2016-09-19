@@ -1,7 +1,6 @@
 package de.dfki.common;
 
 import de.dfki.stickman.util.Names;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import de.dfki.stickmanfx.StickmanFX;
 
 import java.util.HashMap;
@@ -13,16 +12,16 @@ import java.util.Set;
  * Created by alvaro on 9/12/16.
  * Manage Stickman on the Stage
  */
-public class StickmansOnStage {
+public abstract class CommonStickmansOnStage {
     public static final float DEFAULT_SCALE = 0.8f;
     private Map<String, CommonStickman> sStickmansOnStage = new HashMap<>();
-    private StageStickman stickmanStage;
+    protected StageStickman stickmanStage;
     private StageStickmanController stageStickmanController;
-    public StickmansOnStage( StageStickman stageStickman){
+    public CommonStickmansOnStage(StageStickman stageStickman){
         stickmanStage = stageStickman;
     }
 
-    public StickmansOnStage(StageStickman stickmanStageFX, StageStickmanControllerFX controllerFX) {
+    public CommonStickmansOnStage(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
         stickmanStage = stickmanStageFX;
         stageStickmanController = controllerFX;
     }
@@ -45,7 +44,7 @@ public class StickmansOnStage {
     public  void addStickman(String name, StickmanFX.TYPE gender, boolean fullScreen) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender);
-            //getStickmanFX(name).mShowName = true;
+            //getStickman(name).mShowName = true;
         }
     }
 
@@ -55,19 +54,11 @@ public class StickmansOnStage {
         }
     }
 
-    private void addStickmanToStage(String name, boolean fullScreen, StickmanFX.TYPE gender) {
-        if (fullScreen) {
-            CommonStickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
-            putFullStickmanOnStage(name, stickman);
-        }else{
-            CommonStickman stickman = new StickmanFX(name, gender, DEFAULT_SCALE);
-            putFullStickmanOnStage(name, stickman);
-        }
-    }
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, StickmanFX.TYPE gender);
 
-    public StickmanFX getStickmanFX(String name) {
+    public CommonStickman getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {
-            return (StickmanFX) sStickmansOnStage.get(name.toLowerCase());
+            return sStickmansOnStage.get(name.toLowerCase());
         }
         throw new NullPointerException("No stickman with name " + name);
 
@@ -79,11 +70,11 @@ public class StickmansOnStage {
             deleteStickman.add(s);
             return s;
         }).forEach((s) -> {
-            getStickmanFX(s).endAnimationScheduler();
+            getStickman(s).endAnimationScheduler();
         });
     }
 
-    private void putFullStickmanOnStage(String name, CommonStickman stickman) {
+    protected void putFullStickmanOnStage(String name, CommonStickman stickman) {
         sStickmansOnStage.put(name.toLowerCase(),stickman );
         stickman.setStickmanStageController(stageStickmanController);
     }

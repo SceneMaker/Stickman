@@ -14,8 +14,8 @@ import java.nio.charset.Charset;
  */
 public class CommandParser {
 
-    private StickmansOnStage onStage;
-    public CommandParser(StickmansOnStage stage){
+    private CommonStickmansOnStage onStage;
+    public CommandParser(CommonStickmansOnStage stage){
         onStage = stage;
     }
     public  void parseStickmanMLCmd(String cmd) {
@@ -32,8 +32,8 @@ public class CommandParser {
         Object parameter = a.mParameter;
         if(stickmanname != null){
             a = (a instanceof EventAnimationFX)
-                    ? AnimationLoaderFX.getInstance().loadEventAnimation((StickmanFX) onStage.getStickmanFX(stickmanname), animationname, duration, blocking)
-                    : AnimationLoaderFX.getInstance().loadAnimation((StickmanFX) onStage.getStickmanFX(stickmanname), animationname, duration, blocking);
+                    ? AnimationLoaderFX.getInstance().loadEventAnimation((StickmanFX) onStage.getStickman(stickmanname), animationname, duration, blocking)
+                    : AnimationLoaderFX.getInstance().loadAnimation((StickmanFX) onStage.getStickman(stickmanname), animationname, duration, blocking);
 
             a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
             a.mParameter = parameter;

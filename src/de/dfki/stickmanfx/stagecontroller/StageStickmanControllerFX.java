@@ -3,7 +3,7 @@ package de.dfki.stickmanfx.stagecontroller;
 import de.dfki.common.CommonStickman;
 import de.dfki.common.StageStickman;
 import de.dfki.common.StageStickmanController;
-import de.dfki.common.StickmansOnStage;
+import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageFX;
 
@@ -17,7 +17,7 @@ public class StageStickmanControllerFX implements StageStickmanController {
     public static final String CONFIG_STAGE = "configStage";
     private final ApplicationFXLauncher applicationFXLauncher = new ApplicationFXLauncher();
     private StageStickman stickmanStageFX;
-    private StickmansOnStage stickmansOnStage;
+    private CommonStickmansOnStage commonStickmansOnStage;
     private String stageIdentifier;
     private boolean fullScreen = false;
 
@@ -39,24 +39,24 @@ public class StageStickmanControllerFX implements StageStickmanController {
         stickmanStageFX = StickmanStageFX.getInstance();
         init();
         try {
-            stageIdentifier = ((StickmanStageFX) getStickmanStageFX()).createNewStage();
+            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     protected void init() {
-        stickmansOnStage = new StickmansOnStage(getStickmanStageFX(), this);
-        ((StickmanStageFX) getStickmanStageFX()).setStickamnsOnStage(getStickmansOnStage());
+        commonStickmansOnStage = new StickmansOnStageFX(getStickmanStage(), this);
+        getStickmanStage().setStickamnsOnStage(getCommonStickmansOnStage());
     }
 
     @Override
     public  void clearStage() {
-        getStickmansOnStage().clearStage();
+        getCommonStickmansOnStage().clearStage();
     }
 
     public  void animate(String stickmanname,  String name, int duration, String text, boolean block) {
-        StickmanFX sm = (StickmanFX) getStickmansOnStage().getStickmanFX(stickmanname);
+        StickmanFX sm = (StickmanFX) getCommonStickmansOnStage().getStickman(stickmanname);
         sm.doAnimation(name, duration, text, block);
     }
 
@@ -73,8 +73,8 @@ public class StageStickmanControllerFX implements StageStickmanController {
 
     public void launchStickmanConfiguration(){
         try {
-            getStickmanStageFX().addStickmanToStage(CONFIG_STAGE);
-            ((StickmanStageFX) getStickmanStageFX()).showStage(CONFIG_STAGE);
+            getStickmanStage().addStickmanToStage(CONFIG_STAGE);
+            ((StickmanStageFX) getStickmanStage()).showStage(CONFIG_STAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,8 +82,8 @@ public class StageStickmanControllerFX implements StageStickmanController {
 
     public void launchStickmanStage(){
         try {
-            getStickmanStageFX().addStickmanToStage(getStageIdentifier());
-            ((StickmanStageFX) getStickmanStageFX()).showStage(getStageIdentifier());
+            getStickmanStage().addStickmanToStage(getStageIdentifier());
+            ((StickmanStageFX) getStickmanStage()).showStage(getStageIdentifier());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,19 +94,18 @@ public class StageStickmanControllerFX implements StageStickmanController {
     public void launchStickmanStage(String filepath){}
 
     public void addStickman(String name){
-        getStickmansOnStage().addStickman(name, fullScreen);
+        getCommonStickmansOnStage().addStickman(name, fullScreen);
     }
     
     public CommonStickman getStickman(String name){
-        return getStickmansOnStage().getStickmanFX(name);
+        return getCommonStickmansOnStage().getStickman(name);
     }
 
-    @Override
-    public StickmansOnStage getStickmansOnStage() {
-        return stickmansOnStage;
+    public CommonStickmansOnStage getCommonStickmansOnStage() {
+        return commonStickmansOnStage;
     }
 
-    public StageStickman getStickmanStageFX() {
+    public StageStickman getStickmanStage() {
         return stickmanStageFX;
     }
 

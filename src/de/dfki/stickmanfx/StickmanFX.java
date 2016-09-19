@@ -321,6 +321,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 	
 	}
 
+	@Override
 	public StageStickmanController getStickmanStageController(){
 		return stageController;
 	}

@@ -54,7 +54,7 @@ public class GeneralStageRoot {
         return mStickmanStageController;
     }
 
-    public void setStickmansOnStage(StickmansOnStage stickmans){
+    public void setStickmansOnStage(CommonStickmansOnStage stickmans){
         mStickmanStageController.setStickamnOnStage(stickmans);
     }
 

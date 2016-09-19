@@ -1,7 +1,7 @@
 package de.dfki.stickmanfx;
 import de.dfki.common.GeneralStageRoot;
 import de.dfki.common.StageStickman;
-import de.dfki.common.StickmansOnStage;
+import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -29,7 +29,7 @@ public class StickmanStageFX extends Application implements StageStickman{
 
     static private StickmanStageFX sInstance;
     Stage configStage;
-    private StickmansOnStage stickamnsOnStage;
+    private CommonStickmansOnStage stickamnsOnStage;
     private  float sScale = 1.0f;
     public static   boolean isRunning = false;
     private HashMap<String, Stage> stickmanFXStages = new HashMap<>();
@@ -114,7 +114,7 @@ public class StickmanStageFX extends Application implements StageStickman{
         launch();
     }
 
-    public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage) {
+    public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage) {
         this.stickamnsOnStage = stickamnsOnStage;
         generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
     }

@@ -148,7 +148,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 		// send event that Animation is ended
 
 		// API or TCP-Interface
-		if (!mStickman.getStage().mUseNetwork) {
+		if (!mStickman.getStickmanStageController().ismNetwork()) {
 			mStickman.notifyListeners(mID);
 		} else {
 			StickmanStage.sendAnimationUpdate("end", mID);

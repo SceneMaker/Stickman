@@ -32,8 +32,6 @@ public class ClientConnectionHandlerFX extends Thread {
 	private StickmanStageFX mStickmanStage;
 	private CommandParser stickmanParser;
 
-
-
 	public ClientConnectionHandlerFX() {
 		super.setName("StickmanStage Socket Connection Handler");
 	}

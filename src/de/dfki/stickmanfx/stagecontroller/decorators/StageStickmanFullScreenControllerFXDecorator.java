@@ -1,11 +1,6 @@
 package de.dfki.stickmanfx.stagecontroller.decorators;
 
-import de.dfki.common.CommandParser;
-import de.dfki.common.CommonStickman;
 import de.dfki.common.StageStickmanController;
-import de.dfki.stickmanfx.StickmanStageFX;
-import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 
 /**
  * Created by alvaro on 9/17/16.
@@ -16,6 +11,7 @@ public class StageStickmanFullScreenControllerFXDecorator extends StageStickmanD
         super(wrappedController);
     }
 
+    @Override
     public void addStickman(String name){
         setFullScreen(true);
         super.addStickman(name);
@@ -23,7 +19,7 @@ public class StageStickmanFullScreenControllerFXDecorator extends StageStickmanD
 
     @Override
     public void launchStickmanStage(){
-        controllerFX.getStickmanStageFX().setStageFullScreen(controllerFX.getStageIdentifier());
+        controllerFX.getStickmanStage().setStageFullScreen(controllerFX.getStageIdentifier());
         super.launchStickmanStage();
     }
 

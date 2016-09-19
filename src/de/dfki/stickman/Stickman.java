@@ -63,25 +63,7 @@ import de.dfki.stickman.animation.environment.SimplexNoise;
  */
 public class Stickman extends JComponent implements CommonStickman {
 
-    @Override
-    public void setStickmanStageController(StageStickmanController s) {
 
-    }
-
-    @Override
-    public void setShowName(boolean show) {
-
-    }
-
-    @Override
-    public boolean isShowName() {
-        return false;
-    }
-
-    @Override
-    public void endAnimationScheduler() {
-
-    }
 
     // general stuff
     public static enum ORIENTATION {
@@ -90,7 +72,6 @@ public class Stickman extends JComponent implements CommonStickman {
     };
 
     public static enum TYPE {
-
         FEMALE, MALE
     };
 
@@ -148,6 +129,7 @@ public class Stickman extends JComponent implements CommonStickman {
     public LeftLeg mLeftLeg;
     public Stars mStars;         // added by Robbie Create Say bye or hi
     public RightLeg mRightLeg;
+    private StageStickmanController stageController;
     // environment
     public SpeechBubble mSpeechBubble;
 
@@ -285,6 +267,33 @@ public class Stickman extends JComponent implements CommonStickman {
 
         mAnimationScheduler = new AnimationScheduler(this);
         mAnimationScheduler.start();
+    }
+
+
+
+    @Override
+    public StageStickmanController getStickmanStageController() {
+        return stageController;
+    }
+
+    @Override
+    public void setStickmanStageController(StageStickmanController s) {
+        stageController = s;
+    }
+
+    @Override
+    public void setShowName(boolean show) {
+
+    }
+
+    @Override
+    public boolean isShowName() {
+        return false;
+    }
+
+    @Override
+    public void endAnimationScheduler() {
+
     }
 
     public StickmanStage getStage(){

@@ -3,9 +3,7 @@ package de.dfki.stickmanfx.stagecontroller.decorators;
 import de.dfki.common.CommonStickman;
 import de.dfki.common.StageStickman;
 import de.dfki.common.StageStickmanController;
-import de.dfki.common.StickmansOnStage;
-import de.dfki.stickmanfx.StickmanStageFX;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
+import de.dfki.common.CommonStickmansOnStage;
 
 /**
  * Created by alvaro on 9/17/16.
@@ -56,12 +54,12 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
         return controllerFX.getStickman(name);
     }
 
-    public StickmansOnStage getStickmansOnStage(){
-        return controllerFX.getStickmansOnStage();
+    public CommonStickmansOnStage getCommonStickmansOnStage(){
+        return controllerFX.getCommonStickmansOnStage();
     }
 
-    public StageStickman getStickmanStageFX(){
-        return controllerFX.getStickmanStageFX();
+    public StageStickman getStickmanStage(){
+        return controllerFX.getStickmanStage();
     }
 
     public String getStageIdentifier(){

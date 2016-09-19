@@ -11,4 +11,5 @@ public interface StageStickman {
     void addStickmanToStage(String stageIdentifier) throws Exception;
     void setStageFullScreen(String stageIdentifier);
     void setStageNonFullScreen(String stageIdentifier);
+    void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage);
 }

@@ -1,11 +1,10 @@
 package de.dfki.stickmanfx;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import de.dfki.common.StickmansOnStage;
+import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
 import de.dfki.util.StickmanFillCombo;
@@ -38,7 +37,7 @@ public class StickmanStageController {
     private static String packGesture = "de.dfki.stickmanfx.animation.esturefx";
     private ArrayList<String> mStickmanComboList = new ArrayList<>();
     private static StickmanFX sStickman;
-    private StickmansOnStage mStickmanOnstage;
+    private CommonStickmansOnStage mStickmanOnstage;
     private String mStickmancombobox = null;
     final private ToggleGroup groupPerlin = new ToggleGroup();
     final private ToggleGroup groupEnvironmentRadioButton = new ToggleGroup();
@@ -148,7 +147,7 @@ public class StickmanStageController {
         {
         	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();    	
         	// set the setValue of combobox
-        	setComboboxValue(mStickmanOnstage.getStickmanFX(mStickmancombobox));
+        	setComboboxValue(getStickmanAsFx(mStickmancombobox));
         });
         
       //Show emotion
@@ -159,7 +158,7 @@ public class StickmanStageController {
             if ((mEmotion != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
+            	getStickmanAsFx(mStickmancombobox).doAnimation(mEmotion, 70, true);
             	EmotionExpressionComboBox.getSelectionModel().clearSelection();
             	ShowEmotionName.setText(mEmotion);
             }
@@ -174,15 +173,15 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	if(mStickmanOnstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+            	if(getStickmanAsFx(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
                     {
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).mBodyFX.mMaleColor = HandleColor.switchColor(color);
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).update();
+                    	getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = HandleColor.switchColor(color);
+                    	getStickmanAsFx(mStickmancombobox).update();
                     }
                     else
                     {
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).mBodyFX.mFemaleColor = HandleColor.switchColor(color);
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).update();
+                    	getStickmanAsFx(mStickmancombobox).mBodyFX.mFemaleColor = HandleColor.switchColor(color);
+                    	getStickmanAsFx(mStickmancombobox).update();
                     }
             });
             }
@@ -196,15 +195,15 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	if(mStickmanOnstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+            	if(getStickmanAsFx(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
                     {
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).mMaleHairFX.mColor = HandleColor.switchColor(color);
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).update();
+                    	getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = HandleColor.switchColor(color);
+                    	getStickmanAsFx(mStickmancombobox).update();
                     }
                  else
                     {
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).mFemaleHairFX.mColor = HandleColor.switchColor(color);
-                    	mStickmanOnstage.getStickmanFX(mStickmancombobox).update();
+                    	getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColor = HandleColor.switchColor(color);
+                    	getStickmanAsFx(mStickmancombobox).update();
                     }   
             });
             }
@@ -218,9 +217,9 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mHeadFX.mColor = HandleColor.switchColor(color);
-            	if(mStickmanOnstage.getStickmanFX(mStickmancombobox).mHeadFX.mColor != null)
-            		mStickmanOnstage.getStickmanFX(mStickmancombobox).update();
+            	getStickmanAsFx(mStickmancombobox).mHeadFX.mColor = HandleColor.switchColor(color);
+            	if(getStickmanAsFx(mStickmancombobox).mHeadFX.mColor != null)
+            		getStickmanAsFx(mStickmancombobox).update();
             });
             }         
         });
@@ -232,24 +231,24 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	//mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftLegFX.mColor = switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftUpperLegFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftForeLegFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftFootFX.mColor = HandleColor.switchColor(color);
-//            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightLegFX.mColor = switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightUpperLegFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightForeLegFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightFootFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftHandFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightHandFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftShoulderFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightShoulderFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftUpperArmFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mLeftForeArmFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightUpperArmFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mRightForeArmFX.mColor = HandleColor.switchColor(color);
-            	mStickmanOnstage.getStickmanFX(mStickmancombobox).mNeckFX.mColor = HandleColor.switchColor(color);
-                mStickmanOnstage.getStickmanFX(mStickmancombobox).update();
+            	//mStickmanOnstage.getStickman(mStickmancombobox).mLeftLegFX.mColor = switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftForeLegFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftFootFX.mColor = HandleColor.switchColor(color);
+//            	mStickmanOnstage.getStickman(mStickmancombobox).mRightLegFX.mColor = switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightUpperLegFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightForeLegFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightFootFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftHandFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightHandFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftShoulderFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightShoulderFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftUpperArmFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mLeftForeArmFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightUpperArmFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mRightForeArmFX.mColor = HandleColor.switchColor(color);
+            	getStickmanAsFx(mStickmancombobox).mNeckFX.mColor = HandleColor.switchColor(color);
+                getStickmanAsFx(mStickmancombobox).update();
             });
             }         
         });
@@ -261,7 +260,7 @@ public class StickmanStageController {
             	if ((mStickmancombobox != null)){
                     Platform.runLater(() -> 
                     {
-                    	if(mStickmanOnstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+                    	if(getStickmanAsFx(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
                         {
                     		HeadComboBoxColor.setValue("Festucine");
                         	HairComboBoxColor.setValue("Brown");
@@ -285,13 +284,13 @@ public class StickmanStageController {
                     		switch(action)
                     		{
                     			case "FadeOut": 
-                    				mStickmanOnstage.getStickmanFX(mStickmancombobox).doAnimation("FadeIn", 1000, true);
+                    				getStickmanAsFx(mStickmancombobox).doAnimation("FadeIn", 1000, true);
                     				break; 
                     			case "GoDown": 
-                    				mStickmanOnstage.getStickmanFX(mStickmancombobox).doAnimation("ComeUp", 1000, true);
+                    				getStickmanAsFx(mStickmancombobox).doAnimation("ComeUp", 1000, true);
                     				break;
                     			case "DisappearToSmall": 
-                    				mStickmanOnstage.getStickmanFX(mStickmancombobox).doAnimation("ComeBackFromSmall", 1000, true);
+                    				getStickmanAsFx(mStickmancombobox).doAnimation("ComeBackFromSmall", 1000, true);
                     				break;
                     			default:
                     				break;
@@ -316,11 +315,15 @@ public class StickmanStageController {
         saveToXml();
         
         handlePerlinNoise();
-    }    
-    
-    public void setStickamnOnStage(StickmansOnStage stickmansOnStage)
+    }
+
+    public  StickmanFX getStickmanAsFx(String mStickmancombobox) {
+        return (StickmanFX) mStickmanOnstage.getStickman(mStickmancombobox);
+    }
+
+    public void setStickamnOnStage(CommonStickmansOnStage commonStickmansOnStage)
     {
-    	this.mStickmanOnstage = stickmansOnStage;
+    	this.mStickmanOnstage = commonStickmansOnStage;
     	fillComboForStickman();
     	
     }
@@ -473,7 +476,7 @@ public class StickmanStageController {
             	            Platform.runLater(() -> 
             	            {
             	            	for(String key : mStickmanComboList)
-            	            		mStickmanOnstage.getStickmanFX(key).doAnimation("StartIdle", 1000, true);
+            	            		getStickmanAsFx(key).doAnimation("StartIdle", 1000, true);
             	            }
             	            );
             	  }
@@ -481,7 +484,7 @@ public class StickmanStageController {
             		  Platform.runLater(() -> 
       	            {
       	            	for(String key : mStickmanComboList)
-      	            		mStickmanOnstage.getStickmanFX(key).doAnimation("StopIdle", 1000, true);
+      	            		getStickmanAsFx(key).doAnimation("StopIdle", 1000, true);
       	            }
       	            );
             	  }
@@ -527,14 +530,14 @@ public class StickmanStageController {
             	   if(!action.equals("Speaking")){       	
             	            Platform.runLater(() -> 
             	            {
-            	            		mStickmanOnstage.getStickmanFX(mStickmancombobox).doAnimation(action, 1000, true);
+            	            		getStickmanAsFx(mStickmancombobox).doAnimation(action, 1000, true);
             	            }
             	            );
             	  }
             	  else{
             		  Platform.runLater(() -> 
       	            {
-      	            		mStickmanOnstage.getStickmanFX(mStickmancombobox).doAnimation(action,3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+      	            		getStickmanAsFx(mStickmancombobox).doAnimation(action,3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
       	            		Speaking.setSelected(false);
       	            }
       	            );
@@ -579,7 +582,7 @@ public class StickmanStageController {
               	            		String name = key;
               	            		String bodyColor;
               	            		String hairColor;
-              	            		StickmanFX mStick = mStickmanOnstage.getStickmanFX(key);
+              	            		StickmanFX mStick = getStickmanAsFx(key);
               	            		if(mStick.mType == StickmanFX.TYPE.MALE)
               	            		{
               	            			bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);      		
