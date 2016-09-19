@@ -1,5 +1,6 @@
 package de.dfki.common;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickmanfx.StickmanFX;
 
@@ -31,20 +32,19 @@ public abstract class CommonStickmansOnStage {
     }
 
     public void addStickman(String name, boolean fullScreen) {
-        StickmanFX.TYPE gender = null;
+        Stickman.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
-            gender = StickmanFX.TYPE.FEMALE;
+            gender = Stickman.TYPE.FEMALE;
         }
         if (Names.sMaleNames.contains(name.toLowerCase())) {
-            gender = (gender == null) ? StickmanFX.TYPE.MALE : gender;
+            gender = (gender == null) ? Stickman.TYPE.MALE : gender;
         }
         addStickman(name, gender, fullScreen);
     }
 
-    public  void addStickman(String name, StickmanFX.TYPE gender, boolean fullScreen) {
+    public  void addStickman(String name, Stickman.TYPE gender, boolean fullScreen) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender);
-            //getStickman(name).mShowName = true;
         }
     }
 
@@ -54,7 +54,7 @@ public abstract class CommonStickmansOnStage {
         }
     }
 
-    protected abstract void addStickmanToStage(String name, boolean fullScreen, StickmanFX.TYPE gender);
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender);
 
     public CommonStickman getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {
@@ -72,6 +72,7 @@ public abstract class CommonStickmansOnStage {
         }).forEach((s) -> {
             getStickman(s).endAnimationScheduler();
         });
+
     }
 
     protected void putFullStickmanOnStage(String name, CommonStickman stickman) {

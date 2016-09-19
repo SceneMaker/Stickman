@@ -18,7 +18,7 @@ import java.net.UnknownHostException;
  * @author Patrick Gebhard
  *
  */
-public class ClientConnectionHandlerFX extends Thread {
+public class ClientConnectionHandlerFX extends Thread implements CommonClientConnectionHandler {
 
 	private Socket mSocket;
 	private String mHost = "127.0.0.1";
@@ -42,6 +42,7 @@ public class ClientConnectionHandlerFX extends Thread {
 	}
 
 
+	@Override
 	public void end() {
 		try {
 			mSocket.shutdownInput();
@@ -54,6 +55,7 @@ public class ClientConnectionHandlerFX extends Thread {
 		}
 	}
 
+	@Override
 	public void sendToServer(String message) {
 		//StickmanStage.mLogger.info("Sending " + message);
 
@@ -63,12 +65,14 @@ public class ClientConnectionHandlerFX extends Thread {
 		}
 	}
 
+	@Override
 	public void connect(String host, int port) {
 		mHost = host;
 		mPort = port;
 		connect();
 	}
 
+	@Override
 	public void connect() {
 		StickmanStage.mLogger.info("StickmanStage tries to connect with control application ...");
 		try {
@@ -92,8 +96,9 @@ public class ClientConnectionHandlerFX extends Thread {
 		start();
 	}
 
+	@Override
 	public void tryToConnect(String host, int port){
-                mHost = host;
+		mHost = host;
 		mPort = port;
 		connect(mHost, mPort);
 		while (!ismConnected()) {
@@ -123,6 +128,7 @@ public class ClientConnectionHandlerFX extends Thread {
 		}
 	}
 
+	@Override
 	public boolean ismConnected() {
 		return mConnected;
 	}

@@ -2,28 +2,36 @@ package de.dfki.stickmanfx.stagecontroller.decorators;
 
 import de.dfki.common.CommandParser;
 import de.dfki.common.StageStickmanController;
+import de.dfki.stickman.client.ClientConnectionHandler;
+import de.dfki.stickman.stagecontroller.StageController;
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
+import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
+import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 
 /**
  * Created by alvaro on 9/17/16.
  */
-public class StageStickmanNetworkControllerFXDecorator extends StageStickmanDecorator {
+public class StageStickmanNetworkControllerDecorator extends StageStickmanDecorator {
     private CommandParser commandParser;
     private  String mHost;
     private int mPort;
-    private ClientConnectionHandlerFX mConnection;
+    private CommonClientConnectionHandler mConnection;
 
-    public StageStickmanNetworkControllerFXDecorator(StageStickmanController wrappedController, String host, int port){
+    public StageStickmanNetworkControllerDecorator(StageStickmanController wrappedController, String host, int port){
         super(wrappedController);
         mHost = host;
         mPort = port;
         commandParser = new CommandParser(getCommonStickmansOnStage());
-        initConnectionToServer();
+        initConnectionToServer(wrappedController);
         getCommonStickmansOnStage().setStageStickmanController(this); //We need to set this as the new controller, in order to receive the EventInfo
     }
 
-    private  void initConnectionToServer(){
-        mConnection = new ClientConnectionHandlerFX(commandParser);
+    protected  void initConnectionToServer(StageStickmanController wrappedController){
+        if(wrappedController instanceof StageStickmanControllerFX){
+            mConnection = new ClientConnectionHandlerFX(commandParser);
+        }else if(wrappedController instanceof StageController){
+            mConnection = new ClientConnectionHandler(commandParser);
+        }
         mConnection.tryToConnect(mHost, mPort);
     }
 
@@ -57,8 +65,6 @@ public class StageStickmanNetworkControllerFXDecorator extends StageStickmanDeco
             mConnection.sendToServer("#ANIM#" + state + "#" + id);
         }
     }
-
-
 
 
 }

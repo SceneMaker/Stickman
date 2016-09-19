@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animation.headfx;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -38,7 +39,7 @@ public class HeadTilt extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", translationUnit));
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
@@ -57,7 +58,7 @@ public class HeadTilt extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", -translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", -translationUnit));
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", -translationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", -translationUnit));

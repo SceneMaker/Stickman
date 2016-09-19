@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
 import de.dfki.util.StickmanFillCombo;
@@ -173,7 +174,7 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	if(getStickmanAsFx(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+            	if(getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickman.Stickman.TYPE.MALE)
                     {
                     	getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = HandleColor.switchColor(color);
                     	getStickmanAsFx(mStickmancombobox).update();
@@ -195,7 +196,7 @@ public class StickmanStageController {
             if ((color != null)&&(mStickmancombobox != null)){
             Platform.runLater(() -> 
             {
-            	if(getStickmanAsFx(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+            	if(getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickman.Stickman.TYPE.MALE)
                     {
                     	getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = HandleColor.switchColor(color);
                     	getStickmanAsFx(mStickmancombobox).update();
@@ -260,7 +261,7 @@ public class StickmanStageController {
             	if ((mStickmancombobox != null)){
                     Platform.runLater(() -> 
                     {
-                    	if(getStickmanAsFx(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
+                    	if(getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickman.Stickman.TYPE.MALE)
                         {
                     		HeadComboBoxColor.setValue("Festucine");
                         	HairComboBoxColor.setValue("Brown");
@@ -349,7 +350,7 @@ public class StickmanStageController {
  // set the setValue of combobox
     private void setComboboxValue(StickmanFX mStick)
     { 	
-   	 if(mStick.mType == StickmanFX.TYPE.MALE)
+   	 if(mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE)
        {
        	String sBodyComboBoxColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
        	if(sBodyComboBoxColor!=null)
@@ -362,7 +363,7 @@ public class StickmanStageController {
    			 BodyComboBoxColor.setValue(sBodyComboBoxColor);		
    	 }
    	 
-   	 if(mStick.mType == StickmanFX.TYPE.MALE)
+   	 if(mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE)
         {
         	String sHairComboBoxColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
         	if(sHairComboBoxColor!=null)
@@ -583,7 +584,7 @@ public class StickmanStageController {
               	            		String bodyColor;
               	            		String hairColor;
               	            		StickmanFX mStick = getStickmanAsFx(key);
-              	            		if(mStick.mType == StickmanFX.TYPE.MALE)
+              	            		if(mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE)
               	            		{
               	            			bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);      		
               	            		}
@@ -592,7 +593,7 @@ public class StickmanStageController {
               	            			bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mFemaleColor );		
               	            		} 
               	            		
-              	            		if(mStick.mType == StickmanFX.TYPE.MALE)
+              	            		if(mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE)
               	            		{
               	            			hairColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor); 		
               	            		}

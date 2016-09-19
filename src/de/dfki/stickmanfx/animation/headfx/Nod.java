@@ -36,7 +36,7 @@ public class Nod extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "translate", translationUnit));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "translate", translationUnit));
 		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mStickmanFX.mType == Stickman.TYPE.MALE)
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "translate", translationUnit));
 		else
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "translate", translationUnit));
@@ -52,7 +52,7 @@ public class Nod extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "translate", -translationUnit));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "translate", -translationUnit));
 		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mStickmanFX.mType == Stickman.TYPE.MALE)
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "translate", -translationUnit));
 		else
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "translate", -translationUnit));

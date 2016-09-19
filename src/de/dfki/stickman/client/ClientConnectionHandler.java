@@ -2,6 +2,8 @@ package de.dfki.stickman.client;
 
 import de.dfki.common.CommandParser;
 import de.dfki.stickman.StickmanStage;
+import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,7 +19,7 @@ import java.net.UnknownHostException;
  * @author Patrick Gebhard
  *
  */
-public class ClientConnectionHandler extends Thread {
+public class ClientConnectionHandler extends Thread implements CommonClientConnectionHandler {
 
 	private Socket mSocket;
 	private String mHost = "127.0.0.1";
@@ -96,6 +98,21 @@ public class ClientConnectionHandler extends Thread {
 	}
 
 	@Override
+	public void tryToConnect(String host, int port) {
+		mHost = host;
+		mPort = port;
+		connect(mHost, mPort);
+		while (!ismConnected()) {
+			try {
+				System.out.println("Waiting for connection to control application ...");
+				Thread.sleep(250);
+			} catch (InterruptedException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+	}
+
+	@Override
 	public void run() {
 		String inputLine = "";
 
@@ -110,5 +127,10 @@ public class ClientConnectionHandler extends Thread {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
 			}
 		}
+	}
+
+	@Override
+	public boolean ismConnected() {
+		return mConnected;
 	}
 }

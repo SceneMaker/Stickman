@@ -2,9 +2,7 @@ package de.dfki.test;
 
 import de.dfki.common.StageStickmanController;
 import de.dfki.stickman.stagecontroller.StageController;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
-import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanFullScreenControllerFXDecorator;
-import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanNetworkControllerFXDecorator;
+import de.dfki.stickman.stagecontroller.decorators.StageStickmanFullScreenDecorator;
 
 /**
  * Created by alvaro on 9/13/16.
@@ -13,7 +11,7 @@ public class testStickmanFX {
     public static void main(String[] args) {
         /*StageStickmanController stage = new StageStickmanControllerFX();
         StageStickmanController fullScreenStage = new StageStickmanFullScreenControllerFXDecorator(stage);
-        StageStickmanController stickmanStage = new StageStickmanNetworkControllerFXDecorator(fullScreenStage, "127.0.0.1", 8000);
+        StageStickmanController stickmanStage = new StageStickmanNetworkControllerDecorator(fullScreenStage, "127.0.0.1", 8000);
         stickmanStage.addStickman("Bob");
         stickmanStage.addStickman("Anna");
         stickmanStage.launchStickmanStage();*/
@@ -23,10 +21,11 @@ public class testStickmanFX {
         stickmanStage2.addStickman("Baxter");
         ((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();*/
 
-       StageStickmanController stageOld = new StageController();
-        stageOld.addStickman("Bob");
-        stageOld.addStickman("Anna");
-        stageOld.launchStickmanStage();;
+        StageStickmanController stageOld = new StageController();
+        StageStickmanController fullScreenStageOld = new StageStickmanFullScreenDecorator(stageOld);
+        fullScreenStageOld.addStickman("Bob");
+        fullScreenStageOld.addStickman("Anna");
+        fullScreenStageOld.launchStickmanStage();;
 
     }
 }

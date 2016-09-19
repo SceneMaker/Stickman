@@ -1,6 +1,7 @@
 package de.dfki.common;
 
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Created by alvaro on 9/4/16.

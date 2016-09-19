@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -47,7 +48,7 @@ public class Angry2 extends AnimationFX
     @Override
 	public void playAnimation() 
 	{
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mStickmanFX.mType == Stickman.TYPE.MALE)
 			rotationUnit = 20;
 		else
 			rotationUnit = 30;
@@ -63,7 +64,7 @@ public class Angry2 extends AnimationFX
                 
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -(rotationUnit + 3)));
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit - 20));
@@ -98,7 +99,7 @@ public class Angry2 extends AnimationFX
         
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit + 3));
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -(rotationUnit - 20)));

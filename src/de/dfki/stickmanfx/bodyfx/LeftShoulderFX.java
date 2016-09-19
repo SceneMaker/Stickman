@@ -8,6 +8,7 @@ package de.dfki.stickmanfx.bodyfx;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -40,7 +41,7 @@ public class LeftShoulderFX extends BodyPartFX {
     public LeftShoulderFX(BodyFX body) 
     {
         mBodyFX = body;
-        if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.MALE)
             mShoulderLength = 25;
         else
             mShoulderLength = 15;

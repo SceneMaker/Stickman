@@ -7,6 +7,7 @@ package de.dfki.stickmanfx.animation.environmentfx;
 
 import java.util.ArrayList;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -74,7 +75,7 @@ public class FadeOut extends AnimationFX {
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "shape", "DEFAULT"));
 		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mStickmanFX.mType == Stickman.TYPE.MALE)
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "shape", "DEFAULT"));
 		else
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "shape", "DEFAULT"));

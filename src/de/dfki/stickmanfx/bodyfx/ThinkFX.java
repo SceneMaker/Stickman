@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.net.URL;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.animation.KeyFrame;
@@ -86,7 +87,7 @@ public class ThinkFX extends BodyPartFX
 				break;
 				
 			case THINKOFLOVE:
-				if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+				if(mHeadFX.mStickmanFX.mType == Stickman.TYPE.MALE)
 					url = getClass().getClassLoader().getResource("girl2.gif");
 				else
 					url = getClass().getClassLoader().getResource("boy2.jpg");

@@ -7,6 +7,8 @@ import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.StickmanStage;
 
+import java.util.UUID;
+
 /**
  * Created by alvaro on 9/19/16.
  */
@@ -16,15 +18,13 @@ public class StageController implements StageStickmanController {
     private boolean fullScreen = false;
 
     public StageController(){
+        stickmanStage = new StickmanStage();
         commonStickmansOnStage = new StickmansOnStage(stickmanStage, this);
-        stickmanStage = StickmanStage.getInstance();
         stickmanStage.setStickamnsOnStage(commonStickmansOnStage);
-
     }
+
     @Override
-    public void clearStage() {
-
-    }
+    public void clearStage() {}
 
     @Override
     public void animate(String stickmanname, String name, int duration, String text, boolean block) {
@@ -38,18 +38,17 @@ public class StageController implements StageStickmanController {
     }
 
     @Override
-    public void sendTimeMarkInformation(String timemark) {
-
-    }
+    public void sendTimeMarkInformation(String timemark) {}
 
     @Override
-    public void sendAnimationUpdate(String state, String id) {
-
-    }
+    public void sendAnimationUpdate(String state, String id) {}
 
     @Override
     public void addStickman(String name) {
         commonStickmansOnStage.addStickman(name, fullScreen);
+        ((StickmanStage)stickmanStage).addStickmanToPanel((Stickman) commonStickmansOnStage.getStickman(name));
+        ((StickmanStage)stickmanStage).pack();
+        ((StickmanStage)stickmanStage).setVisible(true);
     }
 
     @Override
@@ -58,9 +57,7 @@ public class StageController implements StageStickmanController {
     }
 
     @Override
-    public void launchStickmanStage() {
-
-    }
+    public void launchStickmanStage() {}
 
     @Override
     public StageStickman getStickmanStage() {
@@ -73,11 +70,12 @@ public class StageController implements StageStickmanController {
 
     @Override
     public String getStageIdentifier() {
-        return null;
+        return "";
     }
 
     @Override
-    public void setFullScreen(boolean fullScreen) {
-        fullScreen = fullScreen;
+    public void setFullScreen(boolean fullS) {
+        fullScreen = fullS;
+        ((StickmanStage)stickmanStage).setFullScreenSize();
     }
 }

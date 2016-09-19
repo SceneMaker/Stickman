@@ -2,6 +2,7 @@ package de.dfki.stickmanfx;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.*;
+import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -74,12 +75,10 @@ public class StickmanFX extends Pane implements CommonStickman {
 		FRONT, LEFT, RIGHT
 	};
 
-	public static enum TYPE {
-		FEMALE, MALE
-	};
+
 
 	static public final Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
-	public TYPE mType = TYPE.FEMALE;
+	public Stickman.TYPE mType = Stickman.TYPE.FEMALE;
 	public String mName = "Stickman";
 	public ORIENTATION mOrientation = ORIENTATION.FRONT;
 	public float mScale = 1.0f;
@@ -161,7 +160,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 	// id
 	private long mID = 0;
 
-	public StickmanFX(String name, TYPE gender, float scale, Dimension size) {
+	public StickmanFX(String name, Stickman.TYPE gender, float scale, Dimension size) {
 		mSize = size;
 		mScale = scale;
 		mScaleOriginal = scale;
@@ -206,7 +205,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 		update();
 	}
 
-	public StickmanFX(String name, TYPE gender, float scale) {
+	public StickmanFX(String name, Stickman.TYPE gender, float scale) {
 		mScale = scale;
 		mScaleOriginal = scale;
 		
@@ -250,7 +249,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 		update();
 	}
 
-	public StickmanFX(String name, TYPE gender) {
+	public StickmanFX(String name, Stickman.TYPE gender) {
 		mName = name;
 		mType = gender;
 
@@ -489,7 +488,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 				mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
 				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameLabel);
-		if (this.mType == StickmanFX.TYPE.MALE)
+		if (this.mType == Stickman.TYPE.MALE)
 			this.getChildren().add(mMaleHairFX);
 		else
 			this.getChildren().add(mFemaleHairFX);
@@ -504,7 +503,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 				mStarsFX.update();
 			mHeadFX.update();
 
-			if (this.mType == StickmanFX.TYPE.MALE)
+			if (this.mType == Stickman.TYPE.MALE)
 				mMaleHairFX.update();
 			else
 				mFemaleHairFX.update();
@@ -555,7 +554,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 				mStarsFX.rotatePerlinNoise(mWobble, x, y);
 			mHeadFX.rotatePerlinNoise(mWobble, x, y);
 
-			if (this.mType == StickmanFX.TYPE.MALE)
+			if (this.mType == Stickman.TYPE.MALE)
 				mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
 			else
 				mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);

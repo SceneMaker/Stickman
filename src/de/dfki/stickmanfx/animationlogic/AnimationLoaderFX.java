@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.animationlogic;
 
+import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -43,7 +44,7 @@ public class AnimationLoaderFX
         return "a" + sID;
     }
 
-    private String getAnimationClasspath(StickmanFX.TYPE stickmantype, String name) {
+    private String getAnimationClasspath(Stickman.TYPE stickmantype, String name) {
         String classPath = "";
 
         for (String s : sAnimationSubPackages) 
@@ -63,7 +64,7 @@ public class AnimationLoaderFX
         return classPath;
     }
 
-    private String getEventAnimationClasspath(StickmanFX.TYPE stickmantype, String name) 
+    private String getEventAnimationClasspath(Stickman.TYPE stickmantype, String name)
     {
         String classPath = "";
 
