@@ -32,6 +32,11 @@ public abstract class CommonStickmansOnStage {
     }
 
     public void addStickman(String name, boolean fullScreen) {
+        Stickman.TYPE gender = getStickmanGender(name);
+        addStickman(name, gender, fullScreen);
+    }
+
+    public Stickman.TYPE getStickmanGender(String name) {
         Stickman.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
             gender = Stickman.TYPE.FEMALE;
@@ -39,12 +44,19 @@ public abstract class CommonStickmansOnStage {
         if (Names.sMaleNames.contains(name.toLowerCase())) {
             gender = (gender == null) ? Stickman.TYPE.MALE : gender;
         }
-        addStickman(name, gender, fullScreen);
+        return gender;
     }
 
     public  void addStickman(String name, Stickman.TYPE gender, boolean fullScreen) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
-            addStickmanToStage(name, fullScreen, gender);
+            addStickmanToStage(name, fullScreen, gender, false);
+        }
+    }
+
+    public  void addStickman(String name, boolean fullScreen, boolean onlyFace) {
+        Stickman.TYPE gender = getStickmanGender(name);
+        if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
+            addStickmanToStage(name, fullScreen, gender, onlyFace);
         }
     }
 
@@ -55,6 +67,8 @@ public abstract class CommonStickmansOnStage {
     }
 
     protected abstract void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender);
+
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender, boolean onlyFace);
 
     public CommonStickman getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {

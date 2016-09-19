@@ -44,6 +44,10 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
         controllerFX.addStickman(name);
     }
 
+    public void addStickman(String name, boolean onlyFace) {
+        controllerFX.addStickman(name, onlyFace);
+    }
+
     @Override
     public void animate(String stickmanname, String name, int duration, String text, boolean block) {
         controllerFX.animate(stickmanname, name, duration, text, block);

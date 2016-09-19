@@ -168,36 +168,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 		mName = name;
 		mType = gender;
 
-		mHeadFX = new HeadFX(this);
-		mMaleHairFX = new MaleHairFX(this);
-		mFemaleHairFX = new FemaleHairFX(this);
-		mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
-		mLeftEyeFX = new LeftEyeFX(mHeadFX);
-		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
-		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
-		mMouthFX = new MouthFX(mHeadFX);
-		mNeckFX = new NeckFX(mHeadFX);
-		mBodyFX = new BodyFX(mNeckFX);
-		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
-		mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
-		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
-		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
-		mRightShoulderFX = new RightShoulderFX(mBodyFX);
-		mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
-		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
-		mRightHandFX = new RightHandFX(mRightForeArmFX);
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
-		mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
-		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
-		mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-		mStarsFX = new StarsFX(mBodyFX); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
-		mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
-		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
-		mRightFootFX = new RightFootFX(mRightForeLegFX);
-		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
+		initBodyParts();
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -212,36 +183,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 		mName = name;
 		mType = gender;
 
-		mHeadFX = new HeadFX(this);
-		mMaleHairFX = new MaleHairFX(this);
-		mFemaleHairFX = new FemaleHairFX(this);
-		mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
-		mLeftEyeFX = new LeftEyeFX(mHeadFX);
-		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
-		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
-		mMouthFX = new MouthFX(mHeadFX);
-		mNeckFX = new NeckFX(mHeadFX);
-		mBodyFX = new BodyFX(mNeckFX);
-		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
-		mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
-		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
-		mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
-		mRightShoulderFX = new RightShoulderFX(mBodyFX);
-		mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
-		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
-		mRightHandFX = new RightHandFX(mRightForeArmFX);
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
-		mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
-		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
-		mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-		mStarsFX = new StarsFX(mBodyFX); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
-		mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
-		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
-		mRightFootFX = new RightFootFX(mRightForeLegFX);
-		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
+		initBodyParts();
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -249,10 +191,38 @@ public class StickmanFX extends Pane implements CommonStickman {
 		update();
 	}
 
+	public StickmanFX(String name, Stickman.TYPE gender, float scale, boolean faceOnly) {
+		mScale = scale;
+		mScaleOriginal = scale;
+
+		mName = name;
+		mType = gender;
+
+		initBodyParts();
+
+		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+		init();
+		if(faceOnly){
+			this.addOnlyHeadParts();
+		}else {
+			this.addAllParts();
+		}
+		update();
+	}
+
 	public StickmanFX(String name, Stickman.TYPE gender) {
 		mName = name;
 		mType = gender;
 
+		initBodyParts();
+
+		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+		init();
+		this.addAllParts();
+		update();
+	}
+
+	public void initBodyParts() {
 		mHeadFX = new HeadFX(this);
 		mMaleHairFX = new MaleHairFX(this);
 		mFemaleHairFX = new FemaleHairFX(this);
@@ -283,10 +253,22 @@ public class StickmanFX extends Pane implements CommonStickman {
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
 		mBombeFX = new BombeFX(mHeadFX);
+	}
 
+	public StickmanFX(String name, Stickman.TYPE gender, float scale, Dimension size, boolean faceOnly) {
+		mSize = size;
+		mScale = scale;
+		mScaleOriginal = scale;
+		mName = name;
+		mType = gender;
+		initBodyParts();
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
-		this.addAllParts();
+		if(faceOnly){
+			this.addOnlyHeadParts();
+		}else {
+			this.addAllParts();
+		}
 		update();
 	}
 
@@ -485,6 +467,14 @@ public class StickmanFX extends Pane implements CommonStickman {
 			return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
 					.append("\n")).toString();
 		}
+	}
+
+	private void addOnlyHeadParts(){
+		this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,  mFaceWrinkleFX);
+		if (this.mType == Stickman.TYPE.MALE)
+			this.getChildren().add(mMaleHairFX);
+		else
+			this.getChildren().add(mFemaleHairFX);
 	}
 
 	private void addAllParts() {

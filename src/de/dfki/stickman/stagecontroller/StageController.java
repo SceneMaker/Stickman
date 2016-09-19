@@ -78,4 +78,9 @@ public class StageController implements StageStickmanController {
         fullScreen = fullS;
         ((StickmanStage)stickmanStage).setFullScreenSize();
     }
+
+    @Override
+    public void addStickman(String name, boolean onlyFace) {
+        addStickman(name);
+    }
 }

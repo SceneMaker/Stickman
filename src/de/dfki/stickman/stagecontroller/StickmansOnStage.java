@@ -27,4 +27,9 @@ public class StickmansOnStage extends CommonStickmansOnStage {
             putFullStickmanOnStage(name, stickman);
         }
     }
+
+    @Override
+    protected void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender, boolean onlyFace) {
+
+    }
 }

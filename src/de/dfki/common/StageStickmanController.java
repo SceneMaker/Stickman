@@ -16,4 +16,5 @@ public interface StageStickmanController {
     CommonStickmansOnStage getCommonStickmansOnStage();
     String getStageIdentifier();
     void setFullScreen(boolean fullScreen);
+    void addStickman(String name, boolean onlyFace);
 }

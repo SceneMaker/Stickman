@@ -26,29 +26,6 @@ public class StageStickmanControllerFX implements StageStickmanController {
         createNewStickmanStage();
     }
 
-    protected void getStickmanStageInstance() {
-        if(StickmanStageFX.isRunning){
-            stickmanStageFX = StickmanStageFX.getInstance();
-
-        }else{
-            applicationFXLauncher.launchStickmanAndWait();
-        }
-    }
-
-    protected void createNewStickmanStage() {
-        stickmanStageFX = StickmanStageFX.getInstance();
-        init();
-        try {
-            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void init() {
-        commonStickmansOnStage = new StickmansOnStageFX(getStickmanStage(), this);
-        getStickmanStage().setStickamnsOnStage(getCommonStickmansOnStage());
-    }
 
     @Override
     public  void clearStage() {
@@ -93,10 +70,16 @@ public class StageStickmanControllerFX implements StageStickmanController {
 
     public void launchStickmanStage(String filepath){}
 
+    @Override
     public void addStickman(String name){
         getCommonStickmansOnStage().addStickman(name, fullScreen);
     }
+
+    public void addStickman(String name, boolean onlyFace){
+        getCommonStickmansOnStage().addStickman(name, fullScreen, onlyFace);
+    }
     
+    @Override
     public CommonStickman getStickman(String name){
         return getCommonStickmansOnStage().getStickman(name);
     }
@@ -105,19 +88,43 @@ public class StageStickmanControllerFX implements StageStickmanController {
         return commonStickmansOnStage;
     }
 
+    @Override
     public StageStickman getStickmanStage() {
         return stickmanStageFX;
     }
 
+    @Override
     public String getStageIdentifier() {
         return stageIdentifier;
     }
 
-    public boolean isFullScreen() {
-        return fullScreen;
-    }
-
+    @Override
     public void setFullScreen(boolean fullScreen) {
         this.fullScreen = fullScreen;
     }
+
+    protected void getStickmanStageInstance() {
+        if(StickmanStageFX.isRunning){
+            stickmanStageFX = StickmanStageFX.getInstance();
+
+        }else{
+            applicationFXLauncher.launchStickmanAndWait();
+        }
+    }
+
+    protected void createNewStickmanStage() {
+        stickmanStageFX = StickmanStageFX.getInstance();
+        init();
+        try {
+            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void init() {
+        commonStickmansOnStage = new StickmansOnStageFX(getStickmanStage(), this);
+        getStickmanStage().setStickamnsOnStage(getCommonStickmansOnStage());
+    }
+
 }

@@ -26,4 +26,15 @@ public class StickmansOnStageFX extends CommonStickmansOnStage{
             putFullStickmanOnStage(name, stickman);
         }
     }
+
+    @Override
+    protected void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender, boolean onlyFace) {
+        if (fullScreen) {
+            CommonStickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension(), onlyFace);
+            putFullStickmanOnStage(name, stickman);
+        }else{
+            CommonStickman stickman = new StickmanFX(name, gender, DEFAULT_SCALE, onlyFace);
+            putFullStickmanOnStage(name, stickman);
+        }
+    }
 }

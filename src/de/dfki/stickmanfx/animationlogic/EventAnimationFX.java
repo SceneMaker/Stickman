@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
  * @author Beka Aptsiauri
  *
  */
-public class EventAnimationFX extends AnimationFX 
+public class EventAnimationFX extends AnimationFX
 {
     public List<Long> mTimepoints;
     public WordTimeMarkSequence mWTS;
