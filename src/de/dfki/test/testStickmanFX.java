@@ -11,7 +11,7 @@ public class testStickmanFX {
     public static void main(String[] args) {
         /*StageStickmanController stage = new StageStickmanControllerFX();
         StageStickmanController fullScreenStage = new StageStickmanFullScreenControllerFXDecorator(stage);
-        StageStickmanController stickmanStage = new StageStickmanNetworkControllerDecorator(fullScreenStage, "127.0.0.1", 8000);
+        StageStickmanController stickmanStage = new CommonStageStickmanNetworkControllerDecorator(fullScreenStage, "127.0.0.1", 8000);
         stickmanStage.addStickman("Bob");
         stickmanStage.addStickman("Anna");
         stickmanStage.launchStickmanStage();*/
