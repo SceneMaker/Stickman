@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman.animationlogic;
 
+import de.dfki.common.CommonStickman;
 import de.dfki.stickman.Stickman;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -72,10 +73,10 @@ public class AnimationLoader {
         return classPath;
     }
 
-    public Animation loadAnimation(Stickman sm, String name, int duration, boolean block) {
+    public Animation loadAnimation(CommonStickman sm, String name, int duration, boolean block) {
         Animation a = null;
 
-        String cp = getAnimationClasspath(sm.mType, name);
+        String cp = getAnimationClasspath(sm.getType(), name);
 
         try {
             Class c = Class.forName(cp);
@@ -93,7 +94,7 @@ public class AnimationLoader {
 
             }
         } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            sm.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            Stickman.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         if (a != null) {
@@ -102,10 +103,10 @@ public class AnimationLoader {
         return a;
     }
 
-    public EventAnimation loadEventAnimation(Stickman sm, String name, int duration, boolean block) {
+    public EventAnimation loadEventAnimation(CommonStickman sm, String name, int duration, boolean block) {
         EventAnimation a = null;
 
-        String cp = getEventAnimationClasspath(sm.mType, name);
+        String cp = getEventAnimationClasspath(sm.getType(), name);
 
         try {
             Class c = Class.forName(cp);
@@ -124,7 +125,7 @@ public class AnimationLoader {
 
             }
         } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            sm.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            Stickman.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         a.mID = getNextID();

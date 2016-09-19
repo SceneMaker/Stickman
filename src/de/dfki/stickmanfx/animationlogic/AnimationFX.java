@@ -6,8 +6,8 @@
 package de.dfki.stickmanfx.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.CommonAnimation;
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.XMLParseAction;
 import de.dfki.util.xml.XMLParseError;
@@ -24,7 +24,7 @@ import org.w3c.dom.Element;
  * @modified Beka Aptsiauri
  *
  */
-public class AnimationFX extends Thread implements XMLParseable, XMLWriteable 
+public class AnimationFX extends Thread implements XMLParseable, XMLWriteable , CommonAnimation
 {
 	public String mName = "";
 	public ArrayList<AnimationContentFX> mAnimationPartFX = new ArrayList<>();
@@ -38,7 +38,12 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
 	public int mDuration = -1;
 	public String mID;
 	public Object mParameter = "";
-	public enum ANIMTYPE { EmotionExpression, Gesture}
+
+    public String getmID() {
+        return mID;
+    }
+
+    public enum ANIMTYPE { EmotionExpression, Gesture}
 	public ANIMTYPE mAnimType = null;
 	
 
@@ -172,18 +177,18 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
             // API or TCP-Interface
             if (!mStickmanFX.getStickmanStageController().ismNetwork())
             {
-                mStickmanFX.notifyListeners(mID);
+                mStickmanFX.notifyListeners(getmID());
             } 
             else 
             {
-                mStickmanFX.getStickmanStageController().sendAnimationUpdate("end", mID);
+                mStickmanFX.getStickmanStageController().sendAnimationUpdate("end", getmID());
             }
 	}
 
 	@Override
 	public void writeXML(IOSIndentWriter out) throws XMLWriteError 
         {
-		out.println("<StickmanAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
+		out.println("<StickmanAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + getmID() + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
 		if (mParameter != null) 
                 {
                     if (mParameter instanceof WordTimeMarkSequence) 

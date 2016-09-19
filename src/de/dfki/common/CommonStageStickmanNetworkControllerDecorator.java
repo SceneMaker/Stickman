@@ -7,7 +7,7 @@ import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanDecorator;
  * Created by alvaro on 9/17/16.
  */
 public abstract class CommonStageStickmanNetworkControllerDecorator extends StageStickmanDecorator {
-    protected CommandParser commandParser;
+    protected CommonCommandParser commonCommandParser;
     protected   String mHost;
     protected int mPort;
     protected CommonClientConnectionHandler mConnection;
@@ -16,7 +16,6 @@ public abstract class CommonStageStickmanNetworkControllerDecorator extends Stag
         super(wrappedController);
         mHost = host;
         mPort = port;
-        commandParser = new CommandParser(getCommonStickmansOnStage());
         initConnectionToServer(wrappedController);
         getCommonStickmansOnStage().setStageStickmanController(this); //We need to set this as the new controller, in order to receive the EventInfo
     }

@@ -101,8 +101,7 @@ public class Animator {
                     // we have 2 options!
                     // 1) API Call
                     // 2) send to Player
-
-                    StickmanStage.sendTimeMarkInformation(e.mContent);
+                    mStickman.getStickmanStageController().sendTimeMarkInformation(e.mContent);
 
                 }
             }

@@ -347,6 +347,11 @@ public class StickmanFX extends Pane implements CommonStickman {
 		mAnimationSchedulerFX.end();
 	}
 
+	@Override
+	public Stickman.TYPE getType() {
+		return mType;
+	}
+
 	public void addListener(AnimationListener al) {
 		mAnimationListeners.add(al);
 	}

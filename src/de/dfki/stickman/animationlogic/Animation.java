@@ -6,6 +6,7 @@
 package de.dfki.stickman.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.CommonAnimation;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.StickmanStage;
 import de.dfki.util.ios.IOSIndentWriter;
@@ -23,7 +24,7 @@ import org.w3c.dom.Element;
  * @author Patrick Gebhard
  *
  */
-public class Animation extends Thread implements XMLParseable, XMLWriteable {
+public class Animation extends Thread implements XMLParseable, XMLWriteable, CommonAnimation {
 
 	public enum ANIMTYPE { EmotionExpression, Gesture}	
 	public String mName = "";
@@ -43,6 +44,10 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	
 	public Animation() {
 		
+	}
+
+	public String getmID() {
+		return mID;
 	}
 
 
@@ -151,7 +156,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 		if (!mStickman.getStickmanStageController().ismNetwork()) {
 			mStickman.notifyListeners(mID);
 		} else {
-			StickmanStage.sendAnimationUpdate("end", mID);
+			mStickman.getStickmanStageController().sendAnimationUpdate("end", getmID());
 		}
 	}
 

@@ -1,5 +1,7 @@
 package de.dfki.common;
 
+import de.dfki.stickman.Stickman;
+
 /**
  * Created by alvaro on 9/4/16.
  */
@@ -13,4 +15,5 @@ public interface CommonStickman {
     boolean isShowName();
 
     void endAnimationScheduler();
+    Stickman.TYPE getType();
 }

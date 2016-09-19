@@ -53,7 +53,7 @@ public class EventAnimationFX extends AnimationFX
     @Override
     public void writeXML(IOSIndentWriter out) throws XMLWriteError 
     {
-        out.println("<StickmanEventAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
+        out.println("<StickmanEventAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + getmID() + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
         if (mParameter != null) 
         {
             if (mParameter instanceof WordTimeMarkSequence) 

@@ -134,7 +134,7 @@ public class Stickman extends JComponent implements CommonStickman {
     public SpeechBubble mSpeechBubble;
 
     // logging
-    public final Logger mLogger = Logger.getAnonymousLogger();
+    public static final Logger mLogger = Logger.getAnonymousLogger();
 
     private StickmanStage stage;
 
@@ -294,6 +294,11 @@ public class Stickman extends JComponent implements CommonStickman {
     @Override
     public void endAnimationScheduler() {
 
+    }
+
+    @Override
+    public Stickman.TYPE getType() {
+        return mType;
     }
 
     public StickmanStage getStage(){
