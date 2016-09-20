@@ -5,6 +5,7 @@ import de.dfki.common.StageStickman;
 import de.dfki.stickman.util.StickmanStageLayout;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
@@ -111,6 +112,15 @@ public class StickmanStage extends JFrame implements  StageStickman {
     @Override
     public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage) {
         CommonStickmansOnStage stickamnsOnStage1 = stickamnsOnStage;
+    }
+
+    @Override
+    public BufferedImage getStageAsImage(String stageIdentifier) {
+        BufferedImage image = new BufferedImage(sStickmanPanel.getWidth(), sStickmanPanel.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics g = image.createGraphics();
+        sStickmanPanel.paint(g);
+        g.dispose();
+        return image;
     }
 
     private static class StickmanStageLogFormatter extends Formatter {

@@ -5,6 +5,8 @@ import de.dfki.common.StageStickman;
 import de.dfki.common.StageStickmanController;
 import de.dfki.common.CommonStickmansOnStage;
 
+import java.awt.image.BufferedImage;
+
 /**
  * Created by alvaro on 9/17/16.
  */
@@ -36,8 +38,8 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
     }
 
     @Override
-    public void launchStickmanStage(){
-       controllerFX.launchStickmanStage();
+    public void launchStickmanStage(boolean show){
+       controllerFX.launchStickmanStage(show);
     }
 
     public void addStickman(String name){
@@ -71,5 +73,9 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
     }
     public void setFullScreen(boolean fullScreen){
         controllerFX.setFullScreen(fullScreen);
+    }
+    @Override
+    public BufferedImage getStageAsImage() throws Exception {
+        return controllerFX.getStageAsImage();
     }
 }

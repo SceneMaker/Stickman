@@ -1,6 +1,7 @@
 package de.dfki.common;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -13,4 +14,7 @@ public interface StageStickman {
     void setStageFullScreen(String stageIdentifier);
     void setStageNonFullScreen(String stageIdentifier);
     void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage);
+    BufferedImage getStageAsImage(String stageIdentifier) throws Exception;
+
+
 }

@@ -8,6 +8,11 @@ import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanFullScreenControllerFXDecorator;
 import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanNetworkControllerDecoratorFX;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by alvaro on 9/13/16.
  */
@@ -17,7 +22,19 @@ public class testStickmanFX {
         StageStickmanController stickmanStage = new StageStickmanFullScreenControllerFXDecorator(stage);
         stickmanStage.addStickman("Bob");
         stickmanStage.addStickman("Anna", true);
-        stickmanStage.launchStickmanStage();
+        stickmanStage.launchStickmanStage(true);
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = stickmanStage.getStageAsImage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        File outputfile = new File("/home/alvaro/Pictures/test/image.jpg");
+        try {
+            ImageIO.write(bufferedImage, "jpg", outputfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
        /* StageStickmanController stickmanStage2 = new StageStickmanControllerFX();

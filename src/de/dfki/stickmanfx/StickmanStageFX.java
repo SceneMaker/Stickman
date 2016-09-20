@@ -5,18 +5,25 @@ import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
+import javax.imageio.ImageIO;
 /**
  *
  * @author Robbie. Refactored by: acepero13
@@ -179,5 +186,43 @@ public class StickmanStageFX extends Application implements StageStickman{
         public String format(LogRecord record) {
             return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
         }
+    }
+
+    public BufferedImage getStageAsImage(String stageIdentifier) throws Exception {
+        if (stickmanFXStages.containsKey(stageIdentifier)) {
+            Stage stage =  stickmanFXStages.get(stageIdentifier);
+            final CountDownLatch latch = new CountDownLatch(1);
+            ImageContainer imageContainer= new ImageContainer();
+            Platform.runLater(()->{
+                WritableImage snapshot = stage.getScene().getRoot().snapshot(new SnapshotParameters(), null);
+                BufferedImage bi = SwingFXUtils.fromFXImage(snapshot, null);
+                BufferedImage imageRGB = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.OPAQUE);
+                Graphics2D graphics = imageRGB.createGraphics();
+                graphics.drawImage(bi, 0, 0, null);
+                imageContainer.setImage(imageRGB);
+                latch.countDown();
+            });
+
+            latch.await();
+            File outputfile = new File("/home/alvaro/Pictures/test/image2.jpg");
+            ImageIO.write(imageContainer.getImage(), "jpg", outputfile);
+            return imageContainer.getImage();
+
+        }else {
+            throw new Exception("Stage Not found");
+        }
+
+    }
+}
+
+class ImageContainer{
+   private  BufferedImage image;
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
     }
 }

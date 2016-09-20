@@ -33,7 +33,7 @@ public class StickmansOnStageFX extends CommonStickmansOnStage{
             CommonStickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension(), onlyFace);
             putFullStickmanOnStage(name, stickman);
         }else{
-            CommonStickman stickman = new StickmanFX(name, gender, DEFAULT_SCALE, onlyFace);
+            CommonStickman stickman = new StickmanFX(name, gender, 5.0f, onlyFace);
             putFullStickmanOnStage(name, stickman);
         }
     }

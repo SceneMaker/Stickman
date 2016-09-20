@@ -7,6 +7,7 @@ import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageFX;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -57,15 +58,17 @@ public class StageStickmanControllerFX implements StageStickmanController {
         }
     }
 
-    public void launchStickmanStage(){
+    public void launchStickmanStage(boolean show){
         try {
             getStickmanStage().addStickmanToStage(getStageIdentifier());
-            ((StickmanStageFX) getStickmanStage()).showStage(getStageIdentifier());
+            if(show){
+                ((StickmanStageFX) getStickmanStage()).showStage(getStageIdentifier());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     public void launchStickmanConfiguration(String filepath){}
 
     public void launchStickmanStage(String filepath){}
@@ -78,7 +81,12 @@ public class StageStickmanControllerFX implements StageStickmanController {
     public void addStickman(String name, boolean onlyFace){
         getCommonStickmansOnStage().addStickman(name, fullScreen, onlyFace);
     }
-    
+
+    @Override
+    public BufferedImage getStageAsImage() throws Exception {
+       return  getStickmanStage().getStageAsImage(stageIdentifier);
+    }
+
     @Override
     public CommonStickman getStickman(String name){
         return getCommonStickmansOnStage().getStickman(name);

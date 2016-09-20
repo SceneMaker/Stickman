@@ -7,6 +7,7 @@ import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.StickmanStage;
 
+import java.awt.image.BufferedImage;
 import java.util.UUID;
 
 /**
@@ -57,7 +58,7 @@ public class StageController implements StageStickmanController {
     }
 
     @Override
-    public void launchStickmanStage() {}
+    public void launchStickmanStage(boolean show) {}
 
     @Override
     public StageStickman getStickmanStage() {
@@ -82,5 +83,10 @@ public class StageController implements StageStickmanController {
     @Override
     public void addStickman(String name, boolean onlyFace) {
         addStickman(name);
+    }
+
+    @Override
+    public BufferedImage getStageAsImage() {
+        return null;
     }
 }

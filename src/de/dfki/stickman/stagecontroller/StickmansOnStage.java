@@ -30,6 +30,6 @@ public class StickmansOnStage extends CommonStickmansOnStage {
 
     @Override
     protected void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender, boolean onlyFace) {
-
+        addStickmanToStage(name, fullScreen, gender);
     }
 }
