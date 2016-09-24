@@ -264,25 +264,17 @@ public class MouthFX extends BodyPartFX {
 				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
 			}
 			break;
-
-		case EMBARRASSEDEND:
-			movement = mShapeAnimationStep - 1;
-
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements()
-						.add(new MoveTo(mStart.x - mLength / 2 + movement / 10 * 7, mStart.y + movement / 20));
-				mPath.getElements().add(new QuadCurveTo((mStart.x - mLength / 2 + mEnd.x + movement / 10 * 3) / 2,
-						mStart.y + 1, mEnd.x + movement / 10 * 3, mEnd.y + movement / 20));
-			}
-			break;
 		case O:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - mLength / 2, mEnd.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2, mStart.y));
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/oMouth.dae");
+			imorter.read(url);
+			mouthMeshView = (MeshView) imorter.getImport()[0];
+			
+			mouthMeshView.setTranslateX(mStart.x);
+			mouthMeshView.setTranslateY(mStart.y);
+			
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			}
 			break;
 
 		case ONE:
