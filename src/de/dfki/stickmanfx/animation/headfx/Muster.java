@@ -31,7 +31,7 @@ public class Muster extends AnimationFX
             int rotationUnit = 10;
             
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SAD"));
             playAnimationPart(2000);
             
             pauseAnimation(1000);
