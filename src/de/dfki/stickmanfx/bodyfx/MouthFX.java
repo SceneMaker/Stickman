@@ -42,17 +42,11 @@ public class MouthFX extends BodyPartFX {
 		mLength = 20;
 		mSize = new Dimension(mLength * 2, 5);
 
-		url = getClass().getClassLoader().getResource("BodyParts/mouth.dae");
-		imorter = new ColModelImporter();
-		imorter.read(url);
-		mouthMeshView = (MeshView) imorter.getImport()[0];
-
 		mYRotation = mHeadFX.mYRotation;
 
 		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0,
 				(128 * 100 / 255) / 100f);
 		mPath = new Path();
-		this.getChildren().add(mPath);
 		init();
 	}
 
@@ -70,11 +64,11 @@ public class MouthFX extends BodyPartFX {
 	@Override
 	public void createShape() {
 		mStart = mHeadFX.getMouthPostion();
-		mEnd = new Point(mStart.x + mLength / 2, mStart.y);
+		
+		imorter = new ColModelImporter();
 
 		double movement;
 
-//		clearDrawObjects();
 		clearChildren(this);
 
 		mPath = new Path();
@@ -82,8 +76,7 @@ public class MouthFX extends BodyPartFX {
 		switch (mShape) {
 		case DEFAULT:
 			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-				if (mHeadFX.mStickmanFX.fadeControler == true) 
-				{
+				if (mHeadFX.mStickmanFX.fadeControler == true) {
 					int fadeFactor = mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 6;
 					if (fadeFactor <= 12) {
 						fadeFactor = 0;
@@ -99,28 +92,31 @@ public class MouthFX extends BodyPartFX {
 								(fadeFactor * 100 / 255) / 100f);
 				}
 			}
-
+			
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/defaultMouth.dae");
+			imorter.read(url);
+			mouthMeshView = (MeshView) imorter.getImport()[0];
+			
 			mouthMeshView.setTranslateX(mStart.x);
 			mouthMeshView.setTranslateY(mStart.y);
-			mouthMeshView.setTranslateZ(-130);
+			
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			}
 
-			Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-			Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-			Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-			mouthMeshView.getTransforms().clear();
-			mouthMeshView.getTransforms().addAll(rx, ry, rz);
-
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
 			break;
 
 		case SMILE:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2 - movement / 3 * 2, mStart.y - movement / 2));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1 + movement / 3 * 2,
-					mEnd.x + movement / 3 * 2, mStart.y - movement / 2));
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/smileMouth.dae");
+			imorter.read(url);
+			mouthMeshView = (MeshView) imorter.getImport()[0];
+			
+			mouthMeshView.setTranslateX(mStart.x);
+			mouthMeshView.setTranslateY(mStart.y);
+			
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			}
 			break;
 
 		case SMILEEND:
@@ -443,7 +439,7 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		}
-		getChildren().add(mouthMeshView);
+		// getChildren().add(mouthMeshView);
 		// addToDrawObjects(mPath);
 		// this.update();
 	}

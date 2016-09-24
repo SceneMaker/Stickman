@@ -530,11 +530,8 @@ public class StickmanFX extends Pane {
 	}
 
 	private void addAllParts() {
-		if (this.mType == StickmanFX.TYPE.MALE)
-			this.getChildren().add(mMaleHairFX);
-		else
-			this.getChildren().add(mFemaleHairFX);
-		this.getChildren().addAll(mNeckFX, mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
+	
+		this.getChildren().addAll(mNeckFX, mHeadFX,
 				mBodyFX, mLeftShoulderFX, /*mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX,*/ mRightShoulderFX,
 				mRightUpperArmFX, /*mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,

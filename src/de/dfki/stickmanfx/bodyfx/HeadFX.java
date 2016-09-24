@@ -13,6 +13,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.AmbientLight;
 import javafx.scene.DepthTest;
+import javafx.scene.Group;
 import javafx.scene.PointLight;
 import javafx.scene.effect.Light;
 import javafx.scene.effect.Lighting;
@@ -52,7 +53,7 @@ public class HeadFX extends BodyPartFX {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mHead;
+	Group mHead;
 
 	int mHeadRadius = 60;
 	int mHeadHeight = 30;
@@ -61,10 +62,10 @@ public class HeadFX extends BodyPartFX {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 
-		url = getClass().getClassLoader().getResource("BodyParts/head.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/head2.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
-		mHead = (MeshView) imorter.getImport()[0];
+		mHead = (Group) imorter.getImport()[0];
 
 		mColor = Color.rgb(242, 227, 217, 1);
 
@@ -91,7 +92,7 @@ public class HeadFX extends BodyPartFX {
 	}
 
 	public Point getMouthPostion() {
-		return new Point(mHalfWidth + mEarWidth / 2 - 3, mHalfHeight + mDrawOffset * 3 + 25);
+		return new Point(mHalfWidth-60, mHalfHeight-110 );
 	}
 
 	public Point getSpeechBubbleStartPosition() {
@@ -129,55 +130,6 @@ public class HeadFX extends BodyPartFX {
 
 		mHead.getTransforms().clear();
 		mHead.getTransforms().addAll(rx, ry, rz);
-
-		if (mStickmanFX.mFemaleHairFX != null) {
-			mStickmanFX.mFemaleHairFX.mXRotation = this.mXRotation;
-			mStickmanFX.mFemaleHairFX.mYRotation = this.mYRotation;
-			mStickmanFX.mFemaleHairFX.mZRotation = this.mZRotation;
-			mStickmanFX.mFemaleHairFX.calculate(step);
-		}
-
-		if (mStickmanFX.mLeftEyeFX != null) {
-			mStickmanFX.mLeftEyeFX.mXRotation = this.mXRotation;
-			mStickmanFX.mLeftEyeFX.mYRotation = this.mYRotation;
-			mStickmanFX.mLeftEyeFX.mZRotation = this.mZRotation;
-			mStickmanFX.mLeftEyeFX.calculate(step);
-		}
-
-		if (mStickmanFX.mRightEyeFX != null) {
-			mStickmanFX.mRightEyeFX.mXRotation = this.mXRotation;
-			mStickmanFX.mRightEyeFX.mYRotation = this.mYRotation;
-			mStickmanFX.mRightEyeFX.mZRotation = this.mZRotation;
-			mStickmanFX.mRightEyeFX.calculate(step);
-		}
-
-		if (mStickmanFX.mLeftEyebrowFX != null) {
-			mStickmanFX.mLeftEyebrowFX.mXRotation = this.mXRotation;
-			mStickmanFX.mLeftEyebrowFX.mYRotation = this.mYRotation;
-			mStickmanFX.mLeftEyebrowFX.mZRotation = this.mZRotation;
-			mStickmanFX.mLeftEyebrowFX.calculate(step);
-		}
-
-		if (mStickmanFX.mRightEyebrowFX != null) {
-			mStickmanFX.mRightEyebrowFX.mXRotation = this.mXRotation;
-			mStickmanFX.mRightEyebrowFX.mYRotation = this.mYRotation;
-			mStickmanFX.mRightEyebrowFX.mZRotation = this.mZRotation;
-			mStickmanFX.mRightEyebrowFX.calculate(step);
-		}
-
-		if (mStickmanFX.mMouthFX != null) {
-			mStickmanFX.mMouthFX.mXRotation = this.mXRotation;
-			mStickmanFX.mMouthFX.mYRotation = this.mYRotation;
-			mStickmanFX.mMouthFX.mZRotation = this.mZRotation;
-			mStickmanFX.mMouthFX.calculate(step);
-		}
-
-		if (mStickmanFX.mMaleHairFX != null) {
-			mStickmanFX.mMaleHairFX.mXRotation = this.mXRotation;
-			mStickmanFX.mMaleHairFX.mYRotation = this.mYRotation;
-			mStickmanFX.mMaleHairFX.mZRotation = this.mZRotation;
-			mStickmanFX.mMaleHairFX.calculate(step);
-		}
 
 		this.getChildren().addAll(mHead);
 		// update();
