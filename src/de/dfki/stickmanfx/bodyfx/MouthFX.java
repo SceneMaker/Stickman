@@ -182,29 +182,17 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 
-		case HAPPYEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2 - movement / 2, mStart.y - movement / 4));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1 + movement, mEnd.x + movement / 2,
-						mStart.y - movement / 4));
-				mPath.getElements().add(new LineTo(mStart.x - mLength / 2 - movement / 2, mStart.y - movement / 4));
-			}
-			break;
-
 		case DISGUSTED:
-			movement = mLength / 2 + (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) / 2;
-
-			mPath.getElements().add(new MoveTo(mStart.x - movement, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x - movement * 2 / 3, mStart.y - movement / 4,
-					mStart.x - movement / 3, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + movement / 4, mStart.x + movement / 3, mStart.y));
-			mPath.getElements().add(
-					new QuadCurveTo(mStart.x + movement * 2 / 3, mStart.y - movement / 4, mStart.x + movement, mEnd.y));
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/disgustedMouth.dae");
+			imorter.read(url);
+			mouthMeshView = (MeshView) imorter.getImport()[0];
+			
+			mouthMeshView.setTranslateX(mStart.x);
+			mouthMeshView.setTranslateY(mStart.y);
+			
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			}
 			break;
 
 		case DISGUSTEDEND:
