@@ -1,21 +1,14 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import javafx.application.Platform;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.transform.Rotate;
 
 /**
  *
@@ -29,24 +22,19 @@ public class MouthFX extends BodyPartFX {
 	};
 
 	HeadFX mHeadFX;
-	Path mPath;
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mouthMeshView;
+	MeshView mouthMesh;
 
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
 	public MouthFX(HeadFX head) {
 		mHeadFX = head;
-		mLength = 20;
 		mSize = new Dimension(mLength * 2, 5);
-
-		mYRotation = mHeadFX.mYRotation;
 
 		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0,
 				(128 * 100 / 255) / 100f);
-		mPath = new Path();
 		init();
 	}
 
@@ -64,14 +52,10 @@ public class MouthFX extends BodyPartFX {
 	@Override
 	public void createShape() {
 		mStart = mHeadFX.getMouthPostion();
-		
+
 		imorter = new ColModelImporter();
 
-		double movement;
-
 		clearChildren(this);
-
-		mPath = new Path();
 
 		switch (mShape) {
 		case DEFAULT:
@@ -92,16 +76,16 @@ public class MouthFX extends BodyPartFX {
 								(fadeFactor * 100 / 255) / 100f);
 				}
 			}
-			
+
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/defaultMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 
 			break;
@@ -109,171 +93,139 @@ public class MouthFX extends BodyPartFX {
 		case SMILE:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/smileMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 
 		case SAD:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/sadMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y+5);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y + 5);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 		case ANGRY:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth1.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y+5);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			Group angryMouth = (Group) imorter.getImport()[0];
+
+			angryMouth.setTranslateX(mStart.x);
+			angryMouth.setTranslateY(mStart.y + 5);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(angryMouth)) {
+				mHeadFX.mHead.getChildren().set(6, angryMouth);
 			}
 			break;
 
 		case ANGRYSMALLMOUTH:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angrySmallMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y+5);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y + 5);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 
 		case SURPRISED:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/surprisedMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y+5);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y + 5);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 		case HAPPY:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/happyMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 
 		case DISGUSTED:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/disgustedMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 
 		case CONTEMPT:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-			mPath.getElements().add(
-					new QuadCurveTo(mStart.x, mStart.y - movement / 1.5, mEnd.x + movement / 2, mEnd.y - movement / 2));
 			break;
 
 		case CONTEMPTEND:
-			movement = mShapeAnimationStep - 1;
-
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - movement / 1.5, mEnd.x + movement / 2,
-						mEnd.y - movement / 2));
-			}
 			break;
 
 		case FEAR:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y+5);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y + 5);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 
 		case EXCITED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2 - movement / 3 * 2, mStart.y - movement / 2));
-			mPath.getElements().add(
-					new QuadCurveTo(mStart.x, mStart.y + movement, mEnd.x + movement / 3 * 2, mStart.y - movement / 2));
-			mPath.getElements().add(new LineTo(mStart.x - mLength / 2 - movement / 3 * 2, mStart.y - movement / 2));
 			break;
 
 		case EXCITEDEND:
-			movement = mShapeAnimationStep - 1;
-
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2 - movement / 3 * 2, mStart.y - movement / 2));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + movement, mEnd.x + movement / 3 * 2,
-						mStart.y - movement / 2));
-				mPath.getElements().add(new LineTo(mStart.x - mLength / 2 - movement / 3 * 2, mStart.y - movement / 2));
-			}
 			break;
 
 		case EMBARRASSED:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/embarrassedMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y+5);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y + 5);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 		case O:
 			url = getClass().getClassLoader().getResource("BodyParts/Mouth/oMouth.dae");
 			imorter.read(url);
-			mouthMeshView = (MeshView) imorter.getImport()[0];
-			
-			mouthMeshView.setTranslateX(mStart.x);
-			mouthMeshView.setTranslateY(mStart.y);
-			
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			mouthMesh = (MeshView) imorter.getImport()[0];
+
+			mouthMesh.setTranslateX(mStart.x);
+			mouthMesh.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMesh);
 			}
 			break;
 
@@ -281,70 +233,32 @@ public class MouthFX extends BodyPartFX {
 		case SIX:
 		case FOURTEEN:
 		case NINETEEN:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - mLength / 5, mEnd.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 5, mStart.x - mLength / 2, mStart.y));
 			break;
 
 		case TWO:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2.8, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y - mLength / 1.6, mEnd.x - mLength / 6, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 1.6, mStart.x - mLength / 2.8, mStart.y));
 			break;
 
 		case THREE:
 		case TWENTY:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2.8, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y - mLength / 2.5, mEnd.x - mLength / 6, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 2.5, mStart.x - mLength / 2.8, mStart.y));
 			break;
 
 		case FOUR:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - 3, mEnd.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2, mStart.y));
 			break;
 
 		case FIVE:
 		case EIGHT:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2.8, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - mLength / 2, mEnd.x - mLength / 6, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2.8, mStart.y));
 			break;
 
 		case SEVEN:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 3, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - 3, mEnd.x - mLength / 5, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 3, mStart.x - mLength / 3, mStart.y));
 			break;
 
 		case NINE:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 3, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y - mLength / 2.8, mEnd.x - mLength / 5, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 1.6, mStart.x - mLength / 3, mStart.y));
 			break;
 
 		case TEN:
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2.8, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y - mLength / 2.8, mEnd.x - mLength / 6, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y + mLength / 2, mStart.x - mLength / 2.8, mStart.y));
 			break;
 
 		}
-		// getChildren().add(mouthMeshView);
-		// addToDrawObjects(mPath);
-		// this.update();
 	}
 
 	protected void recordColor() {

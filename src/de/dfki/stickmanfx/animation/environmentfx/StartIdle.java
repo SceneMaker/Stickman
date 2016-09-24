@@ -24,11 +24,11 @@ public class StartIdle extends AnimationFX {
 
 	@Override
 	public void playAnimation() {
-		if (!mStickmanFX.mIdleBehavior.isAlive()) {
-			mStickmanFX.mIdleRun = true;
-			mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX, mStickmanFX.simplexNoise);
-			mStickmanFX.mIdleBehavior.start();
-		}
+//		if (!mStickmanFX.mIdleBehavior.isAlive()) {
+//			mStickmanFX.mIdleRun = true;
+//			mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX, mStickmanFX.simplexNoise);
+//			mStickmanFX.mIdleBehavior.start();
+//		}
 	}
 }
 

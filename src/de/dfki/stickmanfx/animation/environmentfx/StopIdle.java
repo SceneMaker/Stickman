@@ -17,7 +17,7 @@ public class StopIdle extends AnimationFX {
 
 	@Override
 	public void playAnimation() {
-		mStickmanFX.mIdleRun = false;
-		while (mStickmanFX.mIdleBehavior.isAlive());
+//		mStickmanFX.mIdleRun = false;
+//		while (mStickmanFX.mIdleBehavior.isAlive());
 	}
 }
