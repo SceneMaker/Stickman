@@ -195,23 +195,6 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 
-		case DISGUSTEDEND:
-			movement = mLength / 2 + mShapeAnimationStep / 2;
-
-			if (mShapeAnimationStep - 1 <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x - mLength / 2, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - movement, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x - movement * 2 / 3, mStart.y - movement / 4,
-						mStart.x - movement / 3, mStart.y));
-				mPath.getElements()
-						.add(new QuadCurveTo(mStart.x, mStart.y + movement / 4, mStart.x + movement / 3, mStart.y));
-				mPath.getElements().add(new QuadCurveTo(mStart.x + movement * 2 / 3, mStart.y - movement / 4,
-						mStart.x + movement, mEnd.y));
-			}
-			break;
-
 		case CONTEMPT:
 			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
@@ -234,12 +217,16 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case FEAR:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			mPath.getElements().add(new MoveTo(mStart.x - mLength / 2 - movement / 4, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(mStart.x, mStart.y - movement / 2, mEnd.x + movement / 4, mEnd.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x, mStart.y - 1, mStart.x - mLength / 2 - movement / 4, mStart.y));
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth.dae");
+			imorter.read(url);
+			mouthMeshView = (MeshView) imorter.getImport()[0];
+			
+			mouthMeshView.setTranslateX(mStart.x);
+			mouthMeshView.setTranslateY(mStart.y+5);
+			
+			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMeshView)) {
+				mHeadFX.mHead.getChildren().set(6, mouthMeshView);
+			}
 			break;
 
 		case FEAREND:
