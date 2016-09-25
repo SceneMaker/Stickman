@@ -111,6 +111,17 @@ public class LeftEyebrowFX extends BodyPartFX
 			break;
 
 		case ANGRY:
+			
+			url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow.dae");
+			imorter.read(url);
+			leftBrow = (MeshView) imorter.getImport()[0];
+
+			leftBrow.setTranslateX(mStart.x);
+			leftBrow.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(2).equals(leftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, leftBrow);
+			}
 
 			break;
 
