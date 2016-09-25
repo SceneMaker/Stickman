@@ -62,10 +62,14 @@ public class HeadFX extends BodyPartFX {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 
-		url = getClass().getClassLoader().getResource("BodyParts/head2.dae");
+		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			url = getClass().getClassLoader().getResource("BodyParts/maleHead.dae");
+		else
+			url = getClass().getClassLoader().getResource("BodyParts/femaleHead.dae");
 		imorter = new ColModelImporter();
 		imorter.read(url);
 		mHead = (Group) imorter.getImport()[0];
+		System.out.println(mHead.getChildren());
 
 		mColor = Color.rgb(242, 227, 217, 1);
 
@@ -76,7 +80,7 @@ public class HeadFX extends BodyPartFX {
 	}
 
 	public Point getLeftEyebrowPostion() {
-		return new Point(mHalfWidth + 1, mHalfHeight + 61);
+		return new Point(mHalfWidth - 60, mHalfHeight - 105);
 	}
 
 	public Point getRightEyebrowPostion() {
