@@ -104,15 +104,15 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case SAD:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/sadMouth.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/Mouth/sadMouth1.dae");
 			imorter.read(url);
-			mouthMesh = (MeshView) imorter.getImport()[0];
+			Group sadMouth = (Group) imorter.getImport()[0];
 
-			mouthMesh.setTranslateX(mStart.x);
-			mouthMesh.setTranslateY(mStart.y + 5);
+			sadMouth.setTranslateX(mStart.x);
+			sadMouth.setTranslateY(mStart.y);
 
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMesh);
+			if (!mHeadFX.mHead.getChildren().get(6).equals(sadMouth)) {
+				mHeadFX.mHead.getChildren().set(6, sadMouth);
 			}
 			break;
 		case ANGRY:
