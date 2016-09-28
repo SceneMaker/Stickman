@@ -133,7 +133,6 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case SMILE:
-			System.out.println("Beka");
 			this.smileMouth.setTranslateX(mStart.x);
 			this.smileMouth.setTranslateY(mStart.y);
 
