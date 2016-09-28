@@ -37,11 +37,12 @@ public class LeftEyebrowFX extends BodyPartFX
 	};
 
 	HeadFX mHeadFX;
-	Path mPath;
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView leftBrow;
+	MeshView defaultLeftBrow;
+	MeshView angryLeftBrow;
+	MeshView disgustedLeftBrow;
 	
 	int mZTranslate = -120;
 
@@ -51,8 +52,23 @@ public class LeftEyebrowFX extends BodyPartFX
 	{
 		mHeadFX = head;
 		mSize = new Dimension(mLength, mLength);
+		
+		imorter = new ColModelImporter();
 
 		mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/defaultLeftBrow.dae");
+		imorter.read(url);
+		defaultLeftBrow = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow.dae");
+		imorter.read(url);
+		angryLeftBrow = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/disgustedleftBrow.dae");
+		imorter.read(url);
+		disgustedLeftBrow = (MeshView) imorter.getImport()[0];
+		
 		init();
 	}
 
@@ -71,8 +87,6 @@ public class LeftEyebrowFX extends BodyPartFX
 	public void createShape() {
 		mStart = mHeadFX.getLeftEyebrowPostion();
 		
-		imorter = new ColModelImporter();
-
 		clearChildren(this);
 
 		switch (mShape) 
@@ -97,38 +111,33 @@ public class LeftEyebrowFX extends BodyPartFX
 				}
 			}
 			
-			url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/defaultLeftBrow.dae");
-			imorter.read(url);
-			leftBrow = (MeshView) imorter.getImport()[0];
+			defaultLeftBrow.setTranslateX(mStart.x);
+			defaultLeftBrow.setTranslateY(mStart.y);
 
-			leftBrow.setTranslateX(mStart.x);
-			leftBrow.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(leftBrow)) {
-				mHeadFX.mHead.getChildren().set(2, leftBrow);
+			if (!mHeadFX.mHead.getChildren().get(2).equals(defaultLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, defaultLeftBrow);
 			}
 			
 			break;
 
 		case ANGRY:
 			
-			url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow.dae");
-			imorter.read(url);
-			leftBrow = (MeshView) imorter.getImport()[0];
+			angryLeftBrow.setTranslateX(mStart.x);
+			angryLeftBrow.setTranslateY(mStart.y);
 
-			leftBrow.setTranslateX(mStart.x);
-			leftBrow.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(leftBrow)) {
-				mHeadFX.mHead.getChildren().set(2, leftBrow);
+			if (!mHeadFX.mHead.getChildren().get(2).equals(angryLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, angryLeftBrow);
 			}
 
 			break;
 
-		case ANGRYEND:
-			break;
-
 		case DISGUSTED:
+			disgustedLeftBrow.setTranslateX(mStart.x);
+			disgustedLeftBrow.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(2).equals(disgustedLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, disgustedLeftBrow);
+			}
 			break;
 
 		case DISGUSTEDEND:

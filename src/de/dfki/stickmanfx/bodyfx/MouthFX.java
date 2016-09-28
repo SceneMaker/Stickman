@@ -25,7 +25,15 @@ public class MouthFX extends BodyPartFX {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mouthMesh;
+	MeshView defaultMouth;
+	Group angryMouth;
+	Group disgustedMouth;
+	Group embarrassedMouth;
+	Group happyMouth;
+	Group oMouth;
+	Group sadMouth;
+	Group smileMouth;
+	Group surprisedMouth;
 
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
@@ -35,6 +43,45 @@ public class MouthFX extends BodyPartFX {
 
 		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0,
 				(128 * 100 / 255) / 100f);
+		
+		imorter = new ColModelImporter();
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/defaultMouth.dae");
+		imorter.read(url);
+		this.defaultMouth = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/smileMouth1.dae");
+		imorter.read(url);
+		this.smileMouth = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/sadMouth1.dae");
+		imorter.read(url);
+		this.sadMouth = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth1.dae");
+		imorter.read(url);
+		this.angryMouth = (Group) imorter.getImport()[0];
+
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/surprisedMouth1.dae");
+		imorter.read(url);
+		this.surprisedMouth = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/happyMouth1.dae");
+		imorter.read(url);
+		this.happyMouth = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/disgustedMouth1.dae");
+		imorter.read(url);
+		this.disgustedMouth = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/embarrassedMouth1.dae");
+		imorter.read(url);
+		this.embarrassedMouth = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/Mouth/oMouth1.dae");
+		imorter.read(url);
+		this.oMouth = (Group) imorter.getImport()[0];
+		
 		init();
 	}
 
@@ -77,26 +124,19 @@ public class MouthFX extends BodyPartFX {
 				}
 			}
 
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/defaultMouth.dae");
-			imorter.read(url);
-			mouthMesh = (MeshView) imorter.getImport()[0];
+			this.defaultMouth.setTranslateX(mStart.x);
+			this.defaultMouth.setTranslateY(mStart.y);
 
-			mouthMesh.setTranslateX(mStart.x);
-			mouthMesh.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMesh);
+			if (!mHeadFX.mHead.getChildren().get(6).equals(defaultMouth)) {
+				mHeadFX.mHead.getChildren().set(6, defaultMouth);
 			}
 
 			break;
 
 		case SMILE:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/smileMouth1.dae");
-			imorter.read(url);
-			Group smileMouth = (Group) imorter.getImport()[0];
 
-			smileMouth.setTranslateX(mStart.x);
-			smileMouth.setTranslateY(mStart.y);
+			this.smileMouth.setTranslateX(mStart.x);
+			this.smileMouth.setTranslateY(mStart.y);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(smileMouth)) {
 				mHeadFX.mHead.getChildren().set(6, smileMouth);
@@ -104,24 +144,18 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case SAD:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/sadMouth1.dae");
-			imorter.read(url);
-			Group sadMouth = (Group) imorter.getImport()[0];
 
-			sadMouth.setTranslateX(mStart.x);
-			sadMouth.setTranslateY(mStart.y);
+			this.sadMouth.setTranslateX(mStart.x);
+			this.sadMouth.setTranslateY(mStart.y);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(sadMouth)) {
 				mHeadFX.mHead.getChildren().set(6, sadMouth);
 			}
 			break;
 		case ANGRY:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth1.dae");
-			imorter.read(url);
-			Group angryMouth = (Group) imorter.getImport()[0];
 
-			angryMouth.setTranslateX(mStart.x);
-			angryMouth.setTranslateY(mStart.y + 5);
+			this.angryMouth.setTranslateX(mStart.x);
+			this.angryMouth.setTranslateY(mStart.y + 5);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(angryMouth)) {
 				mHeadFX.mHead.getChildren().set(6, angryMouth);
@@ -129,36 +163,21 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case ANGRYSMALLMOUTH:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angrySmallMouth.dae");
-			imorter.read(url);
-			mouthMesh = (MeshView) imorter.getImport()[0];
-
-			mouthMesh.setTranslateX(mStart.x);
-			mouthMesh.setTranslateY(mStart.y + 5);
-
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMesh);
-			}
 			break;
 
 		case SURPRISED:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/surprisedMouth1.dae");
-			imorter.read(url);
-			Group surprisedMouth = (Group) imorter.getImport()[0];
 
-			surprisedMouth.setTranslateX(mStart.x);
-			surprisedMouth.setTranslateY(mStart.y);
+			this.surprisedMouth.setTranslateX(mStart.x);
+			this.surprisedMouth.setTranslateY(mStart.y);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(surprisedMouth)) {
 				mHeadFX.mHead.getChildren().set(6, surprisedMouth);
 			}
 			break;
 		case HAPPY:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/happyMouth1.dae");
-			imorter.read(url);
-			Group happyMouth = (Group) imorter.getImport()[0];
-			happyMouth.setTranslateX(mStart.x);
-			happyMouth.setTranslateY(mStart.y + 5);
+			
+			this.happyMouth.setTranslateX(mStart.x);
+			this.happyMouth.setTranslateY(mStart.y + 5);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(happyMouth)) {
 				mHeadFX.mHead.getChildren().set(6, happyMouth);
@@ -166,12 +185,9 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case DISGUSTED:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/disgustedMouth1.dae");
-			imorter.read(url);
-			Group disgustedMouth = (Group) imorter.getImport()[0];
 
-			disgustedMouth.setTranslateX(mStart.x);
-			disgustedMouth.setTranslateY(mStart.y);
+			this.disgustedMouth.setTranslateX(mStart.x);
+			this.disgustedMouth.setTranslateY(mStart.y);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(disgustedMouth)) {
 				mHeadFX.mHead.getChildren().set(6, disgustedMouth);
@@ -185,16 +201,6 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case FEAR:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/angryMouth.dae");
-			imorter.read(url);
-			mouthMesh = (MeshView) imorter.getImport()[0];
-
-			mouthMesh.setTranslateX(mStart.x);
-			mouthMesh.setTranslateY(mStart.y + 5);
-
-			if (!mHeadFX.mHead.getChildren().get(6).equals(mouthMesh)) {
-				mHeadFX.mHead.getChildren().set(6, mouthMesh);
-			}
 			break;
 
 		case EXCITED:
@@ -204,24 +210,18 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case EMBARRASSED:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/embarrassedMouth1.dae");
-			imorter.read(url);
-			Group embarrassedMouth = (Group) imorter.getImport()[0];
 
-			embarrassedMouth.setTranslateX(mStart.x);
-			embarrassedMouth.setTranslateY(mStart.y + 5);
+			this.embarrassedMouth.setTranslateX(mStart.x);
+			this.embarrassedMouth.setTranslateY(mStart.y + 5);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(embarrassedMouth)) {
 				mHeadFX.mHead.getChildren().set(6, embarrassedMouth);
 			}
 			break;
 		case O:
-			url = getClass().getClassLoader().getResource("BodyParts/Mouth/oMouth1.dae");
-			imorter.read(url);
-			Group oMouth = (Group) imorter.getImport()[0];
 
-			oMouth.setTranslateX(mStart.x);
-			oMouth.setTranslateY(mStart.y);
+			this.oMouth.setTranslateX(mStart.x);
+			this.oMouth.setTranslateY(mStart.y);
 
 			if (!mHeadFX.mHead.getChildren().get(6).equals(oMouth)) {
 				mHeadFX.mHead.getChildren().set(6, oMouth);
