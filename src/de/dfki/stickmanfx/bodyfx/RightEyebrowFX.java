@@ -64,6 +64,10 @@ public class RightEyebrowFX extends BodyPartFX {
 		imorter.read(url);
 		surprisedRightBrow = (MeshView) imorter.getImport()[0];
 		
+		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/embarrassedRightBrow.dae");
+		imorter.read(url);
+		embarrassedRightBrow = (MeshView) imorter.getImport()[0];
+		
 		init();
 	}
 
@@ -146,10 +150,13 @@ public class RightEyebrowFX extends BodyPartFX {
 			}
 			break;
 
-		case EXCITED:
-			break;
-
 		case EMBARRASSED:
+			embarrassedRightBrow.setTranslateX(mStart.x);
+			embarrassedRightBrow.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(3).equals(embarrassedRightBrow)) {
+				mHeadFX.mHead.getChildren().set(3, embarrassedRightBrow);
+			}
 			break;
 
 		}
