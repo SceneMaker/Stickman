@@ -44,6 +44,7 @@ public class LeftEyebrowFX extends BodyPartFX
 	MeshView angryLeftBrow;
 	MeshView disgustedLeftBrow;
 	MeshView surprisedLeftBrow;
+	MeshView embarrassedLeftBrow;
 	
 	int mZTranslate = -120;
 
@@ -73,6 +74,10 @@ public class LeftEyebrowFX extends BodyPartFX
 		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/surprisedleftBrow.dae");
 		imorter.read(url);
 		surprisedLeftBrow = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/embarrassedleftBrow.dae");
+		imorter.read(url);
+		embarrassedLeftBrow = (MeshView) imorter.getImport()[0];
 		
 		init();
 	}
@@ -154,16 +159,16 @@ public class LeftEyebrowFX extends BodyPartFX
 			}
 			break;
 
-		case SURPRISEDEND:
-			break;
-
 		case EXCITED:
 			break;
 
-		case EXCITEDEND:
-			break;
-
 		case EMBARRASSED:
+			embarrassedLeftBrow.setTranslateX(mStart.x);
+			embarrassedLeftBrow.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(2).equals(embarrassedLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, embarrassedLeftBrow);
+			}
 			break;
 
 		case EMBARRASSEDEND:
