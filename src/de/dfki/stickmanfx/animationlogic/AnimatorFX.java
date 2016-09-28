@@ -56,6 +56,18 @@ public class AnimatorFX
         mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
         render();
     }
+    
+    public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration, int step) 
+    {
+        mStickmanFX = sm;
+        mAnimationFX = a;
+        mAnimationComponents = animComps;
+        mDescription = mAnimationFX.getClass().getSimpleName() + " (" + mAnimationFX.mID + "), " + mAnimationFX.toString();
+
+        mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
+        mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
+        render(step);
+    }
 
     public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, WordTimeMarkSequence wts) 
     {
@@ -122,6 +134,141 @@ public class AnimatorFX
         while (mCurrentStep > 0) 
         {
             if (mCurrentStep == sMAX_ANIM_STEPS) 
+            {
+                // renderEventAnimatione animation components
+                mAnimationComponents.stream().forEach((comp) -> 
+                {
+                    BodyPartFX bodypartFX = comp.mBodyPartFX;
+                    String action = comp.mAction;
+                    sCurrentAction = action;
+                    int param = comp.mParam;
+                    String paramString = comp.mParamString;
+                    if (action.equalsIgnoreCase("rotate")) 
+                    {
+                        bodypartFX.setRotation(param);
+                    }
+                    if(action.equalsIgnoreCase("yRotate"))
+                    {
+                    	bodypartFX.set_Y_Rotation(param);
+                    }
+                    if(action.equalsIgnoreCase("zRotate"))
+                    {
+                    	bodypartFX.set_Z_Rotation(param);
+                    }
+                    if (action.equalsIgnoreCase("tilt")) 
+                    {
+                        bodypartFX.setTilt(param);
+                    }
+                    if (action.equalsIgnoreCase("translate")) 
+                    {
+                        bodypartFX.setTranslation(param);
+                    }
+                    if (action.equalsIgnoreCase("shape")) 
+                    {
+                        bodypartFX.setShape(paramString);
+                    }
+                });
+            }
+
+            if (mCurrentStep > 1) 
+            {
+                for (AnimationContentFX ba : mAnimationComponents) 
+                {
+                    BodyPartFX bodypartFX = ba.mBodyPartFX;
+                    String action = ba.mAction;
+
+                    if (action.equalsIgnoreCase("rotate")) 
+                    {
+                        bodypartFX.calculateRotation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("yrotate")) 
+                    {
+                        bodypartFX.calculate_Y_Rotation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("zrotate")) 
+                    {
+                        bodypartFX.calculate_Z_Rotation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("tilt")) 
+                    {
+                        bodypartFX.calculateRotation(mCurrentStep);
+                    }
+
+                    if (action.equalsIgnoreCase("translate")) 
+                    {
+                        bodypartFX.calculateTranslation(mCurrentStep);
+                    }
+
+                    if (action.equalsIgnoreCase("shape")) 
+                    {
+                        bodypartFX.calculateShape(mCurrentStep);
+                    }
+                }
+ 
+                new WaitThread(mRenderPauseDuration).start();
+                // block this until WaitThread will unblock 
+                try 
+                {
+                    mRenderingPause.acquire(1);
+                } 
+                catch (InterruptedException ex) 
+                {
+                    mStickmanFX.mLogger.severe(ex.getMessage());
+                }
+            }
+
+            if (mCurrentStep == 1) {
+                for (AnimationContentFX ba : mAnimationComponents) {
+                    String action = ba.mAction;
+                    BodyPartFX bodypartFX = ba.mBodyPartFX;
+
+                    if (action.equalsIgnoreCase("rotate")) 
+                    {
+                        bodypartFX.resetRotation();
+                    }
+                    if (action.equalsIgnoreCase("yrotate")) 
+                    {
+                        bodypartFX.resetRotation();
+                    }
+                    if (action.equalsIgnoreCase("zrotate")) 
+                    {
+                        bodypartFX.resetRotation();
+                    }
+                    if (action.equalsIgnoreCase("tilt")) 
+                    {
+                        bodypartFX.resetRotation();
+                    }
+
+                    if (action.equalsIgnoreCase("translate")) 
+                    {
+                        bodypartFX.resetTranslation();
+                    }
+                }
+               
+                new WaitThread(mRenderPauseDuration).start();
+                // block this until WaitThread will unblock 
+                try 
+                {
+                    mRenderingPause.acquire(1);
+                } 
+                catch (InterruptedException ex) 
+                {
+                    mStickmanFX.mLogger.severe(ex.getMessage());
+                }
+                mAnimationFX.mAnimationPartStart.release();
+                return;
+            }
+
+            mCurrentStep -= 1;
+        }
+    }
+    
+    private void render(int step) 
+    {
+        mCurrentStep = step;
+        while (mCurrentStep > 0) 
+        {
+            if (mCurrentStep == step) 
             {
                 // renderEventAnimatione animation components
                 mAnimationComponents.stream().forEach((comp) -> 

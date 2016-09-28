@@ -139,6 +139,21 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable
             }
 
 	}
+	
+	public void playAnimationPart(int duration, int step) 
+    {
+        mAnimatorFX = new AnimatorFX(mStickmanFX, this, mAnimationPartFX, duration, step);
+
+        try 
+        {
+            mAnimationPartStart.acquire();
+        } 
+        catch (InterruptedException ex) 
+        {
+            mStickmanFX.mLogger.severe(ex.getMessage());
+        }
+
+}
 
 	public void pauseAnimation(int duration) 
         {

@@ -130,11 +130,10 @@ public class MouthFX extends BodyPartFX {
 			if (!mHeadFX.mHead.getChildren().get(6).equals(defaultMouth)) {
 				mHeadFX.mHead.getChildren().set(6, defaultMouth);
 			}
-
 			break;
 
 		case SMILE:
-
+			System.out.println("Beka");
 			this.smileMouth.setTranslateX(mStart.x);
 			this.smileMouth.setTranslateY(mStart.y);
 
