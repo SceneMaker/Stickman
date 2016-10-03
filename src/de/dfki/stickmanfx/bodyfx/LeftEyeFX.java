@@ -77,6 +77,11 @@ public class LeftEyeFX extends BodyPartFX {
 		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/defaultLeftEye.dae");
 		imorter.read(url);
 		defaultLeftEye = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/blink.dae");
+		imorter.read(url);
+		blink = (MeshView) imorter.getImport()[0];
+		
 		init();
 	}
 
@@ -134,6 +139,12 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case BLINK:
+			blink.setTranslateX(mStart.x);
+			blink.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(4).equals(blink)) {
+				mHeadFX.mHead.getChildren().set(4, blink);
+			}
 			break;
 
 		case LOOKLEFT:
