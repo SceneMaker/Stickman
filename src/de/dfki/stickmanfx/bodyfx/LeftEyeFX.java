@@ -95,6 +95,10 @@ public class LeftEyeFX extends BodyPartFX {
 		imorter.read(url);
 		angry = (MeshView) imorter.getImport()[0];
 		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/surprised.dae");
+		imorter.read(url);
+		surprised = (MeshView) imorter.getImport()[0];
+		
 		init();
 	}
 
@@ -188,6 +192,12 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case SURPRISED:
+			surprised.setTranslateX(mStart.x);
+			surprised.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(4).equals(surprised)) {
+				mHeadFX.mHead.getChildren().set(4, surprised);
+			}
 			break;
 
 		case HAPPY:
