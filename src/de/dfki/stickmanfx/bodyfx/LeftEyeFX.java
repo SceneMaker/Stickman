@@ -52,7 +52,7 @@ public class LeftEyeFX extends BodyPartFX {
 	MeshView defaultLeftEye;
 	MeshView blink;
 	Group lookLeft;
-	MeshView lookRight;
+	Group lookRight;
 	MeshView angry;
 	MeshView surprised;
 	MeshView happy;
@@ -86,6 +86,10 @@ public class LeftEyeFX extends BodyPartFX {
 		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/lookLeft1.dae");
 		imorter.read(url);
 		lookLeft = (Group) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/lookRight.dae");
+		imorter.read(url);
+		lookRight = (Group) imorter.getImport()[0];
 		
 		init();
 	}
@@ -162,6 +166,12 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case LOOKRIGHT:
+			lookRight.setTranslateX(mStart.x);
+			lookRight.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(4).equals(lookRight)) {
+				mHeadFX.mHead.getChildren().set(4, lookRight);
+			}
 			break;
 
 		case ANGRY:
