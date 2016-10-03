@@ -33,7 +33,7 @@ public class LeftEyebrowFX extends BodyPartFX
 {
 	public static enum SHAPE 
 	{
-		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, ANGRY, HAPPY, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -45,6 +45,7 @@ public class LeftEyebrowFX extends BodyPartFX
 	MeshView disgustedLeftBrow;
 	MeshView surprisedLeftBrow;
 	MeshView embarrassedLeftBrow;
+	MeshView happyLeftBrow;
 	
 	int mZTranslate = -120;
 
@@ -78,6 +79,10 @@ public class LeftEyebrowFX extends BodyPartFX
 		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/embarrassedleftBrow.dae");
 		imorter.read(url);
 		embarrassedLeftBrow = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/happyleftBrow.dae");
+		imorter.read(url);
+		happyLeftBrow = (MeshView) imorter.getImport()[0];
 		
 		init();
 	}
@@ -172,6 +177,15 @@ public class LeftEyebrowFX extends BodyPartFX
 			break;
 
 		case EMBARRASSEDEND:
+			break;
+			
+		case HAPPY:
+			happyLeftBrow.setTranslateX(mStart.x);
+			happyLeftBrow.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(2).equals(happyLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, happyLeftBrow);
+			}
 			break;
 		}
 	}

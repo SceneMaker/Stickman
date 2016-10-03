@@ -25,7 +25,7 @@ import javafx.util.Duration;
  */
 public class RightEyebrowFX extends BodyPartFX {
 	public static enum SHAPE {
-		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, ANGRY, HAPPY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -37,6 +37,7 @@ public class RightEyebrowFX extends BodyPartFX {
 	MeshView disgustedRightBrow;
 	MeshView surprisedRightBrow;
 	MeshView embarrassedRightBrow;
+	MeshView happyRightBrow;
 
 	public RightEyebrowFX.SHAPE mShape = RightEyebrowFX.SHAPE.DEFAULT;
 
@@ -67,6 +68,10 @@ public class RightEyebrowFX extends BodyPartFX {
 		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/embarrassedRightBrow.dae");
 		imorter.read(url);
 		embarrassedRightBrow = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/happyRightBrow.dae");
+		imorter.read(url);
+		happyRightBrow = (MeshView) imorter.getImport()[0];
 		
 		init();
 	}
@@ -156,6 +161,15 @@ public class RightEyebrowFX extends BodyPartFX {
 
 			if (!mHeadFX.mHead.getChildren().get(3).equals(embarrassedRightBrow)) {
 				mHeadFX.mHead.getChildren().set(3, embarrassedRightBrow);
+			}
+			break;
+			
+		case HAPPY:
+			happyRightBrow.setTranslateX(mStart.x);
+			happyRightBrow.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(3).equals(happyRightBrow)) {
+				mHeadFX.mHead.getChildren().set(3, happyRightBrow);
 			}
 			break;
 
