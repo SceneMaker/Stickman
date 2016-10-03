@@ -63,7 +63,7 @@ public class LeftEyebrowFX extends BodyPartFX
 		imorter.read(url);
 		defaultLeftBrow = (MeshView) imorter.getImport()[0];
 		
-		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow1.dae");
 		imorter.read(url);
 		angryLeftBrow = (MeshView) imorter.getImport()[0];
 		

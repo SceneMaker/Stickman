@@ -91,6 +91,10 @@ public class LeftEyeFX extends BodyPartFX {
 		imorter.read(url);
 		lookRight = (Group) imorter.getImport()[0];
 		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/angry.dae");
+		imorter.read(url);
+		angry = (MeshView) imorter.getImport()[0];
+		
 		init();
 	}
 
@@ -175,6 +179,12 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case ANGRY:
+			angry.setTranslateX(mStart.x);
+			angry.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(4).equals(angry)) {
+				mHeadFX.mHead.getChildren().set(4, angry);
+			}
 			break;
 
 		case SURPRISED:
