@@ -17,6 +17,7 @@ import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.DepthTest;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -50,7 +51,7 @@ public class LeftEyeFX extends BodyPartFX {
 	ColModelImporter imorter;
 	MeshView defaultLeftEye;
 	MeshView blink;
-	MeshView lookLeft;
+	Group lookLeft;
 	MeshView lookRight;
 	MeshView angry;
 	MeshView surprised;
@@ -81,6 +82,10 @@ public class LeftEyeFX extends BodyPartFX {
 		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/blink.dae");
 		imorter.read(url);
 		blink = (MeshView) imorter.getImport()[0];
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftEye/lookLeft1.dae");
+		imorter.read(url);
+		lookLeft = (Group) imorter.getImport()[0];
 		
 		init();
 	}
@@ -148,6 +153,12 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case LOOKLEFT:
+			lookLeft.setTranslateX(mStart.x);
+			lookLeft.setTranslateY(mStart.y);
+
+			if (!mHeadFX.mHead.getChildren().get(4).equals(lookLeft)) {
+				mHeadFX.mHead.getChildren().set(4, lookLeft);
+			}
 			break;
 
 		case LOOKRIGHT:
