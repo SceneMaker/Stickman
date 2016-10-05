@@ -4,6 +4,7 @@ import de.dfki.common.CommonStickman;
 import de.dfki.common.StageStickman;
 import de.dfki.common.StageStickmanController;
 import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.stickman.StickmanStage;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageFX;
 
@@ -31,6 +32,7 @@ public class StageStickmanControllerFX implements StageStickmanController {
     @Override
     public  void clearStage() {
         getCommonStickmansOnStage().clearStage();
+        ((StickmanStageFX)stickmanStageFX).clearStage(stageIdentifier);
     }
 
     public  void animate(String stickmanname,  String name, int duration, String text, boolean block) {
