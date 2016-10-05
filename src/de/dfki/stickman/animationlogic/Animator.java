@@ -47,7 +47,6 @@ public class Animator {
 
         mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
         mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
-
         render();
     }
 
@@ -102,8 +101,7 @@ public class Animator {
                     // we have 2 options!
                     // 1) API Call
                     // 2) send to Player
-
-                    StickmanStage.sendTimeMarkInformation(e.mContent);
+                    mStickman.getStickmanStageController().sendTimeMarkInformation(e.mContent);
 
                 }
             }

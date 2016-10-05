@@ -1,6 +1,9 @@
 package de.dfki.stickman.client;
 
+import de.dfki.common.CommonCommandParser;
 import de.dfki.stickman.StickmanStage;
+import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,7 +19,7 @@ import java.net.UnknownHostException;
  * @author Patrick Gebhard
  *
  */
-public class ClientConnectionHandler extends Thread {
+public class ClientConnectionHandler extends Thread implements CommonClientConnectionHandler {
 
 	private Socket mSocket;
 	private String mHost = "127.0.0.1";
@@ -27,9 +30,21 @@ public class ClientConnectionHandler extends Thread {
 
 	private boolean mRunning = true;
 	public boolean mConnected = false;
+	private StickmanStage mStickmanStage;
+	private CommonCommandParser stickmanParser;
 
 	public ClientConnectionHandler() {
 		super.setName("StickmanStage Socket Connection Handler");
+	}
+	public ClientConnectionHandler(StickmanStage stage) {
+
+		super.setName("StickmanStage Socket Connection Handler");
+		mStickmanStage = stage;
+	}
+
+	public ClientConnectionHandler(CommonCommandParser parser) {
+		super.setName("StickmanStage Socket Connection Handler");
+		stickmanParser = parser;
 	}
 
 	public void end() {
@@ -83,6 +98,21 @@ public class ClientConnectionHandler extends Thread {
 	}
 
 	@Override
+	public void tryToConnect(String host, int port) {
+		mHost = host;
+		mPort = port;
+		connect(mHost, mPort);
+		while (!ismConnected()) {
+			try {
+				System.out.println("Waiting for connection to control application ...");
+				Thread.sleep(250);
+			} catch (InterruptedException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
+	}
+
+	@Override
 	public void run() {
 		String inputLine = "";
 
@@ -91,11 +121,16 @@ public class ClientConnectionHandler extends Thread {
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-					StickmanStage.parseStickmanMLCmd(inputLine);
+					stickmanParser.parseStickmanMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
 			}
 		}
+	}
+
+	@Override
+	public boolean ismConnected() {
+		return mConnected;
 	}
 }

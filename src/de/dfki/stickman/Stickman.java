@@ -1,6 +1,8 @@
 package de.dfki.stickman;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.CommonStickman;
+import de.dfki.common.StageStickmanController;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickman.animationlogic.AnimationScheduler;
@@ -59,7 +61,9 @@ import de.dfki.stickman.animation.environment.SimplexNoise;
  * by Ross Ching in 2012
  *
  */
-public class Stickman extends JComponent {
+public class Stickman extends JComponent implements CommonStickman {
+
+
 
     // general stuff
     public static enum ORIENTATION {
@@ -68,7 +72,6 @@ public class Stickman extends JComponent {
     };
 
     public static enum TYPE {
-
         FEMALE, MALE
     };
 
@@ -126,11 +129,14 @@ public class Stickman extends JComponent {
     public LeftLeg mLeftLeg;
     public Stars mStars;         // added by Robbie Create Say bye or hi
     public RightLeg mRightLeg;
+    private StageStickmanController stageController;
     // environment
     public SpeechBubble mSpeechBubble;
 
     // logging
-    public final Logger mLogger = Logger.getAnonymousLogger();
+    public static final Logger mLogger = Logger.getAnonymousLogger();
+
+    private StickmanStage stage;
 
     // id
     private long mID = 0;
@@ -261,6 +267,45 @@ public class Stickman extends JComponent {
 
         mAnimationScheduler = new AnimationScheduler(this);
         mAnimationScheduler.start();
+    }
+
+
+
+    @Override
+    public StageStickmanController getStickmanStageController() {
+        return stageController;
+    }
+
+    @Override
+    public void setStickmanStageController(StageStickmanController s) {
+        stageController = s;
+    }
+
+    @Override
+    public void setShowName(boolean show) {
+
+    }
+
+    @Override
+    public boolean isShowName() {
+        return false;
+    }
+
+    @Override
+    public void endAnimationScheduler() {
+
+    }
+
+    @Override
+    public Stickman.TYPE getType() {
+        return mType;
+    }
+
+    public StickmanStage getStage(){
+        return stage;
+    }
+    public void setStage(StickmanStage s){
+        stage = s;
     }
 
     public void addListener(AnimationListener al) {

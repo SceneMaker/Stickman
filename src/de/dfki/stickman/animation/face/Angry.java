@@ -8,6 +8,8 @@ package de.dfki.stickman.animation.face;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.AnimationContent;
+import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
+
 import java.util.ArrayList;
 
 /**
@@ -22,7 +24,12 @@ public class Angry extends Animation {
  * @param sm Stickman
  * @param duration Control the speed of the movement from one emotion state to another emotion state.
  * @param block block or not the others movements, when one movement is not finished.
+ * 
  */
+	public Angry() {
+		mAnimType = ANIMTYPE.EmotionExpression;
+	}
+	
 	public Angry(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

@@ -2,6 +2,8 @@ package de.dfki.stickman.body;
 
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animator;
+import javafx.application.Platform;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -49,8 +51,7 @@ public class Mouth extends BodyPart {
 
 	@Override
 	public void createShape() {
-//		mStart:middle
-//		mEnd:right side
+
 		mStart = mHead.getMouthPostion();
 		mEnd = new Point(mStart.x + mLength / 2, mStart.y);
 
@@ -125,21 +126,27 @@ public class Mouth extends BodyPart {
 			case ANGRY:				
 				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
-				gp.moveTo(mStart.x - mLength/2 - movement/4, mStart.y + movement/10);
-				gp.quadTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10);
+					gp.moveTo(mStart.x - mLength/2 - movement/4, mStart.y + movement/10);
+					gp.quadTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10);
+				
+				
 				break;
 				
 			case ANGRYEND:			
 				movement = mShapeAnimationStep-1;
-				if(movement<=1)
-				{
-					gp.moveTo(mStart.x - mLength / 2, mStart.y);
-					gp.quadTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y);	
-				}
-				else{
-					gp.moveTo(mStart.x - mLength/2 - movement/4, mStart.y + movement/10);
-					gp.quadTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10);
-				}
+				
+					if(movement<=1)
+					{
+						gp.moveTo(mStart.x - mLength / 2, mStart.y);
+						gp.quadTo(mStart.x, mStart.y + 1, mEnd.x, mEnd.y);	
+					}
+					else{
+						gp.moveTo(mStart.x - mLength/2 - movement/4, mStart.y + movement/10);
+						gp.quadTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10);
+					}
+					
+				
+				
 				break;
 				
 			case ANGRYSMALLMOUTH:				

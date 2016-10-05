@@ -6,6 +6,7 @@
 package de.dfki.stickman.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.CommonAnimation;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.StickmanStage;
 import de.dfki.util.ios.IOSIndentWriter;
@@ -23,8 +24,9 @@ import org.w3c.dom.Element;
  * @author Patrick Gebhard
  *
  */
-public class Animation extends Thread implements XMLParseable, XMLWriteable {
+public class Animation extends Thread implements XMLParseable, XMLWriteable, CommonAnimation {
 
+	public enum ANIMTYPE { EmotionExpression, Gesture}	
 	public String mName = "";
 	public ArrayList<AnimationContent> mAnimationPart = new ArrayList<>();
 	public Semaphore mAnimationPartStart = new Semaphore(0);
@@ -37,9 +39,17 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	public int mDuration = -1;
 	public String mID;
 	public Object mParameter = "";
-
+	
+	public ANIMTYPE mAnimType = null;
+	
 	public Animation() {
+		
 	}
+
+	public String getmID() {
+		return mID;
+	}
+
 
 	public Animation(Stickman sm, int duration, boolean block) {
 		mName = getClass().getSimpleName();
@@ -61,7 +71,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 
 	public void setStickmanName(String stickmanName) {
 		mStickmanName = stickmanName;
-		mStickman = StickmanStage.getStickman(mStickmanName);
+		//mStickman = StickmanStage.getStickman(mStickmanName);
 		setName(mStickmanName + "'s Animation " + mName);
 	}
 
@@ -143,10 +153,10 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 		// send event that Animation is ended
 
 		// API or TCP-Interface
-		if (!StickmanStage.mUseNetwork) {
+		if (!mStickman.getStickmanStageController().ismNetwork()) {
 			mStickman.notifyListeners(mID);
 		} else {
-			StickmanStage.sendAnimationUpdate("end", mID);
+			mStickman.getStickmanStageController().sendAnimationUpdate("end", getmID());
 		}
 	}
 
