@@ -25,7 +25,10 @@ public class StageController implements StageStickmanController {
     }
 
     @Override
-    public void clearStage() {}
+    public void clearStage() {
+        commonStickmansOnStage.clearStage();
+        ((StickmanStage)stickmanStage).clearStage();
+    }
 
     @Override
     public void animate(String stickmanname, String name, int duration, String text, boolean block) {

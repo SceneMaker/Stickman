@@ -30,7 +30,7 @@ public class GeneralStageRoot {
         invoke();
         if(root.getChildren().contains(mSplitPane)){
             root.getChildren().remove(mSplitPane);
-            sStickmanPane.setAlignment(Pos.CENTER);
+            sStickmanPane.setAlignment(Pos.CENTER_LEFT);
         }
         return root;
     }
@@ -39,6 +39,7 @@ public class GeneralStageRoot {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
         root = loader.load();
+        root.getWidth();
         stickmanScrollPane = (ScrollPane) root.lookup("#stickmanScrollPane");
         mSplitPane = (SplitPane) root.lookup("#mSplitPane");
         sStickmanPane = new HBox();
@@ -46,7 +47,7 @@ public class GeneralStageRoot {
         mStickmanStageController = loader.getController();
         getmStickmanStageController().setlePerlinNoiseOn();
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
-        sStickmanPane.setAlignment(Pos.CENTER);
+        sStickmanPane.setAlignment(Pos.CENTER_RIGHT);
         return this;
     }
 

@@ -3,6 +3,9 @@ package de.dfki.stickman;
 import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.common.StageStickman;
 import de.dfki.stickman.util.StickmanStageLayout;
+import de.dfki.stickmanfx.StickmanFX;
+import javafx.scene.layout.HBox;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -114,6 +117,10 @@ public class StickmanStage extends JFrame implements  StageStickman {
         CommonStickmansOnStage stickamnsOnStage1 = stickamnsOnStage;
     }
 
+    public void clearStage(){
+        dispose();
+    }
+
     @Override
     public BufferedImage getStageAsImage(String stageIdentifier) {
         BufferedImage image = new BufferedImage(sStickmanPanel.getWidth(), sStickmanPanel.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -129,4 +136,18 @@ public class StickmanStage extends JFrame implements  StageStickman {
             return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
         }
     }
+
+	@Override
+	public HBox getStickmanPane(String stageIdentifier) throws Exception
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }

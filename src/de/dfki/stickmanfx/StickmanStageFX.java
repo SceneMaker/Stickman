@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx;
 import de.dfki.common.GeneralStageRoot;
 import de.dfki.common.StageStickman;
+import de.dfki.common.CommonStickman;
 import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import javafx.application.Application;
@@ -18,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.ConsoleHandler;
@@ -39,15 +41,15 @@ public class StickmanStageFX extends Application implements StageStickman{
     private CommonStickmansOnStage stickamnsOnStage;
     private  float sScale = 1.0f;
     public static   boolean isRunning = false;
-    private HashMap<String, Stage> stickmanFXStages = new HashMap<>();
+    private Map<String, Stage> stickmanFXStages = new HashMap<>();
     private LinkedList<String> stickmanNames = new LinkedList<>();
     private GeneralStageRoot generalConfigStageRoot;
 
     public StickmanStageFX() { //This cannot be private because of ApplicationFX
         Platform.setImplicitExit(false);
         ConsoleHandler ch = new ConsoleHandler();
-        ch.setFormatter(new StickmanStageLogFormatter());
         sInstance = this;
+        generalConfigStageRoot = new GeneralStageRoot();
     }
 
     public float getFullScreenScale(){
@@ -69,18 +71,13 @@ public class StickmanStageFX extends Application implements StageStickman{
 
     public void start(Stage stage) throws Exception {
         configStage = stage;
-        HBox root = getConfigRoot();
+        HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
         stage.setTitle("StickmanFX");
         stage.setScene(scene);
         stickmanFXStages.put(StageStickmanControllerFX.CONFIG_STAGE, stage);
         isRunning = true;
-    }
-
-    private HBox getConfigRoot() throws java.io.IOException {
-        generalConfigStageRoot = new GeneralStageRoot();
-        return generalConfigStageRoot.getConfigRoot();
     }
 
     private HBox getStageRoot() throws java.io.IOException {
@@ -135,8 +132,15 @@ public class StickmanStageFX extends Application implements StageStickman{
             addStickmanName(key);
         }
     }
+    
+    public void addStickmanToStage(String stageIdentifier, StickmanFX sman) throws Exception {
+        HBox sStickmanPane;
+        sStickmanPane = getStickmanPane(stageIdentifier);
+        sStickmanPane.getChildren().clear();
+        sStickmanPane.getChildren().add(sman);
+    }
 
-    private HBox getStickmanPane(String stageIdentifier) throws Exception {
+    public HBox getStickmanPane(String stageIdentifier) throws Exception {
         HBox sStickmanPane;
         if(stickmanFXStages.containsKey(stageIdentifier)){
             sStickmanPane = (HBox) ((ScrollPane)stickmanFXStages.get(stageIdentifier).getScene().getRoot().lookup("#stickmanScrollPane")).getContent();
@@ -181,13 +185,6 @@ public class StickmanStageFX extends Application implements StageStickman{
         return stickmanNames;
     }
 
-    private static class StickmanStageLogFormatter extends Formatter {
-        @Override
-        public String format(LogRecord record) {
-            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
-        }
-    }
-
     public BufferedImage getStageAsImage(String stageIdentifier) throws Exception {
         if (stickmanFXStages.containsKey(stageIdentifier)) {
             Stage stage =  stickmanFXStages.get(stageIdentifier);
@@ -202,16 +199,29 @@ public class StickmanStageFX extends Application implements StageStickman{
                 imageContainer.setImage(imageRGB);
                 latch.countDown();
             });
-
             latch.await();
-            File outputfile = new File("/home/alvaro/Pictures/test/image2.jpg");
-            ImageIO.write(imageContainer.getImage(), "jpg", outputfile);
             return imageContainer.getImage();
 
         }else {
             throw new Exception("Stage Not found");
         }
 
+    }
+
+    public void clearStage(String stageIdentifier) {
+        try {
+            HBox pane = getStickmanPane(stageIdentifier);
+            Platform.runLater(()->{
+                pane.getChildren().clear();
+                Stage stage = stickmanFXStages.get(stageIdentifier);
+                stage.close();
+                stickmanFXStages.remove(stageIdentifier);
+            });
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
