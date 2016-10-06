@@ -12,15 +12,19 @@ import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -33,15 +37,24 @@ public class LeftEyebrowFX extends BodyPartFX
 {
 	public static enum SHAPE 
 	{
-		DEFAULT, ANGRY, HAPPY, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, ANGRY, ANGRYEND, HAPPY, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
+	
+	private float angryXMovement;
+	TriangleMesh currentMesh;
 
 	URL url;
 	ColModelImporter imorter;
+	
+	StlMeshImporter stlImporter;
+	TriangleMesh defaultLeftBrowTriangleMesh;
 	MeshView defaultLeftBrow;
+	
+	TriangleMesh angryLeftBrowTriangleMesh;
 	MeshView angryLeftBrow;
+	
 	MeshView disgustedLeftBrow;
 	MeshView surprisedLeftBrow;
 	MeshView embarrassedLeftBrow;
@@ -57,16 +70,21 @@ public class LeftEyebrowFX extends BodyPartFX
 		mSize = new Dimension(mLength, mLength);
 		
 		imorter = new ColModelImporter();
+		stlImporter = new StlMeshImporter();
 
 		mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
 		
-		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/defaultLeftBrow.dae");
-		imorter.read(url);
-		defaultLeftBrow = (MeshView) imorter.getImport()[0];
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/defaultLeftBrow.stl");
+		stlImporter.read(url);
+		defaultLeftBrowTriangleMesh = stlImporter.getImport();
 		
-		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow1.dae");
-		imorter.read(url);
-		angryLeftBrow = (MeshView) imorter.getImport()[0];
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/defaultLeftBrow.stl");
+		stlImporter.read(url);
+		currentMesh = stlImporter.getImport();
+		
+		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/angryleftBrow.stl");
+		stlImporter.read(url);
+		angryLeftBrowTriangleMesh = stlImporter.getImport();
 		
 		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/disgustedleftBrow.dae");
 		imorter.read(url);
@@ -99,8 +117,15 @@ public class LeftEyebrowFX extends BodyPartFX
 	}
 
 	@Override
-	public void createShape() {
+	public void calculate(int step) {
 		mStart = mHeadFX.getLeftEyebrowPostion();
+		
+		float xmovement_1;
+		float xmovement_2;
+		float ymovement_1;
+		float ymovement_2;
+		float ymovement_3;
+		PhongMaterial mat;
 		
 		clearChildren(this);
 
@@ -126,24 +151,167 @@ public class LeftEyebrowFX extends BodyPartFX
 				}
 			}
 			
-			defaultLeftBrow.setTranslateX(mStart.x);
-			defaultLeftBrow.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(defaultLeftBrow)) {
-				mHeadFX.mHead.getChildren().set(2, defaultLeftBrow);
-			}
+			currentMesh = new TriangleMesh();
+			currentMesh.getTexCoords().addAll(0,0);
 			
-			break;
-
-		case ANGRY:
+			currentMesh.getPoints().addAll(
+					0,	0,	0,			//Point 0
+					0,	-3,	0,			//Point 1
+					0,	-3,	3,			//Point 2
+					0,	0,	3,			//Point 3 ------->11
+					
+					6,	-5,	0,			//Point 4
+					6,	-8,	0,			//Point 5
+					6,	-8,	3,			//Point 6
+					6,	-5, 3,			//Point 7 -------->23
+					
+					20,	-7,	 0,			//Point 8
+					20,	-11, 0,		    //Point 9
+					20,	-11, 3,		    //Point 10
+					20,	-7,	3,			//Point 11 -------->35
+					 
+					30, 	0,	0,		//Point 12
+					30,	-3,	0,			//Point 13
+					30,	-3,	3,			//Point 14
+					30, 	0,	3		//Point 15
+					);
 			
-			angryLeftBrow.setTranslateX(mStart.x);
-			angryLeftBrow.setTranslateY(mStart.y);
+			currentMesh.getFaces().addAll(
+					0,0,	1,0,	2,0,
+					2,0,	3,0,	0,0,
+					
+					0,0,	4,0,	5,0,
+					5,0,	1,0,	0,0,
+					
+					0,0,	3,0,	7,0,
+					7,0,	4,0,	0,0,
+					
+					3,0,	7,0,	6,0,
+					6,0,	2,0,	3,0,
+					
+					2,0,	6,0,	5,0,
+					5,0,	1,0,	2,0,
+					
+					1,0,	0,0,	4,0,
+					4,0,	5,0,	1,0,
+					
+					7,0,	11,0,	8,0,
+					8,0,	4,0,	7,0,
+					
+					7,0,	11,0,	10,0,
+					10,0,	6,0,	7,0,
+					
+					6,0,	10,0,	9,0,
+					9,0,	5,0,	6,0,
+					
+					4,0,	8,0,	9,0,
+					9,0,	5,0,	4,0,
+					
+					11,0,	15,0,	12,0,
+					12,0,	8,0,	11,0,
+					
+					11,0,	15,0,	14,0,
+					14,0,	10,0,	11,0,
+					
+					10,0,	14,0,	13,0,
+					13,0,	9,0,	10,0,
+					
+					8,0,	12,0,	13,0,
+					13,0,	9,0,	8,0
+					);
+			
+			angryLeftBrow = new MeshView(currentMesh);
+			angryLeftBrow.setDrawMode(DrawMode.FILL);
+		    mat = new PhongMaterial();
+		    mat.setDiffuseColor(Color.BLACK);
+			angryLeftBrow.setMaterial(mat);
+			
+			angryLeftBrow.setTranslateX(mStart.x + 9);
+			angryLeftBrow.setTranslateY(mStart.y + 23);
+			angryLeftBrow.setTranslateZ(-17);
 
 			if (!mHeadFX.mHead.getChildren().get(2).equals(angryLeftBrow)) {
 				mHeadFX.mHead.getChildren().set(2, angryLeftBrow);
 			}
 
+			
+			break;
+
+		case ANGRY:
+			xmovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0421f;
+			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) + ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) + ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) + ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) + ymovement_1);
+			
+			//Block 2
+			currentMesh.getPoints().set(12, currentMesh.getPoints().get(12) + xmovement_2);
+			currentMesh.getPoints().set(15, currentMesh.getPoints().get(15) + xmovement_2);
+			currentMesh.getPoints().set(18, currentMesh.getPoints().get(18) + xmovement_2);
+			currentMesh.getPoints().set(21, currentMesh.getPoints().get(21) + xmovement_2);
+			
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
+			
+			angryLeftBrow = new MeshView(currentMesh);
+			angryLeftBrow.setDrawMode(DrawMode.FILL);
+			
+			mat = new PhongMaterial();
+			mat.setDiffuseColor(Color.BLACK);
+			angryLeftBrow.setMaterial(mat);
+			
+			angryLeftBrow.setTranslateX(mStart.x + 9);
+			angryLeftBrow.setTranslateY(mStart.y + 23);
+			angryLeftBrow.setTranslateZ(-17);
+
+			if (!mHeadFX.mHead.getChildren().get(2).equals(angryLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, angryLeftBrow);
+			}
+			break;
+		case ANGRYEND:
+			xmovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0421f;
+			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) - ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) - ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) - ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) - ymovement_1);
+			
+			//Block 2
+			currentMesh.getPoints().set(12, currentMesh.getPoints().get(12) - xmovement_2);
+			currentMesh.getPoints().set(15, currentMesh.getPoints().get(15) - xmovement_2);
+			currentMesh.getPoints().set(18, currentMesh.getPoints().get(18) - xmovement_2);
+			currentMesh.getPoints().set(21, currentMesh.getPoints().get(21) - xmovement_2);
+			
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) - ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) - ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) - ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) - ymovement_3);
+			
+			angryLeftBrow = new MeshView(currentMesh);
+			angryLeftBrow.setDrawMode(DrawMode.FILL);
+			
+			mat = new PhongMaterial();
+			mat.setDiffuseColor(Color.BLACK);
+			angryLeftBrow.setMaterial(mat);
+			
+			angryLeftBrow.setTranslateX(mStart.x + 9);
+			angryLeftBrow.setTranslateY(mStart.y + 23);
+			angryLeftBrow.setTranslateZ(-17);
+
+			if (!mHeadFX.mHead.getChildren().get(2).equals(angryLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, angryLeftBrow);
+			}
 			break;
 
 		case DISGUSTED:

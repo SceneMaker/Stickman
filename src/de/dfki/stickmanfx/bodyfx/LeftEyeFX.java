@@ -156,7 +156,6 @@ public class LeftEyeFX extends BodyPartFX {
 			if (!mHeadFX.mHead.getChildren().get(4).equals(defaultLeftEye)) {
 				mHeadFX.mHead.getChildren().set(4, defaultLeftEye);
 			}
-
 			break;
 
 		case BLINK:
