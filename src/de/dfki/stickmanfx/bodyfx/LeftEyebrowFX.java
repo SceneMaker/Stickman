@@ -262,25 +262,25 @@ public class LeftEyebrowFX extends BodyPartFX
 			break;
 			
 		case ANGRYEND:
-			xmovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0421f;
-			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
-			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			xmovement_2 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0421f;
+			ymovement_1 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			ymovement_3 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
 			
 			//Block 1
-			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) - ymovement_1);
-			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) - ymovement_1);
-			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) - ymovement_1);
-			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) - ymovement_1);
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) + ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) + ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) + ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) + ymovement_1);
 			//Block 2
-			currentMesh.getPoints().set(12, currentMesh.getPoints().get(12) - xmovement_2);
-			currentMesh.getPoints().set(15, currentMesh.getPoints().get(15) - xmovement_2);
-			currentMesh.getPoints().set(18, currentMesh.getPoints().get(18) - xmovement_2);
-			currentMesh.getPoints().set(21, currentMesh.getPoints().get(21) - xmovement_2);
+			currentMesh.getPoints().set(12, currentMesh.getPoints().get(12) + xmovement_2);
+			currentMesh.getPoints().set(15, currentMesh.getPoints().get(15) + xmovement_2);
+			currentMesh.getPoints().set(18, currentMesh.getPoints().get(18) + xmovement_2);
+			currentMesh.getPoints().set(21, currentMesh.getPoints().get(21) + xmovement_2);
 			//Block 3
-			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) - ymovement_3);
-			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) - ymovement_3);
-			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) - ymovement_3);
-			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) - ymovement_3);
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
 			
 			angryLeftBrow = new MeshView(currentMesh);
 			angryLeftBrow.setDrawMode(DrawMode.FILL);
