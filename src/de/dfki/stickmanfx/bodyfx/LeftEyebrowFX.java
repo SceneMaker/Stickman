@@ -122,9 +122,14 @@ public class LeftEyebrowFX extends BodyPartFX
 		
 		float xmovement_1;
 		float xmovement_2;
+		float xmovement_3;
+		float xmovement_4;
+		
 		float ymovement_1;
 		float ymovement_2;
 		float ymovement_3;
+		float ymovement_4;
+		
 		PhongMaterial mat;
 		
 		clearChildren(this);
@@ -155,22 +160,23 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getTexCoords().addAll(0,0);
 			
 			currentMesh.getPoints().addAll(
+				//  x   y   z	
 					0,	0,	0,			//Point 0
 					0,	-3,	0,			//Point 1
 					0,	-3,	3,			//Point 2
 					0,	0,	3,			//Point 3 ------->11
-					
+				//  x    y  z
 					6,	-5,	0,			//Point 4
 					6,	-8,	0,			//Point 5
 					6,	-8,	3,			//Point 6
 					6,	-5, 3,			//Point 7 -------->23
-					
+				//  x    y   z
 					20,	-7,	 0,			//Point 8
 					20,	-11, 0,		    //Point 9
 					20,	-11, 3,		    //Point 10
 					20,	-7,	3,			//Point 11 -------->35
-					 
-					30, 	0,	0,		//Point 12
+				//  x    y  z  	 
+					30,  0,	0,		//Point 12
 					30,	-3,	0,			//Point 13
 					30,	-3,	3,			//Point 14
 					30, 	0,	3		//Point 15
@@ -315,14 +321,125 @@ public class LeftEyebrowFX extends BodyPartFX
 			break;
 
 		case DISGUSTED:
-			disgustedLeftBrow.setTranslateX(mStart.x);
-			disgustedLeftBrow.setTranslateY(mStart.y);
+			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0368f;
+			xmovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			ymovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			ymovement_4 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			xmovement_4 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) - ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) - ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) - ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) - ymovement_1);
+			
+			//Block 1
+			currentMesh.getPoints().set(0, currentMesh.getPoints().get(0) + xmovement_1);
+			currentMesh.getPoints().set(3, currentMesh.getPoints().get(3) + xmovement_1);
+			currentMesh.getPoints().set(6, currentMesh.getPoints().get(6) + xmovement_1);
+			currentMesh.getPoints().set(9, currentMesh.getPoints().get(9) + xmovement_1);
+			
+			//Block 2
+			currentMesh.getPoints().set(13, currentMesh.getPoints().get(13) - ymovement_2);
+			currentMesh.getPoints().set(16, currentMesh.getPoints().get(16) - ymovement_2);
+			currentMesh.getPoints().set(19, currentMesh.getPoints().get(19) - ymovement_2);
+			currentMesh.getPoints().set(22, currentMesh.getPoints().get(22) - ymovement_2);
+			
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
+			
+			//Block 4
+			currentMesh.getPoints().set(37, currentMesh.getPoints().get(37) + ymovement_4);
+			currentMesh.getPoints().set(40, currentMesh.getPoints().get(40) + ymovement_4);
+			currentMesh.getPoints().set(43, currentMesh.getPoints().get(43) + ymovement_4);
+			currentMesh.getPoints().set(46, currentMesh.getPoints().get(46) + ymovement_4);
+			
+			//Block 4
+			currentMesh.getPoints().set(36, currentMesh.getPoints().get(36) - xmovement_4);
+			currentMesh.getPoints().set(39, currentMesh.getPoints().get(39) - xmovement_4);
+			currentMesh.getPoints().set(42, currentMesh.getPoints().get(42) - xmovement_4);
+			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) - xmovement_4);
+			
+			
+			angryLeftBrow = new MeshView(currentMesh);
+			angryLeftBrow.setDrawMode(DrawMode.FILL);
+			
+			mat = new PhongMaterial();
+			mat.setDiffuseColor(Color.BLACK);
+			angryLeftBrow.setMaterial(mat);
+			
+			angryLeftBrow.setTranslateX(mStart.x + 9);
+			angryLeftBrow.setTranslateY(mStart.y + 23);
+			angryLeftBrow.setTranslateZ(-17);
 
-			if (!mHeadFX.mHead.getChildren().get(2).equals(disgustedLeftBrow)) {
-				mHeadFX.mHead.getChildren().set(2, disgustedLeftBrow);
+			if (!mHeadFX.mHead.getChildren().get(2).equals(angryLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, angryLeftBrow);
 			}
 			break;
+		case DISGUSTEDEND:
+			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0368f;
+			xmovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			ymovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			ymovement_4 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			xmovement_4 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) + ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) + ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) + ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) + ymovement_1);
+			
+			//Block 1
+			currentMesh.getPoints().set(0, currentMesh.getPoints().get(0) - xmovement_1);
+			currentMesh.getPoints().set(3, currentMesh.getPoints().get(3) - xmovement_1);
+			currentMesh.getPoints().set(6, currentMesh.getPoints().get(6) - xmovement_1);
+			currentMesh.getPoints().set(9, currentMesh.getPoints().get(9) - xmovement_1);
+			
+			//Block 2
+			currentMesh.getPoints().set(13, currentMesh.getPoints().get(13) + ymovement_2);
+			currentMesh.getPoints().set(16, currentMesh.getPoints().get(16) + ymovement_2);
+			currentMesh.getPoints().set(19, currentMesh.getPoints().get(19) + ymovement_2);
+			currentMesh.getPoints().set(22, currentMesh.getPoints().get(22) + ymovement_2);
+			
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) - ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) - ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) - ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) - ymovement_3);
+			
+			//Block 4
+			currentMesh.getPoints().set(37, currentMesh.getPoints().get(37) - ymovement_4);
+			currentMesh.getPoints().set(40, currentMesh.getPoints().get(40) - ymovement_4);
+			currentMesh.getPoints().set(43, currentMesh.getPoints().get(43) - ymovement_4);
+			currentMesh.getPoints().set(46, currentMesh.getPoints().get(46) - ymovement_4);
+			
+			//Block 4
+			currentMesh.getPoints().set(36, currentMesh.getPoints().get(36) + xmovement_4);
+			currentMesh.getPoints().set(39, currentMesh.getPoints().get(39) + xmovement_4);
+			currentMesh.getPoints().set(42, currentMesh.getPoints().get(42) + xmovement_4);
+			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) + xmovement_4);
+			
+			
+			angryLeftBrow = new MeshView(currentMesh);
+			angryLeftBrow.setDrawMode(DrawMode.FILL);
+			
+			mat = new PhongMaterial();
+			mat.setDiffuseColor(Color.BLACK);
+			angryLeftBrow.setMaterial(mat);
+			
+			angryLeftBrow.setTranslateX(mStart.x + 9);
+			angryLeftBrow.setTranslateY(mStart.y + 23);
+			angryLeftBrow.setTranslateZ(-17);
 
+			if (!mHeadFX.mHead.getChildren().get(2).equals(angryLeftBrow)) {
+				mHeadFX.mHead.getChildren().set(2, angryLeftBrow);
+			}
+			break;
 		case SURPRISED:
 			surprisedLeftBrow.setTranslateX(mStart.x);
 			surprisedLeftBrow.setTranslateY(mStart.y);

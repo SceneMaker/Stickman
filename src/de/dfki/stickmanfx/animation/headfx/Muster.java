@@ -31,7 +31,7 @@ public class Muster extends AnimationFX
             int rotationUnit = 10;
             
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRY"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTED"));
             playAnimationPart(500);
             
             pauseAnimation(1000);
@@ -43,8 +43,23 @@ public class Muster extends AnimationFX
 //            pauseAnimation(1000);
             
             mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTEDEND"));
+            playAnimationPart(500);
+            
+            pauseAnimation(1000);
+
+            
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRY"));
+            playAnimationPart(500);
+            
+            pauseAnimation(1000);
+            
+            mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRYEND"));
             playAnimationPart(500);
+            
+            pauseAnimation(1000);
             
 //            pauseAnimation(1000);
 //            
