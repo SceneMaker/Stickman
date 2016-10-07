@@ -398,14 +398,79 @@ public class RightEyebrowFX extends BodyPartFX {
 			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) - xmovement_4);
 			break;
 		case EMBARRASSED:
-			embarrassedRightBrow.setTranslateX(mStart.x);
-			embarrassedRightBrow.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(3).equals(embarrassedRightBrow)) {
-				mHeadFX.mHead.getChildren().set(3, embarrassedRightBrow);
-			}
-			break;
+			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0526f;
+			xmovement_1 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			ymovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.00526f;
+			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			ymovement_4 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0315f;
 			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) - ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) - ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) - ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) - ymovement_1);
+			
+			//Block 1
+			currentMesh.getPoints().set(0, currentMesh.getPoints().get(0) + xmovement_1);
+			currentMesh.getPoints().set(3, currentMesh.getPoints().get(3) + xmovement_1);
+			currentMesh.getPoints().set(6, currentMesh.getPoints().get(6) + xmovement_1);
+			currentMesh.getPoints().set(9, currentMesh.getPoints().get(9) + xmovement_1);
+			
+			//Block 2
+			currentMesh.getPoints().set(13, currentMesh.getPoints().get(13) - ymovement_2);
+			currentMesh.getPoints().set(16, currentMesh.getPoints().get(16) - ymovement_2);
+			currentMesh.getPoints().set(19, currentMesh.getPoints().get(19) - ymovement_2);
+			currentMesh.getPoints().set(22, currentMesh.getPoints().get(22) - ymovement_2);
+			
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
+			
+			//Block 4
+			currentMesh.getPoints().set(37, currentMesh.getPoints().get(37) - ymovement_4);
+			currentMesh.getPoints().set(40, currentMesh.getPoints().get(40) - ymovement_4);
+			currentMesh.getPoints().set(43, currentMesh.getPoints().get(43) - ymovement_4);
+			currentMesh.getPoints().set(46, currentMesh.getPoints().get(46) - ymovement_4);
+			break;
+		case EMBARRASSEDEND:
+			ymovement_1 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0526f;
+			xmovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			ymovement_2 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.00526f;
+			ymovement_3 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
+			ymovement_4 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0315f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) - ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) - ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) - ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) - ymovement_1);
+			
+			//Block 1
+			currentMesh.getPoints().set(0, currentMesh.getPoints().get(0) + xmovement_1);
+			currentMesh.getPoints().set(3, currentMesh.getPoints().get(3) + xmovement_1);
+			currentMesh.getPoints().set(6, currentMesh.getPoints().get(6) + xmovement_1);
+			currentMesh.getPoints().set(9, currentMesh.getPoints().get(9) + xmovement_1);
+			
+			//Block 2
+			currentMesh.getPoints().set(13, currentMesh.getPoints().get(13) - ymovement_2);
+			currentMesh.getPoints().set(16, currentMesh.getPoints().get(16) - ymovement_2);
+			currentMesh.getPoints().set(19, currentMesh.getPoints().get(19) - ymovement_2);
+			currentMesh.getPoints().set(22, currentMesh.getPoints().get(22) - ymovement_2);
+			
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
+			
+			//Block 4
+			currentMesh.getPoints().set(37, currentMesh.getPoints().get(37) - ymovement_4);
+			currentMesh.getPoints().set(40, currentMesh.getPoints().get(40) - ymovement_4);
+			currentMesh.getPoints().set(43, currentMesh.getPoints().get(43) - ymovement_4);
+			currentMesh.getPoints().set(46, currentMesh.getPoints().get(46) - ymovement_4);
+			break;
 		case HAPPY:
 			happyRightBrow.setTranslateX(mStart.x);
 			happyRightBrow.setTranslateY(mStart.y);
