@@ -207,20 +207,6 @@ public class LeftEyebrowFX extends BodyPartFX
 					8,0,	12,0,	13,0,
 					13,0,	9,0,	8,0
 					);
-			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-		    mat = new PhongMaterial();
-		    mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 
 		case ANGRY:
@@ -244,20 +230,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
 			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 			
 		case ANGRYEND:
@@ -281,20 +253,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
 			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 
 		case DISGUSTED:
@@ -336,20 +294,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(42, currentMesh.getPoints().get(42) - xmovement_4);
 			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) - xmovement_4);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 			
 		case DISGUSTEDEND:
@@ -391,20 +335,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(42, currentMesh.getPoints().get(42) - xmovement_4);
 			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) - xmovement_4);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 			
 		case SURPRISED:
@@ -444,20 +374,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(42, currentMesh.getPoints().get(42) - xmovement_4);
 			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) - xmovement_4);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 		case SURPRISEDEND:
 			ymovement_1 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
@@ -496,20 +412,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(42, currentMesh.getPoints().get(42) - xmovement_4);
 			currentMesh.getPoints().set(45, currentMesh.getPoints().get(45) - xmovement_4);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 			
 		case EXCITED:
@@ -570,20 +472,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(6, currentMesh.getPoints().get(6) + xmovement_1);
 			currentMesh.getPoints().set(9, currentMesh.getPoints().get(9) + xmovement_1);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 		case EXCITEDEND:
 			ymovement_4 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0210f;
@@ -643,20 +531,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentMesh.getPoints().set(6, currentMesh.getPoints().get(6) + xmovement_1);
 			currentMesh.getPoints().set(9, currentMesh.getPoints().get(9) + xmovement_1);
 			
-			browMesh = new MeshView(currentMesh);
-			browMesh.setDrawMode(DrawMode.FILL);
-			
-			mat = new PhongMaterial();
-			mat.setDiffuseColor(Color.BLACK);
-			browMesh.setMaterial(mat);
-			
-			browMesh.setTranslateX(mStart.x + 9);
-			browMesh.setTranslateY(mStart.y + 23);
-			browMesh.setTranslateZ(-17);
-
-			if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
-				mHeadFX.mHead.getChildren().set(2, browMesh);
-			}
 			break;
 
 		case EMBARRASSED:
@@ -679,6 +553,20 @@ public class LeftEyebrowFX extends BodyPartFX
 				mHeadFX.mHead.getChildren().set(2, happyLeftBrow);
 			}
 			break;
+		}
+		
+		browMesh = new MeshView(currentMesh);
+		browMesh.setDrawMode(DrawMode.FILL);
+	    mat = new PhongMaterial();
+	    mat.setDiffuseColor(Color.BLACK);
+		browMesh.setMaterial(mat);
+		
+		browMesh.setTranslateX(mStart.x + 9);
+		browMesh.setTranslateY(mStart.y + 23);
+		browMesh.setTranslateZ(-17);
+
+		if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
+			mHeadFX.mHead.getChildren().set(2, browMesh);
 		}
 	}
 
