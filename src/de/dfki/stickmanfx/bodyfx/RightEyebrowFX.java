@@ -11,10 +11,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -29,6 +32,9 @@ public class RightEyebrowFX extends BodyPartFX {
 	};
 
 	HeadFX mHeadFX;
+	
+	TriangleMesh currentMesh;
+	MeshView browMesh;
 
 	URL url;
 	ColModelImporter imorter;
@@ -90,16 +96,23 @@ public class RightEyebrowFX extends BodyPartFX {
 	@Override
 	public void createShape() {
 		mStart = mHeadFX.getRightEyebrowPostion();
-		mEnd = new Point(mStart.x - mLength, mStart.y);
+		
+		float xmovement_1;
+		float xmovement_2;
+		float xmovement_3;
+		float xmovement_4;
+		
+		float ymovement_1;
+		float ymovement_2;
+		float ymovement_3;
+		float ymovement_4;
+		
+		PhongMaterial mat;
 
-//		clearDrawObjects();
 		clearChildren(this);
 
 		switch (mShape) {
 		case DEFAULT:
-			// if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
-			// mColorRecorder = mColor;
-
 			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
 				if (mHeadFX.mStickmanFX.fadeControler == true) // Added by
 																// Robbie
@@ -119,24 +132,119 @@ public class RightEyebrowFX extends BodyPartFX {
 				}
 			}
 
-			defaultRightBrow.setTranslateX(mStart.x);
-			defaultRightBrow.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(3).equals(defaultRightBrow)) {
-				mHeadFX.mHead.getChildren().set(3, defaultRightBrow);
-			}
+			currentMesh = new TriangleMesh();
+			currentMesh.getTexCoords().addAll(0,0);
 			
+			currentMesh.getPoints().addAll(
+				//  x   y   z	
+					0,	0,	0,			//Point 0
+					0,	-3,	0,			//Point 1
+					0,	-3,	3,			//Point 2
+					0,	0,	3,			//Point 3 ------->11
+				//  x    y  z
+					-6,	-5,	0,			//Point 4
+					-6,	-8,	0,			//Point 5
+					-6,	-8,	3,			//Point 6
+					-6,	-5, 3,			//Point 7 -------->23
+				 //  x    y   z
+					-20, -7,  0,		//Point 8
+					-20, -11, 0,		//Point 9
+					-20, -11, 3,		//Point 10
+					-20, -7,  3,		//Point 11 -------->35
+				 //  x    y  z  	 
+					-30,  0, 0,			//Point 12
+					-30, -3, 0,			//Point 13
+					-30, -3, 3,			//Point 14
+					-30,  0, 3			//Point 15
+					);
+			
+			currentMesh.getFaces().addAll(
+					0,0,	3,0,	2,0,
+					2,0,	1,0,	0,0,
+					
+					0,0,	1,0,	5,0,
+					5,0,	4,0,	0,0,
+					
+					0,0,	4,0,	7,0,
+					7,0,	3,0,	0,0,
+					
+					3,0,	2,0,	6,0,
+					6,0,	7,0,	3,0,
+					
+					2,0,	1,0,	5,0,
+					5,0,	6,0,	2,0,
+					
+					1,0,	5,0,	4,0,
+					4,0,	0,0,	1,0,
+					
+					7,0,	4,0,	8,0,
+					8,0,	11,0,	7,0,
+					
+					7,0,	6,0,	10,0,
+					10,0,	11,0,	7,0,
+					
+					6,0,	5,0,	9,0,
+					9,0,	10,0,	6,0,
+					
+					4,0,	5,0,	9,0,
+					9,0,	8,0,	4,0,
+					
+					11,0,	8,0,	12,0,
+					12,0,	15,0,	11,0,
+					
+					11,0,	10,0,	14,0,
+					14,0,	15,0,	11,0,
+					
+					10,0,	9,0,	13,0,
+					13,0,	14,0,	10,0,
+					
+					8,0,	9,0,	13,0,
+					13,0,	12,0,	8,0
+					);
 			break;
 
 		case ANGRY:
-			angryRightBrow.setTranslateX(mStart.x);
-			angryRightBrow.setTranslateY(mStart.y);
-
-			if (!mHeadFX.mHead.getChildren().get(3).equals(angryRightBrow)) {
-				mHeadFX.mHead.getChildren().set(3, angryRightBrow);
-			}
+			xmovement_2 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0421f;
+			ymovement_1 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			ymovement_3 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) + ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) + ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) + ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) + ymovement_1);
+			//Block 2
+			currentMesh.getPoints().set(12, currentMesh.getPoints().get(12) + xmovement_2);
+			currentMesh.getPoints().set(15, currentMesh.getPoints().get(15) + xmovement_2);
+			currentMesh.getPoints().set(18, currentMesh.getPoints().get(18) + xmovement_2);
+			currentMesh.getPoints().set(21, currentMesh.getPoints().get(21) + xmovement_2);
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
 			break;
-
+		case ANGRYEND:
+			xmovement_2 = (AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0421f;
+			ymovement_1 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0158f;
+			ymovement_3 = -(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep) * 0.0105f;
+			
+			//Block 1
+			currentMesh.getPoints().set(1, currentMesh.getPoints().get(1) + ymovement_1);
+			currentMesh.getPoints().set(4, currentMesh.getPoints().get(4) + ymovement_1);
+			currentMesh.getPoints().set(7, currentMesh.getPoints().get(7) + ymovement_1);
+			currentMesh.getPoints().set(10, currentMesh.getPoints().get(10) + ymovement_1);
+			//Block 2
+			currentMesh.getPoints().set(12, currentMesh.getPoints().get(12) + xmovement_2);
+			currentMesh.getPoints().set(15, currentMesh.getPoints().get(15) + xmovement_2);
+			currentMesh.getPoints().set(18, currentMesh.getPoints().get(18) + xmovement_2);
+			currentMesh.getPoints().set(21, currentMesh.getPoints().get(21) + xmovement_2);
+			//Block 3
+			currentMesh.getPoints().set(25, currentMesh.getPoints().get(25) + ymovement_3);
+			currentMesh.getPoints().set(28, currentMesh.getPoints().get(28) + ymovement_3);
+			currentMesh.getPoints().set(31, currentMesh.getPoints().get(31) + ymovement_3);
+			currentMesh.getPoints().set(34, currentMesh.getPoints().get(34) + ymovement_3);
+			break;
 		case DISGUSTED:
 			disgustedRightBrow.setTranslateX(mStart.x);
 			disgustedRightBrow.setTranslateY(mStart.y);
@@ -173,6 +281,20 @@ public class RightEyebrowFX extends BodyPartFX {
 			}
 			break;
 
+		}
+		
+		browMesh = new MeshView(currentMesh);
+		browMesh.setDrawMode(DrawMode.FILL);
+	    mat = new PhongMaterial();
+	    mat.setDiffuseColor(Color.BLACK);
+		browMesh.setMaterial(mat);
+		
+		browMesh.setTranslateX(mStart.x - 9);
+		browMesh.setTranslateY(mStart.y - 23);
+		browMesh.setTranslateZ(-17);
+		
+		if (!mHeadFX.mHead.getChildren().get(3).equals(browMesh)) {
+			mHeadFX.mHead.getChildren().set(3, browMesh);
 		}
 	}
 

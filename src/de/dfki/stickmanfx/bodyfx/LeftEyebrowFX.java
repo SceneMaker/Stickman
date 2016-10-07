@@ -6,27 +6,17 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.TriangleMesh;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 /**
  *
@@ -42,25 +32,9 @@ public class LeftEyebrowFX extends BodyPartFX
 
 	HeadFX mHeadFX;
 	
-	private float angryXMovement;
 	TriangleMesh currentMesh;
-
-	URL url;
-	ColModelImporter imorter;
-	
-	StlMeshImporter stlImporter;
-	TriangleMesh defaultLeftBrowTriangleMesh;
-	MeshView defaultLeftBrow;
-	
 	MeshView browMesh;
 	
-	MeshView disgustedLeftBrow;
-	MeshView surprisedLeftBrow;
-	MeshView embarrassedLeftBrow;
-	MeshView happyLeftBrow;
-	
-	int mZTranslate = -120;
-
 	public LeftEyebrowFX.SHAPE mShape = LeftEyebrowFX.SHAPE.DEFAULT;
 
 	public LeftEyebrowFX(HeadFX head) 
@@ -68,22 +42,7 @@ public class LeftEyebrowFX extends BodyPartFX
 		mHeadFX = head;
 		mSize = new Dimension(mLength, mLength);
 		
-		imorter = new ColModelImporter();
-		stlImporter = new StlMeshImporter();
-
 		mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
-		
-		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/surprisedleftBrow.dae");
-		imorter.read(url);
-		surprisedLeftBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/embarrassedleftBrow.dae");
-		imorter.read(url);
-		embarrassedLeftBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/LeftBrow/happyleftBrow.dae");
-		imorter.read(url);
-		happyLeftBrow = (MeshView) imorter.getImport()[0];
 		
 		init();
 	}
