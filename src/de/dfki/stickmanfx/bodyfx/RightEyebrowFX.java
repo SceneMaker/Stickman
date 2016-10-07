@@ -2,24 +2,15 @@ package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.TriangleMesh;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 /**
  *
@@ -36,48 +27,13 @@ public class RightEyebrowFX extends BodyPartFX {
 	TriangleMesh currentMesh;
 	MeshView browMesh;
 
-	URL url;
-	ColModelImporter imorter;
-	MeshView defaultRightBrow;
-	MeshView angryRightBrow;
-	MeshView disgustedRightBrow;
-	MeshView surprisedRightBrow;
-	MeshView embarrassedRightBrow;
-	MeshView happyRightBrow;
-
 	public RightEyebrowFX.SHAPE mShape = RightEyebrowFX.SHAPE.DEFAULT;
 
 	public RightEyebrowFX(HeadFX head) {
 		mHeadFX = head;
 		mSize = new Dimension(mLength, 5);
 		
-		imorter = new ColModelImporter();
-
 		mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
-		
-		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/defaultRightBrow.dae");
-		imorter.read(url);
-		defaultRightBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/angryRightBrow1.dae");
-		imorter.read(url);
-		angryRightBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/disgustedRightBrow.dae");
-		imorter.read(url);
-		disgustedRightBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/surprisedRightBrow.dae");
-		imorter.read(url);
-		surprisedRightBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/embarrassedRightBrow.dae");
-		imorter.read(url);
-		embarrassedRightBrow = (MeshView) imorter.getImport()[0];
-		
-		url = getClass().getClassLoader().getResource("BodyParts/RightBrow/happyRightBrow.dae");
-		imorter.read(url);
-		happyRightBrow = (MeshView) imorter.getImport()[0];
 		
 		init();
 	}
