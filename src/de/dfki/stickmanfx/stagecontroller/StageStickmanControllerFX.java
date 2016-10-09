@@ -7,6 +7,7 @@ import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickman.StickmanStage;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageFX;
+import de.dfki.stickmanfx.utils.XmlStickmanLoader;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -85,12 +86,16 @@ public class StageStickmanControllerFX implements StageStickmanController {
     
     public void launchStickmanConfiguration(String filepath){
         commonStickmansOnStage.setmFilePath(filepath);
+        XmlStickmanLoader loader = new XmlStickmanLoader((StickmansOnStageFX) commonStickmansOnStage);
         launchStickmanConfiguration();
+        loader.initialStickmanWithXml();
     }
 
     public void launchStickmanStage(boolean show, String filepath){
         commonStickmansOnStage.setmFilePath(filepath);
+        XmlStickmanLoader loader = new XmlStickmanLoader((StickmansOnStageFX) commonStickmansOnStage);
         launchStickmanStage(show);
+        loader.initialStickmanWithXml();
 
     }
 

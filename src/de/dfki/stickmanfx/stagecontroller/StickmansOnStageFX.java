@@ -12,7 +12,7 @@ public class StickmansOnStageFX extends CommonStickmansOnStage{
     public StickmansOnStageFX(StageStickman stageStickman) {
         super(stageStickman);
     }
-    private static XmlTransform mXmlTransform = new XmlTransform();
+    private  XmlTransform mXmlTransform = new XmlTransform();
     public StickmansOnStageFX(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
         super(stickmanStageFX, controllerFX);
     }

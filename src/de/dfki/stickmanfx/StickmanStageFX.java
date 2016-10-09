@@ -4,7 +4,6 @@ import de.dfki.common.StageStickman;
 import de.dfki.common.CommonStickman;
 import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
-import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
@@ -120,6 +119,10 @@ public class StickmanStageFX extends Application implements StageStickman{
             }
             stickmanFXStages.put(uuid, stage);
         });
+    }
+
+    public void runLater(Runnable function){
+        Platform.runLater(function);
     }
 
     public void lauchStickman() {

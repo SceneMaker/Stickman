@@ -23,9 +23,9 @@ public class testStickmanFX {
 
 
         StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, false);
-        stickmanStage.addStickman("Martin");
-        stickmanStage.addStickman("Sarah");
-        stickmanStage.launchStickmanStage(true);
+        stickmanStage.addStickman("Anna");
+        stickmanStage.addStickman("Bob");
+        ((StageStickmanControllerFX)stickmanStage).launchStickmanStage(true, "/home/alvaro/Documents/tep/stickmantest");
 
         StageStickmanController stickmanStage2 = new StageStickmanControllerFX(950, 0, false);
         stickmanStage2.addStickman("Anna");
