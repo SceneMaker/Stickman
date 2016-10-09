@@ -1,4 +1,4 @@
-package de.dfki.stickmanfx.bodyfx;
+package de.dfki.stickmanfx.mimic.util;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.scene.shape.TriangleMesh;
