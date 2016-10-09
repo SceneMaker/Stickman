@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanfx/utils/XmlStickmanLoader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanStageFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StageStickmanControllerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StageStickmanControllerFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StickmansOnStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StickmansOnStageFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -871,7 +866,7 @@
       <workItem from="1474312618270" duration="3205000" />
       <workItem from="1474367787751" duration="5926000" />
       <workItem from="1474375576104" duration="24000" />
-      <workItem from="1476032918550" duration="7045000" />
+      <workItem from="1476032918550" duration="7078000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring removing static">
       <created>1473845928949</created>
@@ -992,11 +987,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476038045217</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Saving xml">
+      <created>1476039973828</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1476039973828</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145445000" />
+    <option name="totallyTimeSpent" value="145478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="0" />
@@ -1089,9 +1091,9 @@
     <MESSAGE value="Fix sitckmans were not shown in stage from configuration window" />
     <MESSAGE value="Window positioning" />
     <MESSAGE value="Decoration for window&#10;" />
-    <MESSAGE value="Saving xml" />
     <MESSAGE value="Saving to xml.&#10;launching with path" />
-    <option name="LAST_COMMIT_MESSAGE" value="Saving to xml.&#10;launching with path" />
+    <MESSAGE value="Saving xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
