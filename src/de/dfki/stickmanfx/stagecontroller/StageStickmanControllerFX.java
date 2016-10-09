@@ -22,10 +22,17 @@ public class StageStickmanControllerFX implements StageStickmanController {
     private CommonStickmansOnStage commonStickmansOnStage;
     private String stageIdentifier;
     private boolean fullScreen = false;
+    private int x;
+    private int y;
 
     public StageStickmanControllerFX(){
         getStickmanStageInstance();
-        createNewStickmanStage();
+        createNewStickmanStage(0,0);
+    }
+
+    public StageStickmanControllerFX(int x, int y){
+        getStickmanStageInstance();
+        createNewStickmanStage(x, y);
     }
 
 
@@ -122,11 +129,12 @@ public class StageStickmanControllerFX implements StageStickmanController {
         }
     }
 
-    protected void createNewStickmanStage() {
+
+    protected void createNewStickmanStage(int x, int y) {
         stickmanStageFX = StickmanStageFX.getInstance();
         init();
         try {
-            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage();
+            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage(x, y);
         } catch (IOException e) {
             e.printStackTrace();
         }

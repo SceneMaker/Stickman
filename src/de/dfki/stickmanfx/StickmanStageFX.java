@@ -85,10 +85,10 @@ public class StickmanStageFX extends Application implements StageStickman{
         return generalStageRoot.getStageRoot();
     }
 
-    public String createNewStage() throws IOException {
+    public String createNewStage(int x, int y) throws IOException {
         String uuid = UUID.randomUUID().toString();
         try {
-            createStage(uuid);
+            createStage(uuid, x, y);
             waitForCreatingStage(uuid);
         } catch (IOException e) {
             throw e;
@@ -104,12 +104,14 @@ public class StickmanStageFX extends Application implements StageStickman{
         }
     }
 
-    public void createStage(String uuid) throws IOException {
+    public void createStage(String uuid, int x, int y) throws IOException {
         final HBox root = getStageRoot();
         Platform.runLater(()->{
             Scene stageScene =  new Scene(root);
             Stage stage = new Stage();
             stage.setScene(stageScene);
+            stage.setX(x);
+            stage.setY(y);
             stickmanFXStages.put(uuid, stage);
         });
     }

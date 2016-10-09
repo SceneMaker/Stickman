@@ -19,14 +19,20 @@ import java.io.IOException;
  */
 public class testStickmanFX {
     public static void main(String[] args) {
-        StageStickmanController stickmanStage = new StageStickmanControllerFX();
        // StageStickmanController stickmanStage = new StageStickmanFullScreenControllerFXDecorator(stage);
-       
 
-        StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
+
+        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,500);
+        stickmanStage.addStickman("Martin");
+        stickmanStage.addStickman("Sarah");
+        //((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();
+        stickmanStage.launchStickmanStage(true);
+
+        StageStickmanController stickmanStage2 = new StageStickmanControllerFX(950, 0);
         stickmanStage2.addStickman("Anna");
         stickmanStage2.addStickman("Bob");
-        ((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();
+        //((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();
+        stickmanStage2.launchStickmanStage(true);
         BufferedImage bufferedImage = null;
 
     }
