@@ -27,12 +27,17 @@ public class StageStickmanControllerFX implements StageStickmanController {
 
     public StageStickmanControllerFX(){
         getStickmanStageInstance();
-        createNewStickmanStage(0,0);
+        createNewStickmanStage(0,0, false);
     }
 
     public StageStickmanControllerFX(int x, int y){
         getStickmanStageInstance();
-        createNewStickmanStage(x, y);
+        createNewStickmanStage(x, y, false);
+    }
+
+    public StageStickmanControllerFX(int x, int y, boolean decoration){
+        getStickmanStageInstance();
+        createNewStickmanStage(x, y, decoration);
     }
 
 
@@ -130,11 +135,11 @@ public class StageStickmanControllerFX implements StageStickmanController {
     }
 
 
-    protected void createNewStickmanStage(int x, int y) {
+    protected void createNewStickmanStage(int x, int y, boolean decoration) {
         stickmanStageFX = StickmanStageFX.getInstance();
         init();
         try {
-            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage(x, y);
+            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage(x, y, decoration);
         } catch (IOException e) {
             e.printStackTrace();
         }

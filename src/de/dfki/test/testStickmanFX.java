@@ -22,13 +22,13 @@ public class testStickmanFX {
        // StageStickmanController stickmanStage = new StageStickmanFullScreenControllerFXDecorator(stage);
 
 
-        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,500);
+        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,500, true);
         stickmanStage.addStickman("Martin");
         stickmanStage.addStickman("Sarah");
         //((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();
         stickmanStage.launchStickmanStage(true);
 
-        StageStickmanController stickmanStage2 = new StageStickmanControllerFX(950, 0);
+        StageStickmanController stickmanStage2 = new StageStickmanControllerFX(950, 0, false);
         stickmanStage2.addStickman("Anna");
         stickmanStage2.addStickman("Bob");
         //((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();

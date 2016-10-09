@@ -13,6 +13,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -85,10 +87,10 @@ public class StickmanStageFX extends Application implements StageStickman{
         return generalStageRoot.getStageRoot();
     }
 
-    public String createNewStage(int x, int y) throws IOException {
+    public String createNewStage(int x, int y, boolean decoration) throws IOException {
         String uuid = UUID.randomUUID().toString();
         try {
-            createStage(uuid, x, y);
+            createStage(uuid, x, y, decoration);
             waitForCreatingStage(uuid);
         } catch (IOException e) {
             throw e;
@@ -104,7 +106,7 @@ public class StickmanStageFX extends Application implements StageStickman{
         }
     }
 
-    public void createStage(String uuid, int x, int y) throws IOException {
+    public void createStage(String uuid, int x, int y, boolean decoration) throws IOException {
         final HBox root = getStageRoot();
         Platform.runLater(()->{
             Scene stageScene =  new Scene(root);
@@ -112,6 +114,9 @@ public class StickmanStageFX extends Application implements StageStickman{
             stage.setScene(stageScene);
             stage.setX(x);
             stage.setY(y);
+            if(!decoration){
+                stage.initStyle(StageStyle.UNDECORATED);
+            }
             stickmanFXStages.put(uuid, stage);
         });
     }
