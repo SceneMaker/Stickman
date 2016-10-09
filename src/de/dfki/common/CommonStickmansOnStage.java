@@ -107,4 +107,8 @@ public abstract class CommonStickmansOnStage {
     public String getmFilePath() {
         return mFilePath;
     }
+
+    public void setmFilePath(String mFilePath) {
+        this.mFilePath = mFilePath;
+    }
 }

@@ -25,12 +25,12 @@ public class testStickmanFX {
         StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, false);
         stickmanStage.addStickman("Martin");
         stickmanStage.addStickman("Sarah");
-        //stickmanStage.launchStickmanStage(true);
+        stickmanStage.launchStickmanStage(true);
 
         StageStickmanController stickmanStage2 = new StageStickmanControllerFX(950, 0, false);
         stickmanStage2.addStickman("Anna");
         stickmanStage2.addStickman("Bob");
-        ((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration();
+        ((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration("/home/alvaro/Documents/tep/stickmantest");
         //stickmanStage2.launchStickmanStage(true);
         BufferedImage bufferedImage = null;
 

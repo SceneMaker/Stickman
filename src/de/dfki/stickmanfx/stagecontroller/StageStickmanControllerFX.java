@@ -83,9 +83,16 @@ public class StageStickmanControllerFX implements StageStickmanController {
         }
     }
     
-    public void launchStickmanConfiguration(String filepath){}
+    public void launchStickmanConfiguration(String filepath){
+        commonStickmansOnStage.setmFilePath(filepath);
+        launchStickmanConfiguration();
+    }
 
-    public void launchStickmanStage(String filepath){}
+    public void launchStickmanStage(boolean show, String filepath){
+        commonStickmansOnStage.setmFilePath(filepath);
+        launchStickmanStage(show);
+
+    }
 
     @Override
     public void addStickman(String name){

@@ -160,10 +160,7 @@ public class StickmanStageFX extends Application implements StageStickman{
     }
 
     private void addStickmanName(String key) {
-        if(!getStickmanNames().contains(key)) {
-            getStickmanNames().add(key);
-            generalConfigStageRoot.getmStickmanStageController().fillComboForStickman();
-        }
+        generalConfigStageRoot.getmStickmanStageController().fillComboForStickman();
     }
 
     public void showStage(String stageIdentifier) {
@@ -189,9 +186,7 @@ public class StickmanStageFX extends Application implements StageStickman{
         }
     }
 
-    public LinkedList<String> getStickmanNames() {
-        return stickmanNames;
-    }
+
 
     public BufferedImage getStageAsImage(String stageIdentifier) throws Exception {
         if (stickmanFXStages.containsKey(stageIdentifier)) {

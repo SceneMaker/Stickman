@@ -344,8 +344,10 @@ public class StickmanStageController {
     public void fillComboForStickman()
     {
     	ObservableList<String> stickmanNames = FXCollections.observableArrayList();
-        stickmanNames.addAll(StickmanStageFX.getInstance().getStickmanNames().stream().collect(Collectors.toList()));
+        stickmanNames.addAll(mStickmanOnstage.getStickmanNames().stream().collect(Collectors.toList()));
+        StickmanComboBox.getItems().clear();
     	StickmanComboBox.getItems().addAll(stickmanNames);
+        mStickmanComboList.clear();
         mStickmanComboList.addAll(stickmanNames);
     }
     
