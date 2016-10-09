@@ -7,6 +7,7 @@ import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
 /**
@@ -33,6 +34,7 @@ public class ZoomIn extends AnimationFX {
 		try {
 		    mStickmanFX.getStickmanStageController().getStickmanStage().addStickmanToStage(mStageIdentifier,
 			    mStickmanFX);
+		    mStickmanPane.setAlignment(Pos.CENTER);
 		} catch (Exception e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();

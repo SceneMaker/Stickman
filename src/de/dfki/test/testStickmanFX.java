@@ -19,27 +19,25 @@ import java.io.IOException;
  */
 public class testStickmanFX {
     public static void main(String[] args) {
-        StageStickmanController stickmanStage = new StageStickmanControllerFX();
        // StageStickmanController stickmanStage = new StageStickmanFullScreenControllerFXDecorator(stage);
-       
 
-        StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
-        stickmanStage2.addStickman("Anna", true);
-        stickmanStage2.addStickman("Bob", true);
+//        StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
+//        stickmanStage2.addStickman("Anna", true);
+//        stickmanStage2.addStickman("Bob", true);
 //        stickmanStage2.addStickman("character", true);
 //    	stickmanStage2.addStickman("abbey"); 
 //    	stickmanStage2.addStickman("abbie");
-        stickmanStage2.launchStickmanStage(true);
+//        stickmanStage2.launchStickmanStage(true);
 //        stickmanStage2.launchStickmanConfiguration();
-        BufferedImage bufferedImage = null;
-        try
-		{
-			Thread.sleep(2000);
-		} catch (InterruptedException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//        BufferedImage bufferedImage = null;
+//        try
+//		{
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
         /*try {
             bufferedImage = stickmanStage.getStageAsImage();
         } catch (Exception e) {
@@ -52,11 +50,22 @@ public class testStickmanFX {
             e.printStackTrace();
         }*/
 
+        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, false);
+        stickmanStage.addStickman("Anna");
+        stickmanStage.addStickman("Bob");
+        ((StageStickmanControllerFX)stickmanStage).launchStickmanStage(true, "/home/alvaro/Documents/tep/stickmantest");
+
+//        StageStickmanController stickmanStage2 = new StageStickmanControllerFX(950, 0, false);
+//        stickmanStage2.addStickman("abbey");
+//        stickmanStage2.addStickman("abbie");
+//        ((StageStickmanControllerFX)stickmanStage2).launchStickmanConfiguration("/home/alvaro/Documents/tep/stickmantest");
+        //stickmanStage2.launchStickmanStage(true);
+        BufferedImage bufferedImage = null;
 
        /* StageStickmanController stickmanStage3 = new StageStickmanControllerFX();
         stickmanStage3.addStickman("Baxter");
         ((StageStickmanControllerFX)stickmanStage3).launchStickmanConfiguration();*/
-//        stickmanStage2.getStickman("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//        stickmanStage.getStickman("Anna").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //        if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
 //        	stickmanStage2.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
 //    	}else{

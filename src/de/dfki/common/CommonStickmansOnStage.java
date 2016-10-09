@@ -18,6 +18,8 @@ public abstract class CommonStickmansOnStage {
     private Map<String, CommonStickman> sStickmansOnStage = new HashMap<>();
     protected StageStickman stickmanStage;
     private StageStickmanController stageStickmanController;
+    private String mFilePath;
+
     public CommonStickmansOnStage(StageStickman stageStickman){
         stickmanStage = stageStickman;
     }
@@ -100,5 +102,13 @@ public abstract class CommonStickmansOnStage {
 
     public StickmanFX getStickmanByKey(String key){
         return (StickmanFX) sStickmansOnStage.get(key);
+    }
+
+    public String getmFilePath() {
+        return mFilePath;
+    }
+
+    public void setmFilePath(String mFilePath) {
+        this.mFilePath = mFilePath;
     }
 }

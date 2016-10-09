@@ -92,7 +92,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 	private Label nameLabel ;
 
 //	public static Dimension mDefaultSize = new Dimension(1000, 800); // 400
-	public static Dimension mDefaultSize = new Dimension(130, 130);//(300, 550) 130
+	public static Dimension mDefaultSize = new Dimension(300, 550);
 	public static Dimension mSize = new Dimension(mDefaultSize);
 	FontMetrics mFontMetrics;
 	Font mFont;
@@ -432,12 +432,8 @@ public class StickmanFX extends Pane implements CommonStickman {
 
 		// draw everthing in the middle and scaled
 		Affine af = new Affine();
-//		mSize.height = (int) (mSize.height* mScale);
-//		mSize.width = (int) (mSize.width* mScale);
-//		mGeneralXTranslation =(int) -(mHeadFX.mSize.width /2) * mScale;
-//		mGeneralXTranslation = (mSize.width / 2 - mHeadFX.mSize.width) * mScale;
-		mGeneralXTranslation = (int)500 - mHeadFX.mSize.width* mScale/2;
-		mGeneralYTranslation = (float) (mSize.height/3);		
+		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
+		mGeneralYTranslation = (float) (mSize.height/5);
 //		mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
@@ -445,8 +441,6 @@ public class StickmanFX extends Pane implements CommonStickman {
 		af.appendTranslation(0, leaveSpeed); 
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
-		
-		this.setStyle("-fx-border-color: red;");
 
 		// Out put perlin noise
 		implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,

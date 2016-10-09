@@ -7,6 +7,7 @@ import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickman.StickmanStage;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageFX;
+import de.dfki.stickmanfx.utils.XmlStickmanLoader;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -22,10 +23,22 @@ public class StageStickmanControllerFX implements StageStickmanController {
     private CommonStickmansOnStage commonStickmansOnStage;
     private String stageIdentifier;
     private boolean fullScreen = false;
+    private int x;
+    private int y;
 
     public StageStickmanControllerFX(){
         getStickmanStageInstance();
-        createNewStickmanStage();
+        createNewStickmanStage(0,0, false);
+    }
+
+    public StageStickmanControllerFX(int x, int y){
+        getStickmanStageInstance();
+        createNewStickmanStage(x, y, false);
+    }
+
+    public StageStickmanControllerFX(int x, int y, boolean decoration){
+        getStickmanStageInstance();
+        createNewStickmanStage(x, y, decoration);
     }
 
 
@@ -71,9 +84,20 @@ public class StageStickmanControllerFX implements StageStickmanController {
         }
     }
     
-    public void launchStickmanConfiguration(String filepath){}
+    public void launchStickmanConfiguration(String filepath){
+        commonStickmansOnStage.setmFilePath(filepath);
+        XmlStickmanLoader loader = new XmlStickmanLoader((StickmansOnStageFX) commonStickmansOnStage);
+        launchStickmanConfiguration();
+        loader.initialStickmanWithXml();
+    }
 
-    public void launchStickmanStage(String filepath){}
+    public void launchStickmanStage(boolean show, String filepath){
+        commonStickmansOnStage.setmFilePath(filepath);
+        XmlStickmanLoader loader = new XmlStickmanLoader((StickmansOnStageFX) commonStickmansOnStage);
+        launchStickmanStage(show);
+        loader.initialStickmanWithXml();
+
+    }
 
     @Override
     public void addStickman(String name){
@@ -122,11 +146,12 @@ public class StageStickmanControllerFX implements StageStickmanController {
         }
     }
 
-    protected void createNewStickmanStage() {
+
+    protected void createNewStickmanStage(int x, int y, boolean decoration) {
         stickmanStageFX = StickmanStageFX.getInstance();
         init();
         try {
-            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage();
+            stageIdentifier = ((StickmanStageFX) getStickmanStage()).createNewStage(x, y, decoration);
         } catch (IOException e) {
             e.printStackTrace();
         }
