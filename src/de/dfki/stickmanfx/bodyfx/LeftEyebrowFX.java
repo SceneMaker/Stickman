@@ -754,12 +754,13 @@ public class LeftEyebrowFX extends BodyPartFX
 		browMesh.setMaterial(mat);
 		
 		browMesh.setTranslateX(mStart.x + 9);
-		browMesh.setTranslateY(mStart.y + 23);
+		browMesh.setTranslateY(mStart.y + 85);
 		browMesh.setTranslateZ(-17);
-
-		if (!mHeadFX.mHead.getChildren().get(2).equals(browMesh)) {
+		
+		if (step == 0) 
+			mHeadFX.mHead.getChildren().add(browMesh);
+		else
 			mHeadFX.mHead.getChildren().set(2, browMesh);
-		}
 	}
 
 	protected void recordColor() {

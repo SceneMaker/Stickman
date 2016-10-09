@@ -30,30 +30,16 @@ public class Muster extends AnimationFX
 	public void playAnimation() {
             int rotationUnit = 10;
             
+            
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITED"));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITED"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
             playAnimationPart(500);
             
             pauseAnimation(1000);
             
-//            mAnimationPartFX = new ArrayList<>();
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 90));
-//            playAnimationPart(500);
-//            
-//            pauseAnimation(1000);
-            
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
             playAnimationPart(500);
-            
-            
-//            pauseAnimation(1000);
-//            
-//            mAnimationPartFX = new ArrayList<>();
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -90));
-//            playAnimationPart(500);
                 
 
 	}

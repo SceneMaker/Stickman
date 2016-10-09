@@ -7,17 +7,21 @@ import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
+import com.sun.xml.internal.ws.resources.ManagementMessages;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.Sphere;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -35,12 +39,14 @@ public class MaleHairFX extends BodyPartFX
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
 	int mPifotOffset = 55;
-	int mZTranslate = -100; //Bring shape in front, because of DepthTest
+	int mZTranslate = 3; //Bring shape in front, because of DepthTest
 	int mEarWidth = 10;
 
 	URL url;
-	ColModelImporter importer;
-	MeshView maleHair;
+	StlMeshImporter importer;
+	TriangleMesh maleHairTriangleMesh;
+	MeshView maleHairMeshView;
+	PhongMaterial material;
 
 	public MaleHairFX(StickmanFX sm) 
 	{
@@ -50,11 +56,17 @@ public class MaleHairFX extends BodyPartFX
 		if (mStickmanFX.mHeadFX != null)
 			mYRotation = mStickmanFX.mHeadFX.mYRotation;
 
-		url = getClass().getClassLoader().getResource("BodyParts/maleHair.dae");
-		importer = new ColModelImporter();
+		url = getClass().getClassLoader().getResource("BodyParts/maleHair.stl");
+		importer = new StlMeshImporter();
 		importer.read(url);
-		maleHair = (MeshView) importer.getImport()[0];
-
+		maleHairTriangleMesh = importer.getImport();
+		maleHairMeshView = new MeshView(maleHairTriangleMesh);
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		maleHairMeshView.setMaterial(material);	
+		maleHairMeshView.setRotationAxis(Rotate.X_AXIS);
+		maleHairMeshView.setRotate(-90);
+		
 		init();
 
 		calculate(0);
@@ -64,19 +76,26 @@ public class MaleHairFX extends BodyPartFX
 	{
 		clearChildren(this);
 
-		maleHair.setTranslateX(mHalfWidth);
-		maleHair.setTranslateY(mHalfHeight + mPifotOffset);
-		maleHair.setTranslateZ(mZTranslate);
+		maleHairMeshView.setTranslateX(mHalfWidth-60);
+		maleHairMeshView.setTranslateY(mHalfHeight-52);
+		maleHairMeshView.setTranslateZ(mZTranslate);
 		
 		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-		maleHair.getTransforms().clear();
-		maleHair.getTransforms().addAll(rx, ry, rz);
+		maleHairMeshView.getTransforms().clear();
+		maleHairMeshView.getTransforms().addAll(rx, ry, rz);
 
-		this.getChildren().addAll(maleHair);
-
+		if (!mStickmanFX.mHeadFX.mHead.getChildren().contains(maleHairMeshView)) {
+			mStickmanFX.mHeadFX.mHead.getChildren().add(maleHairMeshView);
+		}
+		else
+		{
+			if (!mStickmanFX.mHeadFX.mHead.getChildren().get(1).equals(maleHairMeshView)) {
+				mStickmanFX.mHeadFX.mHead.getChildren().set(1, maleHairMeshView);
+			}
+		}
 		// update();
 
 	}

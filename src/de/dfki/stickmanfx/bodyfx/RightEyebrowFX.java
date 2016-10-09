@@ -50,7 +50,7 @@ public class RightEyebrowFX extends BodyPartFX {
 	}
 
 	@Override
-	public void createShape() {
+	public void calculate(int step) {
 		mStart = mHeadFX.getRightEyebrowPostion();
 		
 		float xmovement_1;
@@ -675,12 +675,13 @@ public class RightEyebrowFX extends BodyPartFX {
 		browMesh.setMaterial(mat);
 		
 		browMesh.setTranslateX(mStart.x - 9);
-		browMesh.setTranslateY(mStart.y - 23);
+		browMesh.setTranslateY(mStart.y + 38);
 		browMesh.setTranslateZ(-17);
 		
-		if (!mHeadFX.mHead.getChildren().get(3).equals(browMesh)) {
-			mHeadFX.mHead.getChildren().set(3, browMesh);
-		}
+		if (step == 0) 
+			mHeadFX.mHead.getChildren().add(browMesh);
+		else
+			mHeadFX.mHead.getChildren().set(5, browMesh);
 	}
 
 	protected void recordColor() {

@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -27,6 +28,7 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.Sphere;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -39,6 +41,9 @@ import javafx.util.Duration;
 public class HeadFX extends BodyPartFX {
 	public Dimension mSize = new Dimension(120, 100);
 	public StickmanFX mStickmanFX;
+	TriangleMesh mHeadTriangleMesh;
+	MeshView mHeadMeshView;
+	PhongMaterial material;
 
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
@@ -53,6 +58,7 @@ public class HeadFX extends BodyPartFX {
 
 	URL url;
 	ColModelImporter imorter;
+	StlMeshImporter im;
 	Group mHead;
 
 	int mHeadRadius = 60;
@@ -61,17 +67,31 @@ public class HeadFX extends BodyPartFX {
 	public HeadFX(StickmanFX sm) {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
-
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
-			url = getClass().getClassLoader().getResource("BodyParts/maleHead.dae");
-		else
-			url = getClass().getClassLoader().getResource("BodyParts/femaleHead.dae");
-		imorter = new ColModelImporter();
-		imorter.read(url);
-		mHead = (Group) imorter.getImport()[0];
-		System.out.println(mHead.getChildren());
-
 		mColor = Color.rgb(242, 227, 217, 1);
+		
+		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			url = getClass().getClassLoader().getResource("BodyParts/maleHead.stl");
+			im = new StlMeshImporter();
+			im.read(url);
+			mHead = new Group();
+			mHeadTriangleMesh = im.getImport();
+			
+			mHeadMeshView = new MeshView(mHeadTriangleMesh);
+			material = new PhongMaterial();
+			material.setDiffuseColor(mColor);
+			mHeadMeshView.setMaterial(material);
+			mHeadMeshView.setRotationAxis(Rotate.X_AXIS);
+			mHeadMeshView.setRotate(90);
+			mHead.getChildren().add(mHeadMeshView);
+		}
+		else
+		{
+			url = getClass().getClassLoader().getResource("BodyParts/femaleHead.dae");
+			imorter = new ColModelImporter();
+			imorter.read(url);
+			mHead = (Group) imorter.getImport()[0];
+		}
 
 		mYRotation = -0;
 		init();
@@ -125,12 +145,12 @@ public class HeadFX extends BodyPartFX {
 		clearChildren(this);
 
 		mHead.setTranslateX(mHalfWidth);
-		mHead.setTranslateY(mHalfHeight + mPivotOffset);
+		mHead.setTranslateY(mHalfHeight - 3);
 		mHead.setTranslateZ(mZTranslate);
 
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
 
 		mHead.getTransforms().clear();
 		mHead.getTransforms().addAll(rx, ry, rz);
