@@ -7,10 +7,13 @@ import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.awt.*;
@@ -104,6 +107,21 @@ public class StickmanStageFX extends Application implements StageStickman{
         }
     }
 
+    // To handle click action on scene
+    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() { 
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+//            stickamnsOnStage.getStickman("Bob").doAnimation("Embarrassed", 1000, false);
+        if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+            stickamnsOnStage.getStickman("Bob").doAnimation("ZoomOut", 1000, true);
+	}else{
+	    stickamnsOnStage.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
+	}  
+
+        }
+     
+    }; 
+    
     public void createStage(String uuid) throws IOException {
         final HBox root = getStageRoot();
         Platform.runLater(()->{
@@ -111,6 +129,9 @@ public class StickmanStageFX extends Application implements StageStickman{
             Stage stage = new Stage();
             stage.setScene(stageScene);
             stickmanFXStages.put(uuid, stage);
+            
+            ///  added by R
+            stageScene.setOnMouseClicked(mouseHandler);
         });
     }
 

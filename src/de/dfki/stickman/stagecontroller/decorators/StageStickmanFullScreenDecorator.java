@@ -13,4 +13,8 @@ public class StageStickmanFullScreenDecorator extends StageStickmanDecorator {
         setFullScreen(true);
 
     }
+
+    @Override
+    public void launchStickmanConfiguration() {
+    }
 }

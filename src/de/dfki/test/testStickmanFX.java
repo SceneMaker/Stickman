@@ -26,7 +26,11 @@ public class testStickmanFX {
         StageStickmanController stickmanStage2 = new StageStickmanControllerFX();
         stickmanStage2.addStickman("Anna", true);
         stickmanStage2.addStickman("Bob", true);
+//        stickmanStage2.addStickman("character", true);
+//    	stickmanStage2.addStickman("abbey"); 
+//    	stickmanStage2.addStickman("abbie");
         stickmanStage2.launchStickmanStage(true);
+//        stickmanStage2.launchStickmanConfiguration();
         BufferedImage bufferedImage = null;
         try
 		{
@@ -52,27 +56,28 @@ public class testStickmanFX {
        /* StageStickmanController stickmanStage3 = new StageStickmanControllerFX();
         stickmanStage3.addStickman("Baxter");
         ((StageStickmanControllerFX)stickmanStage3).launchStickmanConfiguration();*/
-        stickmanStage2.getStickman("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//        stickmanStage2.getStickman("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //        if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
 //        	stickmanStage2.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
 //    	}else{
 //    		stickmanStage2.getStickmanFX("Bob").doAnimation("ZoomOut", 1000, true);
 //    	}  
         
-        stickmanStage2.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
-        
-        
-        try
-		{
-			Thread.sleep(2000);
-		} catch (InterruptedException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-        
-        stickmanStage2.getStickman("Bob").doAnimation("ZoomOut", 1000, true);
-        System.out.println("test");
+//        stickmanStage2.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
+//        
+//        
+//        try
+//		{
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        
+//        
+//        stickmanStage2.getStickman("Bob").doAnimation("ZoomOut", 1000, true);
+//        
+//        System.out.println("test");
     }
 }

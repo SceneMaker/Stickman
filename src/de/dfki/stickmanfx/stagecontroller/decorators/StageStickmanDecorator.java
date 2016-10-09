@@ -78,4 +78,9 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
     public BufferedImage getStageAsImage() throws Exception {
         return controllerFX.getStageAsImage();
     }
+    
+    @Override
+    public void launchStickmanConfiguration() {	
+    }
+
 }
