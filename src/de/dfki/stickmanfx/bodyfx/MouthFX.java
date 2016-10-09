@@ -3,6 +3,7 @@ package de.dfki.stickmanfx.bodyfx;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
+import de.dfki.stickmanfx.mimic.util.MouthCONTEMPT;
 import de.dfki.stickmanfx.mimic.util.MouthDISGUSTED;
 import de.dfki.stickmanfx.mimic.util.MouthHAPPY;
 import de.dfki.stickmanfx.mimic.util.MouthSAD;
@@ -173,6 +174,7 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipMesh = MouthDISGUSTED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
 			break;
 		case CONTEMPT:
+			currentUpperLipMesh = MouthCONTEMPT.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case CONTEMPTEND:
