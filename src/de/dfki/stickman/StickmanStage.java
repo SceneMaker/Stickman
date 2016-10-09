@@ -117,6 +117,11 @@ public class StickmanStage extends JFrame implements  StageStickman {
         CommonStickmansOnStage stickamnsOnStage1 = stickamnsOnStage;
     }
 
+    @Override
+    public HBox getStickmanPane(String stageIdentifier) throws Exception {
+        return null;
+    }
+
     public void clearStage(){
         dispose();
     }
@@ -137,12 +142,7 @@ public class StickmanStage extends JFrame implements  StageStickman {
         }
     }
 
-	@Override
-	public HBox getStickmanPane(String stageIdentifier) throws Exception
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception
