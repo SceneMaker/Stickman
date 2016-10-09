@@ -20,4 +20,5 @@ public interface StageStickmanController {
     void setFullScreen(boolean fullScreen);
     void addStickman(String name, boolean onlyFace);
     BufferedImage getStageAsImage() throws Exception;
+    void launchStickmanConfiguration();
 }

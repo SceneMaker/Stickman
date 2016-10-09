@@ -92,4 +92,9 @@ public class StageController implements StageStickmanController {
     public BufferedImage getStageAsImage() {
         return null;
     }
+
+    @Override
+    public void launchStickmanConfiguration() {
+	
+    }
 }

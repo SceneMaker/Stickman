@@ -18,6 +18,10 @@ public class StageStickmanNetworkControllerDecorator extends CommonStageStickman
         mConnection = new ClientConnectionHandler(commonCommandParser);
         mConnection.tryToConnect(mHost, mPort);
     }
+    
+    @Override
+    public void launchStickmanConfiguration() {
+    }
 
 
 }
