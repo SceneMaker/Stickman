@@ -1,11 +1,13 @@
 package de.dfki.stickmanfx;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import de.dfki.common.CommonStickmansOnStage;
-import de.dfki.stickman.Stickman;
+import de.dfki.stickmanfx.stagecontroller.StickmansOnStageFX;
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
 import de.dfki.util.StickmanFillCombo;
@@ -344,6 +346,7 @@ public class StickmanStageController {
     	ObservableList<String> stickmanNames = FXCollections.observableArrayList();
         stickmanNames.addAll(StickmanStageFX.getInstance().getStickmanNames().stream().collect(Collectors.toList()));
     	StickmanComboBox.getItems().addAll(stickmanNames);
+        mStickmanComboList.addAll(stickmanNames);
     }
     
     
@@ -607,19 +610,27 @@ public class StickmanStageController {
               	                	
               	                	mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor));
               	            	}
-              	            	//mStickmanOnstage.getmXmlTransform().loadStickmanDataFXList(mStickmanDataFX);
-              	            	//handleSave();
+                                ((StickmansOnStageFX)mStickmanOnstage).getmXmlTransform().loadStickmanDataFXList(mStickmanDataFX);
+              	            	//StickmanOnstage.getmXmlTransform().loadStickmanDataFXList(mStickmanDataFX);
+              	            	handleSave();
               	            });           
               	  }
               }
         });
     }
 
-    /*private void handleSave() {
+    private void handleSave() {
     	
     	File filexml = null;
-    	if(mStickmanOnstage.mFilePath != null)
-    		filexml = new File(mStickmanOnstage.mFilePath + File.separator + "stickman"+ File.separator+"stickman.xml");
+    	if(mStickmanOnstage.getmFilePath() != null)
+    		filexml = new File(mStickmanOnstage.getmFilePath() + File.separator + "stickman"+ File.separator+"stickman.xml");
+        else {
+            try {
+                filexml = new File(new File( "." ).getCanonicalPath()+ File.separator + "stickman"+ File.separator+"stickman.xml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         
         if (!filexml.exists()) 
         	filexml.getParentFile().mkdir();
@@ -628,6 +639,6 @@ public class StickmanStageController {
         if (!filexml.getPath().endsWith(".xml")) {
         	filexml = new File(filexml.getPath() + ".xml");
         }
-        mStickmanOnstage.getmXmlTransform().saveStickmanDataToFile(filexml);
-    }*/
+        ((StickmansOnStageFX)mStickmanOnstage).getmXmlTransform().saveStickmanDataToFile(filexml);
+    }
 }
