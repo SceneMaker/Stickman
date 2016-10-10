@@ -5,6 +5,7 @@ import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
 import de.dfki.stickmanfx.mimic.util.MouthCONTEMPT;
 import de.dfki.stickmanfx.mimic.util.MouthDISGUSTED;
+import de.dfki.stickmanfx.mimic.util.MouthEXCITED;
 import de.dfki.stickmanfx.mimic.util.MouthFEAR;
 import de.dfki.stickmanfx.mimic.util.MouthHAPPY;
 import de.dfki.stickmanfx.mimic.util.MouthSAD;
@@ -194,9 +195,13 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipMesh = MouthFEAR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
 			break;
 		case EXCITED:
+			currentUpperLipMesh = MouthEXCITED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthEXCITED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case EXCITEDEND:
+			currentUpperLipMesh = MouthEXCITED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
+			currentDownLipMesh = MouthEXCITED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
 			break;
 
 		case EMBARRASSED:
