@@ -70,33 +70,6 @@ public class MouthFX extends BodyPartFX {
 	public void calculate(int step) {
 		mStart = mHeadFX.getMouthPostion();
 		
-		float xMovement0;
-		float xMovement1;
-		float xMovement9;
-		float xMovement10;
-		float xMovement11;
-		float xMovement19;
-		
-		float yMovement0;
-		float yMovement1;
-		float yMovement2;
-		float yMovement3;
-		float yMovement4;
-		float yMovement5;
-		float yMovement6;
-		float yMovement7;
-		float yMovement8;
-		float yMovement9;
-		float yMovement10;
-		float yMovement11;
-		float yMovement12;
-		float yMovement13;
-		float yMovement14;
-		float yMovement15;
-		float yMovement16;
-		float yMovement17;
-		float yMovement18;
-		float yMovement19;
 		
 		switch (mShape) {
 		case DEFAULT:
