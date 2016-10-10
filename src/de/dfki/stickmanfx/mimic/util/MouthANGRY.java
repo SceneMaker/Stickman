@@ -7,22 +7,20 @@ public class MouthANGRY {
 	
 	public static TriangleMesh modifyUpperLip(TriangleMesh currentUpperLipMesh, float step, String sign)
 	{
+		int sig;
+		
+		if(sign.equalsIgnoreCase("PLUS"))
+			sig = 1;
+		else
+			sig = -1;
+		
 		float yMovement0;
 		float yMovement5;
 		
-		if(sign.equalsIgnoreCase("PLUS"))
-		{
-			yMovement5 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement0 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement5 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
+		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
+		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
 
-		}
-		else
-		{
-			yMovement5 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement0 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement5 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		}
 		
 		currentUpperLipMesh.getPoints().set(16, currentUpperLipMesh.getPoints().get(16) - yMovement5);
 		currentUpperLipMesh.getPoints().set(1, currentUpperLipMesh.getPoints().get(1) + yMovement0);
@@ -33,29 +31,25 @@ public class MouthANGRY {
 	
 	public static TriangleMesh modifyDownLip(TriangleMesh currentDownLipMesh, float step, String sign)
 	{
+		int sig;
+		
+		if(sign.equalsIgnoreCase("PLUS"))
+			sig = 1;
+		else
+			sig = -1;
+		
 		float yMovement0;
 		float yMovement2;
 		float yMovement3;
 		float yMovement4;
 		float yMovement5;
-		if(sign.equalsIgnoreCase("PLUS"))
-		{
-			yMovement5 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement0 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement2 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-			yMovement3 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-			yMovement4 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-			yMovement5 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		}
-		else
-		{
-			yMovement5 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement0 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement2 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-			yMovement3 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-			yMovement4 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-			yMovement5 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		}
+		
+		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
+		yMovement2 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
+		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
+		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
+		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
 		
 		currentDownLipMesh.getPoints().set(1, currentDownLipMesh.getPoints().get(1) + yMovement0);
 		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) - yMovement2);
