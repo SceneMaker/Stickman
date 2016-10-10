@@ -83,4 +83,9 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
     public void launchStickmanConfiguration() {	
     }
 
+    @Override
+    public void launchStickmanStage(boolean show, String filepath) {
+        controllerFX.launchStickmanStage(show, filepath);
+    }
+
 }

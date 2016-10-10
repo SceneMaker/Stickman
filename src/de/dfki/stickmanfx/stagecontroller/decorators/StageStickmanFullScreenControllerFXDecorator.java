@@ -23,4 +23,10 @@ public class StageStickmanFullScreenControllerFXDecorator extends StageStickmanD
         super.launchStickmanStage(show);
     }
 
+    @Override
+    public void launchStickmanStage(boolean show, String filepath){
+        controllerFX.getStickmanStage().setStageFullScreen(controllerFX.getStageIdentifier());
+        super.launchStickmanStage(show, filepath);
+    }
+
 }

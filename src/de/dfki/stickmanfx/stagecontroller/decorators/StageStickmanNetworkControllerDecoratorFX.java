@@ -17,4 +17,6 @@ public  class StageStickmanNetworkControllerDecoratorFX extends CommonStageStick
         mConnection = new ClientConnectionHandlerFX(commonCommandParser);
         mConnection.tryToConnect(mHost, mPort);
     }
+
+
 }

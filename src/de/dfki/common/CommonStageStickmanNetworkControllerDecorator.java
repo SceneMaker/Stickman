@@ -52,4 +52,6 @@ public abstract class CommonStageStickmanNetworkControllerDecorator extends Stag
             mConnection.sendToServer("#ANIM#" + state + "#" + id);
         }
     }
+
+
 }

@@ -97,4 +97,9 @@ public class StageController implements StageStickmanController {
     public void launchStickmanConfiguration() {
 	
     }
+
+    @Override
+    public void launchStickmanStage(boolean show, String filepath) {
+
+    }
 }

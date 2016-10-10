@@ -21,4 +21,5 @@ public interface StageStickmanController {
     void addStickman(String name, boolean onlyFace);
     BufferedImage getStageAsImage() throws Exception;
     void launchStickmanConfiguration();
+    void launchStickmanStage(boolean show, String filepath);
 }
