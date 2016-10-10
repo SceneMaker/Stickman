@@ -7,26 +7,22 @@ public class MouthHAPPY {
 	
 	public static TriangleMesh modifyUpperLip(TriangleMesh currentUpperLipMesh, float step, String sign)
 	{
+		int sig;
+		
+		if(sign.equalsIgnoreCase("PLUS"))
+			sig = 1;
+		else
+			sig = -1;
+		
 		float yMovement16;
 		float yMovement17;
 		float yMovement18;
 		float yMovement19;
 		
-		if(sign.equalsIgnoreCase("PLUS"))
-		{
-			yMovement16 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement17 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement18 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0079f;
-			yMovement19 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0026f;
-
-		}
-		else
-		{
-			yMovement16 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement17 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement18 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0079f;
-			yMovement19 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0026f;
-		}
+		yMovement16 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement17 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0079f;
+		yMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0026f;
 		
 		currentUpperLipMesh.getPoints().set(16, currentUpperLipMesh.getPoints().get(16) - yMovement16);
 		currentUpperLipMesh.getPoints().set(46, currentUpperLipMesh.getPoints().get(46) - yMovement17);
@@ -40,6 +36,13 @@ public class MouthHAPPY {
 	
 	public static TriangleMesh modifyDownLip(TriangleMesh currentDownLipMesh, float step, String sign)
 	{
+		int sig;
+		
+		if(sign.equalsIgnoreCase("PLUS"))
+			sig = 1;
+		else
+			sig = -1;
+		
 		float yMovement5;
 		float yMovement2;
 		float yMovement3;
@@ -55,42 +58,21 @@ public class MouthHAPPY {
 		float yMovement14;
 		float yMovement15;
 		
-		if(sign.equalsIgnoreCase("PLUS"))
-		{
-			yMovement2 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
-			yMovement3 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement4 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement5 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0368f;
-			yMovement6 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement7 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement8 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
-			
-			yMovement9 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement10 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement11 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0315f;
-			yMovement12 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0368f;
-			yMovement13 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0315f;
-			yMovement14 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement15 = (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		}
-		else
-		{
-			yMovement2 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
-			yMovement3 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement4 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement5 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0368f;
-			yMovement6 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement7 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement8 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
-			
-			yMovement9 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-			yMovement10 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement11 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0315f;
-			yMovement12 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0368f;
-			yMovement13 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0315f;
-			yMovement14 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-			yMovement15 = -(AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		}
+		yMovement2 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
+		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
+		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0368f;
+		yMovement6 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
+		yMovement7 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement8 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
+		
+		yMovement9 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		yMovement10 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
+		yMovement11 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0315f;
+		yMovement12 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0368f;
+		yMovement13 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0315f;
+		yMovement14 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
+		yMovement15 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
 		
 		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + yMovement2);
 		currentDownLipMesh.getPoints().set(10, currentDownLipMesh.getPoints().get(10) + yMovement3);
