@@ -175,9 +175,12 @@ public class MouthFX extends BodyPartFX {
 			break;
 		case CONTEMPT:
 			currentUpperLipMesh = MouthCONTEMPT.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthCONTEMPT.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case CONTEMPTEND:
+			currentUpperLipMesh = MouthCONTEMPT.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
+			currentDownLipMesh = MouthCONTEMPT.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
 			break;
 
 		case FEAR:
