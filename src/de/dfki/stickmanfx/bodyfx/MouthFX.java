@@ -209,6 +209,10 @@ public class MouthFX extends BodyPartFX {
 			currentUpperLipMesh = MouthEMBARRASSED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
 			currentDownLipMesh = MouthEMBARRASSED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
+		case EMBARRASSEDEND:
+			currentUpperLipMesh = MouthEMBARRASSED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
+			currentDownLipMesh = MouthEMBARRASSED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			break;
 		case O:
 			break;
 
