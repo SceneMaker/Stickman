@@ -14,6 +14,7 @@ import de.dfki.stickmanfx.mimic.util.MouthONE;
 import de.dfki.stickmanfx.mimic.util.MouthSAD;
 import de.dfki.stickmanfx.mimic.util.MouthSMILE;
 import de.dfki.stickmanfx.mimic.util.MouthSURPRISED;
+import de.dfki.stickmanfx.mimic.util.MouthTWO;
 
 import java.awt.Dimension;
 import java.net.URL;
@@ -202,6 +203,8 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case TWO:
+			currentUpperLipMesh = MouthTWO.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthTWO.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case THREE:
