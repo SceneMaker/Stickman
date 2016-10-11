@@ -15,6 +15,7 @@ import de.dfki.stickmanfx.mimic.util.MouthHAPPY;
 import de.dfki.stickmanfx.mimic.util.MouthO;
 import de.dfki.stickmanfx.mimic.util.MouthONE;
 import de.dfki.stickmanfx.mimic.util.MouthSAD;
+import de.dfki.stickmanfx.mimic.util.MouthSEVEN;
 import de.dfki.stickmanfx.mimic.util.MouthSMILE;
 import de.dfki.stickmanfx.mimic.util.MouthSURPRISED;
 import de.dfki.stickmanfx.mimic.util.MouthTREE;
@@ -226,9 +227,13 @@ public class MouthFX extends BodyPartFX {
 			currentUpperLipMesh = MouthFIVE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
 			currentDownLipMesh = MouthFIVE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 		case EIGHT:
+			currentUpperLipMesh = MouthFIVE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthFIVE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case SEVEN:
+			currentUpperLipMesh = MouthSEVEN.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthSEVEN.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case NINE:
