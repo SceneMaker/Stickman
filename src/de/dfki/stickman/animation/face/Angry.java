@@ -40,7 +40,7 @@ public class Angry extends Animation {
 	public void playAnimation() {
 		// angry
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SEVEN"));
+		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
