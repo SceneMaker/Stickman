@@ -237,9 +237,13 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case NINE:
+			currentUpperLipMesh = MouthFOUR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthFOUR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		case TEN:
+			currentUpperLipMesh = MouthFOUR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthFOUR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 			break;
 
 		}
