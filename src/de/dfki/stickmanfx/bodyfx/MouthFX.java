@@ -1,5 +1,6 @@
 package de.dfki.stickmanfx.bodyfx;
 
+import de.dfki.stickman.animation.face.Mouth_THREE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
@@ -14,6 +15,7 @@ import de.dfki.stickmanfx.mimic.util.MouthONE;
 import de.dfki.stickmanfx.mimic.util.MouthSAD;
 import de.dfki.stickmanfx.mimic.util.MouthSMILE;
 import de.dfki.stickmanfx.mimic.util.MouthSURPRISED;
+import de.dfki.stickmanfx.mimic.util.MouthTREE;
 import de.dfki.stickmanfx.mimic.util.MouthTWO;
 
 import java.awt.Dimension;
@@ -208,6 +210,8 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case THREE:
+			currentUpperLipMesh = MouthTREE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthTREE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
 		case TWENTY:
 			break;
 
