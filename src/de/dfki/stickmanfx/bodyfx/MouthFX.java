@@ -257,11 +257,11 @@ public class MouthFX extends BodyPartFX {
 	    upperLip.setTranslateX(mStart.x-14);
 	    upperLip.setTranslateY(mStart.y+95);
 	    upperLip.setTranslateZ(-17);
-		
+	    
 		if (step == 0) 
 			mHeadFX.mHead.getChildren().add(upperLip);
 		else
-			mHeadFX.mHead.getChildren().set(6, upperLip);
+			mHeadFX.mHead.getChildren().set(5, upperLip);
 		
 		downLip = new MeshView(currentDownLipMesh);
 		downLip.setDrawMode(DrawMode.FILL);
@@ -269,11 +269,11 @@ public class MouthFX extends BodyPartFX {
 		downLip.setTranslateX(mStart.x-14);
 		downLip.setTranslateY(mStart.y+95);
 		downLip.setTranslateZ(-17);
-	    
+		
 	    if (step == 0) 
 			mHeadFX.mHead.getChildren().add(downLip);
 		else
-			mHeadFX.mHead.getChildren().set(7, downLip);
+			mHeadFX.mHead.getChildren().set(6, downLip);
 	}
 
 	protected void recordColor() {

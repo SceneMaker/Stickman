@@ -37,6 +37,7 @@ import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Scale;
 import javafx.util.Duration;
 
 /**
@@ -61,6 +62,10 @@ public class LeftEyeFX extends BodyPartFX {
 	Point borderPoint;
 	Point bigPupilePoint;
 	Point smallPupilePoint;
+	
+	double borderXSize = 0;
+	float borderYSize = 0;
+	double bigPupileYSize = 0;
 	
 
 	public LeftEyeFX.SHAPE mShape = LeftEyeFX.SHAPE.DEFAULT;
@@ -143,7 +148,10 @@ public class LeftEyeFX extends BodyPartFX {
 			
 			smallPupile.setTranslateX(smallPupilePoint.x);
 			smallPupile.setTranslateY(smallPupilePoint.y);
-			System.out.println(bigPupilePoint.x);
+			
+			borderYSize = 0;
+			borderXSize = 0;
+			bigPupileYSize = 0;
 			
 			break;
 
@@ -184,12 +192,44 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case ANGRY:
+			
+			borderYSize += 0.0210;
+			bigPupileYSize += 0.010;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
+			break;
+			
+		case ANGRYEND:
+			borderYSize -= 0.0210f;
+			bigPupileYSize -= 0.010;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
 			break;
 
 		case SURPRISED:
+			borderYSize -= 0.0158;
+			border.setScaleY(1 - borderYSize);
 			break;
+			
+		case SURPRISEDEND:
+			borderYSize += 0.0158;
+			border.setScaleY(1 - borderYSize);
+		break;
 
 		case HAPPY:
+			borderYSize += 0.0105;
+			borderXSize += 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
+			break;
+			
+		case HAPPYEND:
+			borderYSize -= 0.0105;
+			borderXSize -= 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case DISGUSTED:
