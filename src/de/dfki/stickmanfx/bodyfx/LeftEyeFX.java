@@ -244,34 +244,34 @@ public class LeftEyeFX extends BodyPartFX {
 			
 			border.setScaleY(1 - borderYSize);
 			break;
-			
-
-		case LOVED:
-			break;
-//		case LOVED1:
-//			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-//			xMovement = movement / 10 * 6;
-//			yMovement1 = movement / 10 * 6;
-//			yMovement2 = movement / 10 * 3;
-//
-//			showHearts(mHeadFX, xMovement, yMovement1, yMovement2);
-//
-//			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-//			mPath.getElements()
-//					.add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-//			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-//			mPath.getElements()
-//					.add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-//
-//			break;
 
 		case CONTEMPT:
+			//NOTE: marjvena tvalze araferi ar gaaketo datove carieli
+			borderYSize += 0.0105;
+			borderXSize += 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case CONTEMPTEND:
+			borderYSize -= 0.0105;
+			borderXSize -= 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case EXCITED:
+			borderYSize -= 0.0105;
+			borderXSize -= 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
+			break;
+			
+		case EXCITEDEND:
+			borderYSize += 0.0105;
+			borderXSize += 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case EMBARRASSED:
