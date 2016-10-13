@@ -25,6 +25,7 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.ArcTo;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.ClosePath;
+import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.LineTo;
@@ -125,29 +126,23 @@ public class LeftEyeFX extends BodyPartFX {
 				}
 			}
 			
-			border = createEllipsePath(0, 0, 9, 7, 0, Color.WHITE, Color.BLACK);
+			border = new Path();
+			border.getElements().add(new MoveTo(mStart.x, mStart.y));
+			border.getElements().add(new QuadCurveTo(mStart.x + 10, mStart.y - 13, mStart.x + 20, mStart.y));
+			border.getElements().add(new QuadCurveTo(mStart.x + 10, mStart.y + 13, mStart.x, mStart.y));
+			border.setStrokeWidth(1);
+			border.setStroke(Color.BLACK);
+			border.setFill(Color.WHITE);
+			
+			
 			bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
 			smallPupile = createEllipsePath(0, 0, 1.7, 1.7, 0, Color.WHITE, null);
 			
-			borderPoint = new Point();
-			bigPupilePoint = new Point();
-			smallPupilePoint = new Point();
+			bigPupile.setTranslateX(mStart.x + 13);
+			bigPupile.setTranslateY(mStart.y);
 			
-			borderPoint.x = mStart.x + 30;
-			borderPoint.y = mStart.y + 45;
-			bigPupilePoint.x = mStart.x + 24;
-			bigPupilePoint.y = mStart.y + 45;
-			smallPupilePoint.x = mStart.x + 22;
-			smallPupilePoint.y = mStart.y + 45;
-			
-			border.setTranslateX(borderPoint.x);
-			border.setTranslateY(borderPoint.y);
-			
-			bigPupile.setTranslateX(bigPupilePoint.x);
-			bigPupile.setTranslateY(bigPupilePoint.y);
-			
-			smallPupile.setTranslateX(smallPupilePoint.x);
-			smallPupile.setTranslateY(smallPupilePoint.y);
+			smallPupile.setTranslateX(mStart.x + 11);
+			smallPupile.setTranslateY(mStart.y);
 			
 			borderYSize = 0;
 			borderXSize = 0;
@@ -169,7 +164,7 @@ public class LeftEyeFX extends BodyPartFX {
 			
 		case LOOKLEFTEND:
 			xMovement =  -0.131f;
-			yMovement = -0.184f;
+			yMovement = -0.182f;
 			
 			bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
 			smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
