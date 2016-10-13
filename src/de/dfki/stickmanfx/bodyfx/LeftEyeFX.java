@@ -60,13 +60,12 @@ public class LeftEyeFX extends BodyPartFX {
 	Path bigPupile;
 	Path smallPupile;
 	
-	Point borderPoint;
-	Point bigPupilePoint;
-	Point smallPupilePoint;
-	
 	double borderXSize = 0;
 	float borderYSize = 0;
 	double bigPupileYSize = 0;
+	
+	QuadCurveTo quadCurve_1;
+	QuadCurveTo quadCurve_2;
 	
 
 	public LeftEyeFX.SHAPE mShape = LeftEyeFX.SHAPE.DEFAULT;
@@ -187,7 +186,6 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case ANGRY:
-			
 			borderYSize += 0.0210;
 			bigPupileYSize += 0.010;
 			
@@ -228,7 +226,25 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case DISGUSTED:
+			borderYSize += 0.0105;
+			
+			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
+			quadCurve_1.setY(quadCurve_1.getY() + 0.105);
+			border.getElements().set(1, quadCurve_1);
+			
+			border.setScaleY(1 - borderYSize);
 			break;
+			
+		case DISGUSTEDEND:
+			borderYSize -= 0.0105;
+			
+			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
+			quadCurve_1.setY(quadCurve_1.getY() - 0.105);
+			border.getElements().set(1, quadCurve_1);
+			
+			border.setScaleY(1 - borderYSize);
+			break;
+			
 
 		case LOVED:
 			break;
