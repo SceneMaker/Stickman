@@ -63,6 +63,7 @@ public class LeftEyeFX extends BodyPartFX {
 	double borderXSize = 0;
 	float borderYSize = 0;
 	double bigPupileYSize = 0;
+	double smallPupileYSize = 0;
 	
 	QuadCurveTo quadCurve_1;
 	QuadCurveTo quadCurve_2;
@@ -146,12 +147,27 @@ public class LeftEyeFX extends BodyPartFX {
 			borderYSize = 0;
 			borderXSize = 0;
 			bigPupileYSize = 0;
+			smallPupileYSize = 0;
 			
 			break;
 
 		case BLINK:
+			borderYSize += 0.0450;
+			bigPupileYSize += 0.050;
+			smallPupileYSize += 0.050;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
+			smallPupile.setScaleY(1 - smallPupileYSize);
 			break;
 		case BLINKEND:
+			borderYSize -= 0.0450;
+			bigPupileYSize -= 0.050;
+			smallPupileYSize -= 0.050;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
+			smallPupile.setScaleY(1 - smallPupileYSize);
 			break;
 		case LOOKLEFT:
 			xMovement =  0.131f;
@@ -278,7 +294,7 @@ public class LeftEyeFX extends BodyPartFX {
 			xMovement =  0.100f;
 			yMovement = 0.184f;
 			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);		//LOOKDOWN
 			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
 			break;
 			
