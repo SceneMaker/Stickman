@@ -78,6 +78,7 @@ public class HeadFX extends BodyPartFX {
 			mHeadTriangleMesh = im.getImport();
 			
 			mHeadMeshView = new MeshView(mHeadTriangleMesh);
+			mHeadMeshView.setId("MaleHead");
 			material = new PhongMaterial();
 			material.setDiffuseColor(mColor);
 			mHeadMeshView.setMaterial(material);

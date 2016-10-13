@@ -273,10 +273,10 @@ public class LeftEyeFX extends BodyPartFX {
 		smallPupile.setTranslateZ(-19);
 		
 		leftEyeGroup = new Group();
+		leftEyeGroup.setId("LeftEye");
 		leftEyeGroup.getChildren().add(border);
 		leftEyeGroup.getChildren().add(bigPupile);
 		leftEyeGroup.getChildren().add(smallPupile);
-		
 		if (step == 0) 
 			mHeadFX.mHead.getChildren().add(leftEyeGroup);
 		else

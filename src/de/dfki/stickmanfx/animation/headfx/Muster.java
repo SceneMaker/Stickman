@@ -34,6 +34,7 @@ public class Muster extends AnimationFX
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "HAPPY"));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "HAPPY"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "HAPPY"));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "HAPPY"));
             playAnimationPart(500);
             
@@ -42,6 +43,7 @@ public class Muster extends AnimationFX
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "HAPPYEND"));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "HAPPYEND"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "HAPPYEND"));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "HAPPYEND"));
             playAnimationPart(500);
                 

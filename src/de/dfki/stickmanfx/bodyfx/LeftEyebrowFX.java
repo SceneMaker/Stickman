@@ -748,6 +748,7 @@ public class LeftEyebrowFX extends BodyPartFX
 		}
 		
 		browMesh = new MeshView(currentMesh);
+		browMesh.setId("LeftBrowMesh");
 		browMesh.setDrawMode(DrawMode.FILL);
 	    mat = new PhongMaterial();
 	    mat.setDiffuseColor(Color.BLACK);
@@ -756,7 +757,6 @@ public class LeftEyebrowFX extends BodyPartFX
 		browMesh.setTranslateX(mStart.x + 9);
 		browMesh.setTranslateY(mStart.y + 85);
 		browMesh.setTranslateZ(-17);
-		
 		if (step == 0) 
 			mHeadFX.mHead.getChildren().add(browMesh);
 		else

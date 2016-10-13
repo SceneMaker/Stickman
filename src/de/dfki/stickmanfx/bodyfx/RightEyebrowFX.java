@@ -669,6 +669,7 @@ public class RightEyebrowFX extends BodyPartFX {
 		}
 		
 		browMesh = new MeshView(currentMesh);
+		browMesh.setId("RightBrowMesh");
 		browMesh.setDrawMode(DrawMode.FILL);
 	    mat = new PhongMaterial();
 	    mat.setDiffuseColor(Color.BLACK);
@@ -677,11 +678,10 @@ public class RightEyebrowFX extends BodyPartFX {
 		browMesh.setTranslateX(mStart.x - 9);
 		browMesh.setTranslateY(mStart.y + 38);
 		browMesh.setTranslateZ(-17);
-		
 		if (step == 0) 
 			mHeadFX.mHead.getChildren().add(browMesh);
 		else
-			mHeadFX.mHead.getChildren().set(5, browMesh);
+			mHeadFX.mHead.getChildren().set(4, browMesh);
 	}
 
 	protected void recordColor() {

@@ -61,6 +61,7 @@ public class MaleHairFX extends BodyPartFX
 		importer.read(url);
 		maleHairTriangleMesh = importer.getImport();
 		maleHairMeshView = new MeshView(maleHairTriangleMesh);
+		maleHairMeshView.setId("MaleHair");
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
 		maleHairMeshView.setMaterial(material);	
