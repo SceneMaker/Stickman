@@ -275,6 +275,19 @@ public class LeftEyeFX extends BodyPartFX {
 			break;
 
 		case EMBARRASSED:
+			xMovement =  0.100f;
+			yMovement = 0.184f;
+			
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			break;
+			
+		case EMBARRASSEDEND:
+			xMovement =  -0.100f;
+			yMovement = -0.184f;
+			
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
 			break;
 
 		}
