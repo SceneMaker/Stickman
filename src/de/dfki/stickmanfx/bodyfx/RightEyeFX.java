@@ -248,15 +248,25 @@ public class RightEyeFX extends BodyPartFX {
 			break;
 
 		case CONTEMPT:
+			//NOTHING
 			break;
 
 		case CONTEMPTEND:
+			//NOTHING
 			break;
 
 		case EXCITED:
+			borderYSize -= 0.0105;
+			borderXSize -= 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case EXCITEDEND:
+			borderYSize += 0.0105;
+			borderXSize += 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case EMBARRASSED:
