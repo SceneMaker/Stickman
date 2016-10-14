@@ -9,6 +9,7 @@ import de.dfki.util.xml.XMLUtilities;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.DepthTest;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
@@ -279,7 +280,7 @@ public class StickmanStageFX extends Application {
         stage.show();
 
         stage.setFullScreen(true);
-        
+        scene.lookup("#mSplitPane").setDepthTest(DepthTest.DISABLE);
         scene.setOnMouseClicked(mouseHandler);
              
     }
