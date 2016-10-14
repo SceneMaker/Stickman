@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.mimic.util.LeftBrowANGRY;
 import de.dfki.stickmanfx.mimic.util.LeftBrowDISGUSTED;
 import de.dfki.stickmanfx.mimic.util.LeftBrowEMBARRASSED;
@@ -39,7 +40,10 @@ public class LeftEyebrowFX extends BodyPartFX
 		mHeadFX = head;
 		mSize = new Dimension(mLength, mLength);
 		
-		mColor = Color.rgb(0, 0, 0, (64 * 100 / 255) / 100f);
+		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mColor = Color.rgb(88, 44, 13, 1);
+		else
+			mColor = Color.rgb(204, 163, 0, 1);
 		
 		init();
 	}
@@ -159,7 +163,7 @@ public class LeftEyebrowFX extends BodyPartFX
 		}
 		
 		currentPolygon.setId("LeftBrow");
-		currentPolygon.setFill(Color.BLACK);
+		currentPolygon.setFill(mColor);
 		
 		currentPolygon.setTranslateX(mStart.x + 9);
 		currentPolygon.setTranslateY(mStart.y + 85);
