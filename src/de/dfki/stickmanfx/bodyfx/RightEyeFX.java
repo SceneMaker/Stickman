@@ -228,9 +228,23 @@ public class RightEyeFX extends BodyPartFX {
 			break;
 
 		case DISGUSTED:
+			borderYSize += 0.0105;
+			
+			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
+			quadCurve_1.setY(quadCurve_1.getY() + 0.105);
+			border.getElements().set(1, quadCurve_1);
+			
+			border.setScaleY(1 - borderYSize);
 			break;
 
 		case DISGUSTEDEND:
+			borderYSize -= 0.0105;
+			
+			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
+			quadCurve_1.setY(quadCurve_1.getY() - 0.105);
+			border.getElements().set(1, quadCurve_1);
+			
+			border.setScaleY(1 - borderYSize);
 			break;
 
 		case CONTEMPT:
