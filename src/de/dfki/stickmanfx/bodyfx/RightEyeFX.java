@@ -36,7 +36,7 @@ public class RightEyeFX extends BodyPartFX {
 	double yMovement2;
 
 	public static enum SHAPE {
-		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -156,6 +156,19 @@ public class RightEyeFX extends BodyPartFX {
 			break;
 			
 		case LOOKLEFT:
+			xMovement =  0.131f;
+			yMovement = 0.184f;
+			
+			bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
+			smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
+			break;
+			
+		case LOOKLEFTEND:
+			xMovement =  -0.131f;
+			yMovement = -0.182f;
+			
+			bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
+			smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
 			break;
 
 		case LOOKRIGHT:
