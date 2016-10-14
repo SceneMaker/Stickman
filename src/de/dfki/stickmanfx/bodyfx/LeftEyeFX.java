@@ -137,7 +137,8 @@ public class LeftEyeFX extends BodyPartFX {
 			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
 			else
-				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLUE, null);
+				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.rgb(128, 255, 128, 1), null);
+			
 			smallPupile = createEllipsePath(0, 0, 1.7, 1.7, 0, Color.WHITE, null);
 			
 			bigPupile.setTranslateX(mStart.x + 13);

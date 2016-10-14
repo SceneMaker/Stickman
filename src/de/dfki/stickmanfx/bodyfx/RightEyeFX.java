@@ -118,8 +118,11 @@ public class RightEyeFX extends BodyPartFX {
 			border.setStroke(Color.BLACK);
 			border.setFill(Color.WHITE);
 			
+			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
+			else
+				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.rgb(128, 255, 128, 1), null);
 			
-			bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
 			smallPupile = createEllipsePath(0, 0, 1.7, 1.7, 0, Color.WHITE, null);
 			
 			bigPupile.setTranslateX(mStart.x - 7);
