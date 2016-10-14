@@ -214,9 +214,17 @@ public class RightEyeFX extends BodyPartFX {
 			break;
 
 		case HAPPY:
+			borderYSize += 0.0105;
+			borderXSize += 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case HAPPYEND:
+			borderYSize -= 0.0105;
+			borderXSize -= 0.0052;
+			border.setScaleY(1 - borderYSize);
+			border.setScaleX(1 + borderXSize);
 			break;
 
 		case DISGUSTED:
