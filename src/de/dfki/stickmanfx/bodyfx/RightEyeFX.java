@@ -188,9 +188,19 @@ public class RightEyeFX extends BodyPartFX {
 			break;
 
 		case ANGRY:
+			borderYSize += 0.0210;
+			bigPupileYSize += 0.010;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
 			break;
 
 		case ANGRYEND:
+			borderYSize -= 0.0210f;
+			bigPupileYSize -= 0.010;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
 			break;
 
 		case SURPRISED:
