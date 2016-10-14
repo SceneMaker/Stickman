@@ -84,25 +84,11 @@ public class LeftEyebrowFX extends BodyPartFX
 				}
 			}
 			
-			currentPolygon = new Polygon();
+			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+				currentPolygon = createMaleBrow();
+			else
+				currentPolygon = createFemaleBrow();
 			
-			currentPolygon.getPoints().addAll(
-				//  x   	y   	
-					0.0,	0.0,			//Point 0
-					0.0,	-5.0,			//Point 1
-					3.0,	-7.0,			//Point 2
-					6.0,	-8.0,			//Point 3 
-					13.0,	-10.0,			//Point 4
-					20.0,	-11.0,			//Point 5
-					25.0,	-7.0,			//Point 6
-					30.0,	-3.0,			//Point 7
-					30.0,	0.0,			//Point 8
-					25.0,	-3.0,		    //Point 9
-					20.0,	-7.0,		    //Point 10
-					13.0,	-6.0,			//Point 11
-					6.0,  	-5.0,			//Point 12
-					3.0,	-3.0			//Point 13
-					);
 			break;
 
 		case ANGRY:
@@ -138,11 +124,17 @@ public class LeftEyebrowFX extends BodyPartFX
 			break;
 
 		case EMBARRASSED:
-			currentPolygon = LeftBrowEMBARRASSED.getANGRY(currentPolygon, step, "PLUS");
+			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", true);
+			else
+				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", false);
 			break;
 
 		case EMBARRASSEDEND:
-			currentPolygon = LeftBrowEMBARRASSED.getANGRY(currentPolygon, step, "minus");
+			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", true);
+			else
+				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", false);
 			break;
 			
 		case HAPPY:
@@ -178,6 +170,52 @@ public class LeftEyebrowFX extends BodyPartFX
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
+	}
+	
+	private Polygon createMaleBrow()
+	{
+		Polygon brow = new Polygon();
+		brow.getPoints().addAll(
+				//  x   	y   	
+					0.0,	0.0,			//Point 0
+					0.0,	-5.0,			//Point 1
+					3.0,	-7.0,			//Point 2
+					6.0,	-8.0,			//Point 3 
+					13.0,	-10.0,			//Point 4
+					20.0,	-11.0,			//Point 5
+					25.0,	-7.0,			//Point 6
+					30.0,	-3.0,			//Point 7
+					30.0,	0.0,			//Point 8
+					25.0,	-3.0,		    //Point 9
+					20.0,	-7.0,		    //Point 10
+					13.0,	-6.0,			//Point 11
+					6.0,  	-5.0,			//Point 12
+					3.0,	-3.0			//Point 13
+					);
+		return brow;
+	}
+	
+	private Polygon createFemaleBrow()
+	{
+		Polygon brow = new Polygon();
+		brow.getPoints().addAll(
+				//  x   	y   	/////
+					0.0,	0.0,			//Point 0
+					0.0,	-3.0,			//Point 1
+					3.0,	-6.0,			//Point 2
+					6.0,	-8.0,			//Point 3 
+					13.0,	-9.0,			//Point 4
+					20.0,	-9.0,			//Point 5
+					25.0,	-7.0,			//Point 6
+					30.0,	-3.0,			//Point 7
+					30.0,	0.0,			//Point 8
+					25.0,	-4.0,		    //Point 9
+					20.0,	-6.5,		    //Point 10
+					13.0,	-6.0,			//Point 11
+					6.0,  	-5.0,			//Point 12
+					3.0,	-3.0			//Point 13
+					);
+		return brow;
 	}
 }
 

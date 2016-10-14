@@ -6,7 +6,7 @@ import javafx.scene.shape.TriangleMesh;
 
 public class RightBrowEMBARRASSED {
 	
-	public static Polygon getANGRY(Polygon currentPolygon, float step, String sign)
+	public static Polygon getANGRY(Polygon currentPolygon, float step, String sign, boolean isMALE)
 	{
 		int sig;
 		
@@ -20,6 +20,20 @@ public class RightBrowEMBARRASSED {
 		currentPolygon.getPoints().set(7, currentPolygon.getPoints().get(7) + (sig * 0.105));
 		currentPolygon.getPoints().set(9, currentPolygon.getPoints().get(9) + (sig * 0.237));
 		currentPolygon.getPoints().set(11, currentPolygon.getPoints().get(11) + (sig * 0.263));
+		
+		if(!isMALE)
+		{
+			currentPolygon.getPoints().set(13, currentPolygon.getPoints().get(13) + (sig * 0.105));
+			currentPolygon.getPoints().set(19, currentPolygon.getPoints().get(19) + (sig * 0.105));
+			currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.158));
+			currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.158));
+		}
+		else
+		{
+			currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.263));
+			currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.263));
+		}
+		
 		currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.263));
 		currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.263));
 		currentPolygon.getPoints().set(19, currentPolygon.getPoints().get(19) - (sig * 0.052));
