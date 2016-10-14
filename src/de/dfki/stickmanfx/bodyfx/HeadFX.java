@@ -113,7 +113,7 @@ public class HeadFX extends BodyPartFX {
 	}
 
 	public Point getRightEyePostion() {
-		return new Point(mHalfWidth, mHalfHeight + 62);
+		return new Point(-13, -12);
 	}
 
 	public Point getMouthPostion() {

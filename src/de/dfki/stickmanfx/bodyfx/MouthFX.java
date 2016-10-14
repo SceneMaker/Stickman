@@ -261,7 +261,7 @@ public class MouthFX extends BodyPartFX {
 		if (step == 0) 
 			mHeadFX.mHead.getChildren().add(upperLip);
 		else
-			mHeadFX.mHead.getChildren().set(5, upperLip);
+			mHeadFX.mHead.getChildren().set(6, upperLip);
 		
 		downLip = new MeshView(currentDownLipMesh);
 		downLip.setId("DownLip");
@@ -273,7 +273,7 @@ public class MouthFX extends BodyPartFX {
 	    if (step == 0) 
 			mHeadFX.mHead.getChildren().add(downLip);
 		else
-			mHeadFX.mHead.getChildren().set(6, downLip);
+			mHeadFX.mHead.getChildren().set(7, downLip);
 	}
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)

@@ -13,7 +13,10 @@ import java.awt.BasicStroke;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcTo;
+import javafx.scene.shape.ClosePath;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
@@ -33,35 +36,33 @@ public class RightEyeFX extends BodyPartFX {
 	double yMovement2;
 
 	public static enum SHAPE {
-		DEFAULT, BLINK, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKRIGHT, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
-	HeadFX mHead;
-	Path mPath;
-
-	URL url;
-	ColModelImporter imorter;
-	MeshView rightEyeMesh;
+	HeadFX mHeadFX;
+	Group rightEyeGroup;
+	
+	Path border;
+	Path bigPupile;
+	Path smallPupile;
+	
+	double borderXSize = 0;
+	float borderYSize = 0;
+	double bigPupileYSize = 0;
+	double smallPupileYSize = 0;
+	
+	QuadCurveTo quadCurve_1;
+	QuadCurveTo quadCurve_2;
 
 	public RightEyeFX.SHAPE mShape = RightEyeFX.SHAPE.DEFAULT;
 
 	public RightEyeFX(HeadFX head) {
-		mHead = head;
-		mLength = 5;
+		mHeadFX = head;
 
-		url = getClass().getClassLoader().getResource("BodyParts/rightEye.dae");
-		imorter = new ColModelImporter();
-		imorter.read(url);
-		rightEyeMesh = (MeshView) imorter.getImport()[0];
+		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
+				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
 
-		mYRotation = mHead.mYRotation;
-
-		mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
-				mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
-				mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
-
-		mPath = new Path();
-		this.getChildren().add(mPath);
 		init();
 	}
 
@@ -77,287 +78,175 @@ public class RightEyeFX extends BodyPartFX {
 	}
 
 	@Override
-	public void createShape() {
-		mStart = mHead.getRightEyePostion();
-		mEnd = new Point(mStart.x + mLength, mStart.y);
-
-		double movement;
-
-		clearChildren(this);
-
-		mPath = new Path();
-
+	public void calculate(int step) {
+		mStart = mHeadFX.getRightEyePostion();
+		
+		float xMovement;
+		float yMovement;
+		
 		switch (mShape) {
 		case DEFAULT:
-			if (mHead.mStickmanFX.setCharacterInvisible == true) {
-				if (mHead.mStickmanFX.fadeControler == true) 
+			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+				if (mHeadFX.mStickmanFX.fadeControler == true) 
 				{
-					int fadeFactor = mHead.mStickmanFX.mMouthFX.mShapeAnimationStep * 7;
+					int fadeFactor = mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 7;
 					if (fadeFactor <= 14) {
 						fadeFactor = 0;
 					}
-					mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
-							mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
-							mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0,
+					mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+							mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
+							mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0,
 							(fadeFactor * 100 / 255) / 100f);
 				} else {
-					int fadeFactor = (20 - mHead.mStickmanFX.mMouthFX.mShapeAnimationStep) * 7;
+					int fadeFactor = (20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 7;
 
 					if (fadeFactor >= 119) {
 						mColor = mColorRecorder;
 					} else
-						mColor = Color.rgb(mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
-								mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
-								mHead.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0,
+						mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
+								mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
+								mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0,
 								(fadeFactor * 100 / 255) / 100f);
 				}
 			}
+			
+			border = new Path();
+			border.getElements().add(new MoveTo(mStart.x, mStart.y));
+			border.getElements().add(new QuadCurveTo(mStart.x - 10, mStart.y - 13, mStart.x - 20, mStart.y));
+			border.getElements().add(new QuadCurveTo(mStart.x - 10, mStart.y + 13, mStart.x, mStart.y));
+			border.setStrokeWidth(1);
+			border.setStroke(Color.BLACK);
+			border.setFill(Color.WHITE);
+			
+			
+			bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
+			smallPupile = createEllipsePath(0, 0, 1.7, 1.7, 0, Color.WHITE, null);
+			
+			bigPupile.setTranslateX(mStart.x - 7);
+			bigPupile.setTranslateY(mStart.y);
+			
+			smallPupile.setTranslateX(mStart.x - 9);
+			smallPupile.setTranslateY(mStart.y);
+			
+			borderYSize = 0;
+			borderXSize = 0;
+			bigPupileYSize = 0;
+			smallPupileYSize = 0;
 
-			rightEyeMesh.setTranslateX(mStart.x);
-			rightEyeMesh.setTranslateY(mStart.y);
-			rightEyeMesh.setTranslateZ(-105);
-
-			Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-			Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-			Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-			rightEyeMesh.getTransforms().clear();
-			rightEyeMesh.getTransforms().addAll(rx, ry, rz);
-
-			// mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			// mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2,
-			// mStart.y - 3, mEnd.x, mEnd.y));
 			break;
 
 		case BLINK:
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements().add(new LineTo(mEnd.x, mEnd.y));
+			borderYSize += 0.0450;
+			bigPupileYSize += 0.050;
+			smallPupileYSize += 0.050;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
+			smallPupile.setScaleY(1 - smallPupileYSize);
 			break;
 
+		case BLINKEND:
+			borderYSize -= 0.0450;
+			bigPupileYSize -= 0.050;
+			smallPupileYSize -= 0.050;
+			
+			border.setScaleY(1 - borderYSize);
+			bigPupile.setScaleY(1 - bigPupileYSize);
+			smallPupile.setScaleY(1 - smallPupileYSize);
+			break;
+			
 		case LOOKLEFT:
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep),
-					mStart.y - 3, mEnd.x, mEnd.y));
 			break;
 
 		case LOOKRIGHT:
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements().add(new QuadCurveTo(linear((mStart.x + mEnd.x) / 2, mStart.x, mShapeAnimationStep),
-					mStart.y - 3, mEnd.x, mEnd.y));
 			break;
 
 		case ANGRY:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			mPath.getElements().clear();
-			mPath.getElements().add(new MoveTo(mStart.x + movement / 10, mStart.y));
-			mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2,
-					mStart.y - movement / 6, mEnd.x + movement / 8, mEnd.y));
-			mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2,
-					mStart.y + movement / 6, mStart.x + movement / 10, mStart.y));
 			break;
 
 		case ANGRYEND:
-			movement = mShapeAnimationStep - 1;
-
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x + movement / 10, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2,
-						mStart.y - movement / 6, mEnd.x + movement / 8, mEnd.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 10 + mEnd.x + movement / 8) / 2,
-						mStart.y + movement / 6, mStart.x + movement / 10, mStart.y));
-			}
-
 			break;
 
 		case SURPRISED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-			mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2,
-					mStart.y - movement / 2, mEnd.x + movement / 10, mStart.y));
-			mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2,
-					mStart.y + movement / 2, mStart.x - movement / 10, mStart.y));
 			break;
 
 		case SURPRISEDEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2,
-						mStart.y - movement / 2, mEnd.x + movement / 10, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2,
-						mStart.y + movement / 2, mStart.x - movement / 10, mStart.y));
-			}
 			break;
 
 		case HAPPY:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-			mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2,
-					mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
 			break;
 
 		case HAPPYEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x - movement / 10 + mEnd.x + movement / 10) / 2,
-						mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
-			}
 			break;
 
 		case DISGUSTED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mPath.getElements().add(new MoveTo(mStart.x - movement / 4, mStart.y - movement / 4));
-			mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8,
-					mEnd.x + movement / 8, mEnd.y + movement / 8));
-			mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4,
-					mStart.x - movement / 4, mStart.y + movement / 8));
 			break;
 
 		case DISGUSTEDEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - movement / 4, mStart.y - movement / 4));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8,
-						mEnd.x + movement / 8, mEnd.y + movement / 8));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4,
-						mStart.x - movement / 4, mStart.y + movement / 8));
-			}
-			break;
-
-		case LOVED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			double xMovement = movement / 10 * 6;
-			double yMovement1 = movement / 10 * 6;
-			double yMovement2 = movement / 10 * 3;
-
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-			break;
-
-		case LOVEDEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				xMovement = movement / 10 * 6;
-				yMovement1 = movement / 10 * 6;
-				yMovement2 = movement / 10 * 3;
-
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements()
-						.add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements()
-						.add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-			}
-			break;
-
-		case LOVED1:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			xMovement = movement / 10 * 6;
-			yMovement1 = movement / 10 * 6;
-			yMovement2 = movement / 10 * 3;
-
-			showHearts(mHead, xMovement, yMovement1, yMovement2);
-
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1));
 			break;
 
 		case CONTEMPT:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y));
 			break;
 
 		case CONTEMPTEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements()
-						.add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y));
-				mPath.getElements()
-						.add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y));
-			}
 			break;
 
 		case EXCITED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-			mPath.getElements()
-					.add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
 			break;
 
 		case EXCITEDEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x - movement / 10, mStart.y));
-				mPath.getElements()
-						.add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x + movement / 10, mEnd.y));
-			}
 			break;
 
 		case EMBARRASSED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mPath.getElements().add(new MoveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2));
-			mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2,
-					mStart.y - 4 + movement / 2, mEnd.x + movement / 2, mEnd.y + movement / 5 * 2));
 			break;
 
 		case EMBARRASSEDEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) {
-				mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y));
-			} else {
-				mPath.getElements().add(new MoveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2));
-				mPath.getElements().add(new QuadCurveTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2,
-						mStart.y - 4 + movement / 2, mEnd.x + movement / 2, mEnd.y + movement / 5 * 2));
-			}
 			break;
-
 		}
-		this.getChildren().add(rightEyeMesh);
-		// addToDrawObjects(mPath);
-		// this.update();
+		
+		border.setTranslateZ(-17);
+		bigPupile.setTranslateZ(-18);
+		smallPupile.setTranslateZ(-19);
+		
+		rightEyeGroup = new Group();
+		rightEyeGroup.setId("RightEye");
+		rightEyeGroup.getChildren().add(border);
+		rightEyeGroup.getChildren().add(bigPupile);
+		rightEyeGroup.getChildren().add(smallPupile);
+		
+		if (step == 0) 
+			mHeadFX.mHead.getChildren().add(rightEyeGroup);
+		else
+			mHeadFX.mHead.getChildren().set(5, rightEyeGroup);
 	}
 
 	protected void recordColor() {
-		if (mHead.mStickmanFX.setCharacterInvisible == false)
+		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
 	}
+	
+	private Path createEllipsePath(double centerX, double centerY, double radiusX, double radiusY, double rotate, Color eyeColor, Color borderColor) {
+        ArcTo arcTo = new ArcTo();
+        arcTo.setX(centerX - radiusX + 1); // to simulate a full 360 degree celcius circle.
+        arcTo.setY(centerY - radiusY);
+        arcTo.setSweepFlag(false);
+        arcTo.setLargeArcFlag(true);
+        arcTo.setRadiusX(radiusX);
+        arcTo.setRadiusY(radiusY);
+        arcTo.setXAxisRotation(rotate);
+        
+        Path path = new Path();
+        path.getElements().add(new MoveTo(centerX - radiusX, centerY - radiusY));
+        path.getElements().add(arcTo);
+        path.getElements().add(new ClosePath());
+
+        if(borderColor != null)
+        {
+        	path.setStroke(Color.BLACK);
+            path.setStrokeWidth(1);
+        }
+        
+        path.setFill(eyeColor);
+        return path;
+    }
 }
