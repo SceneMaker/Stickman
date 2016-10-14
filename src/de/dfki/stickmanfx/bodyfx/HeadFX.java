@@ -69,8 +69,8 @@ public class HeadFX extends BodyPartFX {
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 		mColor = Color.rgb(242, 227, 217, 1);
 		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
+//		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+//		{
 			url = getClass().getClassLoader().getResource("BodyParts/maleHead.stl");
 			im = new StlMeshImporter();
 			im.read(url);
@@ -85,14 +85,14 @@ public class HeadFX extends BodyPartFX {
 			mHeadMeshView.setRotationAxis(Rotate.X_AXIS);
 			mHeadMeshView.setRotate(90);
 			mHead.getChildren().add(mHeadMeshView);
-		}
-		else
-		{
-			url = getClass().getClassLoader().getResource("BodyParts/femaleHead.dae");
-			imorter = new ColModelImporter();
-			imorter.read(url);
-			mHead = (Group) imorter.getImport()[0];
-		}
+//		}
+//		else
+//		{
+//			url = getClass().getClassLoader().getResource("BodyParts/femaleHead.dae");
+//			imorter = new ColModelImporter();
+//			imorter.read(url);
+//			mHead = (Group) imorter.getImport()[0];
+//		}
 
 		mYRotation = -0;
 		init();

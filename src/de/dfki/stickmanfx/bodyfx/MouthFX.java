@@ -50,15 +50,14 @@ public class MouthFX extends BodyPartFX {
 	MeshView downLip;
 	MeshView upperLip;
 	PhongMaterial mat;
-////////////////////////
+
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
 	public MouthFX(HeadFX head) {
 		mHeadFX = head;
 		mSize = new Dimension(mLength * 2, 5);
 
-		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0,
-				(128 * 100 / 255) / 100f);
+		mColor = Color.rgb(230, 174, 161, 1.0);
 		
 		init();
 	}
@@ -252,7 +251,12 @@ public class MouthFX extends BodyPartFX {
 		upperLip.setId("UpperLip");
 		upperLip.setDrawMode(DrawMode.FILL);
 	    mat = new PhongMaterial();
-	    mat.setDiffuseColor(Color.BLACK);
+	    
+	    if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+	    	mat.setDiffuseColor(mColor);
+	    else 
+	    	mat.setDiffuseColor(mColor);
+	    
 	    upperLip.setMaterial(mat);
 	    
 	    upperLip.setTranslateX(mStart.x-14);

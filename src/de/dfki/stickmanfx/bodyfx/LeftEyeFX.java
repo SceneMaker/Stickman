@@ -134,8 +134,10 @@ public class LeftEyeFX extends BodyPartFX {
 			border.setStroke(Color.BLACK);
 			border.setFill(Color.WHITE);
 			
-			
-			bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
+			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
+			else
+				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLUE, null);
 			smallPupile = createEllipsePath(0, 0, 1.7, 1.7, 0, Color.WHITE, null);
 			
 			bigPupile.setTranslateX(mStart.x + 13);

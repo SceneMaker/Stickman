@@ -1,6 +1,8 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanFX.TYPE;
+
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -87,14 +89,17 @@ public class MaleHairFX extends BodyPartFX
 
 		maleHairMeshView.getTransforms().clear();
 		maleHairMeshView.getTransforms().addAll(rx, ry, rz);
-
-		if (!mStickmanFX.mHeadFX.mHead.getChildren().contains(maleHairMeshView)) {
-			mStickmanFX.mHeadFX.mHead.getChildren().add(maleHairMeshView);
-		}
-		else
+		
+		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			if (!mStickmanFX.mHeadFX.mHead.getChildren().get(1).equals(maleHairMeshView)) {
-				mStickmanFX.mHeadFX.mHead.getChildren().set(1, maleHairMeshView);
+			if (!mStickmanFX.mHeadFX.mHead.getChildren().contains(maleHairMeshView)) {
+				mStickmanFX.mHeadFX.mHead.getChildren().add(maleHairMeshView);
+			}
+			else
+			{
+				if (!mStickmanFX.mHeadFX.mHead.getChildren().get(1).equals(maleHairMeshView)) {
+					mStickmanFX.mHeadFX.mHead.getChildren().set(1, maleHairMeshView);
+				}
 			}
 		}
 		// update();
