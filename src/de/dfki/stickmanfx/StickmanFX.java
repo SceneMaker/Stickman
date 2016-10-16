@@ -132,12 +132,12 @@ public class StickmanFX extends Pane {
 	public MaleHairFX mMaleHairFX;
 	public FemaleHairFX mFemaleHairFX;
 	public LeftEyebrowFX mLeftEyebrowFX;
-	public FaceWrinkleFX mFaceWrinkleFX; // added by Robbie FaceWrinkle
 	public LeftEyeFX mLeftEyeFX;
 	public RightEyebrowFX mRightEyebrowFX;
 	public RightEyeFX mRightEyeFX;
 	public MouthFX mMouthFX;
 	public NeckFX mNeckFX;
+	public FaceWrinkleFX mFaceWrinkleFX; // added by Robbie FaceWrinkle
 	public BodyFX mBodyFX;
 	public LeftShoulderFX mLeftShoulderFX;
 	public LeftUpperArmFX mLeftUpperArmFX;
@@ -192,8 +192,8 @@ public class StickmanFX extends Pane {
 		mLeftEyeFX = new LeftEyeFX(mHeadFX);
 		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
 		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mMouthFX = new MouthFX(mHeadFX);
+		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mNeckFX = new NeckFX(mHeadFX);
 		mBodyFX = new BodyFX(mNeckFX);
 		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
@@ -247,8 +247,8 @@ public class StickmanFX extends Pane {
 		mLeftEyeFX = new LeftEyeFX(mHeadFX);
 		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
 		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mMouthFX = new MouthFX(mHeadFX);
+		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mNeckFX = new NeckFX(mHeadFX);
 		mBodyFX = new BodyFX(mNeckFX);
 		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
@@ -300,8 +300,8 @@ public class StickmanFX extends Pane {
 		mLeftEyeFX = new LeftEyeFX(mHeadFX);
 		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
 		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mMouthFX = new MouthFX(mHeadFX);
+		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mNeckFX = new NeckFX(mHeadFX);
 		mBodyFX = new BodyFX(mNeckFX);
 		mLeftShoulderFX = new LeftShoulderFX(mBodyFX);

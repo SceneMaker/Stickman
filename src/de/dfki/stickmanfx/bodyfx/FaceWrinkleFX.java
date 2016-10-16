@@ -5,10 +5,13 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
+import de.dfki.stickmanfx.mimic.util.FaceWrinkleANGRY;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.Polygon;
 
 /**
  *
@@ -25,16 +28,27 @@ public class FaceWrinkleFX extends BodyPartFX
 	};
 
 	HeadFX mHeadFX;
-	Path mPath;
+	
+	Polygon currentLeftPolygon;
+	Polygon currentRightPolygon;
+	
 	public FaceWrinkleFX.SHAPE mShape = FaceWrinkleFX.SHAPE.DEFAULT;
 
 	public FaceWrinkleFX(HeadFX head) 
 	{
 		mHeadFX = head;
-		mLength = 16;
+		mColor = Color.rgb(80, 80, 80, 0);
 		mSize = new Dimension(mLength, 5);
 		mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
-		mPath = new Path();
+		
+		currentLeftPolygon = new Polygon();
+		currentRightPolygon = new Polygon();
+		
+		currentLeftPolygon.setFill(mColor);
+		currentLeftPolygon.setTranslateZ(-18);
+		currentRightPolygon.setTranslateZ(-18);
+		
+		mHeadFX.mHead.getChildren().addAll(currentLeftPolygon, currentRightPolygon);
 		
 		init();
 	}
@@ -53,99 +67,86 @@ public class FaceWrinkleFX extends BodyPartFX
 	}
 
 	@Override
-	public void createShape() 
+	public void calculate(int step) 
 	{
 		mStart = mHeadFX.getRightEyebrowPostion();
-		mEnd = new Point(mStart.x - mLength, mStart.y);
 
-		double movement;
-
-//		clearDrawObjects();
-		clearChildren(this);
+		double colorOpacity = 0;
 		
-		mPath = new Path();
-
 		switch (mShape) 
 		{
 			case DEFAULT:
 				break;
 
 		case ANGRY:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			// Add wrinkle for angry face:
-			int angryColorChange = (int) (movement / 4 * 16);
-			mColor = Color.rgb(0, 0, 0, (angryColorChange * 100 / 255) / 100f);
-			mPath.getElements().add(new MoveTo(mStart.x + 14, mStart.y + 7));
-			mPath.getElements().add(new LineTo(mStart.x + 14, mStart.y - 1));
-			mPath.getElements().add(new MoveTo(mStart.x + 20, mStart.y + 7));
-			mPath.getElements().add(new LineTo(mStart.x + 20, mStart.y - 1));
+			currentLeftPolygon = FaceWrinkleANGRY.getLeftANGRY(currentLeftPolygon);
+			currentRightPolygon = FaceWrinkleANGRY.getRightANGRY(currentRightPolygon);
+			
+			currentLeftPolygon.setTranslateX(3);
+			currentLeftPolygon.setTranslateY(-10);
+			currentRightPolygon.setTranslateX(-3);
+			currentRightPolygon.setTranslateY(-10);
+			
+			colorOpacity = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+			mColor = Color.rgb(80, 80, 80, colorOpacity/19);
+			currentLeftPolygon.setFill(mColor);
+			currentRightPolygon.setFill(mColor);
+			
 			break;
-
-		// End wrinkle for angry face:
+			
 		case ANGRYEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) 
-			{
-				mColor = Color.rgb(0, 0, 0, 0);
-			} 
-			else 
-			{
-				angryColorChange = (int) (movement / 4 * 16);
-				mColor = Color.rgb(0, 0, 0,  (angryColorChange * 100 / 255) / 100f);
-				mPath.getElements().add(new MoveTo(mStart.x + 14, mStart.y + 7));
-				mPath.getElements().add(new LineTo(mStart.x + 14, mStart.y - 1));
-				mPath.getElements().add(new MoveTo(mStart.x + 20, mStart.y + 7));
-				mPath.getElements().add(new LineTo(mStart.x + 20, mStart.y - 1));
-			}
-
+			colorOpacity = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+			
+			mColor = Color.rgb(80, 80, 80, 1 - colorOpacity/19);
+			currentLeftPolygon.setFill(mColor);
+			currentRightPolygon.setFill(mColor);
 			break;
 
 		case DISGUSTED:
-
 			break;
 
 		case SURPRISED:
-
 			break;
 
 		case EXCITED:
-
 			break;
 
 		case EMBARRASSED:
-			movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
-
-			// Add wrinkles for embarrassed face:
-			int embarrassedColorChange = (int) (movement / 4 * 16);
-			mColor = new Color(0, 0, 0, (embarrassedColorChange * 100 / 255) / 100f);
-			mPath.getElements().add(new MoveTo(mStart.x - 15, mStart.y));
-			mPath.getElements().add(new LineTo(mStart.x - 15, mStart.y + 10));
-			mPath.getElements().add(new MoveTo(mStart.x - 25, mStart.y + 5));
-			mPath.getElements().add(new LineTo(mStart.x - 25, mStart.y + 20));
 			break;
 
 		case EMBARRASSEDEND:
-			movement = mShapeAnimationStep - 1;
-			if (movement <= 1) 
-			{
-				mColor = Color.rgb(0, 0, 0, 0);
-			} 
-			else 
-			{
-				// Add wrinkles for embarrassed face:
-				embarrassedColorChange = (int) (movement / 4 * 16);
-				mColor = new Color(0, 0, 0, (embarrassedColorChange * 100 / 255) / 100f);
-				mPath.getElements().add(new MoveTo(mStart.x - 15, mStart.y));
-				mPath.getElements().add(new LineTo(mStart.x - 15, mStart.y + 10));
-				mPath.getElements().add(new MoveTo(mStart.x - 25, mStart.y + 5));
-				mPath.getElements().add(new LineTo(mStart.x - 25, mStart.y + 20));
-			}
 			break;
 		}
-		this.getChildren().add(mPath);
-//		addToDrawObjects(mPath);
-		this.update();
+//		this.update();
+	}
+	
+	private Polygon createWrinkle()
+	{
+		Polygon wrinkle = new Polygon();
+		
+		wrinkle.getPoints().addAll(
+				
+				0.0,	0.0,
+				3.0,	0.0,
+				3.0,	-2.0,
+				3.0,	-4.0,
+				3.0,	-6.0,
+				3.0,	-8.0,
+				3.0,	-10.0,
+				3.0,	-12.0,
+				3.0,	-14.0,
+				3.0, 	-16.0,
+				0.0,	-16.0,
+				0.0,	-14.0,
+				0.0,	-12.0,
+				0.0,	-10.0,	
+				0.0,	-8.0,
+				0.0,	-6.0,
+				0.0,	-4.0,
+				0.0,	-2.0
+				);
+		
+		return wrinkle;
 	}
 
 }
