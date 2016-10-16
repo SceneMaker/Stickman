@@ -32,7 +32,7 @@ public class Contempt extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
-        playAnimationPart(mDuration);
+        playAnimationPart(500);
 
         pauseAnimation(1200);
 
@@ -41,6 +41,6 @@ public class Contempt extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
-        playAnimationPart(20);
+        playAnimationPart(500);
     }
 }
