@@ -18,6 +18,8 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -40,7 +42,10 @@ public class LeftForeLegFX extends BodyPartFX {
     int mLegLength;
     Dimension mSize = new Dimension(10, mLegLength);
     
-	Group leftForeLeg;
+    PhongMaterial material;
+
+	Group leftForeLegGroup;
+	Cylinder leftForeLeg;
 
     public LeftForeLegFX(LeftUpperLegFX leftUpperLegFX) 
     {
@@ -48,25 +53,49 @@ public class LeftForeLegFX extends BodyPartFX {
         mDefaultRotation = -2;
 		mXRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
-		mColor = Color.rgb(80, 80, 80);
+		mColor = Color.rgb(242, 227, 217, 1);
+		if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mLegLength = 90;
+		else
+			mLegLength = 80;
 		
-		leftForeLeg = (Group) mUpperLegFX.lefttUpperLeg.getChildren().get(2);
-
-        init();
+		leftForeLeg = new Cylinder(7, mLegLength);
         
-        calculate(0);
+		leftForeLegGroup = new Group();
+		leftForeLegGroup.setId("leftForeLegGroup");
+		leftForeLegGroup.getChildren().add(leftForeLeg);
+        
+        material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		leftForeLeg.setMaterial(material);
+		
+		mUpperLegFX.leftUpperLegGroup.getChildren().add(leftForeLegGroup);
+        
+        init();
     }
     
     public void calculate(int step)
     {
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, 0, -leftForeLeg.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, -leftForeLeg.getHeight()/2, 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, -leftForeLeg.getHeight()/2, 0, Rotate.Z_AXIS);
 		
-		Translate translate = (Translate) leftForeLeg.getTransforms().get(0);
-		Scale scale = (Scale) leftForeLeg.getTransforms().get(4);
-		leftForeLeg.getTransforms().clear();
-		leftForeLeg.getTransforms().addAll(translate, rx, ry, rz, scale);
+		if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			leftForeLegGroup.setTranslateX(mStart.x);
+			leftForeLegGroup.setTranslateY(mStart.y+81);
+			leftForeLegGroup.setTranslateZ(0);
+		}
+		else
+		{
+			leftForeLegGroup.setTranslateX(mStart.x);
+			leftForeLegGroup.setTranslateY(mStart.y + 70);
+			leftForeLegGroup.setTranslateZ(0);
+		}
+		
+		leftForeLegGroup.getTransforms().clear();
+		leftForeLegGroup.getTransforms().addAll(rx, ry, rz);
 
 //    	this.update();
     }

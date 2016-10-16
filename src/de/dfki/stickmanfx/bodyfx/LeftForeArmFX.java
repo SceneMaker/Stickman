@@ -11,10 +11,13 @@ import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -37,74 +40,112 @@ public class LeftForeArmFX extends BodyPartFX
     LeftUpperArmFX mUpperArmFX;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
+    
+    PhongMaterial material;
 
-	Group leftForeArmMesh;
+	Group leftForeArmGroup;
+	Cylinder leftForeArm;
 
     public LeftForeArmFX(LeftUpperArmFX arm) {
         mUpperArmFX = arm;
-        mColor = Color.rgb(80, 80, 80);
+        mColor = Color.rgb(242, 227, 217, 1);
         mDefaultRotation = -20;
         mXRotation = -30;
         mZRotation = 60;
         mToDegree = mDefaultRotation;
         
-        leftForeArmMesh = (Group) mUpperArmFX.leftUpperArmMesh.getChildren().get(1);
+        leftForeArm = new Cylinder(5, mArmLength);
+        
+        leftForeArmGroup = new Group();
+        leftForeArmGroup.setId("leftForeArmGroup");
+        leftForeArmGroup.getChildren().add(leftForeArm);
+        
+        material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		leftForeArm.setMaterial(material);
+		
+		mUpperArmFX.leftUpperArmGroup.getChildren().add(leftForeArmGroup);
         
         init();
-        calculate(0);
     }
 
 
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, 0, -leftForeArm.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, -leftForeArm.getHeight()/2, 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, -leftForeArm.getHeight()/2, 0, Rotate.Z_AXIS);
 		
+		if(mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			leftForeArmGroup.setTranslateX(mStart.x);
+			leftForeArmGroup.setTranslateY(mStart.y+81);
+			leftForeArmGroup.setTranslateZ(0);
+		}
+		else
+		{
+			leftForeArmGroup.setTranslateX(mStart.x);
+			leftForeArmGroup.setTranslateY(mStart.y + 81);
+			leftForeArmGroup.setTranslateZ(0);
+		}
 		
-		Translate translate = (Translate) leftForeArmMesh.getTransforms().get(0);
-		Scale scale = (Scale) leftForeArmMesh.getTransforms().get(4);
-		leftForeArmMesh.getTransforms().clear();
-		leftForeArmMesh.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mUpperArmFX.mBodyFX.updateAfterRotation();
+		leftForeArmGroup.getTransforms().clear();
+		leftForeArmGroup.getTransforms().addAll(rx, ry, rz);
+		
+//		if (step == 0) 
+//		{
+//			mUpperArmFX.leftUpperArmGroup.getChildren().add(leftForeArmGroup);
+//			System.out.println(mUpperArmFX.leftUpperArmGroup.getChildren());
+//		}
+//		else
+//			mUpperArmFX.leftUpperArmGroup.getChildren().set(2, leftForeArmGroup);
+		
+//		
+//		
+//		Translate translate = (Translate) leftForeArmMesh.getTransforms().get(0);
+//		Scale scale = (Scale) leftForeArmMesh.getTransforms().get(4);
+//		leftForeArmMesh.getTransforms().clear();
+//		leftForeArmMesh.getTransforms().addAll(translate, rx, ry, rz, scale);
+//
+//		mUpperArmFX.mBodyFX.updateAfterRotation();
 		
 //        update();
     }
 
     @Override
     public void update() {
-//        Color currentColor = Color.rgb(80, 80, 80);
-        // draw outlines
-    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
-    		mColorRecorder = mColor;
-    	}
-        if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-            if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
-            {
-                int fadeFactor = mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) {
-                    fadeFactor = 0;
-                }
-                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
-                //g2.setColor(new Color(80, 80, 80,fadeFactor));
-            } else {
-                int fadeFactor = (20 - mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) {
-                	mColor = mColorRecorder;
-                }
-                else
-                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
-                //g2.setColor(new Color(80, 80, 80,fadeFactor));
-            }
-        }
-
-//		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+////        Color currentColor = Color.rgb(80, 80, 80);
+//        // draw outlines
+//    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+//    		mColorRecorder = mColor;
+//    	}
+//        if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+//            if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
+//            {
+//                int fadeFactor = mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
+//                if (fadeFactor <= 24) {
+//                    fadeFactor = 0;
+//                }
+//                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+//                //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+//                //g2.setColor(new Color(80, 80, 80,fadeFactor));
+//            } else {
+//                int fadeFactor = (20 - mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
+//                if (fadeFactor >= 216) {
+//                	mColor = mColorRecorder;
+//                }
+//                else
+//                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+//                //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+//                //g2.setColor(new Color(80, 80, 80,fadeFactor));
+//            }
+//        }
 //
-//		g2.draw(mArm);
+////		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+////
+////		g2.draw(mArm);
     }
 
 }

@@ -11,10 +11,14 @@ import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
@@ -37,9 +41,13 @@ public class BodyFX extends BodyPartFX {
 	int mHalfSizeX = mSize.width / 2;
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
+	
+	TriangleMesh mBodyTriangloangleMesh;;
+	MeshView mBodyMeshView;
+	PhongMaterial material;
 
 	URL url;
-	ColModelImporter importer;
+	StlMeshImporter im;
 	Group mBodyModel;
 
 	public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);
@@ -53,33 +61,54 @@ public class BodyFX extends BodyPartFX {
 	public BodyFX(NeckFX neck) {
 		mNeckFX = neck;
 		mStart = mNeckFX.getBodyStartPosition();
-		importer = new ColModelImporter();
+		im = new StlMeshImporter();
 
 		mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
 		
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
-			url = getClass().getClassLoader().getResource("BodyParts/FemaleBody.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/FemaleBody1.stl");
 		} else {
-			url = getClass().getClassLoader().getResource("BodyParts/MaleBody.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/MaleBody1.stl");
 		}
 		
-		importer.read(url);
-		mBodyModel = (Group) (importer.getImport()[0]);
-
+		im.read(url);
+		mBodyModel = new Group();
+		mBodyTriangloangleMesh = im.getImport();
+		
+		mBodyMeshView = new MeshView(mBodyTriangloangleMesh);
+		mBodyMeshView.setId("BodyMesh");
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		mBodyMeshView.setMaterial(material);
+		mBodyMeshView.setRotationAxis(Rotate.X_AXIS);
+		mBodyMeshView.setRotate(-90);
+		mBodyModel.getChildren().add(mBodyMeshView);
 		init();
 	}
 
 	public void calculate(int step) {
 		mStart = mNeckFX.getBodyStartPosition();
 		clearChildren(this);
-
 		mBodyModel.setTranslateX(mStart.x);
-		mBodyModel.setTranslateY(mStart.y + 135);
-		mBodyModel.setTranslateZ(-100);
-
-		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		if(mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			mBodyModel.setTranslateY(mStart.y + 82);
+			mBodyModel.setTranslateZ(-52);
+		}
+		else
+		{
+			mBodyModel.setTranslateY(mStart.y + 95);
+			mBodyModel.setTranslateZ(-60);
+		}
+		
+		rx = new Rotate(mXRotation, 0, 35, -52, Rotate.X_AXIS);
+		
+		if(mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			ry = new Rotate(mYRotation, 0, 35, -52, Rotate.Y_AXIS);
+		else
+			ry = new Rotate(mYRotation, 0, 35, -40, Rotate.Y_AXIS);
+		
+		rz = new Rotate(mZRotation, 0, 0, 0, Rotate.Z_AXIS);
 
 		mBodyModel.getTransforms().clear();
 		mBodyModel.getTransforms().addAll(rx, ry, rz);
@@ -88,22 +117,22 @@ public class BodyFX extends BodyPartFX {
 	}
 
 	public void updateAfterRotation() {
-		mStart = mNeckFX.getBodyStartPosition();
-		clearChildren(this);
-
-		mBodyModel.setTranslateX(mStart.x);
-		mBodyModel.setTranslateY(mStart.y + 135);
-		mBodyModel.setTranslateZ(-100);
-
-		this.getChildren().addAll(mBodyModel);
+//		mStart = mNeckFX.getBodyStartPosition();
+//		clearChildren(this);
+//
+//		mBodyModel.setTranslateX(mStart.x);
+//		mBodyModel.setTranslateY(mStart.y + 135);
+//		mBodyModel.setTranslateZ(-100);
+//
+//		this.getChildren().addAll(mBodyModel);
 	}
 
 	public Point getLeftArmStartPostion() {
-		return new Point(mStart.x + 1, mStart.y);
+		return new Point(mStart.x - 39, mStart.y - 178);
 	}
 
 	public Point getRightArmStartPostion() {
-		return new Point(mStart.x - 1, mStart.y);
+		return new Point(mStart.x - 90, mStart.y - 178);
 	}
 
 	public Point getLeftLegStartPostion() {

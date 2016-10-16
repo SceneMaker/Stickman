@@ -6,6 +6,8 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickman.body.*;
+import de.dfki.stickmanfx.StickmanFX;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
@@ -14,6 +16,8 @@ import java.net.URL;
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -34,35 +38,55 @@ public class LeftFootFX extends BodyPartFX {
 
 	LeftForeLegFX mLeftForeLegFX;
 
-	MeshView leftFoot;
+	PhongMaterial material;
+
+	Cylinder leftFoot;
 
 	public LeftFootFX(LeftForeLegFX leftForeLeg) {
 		mLeftForeLegFX = leftForeLeg;
-		mLength = 10;
-		mColor = Color.rgb(80, 80, 80);
+		mLength = 20;
+		mColor = Color.rgb(242, 227, 217, 1);
 		setDefaulRotation(0);
-
-		leftFoot = (MeshView) mLeftForeLegFX.leftForeLeg.getChildren().get(1);
-
-		mYRotation = -135;
+//		mYRotation = -135;
 		mXRotation = 10;
+		mZRotation = 5;
 
-		init();
-
-		calculate(0);
+		leftFoot = new Cylinder(7, mLength);
+	        
+        material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		leftFoot.setMaterial(material);
+		
+		leftFoot.setRotationAxis(Rotate.Z_AXIS);
+		leftFoot.setRotate(90);
+		
+		mLeftForeLegFX.leftForeLegGroup.getChildren().add(leftFoot);
+        
+        init();
 	}
 
 	@Override
 	public void calculate(int step) {
-
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-		Translate translate = (Translate) leftFoot.getTransforms().get(0);
-		Scale scale = (Scale) leftFoot.getTransforms().get(4);
+		Rotate rx = new Rotate(mXRotation, 0, leftFoot.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, leftFoot.getHeight()/2, 0,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, leftFoot.getHeight()/2, 0,  Rotate.Z_AXIS);
+		
+		if(mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			leftFoot.setTranslateX(mStart.x+10);
+			leftFoot.setTranslateY(mStart.y+38);
+			leftFoot.setTranslateZ(0);
+		}
+		else
+		{
+			leftFoot.setTranslateX(mStart.x + 10);
+			leftFoot.setTranslateY(mStart.y + 34);
+			leftFoot.setTranslateZ(0);
+		}
+		
 		leftFoot.getTransforms().clear();
-		leftFoot.getTransforms().addAll(translate, rx, ry, rz, scale);
+		leftFoot.getTransforms().addAll(rx, ry, rz);
 
 		// this.update();
 	}

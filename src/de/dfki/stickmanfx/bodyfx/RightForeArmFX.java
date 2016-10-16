@@ -6,6 +6,7 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickman.body.*;
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 
 import java.awt.BasicStroke;
@@ -22,6 +23,8 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -45,40 +48,59 @@ public class RightForeArmFX extends BodyPartFX
 	int mArmLength = 80;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
 	
-	Group rightForeArm;
+	PhongMaterial material;
+
+	Group rightForeArmGroup;
+	Cylinder rightForeArm;
 
 
 	public RightForeArmFX(RightUpperArmFX arm) 
 	{
 		mUpperArmFX = arm;
-		mColor = Color.rgb(80, 80, 80);
+		mColor = Color.rgb(242, 227, 217, 1);
 		mDefaultRotation = -20;
 		mXRotation = -30;
 		mZRotation = -60;
 		mToDegree = mDefaultRotation;
 		
-		rightForeArm = (Group) mUpperArmFX.rightUpperArm.getChildren().get(1);
-		init();
-
-		calculate(0);
+		rightForeArm = new Cylinder(5, mArmLength);
+        
+		rightForeArmGroup = new Group();
+		rightForeArmGroup.setId("rightForeArmGroup");
+		rightForeArmGroup.getChildren().add(rightForeArm);
+        
+        material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		rightForeArm.setMaterial(material);
+		
+		mUpperArmFX.rightUpperArmGroup.getChildren().add(rightForeArmGroup);
+        
+        init();
 	}
 
 	@Override
 	public void calculate(int step) 
 	{
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, 0, -rightForeArm.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, -rightForeArm.getHeight()/2, 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, -rightForeArm.getHeight()/2, 0, Rotate.Z_AXIS);
 		
-		Translate translate = (Translate) rightForeArm.getTransforms().get(0);
-		Scale scale = (Scale) rightForeArm.getTransforms().get(4);
-		rightForeArm.getTransforms().clear();
-		rightForeArm.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mUpperArmFX.mBodyFX.updateAfterRotation();
+		if(mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			rightForeArmGroup.setTranslateX(mStart.x);
+			rightForeArmGroup.setTranslateY(mStart.y+81);
+			rightForeArmGroup.setTranslateZ(0);
+		}
+		else
+		{
+			rightForeArmGroup.setTranslateX(mStart.x);
+			rightForeArmGroup.setTranslateY(mStart.y + 81);
+			rightForeArmGroup.setTranslateZ(0);
+		}
 		
-		
-
+		rightForeArmGroup.getTransforms().clear();
+		rightForeArmGroup.getTransforms().addAll(rx, ry, rz);
 		//update();
 	}
 

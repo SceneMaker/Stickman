@@ -18,10 +18,13 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.Sphere;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
@@ -37,41 +40,73 @@ import javafx.scene.transform.Translate;
 public class LeftUpperLegFX extends BodyPartFX {
 	BodyFX mBodyFX;
 
-	Group lefttUpperLeg;
+	PhongMaterial material;
+
+	Group leftUpperLegGroup;
+	Cylinder leftUpperLeg;
+	Sphere leftUpperLegSphere;
 
 	public LeftUpperLegFX(BodyFX body) {
 		mBodyFX = body;
-		mLength = 60;
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mLength = 60;
+		else
+			mLength = 50;
 		mSize = new Dimension(10, mLength);
-		mColor = Color.rgb(80, 80, 80);
+		
+		mColor = Color.rgb(242, 227, 217, 1);
 
 		mDefaultRotation = 0;
 		mXRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
-
-		lefttUpperLeg = (Group) mBodyFX.mBodyModel.getChildren().get(3);
-
+		
+		leftUpperLeg = new Cylinder(7, mLength);
+		leftUpperLegSphere = new Sphere(8);
+		
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		leftUpperLeg.setMaterial(material);
+		leftUpperLegSphere.setMaterial(material);
+		
+		leftUpperLegGroup = new Group();
+		leftUpperLegGroup.setId("leftUpperLegGroup");
+		leftUpperLegGroup.getChildren().add(leftUpperLeg);
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			leftUpperLegSphere.setTranslateY(34);
+		else
+			leftUpperLegSphere.setTranslateY(28);
+		leftUpperLegGroup.getChildren().add(leftUpperLegSphere);
+		
+		mBodyFX.mBodyModel.getChildren().add(leftUpperLegGroup);
+		
 		init();
-
-		calculate(0);
 	}
 
 
 	@Override
 	public void calculate(int step) {
+		mStart = mBodyFX.getLeftLegStartPostion();
 		
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-		Translate translate = (Translate) lefttUpperLeg.getTransforms().get(0);
-		Scale scale = (Scale) lefttUpperLeg.getTransforms().get(4);
-		lefttUpperLeg.getTransforms().clear();
-		lefttUpperLeg.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mBodyFX.updateAfterRotation();
-		// this.update();
+		Rotate rx = new Rotate(mXRotation, 0, -leftUpperLeg.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, -leftUpperLeg.getHeight()/2, 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, -leftUpperLeg.getHeight()/2, 0, Rotate.Z_AXIS);
+		
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			leftUpperLegGroup.setTranslateX(mStart.x - 58);
+			leftUpperLegGroup.setTranslateY(mStart.y - 176);
+			leftUpperLegGroup.setTranslateZ(-53);
+		}
+		else
+		{
+			leftUpperLegGroup.setTranslateX(mStart.x-60);
+			leftUpperLegGroup.setTranslateY(mStart.y - 179);
+			leftUpperLegGroup.setTranslateZ(-40);
+		}
+		leftUpperLegGroup.getTransforms().clear();
+		leftUpperLegGroup.getTransforms().addAll(rx, ry, rz);
 	}
 
 	@Override

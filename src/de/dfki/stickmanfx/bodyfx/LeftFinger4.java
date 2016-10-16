@@ -11,10 +11,13 @@ import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -38,38 +41,54 @@ public class LeftFinger4 extends BodyPartFX
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	MeshView LeftFinger_4;
+    PhongMaterial material;
+
+    Cylinder LeftFinger_4;
 
     public LeftFinger4(LeftWrist leftWrist) {
     	mLeftWrist = leftWrist;
-        mColor = Color.rgb(80, 80, 80);
+        mColor = Color.rgb(242, 227, 217, 1);
         mDefaultRotation = -20;
         mXRotation = 9;
         mYRotation = -3;
-        mZRotation = -205;
+        mZRotation = -185;
         mToDegree = mDefaultRotation;
         
-        LeftFinger_4 = (MeshView) mLeftWrist.leftWrist.getChildren().get(4);
+        LeftFinger_4 = new Cylinder(3, 15);
+        
+        material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		LeftFinger_4.setMaterial(material);
+		
+		mLeftWrist.leftWristGroup.getChildren().add(LeftFinger_4);
         
         init();
-        calculate(0);
     }
 
 
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+    	Rotate rx = new Rotate(mXRotation, 0, LeftFinger_4.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, LeftFinger_4.getHeight()/2, 0,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, LeftFinger_4.getHeight()/2, 0,  Rotate.Z_AXIS);
 		
+		if(mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			LeftFinger_4.setTranslateX(mStart.x + 3);
+			LeftFinger_4.setTranslateY(mStart.y - 4);
+			LeftFinger_4.setTranslateZ(0);
+		}
+		else
+		{
+			LeftFinger_4.setTranslateX(mStart.x + 3);
+			LeftFinger_4.setTranslateY(mStart.y - 4);
+			LeftFinger_4.setTranslateZ(0);
+		}
 		
-		Translate translate = (Translate) LeftFinger_4.getTransforms().get(0);
-		Scale scale = (Scale) LeftFinger_4.getTransforms().get(4);
 		LeftFinger_4.getTransforms().clear();
-		LeftFinger_4.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
+		LeftFinger_4.getTransforms().addAll(rx, ry, rz);
 		
 //        update();
     }

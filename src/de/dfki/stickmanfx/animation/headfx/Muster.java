@@ -31,27 +31,43 @@ public class Muster extends AnimationFX
             int rotationUnit = 10;
             
             
+//            mAnimationPartFX = new ArrayList<>();
+////          mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -90));
+//          mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mBodyFX, "yrotate", 90));
+//          playAnimationPart(500);
+//////          
+//          pauseAnimation(1000);
+            
+            
             mAnimationPartFX = new ArrayList<>();
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -90));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SURPRISED"));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SAD"));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SAD"));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "SURPRISED"));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "SURPRISED"));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -10));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "rotate", 90));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 90));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -90));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "rotate", -90));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -110));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "rotate", -30));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "rotate", -360));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger3, "rotate", -60));
             playAnimationPart(500);
             
             pauseAnimation(1000);
             
             mAnimationPartFX = new ArrayList<>();
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 90));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SURPRISEDEND"));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND"));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND"));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "SURPRISEDEND"));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "SURPRISEDEND"));
-//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 10));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "rotate", -90));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", -90));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 90));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "rotate", 90));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 110));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "rotate", 30));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "rotate", 360));
+//            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger3, "rotate", 60));
             playAnimationPart(500);
+            
+//            pauseAnimation(1000);
+//            
+//            mAnimationPartFX = new ArrayList<>();
+//          mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mBodyFX, "yrotate", -90));
+//          playAnimationPart(500);
                 
 
 	}

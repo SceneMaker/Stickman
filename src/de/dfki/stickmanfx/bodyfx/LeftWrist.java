@@ -11,10 +11,13 @@ import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -37,37 +40,62 @@ public class LeftWrist extends BodyPartFX
     LeftForeArmFX mLeftForeArmFX;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
+    
+    PhongMaterial material;
 
-	Group leftWrist;
+	Group leftWristGroup;
+	Cylinder leftWrist;
 
     public LeftWrist(LeftForeArmFX leftForeArmFX) {
         mLeftForeArmFX = leftForeArmFX;
-        mColor = Color.rgb(80, 80, 80);
+        mColor = Color.rgb(242, 227, 217, 1);
+        
         mDefaultRotation = -20;
         mToDegree = mDefaultRotation;
         
-        leftWrist = (Group) mLeftForeArmFX.leftForeArmMesh.getChildren().get(1);
+        leftWrist = new Cylinder(9, 7);
+        leftWristGroup = new Group();
+        leftWristGroup.setId("LeftWrist");
         
+        leftWristGroup.getChildren().add(leftWrist);
+        
+        material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		leftWrist.setMaterial(material);
+		
+		leftWrist.setRotationAxis(Rotate.X_AXIS);
+		leftWrist.setRotate(90);
+		
+		mLeftForeArmFX.leftForeArmGroup.getChildren().add(leftWristGroup);
+		
+		
         init();
-        calculate(0);
     }
 
 
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, 0, -leftWrist.getHeight(), 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, -leftWrist.getHeight(), 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, -leftWrist.getHeight(), 0, Rotate.Z_AXIS);
 		
+		if(mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			leftWristGroup.setTranslateX(mStart.x);
+			leftWristGroup.setTranslateY(mStart.y+47);
+			leftWristGroup.setTranslateZ(0);
+		}
+		else
+		{
+			leftWristGroup.setTranslateX(mStart.x);
+			leftWristGroup.setTranslateY(mStart.y + 47);
+			leftWristGroup.setTranslateZ(0);
+		}
 		
-		Translate translate = (Translate) leftWrist.getTransforms().get(0);
-		Scale scale = (Scale) leftWrist.getTransforms().get(4);
-		leftWrist.getTransforms().clear();
-		leftWrist.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mLeftForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
-		
+		leftWristGroup.getTransforms().clear();
+		leftWristGroup.getTransforms().addAll(rx, ry, rz);
 //        update();
     }
 

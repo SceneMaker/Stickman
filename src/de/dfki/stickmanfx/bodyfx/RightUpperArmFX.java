@@ -23,10 +23,13 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+import javafx.scene.shape.Sphere;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
@@ -49,15 +52,16 @@ public class RightUpperArmFX extends BodyPartFX {
 	int mArmLength = 70;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	Point mStart;
-
-	URL url;
-	ColModelImporter imorter;
-	Group rightUpperArm;
+	PhongMaterial material;
+	
+	Group rightUpperArmGroup;
+	Cylinder rightUpperArm;
+	Sphere rightUpperArmSphere;
 
 	public RightUpperArmFX(BodyFX bodyFX) {
 		mBodyFX = bodyFX;
-		mColor = Color.rgb(80, 80, 80);
+		
+		mColor = Color.rgb(242, 227, 217, 1);
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mDefaultRotation = 30;
 		else
@@ -65,27 +69,52 @@ public class RightUpperArmFX extends BodyPartFX {
 		mZRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
-
-		rightUpperArm = (Group) mBodyFX.mBodyModel.getChildren().get(2);
-
+		
+		rightUpperArm = new Cylinder(5, mArmLength);
+		rightUpperArmSphere = new Sphere(6);
+		
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		
+		rightUpperArm.setMaterial(material);
+		rightUpperArmSphere.setMaterial(material);
+		
+		rightUpperArmGroup = new Group();
+		rightUpperArmGroup.setId("rightUpperArmGroup");
+		rightUpperArmGroup.getChildren().add(rightUpperArm);
+		rightUpperArmSphere.setTranslateY(39);
+		rightUpperArmGroup.getChildren().add(rightUpperArmSphere);
+		
+		mBodyFX.mBodyModel.getChildren().add(rightUpperArmGroup);
+		
 		init();
-		calculate(0);
+
 	}
 
 
 	@Override
 	public void calculate(int step) 
 	{
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-		Translate translate = (Translate) rightUpperArm.getTransforms().get(0);
-		Scale scale = (Scale) rightUpperArm.getTransforms().get(4);
-		rightUpperArm.getTransforms().clear();
-		rightUpperArm.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mBodyFX.updateAfterRotation();
+		mStart = mBodyFX.getRightArmStartPostion();
+		
+		Rotate rx = new Rotate(mXRotation, 0, -rightUpperArm.getHeight()/2, 0, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, 0, -rightUpperArm.getHeight()/2, 0, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, 0, -rightUpperArm.getHeight()/2, 0, Rotate.Z_AXIS);
+		
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
+			rightUpperArmGroup.setTranslateX(mStart.x);
+			rightUpperArmGroup.setTranslateY(mStart.y);
+			rightUpperArmGroup.setTranslateZ(-53);
+		}
+		else
+		{
+			rightUpperArmGroup.setTranslateX(mStart.x+10);
+			rightUpperArmGroup.setTranslateY(mStart.y - 14);
+			rightUpperArmGroup.setTranslateZ(-40);
+		}
+		rightUpperArmGroup.getTransforms().clear();
+		rightUpperArmGroup.getTransforms().addAll(rx, ry, rz);
 	}
 
 	@Override

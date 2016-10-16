@@ -49,7 +49,7 @@ public class LeftFinger5 extends BodyPartFX
         mZRotation = -230;
         mToDegree = mDefaultRotation;
         
-        LeftFinger_5 = (MeshView) mLeftWrist.leftWrist.getChildren().get(5);
+//        LeftFinger_5 = (MeshView) mLeftWrist.leftWrist.getChildren().get(5);
         
         init();
         calculate(0);
@@ -59,17 +59,17 @@ public class LeftFinger5 extends BodyPartFX
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-		
-		
-		Translate translate = (Translate) LeftFinger_5.getTransforms().get(0);
-		Scale scale = (Scale) LeftFinger_5.getTransforms().get(4);
-		LeftFinger_5.getTransforms().clear();
-		LeftFinger_5.getTransforms().addAll(translate, rx, ry, rz, scale);
-
-		mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
+//		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+//		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+//		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+//		
+//		
+//		Translate translate = (Translate) LeftFinger_5.getTransforms().get(0);
+//		Scale scale = (Scale) LeftFinger_5.getTransforms().get(4);
+//		LeftFinger_5.getTransforms().clear();
+//		LeftFinger_5.getTransforms().addAll(translate, rx, ry, rz, scale);
+//
+//		mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.updateAfterRotation();
 		
 //        update();
     }
