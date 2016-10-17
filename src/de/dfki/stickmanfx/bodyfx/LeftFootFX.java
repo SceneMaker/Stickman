@@ -14,7 +14,9 @@ import java.awt.geom.GeneralPath;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
@@ -24,6 +26,7 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
@@ -38,55 +41,59 @@ public class LeftFootFX extends BodyPartFX {
 
 	LeftForeLegFX mLeftForeLegFX;
 
+	MeshView mLeftFootMeshView;
 	PhongMaterial material;
-
-	Cylinder leftFoot;
+	
+	URL url;
+	ColModelImporter im;
 
 	public LeftFootFX(LeftForeLegFX leftForeLeg) {
 		mLeftForeLegFX = leftForeLeg;
 		mLength = 20;
-		mColor = Color.rgb(242, 227, 217, 1);
+		if(mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mColor = Color.rgb(80,80,80, 1);
+		else
+			mColor = Color.rgb(154, 83, 198, 1);
 		setDefaulRotation(0);
-//		mYRotation = -135;
+		mYRotation = 50;
 		mXRotation = 10;
-		mZRotation = 5;
 
-		leftFoot = new Cylinder(7, mLength);
-	        
-        material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
+		url = getClass().getClassLoader().getResource("BodyParts/foot.dae");
+		im = new ColModelImporter();
+		im.read(url);
+		mLeftFootMeshView = (MeshView) im.getImport()[0];
 		
-		leftFoot.setMaterial(material);
+		mLeftFootMeshView.setId("mLeftFootMeshView");
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor.darker());
+		mLeftFootMeshView.setMaterial(material);
 		
-		leftFoot.setRotationAxis(Rotate.Z_AXIS);
-		leftFoot.setRotate(90);
-		
-		mLeftForeLegFX.leftForeLegGroup.getChildren().add(leftFoot);
+		mLeftForeLegFX.leftForeLegGroup.getChildren().add(mLeftFootMeshView);
         
         init();
 	}
 
 	@Override
 	public void calculate(int step) {
-		Rotate rx = new Rotate(mXRotation, 0, leftFoot.getHeight()/2, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, leftFoot.getHeight()/2, 0,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, leftFoot.getHeight()/2, 0,  Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, 	Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mLeftForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			leftFoot.setTranslateX(mStart.x+10);
-			leftFoot.setTranslateY(mStart.y+38);
-			leftFoot.setTranslateZ(0);
+			mLeftFootMeshView.setTranslateX(mStart.x+3);
+			mLeftFootMeshView.setTranslateY(mStart.y+40);
+			mLeftFootMeshView.setTranslateZ(-1);
 		}
 		else
 		{
-			leftFoot.setTranslateX(mStart.x + 10);
-			leftFoot.setTranslateY(mStart.y + 34);
-			leftFoot.setTranslateZ(0);
+			mLeftFootMeshView.setTranslateX(mStart.x + 3);
+			mLeftFootMeshView.setTranslateY(mStart.y + 36);
+			mLeftFootMeshView.setTranslateZ(-1);
 		}
 		
-		leftFoot.getTransforms().clear();
-		leftFoot.getTransforms().addAll(rx, ry, rz);
+		mLeftFootMeshView.getTransforms().clear();
+		mLeftFootMeshView.getTransforms().addAll(rx, ry, rz);
 
 		// this.update();
 	}
