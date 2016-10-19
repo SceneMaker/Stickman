@@ -535,37 +535,37 @@ public class StickmanFX extends Pane {
 		} else {
 			if (starShowC == true)
 				mStarsFX.update();
-			mHeadFX.update();
+//			mHeadFX.update();
 
-			if (this.mType == StickmanFX.TYPE.MALE)
-				mMaleHairFX.update();
-			else
-				mFemaleHairFX.update();
-			mLeftEyebrowFX.update();
-			mLeftEyeFX.update();
-			mRightEyebrowFX.update();
-			mFaceWrinkleFX.update(); // added by Robbie
-			mRightEyeFX.update();
-			mMouthFX.update();
-			mNeckFX.update();
+//			if (this.mType == StickmanFX.TYPE.MALE)
+//				mMaleHairFX.update();
+//			else
+//				mFemaleHairFX.update();
+//			mLeftEyebrowFX.update();
+//			mLeftEyeFX.update();
+//			mRightEyebrowFX.update();
+//			mFaceWrinkleFX.update(); // added by Robbie
+//			mRightEyeFX.update();
+//			mMouthFX.update();
+//			mNeckFX.update();
 			// BodyFX is not BodyPartFX Classe
-			mBodyFX.update();
-			mLeftShoulderFX.update();
+//			mBodyFX.update();
+//			mLeftShoulderFX.update();
 //			mLeftUpperArmFX.update();
 //			mLeftForeArmFX.update();
 //			mLeftHandFX.update();
-			mRightShoulderFX.update();
+//			mRightShoulderFX.update();
 //			mRightUpperArmFX.update();
 //			mRightForeArmFX.update();
 //			mRightHandFX.update();
 			// mLeftLegFX.update();
-			mLeftUpperLegFX.update();
-			mLeftForeLegFX.update();
-			mLeftFootFX.update();
+//			mLeftUpperLegFX.update();
+//			mLeftForeLegFX.update();
+//			mLeftFootFX.update();
 			// mRightLegFX.update();
-			mRightUpperLegFX.update();
-			mRightForeLegFX.update();
-			mRightFootFX.update();
+//			mRightUpperLegFX.update();
+//			mRightForeLegFX.update();
+//			mRightFootFX.update();
 
 			// mSpeechBubbleFX.update();
 

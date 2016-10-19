@@ -252,7 +252,7 @@ public class StickmanStageFX extends Application {
     public void start(Stage stage) throws Exception {  
 
     	FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/StickmanStageView.fxml"));
+        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/View.fxml"));
         HBox root = loader.load();
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -281,6 +281,7 @@ public class StickmanStageFX extends Application {
 
         stage.setFullScreen(true);
         scene.lookup("#mSplitPane").setDepthTest(DepthTest.DISABLE);
+        scene.lookup("#mSplitPane").setTranslateZ(-200);
         scene.setOnMouseClicked(mouseHandler);
              
     }

@@ -103,32 +103,34 @@ public class LeftForeLegFX extends BodyPartFX {
     @Override
 	public void update() 
 	{
-    	if (mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) 
-    		mColorRecorder = mColor;
-    	if (mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
-        {
-            if (mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
-            {
-                int fadeFactor = mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) 
-                {
-                    fadeFactor = 0;
-                }
-                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            } 
-            else 
-            {
-                int fadeFactor = (20 - mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) 
-                {
-                	mColor = mColorRecorder;
-                }
-                else
-                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            }
-        }
+    	material.setDiffuseColor(mColor);
+    	leftForeLeg.setMaterial(material);
+//    	if (mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) 
+//    		mColorRecorder = mColor;
+//    	if (mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
+//        {
+//            if (mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
+//            {
+//                int fadeFactor = mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
+//                if (fadeFactor <= 24) 
+//                {
+//                    fadeFactor = 0;
+//                }
+//                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+//                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+//            } 
+//            else 
+//            {
+//                int fadeFactor = (20 - mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
+//                if (fadeFactor >= 216) 
+//                {
+//                	mColor = mColorRecorder;
+//                }
+//                else
+//                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+//                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+//            }
+//        }
     	
 	}
 }

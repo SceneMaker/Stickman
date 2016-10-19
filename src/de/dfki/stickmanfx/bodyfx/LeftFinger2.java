@@ -96,6 +96,8 @@ public class LeftFinger2 extends BodyPartFX
 
     @Override
     public void update() {
+    	material.setDiffuseColor(mColor);
+    	LeftFinger_2.setMaterial(material);
 //        Color currentColor = Color.rgb(80, 80, 80);
         // draw outlines
 //    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {

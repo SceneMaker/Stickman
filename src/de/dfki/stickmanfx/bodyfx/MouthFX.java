@@ -25,6 +25,7 @@ import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.sun.prism.Material;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -278,6 +279,13 @@ public class MouthFX extends BodyPartFX {
 			mHeadFX.mHead.getChildren().add(downLip);
 		else
 			mHeadFX.mHead.getChildren().set(7, downLip);
+	}
+	
+	public void update()
+	{
+		mat.setDiffuseColor(mColor);
+		upperLip.setMaterial(mat);
+		downLip.setMaterial(mat);
 	}
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)

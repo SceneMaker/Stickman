@@ -166,6 +166,11 @@ public class LeftEyebrowFX extends BodyPartFX
 		else
 			mHeadFX.mHead.getChildren().set(2, currentPolygon);
 	}
+	
+	public void update()
+	{
+		currentPolygon.setFill(mColor);
+	}
 
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)

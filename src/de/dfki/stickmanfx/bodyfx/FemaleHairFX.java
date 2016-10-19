@@ -107,31 +107,33 @@ public class FemaleHairFX extends BodyPartFX {
 	}
 
 	public void update() {
-		if (mStickmanFX.setCharacterInvisible == false)
-			mColorRecorder = mColor;
-
-		if (mStickmanFX.setCharacterInvisible == true) {
-			if (mStickmanFX.fadeControler == true) // Added by Robbie
-			{
-				int fadeFactor = mStickmanFX.mMouthFX.mShapeAnimationStep * 10;
-				if (fadeFactor <= 20) {
-					fadeFactor = 0;
-				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-						(fadeFactor * 100 / 255) / 100f);
-				// mColor = Color.rgb(240, 212, 0, (fadeFactor * 100 / 255) /
-				// 100f);
-			} else {
-				int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-				if (fadeFactor >= 160) {
-					mColor = mColorRecorder;
-				} else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-							(fadeFactor * 100 / 255) / 100f);
-				// mColor = Color.rgb(240, 212, 0, (fadeFactor * 100 / 255) /
-				// 100f);
-			}
-		}
+		material.setDiffuseColor(mColor);
+		femaleHairMeshView.setMaterial(material);
+//		if (mStickmanFX.setCharacterInvisible == false)
+//			mColorRecorder = mColor;
+//
+//		if (mStickmanFX.setCharacterInvisible == true) {
+//			if (mStickmanFX.fadeControler == true) // Added by Robbie
+//			{
+//				int fadeFactor = mStickmanFX.mMouthFX.mShapeAnimationStep * 10;
+//				if (fadeFactor <= 20) {
+//					fadeFactor = 0;
+//				}
+//				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//						(fadeFactor * 100 / 255) / 100f);
+//				// mColor = Color.rgb(240, 212, 0, (fadeFactor * 100 / 255) /
+//				// 100f);
+//			} else {
+//				int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
+//				if (fadeFactor >= 160) {
+//					mColor = mColorRecorder;
+//				} else
+//					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//							(fadeFactor * 100 / 255) / 100f);
+//				// mColor = Color.rgb(240, 212, 0, (fadeFactor * 100 / 255) /
+//				// 100f);
+//			}
+//		}
 
 //		mFemaleHair.setFill(mColor);
 //		// draw outlines

@@ -50,25 +50,18 @@ public class BodyFX extends BodyPartFX {
 	StlMeshImporter im;
 	Group mBodyModel;
 
-	public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);
-	public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
-	public Color mColor = mFemaleColor;
-	public Color currentColor = null;
-
-	private Color mFemaleColorRecorder = mFemaleColor;
-	private Color mMaleColorRecorder = mMaleColor;
 
 	public BodyFX(NeckFX neck) {
 		mNeckFX = neck;
 		mStart = mNeckFX.getBodyStartPosition();
 		im = new StlMeshImporter();
-
-		mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
 		
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
 			url = getClass().getClassLoader().getResource("BodyParts/FemaleBody1.stl");
+			mColor = Color.rgb(154, 83, 198, 1);
 		} else {
 			url = getClass().getClassLoader().getResource("BodyParts/MaleBody1.stl");
+			mColor = Color.rgb(14, 134, 122, 1);
 		}
 		
 		im.read(url);
@@ -154,39 +147,41 @@ public class BodyFX extends BodyPartFX {
 	}
 
 	public void update() {
-		if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
-			mFemaleColorRecorder = mFemaleColor;
-			mMaleColorRecorder = mMaleColor;
-		}
-		if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-			if (mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) {
-				int fadeFactor = mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-				if (fadeFactor <= 24) {
-					fadeFactor = 0;
-				}
-				mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(),
-						(fadeFactor * 100 / 255) / 100f);
-				mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(),
-						(fadeFactor * 100 / 255) / 100f);
-			} else {
-				int fadeFactor = (20 - mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-				if (fadeFactor >= 160) {
-					mFemaleColor = mFemaleColorRecorder;
-					mMaleColor = mMaleColorRecorder;
-				} else {
-					mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(),
-							(fadeFactor * 100 / 255) / 100f);
-					mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(),
-							(fadeFactor * 100 / 255) / 100f);
-				}
-			}
-		}
-
-		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
-			currentColor = mFemaleColor;
-		} else {
-			currentColor = mMaleColor;
-		}
+		material.setDiffuseColor(mColor);
+		mBodyMeshView.setMaterial(material);
+//		if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+//			mFemaleColorRecorder = mFemaleColor;
+//			mMaleColorRecorder = mMaleColor;
+//		}
+//		if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+//			if (mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) {
+//				int fadeFactor = mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
+//				if (fadeFactor <= 24) {
+//					fadeFactor = 0;
+//				}
+//				mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(),
+//						(fadeFactor * 100 / 255) / 100f);
+//				mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(),
+//						(fadeFactor * 100 / 255) / 100f);
+//			} else {
+//				int fadeFactor = (20 - mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
+//				if (fadeFactor >= 160) {
+//					mFemaleColor = mFemaleColorRecorder;
+//					mMaleColor = mMaleColorRecorder;
+//				} else {
+//					mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(),
+//							(fadeFactor * 100 / 255) / 100f);
+//					mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(),
+//							(fadeFactor * 100 / 255) / 100f);
+//				}
+//			}
+//		}
+//
+//		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
+//			currentColor = mFemaleColor;
+//		} else {
+//			currentColor = mMaleColor;
+//		}
 
 	}
 

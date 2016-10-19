@@ -98,30 +98,32 @@ public class RightFootFX extends BodyPartFX {
 
 	@Override
 	public void update() {
-		if (mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
-			mColorRecorder = mColor;
-		if (mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-			if (mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
-																										// by
-																										// Robbie
-			{
-				int fadeFactor = mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep
-						* 12;
-				if (fadeFactor <= 24) {
-					fadeFactor = 0;
-				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-						(fadeFactor * 100 / 255) / 100f);
-			} else {
-				int fadeFactor = (20
-						- mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep)
-						* 12;
-				if (fadeFactor >= 216) {
-					mColor = mColorRecorder;
-				} else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-							(fadeFactor * 100 / 255) / 100f);
-			}
-		}
+		material.setDiffuseColor(mColor);
+		mRightFootMeshView.setMaterial(material);
+//		if (mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//			mColorRecorder = mColor;
+//		if (mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+//			if (mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
+//																										// by
+//																										// Robbie
+//			{
+//				int fadeFactor = mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep
+//						* 12;
+//				if (fadeFactor <= 24) {
+//					fadeFactor = 0;
+//				}
+//				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//						(fadeFactor * 100 / 255) / 100f);
+//			} else {
+//				int fadeFactor = (20
+//						- mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep)
+//						* 12;
+//				if (fadeFactor >= 216) {
+//					mColor = mColorRecorder;
+//				} else
+//					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//							(fadeFactor * 100 / 255) / 100f);
+//			}
+//		}
 	}
 }

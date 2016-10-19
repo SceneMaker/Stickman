@@ -172,6 +172,11 @@ public class RightEyebrowFX extends BodyPartFX {
 		else
 			mHeadFX.mHead.getChildren().set(4, currentPolygon);
 	}
+	
+	public void update()
+	{
+		currentPolygon.setFill(mColor);
+	}
 
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)

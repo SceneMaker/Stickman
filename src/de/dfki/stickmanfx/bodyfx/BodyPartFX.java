@@ -67,14 +67,14 @@ public abstract class BodyPartFX extends Pane {
 	public double mRotationStep = 0.0f;
 
 	public Color mColor = Color.rgb(0, 0, 0);
-	protected Color mColorRecorder = mColor;
+	public Color mColorRecorder;
 
 	public BasicStroke mStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 
 	public void init() {
 		this.setPrefHeight(mSize.height);
 		this.setPrefWidth(mSize.width);
-
+		mColorRecorder  = mColor;
 		calculate(0);
 	}
 

@@ -16,6 +16,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import de.dfki.stickman.Stickman;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MeshView;
@@ -35,18 +36,24 @@ public class NeckFX extends BodyPartFX {
 	URL url;
     ColModelImporter imorter;
     MeshView neckMeshView;
+    
+    PhongMaterial material;
 
 	public NeckFX(HeadFX head) {
 		mHeadFX = head;
 		mLength = 8;
+		mSize = new Dimension(4, mLength);
+		mColor = Color.rgb(242, 227, 217, 1);
+		
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
 		
 		url  = getClass().getClassLoader().getResource("BodyParts/neck.dae");
         imorter = new ColModelImporter();
         imorter.read(url);
         neckMeshView=  (MeshView) imorter.getImport()[0];
+        neckMeshView.setMaterial(material);
 		
-		mSize = new Dimension(4, mLength);
-		mColor = Color.rgb(80, 80, 80);
 		
 		init();
 	}
@@ -93,6 +100,12 @@ public class NeckFX extends BodyPartFX {
 		this.getChildren().add(neckMeshView);
 //		addToDrawObjects(mPath);
 //		this.update();
+	}
+	
+	public void update()
+	{
+		material.setDiffuseColor(mColor);
+		neckMeshView.setMaterial(material);
 	}
 	protected void recordColor(){
 		if(mHeadFX.mStickmanFX.setCharacterInvisible == false)

@@ -86,7 +86,6 @@ public class HeadFX extends BodyPartFX {
 
 		mYRotation = -0;
 		init();
-
 		calculate(0);
 	}
 
@@ -152,26 +151,28 @@ public class HeadFX extends BodyPartFX {
 	}
 
 	public void update() {
-		if (mStickmanFX.setCharacterInvisible == false)
-			mColorRecorder = mColor;
-
-		if (mStickmanFX.setCharacterInvisible == true) {
-			if (mStickmanFX.fadeControler == true) {
-
-				int fadeFactor = mStickmanFX.mMouthFX.mShapeAnimationStep * 10;
-				if (fadeFactor <= 20) {
-					fadeFactor = 0;
-				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-						(fadeFactor * 100 / 255) / 100f);
-			} else {
-				int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-				if (fadeFactor >= 160) {
-					mColor = mColorRecorder;
-				} else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-							(fadeFactor * 100 / 255) / 100f);
-			}
-		}
+		material.setDiffuseColor(mColor);
+		mHeadMeshView.setMaterial(material);
+//		if (mStickmanFX.setCharacterInvisible == false)
+//			mColorRecorder = mColor;
+//
+//		if (mStickmanFX.setCharacterInvisible == true) {
+//			if (mStickmanFX.fadeControler == true) {
+//
+//				int fadeFactor = mStickmanFX.mMouthFX.mShapeAnimationStep * 10;
+//				if (fadeFactor <= 20) {
+//					fadeFactor = 0;
+//				}
+//				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//						(fadeFactor * 100 / 255) / 100f);
+//			} else {
+//				int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
+//				if (fadeFactor >= 160) {
+//					mColor = mColorRecorder;
+//				} else
+//					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//							(fadeFactor * 100 / 255) / 100f);
+//			}
+//		}
 	}
 }

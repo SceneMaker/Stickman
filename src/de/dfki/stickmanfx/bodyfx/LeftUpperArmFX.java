@@ -119,6 +119,8 @@ public class LeftUpperArmFX extends BodyPartFX {
 
 	@Override
 	public void update() {
+		material.setDiffuseColor(mColor);
+		leftUpperArm.setMaterial(material);
 		// draw outlines
 //		if (mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
 //			mColorRecorder = mColor;

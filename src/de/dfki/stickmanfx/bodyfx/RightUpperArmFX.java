@@ -119,6 +119,8 @@ public class RightUpperArmFX extends BodyPartFX {
 
 	@Override
 	public void update() {
+		material.setDiffuseColor(mColor);
+		rightUpperArm.setMaterial(material);
 		// draw outlines
 //		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
 //			mColorRecorder = mColor;

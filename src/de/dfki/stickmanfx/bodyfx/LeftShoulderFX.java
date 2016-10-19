@@ -124,12 +124,12 @@ public class LeftShoulderFX extends BodyPartFX {
             }
         }
 
-        if(mBodyFX.currentColor != null) 
-        	//mShoulder.setStroke(mColor);
-        	mShoulder.setStroke(mBodyFX.currentColor);
-        mShoulder.setStrokeWidth(3);
-        mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
-        mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);
+//        if(mBodyFX.currentColor != null) 
+//        	//mShoulder.setStroke(mColor);
+//        	mShoulder.setStroke(mBodyFX.currentColor);
+//        mShoulder.setStrokeWidth(3);
+//        mShoulder.setStrokeLineCap(StrokeLineCap.ROUND);
+//        mShoulder.setStrokeLineJoin(StrokeLineJoin.ROUND);
 //		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 //
 //		g2.draw(mShoulder);

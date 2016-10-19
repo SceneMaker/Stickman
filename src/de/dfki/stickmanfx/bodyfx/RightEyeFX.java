@@ -59,9 +59,10 @@ public class RightEyeFX extends BodyPartFX {
 	public RightEyeFX(HeadFX head) {
 		mHeadFX = head;
 
-		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 22 : 0,
-				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 40 : 0,
-				mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
+		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mColor = Color.rgb(0, 0, 0, 1);
+		else
+			mColor = Color.rgb(0, 0, 255, 1);
 
 		init();
 	}
@@ -118,10 +119,7 @@ public class RightEyeFX extends BodyPartFX {
 			border.setStroke(Color.BLACK);
 			border.setFill(Color.WHITE);
 			
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLACK, null);
-			else
-				bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, Color.BLUE, null);
+			bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, mColor, null);
 			
 			smallPupile = createEllipsePath(0, 0, 1.4, 1.4, 0, Color.WHITE, null);
 			smallPupile.setStroke(null);
@@ -306,6 +304,10 @@ public class RightEyeFX extends BodyPartFX {
 			mHeadFX.mHead.getChildren().set(5, rightEyeGroup);
 	}
 
+	public void update()
+	{
+		bigPupile.setFill(mColor);
+	}
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;

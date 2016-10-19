@@ -111,27 +111,29 @@ public class LeftUpperLegFX extends BodyPartFX {
 
 	@Override
 	public void update() {
-		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
-			mColorRecorder = mColor;
-		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-			if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
-																			// by
-																			// Robbie
-			{
-				int fadeFactor = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-				if (fadeFactor <= 24) {
-					fadeFactor = 0;
-				}
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-						(fadeFactor * 100 / 255) / 100f);
-			} else {
-				int fadeFactor = (20 - mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-				if (fadeFactor >= 216) {
-					mColor = mColorRecorder;
-				} else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-							(fadeFactor * 100 / 255) / 100f);
-			}
-		}
+		material.setDiffuseColor(mColor);
+		leftUpperLeg.setMaterial(material);
+//		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//			mColorRecorder = mColor;
+//		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+//			if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
+//																			// by
+//																			// Robbie
+//			{
+//				int fadeFactor = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
+//				if (fadeFactor <= 24) {
+//					fadeFactor = 0;
+//				}
+//				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//						(fadeFactor * 100 / 255) / 100f);
+//			} else {
+//				int fadeFactor = (20 - mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
+//				if (fadeFactor >= 216) {
+//					mColor = mColorRecorder;
+//				} else
+//					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+//							(fadeFactor * 100 / 255) / 100f);
+//			}
+//		}
 	}
 }
