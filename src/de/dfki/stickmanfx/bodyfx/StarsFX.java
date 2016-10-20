@@ -24,10 +24,10 @@ public class StarsFX extends BodyPartFX
 		DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADEOUT, STARSFADEIN
 	};
 
-	BodyFX mBodyFX;
+	UpperBody mBodyFX;
 	public StarsFX.SHAPE mShape = StarsFX.SHAPE.DEFAULT;
 
-	public StarsFX(BodyFX body)
+	public StarsFX(UpperBody body)
 	{
 
 		mBodyFX = body;

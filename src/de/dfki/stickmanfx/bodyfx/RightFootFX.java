@@ -47,7 +47,7 @@ public class RightFootFX extends BodyPartFX {
 	public RightFootFX(RightForeLegFX rightForeLeg) {
 		mRightForeLegFX = rightForeLeg;
 		mLength = 20;
-		if(mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mColor = Color.rgb(80, 80, 80, 1);
 		else
 			mColor = Color.rgb(154, 83, 198, 1);
@@ -77,7 +77,7 @@ public class RightFootFX extends BodyPartFX {
 		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
-		if(mRightForeLegFX.mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			mRightFootMeshView.setTranslateX(mStart.x);
 			mRightFootMeshView.setTranslateY(mStart.y+40);

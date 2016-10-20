@@ -364,8 +364,8 @@ public class StickmanStageController {
     {
     	if(currentStickman != null)
     	{
-    		currentStickman.mBodyFX.mColor = bodyColorPicker.getValue();
-        	currentStickman.mBodyFX.update();
+    		currentStickman.mUpperBody.mColor = bodyColorPicker.getValue();
+        	currentStickman.mUpperBody.update();
     	}
     }
     
@@ -542,18 +542,18 @@ public class StickmanStageController {
     	{
     		if(ev.getSource().equals(bodyColorBrighter))
     		{
-    			currentStickman.mBodyFX.mColor = currentStickman.mBodyFX.mColor.brighter();
-        		currentStickman.mBodyFX.update();
+    			currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColor.brighter();
+        		currentStickman.mUpperBody.update();
     		}
     		else if(ev.getSource().equals(bodyColorDarker))
     		{
-    			currentStickman.mBodyFX.mColor = currentStickman.mBodyFX.mColor.darker();
-        		currentStickman.mBodyFX.update();
+    			currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColor.darker();
+        		currentStickman.mUpperBody.update();
     		}
     		else if(ev.getSource().equals(bodyColorReset))
     		{
-    			currentStickman.mBodyFX.mColor = currentStickman.mBodyFX.mColorRecorder;
-        		currentStickman.mBodyFX.update();
+    			currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColorRecorder;
+        		currentStickman.mUpperBody.update();
     		}
     	}
     }

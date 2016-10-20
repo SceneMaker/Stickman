@@ -41,7 +41,7 @@ import de.dfki.stickmanfx.animationlogic.AnimatorFX;
  */
 public class LeftUpperArmFX extends BodyPartFX {
 
-	BodyFX mBodyFX;
+	UpperBody mBodyFX;
 
 	int mArmLength = 70;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
@@ -52,7 +52,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 	Cylinder leftUpperArm;
 	Sphere leftUpperArmSphere;
 
-	public LeftUpperArmFX(BodyFX bodyFX) {
+	public LeftUpperArmFX(UpperBody bodyFX) {
 		mBodyFX = bodyFX;
 		
 		mColor = Color.rgb(242, 227, 217, 1);
@@ -79,7 +79,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 		leftUpperArmSphere.setTranslateY(39);
 		leftUpperArmGroup.getChildren().add(leftUpperArmSphere);
 		
-		mBodyFX.mBodyModel.getChildren().add(leftUpperArmGroup);
+		mBodyFX.mUpperBodyGroup.getChildren().add(leftUpperArmGroup);
 		
 		init();
 	}
@@ -95,14 +95,14 @@ public class LeftUpperArmFX extends BodyPartFX {
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			leftUpperArmGroup.setTranslateX(mStart.x);
-			leftUpperArmGroup.setTranslateY(mStart.y);
-			leftUpperArmGroup.setTranslateZ(-53);
+			leftUpperArmGroup.setTranslateY(mStart.y - 50);
+			leftUpperArmGroup.setTranslateZ(0);
 		}
 		else
 		{
 			leftUpperArmGroup.setTranslateX(mStart.x-10);
-			leftUpperArmGroup.setTranslateY(mStart.y - 14);
-			leftUpperArmGroup.setTranslateZ(-40);
+			leftUpperArmGroup.setTranslateY(mStart.y - 57);
+			leftUpperArmGroup.setTranslateZ(0);
 		}
 		leftUpperArmGroup.getTransforms().clear();
 		leftUpperArmGroup.getTransforms().addAll(rx, ry, rz);

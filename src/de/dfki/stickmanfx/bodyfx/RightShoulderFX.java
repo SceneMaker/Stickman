@@ -27,7 +27,7 @@ import javafx.scene.transform.Affine;
 public class RightShoulderFX extends BodyPartFX 
 {
 
-	BodyFX mBodyFX;
+	UpperBody mBodyFX;
 
 	int mShoulderLength = 15;
 	Dimension mSize = new Dimension(mShoulderLength, mShoulderLength);
@@ -37,7 +37,7 @@ public class RightShoulderFX extends BodyPartFX
 
 	Path mShoulder;
 
-	public RightShoulderFX(BodyFX body) {
+	public RightShoulderFX(UpperBody body) {
 		mBodyFX = body;
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
             mShoulderLength = 25;

@@ -27,7 +27,7 @@ import javafx.util.Duration;
  */
 public class LeftShoulderFX extends BodyPartFX {
 
-    BodyFX mBodyFX;
+    UpperBody mBodyFX;
 
     int mShoulderLength;
     Dimension mSize = new Dimension(mShoulderLength, mShoulderLength);
@@ -37,7 +37,7 @@ public class LeftShoulderFX extends BodyPartFX {
 
     Path mShoulder;
 
-    public LeftShoulderFX(BodyFX body) 
+    public LeftShoulderFX(UpperBody body) 
     {
         mBodyFX = body;
         if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)

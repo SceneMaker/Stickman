@@ -47,7 +47,7 @@ public class RightUpperArmFX extends BodyPartFX {
 	
 	RightShoulderFX mRightShoulderFX;
 
-	BodyFX mBodyFX;
+	UpperBody mBodyFX;
 
 	int mArmLength = 70;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
@@ -58,7 +58,7 @@ public class RightUpperArmFX extends BodyPartFX {
 	Cylinder rightUpperArm;
 	Sphere rightUpperArmSphere;
 
-	public RightUpperArmFX(BodyFX bodyFX) {
+	public RightUpperArmFX(UpperBody bodyFX) {
 		mBodyFX = bodyFX;
 		
 		mColor = Color.rgb(242, 227, 217, 1);
@@ -85,7 +85,7 @@ public class RightUpperArmFX extends BodyPartFX {
 		rightUpperArmSphere.setTranslateY(39);
 		rightUpperArmGroup.getChildren().add(rightUpperArmSphere);
 		
-		mBodyFX.mBodyModel.getChildren().add(rightUpperArmGroup);
+		mBodyFX.mUpperBodyGroup.getChildren().add(rightUpperArmGroup);
 		
 		init();
 
@@ -104,14 +104,14 @@ public class RightUpperArmFX extends BodyPartFX {
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			rightUpperArmGroup.setTranslateX(mStart.x);
-			rightUpperArmGroup.setTranslateY(mStart.y);
-			rightUpperArmGroup.setTranslateZ(-53);
+			rightUpperArmGroup.setTranslateY(mStart.y - 50);
+			rightUpperArmGroup.setTranslateZ(0);
 		}
 		else
 		{
 			rightUpperArmGroup.setTranslateX(mStart.x+10);
-			rightUpperArmGroup.setTranslateY(mStart.y - 14);
-			rightUpperArmGroup.setTranslateZ(-40);
+			rightUpperArmGroup.setTranslateY(mStart.y - 57);
+			rightUpperArmGroup.setTranslateZ(0);
 		}
 		rightUpperArmGroup.getTransforms().clear();
 		rightUpperArmGroup.getTransforms().addAll(rx, ry, rz);

@@ -39,7 +39,7 @@ import javafx.scene.transform.Translate;
  */
 public class RightUpperLegFX extends BodyPartFX {
 
-	BodyFX mBodyFX;
+	DownBody mDownBody;
 
 	PhongMaterial material;
 
@@ -47,9 +47,9 @@ public class RightUpperLegFX extends BodyPartFX {
 	Cylinder rightUpperLeg;
 	Sphere rightUpperLegSphere;
 
-	public RightUpperLegFX(BodyFX body) {
-		mBodyFX = body;
-		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+	public RightUpperLegFX(DownBody downBody) {
+		mDownBody = downBody;
+		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mLength = 60;
 		else
 			mLength = 51;
@@ -74,13 +74,13 @@ public class RightUpperLegFX extends BodyPartFX {
 		rightUpperLegGroup = new Group();
 		rightUpperLegGroup.setId("rightUpperLegGroup");
 		rightUpperLegGroup.getChildren().add(rightUpperLeg);
-		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			rightUpperLegSphere.setTranslateY(34);
 		else
 			rightUpperLegSphere.setTranslateY(28);
 		rightUpperLegGroup.getChildren().add(rightUpperLegSphere);
 		
-		mBodyFX.mBodyModel.getChildren().add(rightUpperLegGroup);
+		mDownBody.mDownBodyGroup.getChildren().add(rightUpperLegGroup);
 		
 		init();
 
@@ -88,23 +88,23 @@ public class RightUpperLegFX extends BodyPartFX {
 
 	@Override
 	public void calculate(int step) {
-		mStart = mBodyFX.getRightLegStartPostion();
+		mStart = mDownBody.mUpperBody.getRightLegStartPostion();
 		
 		Rotate rx = new Rotate(mXRotation, 0, -rightUpperLeg.getHeight()/2, 0, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, 0, -rightUpperLeg.getHeight()/2, 0, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, 0, -rightUpperLeg.getHeight()/2, 0, Rotate.Z_AXIS);
 		
-		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			rightUpperLegGroup.setTranslateX(mStart.x - 70);
-			rightUpperLegGroup.setTranslateY(mStart.y - 176);
-			rightUpperLegGroup.setTranslateZ(-53);
+			rightUpperLegGroup.setTranslateY(mStart.y - 225);
+			rightUpperLegGroup.setTranslateZ(0);
 		}
 		else
 		{
 			rightUpperLegGroup.setTranslateX(mStart.x-70);
-			rightUpperLegGroup.setTranslateY(mStart.y - 181);
-			rightUpperLegGroup.setTranslateZ(-40);
+			rightUpperLegGroup.setTranslateY(mStart.y - 225);
+			rightUpperLegGroup.setTranslateZ(0);
 		}
 		rightUpperLegGroup.getTransforms().clear();
 		rightUpperLegGroup.getTransforms().addAll(rx, ry, rz);

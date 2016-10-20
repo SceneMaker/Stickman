@@ -54,7 +54,7 @@ public class RightForeLegFX extends BodyPartFX {
 		mXRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mColor = Color.rgb(242, 227, 217, 1);
-		if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mLegLength = 90;
 		else
 			mLegLength = 80;
@@ -82,7 +82,7 @@ public class RightForeLegFX extends BodyPartFX {
 		Rotate ry = new Rotate(mYRotation, 0, -rightForeLeg.getHeight()/2, 0, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, 0, -rightForeLeg.getHeight()/2, 0, Rotate.Z_AXIS);
 		
-		if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			rightForeLegGroup.setTranslateX(mStart.x);
 			rightForeLegGroup.setTranslateY(mStart.y+81);
