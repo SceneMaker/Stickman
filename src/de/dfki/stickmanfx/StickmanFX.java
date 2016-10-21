@@ -3,7 +3,6 @@ package de.dfki.stickmanfx;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
@@ -64,8 +63,12 @@ import de.dfki.stickmanfx.bodyfx.ThinkFX;
 import de.dfki.stickmanfx.bodyfx.UpperBody;
 import de.dfki.stickmanfx.environmentfx.SpeechBubbleFX;
 import javafx.scene.control.Label;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.scene.transform.Affine;
 
 /**
@@ -97,7 +100,7 @@ public class StickmanFX extends Pane {
 	public boolean mShowName = true;
 	public float mGeneralXTranslation = 0;
 	public float mGeneralYTranslation = 0;
-	private Label nameLabel = new Label();
+	Text nameText = new Text();
 
 	// public static Dimension mDefaultSize = new Dimension(400, 400); // 400
 	public static Dimension mDefaultSize = new Dimension(300, 800); // 400
@@ -355,18 +358,21 @@ public class StickmanFX extends Pane {
 		this.setMinWidth(mSize.width);
 		// this.setStyle("-fx-border-color: black");
 
-		// font stuff
-		Map<TextAttribute, Object> map = new HashMap<>();
-		map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
-		map.put(TextAttribute.FAMILY, Font.SANS_SERIF);
-		// map.put(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
-		map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
-		map.put(TextAttribute.SIZE, 14);
+		InnerShadow is = new InnerShadow();
+		is.setOffsetX(4.0f);
+		is.setOffsetY(4.0f);
+		
+		nameText.setEffect(is);
+		nameText.setX(20);
+		nameText.setY(100);
+		nameText.setText(mName);
+		nameText.setFill(Color.YELLOW);
+		nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
 
-		// mFont = Font.getFont(map);
-		// mFontMetrics = getFontMetrics(mFont);
-		// setFont(mFont);
+		nameText.setTranslateX(20);
+		nameText.setTranslateY(400);
 
+		
 		ConsoleHandler ch = new ConsoleHandler();
 		ch.setFormatter(new StickmanLogFormatter());
 
@@ -379,13 +385,6 @@ public class StickmanFX extends Pane {
 //		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
 //		mIdleBehavior = new IdleBehavior(this, simplexNoise);
 		
-		if(mShowName)
-		{
-//			nameLabel.toFront();
-//			nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY()*21/20);
-			nameLabel.setText(mName);
-		}
-	
 	}
 
 	public void addListener(AnimationListener al) {
@@ -530,7 +529,7 @@ public class StickmanFX extends Pane {
 				mUpperBody, mDownBody, mLeftShoulderFX, /*mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX,*/ mRightShoulderFX,
 				mRightUpperArmFX, /*mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameLabel);
+				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameText);
 		
 	}
 

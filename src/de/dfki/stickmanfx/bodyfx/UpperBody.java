@@ -88,10 +88,15 @@ public class UpperBody extends BodyPartFX {
 		rx = new Rotate(mXRotation, Rotate.X_AXIS);
 
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-			ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+		{
+			rx = new Rotate(mXRotation, 0, 10, 0, Rotate.X_AXIS);
+		}
 		else
-			ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-
+		{
+			rx = new Rotate(mXRotation, Rotate.X_AXIS);
+		}
+		
+		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
 		mUpperBodyGroup.getTransforms().clear();
