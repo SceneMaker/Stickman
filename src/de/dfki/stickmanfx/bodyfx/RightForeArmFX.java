@@ -48,32 +48,38 @@ public class RightForeArmFX extends BodyPartFX
 	int mArmLength = 80;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
 	
+	URL url;
+	ColModelImporter imorter;
+	MeshView mRightForeArmMesh;
 	PhongMaterial material;
 
 	Group rightForeArmGroup;
-	Cylinder rightForeArm;
-
 
 	public RightForeArmFX(RightUpperArmFX arm) 
 	{
 		mUpperArmFX = arm;
+		
+		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, 1);
-		mDefaultRotation = -20;
-		mXRotation = -30;
-		mZRotation = -60;
+		
+		url = getClass().getClassLoader().getResource("BodyParts/ForeArm1.dae");
+		
+//		mDefaultRotation = -20;
+		mXRotation = -15;
+		mZRotation = -10;
 		mToDegree = mDefaultRotation;
 		
-		rightForeArm = new Cylinder(5, mArmLength);
+		imorter.read(url);
+		mRightForeArmMesh = (MeshView) imorter.getImport()[0];
+		
+		material = new PhongMaterial();
+		material.setDiffuseColor(mColor);
+		mRightForeArmMesh.setMaterial(material);
         
 		rightForeArmGroup = new Group();
 		rightForeArmGroup.setId("rightForeArmGroup");
-		rightForeArmGroup.getChildren().add(rightForeArm);
+		rightForeArmGroup.getChildren().add(mRightForeArmMesh);
         
-        material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
-		
-		rightForeArm.setMaterial(material);
-		
 		mUpperArmFX.rightUpperArmGroup.getChildren().add(rightForeArmGroup);
         
         init();
@@ -82,20 +88,20 @@ public class RightForeArmFX extends BodyPartFX
 	@Override
 	public void calculate(int step) 
 	{
-		Rotate rx = new Rotate(mXRotation, 0, -rightForeArm.getHeight()/2, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, -rightForeArm.getHeight()/2, 0, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, -rightForeArm.getHeight()/2, 0, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			rightForeArmGroup.setTranslateX(mStart.x);
-			rightForeArmGroup.setTranslateY(mStart.y+81);
+			rightForeArmGroup.setTranslateY(mStart.y+60);
 			rightForeArmGroup.setTranslateZ(0);
 		}
 		else
 		{
 			rightForeArmGroup.setTranslateX(mStart.x);
-			rightForeArmGroup.setTranslateY(mStart.y + 81);
+			rightForeArmGroup.setTranslateY(mStart.y + 60);
 			rightForeArmGroup.setTranslateZ(0);
 		}
 		
@@ -107,7 +113,7 @@ public class RightForeArmFX extends BodyPartFX
 	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
-		rightForeArm.setMaterial(material);
+		mRightForeArmMesh.setMaterial(material);
 //		this.toFront();
 ////		Color currentColor = Color.rgb(80, 80, 80);
 //		// draw outlines

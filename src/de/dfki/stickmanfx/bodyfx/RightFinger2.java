@@ -77,14 +77,14 @@ public class RightFinger2 extends BodyPartFX
 		
 		if(mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			rightFinger_2.setTranslateX(mStart.x + 8);
-			rightFinger_2.setTranslateY(mStart.y - 3);
+			rightFinger_2.setTranslateX(mStart.x + 6);
+			rightFinger_2.setTranslateY(mStart.y - 5);
 			rightFinger_2.setTranslateZ(0);
 		}
 		else
 		{
-			rightFinger_2.setTranslateX(mStart.x + 8);
-			rightFinger_2.setTranslateY(mStart.y - 3);
+			rightFinger_2.setTranslateX(mStart.x + 6);
+			rightFinger_2.setTranslateY(mStart.y - 5);
 			rightFinger_2.setTranslateZ(0);
 		}
 		

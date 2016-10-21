@@ -49,8 +49,10 @@ public class RightWrist extends BodyPartFX
     public RightWrist(RightForeArmFX rightForeArmFX) {
     	mRightForeArmFX = rightForeArmFX;
         mColor = Color.rgb(242, 227, 217, 1);
-        mDefaultRotation = -20;
+        
+//        mDefaultRotation = -20;
         mToDegree = mDefaultRotation;
+        mZRotation = 5;
         
         rightWrist = new Cylinder(9, 7);
         rightWristGroup = new Group();
@@ -82,14 +84,14 @@ public class RightWrist extends BodyPartFX
 		
 		if(mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			rightWristGroup.setTranslateX(mStart.x);
-			rightWristGroup.setTranslateY(mStart.y+47);
+			rightWristGroup.setTranslateX(mStart.x + 3);
+			rightWristGroup.setTranslateY(mStart.y+75);
 			rightWristGroup.setTranslateZ(0);
 		}
 		else
 		{
-			rightWristGroup.setTranslateX(mStart.x);
-			rightWristGroup.setTranslateY(mStart.y + 47);
+			rightWristGroup.setTranslateX(mStart.x + 3);
+			rightWristGroup.setTranslateY(mStart.y + 75);
 			rightWristGroup.setTranslateZ(0);
 		}
 		

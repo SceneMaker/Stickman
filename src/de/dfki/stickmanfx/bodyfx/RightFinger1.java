@@ -49,9 +49,9 @@ public class RightFinger1 extends BodyPartFX
     	mRightWrist = rightWrist;
         mColor = Color.rgb(242, 227, 217, 1);
         mDefaultRotation = -20;
-        mXRotation = -2;
-        mYRotation = 1;
-        mZRotation = -50;
+        mXRotation = 0;
+        mYRotation = 2;
+        mZRotation = -55;
         mToDegree = mDefaultRotation;
         
         rightFinger_1 = new Cylinder(3, 10);
@@ -76,13 +76,13 @@ public class RightFinger1 extends BodyPartFX
 		
 		if(mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			rightFinger_1.setTranslateX(mStart.x + 8);
-			rightFinger_1.setTranslateY(mStart.y);
+			rightFinger_1.setTranslateX(mStart.x + 7);
+			rightFinger_1.setTranslateY(mStart.y+2);
 			rightFinger_1.setTranslateZ(0);
 		}
 		else
 		{
-			rightFinger_1.setTranslateX(mStart.x + 8);
+			rightFinger_1.setTranslateX(mStart.x + 7);
 			rightFinger_1.setTranslateY(mStart.y);
 			rightFinger_1.setTranslateZ(0);
 		}

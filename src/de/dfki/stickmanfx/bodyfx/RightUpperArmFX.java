@@ -52,38 +52,39 @@ public class RightUpperArmFX extends BodyPartFX {
 	int mArmLength = 70;
 	Dimension mSize = new Dimension(mArmLength, mArmLength);
 
+	URL url;
+	ColModelImporter imorter;
+	MeshView mRightpperArmMesh;
 	PhongMaterial material;
 	
 	Group rightUpperArmGroup;
-	Cylinder rightUpperArm;
-	Sphere rightUpperArmSphere;
 
 	public RightUpperArmFX(UpperBody bodyFX) {
 		mBodyFX = bodyFX;
 		
+		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, 1);
+		
+		url = getClass().getClassLoader().getResource("BodyParts/UpperArm1.dae");
+		
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-			mDefaultRotation = 30;
+			mDefaultRotation = 10;
 		else
-			mDefaultRotation = 35;
+			mDefaultRotation = 15;
 		mZRotation = mDefaultRotation;
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 		
-		rightUpperArm = new Cylinder(5, mArmLength);
-		rightUpperArmSphere = new Sphere(6);
+		imorter.read(url);
+		mRightpperArmMesh = (MeshView) imorter.getImport()[0];
 		
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
-		
-		rightUpperArm.setMaterial(material);
-		rightUpperArmSphere.setMaterial(material);
+		mRightpperArmMesh.setMaterial(material);
 		
 		rightUpperArmGroup = new Group();
 		rightUpperArmGroup.setId("rightUpperArmGroup");
-		rightUpperArmGroup.getChildren().add(rightUpperArm);
-		rightUpperArmSphere.setTranslateY(39);
-		rightUpperArmGroup.getChildren().add(rightUpperArmSphere);
+		rightUpperArmGroup.getChildren().add(mRightpperArmMesh);
 		
 		mBodyFX.mUpperBodyGroup.getChildren().add(rightUpperArmGroup);
 		
@@ -97,20 +98,20 @@ public class RightUpperArmFX extends BodyPartFX {
 	{
 		mStart = mBodyFX.getRightArmStartPostion();
 		
-		Rotate rx = new Rotate(mXRotation, 0, -rightUpperArm.getHeight()/2, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, -rightUpperArm.getHeight()/2, 0, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, -rightUpperArm.getHeight()/2, 0, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			rightUpperArmGroup.setTranslateX(mStart.x);
-			rightUpperArmGroup.setTranslateY(mStart.y - 50);
+			rightUpperArmGroup.setTranslateY(mStart.y - 85);
 			rightUpperArmGroup.setTranslateZ(0);
 		}
 		else
 		{
 			rightUpperArmGroup.setTranslateX(mStart.x+10);
-			rightUpperArmGroup.setTranslateY(mStart.y - 57);
+			rightUpperArmGroup.setTranslateY(mStart.y - 90);
 			rightUpperArmGroup.setTranslateZ(0);
 		}
 		rightUpperArmGroup.getTransforms().clear();
@@ -120,7 +121,7 @@ public class RightUpperArmFX extends BodyPartFX {
 	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
-		rightUpperArm.setMaterial(material);
+		mRightpperArmMesh.setMaterial(material);
 		// draw outlines
 //		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
 //			mColorRecorder = mColor;
