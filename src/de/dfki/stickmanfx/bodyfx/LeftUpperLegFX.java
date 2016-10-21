@@ -40,20 +40,28 @@ import javafx.scene.transform.Translate;
 public class LeftUpperLegFX extends BodyPartFX {
 	DownBody mDownBody;
 
+	URL url;
+	ColModelImporter imorter;
+	MeshView mLeftUpperLegMesh;
 	PhongMaterial material;
 
 	Group leftUpperLegGroup;
-	Cylinder leftUpperLeg;
-	Sphere leftUpperLegSphere;
 
 	public LeftUpperLegFX(DownBody downBody) {
 		mDownBody = downBody;
 		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		{
 			mLength = 60;
+			url = getClass().getClassLoader().getResource("BodyParts/MaleUpperLeg.dae");
+		}
 		else
+		{
 			mLength = 50;
-		mSize = new Dimension(10, mLength);
+			url = getClass().getClassLoader().getResource("BodyParts/FemaleUpperLeg.dae");
+		}
 		
+		imorter = new ColModelImporter();
+		mSize = new Dimension(10, mLength);
 		mColor = Color.rgb(242, 227, 217, 1);
 
 		mDefaultRotation = 0;
@@ -61,23 +69,16 @@ public class LeftUpperLegFX extends BodyPartFX {
 		mToDegree = mDefaultRotation;
 		mRotationStep = 0.0f;
 		
-		leftUpperLeg = new Cylinder(7, mLength);
-		leftUpperLegSphere = new Sphere(8);
+		imorter.read(url);
+		mLeftUpperLegMesh = (MeshView) imorter.getImport()[0];
 		
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
-		
-		leftUpperLeg.setMaterial(material);
-		leftUpperLegSphere.setMaterial(material);
+		mLeftUpperLegMesh.setMaterial(material);
 		
 		leftUpperLegGroup = new Group();
 		leftUpperLegGroup.setId("leftUpperLegGroup");
-		leftUpperLegGroup.getChildren().add(leftUpperLeg);
-		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-			leftUpperLegSphere.setTranslateY(34);
-		else
-			leftUpperLegSphere.setTranslateY(28);
-		leftUpperLegGroup.getChildren().add(leftUpperLegSphere);
+		leftUpperLegGroup.getChildren().add(mLeftUpperLegMesh);
 		
 		mDownBody.mDownBodyGroup.getChildren().add(leftUpperLegGroup);
 		
@@ -89,20 +90,20 @@ public class LeftUpperLegFX extends BodyPartFX {
 	public void calculate(int step) {
 		mStart = mDownBody.mUpperBody.getLeftLegStartPostion();
 		
-		Rotate rx = new Rotate(mXRotation, 0, -leftUpperLeg.getHeight()/2, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, -leftUpperLeg.getHeight()/2, 0, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, -leftUpperLeg.getHeight()/2, 0, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			leftUpperLegGroup.setTranslateX(mStart.x - 58);
-			leftUpperLegGroup.setTranslateY(mStart.y - 225);
+			leftUpperLegGroup.setTranslateY(mStart.y - 256);
 			leftUpperLegGroup.setTranslateZ(0);
 		}
 		else
 		{
 			leftUpperLegGroup.setTranslateX(mStart.x-60);
-			leftUpperLegGroup.setTranslateY(mStart.y - 225);
+			leftUpperLegGroup.setTranslateY(mStart.y - 243);
 			leftUpperLegGroup.setTranslateZ(0);
 		}
 		leftUpperLegGroup.getTransforms().clear();
@@ -112,7 +113,7 @@ public class LeftUpperLegFX extends BodyPartFX {
 	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
-		leftUpperLeg.setMaterial(material);
+		mLeftUpperLegMesh.setMaterial(material);
 //		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
 //			mColorRecorder = mColor;
 //		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {

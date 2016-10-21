@@ -53,7 +53,7 @@ public class RightFootFX extends BodyPartFX {
 			mColor = Color.rgb(154, 83, 198, 1);
 		setDefaulRotation(0);
 		mYRotation = 130;
-		mXRotation = 10;
+		mXRotation = 0;
 
 		url = getClass().getClassLoader().getResource("BodyParts/foot.dae");
 		im = new ColModelImporter();
@@ -80,13 +80,13 @@ public class RightFootFX extends BodyPartFX {
 		if(mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			mRightFootMeshView.setTranslateX(mStart.x);
-			mRightFootMeshView.setTranslateY(mStart.y+40);
+			mRightFootMeshView.setTranslateY(mStart.y+90);
 			mRightFootMeshView.setTranslateZ(0);
 		}
 		else
 		{
 			mRightFootMeshView.setTranslateX(mStart.x);
-			mRightFootMeshView.setTranslateY(mStart.y + 36);
+			mRightFootMeshView.setTranslateY(mStart.y + 80);
 			mRightFootMeshView.setTranslateZ(0);
 		}
 		
