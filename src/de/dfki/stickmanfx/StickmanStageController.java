@@ -146,6 +146,7 @@ public class StickmanStageController {
     private Button browColorDarker;
     
     private StickmanFX currentStickman;
+    public static RadioButton currentEmotionRadioButton;
     
     
     
@@ -159,7 +160,6 @@ public class StickmanStageController {
         //Default show
         handleStickman();
             
-        
       //Select a stickman
         StickmanComboBox.setOnAction((event) -> 
         {
@@ -168,21 +168,6 @@ public class StickmanStageController {
         });
         
         fillEmotionExpressions();
-      //Show emotion
-//        EmotionExpressionComboBox.setOnAction((event) -> 
-//        {
-//            String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
-//            if ((mEmotion != null)&&(mStickmancombobox != null)){
-//            Platform.runLater(() -> 
-//            {
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
-//            	EmotionExpressionComboBox.getSelectionModel().clearSelection();
-////            	ShowEmotionName.setText(mEmotion);
-//            }
-//            );
-//            }
-//        });
-
         
         // set the color to default value
 //        RestButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -769,6 +754,7 @@ public class StickmanStageController {
     		
     		button.setOnAction((event) -> 
     		{
+    			currentEmotionRadioButton = (RadioButton) event.getSource();
     			currentStickman.doAnimation(button.getText(), 70, true);
     		});
     		if(i % 3 == 2)
@@ -782,7 +768,6 @@ public class StickmanStageController {
     			emotionsGridPane.add(button, startIndex, endIndex);
     			startIndex++;
     		}
-    		
     	}
     }
     

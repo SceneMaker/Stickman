@@ -5,6 +5,7 @@ import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.util.TimingInfo;
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.stickmanfx.bodyfx.BodyPartFX;
 import java.util.ArrayList;
@@ -129,7 +130,7 @@ public class AnimatorFX
     }
 
     private void render() 
-    {System.out.println("dssdsd");
+    {
         mCurrentStep = sMAX_ANIM_STEPS;
         while (mCurrentStep > 0) 
         {
