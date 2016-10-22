@@ -1,51 +1,29 @@
 package de.dfki.stickmanfx;
 
-import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import de.dfki.stickman.*;
 
-import de.dfki.stickmanfx.bodyfx.BodyFX;
-import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
-import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
-import de.dfki.stickmanfx.bodyfx.HeadFX;
-import de.dfki.stickmanfx.bodyfx.LeftEyeFX;
-import de.dfki.stickmanfx.bodyfx.LeftEyebrowFX;
-import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
-import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
-import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
-import de.dfki.stickmanfx.bodyfx.MaleHairFX;
-import de.dfki.stickmanfx.bodyfx.MouthFX;
-import de.dfki.stickmanfx.bodyfx.NeckFX;
-import de.dfki.stickmanfx.bodyfx.RightEyeFX;
-import de.dfki.stickmanfx.bodyfx.RightEyebrowFX;
-import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
-import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
-import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -114,6 +92,9 @@ public class StickmanStageController {
     @FXML
     private ColorPicker browColorPicker;
     
+    @FXML
+    ScrollPane emotionsScrollPane;
+    
     
     @FXML
     private Button headColorReset;
@@ -178,84 +159,30 @@ public class StickmanStageController {
         //Default show
         handleStickman();
             
-        fillComboForEmotionExpression();
         
       //Select a stickman
         StickmanComboBox.setOnAction((event) -> 
         {
         	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();  
         	currentStickman = mStickmanstage.getStickmanFX(mStickmancombobox);
-        	// set the setValue of combobox
-//        	setComboboxValue(mStickmanstage.getStickmanFX(mStickmancombobox));
         });
         
+        fillEmotionExpressions();
       //Show emotion
-        EmotionExpressionComboBox.setOnAction((event) -> 
-        {
-            String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
-            
-            if ((mEmotion != null)&&(mStickmancombobox != null)){
-            Platform.runLater(() -> 
-            {
-            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
-            	EmotionExpressionComboBox.getSelectionModel().clearSelection();
-//            	ShowEmotionName.setText(mEmotion);
-            }
-            );
-            }
-        });
-
-        //change bodyColor
-//        BodyComboBoxColor.setOnAction((event) -> 
+//        EmotionExpressionComboBox.setOnAction((event) -> 
 //        {
-//            String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
-//            if ((color != null)&&(mStickmancombobox != null)){
+//            String mEmotion = EmotionExpressionComboBox.getSelectionModel().getSelectedItem();
+//            if ((mEmotion != null)&&(mStickmancombobox != null)){
 //            Platform.runLater(() -> 
 //            {
-//            	if(mStickmanstage.getStickmanFX(mStickmancombobox).mType == StickmanFX.TYPE.MALE)
-//                    {
-//                    	mStickmanstage.getStickmanFX(mStickmancombobox).mBodyFX.mMaleColor = switchColor(color);
-//                    	mStickmanstage.getStickmanFX(mStickmancombobox).update();
-//                    }
-//                    else
-//                    {
-//                    	mStickmanstage.getStickmanFX(mStickmancombobox).mBodyFX.mFemaleColor = switchColor(color); 
-//                    	mStickmanstage.getStickmanFX(mStickmancombobox).update();
-//                    }
-//            });
+//            	mStickmanstage.getStickmanFX(mStickmancombobox).doAnimation(mEmotion, 70, true);
+//            	EmotionExpressionComboBox.getSelectionModel().clearSelection();
+////            	ShowEmotionName.setText(mEmotion);
 //            }
-//            
+//            );
+//            }
 //        });
-        
-        
-      //change limbs Color
-//        LimbsComboBoxColor.setOnAction((event) -> 
-//        {
-//            String color = LimbsComboBoxColor.getSelectionModel().getSelectedItem();
-//            if ((color != null)&&(mStickmancombobox != null)){
-//            Platform.runLater(() -> 
-//            {
-//            	//mStickmanstage.getStickmanFX(mStickmancombobox).mLeftLegFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftUpperLegFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftForeLegFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftFootFX.mColor = switchColor(color);
-////            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightLegFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightUpperLegFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightForeLegFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightFootFX.mColor = switchColor(color);
-////            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftHandFX.mColor = switchColor(color);
-////            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightHandFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftShoulderFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightShoulderFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftUpperArmFX.mColor = switchColor(color);        	
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mLeftForeArmFX.mColor = switchColor(color);           	
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightUpperArmFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mRightForeArmFX.mColor = switchColor(color);
-//            	mStickmanstage.getStickmanFX(mStickmancombobox).mNeckFX.mColor = switchColor(color);
-//                mStickmanstage.getStickmanFX(mStickmancombobox).update();
-//            });
-//            }         
-//        });
+
         
         // set the color to default value
 //        RestButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -309,25 +236,17 @@ public class StickmanStageController {
 //            }
 //        });
 //        
-//        ExitButton.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//            	Stage stage = (Stage) ExitButton.getScene().getWindow();
-//                stage.close();
-//                System.exit(0);
-//            }
-//        }); 
-//        
+        ExitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	Stage stage = (Stage) ExitButton.getScene().getWindow();
+                stage.close();
+                System.exit(0);
+            }
+        }); 
+
 //        handlePerlinNoise();
         
-//        headColorPicker.setOnAction(new EventHandler() {
-//         
-//			@Override
-//			public void handle(Event event) {
-//				handleHeadColor();
-//				
-//			}
-//        });
 
     }    
     
@@ -817,14 +736,54 @@ public class StickmanStageController {
     	fillComboForStickman();
     	
     }
-    private void fillComboForEmotionExpression()
+    private void fillEmotionExpressions()
     {
     	ArrayList<String> getClassesNames;
-    	StickmanFillCombo mStickmanFillCombo = new StickmanFillCombo(packEmotionExpression);
-    	getClassesNames = mStickmanFillCombo.getComboList();
+    	EmotionExpressionParser parser = new EmotionExpressionParser(packEmotionExpression);
+    	getClassesNames = parser.getEmotionList();
     	ObservableList<String> classNames = FXCollections.observableArrayList();
     	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
-    	EmotionExpressionComboBox.getItems().addAll(classNames);
+
+    	createAndHandleEmotionsRadioButtons(getClassesNames);
+    }
+    
+    private void createAndHandleEmotionsRadioButtons(ArrayList<String> getClassesNames)
+    {
+    	GridPane emotionsGridPane = new GridPane();
+    	emotionsScrollPane.setContent(emotionsGridPane);
+    	ToggleGroup toggleGroup = new ToggleGroup();
+    	
+    	int startIndex = 0;
+    	int endIndex = 0;
+    	
+    	emotionsGridPane.setHgap(10);
+    	emotionsGridPane.setVgap(10);
+    	emotionsGridPane.setPadding(new Insets(10, 10, 10, 10));
+    	
+    	for(int i = 0; i<getClassesNames.size(); i++)
+    	{
+    		RadioButton button = new RadioButton(getClassesNames.get(i));
+    		button.setToggleGroup(toggleGroup);
+    		button.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
+    		button.setFont(Font.font("Arial", 15));
+    		
+    		button.setOnAction((event) -> 
+    		{
+    			currentStickman.doAnimation(button.getText(), 70, true);
+    		});
+    		if(i % 3 == 2)
+    		{
+    			emotionsGridPane.add(button, startIndex, endIndex);
+    			endIndex++;
+    			startIndex=0;
+    		}
+    		else
+    		{
+    			emotionsGridPane.add(button, startIndex, endIndex);
+    			startIndex++;
+    		}
+    		
+    	}
     }
     
     private void fillComboForStickman()

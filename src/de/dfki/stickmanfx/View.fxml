@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -142,13 +143,9 @@
                   </content>
                 </Tab>
                 <Tab closable="false" text="Emotion">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ComboBox fx:id="EmotionExpressionComboBox" layoutX="14.0" layoutY="14.0" prefWidth="150.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
+                     <content>
+                        <ScrollPane fx:id="emotionsScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
                 </Tab>
                   <Tab closable="false" text="Posture">
                      <content>

@@ -11,15 +11,15 @@ import java.util.Enumeration;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 
-public class StickmanFillCombo
+public class EmotionExpressionParser
 {
 
-	ArrayList<String> mComboList = new ArrayList<>();
+	ArrayList<String> emotionList = new ArrayList<>();
 	String packName = "de.dfki.stickmanfx.animation.facefx";
 	String packDir;
 	Enumeration<URL> dir;
 
-	public StickmanFillCombo(String packName)
+	public EmotionExpressionParser(String packName)
 	{
 		this.packName = packName;
 		ScanPackage();
@@ -85,7 +85,7 @@ public class StickmanFillCombo
 						}
 
 						if (class1 != null && class1.mAnimType == ANIMTYPE.EmotionExpression)
-							mComboList.add(className);
+							emotionList.add(className);
 					} catch (Exception e)
 					{
 //						e.printStackTrace();
@@ -96,8 +96,9 @@ public class StickmanFillCombo
 		}
 	}
 
-	public ArrayList getComboList()
+	public ArrayList getEmotionList()
 	{
-		return mComboList;
+		System.out.println(emotionList);
+		return emotionList;
 	}
 }

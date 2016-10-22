@@ -129,7 +129,7 @@ public class AnimatorFX
     }
 
     private void render() 
-    {
+    {System.out.println("dssdsd");
         mCurrentStep = sMAX_ANIM_STEPS;
         while (mCurrentStep > 0) 
         {
