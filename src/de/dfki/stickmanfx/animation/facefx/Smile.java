@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx.animation.facefx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import java.util.ArrayList;
@@ -25,12 +26,14 @@ public class Smile extends AnimationFX {
         // smile
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
-        playAnimationPart(mDuration);
+        playAnimationPart(500);
         pauseAnimation(1200);
 
         // no smile
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        playAnimationPart(20);
+        playAnimationPart(500);
+        
+        StickmanStageController.currentEmotionRadioButton.setSelected(false);
     }
 }

@@ -6,6 +6,7 @@
 package de.dfki.stickmanfx.animation.facefx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Sad extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SAD"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTED"));  // add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTED")); // add by Robbie
-        playAnimationPart(mDuration);
+        playAnimationPart(500);
 
         pauseAnimation(1200);
 
@@ -41,6 +42,8 @@ public class Sad extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SADEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTEDEND"));  // add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTEDEND")); // add by Robbie
-        playAnimationPart(20);
+        playAnimationPart(500);
+        
+        StickmanStageController.currentEmotionRadioButton.setSelected(false);
     }
 }

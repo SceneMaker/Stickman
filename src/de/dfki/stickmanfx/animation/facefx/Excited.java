@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx.animation.facefx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Excited extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITED"));
-        playAnimationPart(mDuration);
+        playAnimationPart(500);
 
         pauseAnimation(1200);
 
@@ -40,6 +41,8 @@ public class Excited extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
-        playAnimationPart(20);
+        playAnimationPart(500);
+        
+        StickmanStageController.currentEmotionRadioButton.setSelected(false);
     }
 }

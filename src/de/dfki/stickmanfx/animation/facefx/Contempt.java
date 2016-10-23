@@ -6,6 +6,7 @@
 package de.dfki.stickmanfx.animation.facefx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import java.util.ArrayList;
@@ -42,5 +43,7 @@ public class Contempt extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
         playAnimationPart(500);
+        
+        StickmanStageController.currentEmotionRadioButton.setSelected(false);
     }
 }

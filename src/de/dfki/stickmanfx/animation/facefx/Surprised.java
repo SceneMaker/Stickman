@@ -6,6 +6,7 @@
 package de.dfki.stickmanfx.animation.facefx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class Surprised extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SURPRISED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "SURPRISED"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SURPRISED"));
-        playAnimationPart(mDuration);
+        playAnimationPart(500);
         pauseAnimation(1200);
 
         // no surprised
@@ -45,6 +46,8 @@ public class Surprised extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SURPRISEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "SURPRISEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SURPRISEDEND"));
-        playAnimationPart(20);
+        playAnimationPart(500);
+        
+        StickmanStageController.currentEmotionRadioButton.setSelected(false);
     }
 }
