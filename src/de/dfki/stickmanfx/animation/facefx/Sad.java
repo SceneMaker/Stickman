@@ -31,8 +31,8 @@ public class Sad extends AnimationFX {
         // sad
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SAD"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTED"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTED")); // add by Robbie
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SAD"));  // add by Robbie
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SAD")); // add by Robbie
         playAnimationPart(500);
 
         pauseAnimation(1200);
@@ -40,8 +40,8 @@ public class Sad extends AnimationFX {
         // no sad
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SADEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTEDEND"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTEDEND")); // add by Robbie
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND"));  // add by Robbie
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add by Robbie
         playAnimationPart(500);
         
         StickmanStageController.currentEmotionRadioButton.setSelected(false);
