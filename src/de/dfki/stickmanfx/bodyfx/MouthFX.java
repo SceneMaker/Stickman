@@ -4,6 +4,7 @@ import de.dfki.stickman.animation.face.Mouth_THREE;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
+import de.dfki.stickmanfx.mimic.util.MouthANGRYSMALLMOUTH;
 import de.dfki.stickmanfx.mimic.util.MouthCONTEMPT;
 import de.dfki.stickmanfx.mimic.util.MouthDISGUSTED;
 import de.dfki.stickmanfx.mimic.util.MouthEMBARRASSED;
@@ -129,6 +130,14 @@ public class MouthFX extends BodyPartFX {
 		case ANGRYEND:
 			currentUpperLipMesh = MouthANGRY.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
 			currentDownLipMesh = MouthANGRY.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			break;
+		case ANGRYSMALLMOUTH:
+			currentUpperLipMesh = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
+			currentDownLipMesh = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			break;
+		case ANGRYSMALLMOUTHEND:
+			currentUpperLipMesh = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
+			currentDownLipMesh = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
 			break;
 		case SURPRISED:
 			currentUpperLipMesh = MouthSURPRISED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
