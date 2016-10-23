@@ -120,11 +120,11 @@ public class StickmanStageFX extends Application implements StageStickman {
 	    // stickamnsOnStage.getStickman("Bob").doAnimation("Embarrassed",
 	    // 1000, false);
 	    if (mouseEvent.getButton().equals(MouseButton.SECONDARY)) {
-		stickamnsOnStage.getStickman("Bob").doAnimation("MoveUp", 1000, true);
+		stickamnsOnStage.getStickman("Bob").doAnimation("MoveRight", 1000, true);
 		stickamnsOnStage.getStickman("Bob").doAnimation("ZoomOut", 1000, true);
 	    } else {
 		stickamnsOnStage.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
-		stickamnsOnStage.getStickman("Bob").doAnimation("MoveDown", 1000, true);
+		stickamnsOnStage.getStickman("Bob").doAnimation("MoveLeft", 1000, true);
 	    }
 	}
     };
