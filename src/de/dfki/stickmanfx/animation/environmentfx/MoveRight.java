@@ -14,20 +14,20 @@ import javafx.application.Platform;
  * @author Robbie
  *This is used when ZoomIn is used to only show a head of the stickman
  */
-public class MoveUp extends AnimationFX {
+public class MoveRight extends AnimationFX {
 
     private StickmanFX mStickmanFX;
 
-    public MoveUp(StickmanFX sm, int duration, boolean block) {
+    public MoveRight(StickmanFX sm, int duration, boolean block) {
 	super(sm, duration, block);
 	mStickmanFX = sm;
     }
 
     @Override
     public void playAnimation() {
-	int speed = 4;
+	int speed = -4;
 	//distance to move up
-	mStickmanFX.leaveSpeed = 64;
+	mStickmanFX.leftSpeed = -64;
 	
 	// Move up slowly
 	for (int i = 0; i < 16; i++) {
@@ -37,10 +37,10 @@ public class MoveUp extends AnimationFX {
     }
 
     private void playMoveSpeed(int Speed) {
-	if (mStickmanFX.leaveSpeed > 0) {
-	    mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed - Speed;
+	if (mStickmanFX.leftSpeed < 0) {
+	    mStickmanFX.leftSpeed = mStickmanFX.leftSpeed - Speed;
 	} else {
-	    mStickmanFX.leaveSpeed = 0;
+	    mStickmanFX.leftSpeed = 0;
 	}
 	Platform.runLater(() -> mStickmanFX.update());
     }
