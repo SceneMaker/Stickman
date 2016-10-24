@@ -146,7 +146,7 @@ public class AnimatorFX
                     String paramString = comp.mParamString;
                     if (action.equalsIgnoreCase("rotate")) 
                     {
-                        bodypartFX.setRotation(param);
+                        bodypartFX.set_X_Rotation(param);
                     }
                     if(action.equalsIgnoreCase("yRotate"))
                     {
@@ -180,7 +180,7 @@ public class AnimatorFX
 
                     if (action.equalsIgnoreCase("rotate")) 
                     {
-                        bodypartFX.calculateRotation(mCurrentStep);
+                        bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
                     if (action.equalsIgnoreCase("yrotate")) 
                     {
@@ -192,7 +192,7 @@ public class AnimatorFX
                     }
                     if (action.equalsIgnoreCase("tilt")) 
                     {
-                        bodypartFX.calculateRotation(mCurrentStep);
+                        bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
 
                     if (action.equalsIgnoreCase("translate")) 
@@ -281,7 +281,7 @@ public class AnimatorFX
                     String paramString = comp.mParamString;
                     if (action.equalsIgnoreCase("rotate")) 
                     {
-                        bodypartFX.setRotation(param);
+                        bodypartFX.set_X_Rotation(param);
                     }
                     if(action.equalsIgnoreCase("yRotate"))
                     {
@@ -315,7 +315,7 @@ public class AnimatorFX
 
                     if (action.equalsIgnoreCase("rotate")) 
                     {
-                        bodypartFX.calculateRotation(mCurrentStep);
+                        bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
                     if (action.equalsIgnoreCase("yrotate")) 
                     {
@@ -327,7 +327,7 @@ public class AnimatorFX
                     }
                     if (action.equalsIgnoreCase("tilt")) 
                     {
-                        bodypartFX.calculateRotation(mCurrentStep);
+                        bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
 
                     if (action.equalsIgnoreCase("translate")) 

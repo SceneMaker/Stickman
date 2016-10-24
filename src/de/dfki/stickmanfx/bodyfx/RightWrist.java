@@ -41,33 +41,37 @@ public class RightWrist extends BodyPartFX
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
+    URL url;
+	ColModelImporter imorter;
+	MeshView mRightWristMesh;
     PhongMaterial material;
 
 	Group rightWristGroup;
-	Cylinder rightWrist;
 
     public RightWrist(RightForeArmFX rightForeArmFX) {
     	mRightForeArmFX = rightForeArmFX;
+    	
+    	imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
         
+        url = getClass().getClassLoader().getResource("BodyParts/RightWrist.dae");
+        
 //        mDefaultRotation = -20;
-        mToDegree = mDefaultRotation;
-        mZRotation = 5;
+        mToDegreeX = mDefaultRotation;
+        mZRotation = 0;
         
-        rightWrist = new Cylinder(9, 7);
-        rightWristGroup = new Group();
-        rightWristGroup.setId("LeftWrist");
-        
-        rightWristGroup.getChildren().add(rightWrist);
+        imorter.read(url);
+        mRightWristMesh = (MeshView) imorter.getImport()[0];
         
         material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
-		
-		rightWrist.setMaterial(material);
-		
-		rightWrist.setRotationAxis(Rotate.X_AXIS);
-		rightWrist.setRotate(90);
-		
+		mRightWristMesh.setMaterial(material);
+        
+        rightWristGroup = new Group();
+        rightWristGroup.setId("RightWrist");
+        
+        rightWristGroup.getChildren().add(mRightWristMesh);
+        
 		mRightForeArmFX.rightForeArmGroup.getChildren().add(rightWristGroup);
 		
 		
@@ -78,20 +82,20 @@ public class RightWrist extends BodyPartFX
     @Override
     public void calculate(int step) 
     {
-    	Rotate rx = new Rotate(mXRotation, 0, -rightWrist.getHeight(), 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, -rightWrist.getHeight(), 0, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, -rightWrist.getHeight(), 0, Rotate.Z_AXIS);
+    	Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			rightWristGroup.setTranslateX(mStart.x + 3);
-			rightWristGroup.setTranslateY(mStart.y+75);
+			rightWristGroup.setTranslateX(mStart.x);
+			rightWristGroup.setTranslateY(mStart.y+70);
 			rightWristGroup.setTranslateZ(0);
 		}
 		else
 		{
-			rightWristGroup.setTranslateX(mStart.x + 3);
-			rightWristGroup.setTranslateY(mStart.y + 75);
+			rightWristGroup.setTranslateX(mStart.x);
+			rightWristGroup.setTranslateY(mStart.y + 70);
 			rightWristGroup.setTranslateZ(0);
 		}
 		
@@ -103,7 +107,7 @@ public class RightWrist extends BodyPartFX
     @Override
     public void update() {
     	material.setDiffuseColor(mColor);
-		rightWrist.setMaterial(material);
+    	mRightWristMesh.setMaterial(material);
 //        Color currentColor = Color.rgb(80, 80, 80);
         // draw outlines
 //    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {

@@ -47,8 +47,8 @@ public class RightShoulderFX extends BodyPartFX
 
 		mDefaultRotation = 70;
 		mXRotation = mDefaultRotation;
-		mToDegree = mDefaultRotation;
-		mRotationStep = 0.0f;
+		mToDegreeX = mDefaultRotation;
+		mXRotationStep = 0.0f;
 		mShoulder = new Path();
 		this.getChildren().add(mShoulder);
 		init();

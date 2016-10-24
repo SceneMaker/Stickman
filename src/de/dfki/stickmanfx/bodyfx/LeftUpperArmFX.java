@@ -48,8 +48,8 @@ public class LeftUpperArmFX extends BodyPartFX {
 		else
 			mDefaultRotation = -15;
 		mZRotation = mDefaultRotation;
-		mToDegree = mDefaultRotation;
-		mRotationStep = 0.0f;
+		mToDegreeX = mDefaultRotation;
+		mXRotationStep = 0.0f;
 
 		imorter.read(url);
 		mLeftUpperArmMesh = (MeshView) imorter.getImport()[0];

@@ -60,11 +60,16 @@ public abstract class BodyPartFX extends Pane {
 
 	public int mDefaultRotation = 0;
 	public Point mDefaultRotationPoint = new Point(0, 0);
+	
 	public double mXRotation = mDefaultRotation;
 	public double mYRotation = mDefaultRotation;
 	public double mZRotation = mDefaultRotation;
-	public double mToDegree = mDefaultRotation;
-	public double mRotationStep = 0.0f;
+	public double mToDegreeX = mDefaultRotation;
+	public double mToDegreeY = mDefaultRotation;
+	public double mToDegreeZ = mDefaultRotation;
+	public double mXRotationStep = 0.0f;
+	public double mYRotationStep = 0.0f;
+	public double mZRotationStep = 0.0f;
 
 	public Color mColor = Color.rgb(0, 0, 0);
 	public Color mColorRecorder;
@@ -97,50 +102,51 @@ public abstract class BodyPartFX extends Pane {
 	public void setDefaulRotation(int degree) {
 		mDefaultRotation = degree;
 		mXRotation = mDefaultRotation;
-
 		mYRotation = mDefaultRotation;
 		mZRotation = mDefaultRotation;
 
-		mToDegree = mDefaultRotation;
-		mRotationStep = 0.0f;
+		mToDegreeX = mDefaultRotation;
+		mToDegreeY = mDefaultRotation;
+		mToDegreeZ = mDefaultRotation;
+		mXRotationStep = 0.0f;
 	}
 
-	public void setRotation(int degree) {
-		mToDegree = mXRotation + degree;
-		mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+	public void set_X_Rotation(int degree) {
+		mToDegreeX = mXRotation + degree;
+		mXRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
 	}
 
 	public void set_Y_Rotation(int degree) {
-		mToDegree = mYRotation + degree;
-		mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mToDegreeY = mYRotation + degree;
+		mYRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
 	}
 
 	public void set_Z_Rotation(int degree) {
-		mToDegree = mZRotation + degree;
-		mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mToDegreeZ = mZRotation + degree;
+		mZRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
 	}
 
 	public void setTilt(int degree) {
-		mToDegree = mXRotation + degree;
-		mRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mToDegreeX = mXRotation + degree;
+		mXRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
 	}
 
-	public synchronized void calculateRotation(int step) {
-		mXRotation += mRotationStep;
+	public synchronized void calculate_X_Rotation(int step) {
+		mXRotation += mXRotationStep;
 		mXRotation = (double) Math.round(mXRotation * 1000d) / 1000d; 
 		
 		Platform.runLater(() -> calculate(step));
 	}
 
 	public synchronized void calculate_Y_Rotation(int step) {
-		mYRotation += mRotationStep;
+		mYRotation += mYRotationStep;
 		mYRotation = (double) Math.round(mYRotation * 1000d) / 1000d; 
 		
 		Platform.runLater(() -> calculate(step));
 	}
 
 	public synchronized void calculate_Z_Rotation(int step) {
-		mZRotation += mRotationStep;
+		mZRotation += mZRotationStep;
 		mZRotation = (double) Math.round(mZRotation * 1000d) / 1000d; 
 		
 		Platform.runLater(() -> calculate(step));

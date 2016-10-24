@@ -40,28 +40,33 @@ public class RightFinger3 extends BodyPartFX
     RightWrist mRightWrist;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
-
+    
+    URL url;
+	ColModelImporter imorter;
+	MeshView mRightFinger3;
     PhongMaterial material;
-
-	Cylinder rightFinger_3;
 
     public RightFinger3(RightWrist rightWrist) {
     	mRightWrist = rightWrist;
+    	
+    	imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
-        mDefaultRotation = -20;
-        mXRotation = 3;
-        mYRotation = 1;
-        mZRotation = 175;
-        mToDegree = mDefaultRotation;
         
-        rightFinger_3 = new Cylinder(3, 15);
+        url = getClass().getClassLoader().getResource("BodyParts/Finger2_3_4.dae");
+        
+        mDefaultRotation = -20;
+        mZRotation = 0;
+        mToDegreeX = mDefaultRotation;
+        
+        imorter.read(url);
+        mRightFinger3 = (MeshView) imorter.getImport()[0];
         
         material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
+		mRightFinger3.setMaterial(material);
 		
-		rightFinger_3.setMaterial(material);
 		
-		mRightWrist.rightWristGroup.getChildren().add(rightFinger_3);
+		mRightWrist.rightWristGroup.getChildren().add(mRightFinger3);
         
         init();
     }
@@ -70,25 +75,25 @@ public class RightFinger3 extends BodyPartFX
     @Override
     public void calculate(int step) 
     {
-		Rotate rx = new Rotate(mXRotation, 0, rightFinger_3.getHeight()/2, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, rightFinger_3.getHeight()/2, 0,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, rightFinger_3.getHeight()/2, 0,  Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			rightFinger_3.setTranslateX(mStart.x + 2);
-			rightFinger_3.setTranslateY(mStart.y - 3);
-			rightFinger_3.setTranslateZ(0);
+			mRightFinger3.setTranslateX(mStart.x - 1);
+			mRightFinger3.setTranslateY(mStart.y + 14);
+			mRightFinger3.setTranslateZ(0);
 		}
 		else
 		{
-			rightFinger_3.setTranslateX(mStart.x + 2);
-			rightFinger_3.setTranslateY(mStart.y - 3);
-			rightFinger_3.setTranslateZ(0);
+			mRightFinger3.setTranslateX(mStart.x - 1);
+			mRightFinger3.setTranslateY(mStart.y + 14);
+			mRightFinger3.setTranslateZ(0);
 		}
 		
-		rightFinger_3.getTransforms().clear();
-		rightFinger_3.getTransforms().addAll(rx, ry, rz);
+		mRightFinger3.getTransforms().clear();
+		mRightFinger3.getTransforms().addAll(rx, ry, rz);
 		
 //        update();
     }
@@ -96,7 +101,7 @@ public class RightFinger3 extends BodyPartFX
     @Override
     public void update() {
     	material.setDiffuseColor(mColor);
-		rightFinger_3.setMaterial(material);
+    	mRightFinger3.setMaterial(material);
 //        Color currentColor = Color.rgb(80, 80, 80);
         // draw outlines
 //    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {

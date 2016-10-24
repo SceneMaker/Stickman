@@ -66,8 +66,8 @@ public class LeftUpperLegFX extends BodyPartFX {
 
 		mDefaultRotation = 0;
 		mXRotation = mDefaultRotation;
-		mToDegree = mDefaultRotation;
-		mRotationStep = 0.0f;
+		mToDegreeX = mDefaultRotation;
+		mXRotationStep = 0.0f;
 		
 		imorter.read(url);
 		mLeftUpperLegMesh = (MeshView) imorter.getImport()[0];

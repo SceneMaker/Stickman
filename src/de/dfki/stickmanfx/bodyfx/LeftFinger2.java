@@ -41,27 +41,31 @@ public class LeftFinger2 extends BodyPartFX
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
     
+    URL url;
+   	ColModelImporter imorter;
+   	MeshView mLeftFinger2;
     PhongMaterial material;
-
-    Cylinder LeftFinger_2;
 
     public LeftFinger2(LeftWrist leftWrist) {
     	mLeftWrist = leftWrist;
+    	
+    	imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
-        mDefaultRotation = -20;
-        mXRotation = 0;
-        mYRotation = 1;
-        mZRotation = -165;
-        mToDegree = mDefaultRotation;
         
-        LeftFinger_2 = new Cylinder(3, 15);
+        url = getClass().getClassLoader().getResource("BodyParts/Finger2_3_4.dae");
+        
+        mDefaultRotation = -20;
+        mZRotation = 0;
+        mToDegreeX = mDefaultRotation;
+        
+        imorter.read(url);
+        mLeftFinger2 = (MeshView) imorter.getImport()[0];
         
         material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
+		mLeftFinger2.setMaterial(material);
 		
-		LeftFinger_2.setMaterial(material);
-		
-		mLeftWrist.leftWristGroup.getChildren().add(LeftFinger_2);
+		mLeftWrist.leftWristGroup.getChildren().add(mLeftFinger2);
         
         
         init();
@@ -71,25 +75,25 @@ public class LeftFinger2 extends BodyPartFX
     @Override
     public void calculate(int step) 
     {
-    	Rotate rx = new Rotate(mXRotation, 0, LeftFinger_2.getHeight()/2, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, LeftFinger_2.getHeight()/2, 0,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, LeftFinger_2.getHeight()/2, 0,  Rotate.Z_AXIS);
+    	Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
 		if(mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			LeftFinger_2.setTranslateX(mStart.x - 5);
-			LeftFinger_2.setTranslateY(mStart.y - 4);
-			LeftFinger_2.setTranslateZ(0);
+			mLeftFinger2.setTranslateX(mStart.x - 5);
+			mLeftFinger2.setTranslateY(mStart.y + 14);
+			mLeftFinger2.setTranslateZ(0);
 		}
 		else
 		{
-			LeftFinger_2.setTranslateX(mStart.x - 5);
-			LeftFinger_2.setTranslateY(mStart.y - 4);
-			LeftFinger_2.setTranslateZ(0);
+			mLeftFinger2.setTranslateX(mStart.x - 5);
+			mLeftFinger2.setTranslateY(mStart.y + 14);
+			mLeftFinger2.setTranslateZ(0);
 		}
 		
-		LeftFinger_2.getTransforms().clear();
-		LeftFinger_2.getTransforms().addAll(rx, ry, rz);
+		mLeftFinger2.getTransforms().clear();
+		mLeftFinger2.getTransforms().addAll(rx, ry, rz);
 		
 //        update();
     }
@@ -97,7 +101,7 @@ public class LeftFinger2 extends BodyPartFX
     @Override
     public void update() {
     	material.setDiffuseColor(mColor);
-    	LeftFinger_2.setMaterial(material);
+    	mLeftFinger2.setMaterial(material);
 //        Color currentColor = Color.rgb(80, 80, 80);
         // draw outlines
 //    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {

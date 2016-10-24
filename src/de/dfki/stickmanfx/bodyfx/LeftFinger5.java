@@ -47,7 +47,7 @@ public class LeftFinger5 extends BodyPartFX
         mXRotation = 9;
         mYRotation = -3;
         mZRotation = -230;
-        mToDegree = mDefaultRotation;
+        mToDegreeX = mDefaultRotation;
         
 //        LeftFinger_5 = (MeshView) mLeftWrist.leftWrist.getChildren().get(5);
         

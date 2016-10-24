@@ -67,8 +67,8 @@ public class RightUpperLegFX extends BodyPartFX {
 
 		mDefaultRotation = 0;
 		mXRotation = mDefaultRotation;
-		mToDegree = mDefaultRotation;
-		mRotationStep = 0.0f;
+		mToDegreeX = mDefaultRotation;
+		mXRotationStep = 0.0f;
 		
 		imorter.read(url);
 		mRightUpperLegMesh = (MeshView) imorter.getImport()[0];

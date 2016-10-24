@@ -54,7 +54,7 @@ public class RightForeLegFX extends BodyPartFX {
 
 		mDefaultRotation = -2;
 		mXRotation = mDefaultRotation;
-		mToDegree = mDefaultRotation;
+		mToDegreeX = mDefaultRotation;
 		
 		if(mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{

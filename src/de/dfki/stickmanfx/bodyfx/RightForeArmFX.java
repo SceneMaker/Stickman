@@ -67,7 +67,7 @@ public class RightForeArmFX extends BodyPartFX
 //		mDefaultRotation = -20;
 		mXRotation = -15;
 		mZRotation = -10;
-		mToDegree = mDefaultRotation;
+		mToDegreeX = mDefaultRotation;
 		
 		imorter.read(url);
 		mRightForeArmMesh = (MeshView) imorter.getImport()[0];
