@@ -50,7 +50,7 @@ public class LeftEyeFX extends BodyPartFX {
 
 
 	public static enum SHAPE {
-		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -203,6 +203,37 @@ public class LeftEyeFX extends BodyPartFX {
 			smallPupile.setTranslateX(smallPupile.getTranslateX() - yMovement);
 			break;
 
+		case LOOKDOWN:
+			xMovement =  0.100f;
+			yMovement = 0.184f;
+			
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			break;
+			
+		case LOOKDOWNEND:
+			xMovement =  -0.100f;
+			yMovement = -0.184f;
+			
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			break;
+			
+		case LOOKUP:
+			xMovement =  -0.100f;
+			yMovement = -0.184f;
+			
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			break;
+			
+		case LOOKUPEND:
+			xMovement =  0.100f;
+			yMovement = 0.184f;
+			
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			break;
 		case ANGRY:
 			borderYSize += 0.0210;
 			bigPupileYSize += 0.010;

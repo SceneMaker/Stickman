@@ -61,6 +61,8 @@ public class OneTwoThree extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -5));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 60));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -10));
+        
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 25));
         playAnimationPart(500);
         
         //One
@@ -82,6 +84,9 @@ public class OneTwoThree extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -7));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 30));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger3, "rotate", 130));
+        
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKUP"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKUP"));
         playAnimationPart(500);
         pauseAnimation(500);
         mAnimationPartFX = new ArrayList<>();
@@ -101,6 +106,9 @@ public class OneTwoThree extends AnimationFX
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 10));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -30));
+        
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKUPEND"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKUPEND"));
         playAnimationPart(500);
         
         pauseAnimation(500);
@@ -122,6 +130,8 @@ public class OneTwoThree extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 5));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -60));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 10));
+        
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -25));
         playAnimationPart(500);
         
         StickmanStageController.currentEmotionRadioButton.setSelected(false);

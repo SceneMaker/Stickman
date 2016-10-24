@@ -32,15 +32,13 @@ public class Muster extends AnimationFX
             
             
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger2, "yrotate", 90));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "yrotate", 90));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKUP"));
             playAnimationPart(500);
             
             pauseAnimation(1000);
             
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger2, "yrotate", -90));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "yrotate", -90));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKUPEND"));
             playAnimationPart(500);
             
 //            mAnimationPartFX = new ArrayList<>();
