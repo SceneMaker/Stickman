@@ -82,13 +82,13 @@ public class LeftFinger4 extends BodyPartFX
 		if(mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			mLeftFinger4.setTranslateX(mStart.x + 6);
-			mLeftFinger4.setTranslateY(mStart.y + 14);
+			mLeftFinger4.setTranslateY(mStart.y + 17);
 			mLeftFinger4.setTranslateZ(0);
 		}
 		else
 		{
 			mLeftFinger4.setTranslateX(mStart.x + 6);
-			mLeftFinger4.setTranslateY(mStart.y + 14);
+			mLeftFinger4.setTranslateY(mStart.y + 17);
 			mLeftFinger4.setTranslateZ(0);
 		}
 		
