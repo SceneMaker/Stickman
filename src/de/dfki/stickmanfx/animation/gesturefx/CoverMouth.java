@@ -3,6 +3,7 @@ package de.dfki.stickmanfx.animation.gesturefx;
 import java.util.ArrayList;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 
@@ -26,22 +27,32 @@ public class CoverMouth extends AnimationFX {
 	public void playAnimation() {
 		int rotationUnit = 16;
 
+//		mAnimationPartFX = new ArrayList<>();
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -90));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -90));
+//		playAnimationPart(500);
+		
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftShoulderFX, "rotate", -rotationUnit * 3));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 9));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 9));
-		playAnimationPart(200);
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -30));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -155));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 180));
+		playAnimationPart(500);
 
 		pauseAnimation(1200);
-
-		// go back in the default position
+		
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftShoulderFX, "rotate", +rotationUnit * 3));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 9));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 9));
-		playAnimationPart(300);
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 30));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 155));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -180));
+		playAnimationPart(500);
+		
+//		mAnimationPartFX = new ArrayList<>();
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", 90));
+//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 90));
+//		playAnimationPart(500);
+		
+		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }
