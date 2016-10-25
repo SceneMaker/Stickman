@@ -9,6 +9,7 @@ package de.dfki.stickmanfx.animation.gesturefx;
 import java.util.ArrayList;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
@@ -32,43 +33,48 @@ public class WaveLeft extends AnimationFX
 	public void playAnimation() {
 		// mStickmanFX.stopIdleBehavior();
 		// mStickmanFX.startIdleBehavior("TouchHead");
-		int rotationUnit = 10;
 
-		// 50 is the sum of all animation parts
-		float timeFactor = (mDuration > 0) ? mDuration / 50 : 1;
-
-		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 16));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 16));
-
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -35));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -120));
 		playAnimationPart(200);
-
-		pauseAnimation(200);
-
-		// wave right
+		
+		for(int i = 0; i<6; i++)
+		{
+			if(i == 0)
+			{
+				mAnimationPartFX = new ArrayList<>();
+				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -10));
+				playAnimationPart(200);
+			}
+			else if(i == 5)
+			{
+				mAnimationPartFX = new ArrayList<>();
+				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", 10));
+				playAnimationPart(200);
+			}
+			else if(i % 2 == 1)
+			{
+				mAnimationPartFX = new ArrayList<>();
+				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", 20));
+				playAnimationPart(200);
+			}
+			else
+			{
+				mAnimationPartFX = new ArrayList<>();
+				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -20));
+				playAnimationPart(200);	
+			}
+		}
+		
+		pauseAnimation(1000);
+		
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 4));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 4));
-		playAnimationPart(100);
-
-		// wave left
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 4));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 4));
-		playAnimationPart(100);
-
-		pauseAnimation(200);
-
-		// go back in the default position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 16));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 16));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 35));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 120));
 		playAnimationPart(200);
+		
+		StickmanStageController.currentRadioButton.setSelected(false);
 
-		// mStickmanFX.stopIdleBehavior();
-		// mStickmanFX.startIdleBehavior("TouchHead");
 	}
 }
