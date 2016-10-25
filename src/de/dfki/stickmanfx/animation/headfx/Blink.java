@@ -6,8 +6,11 @@
 package de.dfki.stickmanfx.animation.headfx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
+
 import java.util.ArrayList;
 import javafx.application.Platform;
 
@@ -19,7 +22,10 @@ import javafx.application.Platform;
 public class Blink extends AnimationFX 
 {
 
-   
+	public Blink() {
+		mAnimType = ANIMTYPE.ON;
+	}
+	
 	public Blink(StickmanFX sm, int duration, boolean block) 
         {
 		super(sm, duration, block);
@@ -30,14 +36,16 @@ public class Blink extends AnimationFX
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
-		Platform.runLater(() -> playAnimationPart(20));
+		playAnimationPart(20);
 		
 		 pauseAnimation(300);
 
 		 //blink up
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
-		Platform.runLater(() -> playAnimationPart(20));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINKEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
+		playAnimationPart(20);
+		
+		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }
