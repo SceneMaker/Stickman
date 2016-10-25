@@ -13,32 +13,32 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Beka
+ * @author Patrick Gebhard
  *
  */
-public class LookLeft extends AnimationFX {
+public class LookDown extends AnimationFX {
 
-	public LookLeft() {
+	public LookDown() {
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-	public LookLeft(StickmanFX sm, int duration, boolean block) {
+	public LookDown(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-
+		
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKLEFT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKLEFT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
 		playAnimationPart(100);
 
 		pauseAnimation(100);
 		
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKLEFTEND"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKLEFTEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
 		playAnimationPart(100);
 		
 		StickmanStageController.currentRadioButton.setSelected(false);
