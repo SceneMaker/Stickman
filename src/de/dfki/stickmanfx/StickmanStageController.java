@@ -34,7 +34,7 @@ public class StickmanStageController {
 
     
     private static String packEmotionExpression = "de.dfki.stickmanfx.animation.facefx";
-    private static String packGesture = "de.dfki.stickmanfx.animation.esturefx";
+    private static String packGesture = "de.dfki.stickmanfx.animation.gesturefx";
 	
     private static StickmanFX sStickman;
     private StickmanStageFX mStickmanstage;
@@ -94,6 +94,8 @@ public class StickmanStageController {
     
     @FXML
     ScrollPane emotionsScrollPane;
+    @FXML
+    ScrollPane gestureScrollPane;
     
     
     @FXML
@@ -146,7 +148,7 @@ public class StickmanStageController {
     private Button browColorDarker;
     
     private StickmanFX currentStickman;
-    public static RadioButton currentEmotionRadioButton;
+    public static RadioButton currentRadioButton;
     
     
     
@@ -167,7 +169,8 @@ public class StickmanStageController {
         	currentStickman = mStickmanstage.getStickmanFX(mStickmancombobox);
         });
         
-        fillEmotionExpressions();
+        fillEmotionScrollPane();
+        fillGestureScrollPane();
         
         // set the color to default value
 //        RestButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -721,29 +724,41 @@ public class StickmanStageController {
     	fillComboForStickman();
     	
     }
-    private void fillEmotionExpressions()
+    
+    private void fillEmotionScrollPane()
     {
     	ArrayList<String> getClassesNames;
-    	EmotionExpressionParser parser = new EmotionExpressionParser(packEmotionExpression);
-    	getClassesNames = parser.getEmotionList();
+    	Packageparser parser = new Packageparser(packEmotionExpression);
+    	getClassesNames = parser.getClassNameList();
     	ObservableList<String> classNames = FXCollections.observableArrayList();
     	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
 
-    	createAndHandleEmotionsRadioButtons(getClassesNames);
+    	createAndHandleRadioButtons(getClassesNames, emotionsScrollPane);
     }
     
-    private void createAndHandleEmotionsRadioButtons(ArrayList<String> getClassesNames)
+    private void fillGestureScrollPane()
     {
-    	GridPane emotionsGridPane = new GridPane();
-    	emotionsScrollPane.setContent(emotionsGridPane);
+    	ArrayList<String> getClassesNames;
+    	Packageparser parser = new Packageparser(packGesture);
+    	getClassesNames = parser.getClassNameList();
+    	ObservableList<String> classNames = FXCollections.observableArrayList();
+    	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
+
+    	createAndHandleRadioButtons(getClassesNames, gestureScrollPane);
+    }
+    
+    private void createAndHandleRadioButtons(ArrayList<String> getClassesNames, ScrollPane container)
+    {
+    	GridPane gridPane = new GridPane();
+    	container.setContent(gridPane);
     	ToggleGroup toggleGroup = new ToggleGroup();
     	
     	int startIndex = 0;
     	int endIndex = 0;
     	
-    	emotionsGridPane.setHgap(10);
-    	emotionsGridPane.setVgap(10);
-    	emotionsGridPane.setPadding(new Insets(10, 10, 10, 10));
+    	gridPane.setHgap(10);
+    	gridPane.setVgap(10);
+    	gridPane.setPadding(new Insets(10, 10, 10, 10));
     	
     	for(int i = 0; i<getClassesNames.size(); i++)
     	{
@@ -754,18 +769,18 @@ public class StickmanStageController {
     		
     		button.setOnAction((event) -> 
     		{
-    			currentEmotionRadioButton = (RadioButton) event.getSource();
+    			currentRadioButton = (RadioButton) event.getSource();
     			currentStickman.doAnimation(button.getText(), 70, true);
     		});
     		if(i % 3 == 2)
     		{
-    			emotionsGridPane.add(button, startIndex, endIndex);
+    			gridPane.add(button, startIndex, endIndex);
     			endIndex++;
     			startIndex=0;
     		}
     		else
     		{
-    			emotionsGridPane.add(button, startIndex, endIndex);
+    			gridPane.add(button, startIndex, endIndex);
     			startIndex++;
     		}
     	}

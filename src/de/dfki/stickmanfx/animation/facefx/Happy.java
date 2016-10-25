@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Happy extends AnimationFX {
 
 	public Happy() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Happy(StickmanFX sm, int duration, boolean block) {
@@ -43,6 +43,6 @@ public class Happy extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "HAPPYEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

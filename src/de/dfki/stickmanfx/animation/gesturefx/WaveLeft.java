@@ -21,7 +21,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 public class WaveLeft extends AnimationFX 
 {
 	public WaveLeft() {
-		mAnimType = ANIMTYPE.Gesture;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
 	public WaveLeft(StickmanFX sm, int duration, boolean block) {

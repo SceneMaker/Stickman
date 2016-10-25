@@ -11,15 +11,15 @@ import java.util.Enumeration;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 
-public class EmotionExpressionParser
+public class Packageparser
 {
 
-	ArrayList<String> emotionList = new ArrayList<>();
+	ArrayList<String> classNameList = new ArrayList<>();
 	String packName = "de.dfki.stickmanfx.animation.facefx";
 	String packDir;
 	Enumeration<URL> dir;
 
-	public EmotionExpressionParser(String packName)
+	public Packageparser(String packName)
 	{
 		this.packName = packName;
 		ScanPackage();
@@ -84,8 +84,8 @@ public class EmotionExpressionParser
 							class1 = (AnimationFX) object;
 						}
 
-						if (class1 != null && class1.mAnimType == ANIMTYPE.EmotionExpression)
-							emotionList.add(className);
+						if (class1 != null && class1.mAnimType == ANIMTYPE.ON)
+							classNameList.add(className);
 					} catch (Exception e)
 					{
 //						e.printStackTrace();
@@ -96,9 +96,9 @@ public class EmotionExpressionParser
 		}
 	}
 
-	public ArrayList getEmotionList()
+	public ArrayList getClassNameList()
 	{
-		System.out.println(emotionList);
-		return emotionList;
+		System.out.println(classNameList);
+		return classNameList;
 	}
 }

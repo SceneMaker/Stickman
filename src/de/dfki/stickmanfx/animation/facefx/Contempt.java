@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Contempt extends AnimationFX 
 {
 	public Contempt() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Contempt(StickmanFX sm, int duration, boolean block) {
@@ -44,6 +44,6 @@ public class Contempt extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

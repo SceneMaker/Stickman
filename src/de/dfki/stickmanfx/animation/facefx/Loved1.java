@@ -20,7 +20,7 @@ import javafx.application.Platform;
 public class Loved1 extends AnimationFX {
 
 	public Loved1() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Loved1(StickmanFX sm, int duration, boolean block) {

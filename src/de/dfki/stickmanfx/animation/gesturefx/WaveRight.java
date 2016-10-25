@@ -20,7 +20,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 public class WaveRight extends AnimationFX {
 
 	public WaveRight() {
-		mAnimType = ANIMTYPE.Gesture;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
 	public WaveRight(StickmanFX sm, int duration, boolean block) {

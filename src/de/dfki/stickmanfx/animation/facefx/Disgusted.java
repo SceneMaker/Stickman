@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Disgusted extends AnimationFX 
 {
 	public Disgusted() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Disgusted(StickmanFX sm, int duration, boolean block) 
@@ -49,6 +49,6 @@ public class Disgusted extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTEDEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

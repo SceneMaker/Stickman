@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Fear extends AnimationFX {
 
 	public Fear() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Fear(StickmanFX sm, int duration, boolean block) {
@@ -134,6 +134,6 @@ public class Fear extends AnimationFX {
 //        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -90));
 //        playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

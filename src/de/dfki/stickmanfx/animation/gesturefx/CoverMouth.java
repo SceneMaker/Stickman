@@ -15,7 +15,7 @@ public class CoverMouth extends AnimationFX {
    
 	
 	public CoverMouth() {
-		mAnimType = ANIMTYPE.Gesture;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
 	public CoverMouth(StickmanFX sm, int duration, boolean block) {

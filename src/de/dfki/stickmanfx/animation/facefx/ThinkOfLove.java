@@ -23,7 +23,7 @@ public class ThinkOfLove extends AnimationFX
 {
 
 	public ThinkOfLove() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
    
 	public ThinkOfLove(StickmanFX sm, int duration, boolean block) 

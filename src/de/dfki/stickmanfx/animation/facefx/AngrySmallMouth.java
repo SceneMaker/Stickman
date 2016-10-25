@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class AngrySmallMouth extends AnimationFX 
 {
 	public AngrySmallMouth() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public AngrySmallMouth(StickmanFX sm, int duration, boolean block) 
@@ -53,6 +53,6 @@ public class AngrySmallMouth extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

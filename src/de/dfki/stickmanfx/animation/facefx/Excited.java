@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Excited extends AnimationFX {
 
 	public Excited() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Excited(StickmanFX sm, int duration, boolean block) {
@@ -43,6 +43,6 @@ public class Excited extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

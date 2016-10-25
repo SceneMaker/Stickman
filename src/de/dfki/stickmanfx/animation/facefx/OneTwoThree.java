@@ -31,7 +31,7 @@ public class OneTwoThree extends AnimationFX
      */
 	
 	public OneTwoThree() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public OneTwoThree(StickmanFX sm, int duration, boolean block) 
@@ -134,6 +134,6 @@ public class OneTwoThree extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -25));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

@@ -31,7 +31,7 @@ public class NoNoNo extends AnimationFX
      */
 	
 	public NoNoNo() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public NoNoNo(StickmanFX sm, int duration, boolean block) 
@@ -104,6 +104,6 @@ public class NoNoNo extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

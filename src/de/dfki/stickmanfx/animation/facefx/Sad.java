@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Sad extends AnimationFX {
 
 	public Sad() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
     public Sad(StickmanFX sm, int duration, boolean block) {
@@ -44,6 +44,6 @@ public class Sad extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add by Robbie
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

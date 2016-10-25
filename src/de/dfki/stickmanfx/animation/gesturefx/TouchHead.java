@@ -20,7 +20,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 public class TouchHead extends AnimationFX {
 
 	public TouchHead() {
-		mAnimType = ANIMTYPE.Gesture;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
 	public TouchHead(StickmanFX sm, int duration, boolean block) {

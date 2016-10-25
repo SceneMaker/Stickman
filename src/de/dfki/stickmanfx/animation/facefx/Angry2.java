@@ -25,7 +25,7 @@ public class Angry2 extends AnimationFX
 	int rotationUnit;
 	
 	public Angry2() {
-		mAnimType = ANIMTYPE.EmotionExpression;
+		mAnimType = ANIMTYPE.ON;
 	}
 	
 	/**
@@ -120,6 +120,6 @@ public class Angry2 extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 15));
         playAnimationPart(500);
         
-        StickmanStageController.currentEmotionRadioButton.setSelected(false);
+        StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }
