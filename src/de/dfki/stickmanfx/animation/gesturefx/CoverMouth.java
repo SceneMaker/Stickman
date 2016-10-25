@@ -27,10 +27,6 @@ public class CoverMouth extends AnimationFX {
 	public void playAnimation() {
 		int rotationUnit = 16;
 
-//		mAnimationPartFX = new ArrayList<>();
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -90));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -90));
-//		playAnimationPart(500);
 		
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
@@ -46,11 +42,6 @@ public class CoverMouth extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 155));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -180));
 		playAnimationPart(500);
-		
-//		mAnimationPartFX = new ArrayList<>();
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", 90));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 90));
-//		playAnimationPart(500);
 		
 		StickmanStageController.currentRadioButton.setSelected(false);
 
