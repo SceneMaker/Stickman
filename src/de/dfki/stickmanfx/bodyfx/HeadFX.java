@@ -134,7 +134,7 @@ public class HeadFX extends BodyPartFX {
 	public void calculate(int step) {
 		clearChildren(this);
 
-		mHead.setTranslateX(mHalfWidth);
+		mHead.setTranslateX(mHalfWidth+2);
 		mHead.setTranslateY(mHalfHeight - 3);
 		mHead.setTranslateZ(mZTranslate);
 

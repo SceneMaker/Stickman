@@ -169,7 +169,7 @@ public class StickmanStageController {
         StickmanComboBox.setOnAction((event) -> 
         {
         	mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();  
-        	currentStickman = mStickmanstage.getStickmanFX(mStickmancombobox);
+        	currentStickman = StickmanStageFX.getStickmanFX(mStickmancombobox);
         });
         
         fillEmotionScrollPane();
