@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dfki.stickmanfx.animation.facefx;
+package de.dfki.stickmanfx.animation.gesturefx;
 
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;

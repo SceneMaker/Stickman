@@ -96,9 +96,8 @@ public class Packageparser
 		}
 	}
 
-	public ArrayList getClassNameList()
+	public ArrayList<String> getClassNameList()
 	{
-		System.out.println(classNameList);
 		return classNameList;
 	}
 }
