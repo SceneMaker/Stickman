@@ -50,7 +50,7 @@ public class LeftEyeFX extends BodyPartFX {
 
 
 	public static enum SHAPE {
-		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, FADEIN, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -68,7 +68,9 @@ public class LeftEyeFX extends BodyPartFX {
 	QuadCurveTo quadCurve_1;
 	QuadCurveTo quadCurve_2;
 	
-
+	Color smallPupileColor;
+	Color borderColor;
+	
 	public LeftEyeFX.SHAPE mShape = LeftEyeFX.SHAPE.DEFAULT;
 
 	public LeftEyeFX(HeadFX head) {
@@ -79,6 +81,8 @@ public class LeftEyeFX extends BodyPartFX {
 		else
 			mColor = Color.rgb(0, 0, 255, 1);
 		
+		smallPupileColor = Color.rgb(255, 255, 255, 1);
+		borderColor = Color.rgb(255, 255, 255, 1);
 		init();
 	}
 
@@ -133,11 +137,11 @@ public class LeftEyeFX extends BodyPartFX {
 			border.getElements().add(new QuadCurveTo(mStart.x + 10, mStart.y + 13, mStart.x, mStart.y));
 			border.setStrokeWidth(1);
 			border.setStroke(Color.BLACK);
-			border.setFill(Color.WHITE);
+			border.setFill(borderColor);
 			
 			bigPupile = createEllipsePath(0, 0, 3.5, 3.5, 0, mColor, null);
 			
-			smallPupile = createEllipsePath(0, 0, 1.4, 1.4, 0, Color.WHITE, null);
+			smallPupile = createEllipsePath(0, 0, 1.4, 1.4, 0, smallPupileColor, null);
 			smallPupile.setStroke(null);
 			
 			bigPupile.setTranslateX(mStart.x + 13);
@@ -151,6 +155,26 @@ public class LeftEyeFX extends BodyPartFX {
 			bigPupileYSize = 0;
 			smallPupileYSize = 0;
 			
+			break;
+			
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), 0.0);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), 0.0);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), smallPupileColor.getOpacity() - 0.052);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getOpacity() - 0.052);
+			}
+			border.setFill(borderColor);
+			bigPupile.setFill(mColor);
+			smallPupile.setFill(smallPupileColor);
+			border.setStroke(borderColor);
+			bigPupile.setStroke(mColor);
 			break;
 
 		case BLINK:

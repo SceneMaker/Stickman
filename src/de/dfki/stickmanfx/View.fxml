@@ -226,6 +226,11 @@
                         </AnchorPane>
                      </content>
                   </Tab>
+                  <Tab closable="false" text="Environment">
+                     <content>
+                        <ScrollPane fx:id="environmentScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
+                  </Tab>
                   <Tab closable="false" text="Idle Section">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

@@ -42,7 +42,7 @@ import javafx.scene.shape.TriangleMesh;
 public class MouthFX extends BodyPartFX {
 
 	public static enum SHAPE {
-		DEFAULT, SMILE, SMILEEND, SAD, SADEND, ANGRY, ANGRYEND, ANGRYSMALLMOUTH, ANGRYSMALLMOUTHEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, FEAR, FEAREND, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY,
+		DEFAULT, FADEIN, SMILE, SMILEEND, SAD, SADEND, ANGRY, ANGRYEND, ANGRYSMALLMOUTH, ANGRYSMALLMOUTHEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, FEAR, FEAREND, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY,
 	};
 
 	HeadFX mHeadFX;
@@ -79,6 +79,7 @@ public class MouthFX extends BodyPartFX {
 	public void calculate(int step) {
 		mStart = mHeadFX.getMouthPostion();
 		
+		boolean isFadeIn = false;
 		
 		switch (mShape) {
 		case DEFAULT:
@@ -102,6 +103,16 @@ public class MouthFX extends BodyPartFX {
 			
 			currentUpperLipMesh = createUpperLip();
 			currentDownLipMesh = createDownLip();
+			break;
+			
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				isFadeIn = true;
+			}
+			else if(mColor.getOpacity() != 0.0)
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 			break;
 
 		case SMILE:
@@ -256,7 +267,6 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		}
-		
 		upperLip = new MeshView(currentUpperLipMesh);
 		upperLip.setId("UpperLip");
 		upperLip.setDrawMode(DrawMode.FILL);
@@ -288,6 +298,12 @@ public class MouthFX extends BodyPartFX {
 			mHeadFX.mHead.getChildren().add(downLip);
 		else
 			mHeadFX.mHead.getChildren().set(7, downLip);
+	    
+	    if(isFadeIn)
+	    {
+	    	upperLip.setVisible(false);
+	    	downLip.setVisible(false);
+	    }
 	}
 	
 	public void update()

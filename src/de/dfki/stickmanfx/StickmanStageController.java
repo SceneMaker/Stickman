@@ -36,6 +36,7 @@ public class StickmanStageController {
     private static String packEmotionExpression = "de.dfki.stickmanfx.animation.facefx";
     private static String packGesture = "de.dfki.stickmanfx.animation.gesturefx";
     private static String packHead = "de.dfki.stickmanfx.animation.headfx";
+    private static String packEnvironment = "de.dfki.stickmanfx.animation.environmentfx";
 	
     private static StickmanFX sStickman;
     private StickmanStageFX mStickmanstage;
@@ -99,6 +100,8 @@ public class StickmanStageController {
     ScrollPane gestureScrollPane;
     @FXML
     ScrollPane headScrollPane;
+    @FXML
+    ScrollPane environmentScrollPane;
     
     
     @FXML
@@ -175,6 +178,7 @@ public class StickmanStageController {
         fillEmotionScrollPane();
         fillGestureScrollPane();
         fillHeadScrollPane();
+        fillEnvironmentScrollPane();
         
         // set the color to default value
 //        RestButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -760,6 +764,17 @@ public class StickmanStageController {
     	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
 
     	createAndHandleRadioButtons(getClassesNames, headScrollPane);
+    }
+    
+    private void fillEnvironmentScrollPane()
+    {
+    	ArrayList<String> getClassesNames;
+    	Packageparser parser = new Packageparser(packEnvironment);
+    	getClassesNames = parser.getClassNameList();
+    	ObservableList<String> classNames = FXCollections.observableArrayList();
+    	classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
+
+    	createAndHandleRadioButtons(getClassesNames, environmentScrollPane);
     }
     
     private void createAndHandleRadioButtons(ArrayList<String> getClassesNames, ScrollPane container)

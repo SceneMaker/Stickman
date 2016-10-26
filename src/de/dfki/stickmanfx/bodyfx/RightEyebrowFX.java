@@ -31,7 +31,7 @@ import javafx.scene.shape.TriangleMesh;
  */
 public class RightEyebrowFX extends BodyPartFX {
 	public static enum SHAPE {
-		DEFAULT, ANGRY, HAPPY, HAPPYEND, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, SAD, SADEND
+		DEFAULT, FADEIN, ANGRY, HAPPY, HAPPYEND, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, SAD, SADEND
 	};
 
 	HeadFX mHeadFX;
@@ -94,6 +94,14 @@ public class RightEyebrowFX extends BodyPartFX {
 			else
 				currentPolygon = createFemaleBrow();
 			
+			break;
+			
+		case FADEIN:
+			if(step == 2)
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+			else if(mColor.getOpacity() != 0.0)
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+			currentPolygon.setFill(mColor);
 			break;
 
 		case ANGRY:

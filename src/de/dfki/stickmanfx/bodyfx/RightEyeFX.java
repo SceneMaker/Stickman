@@ -36,7 +36,7 @@ public class RightEyeFX extends BodyPartFX {
 	double yMovement2;
 
 	public static enum SHAPE {
-		DEFAULT, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, BLINK, FADEIN, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -53,6 +53,9 @@ public class RightEyeFX extends BodyPartFX {
 	
 	QuadCurveTo quadCurve_1;
 	QuadCurveTo quadCurve_2;
+	
+	Color smallPupileColor;
+	Color borderColor;
 
 	public RightEyeFX.SHAPE mShape = RightEyeFX.SHAPE.DEFAULT;
 
@@ -64,6 +67,8 @@ public class RightEyeFX extends BodyPartFX {
 		else
 			mColor = Color.rgb(0, 0, 255, 1);
 
+		smallPupileColor = Color.rgb(255, 255, 255, 1);
+		borderColor = Color.rgb(255, 255, 255, 1);
 		init();
 	}
 
@@ -135,6 +140,26 @@ public class RightEyeFX extends BodyPartFX {
 			bigPupileYSize = 0;
 			smallPupileYSize = 0;
 
+			break;
+			
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), 0.0);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), 0.0);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), smallPupileColor.getOpacity() - 0.052);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getOpacity() - 0.052);
+			}
+			border.setFill(borderColor);
+			bigPupile.setFill(mColor);
+			smallPupile.setFill(smallPupileColor);
+			border.setStroke(borderColor);
+			bigPupile.setStroke(mColor);
 			break;
 
 		case BLINK:
