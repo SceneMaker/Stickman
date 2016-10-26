@@ -21,7 +21,6 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
-import de.dfki.stickmanfx.bodyfx.BodyFX;
 import de.dfki.stickmanfx.bodyfx.BombeFX;
 import de.dfki.stickmanfx.bodyfx.DownBody;
 import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
