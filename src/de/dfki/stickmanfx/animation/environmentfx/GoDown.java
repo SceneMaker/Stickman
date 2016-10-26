@@ -11,7 +11,6 @@ import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 import javafx.application.Platform;
 
 /**
@@ -66,9 +65,8 @@ public class GoDown extends AnimationFX {
 
         // go back in the default position
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
-//        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 32));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
         playAnimationPart(20);
         
         StickmanStageController.currentRadioButton.setSelected(false);
