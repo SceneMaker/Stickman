@@ -19,15 +19,13 @@ import javafx.application.Platform;
  * @author Beka
  *
  */
-public class ComeUp extends AnimationFX 
-{
+public class ComeUp extends AnimationFX {
 
 	public ComeUp() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
-	public ComeUp(StickmanFX sm, int duration, boolean block) 
-	{
+
+	public ComeUp(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;
 	}
@@ -69,11 +67,10 @@ public class ComeUp extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
 		playAnimationPart(200);
-		
+
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 
-	
 	private void playComeSpeed(int Speed) {
 		if (mStickmanFX.leaveSpeed > 0) {
 			mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed - Speed;

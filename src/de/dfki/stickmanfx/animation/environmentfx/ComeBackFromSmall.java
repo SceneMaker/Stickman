@@ -8,8 +8,10 @@ package de.dfki.stickmanfx.animation.environmentfx;
 import java.util.ArrayList;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 import javafx.application.Platform;
 
 /**
@@ -17,10 +19,11 @@ import javafx.application.Platform;
  * @author Beka
  *
  */
-public class ComeBackFromSmall extends AnimationFX 
-{
-
-	private StickmanFX mStickmanFX;
+public class ComeBackFromSmall extends AnimationFX {
+	
+	public ComeBackFromSmall() {
+		mAnimType = ANIMTYPE.ON;
+	}
 
 	public ComeBackFromSmall(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -29,46 +32,29 @@ public class ComeBackFromSmall extends AnimationFX
 
 	@Override
 	public void playAnimation() {
+		
+		int rotationUnit = 5;
+		
 		float mScaleRecord = 0.0f;
-		for (int j = 0; j < 19; j++) 
-		{
+		for (int j = 0; j < 19; j++) {
 			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
-			
 		}
 
 		mScaleRecord = mStickmanFX.mScale;
-		mStickmanFX.starShowControler = true;
-
-		// show stars
-		mStickmanFX.mScale = 1.0f;
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
-		playAnimationPart(1000);
-
-		// disappeared words or stars
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "DEFAULT"));
-		playAnimationPart(2);
-
-		mStickmanFX.starShowControler = false;
-		mStickmanFX.mScale = mScaleRecord;
-
-		int rotationUnit = 5;
 
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
 		playAnimationPart(20);
+		
 		pauseAnimation(20);
 
 		for (int i = 0; i < 2; i++) {
 			// wave right
 			for (int j = 0; j < 9; j++) {
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
-//				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
+				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -rotationUnit));
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
 				if (mStickmanFX.mScale >= 1.0) {
@@ -82,8 +68,7 @@ public class ComeBackFromSmall extends AnimationFX
 			// wave left
 			for (int j = 0; j < 9; j++) {
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
-//				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
+				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", rotationUnit));
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
 				if (mStickmanFX.mScale >= 1.0) {
@@ -97,9 +82,10 @@ public class ComeBackFromSmall extends AnimationFX
 
 		// go back in the default position
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 32));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
 		playAnimationPart(20);
+
+		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }
