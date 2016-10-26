@@ -6,28 +6,14 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import java.awt.Dimension;
-import java.awt.Point;
 import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import javafx.application.Platform;
-import javafx.scene.Group;
+import de.dfki.stickmanfx.bodyfx.RightFinger1.SHAPE;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
-import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Scale;
-import javafx.scene.transform.Translate;
 
 /**
  *
@@ -37,6 +23,12 @@ import javafx.scene.transform.Translate;
 public class RightFinger2 extends BodyPartFX 
 {
 
+	public static enum SHAPE {
+		DEFAULT, FADEIN, FADEOUT
+	};
+	
+	public RightFinger2.SHAPE mShape = RightFinger2.SHAPE.DEFAULT;
+	
     RightWrist mRightWrist;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
@@ -65,12 +57,21 @@ public class RightFinger2 extends BodyPartFX
 		material.setDiffuseColor(mColor);
 		mRightFinger2.setMaterial(material);
 		
-		
 		mRightWrist.rightWristGroup.getChildren().add(mRightFinger2);
         
         init();
     }
 
+    @Override
+	public void setShape(String s) {
+		SHAPE shape = SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+	}
+
+	@Override
+	public void resetShape() {
+		mShape = RightFinger2.SHAPE.DEFAULT;
+	}
 
     @Override
     public void calculate(int step) 
@@ -95,7 +96,37 @@ public class RightFinger2 extends BodyPartFX
 		mRightFinger2.getTransforms().clear();
 		mRightFinger2.getTransforms().addAll(rx, ry, rz);
 		
-//        update();
+		switch(mShape)
+		{
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				update();
+				mRightFinger2.setVisible(false);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				update();
+			}
+			break;
+			
+		case FADEOUT:
+			mRightFinger2.setVisible(true);
+			
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				update();
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				update();
+			}
+			break;
+		}
     }
 
     @Override

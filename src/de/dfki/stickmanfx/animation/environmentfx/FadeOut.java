@@ -34,8 +34,39 @@ public class FadeOut extends AnimationFX {
 	public void playAnimation() {
 		
 		mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "FADEIN"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mNeckFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mDownBody, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger2, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger3, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger4, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFootFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFootFX, "shape", "FADEOUT"));
         playAnimationPart(500);
+        
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

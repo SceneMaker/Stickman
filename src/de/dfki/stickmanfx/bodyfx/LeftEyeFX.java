@@ -50,7 +50,7 @@ public class LeftEyeFX extends BodyPartFX {
 
 
 	public static enum SHAPE {
-		DEFAULT, FADEIN, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, FADEIN, FADEOUT, BLINK, BLINKEND, LOOKLEFT, LOOKLEFTEND, LOOKRIGHT, LOOKRIGHTEND, LOOKDOWN, LOOKDOWNEND, LOOKUP, LOOKUPEND, ANGRY, ANGRYEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, LOVED, LOVEDEND, LOVED1, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	HeadFX mHeadFX;
@@ -177,6 +177,25 @@ public class LeftEyeFX extends BodyPartFX {
 			bigPupile.setStroke(mColor);
 			break;
 
+		case FADEOUT:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), 1.0);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), 1.0);
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), smallPupileColor.getOpacity() + 0.052);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getOpacity() + 0.052);
+			}
+			border.setFill(borderColor);
+			bigPupile.setFill(mColor);
+			smallPupile.setFill(smallPupileColor);
+			border.setStroke(Color.BLACK);
+			bigPupile.setStroke(mColor);
+			break;
 		case BLINK:
 			borderYSize += 0.0450;
 			bigPupileYSize += 0.050;

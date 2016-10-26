@@ -5,38 +5,17 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.body.*;
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
+import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX.SHAPE;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
 import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.Sphere;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
-import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Scale;
-import javafx.scene.transform.Translate;
-import oracle.jrockit.jfr.events.DynamicValueDescriptor;
 
 /**
  *
@@ -44,6 +23,12 @@ import oracle.jrockit.jfr.events.DynamicValueDescriptor;
  *
  */
 public class RightUpperArmFX extends BodyPartFX {
+	
+	public static enum SHAPE {
+		DEFAULT, FADEIN, FADEOUT
+	};
+	
+	public RightUpperArmFX.SHAPE mShape = RightUpperArmFX.SHAPE.DEFAULT;
 	
 	RightShoulderFX mRightShoulderFX;
 
@@ -89,9 +74,18 @@ public class RightUpperArmFX extends BodyPartFX {
 		mBodyFX.mUpperBodyGroup.getChildren().add(rightUpperArmGroup);
 		
 		init();
-
 	}
 
+	@Override
+	public void setShape(String s) {
+		SHAPE shape = SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+	}
+
+	@Override
+	public void resetShape() {
+		mShape = RightUpperArmFX.SHAPE.DEFAULT;
+	}
 
 	@Override
 	public void calculate(int step) 
@@ -116,36 +110,43 @@ public class RightUpperArmFX extends BodyPartFX {
 		}
 		rightUpperArmGroup.getTransforms().clear();
 		rightUpperArmGroup.getTransforms().addAll(rx, ry, rz);
+		
+		switch(mShape)
+		{
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				update();
+				mRightpperArmMesh.setVisible(false);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				update();
+			}
+			break;
+			
+		case FADEOUT:
+			mRightpperArmMesh.setVisible(true);
+			
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				update();
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				update();
+			}
+			break;
+		}
 	}
 
 	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
 		mRightpperArmMesh.setMaterial(material);
-		// draw outlines
-//		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
-//			mColorRecorder = mColor;
-//		if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-//			if (mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added
-//																							// by
-//																							// Robbie
-//			{
-//				int fadeFactor = mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-//				if (fadeFactor <= 24) {
-//					fadeFactor = 0;
-//				}
-//				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-//						(fadeFactor * 100 / 255) / 100f);
-//			} else {
-//				int fadeFactor = (20
-//						- mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-//				if (fadeFactor >= 216) {
-//					mColor = mColorRecorder;
-//				} else
-//					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-//							(fadeFactor * 100 / 255) / 100f);
-//			}
-//		}
-
 	}
 }

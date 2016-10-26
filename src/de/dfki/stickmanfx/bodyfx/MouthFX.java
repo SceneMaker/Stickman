@@ -42,7 +42,7 @@ import javafx.scene.shape.TriangleMesh;
 public class MouthFX extends BodyPartFX {
 
 	public static enum SHAPE {
-		DEFAULT, FADEIN, SMILE, SMILEEND, SAD, SADEND, ANGRY, ANGRYEND, ANGRYSMALLMOUTH, ANGRYSMALLMOUTHEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, FEAR, FEAREND, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY,
+		DEFAULT, FADEIN, FADEOUT, SMILE, SMILEEND, SAD, SADEND, ANGRY, ANGRYEND, ANGRYSMALLMOUTH, ANGRYSMALLMOUTHEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, FEAR, FEAREND, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY,
 	};
 
 	HeadFX mHeadFX;
@@ -109,10 +109,24 @@ public class MouthFX extends BodyPartFX {
 			if(step == 2)
 			{
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				isFadeIn = true;
+				upperLip.setVisible(false);
+		    	downLip.setVisible(false);
 			}
 			else if(mColor.getOpacity() != 0.0)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+			break;
+			
+		case FADEOUT:
+			upperLip.setVisible(true);
+	    	downLip.setVisible(true);
+	    	
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				isFadeIn = true;
+			}
+			else if(mColor.getOpacity() != 1.0)
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 			break;
 
 		case SMILE:
@@ -298,12 +312,6 @@ public class MouthFX extends BodyPartFX {
 			mHeadFX.mHead.getChildren().add(downLip);
 		else
 			mHeadFX.mHead.getChildren().set(7, downLip);
-	    
-	    if(isFadeIn)
-	    {
-	    	upperLip.setVisible(false);
-	    	downLip.setVisible(false);
-	    }
 	}
 	
 	public void update()

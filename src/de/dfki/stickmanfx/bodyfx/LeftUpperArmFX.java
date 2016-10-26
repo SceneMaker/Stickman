@@ -15,7 +15,6 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import de.dfki.stickmanfx.StickmanFX;
-
 /**
  *
  * @author Beka
@@ -23,6 +22,12 @@ import de.dfki.stickmanfx.StickmanFX;
  */
 public class LeftUpperArmFX extends BodyPartFX {
 
+	public static enum SHAPE {
+		DEFAULT, FADEIN, FADEOUT
+	};
+	
+	public LeftUpperArmFX.SHAPE mShape = LeftUpperArmFX.SHAPE.DEFAULT;
+	
 	UpperBody mBodyFX;
 
 	int mArmLength = 70;
@@ -68,6 +73,17 @@ public class LeftUpperArmFX extends BodyPartFX {
 	}
 
 	@Override
+	public void setShape(String s) {
+		SHAPE shape = SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+	}
+
+	@Override
+	public void resetShape() {
+		mShape = LeftUpperArmFX.SHAPE.DEFAULT;
+	}
+	
+	@Override
 	public void calculate(int step) {
 		mStart = mBodyFX.getLeftArmStartPostion();
 
@@ -86,51 +102,43 @@ public class LeftUpperArmFX extends BodyPartFX {
 		}
 		leftUpperArmGroup.getTransforms().clear();
 		leftUpperArmGroup.getTransforms().addAll(rx, ry, rz);
-
-		// if (step == 0)
-		// {
-		// mBodyFX.mBodyModel.getChildren().add(leftUpperArmGroup);
-		// }
-		// else
-		// mBodyFX.mBodyModel.getChildren().set(1, leftUpperArmGroup);
-
-		// update();
+		
+		switch(mShape)
+		{
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				update();
+				mLeftUpperArmMesh.setVisible(false);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				update();
+			}
+			break;
+			
+		case FADEOUT:
+			mLeftUpperArmMesh.setVisible(true);
+			
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				update();
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				update();
+			}
+			break;
+		}
 	}
 
 	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
 		mLeftUpperArmMesh.setMaterial(material);
-		// draw outlines
-		// if
-		// (mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible
-		// == false)
-		// mColorRecorder = mColor;
-		// if
-		// (mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible
-		// == true) {
-		// if (mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler
-		// == true) {
-		// int fadeFactor =
-		// mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep
-		// * 12;
-		// if (fadeFactor <= 24) {
-		// fadeFactor = 0;
-		// }
-		// mColor = new Color(mColor.getRed(), mColor.getGreen(),
-		// mColor.getBlue(),
-		// (fadeFactor * 100 / 255) / 100f);
-		// } else {
-		// int fadeFactor = (20 -
-		// mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep)
-		// * 12;
-		// if (fadeFactor >= 216) {
-		// mColor = mColorRecorder;
-		// } else
-		// mColor = new Color(mColor.getRed(), mColor.getGreen(),
-		// mColor.getBlue(),
-		// (fadeFactor * 100 / 255) / 100f);
-		// }
-		// }
 	}
 }

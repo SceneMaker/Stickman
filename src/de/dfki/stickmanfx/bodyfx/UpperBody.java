@@ -6,24 +6,18 @@ package de.dfki.stickmanfx.bodyfx;
  * and open the template in the editor.
  */
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.bodyfx.NeckFX.SHAPE;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
-
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Scale;
-import javafx.scene.transform.Translate;
-
 /**
  *
  * @author Beka Aptsiauri
@@ -31,6 +25,12 @@ import javafx.scene.transform.Translate;
  */
 public class UpperBody extends BodyPartFX {
 
+	public static enum SHAPE {
+		DEFAULT, FADEIN, FADEOUT
+	};
+	
+	public UpperBody.SHAPE mShape = UpperBody.SHAPE.DEFAULT;
+	
 	NeckFX mNeckFX;
 	Rotate rx;
 	Rotate ry;
@@ -73,6 +73,17 @@ public class UpperBody extends BodyPartFX {
 		init();
 	}
 
+	@Override
+	public void setShape(String s) {
+		SHAPE shape = SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+	}
+
+	@Override
+	public void resetShape() {
+		mShape = UpperBody.SHAPE.DEFAULT;
+	}
+	
 	public void calculate(int step) {
 		mStart = mNeckFX.getBodyStartPosition();
 		clearChildren(this);
@@ -101,19 +112,40 @@ public class UpperBody extends BodyPartFX {
 
 		mUpperBodyGroup.getTransforms().clear();
 		mUpperBodyGroup.getTransforms().addAll(rx, ry, rz);
+		
+		switch(mShape)
+		{
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				update();
+				mBodyMeshView.setVisible(false);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				update();
+			}
+			break;
+			
+		case FADEOUT:
+			mBodyMeshView.setVisible(true);
+			
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				update();
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				update();
+			}
+			break;
+		}
+		
 		this.getChildren().addAll(mUpperBodyGroup);
-		// update();
-	}
-
-	public void updateAfterRotation() {
-		// mStart = mNeckFX.getBodyStartPosition();
-		// clearChildren(this);
-		//
-		// mBodyModel.setTranslateX(mStart.x);
-		// mBodyModel.setTranslateY(mStart.y + 135);
-		// mBodyModel.setTranslateZ(-100);
-		//
-		// this.getChildren().addAll(mBodyModel);
 	}
 
 	public Point getLeftArmStartPostion() {
@@ -149,46 +181,6 @@ public class UpperBody extends BodyPartFX {
 	public void update() {
 		material.setDiffuseColor(mColor);
 		mBodyMeshView.setMaterial(material);
-		// if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
-		// mFemaleColorRecorder = mFemaleColor;
-		// mMaleColorRecorder = mMaleColor;
-		// }
-		// if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-		// if (mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) {
-		// int fadeFactor =
-		// mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-		// if (fadeFactor <= 24) {
-		// fadeFactor = 0;
-		// }
-		// mFemaleColor = new Color(mFemaleColor.getRed(),
-		// mFemaleColor.getGreen(), mFemaleColor.getBlue(),
-		// (fadeFactor * 100 / 255) / 100f);
-		// mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(),
-		// mMaleColor.getBlue(),
-		// (fadeFactor * 100 / 255) / 100f);
-		// } else {
-		// int fadeFactor = (20 -
-		// mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-		// if (fadeFactor >= 160) {
-		// mFemaleColor = mFemaleColorRecorder;
-		// mMaleColor = mMaleColorRecorder;
-		// } else {
-		// mFemaleColor = new Color(mFemaleColor.getRed(),
-		// mFemaleColor.getGreen(), mFemaleColor.getBlue(),
-		// (fadeFactor * 100 / 255) / 100f);
-		// mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(),
-		// mMaleColor.getBlue(),
-		// (fadeFactor * 100 / 255) / 100f);
-		// }
-		// }
-		// }
-		//
-		// if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
-		// currentColor = mFemaleColor;
-		// } else {
-		// currentColor = mMaleColor;
-		// }
-
 	}
 
 	public void rotatePerlinNoise(double mWobble, int x, int y) {

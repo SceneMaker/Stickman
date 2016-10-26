@@ -4,33 +4,29 @@
  * and open the template in the editor.
  */
 package de.dfki.stickmanfx.bodyfx;
-
-import de.dfki.stickman.body.*;
-
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
 import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import de.dfki.stickman.Stickman;
+import de.dfki.stickman.body.Neck;
+import de.dfki.stickmanfx.bodyfx.MaleHairFX.SHAPE;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.Cylinder;
-import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.scene.transform.Rotate;
 
 /**
  *
- * @author Patrick Gebhard
+ * @author Beka
  *
  */
 public class NeckFX extends BodyPartFX {
 
+	public static enum SHAPE {
+		DEFAULT, FADEIN, FADEOUT
+	};
+	
 	HeadFX mHeadFX;
 	
 	URL url;
@@ -39,6 +35,8 @@ public class NeckFX extends BodyPartFX {
     
     PhongMaterial material;
 
+    public NeckFX.SHAPE mShape = NeckFX.SHAPE.DEFAULT;
+    
 	public NeckFX(HeadFX head) {
 		mHeadFX = head;
 		mLength = 8;
@@ -58,33 +56,27 @@ public class NeckFX extends BodyPartFX {
 		init();
 	}
 
+	@Override
+	public void setShape(String s) {
+		SHAPE shape = SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+	}
+
+	@Override
+	public void resetShape() {
+		mShape = NeckFX.SHAPE.DEFAULT;
+	}
+	
 	public Point getBodyStartPosition() {
 		return new Point(mEnd.x, mEnd.y+10);
 	}
 
 	@Override
-	public void createShape() {
+	public void calculate(int step) {
 		mStart = mHeadFX.getNeckStartPosition();
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearChildren(this);
-		
-		if(mHeadFX.mStickmanFX.setCharacterInvisible == true)
-		{
-			if(mHeadFX.mStickmanFX.fadeControler==true)             //Added by Robbie
-			{
-				int fadeFactor = mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-			}
-			else
-			{
-				int fadeFactor = (20-mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) mColor = mColorRecorder;
-				else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-			}
-		}
 		
 		neckMeshView.setTranslateX(mStart.x);
 		neckMeshView.setTranslateY(mStart.y + 5);
@@ -97,9 +89,39 @@ public class NeckFX extends BodyPartFX {
 		neckMeshView.getTransforms().clear();
 		neckMeshView.getTransforms().addAll(rx, ry, rz);
 		
+		switch(mShape)
+		{
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				update();
+				neckMeshView.setVisible(false);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				update();
+			}
+			break;
+			
+		case FADEOUT:
+			neckMeshView.setVisible(true);
+			
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				update();
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				update();
+			}
+			break;
+		}
+		
 		this.getChildren().add(neckMeshView);
-//		addToDrawObjects(mPath);
-//		this.update();
 	}
 	
 	public void update()

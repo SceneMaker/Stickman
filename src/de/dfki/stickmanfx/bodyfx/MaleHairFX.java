@@ -1,32 +1,16 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.StickmanFX.TYPE;
+import de.dfki.stickmanfx.bodyfx.HeadFX.SHAPE;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.net.URL;
-
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
-import com.sun.xml.internal.ws.resources.ManagementMessages;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.Sphere;
 import javafx.scene.shape.TriangleMesh;
-import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 /**
  *
@@ -35,13 +19,17 @@ import javafx.util.Duration;
  */
 public class MaleHairFX extends BodyPartFX 
 {
+	public static enum SHAPE {
+		DEFAULT, FADEIN, FADEOUT
+	};
+	
 	public Dimension mSize = new Dimension(120, 100);
 	public StickmanFX mStickmanFX;
 
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
 	int mPifotOffset = 55;
-	int mZTranslate = 3; //Bring shape in front, because of DepthTest
+	int mZTranslate = 3;
 	int mEarWidth = 10;
 
 	URL url;
@@ -50,6 +38,8 @@ public class MaleHairFX extends BodyPartFX
 	MeshView maleHairMeshView;
 	PhongMaterial material;
 
+	public MaleHairFX.SHAPE mShape = MaleHairFX.SHAPE.DEFAULT;
+	
 	public MaleHairFX(StickmanFX sm) 
 	{
 		mStickmanFX = sm;
@@ -73,6 +63,17 @@ public class MaleHairFX extends BodyPartFX
 		init();
 
 		calculate(0);
+	}
+	
+	@Override
+	public void setShape(String s) {
+		SHAPE shape = SHAPE.valueOf(s);
+		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+	}
+
+	@Override
+	public void resetShape() {
+		mShape = MaleHairFX.SHAPE.DEFAULT;
 	}
 
 	public void calculate(int step) 
@@ -102,38 +103,42 @@ public class MaleHairFX extends BodyPartFX
 				}
 			}
 		}
-		// update();
-
+		
+		switch(mShape)
+		{
+		case FADEIN:
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+				update();
+				maleHairMeshView.setVisible(false);
+			}
+			else if(mColor.getOpacity() != 0.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				update();
+			}
+			break;
+			
+		case FADEOUT:
+			maleHairMeshView.setVisible(true);
+			
+			if(step == 2)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				update();
+			}
+			else if(mColor.getOpacity() != 1.0)
+			{
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				update();
+			}
+			break;
+		}
 	}
 
 	public void update() {
 		material.setDiffuseColor(mColor);
 		maleHairMeshView.setMaterial(material);
-//		if (mStickmanFX.setCharacterInvisible == false)
-//			mColorRecorder = mColor;
-//		if (mStickmanFX.setCharacterInvisible == true) 
-//		{
-//			if (mStickmanFX.fadeControler == true) 
-//			{
-//				int fadeFactor = mStickmanFX.mMouthFX.mShapeAnimationStep * 10;
-//				if (fadeFactor <= 20) 
-//				{
-//					fadeFactor = 0;
-//				}
-//				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-//						(fadeFactor * 100 / 255) / 100f);
-//			} 
-//			else 
-//			{
-//				int fadeFactor = (20 - mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-//				if (fadeFactor >= 160) 
-//				{
-//					mColor = mColorRecorder;
-//				} 
-//				else
-//					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
-//							(fadeFactor * 100 / 255) / 100f);
-//			}
-//		}
 	}
 }
