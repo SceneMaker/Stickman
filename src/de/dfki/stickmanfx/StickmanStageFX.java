@@ -280,7 +280,7 @@ public class StickmanStageFX extends Application {
         stage.show();
 
         stage.setFullScreen(true);
-//        scene.lookup("#mSplitPane").setDepthTest(DepthTest.ENABLE);
+        scene.lookup("#mSplitPane").setDepthTest(DepthTest.DISABLE);
         scene.lookup("#mSplitPane").setTranslateZ(-150);
         scene.setOnMouseClicked(mouseHandler);
              
