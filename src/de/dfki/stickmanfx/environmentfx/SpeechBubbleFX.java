@@ -94,6 +94,7 @@ public class SpeechBubbleFX extends BodyPartFX
 			this.getStylesheets().add(getClass().getResource("bubbleCSS.css").toExternalForm());
 			this.setLayoutX(mStart.x + 20);
 			this.setLayoutY(mStart.y - this.getHeight());
+			this.setTranslateZ(-120);
 
 			this.getChildren().add(bubblePane);
 			
