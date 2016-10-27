@@ -20,7 +20,7 @@ import java.util.Set;
 public class AnimationLoaderFX 
 {
     private final static String sANIMATIONPATH = "de.dfki.stickmanfx";
-    private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("headfx", "facefx", "gesturefx", "environmentfx"));
+    private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("headfx", "facefx", "gesturefx", "environmentfx", "posturefx"));
     private static AnimationLoaderFX sInstance = null;
     private static long sID = 0;
 
