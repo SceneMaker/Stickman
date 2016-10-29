@@ -33,6 +33,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 /**
  *
@@ -47,11 +48,8 @@ public class MouthFX extends BodyPartFX {
 
 	HeadFX mHeadFX;
 	
-	TriangleMesh currentDownLipMesh;
-	TriangleMesh currentUpperLipMesh;
-	MeshView downLip;
-	MeshView upperLip;
-	PhongMaterial mat;
+	Polygon currentDownLipPolygon;
+	Polygon currentUpperLipPolygon;
 
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
@@ -101,24 +99,24 @@ public class MouthFX extends BodyPartFX {
 				}
 			}
 			
-			currentUpperLipMesh = createUpperLip();
-			currentDownLipMesh = createDownLip();
+			currentUpperLipPolygon = createUpperLip();
+			currentDownLipPolygon = createDownLip();
 			break;
 			
 		case FADEIN:
 			if(step == 2)
 			{
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				upperLip.setVisible(false);
-		    	downLip.setVisible(false);
+				currentUpperLipPolygon.setVisible(false);
+		    	currentDownLipPolygon.setVisible(false);
 			}
 			else if(mColor.getOpacity() != 0.0)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 			break;
 			
 		case FADEOUT:
-			upperLip.setVisible(true);
-	    	downLip.setVisible(true);
+			currentUpperLipPolygon.setVisible(true);
+	    	currentDownLipPolygon.setVisible(true);
 	    	
 			if(step == 2)
 			{
@@ -130,302 +128,244 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case SMILE:
-			String a = "b";
-			currentUpperLipMesh = MouthSMILE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthSMILE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 			
 		case SMILEEND:
-			currentUpperLipMesh = MouthSMILE.modifyUpperLip(currentUpperLipMesh,mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthSMILE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon,mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 
 		case SAD:
-			currentUpperLipMesh = MouthSAD.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthSAD.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 		case SADEND:
-			currentUpperLipMesh = MouthSAD.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthSAD.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case ANGRY:
-			currentUpperLipMesh = MouthANGRY.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthANGRY.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 		case ANGRYEND:
-			currentUpperLipMesh = MouthANGRY.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthANGRY.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case ANGRYSMALLMOUTH:
-			currentUpperLipMesh = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 		case ANGRYSMALLMOUTHEND:
-			currentUpperLipMesh = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case SURPRISED:
-			currentUpperLipMesh = MouthSURPRISED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthSURPRISED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 		case SURPRISEDEND:
-			currentUpperLipMesh = MouthSURPRISED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthSURPRISED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 			
 		case HAPPY:
-			currentUpperLipMesh = MouthHAPPY.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthHAPPY.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case HAPPYEND:
-			currentUpperLipMesh = MouthHAPPY.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthHAPPY.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case DISGUSTED:
-			currentUpperLipMesh = MouthDISGUSTED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthDISGUSTED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case DISGUSTEDEND:
-			currentUpperLipMesh = MouthDISGUSTED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthDISGUSTED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case CONTEMPT:
-			currentUpperLipMesh = MouthCONTEMPT.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthCONTEMPT.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case CONTEMPTEND:
-			currentUpperLipMesh = MouthCONTEMPT.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthCONTEMPT.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 
 		case FEAR:
-			currentUpperLipMesh = MouthFEAR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthFEAR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case FEAREND:
-			currentUpperLipMesh = MouthFEAR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthFEAR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case EXCITED:
-			currentUpperLipMesh = MouthEXCITED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthEXCITED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case EXCITEDEND:
-			currentUpperLipMesh = MouthEXCITED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthEXCITED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 
 		case EMBARRASSED:
-			currentUpperLipMesh = MouthEMBARRASSED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthEMBARRASSED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 		case EMBARRASSEDEND:
-			currentUpperLipMesh = MouthEMBARRASSED.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "minus");
-			currentDownLipMesh = MouthEMBARRASSED.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
+			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case O:
-			currentUpperLipMesh = MouthO.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthO.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthO.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthO.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case ONE:
-			currentUpperLipMesh = MouthONE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthONE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthONE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthONE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 		case SIX:
 		case FOURTEEN:
 		case NINETEEN:
 			break;
 
 		case TWO:
-			currentUpperLipMesh = MouthTWO.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthTWO.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthTWO.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthTWO.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case THREE:
-			currentUpperLipMesh = MouthTREE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthTREE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthTREE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthTREE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 		case TWENTY:
 			break;
 
 		case FOUR:
-			currentUpperLipMesh = MouthFOUR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthFOUR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case FIVE:
-			currentUpperLipMesh = MouthFIVE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthFIVE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 		case EIGHT:
-			currentUpperLipMesh = MouthFIVE.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthFIVE.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case SEVEN:
-			currentUpperLipMesh = MouthSEVEN.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthSEVEN.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSEVEN.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthSEVEN.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case NINE:
-			currentUpperLipMesh = MouthFOUR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthFOUR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		case TEN:
-			currentUpperLipMesh = MouthFOUR.modifyUpperLip(currentUpperLipMesh, mShapeAnimationStep, "plus");
-			currentDownLipMesh = MouthFOUR.modifyDownLip(currentDownLipMesh, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
+			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;
 
 		}
-		upperLip = new MeshView(currentUpperLipMesh);
-		upperLip.setId("UpperLip");
-		upperLip.setDrawMode(DrawMode.FILL);
-	    mat = new PhongMaterial();
-	    
-	    if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-	    	mat.setDiffuseColor(mColor);
-	    else 
-	    	mat.setDiffuseColor(mColor);
-	    
-	    upperLip.setMaterial(mat);
-	    
-	    upperLip.setTranslateX(mStart.x-14);
-	    upperLip.setTranslateY(mStart.y+95);
-	    upperLip.setTranslateZ(-17);
-		if (step == 0) 
-			mHeadFX.mHead.getChildren().add(upperLip);
-		else
-			mHeadFX.mHead.getChildren().set(6, upperLip);
 		
-		downLip = new MeshView(currentDownLipMesh);
-		downLip.setId("DownLip");
-		downLip.setDrawMode(DrawMode.FILL);
-		downLip.setMaterial(mat);
-		downLip.setTranslateX(mStart.x-14);
-		downLip.setTranslateY(mStart.y+95);
-		downLip.setTranslateZ(-17);
-	    if (step == 0) 
-			mHeadFX.mHead.getChildren().add(downLip);
+		currentUpperLipPolygon.setFill(mColor);
+		currentDownLipPolygon.setFill(mColor);
+	    
+		currentUpperLipPolygon.setTranslateX(mStart.x-14);
+		currentUpperLipPolygon.setTranslateY(mStart.y+95);
+		currentUpperLipPolygon.setTranslateZ(-17);
+		
+		if (step == 0) 
+			mHeadFX.mHead.getChildren().add(currentUpperLipPolygon);
 		else
-			mHeadFX.mHead.getChildren().set(7, downLip);
+			mHeadFX.mHead.getChildren().set(6, currentUpperLipPolygon);
+		
+		currentDownLipPolygon.setTranslateX(mStart.x-14);
+		currentDownLipPolygon.setTranslateY(mStart.y+94);
+		currentDownLipPolygon.setTranslateZ(-17);
+		
+	    if (step == 0) 
+			mHeadFX.mHead.getChildren().add(currentDownLipPolygon);
+		else
+			mHeadFX.mHead.getChildren().set(7, currentDownLipPolygon);
 	}
 	
 	public void update()
 	{
-		mat.setDiffuseColor(mColor);
-		upperLip.setMaterial(mat);
-		downLip.setMaterial(mat);
+		currentUpperLipPolygon.setFill(mColor);
+		currentDownLipPolygon.setFill(mColor);
 	}
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
 	}
 	
-	private TriangleMesh createUpperLip()
+	private Polygon createUpperLip()
 	{
-		TriangleMesh tMesh = new TriangleMesh();
-		tMesh.getTexCoords().addAll(0,0);
-		
-		tMesh.getPoints().addAll(
+		Polygon polygon = new Polygon();
+		polygon.getPoints().addAll(
 				//  x   y   z	
-					0,	0,	0,			//Point 0
-					3,	-2, 0,			//Point 1
-					6,	-4,	0,			//Point 2
-					9,	-5,	0,			//Point 3
-					13,	-5,	0,			//Point 4
-					16,	-3,	0,			//Point 5
-					19,	-5,	0,			//Point 6
-					23,	-5,	0,			//Point 7
-					26,	-4,	0,			//Point 8
-					29,	-2,	0,			//Point 9
-					32,	0,	0,			//Point 10
-					29,	0,	0,			//Point 11
-					26,	0,	0,			//Point 12
-					23,	0,	0,			//Point 13
-					19,	0,	0,			//Point 14
-					16,	0,	0,			//Point 15
-					13,	0,	0,			//Point 16
-					9,	0,	0,			//Point 17
-					6,	0,	0,			//Point 18
-					3,	0,	0			//Point 19
+					0.0,	0.0,			//Point 0
+					3.0,	-2.0,			//Point 1
+					6.0,	-4.0,			//Point 2
+					9.0,	-5.0,			//Point 3
+					13.0,	-5.0,			//Point 4
+					16.0,	-3.0,			//Point 5
+					19.0,	-5.0,			//Point 6
+					23.0,	-5.0,			//Point 7
+					26.0,	-4.0,			//Point 8
+					29.0,	-2.0,			//Point 9
+					32.0,	0.0,			//Point 10
+					29.0,	0.0,			//Point 11
+					26.0,	0.0,			//Point 12
+					23.0,	0.0,			//Point 13
+					19.0,	0.0,			//Point 14
+					16.0,	0.0,			//Point 15
+					13.0,	0.0,			//Point 16
+					9.0,	0.0,			//Point 17
+					6.0,	0.0,			//Point 18
+					3.0,	0.0			//Point 19
 					);	
-		
-		tMesh.getFaces().addAll(
-				0,0,	19,0,	1,0,
-				1,0,	19,0,	18,0,
-				18,0,	2,0,	1,0,
-				2,0,	18,0,	17,0,
-				17,0,	3,0,	2,0,
-				3,0,	17,0,	16,0,
-				16,0,	4,0,	3,0,
-				4,0,	16,0,	15,0,
-				15,0,	5,0,	4,0,
-				5,0,	15,0,	14,0,
-				14,0,	6,0,	5,0,
-				6,0,	14,0,	13,0,
-				13,0,	7,0,	6,0,
-				7,0,	13,0,	12,0,
-				12,0,	8,0,	7,0,
-				8,0,	12,0,	11,0,
-				11,0,	9,0,	8,0,
-				11,0,	10,0,	9,0
-		);
-		return tMesh;
+		return polygon;
 	}
 	
-	private TriangleMesh createDownLip()
+	private Polygon createDownLip()
 	{
-		TriangleMesh tMesh = new TriangleMesh();
-		tMesh.getTexCoords().addAll(0,0);
-		
-		tMesh.getPoints().addAll(
+		Polygon polygon = new Polygon();
+		polygon.getPoints().addAll(
 				//  x   y   z	
-					0,	0,	0,			//Point 0
-					3,	2, 0,			//Point 1
-					6,	4,	0,			//Point 2
-					9,	5,	0,			//Point 3
-					13,	5,	0,			//Point 4
-					16,	3,	0,			//Point 5
-					19,	5,	0,			//Point 6
-					23,	5,	0,			//Point 7
-					26,	4,	0,			//Point 8
-					29,	2,	0,			//Point 9
-					32,	0,	0,			//Point 10
-					29,	0,	0,			//Point 11
-					26,	0,	0,			//Point 12
-					23,	0,	0,			//Point 13
-					19,	0,	0,			//Point 14
-					16,	0,	0,			//Point 15
-					13,	0,	0,			//Point 16
-					9,	0,	0,			//Point 17
-					6,	0,	0,			//Point 18
-					3,	0,	0			//Point 19
+					0.0,	0.0,			//Point 0
+					3.0,	2.0,			//Point 1
+					6.0,	4.0,			//Point 2
+					9.0,	5.0,			//Point 3
+					13.0,	5.0,			//Point 4
+					16.0,	3.0,			//Point 5
+					19.0,	5.0,			//Point 6
+					23.0,	5.0,			//Point 7
+					26.0,	4.0,			//Point 8
+					29.0,	2.0,			//Point 9
+					32.0,	0.0,			//Point 10
+					29.0,	0.0,			//Point 11
+					26.0,	0.0,			//Point 12
+					23.0,	0.0,			//Point 13
+					19.0,	0.0,			//Point 14
+					16.0,	0.0,			//Point 15
+					13.0,	0.0,			//Point 16
+					9.0,	0.0,			//Point 17
+					6.0,	0.0,			//Point 18
+					3.0,	0.0			//Point 19
 					);	
-		
-		tMesh.getFaces().addAll(
-				0,0,	1,0,	19,0,
-				1,0,	2,0,	18,0,
-				18,0,	19,0,	1,0,
-				2,0,	3,0,	17,0,
-				17,0,	18,0,	2,0,
-				3,0,	4,0,	16,0,
-				16,0,	17,0,	3,0,
-				4,0,	5,0,	15,0,
-				15,0,	16,0,	4,0,
-				5,0,	6,0,	14,0,
-				14,0,	15,0,	5,0,
-				6,0,	7,0,	13,0,
-				13,0,	14,0,	6,0,
-				7,0,	8,0,	12,0,
-				12,0,	13,0,	7,0,
-				8,0,	9,0,	11,0,
-				11,0,	12,0,	8,0,
-				9,0,	10,0,	11,0
-		);
-		return tMesh;
+		return polygon;
 	}
 }

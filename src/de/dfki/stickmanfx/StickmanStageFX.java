@@ -318,7 +318,7 @@ public class StickmanStageFX extends Application {
         public void handle(MouseEvent mouseEvent) {
 
     	getStickmanFX("Anna").doAnimation("Muster", 1000, true);
-    	getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+//    	getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //    	getStickmanFX("character").doAnimation("Muster", 1000, true);
         	//getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);

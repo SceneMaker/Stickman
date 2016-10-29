@@ -1,11 +1,12 @@
 package de.dfki.stickmanfx.mimic.util;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class MouthFOUR {
 	
-	public static TriangleMesh modifyUpperLip(TriangleMesh currentUpperLipMesh, float step, String sign)
+	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
 	{
 		int sig;
 		
@@ -18,17 +19,17 @@ public class MouthFOUR {
 
 		yMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
 		
-		currentUpperLipMesh.getPoints().set(52, currentUpperLipMesh.getPoints().get(52) - yMovement18);
-		currentUpperLipMesh.getPoints().set(49, currentUpperLipMesh.getPoints().get(49) - yMovement18);
-		currentUpperLipMesh.getPoints().set(46, currentUpperLipMesh.getPoints().get(46) - yMovement18);
-		currentUpperLipMesh.getPoints().set(43, currentUpperLipMesh.getPoints().get(43) - yMovement18);
-		currentUpperLipMesh.getPoints().set(40, currentUpperLipMesh.getPoints().get(40) - yMovement18);
+		currentUpperLipMesh.getPoints().set(35, currentUpperLipMesh.getPoints().get(35) - yMovement18);
+		currentUpperLipMesh.getPoints().set(33, currentUpperLipMesh.getPoints().get(33) - yMovement18);
+		currentUpperLipMesh.getPoints().set(31, currentUpperLipMesh.getPoints().get(31) - yMovement18);
+		currentUpperLipMesh.getPoints().set(29, currentUpperLipMesh.getPoints().get(29) - yMovement18);
+		currentUpperLipMesh.getPoints().set(27, currentUpperLipMesh.getPoints().get(27) - yMovement18);
 		
 		
 		return currentUpperLipMesh;
 	}
 	
-	public static TriangleMesh modifyDownLip(TriangleMesh currentDownLipMesh, float step, String sign)
+	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
 	{
 		
 		int sig;
@@ -54,19 +55,19 @@ public class MouthFOUR {
 		yMovement16 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0316f;
 		yMovement15 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0316f;
 		
-		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + yMovement2);
-		currentDownLipMesh.getPoints().set(10, currentDownLipMesh.getPoints().get(10) + yMovement3);
+		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) + yMovement2);
+		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + yMovement3);
+		currentDownLipMesh.getPoints().set(9, currentDownLipMesh.getPoints().get(9) + yMovement4);
+		currentDownLipMesh.getPoints().set(11, currentDownLipMesh.getPoints().get(11) + yMovement5);
 		currentDownLipMesh.getPoints().set(13, currentDownLipMesh.getPoints().get(13) + yMovement4);
-		currentDownLipMesh.getPoints().set(16, currentDownLipMesh.getPoints().get(16) + yMovement5);
-		currentDownLipMesh.getPoints().set(19, currentDownLipMesh.getPoints().get(19) + yMovement4);
-		currentDownLipMesh.getPoints().set(22, currentDownLipMesh.getPoints().get(22) + yMovement3);
-		currentDownLipMesh.getPoints().set(25, currentDownLipMesh.getPoints().get(25) + yMovement2);
+		currentDownLipMesh.getPoints().set(15, currentDownLipMesh.getPoints().get(15) + yMovement3);
+		currentDownLipMesh.getPoints().set(17, currentDownLipMesh.getPoints().get(17) + yMovement2);
 		
-		currentDownLipMesh.getPoints().set(52, currentDownLipMesh.getPoints().get(52) + yMovement17);
-		currentDownLipMesh.getPoints().set(49, currentDownLipMesh.getPoints().get(49) + yMovement16);
-		currentDownLipMesh.getPoints().set(46, currentDownLipMesh.getPoints().get(46) + yMovement15);
-		currentDownLipMesh.getPoints().set(43, currentDownLipMesh.getPoints().get(43) + yMovement16);
-		currentDownLipMesh.getPoints().set(40, currentDownLipMesh.getPoints().get(40) + yMovement17);
+		currentDownLipMesh.getPoints().set(35, currentDownLipMesh.getPoints().get(35) + yMovement17);
+		currentDownLipMesh.getPoints().set(33, currentDownLipMesh.getPoints().get(33) + yMovement16);
+		currentDownLipMesh.getPoints().set(31, currentDownLipMesh.getPoints().get(31) + yMovement15);
+		currentDownLipMesh.getPoints().set(29, currentDownLipMesh.getPoints().get(29) + yMovement16);
+		currentDownLipMesh.getPoints().set(27, currentDownLipMesh.getPoints().get(27) + yMovement17);
 		
 		return currentDownLipMesh;
 	}

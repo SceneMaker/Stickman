@@ -1,11 +1,12 @@
 package de.dfki.stickmanfx.mimic.util;
 
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class MouthANGRY {
 	
-	public static TriangleMesh modifyUpperLip(TriangleMesh currentUpperLipMesh, float step, String sign)
+	public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step, String sign)
 	{
 		int sig;
 		
@@ -22,14 +23,14 @@ public class MouthANGRY {
 		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
 
 		
-		currentUpperLipMesh.getPoints().set(16, currentUpperLipMesh.getPoints().get(16) - yMovement5);
-		currentUpperLipMesh.getPoints().set(1, currentUpperLipMesh.getPoints().get(1) + yMovement0);
-		currentUpperLipMesh.getPoints().set(31, currentUpperLipMesh.getPoints().get(31) + yMovement0);
+		currentUpperLipPolygon.getPoints().set(11, currentUpperLipPolygon.getPoints().get(11) - yMovement5);
+		currentUpperLipPolygon.getPoints().set(1, currentUpperLipPolygon.getPoints().get(1) + yMovement0);
+		currentUpperLipPolygon.getPoints().set(21, currentUpperLipPolygon.getPoints().get(21) + yMovement0);
 		
-		return currentUpperLipMesh;
+		return currentUpperLipPolygon;
 	}
 	
-	public static TriangleMesh modifyDownLip(TriangleMesh currentDownLipMesh, float step, String sign)
+	public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step, String sign)
 	{
 		int sig;
 		
@@ -51,17 +52,17 @@ public class MouthANGRY {
 		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
 		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
 		
-		currentDownLipMesh.getPoints().set(1, currentDownLipMesh.getPoints().get(1) + yMovement0);
-		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) - yMovement2);
-		currentDownLipMesh.getPoints().set(10, currentDownLipMesh.getPoints().get(10) - yMovement3);
-		currentDownLipMesh.getPoints().set(13, currentDownLipMesh.getPoints().get(13) - yMovement4);
-		currentDownLipMesh.getPoints().set(16, currentDownLipMesh.getPoints().get(16) - yMovement5);
-		currentDownLipMesh.getPoints().set(19, currentDownLipMesh.getPoints().get(19) - yMovement4);
-		currentDownLipMesh.getPoints().set(22, currentDownLipMesh.getPoints().get(22) - yMovement3);
-		currentDownLipMesh.getPoints().set(25, currentDownLipMesh.getPoints().get(25) - yMovement2);
-		currentDownLipMesh.getPoints().set(31, currentDownLipMesh.getPoints().get(31) + yMovement0);
+		currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) + yMovement0);
+		currentDownLipPolygon.getPoints().set(5, currentDownLipPolygon.getPoints().get(5) - yMovement2);
+		currentDownLipPolygon.getPoints().set(7, currentDownLipPolygon.getPoints().get(7) - yMovement3);
+		currentDownLipPolygon.getPoints().set(9, currentDownLipPolygon.getPoints().get(9) - yMovement4);
+		currentDownLipPolygon.getPoints().set(11, currentDownLipPolygon.getPoints().get(11) - yMovement5);
+		currentDownLipPolygon.getPoints().set(13, currentDownLipPolygon.getPoints().get(13) - yMovement4);
+		currentDownLipPolygon.getPoints().set(15, currentDownLipPolygon.getPoints().get(15) - yMovement3);
+		currentDownLipPolygon.getPoints().set(17, currentDownLipPolygon.getPoints().get(17) - yMovement2);
+		currentDownLipPolygon.getPoints().set(21, currentDownLipPolygon.getPoints().get(21) + yMovement0);
 		
-		return currentDownLipMesh;
+		return currentDownLipPolygon;
 	}
 
 }
