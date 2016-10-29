@@ -19,7 +19,7 @@ import javafx.application.Platform;
  *
  * @author Beka Aptsiauri
  */
-public class Dancing1 extends AnimationFX 
+public class Dancing extends AnimationFX 
 {
 
     /**
@@ -31,11 +31,11 @@ public class Dancing1 extends AnimationFX
      * finished.
      */
 	
-	public Dancing1() {
+	public Dancing() {
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-    public Dancing1(StickmanFX sm, int duration, boolean block) 
+    public Dancing(StickmanFX sm, int duration, boolean block) 
     {
         super(sm, duration, block);
     }

@@ -32,11 +32,9 @@ import de.dfki.stickmanfx.bodyfx.LeftFinger1;
 import de.dfki.stickmanfx.bodyfx.LeftFinger2;
 import de.dfki.stickmanfx.bodyfx.LeftFinger3;
 import de.dfki.stickmanfx.bodyfx.LeftFinger4;
-import de.dfki.stickmanfx.bodyfx.LeftFinger5;
 import de.dfki.stickmanfx.bodyfx.LeftFootFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftForeLegFX;
-import de.dfki.stickmanfx.bodyfx.LeftShoulderFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.LeftUpperLegFX;
 import de.dfki.stickmanfx.bodyfx.LeftWrist;
@@ -49,11 +47,9 @@ import de.dfki.stickmanfx.bodyfx.RightFinger1;
 import de.dfki.stickmanfx.bodyfx.RightFinger2;
 import de.dfki.stickmanfx.bodyfx.RightFinger3;
 import de.dfki.stickmanfx.bodyfx.RightFinger4;
-import de.dfki.stickmanfx.bodyfx.RightFinger5;
 import de.dfki.stickmanfx.bodyfx.RightFootFX;
 import de.dfki.stickmanfx.bodyfx.RightForeArmFX;
 import de.dfki.stickmanfx.bodyfx.RightForeLegFX;
-import de.dfki.stickmanfx.bodyfx.RightShoulderFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperArmFX;
 import de.dfki.stickmanfx.bodyfx.RightUpperLegFX;
 import de.dfki.stickmanfx.bodyfx.RightWrist;
@@ -144,7 +140,6 @@ public class StickmanFX extends Pane {
 	public FaceWrinkleFX mFaceWrinkleFX; // added by Robbie FaceWrinkle
 	public UpperBody mUpperBody;
 	public DownBody mDownBody;
-	public LeftShoulderFX mLeftShoulderFX;
 	public LeftUpperArmFX mLeftUpperArmFX;
 	public LeftForeArmFX mLeftForeArmFX;
 	public LeftWrist mLeftWrist;
@@ -152,9 +147,7 @@ public class StickmanFX extends Pane {
 	public LeftFinger2 mLeftFinger2;
 	public LeftFinger3 mLeftFinger3;
 	public LeftFinger4 mLeftFinger4;
-	public LeftFinger5 mLeftFinger5;
 	
-	public RightShoulderFX mRightShoulderFX;
 	public RightUpperArmFX mRightUpperArmFX;
 	public RightForeArmFX mRightForeArmFX;
 	public RightWrist mRightWrist;
@@ -162,7 +155,6 @@ public class StickmanFX extends Pane {
 	public RightFinger2 mRightFinger2;
 	public RightFinger3 mRightFinger3;
 	public RightFinger4 mRightFinger4;
-	public RightFinger5 mRightFinger5;
 	
 	// public LeftLegFX mLeftLegFX;
 	public LeftUpperLegFX mLeftUpperLegFX;
@@ -202,7 +194,6 @@ public class StickmanFX extends Pane {
 		mNeckFX = new NeckFX(mHeadFX);
 		mUpperBody = new UpperBody(mNeckFX);
 		mDownBody = new DownBody(mUpperBody);
-		mLeftShoulderFX = new LeftShoulderFX(mUpperBody);
 		mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftWrist = new LeftWrist(mLeftForeArmFX);
@@ -210,9 +201,7 @@ public class StickmanFX extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		mLeftFinger5 = new LeftFinger5(mLeftWrist);
 		
-		mRightShoulderFX = new RightShoulderFX(mUpperBody);
 		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -220,7 +209,6 @@ public class StickmanFX extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-		mRightFinger5 = new RightFinger5(mRightWrist);
 		
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
@@ -258,7 +246,6 @@ public class StickmanFX extends Pane {
 		mNeckFX = new NeckFX(mHeadFX);
 		mUpperBody = new UpperBody(mNeckFX);
 		mDownBody = new DownBody(mUpperBody);
-		mLeftShoulderFX = new LeftShoulderFX(mUpperBody);
 		mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftWrist = new LeftWrist(mLeftForeArmFX);
@@ -266,9 +253,7 @@ public class StickmanFX extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		mLeftFinger5 = new LeftFinger5(mLeftWrist);
 		
-		mRightShoulderFX = new RightShoulderFX(mUpperBody);
 		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -276,7 +261,6 @@ public class StickmanFX extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-		mRightFinger5 = new RightFinger5(mRightWrist);
 		
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
@@ -312,7 +296,6 @@ public class StickmanFX extends Pane {
 		mNeckFX = new NeckFX(mHeadFX);
 		mUpperBody = new UpperBody(mNeckFX);
 		mDownBody = new DownBody(mUpperBody);
-		mLeftShoulderFX = new LeftShoulderFX(mUpperBody);
 		mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
 		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
 		mLeftWrist = new LeftWrist(mLeftForeArmFX);
@@ -320,9 +303,7 @@ public class StickmanFX extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		mLeftFinger5 = new LeftFinger5(mLeftWrist);
 		
-		mRightShoulderFX = new RightShoulderFX(mUpperBody);
 		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -330,7 +311,6 @@ public class StickmanFX extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-		mRightFinger5 = new RightFinger5(mRightWrist);
 		
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
@@ -525,9 +505,8 @@ public class StickmanFX extends Pane {
 	private void addAllParts() {
 	
 		this.getChildren().addAll(mNeckFX, mHeadFX,
-				mUpperBody, mDownBody, mLeftShoulderFX, /*mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX,*/ mRightShoulderFX,
-				mRightUpperArmFX, /*mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
-				mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
+				mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
+				mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
 				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameText);
 		
 	}

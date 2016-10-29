@@ -30,8 +30,6 @@ public class RightUpperArmFX extends BodyPartFX {
 	
 	public RightUpperArmFX.SHAPE mShape = RightUpperArmFX.SHAPE.DEFAULT;
 	
-	RightShoulderFX mRightShoulderFX;
-
 	UpperBody mBodyFX;
 
 	int mArmLength = 70;
