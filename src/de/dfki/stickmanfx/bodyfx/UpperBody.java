@@ -70,7 +70,25 @@ public class UpperBody extends BodyPartFX {
 		material.setDiffuseColor(mColor);
 		mBodyMeshView.setMaterial(material);
 		mUpperBodyGroup.getChildren().add(mBodyMeshView);
+		
+		mStart = mNeckFX.getBodyStartPosition();
 		init();
+		this.getChildren().addAll(mUpperBodyGroup);
+	}
+	
+	@Override
+	public void init()
+	{
+		super.init();
+		mUpperBodyGroup.setTranslateX(mStart.x);
+		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
+			mUpperBodyGroup.setTranslateY(mStart.y + 135);
+			mUpperBodyGroup.setTranslateZ(-105);
+		} else {
+			mUpperBodyGroup.setTranslateY(mStart.y + 135);
+			mUpperBodyGroup.setTranslateZ(-105);
+		}
+		
 	}
 
 	@Override
@@ -85,19 +103,8 @@ public class UpperBody extends BodyPartFX {
 	}
 	
 	public void calculate(int step) {
-		mStart = mNeckFX.getBodyStartPosition();
-		clearChildren(this);
-		mUpperBodyGroup.setTranslateX(mStart.x);
-		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
-			mUpperBodyGroup.setTranslateY(mStart.y + 135);
-			mUpperBodyGroup.setTranslateZ(-105);
-		} else {
-			mUpperBodyGroup.setTranslateY(mStart.y + 135);
-			mUpperBodyGroup.setTranslateZ(-105);
-		}
 
-		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-
+//		rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			rx = new Rotate(mXRotation, 0, 10, 0, Rotate.X_AXIS);
@@ -106,7 +113,6 @@ public class UpperBody extends BodyPartFX {
 		{
 			rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		}
-		
 		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
@@ -144,8 +150,6 @@ public class UpperBody extends BodyPartFX {
 			}
 			break;
 		}
-		
-		this.getChildren().addAll(mUpperBodyGroup);
 	}
 
 	public Point getLeftArmStartPostion() {
