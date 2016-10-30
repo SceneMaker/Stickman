@@ -44,13 +44,22 @@ public class FaceWrinkleFX extends BodyPartFX
 		currentLeftPolygon = new Polygon();
 		currentRightPolygon = new Polygon();
 		
-		currentLeftPolygon.setFill(mColor);
-		currentLeftPolygon.setTranslateZ(-18);
-		currentRightPolygon.setTranslateZ(-18);
-		
 		mHeadFX.mHead.getChildren().addAll(currentLeftPolygon, currentRightPolygon);
 		
 		init();
+	}
+	
+	@Override
+	public void init()
+	{
+		super.init();
+		
+		currentLeftPolygon.setTranslateX(3);
+		currentLeftPolygon.setTranslateY(-10);
+		currentRightPolygon.setTranslateX(-3);
+		currentRightPolygon.setTranslateY(-10);
+		currentLeftPolygon.setTranslateZ(-18);
+		currentRightPolygon.setTranslateZ(-18);
 	}
 
 	@Override
@@ -79,13 +88,8 @@ public class FaceWrinkleFX extends BodyPartFX
 				break;
 
 		case ANGRY:
-			currentLeftPolygon = FaceWrinkleANGRY.getLeftANGRY(currentLeftPolygon);
-			currentRightPolygon = FaceWrinkleANGRY.getRightANGRY(currentRightPolygon);
-			
-			currentLeftPolygon.setTranslateX(3);
-			currentLeftPolygon.setTranslateY(-10);
-			currentRightPolygon.setTranslateX(-3);
-			currentRightPolygon.setTranslateY(-10);
+			currentLeftPolygon = FaceWrinkleANGRY.getLeftANGRY(currentLeftPolygon, step);
+			currentRightPolygon = FaceWrinkleANGRY.getRightANGRY(currentRightPolygon, step);
 			
 			colorOpacity = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
 			mColor = Color.rgb(80, 80, 80, colorOpacity/19);
@@ -117,36 +121,5 @@ public class FaceWrinkleFX extends BodyPartFX
 		case EMBARRASSEDEND:
 			break;
 		}
-//		this.update();
 	}
-	
-	private Polygon createWrinkle()
-	{
-		Polygon wrinkle = new Polygon();
-		
-		wrinkle.getPoints().addAll(
-				
-				0.0,	0.0,
-				3.0,	0.0,
-				3.0,	-2.0,
-				3.0,	-4.0,
-				3.0,	-6.0,
-				3.0,	-8.0,
-				3.0,	-10.0,
-				3.0,	-12.0,
-				3.0,	-14.0,
-				3.0, 	-16.0,
-				0.0,	-16.0,
-				0.0,	-14.0,
-				0.0,	-12.0,
-				0.0,	-10.0,	
-				0.0,	-8.0,
-				0.0,	-6.0,
-				0.0,	-4.0,
-				0.0,	-2.0
-				);
-		
-		return wrinkle;
-	}
-
 }
