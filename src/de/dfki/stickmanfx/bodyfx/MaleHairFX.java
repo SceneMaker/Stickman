@@ -60,11 +60,22 @@ public class MaleHairFX extends BodyPartFX
 		maleHairMeshView.setRotationAxis(Rotate.X_AXIS);
 		maleHairMeshView.setRotate(-90);
 		
+		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mStickmanFX.mHeadFX.mHead.getChildren().add(maleHairMeshView);
+		
 		init();
 
 		calculate(0);
 	}
 	
+	@Override
+	public void init()
+	{
+		super.init();
+		maleHairMeshView.setTranslateX(mHalfWidth-60);
+		maleHairMeshView.setTranslateY(mHalfHeight-52);
+		maleHairMeshView.setTranslateZ(mZTranslate);
+	}
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -78,31 +89,12 @@ public class MaleHairFX extends BodyPartFX
 
 	public void calculate(int step) 
 	{
-		clearChildren(this);
-
-		maleHairMeshView.setTranslateX(mHalfWidth-60);
-		maleHairMeshView.setTranslateY(mHalfHeight-52);
-		maleHairMeshView.setTranslateZ(mZTranslate);
-		
 		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
 		maleHairMeshView.getTransforms().clear();
 		maleHairMeshView.getTransforms().addAll(rx, ry, rz);
-		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
-			if (!mStickmanFX.mHeadFX.mHead.getChildren().contains(maleHairMeshView)) {
-				mStickmanFX.mHeadFX.mHead.getChildren().add(maleHairMeshView);
-			}
-			else
-			{
-				if (!mStickmanFX.mHeadFX.mHead.getChildren().get(1).equals(maleHairMeshView)) {
-					mStickmanFX.mHeadFX.mHead.getChildren().set(1, maleHairMeshView);
-				}
-			}
-		}
 		
 		switch(mShape)
 		{
