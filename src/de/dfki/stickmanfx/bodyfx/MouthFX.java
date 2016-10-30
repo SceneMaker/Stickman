@@ -6,6 +6,7 @@ import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
 import de.dfki.stickmanfx.mimic.util.MouthANGRYSMALLMOUTH;
 import de.dfki.stickmanfx.mimic.util.MouthCONTEMPT;
+import de.dfki.stickmanfx.mimic.util.MouthDEFAULT;
 import de.dfki.stickmanfx.mimic.util.MouthDISGUSTED;
 import de.dfki.stickmanfx.mimic.util.MouthEMBARRASSED;
 import de.dfki.stickmanfx.mimic.util.MouthEXCITED;
@@ -59,9 +60,28 @@ public class MouthFX extends BodyPartFX {
 
 		mColor = Color.rgb(230, 174, 161, 1.0);
 		
+		currentUpperLipPolygon = new Polygon();
+		currentDownLipPolygon = new Polygon();
+		
+		mStart = mHeadFX.getMouthPostion();
+		
 		init();
+		
+		mHeadFX.mHead.getChildren().addAll(currentUpperLipPolygon, currentDownLipPolygon);
 	}
 
+	@Override
+	public void init()
+	{
+		super.init();
+		currentUpperLipPolygon.setTranslateX(mStart.x-14);
+		currentUpperLipPolygon.setTranslateY(mStart.y+95);
+		currentUpperLipPolygon.setTranslateZ(-17);
+		
+		currentDownLipPolygon.setTranslateX(mStart.x-14);
+		currentDownLipPolygon.setTranslateY(mStart.y+94);
+		currentDownLipPolygon.setTranslateZ(-17);
+	}
 	@Override
 	public void setShape(String s) {
 		MouthFX.SHAPE shape = MouthFX.SHAPE.valueOf(s);
@@ -75,32 +95,15 @@ public class MouthFX extends BodyPartFX {
 
 	@Override
 	public void calculate(int step) {
-		mStart = mHeadFX.getMouthPostion();
 		
 		boolean isFadeIn = false;
 		
 		switch (mShape) {
 		case DEFAULT:
-			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-				if (mHeadFX.mStickmanFX.fadeControler == true) {
-					int fadeFactor = mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 6;
-					if (fadeFactor <= 12) {
-						fadeFactor = 0;
-					}
-					mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0,
-							(fadeFactor * 100 / 255) / 100f);
-				} else {
-					int fadeFactor = (20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 6;
-					if (fadeFactor >= 107) {
-						mColor = mColorRecorder;
-					} else
-						mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE ? 64 : 32, 0, 0,
-								(fadeFactor * 100 / 255) / 100f);
-				}
-			}
-			
-			currentUpperLipPolygon = createUpperLip();
-			currentDownLipPolygon = createDownLip();
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
+			currentUpperLipPolygon.setFill(mColor);
+			currentDownLipPolygon.setFill(mColor);
 			break;
 			
 		case FADEIN:
@@ -278,27 +281,6 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		}
-		
-		currentUpperLipPolygon.setFill(mColor);
-		currentDownLipPolygon.setFill(mColor);
-	    
-		currentUpperLipPolygon.setTranslateX(mStart.x-14);
-		currentUpperLipPolygon.setTranslateY(mStart.y+95);
-		currentUpperLipPolygon.setTranslateZ(-17);
-		
-		if (step == 0) 
-			mHeadFX.mHead.getChildren().add(currentUpperLipPolygon);
-		else
-			mHeadFX.mHead.getChildren().set(6, currentUpperLipPolygon);
-		
-		currentDownLipPolygon.setTranslateX(mStart.x-14);
-		currentDownLipPolygon.setTranslateY(mStart.y+94);
-		currentDownLipPolygon.setTranslateZ(-17);
-		
-	    if (step == 0) 
-			mHeadFX.mHead.getChildren().add(currentDownLipPolygon);
-		else
-			mHeadFX.mHead.getChildren().set(7, currentDownLipPolygon);
 	}
 	
 	public void update()
@@ -309,63 +291,5 @@ public class MouthFX extends BodyPartFX {
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
-	}
-	
-	private Polygon createUpperLip()
-	{
-		Polygon polygon = new Polygon();
-		polygon.getPoints().addAll(
-				//  x   y   z	
-					0.0,	0.0,			//Point 0
-					3.0,	-2.0,			//Point 1
-					6.0,	-4.0,			//Point 2
-					9.0,	-5.0,			//Point 3
-					13.0,	-5.0,			//Point 4
-					16.0,	-3.0,			//Point 5
-					19.0,	-5.0,			//Point 6
-					23.0,	-5.0,			//Point 7
-					26.0,	-4.0,			//Point 8
-					29.0,	-2.0,			//Point 9
-					32.0,	0.0,			//Point 10
-					29.0,	0.0,			//Point 11
-					26.0,	0.0,			//Point 12
-					23.0,	0.0,			//Point 13
-					19.0,	0.0,			//Point 14
-					16.0,	0.0,			//Point 15
-					13.0,	0.0,			//Point 16
-					9.0,	0.0,			//Point 17
-					6.0,	0.0,			//Point 18
-					3.0,	0.0			//Point 19
-					);	
-		return polygon;
-	}
-	
-	private Polygon createDownLip()
-	{
-		Polygon polygon = new Polygon();
-		polygon.getPoints().addAll(
-				//  x   y   z	
-					0.0,	0.0,			//Point 0
-					3.0,	2.0,			//Point 1
-					6.0,	4.0,			//Point 2
-					9.0,	5.0,			//Point 3
-					13.0,	5.0,			//Point 4
-					16.0,	3.0,			//Point 5
-					19.0,	5.0,			//Point 6
-					23.0,	5.0,			//Point 7
-					26.0,	4.0,			//Point 8
-					29.0,	2.0,			//Point 9
-					32.0,	0.0,			//Point 10
-					29.0,	0.0,			//Point 11
-					26.0,	0.0,			//Point 12
-					23.0,	0.0,			//Point 13
-					19.0,	0.0,			//Point 14
-					16.0,	0.0,			//Point 15
-					13.0,	0.0,			//Point 16
-					9.0,	0.0,			//Point 17
-					6.0,	0.0,			//Point 18
-					3.0,	0.0			//Point 19
-					);	
-		return polygon;
 	}
 }
