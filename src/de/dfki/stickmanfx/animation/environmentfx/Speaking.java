@@ -39,11 +39,12 @@ public class Speaking extends AnimationFX {
 		
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
-		playAnimationPart(4000);
+		playAnimationPart(mDuration);
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
 		playAnimationPart(20);
 
-		StickmanStageController.currentRadioButton.setSelected(false); // nur zum Testen. Im Normalfall diese Zeile loeschen
+		if(StickmanStageController.currentRadioButton != null) // nur zum Testen. Im Normalfall diese 2 Zeilen loeschen
+			StickmanStageController.currentRadioButton.setSelected(false); 
 	}
 }

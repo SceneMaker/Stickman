@@ -71,7 +71,7 @@ public class Fear extends AnimationFX {
 	        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 250));
 	        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 20));
         }
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
         
 //        pauseAnimation(1200);
@@ -125,7 +125,7 @@ public class Fear extends AnimationFX {
 	        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -20));
 	        
         }
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
         
 //        pauseAnimation(1200);
@@ -134,6 +134,7 @@ public class Fear extends AnimationFX {
 //        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -90));
 //        playAnimationPart(500);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+        if(StickmanStageController.currentRadioButton != null)
+        	StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

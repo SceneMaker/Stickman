@@ -33,7 +33,7 @@ public class Sad extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SAD"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SAD"));  // add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SAD")); // add by Robbie
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 
@@ -42,8 +42,9 @@ public class Sad extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SADEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND"));  // add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add by Robbie
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+        if(StickmanStageController.currentRadioButton != null)
+        	StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

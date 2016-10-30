@@ -39,7 +39,7 @@ public class AngrySmallMouth extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRY"));   ///Add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRY"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 
@@ -51,8 +51,9 @@ public class AngrySmallMouth extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRYEND"));   ///Add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+        if(StickmanStageController.currentRadioButton != null)
+        	StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

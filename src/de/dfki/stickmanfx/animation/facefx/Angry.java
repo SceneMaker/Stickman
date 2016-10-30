@@ -53,7 +53,7 @@ public class Angry extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "ANGRY"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
         pauseAnimation(1000);
         
@@ -64,7 +64,9 @@ public class Angry extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "ANGRYEND"));
-        playAnimationPart(500);
-        StickmanStageController.currentRadioButton.setSelected(false);
+        playAnimationPart(mDuration);
+        
+        if(StickmanStageController.currentRadioButton != null)
+        	StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

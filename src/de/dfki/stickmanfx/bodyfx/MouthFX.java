@@ -149,6 +149,7 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
 			break;
 		case ANGRY:
+			System.out.println(step);
 			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
 			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
 			break;

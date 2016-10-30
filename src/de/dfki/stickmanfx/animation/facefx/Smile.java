@@ -26,14 +26,15 @@ public class Smile extends AnimationFX {
         // smile
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         pauseAnimation(1200);
 
         // no smile
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+        if(StickmanStageController.currentRadioButton != null)
+        	StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

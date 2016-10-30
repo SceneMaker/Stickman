@@ -60,7 +60,7 @@ public class Angry2 extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRY"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRY"));  
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRY"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -30));
@@ -71,7 +71,7 @@ public class Angry2 extends AnimationFX
         
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", -15));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -15));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
         //foot
         for(int i = 0; i<8; i++)
@@ -107,7 +107,7 @@ public class Angry2 extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRYEND"));   ///Add by Robbie
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", 30));
@@ -118,8 +118,9 @@ public class Angry2 extends AnimationFX
         
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", 15));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 15));
-        playAnimationPart(500);
+        playAnimationPart(mDuration);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+        if(StickmanStageController.currentRadioButton != null)
+        	StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }
