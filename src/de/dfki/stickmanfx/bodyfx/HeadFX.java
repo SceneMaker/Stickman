@@ -72,11 +72,19 @@ public class HeadFX extends BodyPartFX {
 		mHeadMeshView.setRotate(90);
 		mHead.getChildren().add(mHeadMeshView);
 
-		mYRotation = -0;
 		init();
+		this.getChildren().add(mHead);
 		calculate(0);
 	}
 	
+	@Override
+	public void init()
+	{
+		super.init();
+		mHead.setTranslateX(mHalfWidth+2);
+		mHead.setTranslateY(mHalfHeight - 3);
+		mHead.setTranslateZ(mZTranslate);
+	}
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -131,11 +139,6 @@ public class HeadFX extends BodyPartFX {
 	}
 
 	public void calculate(int step) {
-		clearChildren(this);
-
-		mHead.setTranslateX(mHalfWidth+2);
-		mHead.setTranslateY(mHalfHeight - 3);
-		mHead.setTranslateZ(mZTranslate);
 
 		Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
@@ -175,8 +178,6 @@ public class HeadFX extends BodyPartFX {
 			}
 			break;
 		}
-
-		this.getChildren().addAll(mHead);
 	}
 
 	public void update() {
