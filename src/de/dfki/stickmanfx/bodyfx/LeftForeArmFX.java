@@ -86,7 +86,7 @@ public class LeftForeArmFX extends BodyPartFX
 		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
-		System.out.println(mXRotation + "  " + mYRotation + " " + mZRotation);
+
 		if(mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			leftForeArmGroup.setTranslateX(mStart.x);
