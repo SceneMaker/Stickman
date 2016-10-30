@@ -8,6 +8,7 @@ package de.dfki.stickmanfx.bodyfx;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.LeftBrowANGRY;
+import de.dfki.stickmanfx.mimic.util.LeftBrowDEFAULT;
 import de.dfki.stickmanfx.mimic.util.LeftBrowDISGUSTED;
 import de.dfki.stickmanfx.mimic.util.LeftBrowEMBARRASSED;
 import de.dfki.stickmanfx.mimic.util.LeftBrowEXCITED;
@@ -46,9 +47,23 @@ public class LeftEyebrowFX extends BodyPartFX
 		else
 			mColor = Color.rgb(204, 163, 0, 1);
 		
+		currentPolygon = new Polygon();
+		
+		mStart = mHeadFX.getLeftEyebrowPostion();
+		
 		init();
+		
+		mHeadFX.mHead.getChildren().add(currentPolygon);
 	}
 
+	@Override
+	public void init()
+	{
+		super.init();
+		currentPolygon.setTranslateX(mStart.x + 9);
+		currentPolygon.setTranslateY(mStart.y + 85);
+		currentPolygon.setTranslateZ(-17);
+	}
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = LeftEyebrowFX.SHAPE.valueOf(s);
@@ -62,34 +77,16 @@ public class LeftEyebrowFX extends BodyPartFX
 
 	@Override
 	public void calculate(int step) {
-		mStart = mHeadFX.getLeftEyebrowPostion();
-		
+
 		switch (mShape) 
 		{
 		case DEFAULT:
-			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-				if (mHeadFX.mStickmanFX.fadeControler == true)
-				{
-					int fadeFactor = (int) (mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 3.2);
-					if (fadeFactor <= 6) {
-						fadeFactor = 0;
-					}
-					mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
-				} else {
-					int fadeFactor = (int) ((20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 3.2);
-
-					if (fadeFactor >= 54) {
-						mColor = mColorRecorder;
-					} else
-						mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
-				}
-			}
 			
 			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-				currentPolygon = createMaleBrow();
+				currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
 			else
-				currentPolygon = createFemaleBrow();
-			
+				currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			currentPolygon.setFill(mColor);
 			break;
 
 		case ANGRY:
@@ -170,18 +167,6 @@ public class LeftEyebrowFX extends BodyPartFX
 			currentPolygon = LeftBrowSAD.getANGRY(currentPolygon, step, "MINUS");
 			break;
 		}
-		
-		currentPolygon.setId("LeftBrow");
-		currentPolygon.setFill(mColor);
-		
-		currentPolygon.setTranslateX(mStart.x + 9);
-		currentPolygon.setTranslateY(mStart.y + 85);
-		currentPolygon.setTranslateZ(-17);
-		
-		if (step == 0) 
-			mHeadFX.mHead.getChildren().add(currentPolygon);
-		else
-			mHeadFX.mHead.getChildren().set(2, currentPolygon);
 	}
 	
 	public void update()
@@ -192,52 +177,6 @@ public class LeftEyebrowFX extends BodyPartFX
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
-	}
-	
-	private Polygon createMaleBrow()
-	{
-		Polygon brow = new Polygon();
-		brow.getPoints().addAll(
-				//  x   	y   	
-					0.0,	0.0,			//Point 0
-					0.0,	-5.0,			//Point 1
-					3.0,	-7.0,			//Point 2
-					6.0,	-8.0,			//Point 3 
-					13.0,	-10.0,			//Point 4
-					20.0,	-11.0,			//Point 5
-					25.0,	-7.0,			//Point 6
-					30.0,	-3.0,			//Point 7
-					30.0,	0.0,			//Point 8
-					25.0,	-3.0,		    //Point 9
-					20.0,	-7.0,		    //Point 10
-					13.0,	-6.0,			//Point 11
-					6.0,  	-5.0,			//Point 12
-					3.0,	-3.0			//Point 13
-					);
-		return brow;
-	}
-	
-	private Polygon createFemaleBrow()
-	{
-		Polygon brow = new Polygon();
-		brow.getPoints().addAll(
-				//  x   	y   	/////
-					0.0,	0.0,			//Point 0
-					0.0,	-3.0,			//Point 1
-					3.0,	-6.0,			//Point 2
-					6.0,	-8.0,			//Point 3 
-					13.0,	-9.0,			//Point 4
-					20.0,	-9.0,			//Point 5
-					25.0,	-7.0,			//Point 6
-					30.0,	-3.0,			//Point 7
-					30.0,	0.0,			//Point 8
-					25.0,	-4.0,		    //Point 9
-					20.0,	-6.5,		    //Point 10
-					13.0,	-6.0,			//Point 11
-					6.0,  	-5.0,			//Point 12
-					3.0,	-3.0			//Point 13
-					);
-		return brow;
 	}
 }
 
