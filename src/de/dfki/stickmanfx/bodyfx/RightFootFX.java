@@ -82,7 +82,7 @@ public class RightFootFX extends BodyPartFX {
 		if(mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
 			mRightFootMeshView.setTranslateX(mStart.x);
-			mRightFootMeshView.setTranslateY(mStart.y+90);
+			mRightFootMeshView.setTranslateY(mStart.y+85);
 			mRightFootMeshView.setTranslateZ(0);
 		}
 		else

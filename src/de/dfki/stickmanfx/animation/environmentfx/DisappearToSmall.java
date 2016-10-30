@@ -33,6 +33,7 @@ public class DisappearToSmall extends AnimationFX {
 	// WaveLeft
 	@Override
 	public void playAnimation() {
+		float recordOriginScale = mStickmanFX.mScale;
 		mStickmanFX.starShowControler = false;
 		int rotationUnit = 5;
 
@@ -83,7 +84,7 @@ public class DisappearToSmall extends AnimationFX {
 
 		// show stars
 		mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX);
-		mStickmanFX.mScale = 1.0f;
+		mStickmanFX.mScale = recordOriginScale;
 		
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}

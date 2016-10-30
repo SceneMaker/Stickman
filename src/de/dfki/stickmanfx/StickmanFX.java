@@ -103,7 +103,8 @@ public class StickmanFX extends Pane {
 	FontMetrics mFontMetrics;
 	Font mFont;
 
-	public double leaveSpeed = 0; // Added by Robbie, to control the speed of
+	//steuert leaveSpeed von GoDown und ComeUp und Stickman Position auf Y Achse
+	public double leaveSpeedAndStickmanYPosition = 0; // Added by Robbie, to control the speed of
 									// leaving
 	public boolean starShowControler = false; // Added by Robbie, to control the
 												// star appear or not
@@ -179,6 +180,9 @@ public class StickmanFX extends Pane {
 		mSize = size;
 		mScale = scale;
 
+		//Test
+		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -220;
+				
 		mName = name;
 		mType = gender;
 
@@ -482,7 +486,7 @@ public class StickmanFX extends Pane {
 
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
-		af.appendTranslation(0, leaveSpeed); // Added by Robbie, GoDown
+		af.appendTranslation(0, leaveSpeedAndStickmanYPosition); // Added by Robbie, GoDown
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
 

@@ -24,10 +24,11 @@ public class ComeUp extends AnimationFX {
 	public ComeUp() {
 		mAnimType = ANIMTYPE.ON;
 	}
-
+	double recordOriginLeaveSpeed;
 	public ComeUp(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;
+		recordOriginLeaveSpeed = mStickmanFX.leaveSpeedAndStickmanYPosition;
 	}
 
 	// WaveLeft
@@ -36,7 +37,7 @@ public class ComeUp extends AnimationFX {
 		int rotationUnit = 5;
 		int speed = 4;
 
-		mStickmanFX.leaveSpeed = 480;
+		mStickmanFX.leaveSpeedAndStickmanYPosition = 480;
 
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
@@ -46,15 +47,14 @@ public class ComeUp extends AnimationFX {
 
 		for (int i = 0; i < 8; i++) {
 			// wave right
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < 10; j++) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -rotationUnit));
 				playComeSpeed(speed);
 				playAnimationPart(20);
 			}
-
 			// wave left
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < 10; j++) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", rotationUnit));
 				playComeSpeed(speed);
@@ -67,15 +67,14 @@ public class ComeUp extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
 		playAnimationPart(200);
-
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 
 	private void playComeSpeed(int Speed) {
-		if (mStickmanFX.leaveSpeed > 0) {
-			mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed - Speed;
+		if (mStickmanFX.leaveSpeedAndStickmanYPosition > recordOriginLeaveSpeed) {
+			mStickmanFX.leaveSpeedAndStickmanYPosition = mStickmanFX.leaveSpeedAndStickmanYPosition - Speed;
 		} else {
-			mStickmanFX.leaveSpeed = 0;
+			mStickmanFX.leaveSpeedAndStickmanYPosition = recordOriginLeaveSpeed;
 		}
 		Platform.runLater(() -> mStickmanFX.update());
 	}

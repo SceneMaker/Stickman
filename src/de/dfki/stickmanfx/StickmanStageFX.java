@@ -46,7 +46,7 @@ public class StickmanStageFX extends Application {
     static private StickmanStageFX sInstance;
     ArrayList<String> mStickmanComboList = new ArrayList<>();
     //grahics
-    private static float sScale = 1.0f;
+    private static float sScale = 1.5f;
     protected static boolean sFullScreen = false;
     protected static int mHeight = 0;
     protected static int mWidth = 0;
@@ -317,8 +317,8 @@ public class StickmanStageFX extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
 
-    	getStickmanFX("Anna").doAnimation("Angry2", 500, true);
-//    	getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
+    	getStickmanFX("Anna").doAnimation("Muster", 1000, true);
+    	getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
 //    	getStickmanFX("character").doAnimation("Muster", 1000, true);
         	//getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
 //        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);

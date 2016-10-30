@@ -23,10 +23,11 @@ public class GoDown extends AnimationFX {
 	public GoDown() {
 		mAnimType = ANIMTYPE.ON;
 	}
-
+	double recordOriginLeaveSpeed;
 	public GoDown(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;
+		recordOriginLeaveSpeed = mStickmanFX.leaveSpeedAndStickmanYPosition;
 	}
 
 	// WaveLeft
@@ -47,7 +48,7 @@ public class GoDown extends AnimationFX {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -rotationUnit));
 
-				mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed + speed;
+				mStickmanFX.leaveSpeedAndStickmanYPosition = mStickmanFX.leaveSpeedAndStickmanYPosition + speed;
 				Platform.runLater(() -> mStickmanFX.update());
 				playAnimationPart(20);
 			}
@@ -57,7 +58,7 @@ public class GoDown extends AnimationFX {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", rotationUnit));
 
-				mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed + speed;
+				mStickmanFX.leaveSpeedAndStickmanYPosition = mStickmanFX.leaveSpeedAndStickmanYPosition + speed;
 				Platform.runLater(() -> mStickmanFX.update());
 				playAnimationPart(20);
 			}
@@ -68,7 +69,7 @@ public class GoDown extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
 		playAnimationPart(20);
-
+		mStickmanFX.leaveSpeedAndStickmanYPosition = recordOriginLeaveSpeed;
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 

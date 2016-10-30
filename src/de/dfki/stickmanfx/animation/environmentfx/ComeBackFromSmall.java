@@ -35,12 +35,11 @@ public class ComeBackFromSmall extends AnimationFX {
 		
 		int rotationUnit = 5;
 		
-		float mScaleRecord = 0.0f;
+		float recordOriginScale = mStickmanFX.mScale;
+		
 		for (int j = 0; j < 19; j++) {
 			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
 		}
-
-		mScaleRecord = mStickmanFX.mScale;
 
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
@@ -57,8 +56,8 @@ public class ComeBackFromSmall extends AnimationFX {
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -rotationUnit));
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
-				if (mStickmanFX.mScale >= 1.0) {
-					mStickmanFX.mScale = 1.0f;
+				if (mStickmanFX.mScale >= recordOriginScale) {
+					mStickmanFX.mScale = recordOriginScale;
 				}
 				playAnimationPart(20);
 				Platform.runLater(() -> mStickmanFX.update());
@@ -71,8 +70,8 @@ public class ComeBackFromSmall extends AnimationFX {
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", rotationUnit));
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
-				if (mStickmanFX.mScale >= 1.0) {
-					mStickmanFX.mScale = 1.0f;
+				if (mStickmanFX.mScale >= recordOriginScale) {
+					mStickmanFX.mScale = recordOriginScale;
 				}
 				playAnimationPart(20);
 				Platform.runLater(() -> mStickmanFX.update());
