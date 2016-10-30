@@ -3,8 +3,10 @@ package de.dfki.stickmanfx.bodyfx;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.LeftBrowANGRY;
+import de.dfki.stickmanfx.mimic.util.LeftBrowDEFAULT;
 import de.dfki.stickmanfx.mimic.util.LeftBrowEMBARRASSED;
 import de.dfki.stickmanfx.mimic.util.RightBrowANGRY;
+import de.dfki.stickmanfx.mimic.util.RightBrowDEFAULT;
 import de.dfki.stickmanfx.mimic.util.RightBrowDISGUSTED;
 import de.dfki.stickmanfx.mimic.util.RightBrowEMBARRASSED;
 import de.dfki.stickmanfx.mimic.util.RightBrowEXCITED;
@@ -49,9 +51,23 @@ public class RightEyebrowFX extends BodyPartFX {
 		else
 			mColor = Color.rgb(204, 163, 0, 1);
 		
+		currentPolygon = new Polygon();
+		
+		mStart = mHeadFX.getRightEyebrowPostion();
+		
 		init();
+		
+		mHeadFX.mHead.getChildren().add(currentPolygon);
 	}
 
+	@Override
+	public void init()
+	{
+		super.init();
+		currentPolygon.setTranslateX(mStart.x - 9);
+		currentPolygon.setTranslateY(mStart.y + 38);
+		currentPolygon.setTranslateZ(-17);
+	}
 	@Override
 	public void setShape(String s) {
 		RightEyebrowFX.SHAPE shape = RightEyebrowFX.SHAPE.valueOf(s);
@@ -65,35 +81,15 @@ public class RightEyebrowFX extends BodyPartFX {
 
 	@Override
 	public void calculate(int step) {
-		mStart = mHeadFX.getRightEyebrowPostion();
 		
 
 		switch (mShape) {
 		case DEFAULT:
-			if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
-				if (mHeadFX.mStickmanFX.fadeControler == true) // Added by
-																// Robbie
-				{
-					int fadeFactor = (int) (mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 3.2);
-					if (fadeFactor <= 6) {
-						fadeFactor = 0;
-					}
-					mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
-				} else {
-					int fadeFactor = (int) ((20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 3.2);
-
-					if (fadeFactor >= 54) {
-						mColor = mColorRecorder;
-					} else
-						mColor = Color.rgb(0, 0, 0, (fadeFactor * 100 / 255) / 100f);
-				}
-			}
-
 			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-				currentPolygon = createMaleBrow();
+				currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
 			else
-				currentPolygon = createFemaleBrow();
-			
+				currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			currentPolygon.setFill(mColor);
 			break;
 			
 		case FADEIN:
@@ -175,18 +171,6 @@ public class RightEyebrowFX extends BodyPartFX {
 			break;
 
 		}
-		
-		currentPolygon.setId("RightBrow");
-		currentPolygon.setFill(mColor);
-		
-		currentPolygon.setTranslateX(mStart.x - 9);
-		currentPolygon.setTranslateY(mStart.y + 38);
-		currentPolygon.setTranslateZ(-17);
-		
-		if (step == 0) 
-			mHeadFX.mHead.getChildren().add(currentPolygon);
-		else
-			mHeadFX.mHead.getChildren().set(4, currentPolygon);
 	}
 	
 	public void update()
@@ -197,51 +181,5 @@ public class RightEyebrowFX extends BodyPartFX {
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
-	}
-	
-	private Polygon createMaleBrow()
-	{
-		Polygon brow = new Polygon();
-		brow.getPoints().addAll(
-				//  x   	y   	
-					0.0,	0.0,			//Point 0
-					0.0,	-5.0,			//Point 1
-					-3.0,	-7.0,			//Point 2
-					-6.0,	-8.0,			//Point 3 
-					-13.0,	-10.0,			//Point 4
-					-20.0,	-11.0,			//Point 5
-					-25.0,	-7.0,			//Point 6
-					-30.0,	-3.0,			//Point 7
-					-30.0,	0.0,			//Point 8
-					-25.0,	-3.0,		    //Point 9
-					-20.0,	-7.0,		    //Point 10
-					-13.0,	-6.0,			//Point 11
-					-6.0,  	-5.0,			//Point 12
-					-3.0,	-3.0			//Point 13
-					);
-		return brow;
-	}
-	
-	private Polygon createFemaleBrow()
-	{
-		Polygon brow = new Polygon();
-		brow.getPoints().addAll(
-				//  x   	y   	/////
-					0.0,	0.0,			//Point 0
-					0.0,	-3.0,			//Point 1
-					-3.0,	-6.0,			//Point 2
-					-6.0,	-8.0,			//Point 3 
-					-13.0,	-9.0,			//Point 4
-					-20.0,	-9.0,			//Point 5
-					-25.0,	-7.0,			//Point 6
-					-30.0,	-3.0,			//Point 7
-					-30.0,	0.0,			//Point 8
-					-25.0,	-4.0,		    //Point 9
-					-20.0,	-6.5,		    //Point 10
-					-13.0,	-6.0,			//Point 11
-					-6.0,  	-5.0,			//Point 12
-					-3.0,	-3.0			//Point 13
-					);
-		return brow;
 	}
 }
