@@ -18,9 +18,9 @@ public class MouthANGRY {
 		float yMovement0;
 		float yMovement5;
 		
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0105f;
+		yMovement0 = sig * (20 - step) * 0.0210f;
+		yMovement5 = sig * (20 - step) * 0.0158f;
 
 		
 		currentUpperLipPolygon.getPoints().set(11, currentUpperLipPolygon.getPoints().get(11) - yMovement5);
@@ -45,12 +45,12 @@ public class MouthANGRY {
 		float yMovement4;
 		float yMovement5;
 		
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0210f;
-		yMovement2 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0105f;
+		yMovement0 = sig * (20 - step) * 0.0210f;
+		yMovement2 = sig * (20 - step) * 0.0158f;
+		yMovement3 = sig * (20 - step) * 0.0263f;
+		yMovement4 = sig * (20 - step) * 0.0263f;
+		yMovement5 = sig * (20 - step) * 0.0158f;
 		
 		currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) + yMovement0);
 		currentDownLipPolygon.getPoints().set(5, currentDownLipPolygon.getPoints().get(5) - yMovement2);

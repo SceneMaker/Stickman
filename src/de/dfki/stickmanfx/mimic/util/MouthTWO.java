@@ -23,13 +23,13 @@ public class MouthTWO {
 		float yMovement16;
 		float yMovement15;
 		
-		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		yMovement17 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement16 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement15 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
+		yMovement3 = sig * (20 - step) * 0.0052f;
+		yMovement4 = sig * (20 - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0263f;
+		yMovement18 = sig * (20 - step) * 0.0052f;
+		yMovement17 = sig * (20 - step) * 0.0158f;
+		yMovement16 = sig * (20 - step) * 0.0263f;
+		yMovement15 = sig * (20 - step) * 0.0263f;
 		
 		currentUpperLipMesh.getPoints().set(7, currentUpperLipMesh.getPoints().get(7) - yMovement3);
 		currentUpperLipMesh.getPoints().set(9, currentUpperLipMesh.getPoints().get(9) - yMovement4);
@@ -66,13 +66,13 @@ public class MouthTWO {
 		float yMovement16;
 		float yMovement15;
 		
-		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		yMovement17 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement16 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement15 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
+		yMovement3 = sig * (20 - step) * 0.0052f;
+		yMovement4 = sig * (20 - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0263f;
+		yMovement18 = sig * (20 - step) * 0.0052f;
+		yMovement17 = sig * (20 - step) * 0.0158f;
+		yMovement16 = sig * (20 - step) * 0.0263f;
+		yMovement15 = sig * (20 - step) * 0.0263f;
 		
 		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + yMovement3);
 		currentDownLipMesh.getPoints().set(9, currentDownLipMesh.getPoints().get(9) + yMovement4);

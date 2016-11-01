@@ -29,19 +29,19 @@ public class MouthSAD {
 		float xMovement11;
 		float yMovement11;
 		
-		xMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0421f;
-		xMovement1 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement1 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		xMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		xMovement0 = sig * (20 - step) * 0.0263f;
+		yMovement0 = sig * (20 - step) * 0.0421f;
+		xMovement1 = sig * (20 - step) * 0.0158f;
+		yMovement1 = sig * (20 - step) * 0.0105f;
+		xMovement19 = sig * (20 - step) * 0.0158f;
+		yMovement19 = sig * (20 - step) * 0.0105f;
 		
-		xMovement10 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement10 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0421f;
-		xMovement9 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement9 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		xMovement11 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement11 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
+		xMovement10 = sig * (20 - step) * 0.0263f;
+		yMovement10 = sig * (20 - step) * 0.0421f;
+		xMovement9 = sig * (20 - step) * 0.0158f;
+		yMovement9 = sig * (20 - step) * 0.0105f;
+		xMovement11 = sig * (20 - step) * 0.0158f;
+		yMovement11 = sig * (20 - step) * 0.0105f;
 
 		currentUpperLipPolygon.getPoints().set(0, currentUpperLipPolygon.getPoints().get(0) - xMovement0);
 		currentUpperLipPolygon.getPoints().set(1, currentUpperLipPolygon.getPoints().get(1) + yMovement0);
@@ -88,26 +88,26 @@ public class MouthSAD {
 		float xMovement11;
 		float yMovement11;
 
-		xMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0421f;
-		xMovement1 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement1 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		xMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement2 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
-		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
+		xMovement0 = sig * (20 - step) * 0.0263f;
+		yMovement0 = sig * (20 - step) * 0.0421f;
+		xMovement1 = sig * (20 - step) * 0.0158f;
+		yMovement1 = sig * (20 - step) * 0.0105f;
+		xMovement19 = sig * (20 - step) * 0.0158f;
+		yMovement19 = sig * (20 - step) * 0.0105f;
+		yMovement2 = sig * (20 - step) * 0.0053f;
+		yMovement3 = sig * (20 - step) * 0.0105f;
+		yMovement4 = sig * (20 - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0053f;
 		
-		xMovement10 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement10 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0421f;
-		xMovement9 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement9 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		xMovement11 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement11 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement8 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0053f;
-		yMovement7 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement6 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
+		xMovement10 = sig * (20 - step) * 0.0263f;
+		yMovement10 = sig * (20 - step) * 0.0421f;
+		xMovement9 = sig * (20 - step) * 0.0158f;
+		yMovement9 = sig * (20 - step) * 0.0105f;
+		xMovement11 = sig * (20 - step) * 0.0158f;
+		yMovement11 = sig * (20 - step) * 0.0105f;
+		yMovement8 = sig * (20 - step) * 0.0053f;
+		yMovement7 = sig * (20 - step) * 0.0105f;
+		yMovement6 = sig * (20 - step) * 0.0158f;
 		
 		currentDownLipPolygon.getPoints().set(0, currentDownLipPolygon.getPoints().get(0) - xMovement0);
 		currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) + yMovement0);

@@ -27,17 +27,17 @@ public class MouthTREE {
 		float xMovement18;
 		float xMovement19;
 		
-		xMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		xMovement1 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		xMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement17 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement16 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement15 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		xMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
+		xMovement0 = sig * (20 - step) * 0.0263f;
+		xMovement1 = sig * (20 - step) * 0.0105f;
+		yMovement3 = sig * (20 - step) * 0.0052f;
+		yMovement4 = sig * (20 - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0263f;
+		yMovement18 = sig * (20 - step) * 0.0052f;
+		xMovement18 = sig * (20 - step) * 0.0105f;
+		yMovement17 = sig * (20 - step) * 0.0158f;
+		yMovement16 = sig * (20 - step) * 0.0263f;
+		yMovement15 = sig * (20 - step) * 0.0263f;
+		xMovement19 = sig * (20 - step) * 0.0263f;
 		
 		
 		
@@ -87,17 +87,17 @@ public class MouthTREE {
 		float xMovement18;
 		float xMovement19;
 		
-		xMovement0 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		xMovement1 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement3 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		yMovement4 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement5 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0052f;
-		xMovement18 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0105f;
-		yMovement17 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0158f;
-		yMovement16 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		yMovement15 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
-		xMovement19 = sig * (AnimatorFX.sMAX_ANIM_STEPS - step) * 0.0263f;
+		xMovement0 = sig * (20 - step) * 0.0263f;
+		xMovement1 = sig * (20 - step) * 0.0105f;
+		yMovement3 = sig * (20 - step) * 0.0052f;
+		yMovement4 = sig * (20 - step) * 0.0158f;
+		yMovement5 = sig * (20 - step) * 0.0263f;
+		yMovement18 = sig * (20 - step) * 0.0052f;
+		xMovement18 = sig * (20 - step) * 0.0105f;
+		yMovement17 = sig * (20 - step) * 0.0158f;
+		yMovement16 = sig * (20 - step) * 0.0263f;
+		yMovement15 = sig * (20 - step) * 0.0263f;
+		xMovement19 = sig * (20 - step) * 0.0263f;
 		
 		
 		

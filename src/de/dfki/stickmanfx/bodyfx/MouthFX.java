@@ -52,8 +52,6 @@ public class MouthFX extends BodyPartFX {
 	Polygon currentDownLipPolygon;
 	Polygon currentUpperLipPolygon;
 	
-	Polygon defMouth;
-
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
 	public MouthFX(HeadFX head) {
@@ -132,13 +130,13 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case SMILE:
-			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 			
 		case SMILEEND:
-			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon,mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon,step, "minus");
+			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -147,12 +145,12 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case SAD:
-			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case SADEND:
-			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -161,12 +159,12 @@ public class MouthFX extends BodyPartFX {
 			break;
 		case ANGRY:
 			System.out.println(step);
-			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case ANGRYEND:
-			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -174,12 +172,12 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 		case ANGRYSMALLMOUTH:
-			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case ANGRYSMALLMOUTHEND:
-			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -187,12 +185,12 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 		case SURPRISED:
-			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case SURPRISEDEND:
-			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -201,13 +199,13 @@ public class MouthFX extends BodyPartFX {
 			break;
 			
 		case HAPPY:
-			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case HAPPYEND:
-			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -215,13 +213,13 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 		case DISGUSTED:
-			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case DISGUSTEDEND:
-			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -229,13 +227,13 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 		case CONTEMPT:
-			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case CONTEMPTEND:
-			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -244,13 +242,13 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case FEAR:
-			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case FEAREND:
-			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -258,13 +256,13 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 		case EXCITED:
-			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case EXCITEDEND:
-			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -273,12 +271,12 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case EMBARRASSED:
-			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case EMBARRASSEDEND:
-			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "minus");
-			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "minus");
+			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
+			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			if(step == 2)
 			{
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
@@ -286,55 +284,55 @@ public class MouthFX extends BodyPartFX {
 			}
 			break;
 		case O:
-			currentUpperLipPolygon = MouthO.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthO.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthO.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthO.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case ONE:
-			currentUpperLipPolygon = MouthONE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthONE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthONE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthONE.modifyDownLip(currentDownLipPolygon, step, "plus");
 		case SIX:
 		case FOURTEEN:
 		case NINETEEN:
 			break;
 
 		case TWO:
-			currentUpperLipPolygon = MouthTWO.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthTWO.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthTWO.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthTWO.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case THREE:
-			currentUpperLipPolygon = MouthTREE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthTREE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthTREE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthTREE.modifyDownLip(currentDownLipPolygon, step, "plus");
 		case TWENTY:
 			break;
 
 		case FOUR:
-			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case FIVE:
-			currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, step, "plus");
 		case EIGHT:
-			currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case SEVEN:
-			currentUpperLipPolygon = MouthSEVEN.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthSEVEN.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthSEVEN.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthSEVEN.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case NINE:
-			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case TEN:
-			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, mShapeAnimationStep, "plus");
-			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, mShapeAnimationStep, "plus");
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, step, "plus");
+			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		}
