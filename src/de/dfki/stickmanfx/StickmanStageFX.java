@@ -297,7 +297,7 @@ public class StickmanStageFX extends Application {
     public static void main(String[] args) {
     	getInstanceFullScreen();
     	
-//    	addStickmanFX("Bob");
+    	addStickmanFX("Bob");
     	addStickmanFX("Anna");
 //    	addStickmanFX("character");
 

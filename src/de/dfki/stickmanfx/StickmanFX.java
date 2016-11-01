@@ -41,6 +41,7 @@ import de.dfki.stickmanfx.bodyfx.LeftWrist;
 import de.dfki.stickmanfx.bodyfx.MaleHairFX;
 import de.dfki.stickmanfx.bodyfx.MouthFX;
 import de.dfki.stickmanfx.bodyfx.NeckFX;
+import de.dfki.stickmanfx.bodyfx.NoseFX;
 import de.dfki.stickmanfx.bodyfx.RightEyeFX;
 import de.dfki.stickmanfx.bodyfx.RightEyebrowFX;
 import de.dfki.stickmanfx.bodyfx.RightFinger1;
@@ -130,6 +131,7 @@ public class StickmanFX extends Pane {
 
 	// body parts
 	public HeadFX mHeadFX;
+	public NoseFX mNoseFX;
 	public MaleHairFX mMaleHairFX;
 	public FemaleHairFX mFemaleHairFX;
 	public LeftEyebrowFX mLeftEyebrowFX;
@@ -193,6 +195,7 @@ public class StickmanFX extends Pane {
 		mLeftEyeFX = new LeftEyeFX(mHeadFX);
 		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
 		mRightEyeFX = new RightEyeFX(mHeadFX);
+		mNoseFX = new NoseFX(mHeadFX);
 		mMouthFX = new MouthFX(mHeadFX);
 		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mNeckFX = new NeckFX(mHeadFX);
@@ -245,6 +248,7 @@ public class StickmanFX extends Pane {
 		mLeftEyeFX = new LeftEyeFX(mHeadFX);
 		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
 		mRightEyeFX = new RightEyeFX(mHeadFX);
+		mNoseFX = new NoseFX(mHeadFX);
 		mMouthFX = new MouthFX(mHeadFX);
 		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mNeckFX = new NeckFX(mHeadFX);
@@ -295,6 +299,7 @@ public class StickmanFX extends Pane {
 		mLeftEyeFX = new LeftEyeFX(mHeadFX);
 		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
 		mRightEyeFX = new RightEyeFX(mHeadFX);
+		mNoseFX = new NoseFX(mHeadFX);
 		mMouthFX = new MouthFX(mHeadFX);
 		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
 		mNeckFX = new NeckFX(mHeadFX);

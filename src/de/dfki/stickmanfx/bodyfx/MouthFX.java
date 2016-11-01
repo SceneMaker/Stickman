@@ -73,11 +73,11 @@ public class MouthFX extends BodyPartFX {
 	public void init()
 	{
 		super.init();
-		currentUpperLipPolygon.setTranslateX(mStart.x-14);
+		currentUpperLipPolygon.setTranslateX(mStart.x-15);
 		currentUpperLipPolygon.setTranslateY(mStart.y+95);
 		currentUpperLipPolygon.setTranslateZ(-17);
 		
-		currentDownLipPolygon.setTranslateX(mStart.x-14);
+		currentDownLipPolygon.setTranslateX(mStart.x-15);
 		currentDownLipPolygon.setTranslateY(mStart.y+94);
 		currentDownLipPolygon.setTranslateZ(-17);
 	}
