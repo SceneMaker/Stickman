@@ -393,9 +393,9 @@ public class StickmanStageFX extends Application {
 		sCamera.setTranslateZ(-1400);
 		sCamera.setTranslateX(width - 450);
 		sCamera.setTranslateY(height / 2 + 50);
-		sCamera.setNearClip(0.8);
-		sCamera.setFarClip(15000.0);
-		sCamera.setFieldOfView(30);
+		sCamera.setNearClip(0.4);
+		sCamera.setFarClip(1500.0);
+		sCamera.setFieldOfView(60);
 		
 		//Zoom Camera with Scrolling
 //		sStickmanPane.setOnScroll(new EventHandler<ScrollEvent>() {
@@ -449,8 +449,8 @@ public class StickmanStageFX extends Application {
 		getInstanceFullScreen();
 
 		addStickmanFX("Bob");
-//		addStickmanFX("Anna");
-//		addStickmanFX("character");
+		addStickmanFX("Anna");
+		addStickmanFX("character");
 
 		lauchStickman();
 

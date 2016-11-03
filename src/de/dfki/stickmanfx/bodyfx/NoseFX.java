@@ -5,26 +5,14 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import de.dfki.stickmanfx.mimic.util.LeftBrowANGRY;
-import de.dfki.stickmanfx.mimic.util.LeftBrowDEFAULT;
-import de.dfki.stickmanfx.mimic.util.LeftBrowDISGUSTED;
-import de.dfki.stickmanfx.mimic.util.LeftBrowEMBARRASSED;
-import de.dfki.stickmanfx.mimic.util.LeftBrowEXCITED;
-import de.dfki.stickmanfx.mimic.util.LeftBrowHAPPY;
-import de.dfki.stickmanfx.mimic.util.LeftBrowSAD;
-import de.dfki.stickmanfx.mimic.util.LeftBrowSURPRISED;
 import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import com.sun.scenario.effect.light.SpotLight;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.Polygon;
 
 /**
  *
@@ -55,7 +43,7 @@ public class NoseFX extends BodyPartFX
 		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, 1);
 		
-		url = getClass().getClassLoader().getResource("BodyParts/nose.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/nose1.dae");
 		
 		imorter.read(url);
 		mNose = (MeshView) imorter.getImport()[0];
@@ -126,12 +114,14 @@ public class NoseFX extends BodyPartFX
 		}
 	}
 	
+	@Override
 	public void update()
 	{
 		material.setDiffuseColor(mColor);
 		mNose.setMaterial(material);
 	}
 
+	@Override
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
