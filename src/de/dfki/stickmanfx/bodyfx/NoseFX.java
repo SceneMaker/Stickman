@@ -19,6 +19,7 @@ import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import com.sun.scenario.effect.light.SpotLight;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;

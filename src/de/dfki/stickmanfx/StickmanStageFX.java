@@ -1,23 +1,6 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
-import de.dfki.stickman.util.Names;
-import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
-import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
-import de.dfki.util.xml.XMLUtilities;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.DepthTest;
-import javafx.scene.PerspectiveCamera;
-import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -29,316 +12,506 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-import javax.swing.SwingUtilities;
-
+import de.dfki.stickman.util.Names;
+import de.dfki.stickmanfx.animationlogic.AnimationFX;
+import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
+import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
+import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
+import de.dfki.util.xml.XMLUtilities;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
+import javafx.scene.SubScene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 /**
  *
- * @author Robbie
+ * @author Robbie and Beka
  *
  */
 public class StickmanStageFX extends Application {
+
+	static private final HashMap<String, StickmanFX> sStickmanHashMap = new HashMap<>();
+	static private HBox sStickmanPane;
+	static private StickmanStageFX sInstance;
+	ArrayList<String> mStickmanComboList = new ArrayList<>();
 	
-    static private final HashMap<String, StickmanFX> sStickmansOnStage = new HashMap<>();
-    static private HBox sStickmanPane;
-    static private StickmanStageFX sInstance;
-    ArrayList<String> mStickmanComboList = new ArrayList<>();
-    //grahics
-    private static float sScale = 1.5f;
-    protected static boolean sFullScreen = false;
-    protected static int mHeight = 0;
-    protected static int mWidth = 0;
-    // network interface
-    public static ClientConnectionHandlerFX mConnection;
-    public static boolean mUseNetwork = false;
-    private static String sHost = "127.0.0.1";
-    private static int sPort = 7777;
-    // logging
-    public static final Logger mLogger = Logger.getAnonymousLogger();
+	// grahics
+	private static float sScale = 1.0f;
+	protected static boolean sFullScreen = false;
+	protected static int mHeight = 0;
+	protected static int mWidth = 0;
+	
+	// network interface
+	public static ClientConnectionHandlerFX mConnection;
+	public static boolean mUseNetwork = false;
+	private static String sHost = "127.0.0.1";
+	private static int sPort = 7777;
+	
+	// logging
+	public static final Logger mLogger = Logger.getAnonymousLogger();
 
-    public StickmanStageFX() {
+	// Camera
+	public static SubScene sSubscene;
+	public static PerspectiveCamera sCamera;
+	private static double recordCameraXPosition = -1400;
+	private static double recordCameraYPosition = 466;
+	private static double recordCameraZPosition = 434;
 
-        sStickmanPane = new HBox();
+	public StickmanStageFX() 
+	{
+		sStickmanPane = new HBox();
 
-        if (sFullScreen) {
-            mLogger.info("Full Screen Mode ...");
-            Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-            mWidth = size.width;
-            mHeight = size.height;
-        }
+		if (sFullScreen) 
+		{
+			mLogger.info("Full Screen Mode ...");
+			Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+			mWidth = size.width;
+			mHeight = size.height;
+		}
 
-        ConsoleHandler ch = new ConsoleHandler();
-        ch.setFormatter(new StickmanStageLogFormatter());
+		ConsoleHandler ch = new ConsoleHandler();
+		ch.setFormatter(new StickmanStageLogFormatter());
 
-        if (mUseNetwork) {
-            mConnection = new ClientConnectionHandlerFX();
-            mConnection.connect(sHost, sPort);
+		if (mUseNetwork) 
+		{
+			mConnection = new ClientConnectionHandlerFX();
+			mConnection.connect(sHost, sPort);
 
-            while (!mConnection.mConnected) {
-                try {
-                    mLogger.info("Waiting for connection to control application ...");
-                    Thread.sleep(250);
-                } catch (InterruptedException ex) {
-                    mLogger.severe(ex.getMessage());
-                }
-            }
-        }
-    }
+			while (!mConnection.mConnected) 
+			{
+				try 
+				{
+					mLogger.info("Waiting for connection to control application ...");
+					Thread.sleep(250);
+				} 
+				catch (InterruptedException ex) 
+				{
+					mLogger.severe(ex.getMessage());
+				}
+			}
+		}
+	}
 
-    public static StickmanStageFX getInstance() {
-        if (sInstance == null) {
-            sInstance = new StickmanStageFX();
-        }
-        return sInstance;
-    }
+	public static StickmanStageFX getInstance() 
+	{
+		if (sInstance == null) 
+		{
+			sInstance = new StickmanStageFX();
+		}
+		return sInstance;
+	}
 
-    public static StickmanStageFX getInstanceFullScreen() {
-        sFullScreen = true;
+	public static StickmanStageFX getInstanceFullScreen() 
+	{
+		sFullScreen = true;
 
-        if (sInstance == null) {
-            sInstance = new StickmanStageFX();
-        }
+		if (sInstance == null) 
+		{
+			sInstance = new StickmanStageFX();
+		}
 
-        return sInstance;
-    }
+		return sInstance;
+	}
 
-    public static StickmanStageFX getNetworkInstance() {
-        mUseNetwork = true;
+	public static StickmanStageFX getNetworkInstance() 
+	{
+		mUseNetwork = true;
 
-        return getInstance();
-    }
+		return getInstance();
+	}
 
-    public static StickmanStageFX getNetworkInstanceFullScreen() {
-        sFullScreen = true;
+	public static StickmanStageFX getNetworkInstanceFullScreen() 
+	{
+		sFullScreen = true;
 
-        mUseNetwork = true;
+		mUseNetwork = true;
 
-        return getInstance();
-    }
+		return getInstance();
+	}
 
-    public static StickmanStageFX getNetworkInstance(String host, int port) {
-        sHost = host;
-        sPort = port;
+	public static StickmanStageFX getNetworkInstance(String host, int port) 
+	{
+		sHost = host;
+		sPort = port;
 
-        mUseNetwork = true;
+		mUseNetwork = true;
 
-        return getInstance();
-    }
+		return getInstance();
+	}
 
-    public static StickmanStageFX getNetworkInstanceFullScreen(String host, int port) {
-        sHost = host;
-        sPort = port;
+	public static StickmanStageFX getNetworkInstanceFullScreen(String host, int port) 
+	{
+		sHost = host;
+		sPort = port;
 
-        mUseNetwork = true;
+		mUseNetwork = true;
 
-        sFullScreen = true;
+		sFullScreen = true;
 
-        return getInstance();
-    }
+		return getInstance();
+	}
 
-    public static void addStickmanFX(String name) {
-        StickmanFX.TYPE gender = null;
-        if (Names.sFemaleNames.contains(name.toLowerCase())) {
-            gender = StickmanFX.TYPE.FEMALE;
-        }
+	public static void addStickmanFX(String name) 
+	{
+		StickmanFX.TYPE gender = null;
+		if (Names.sFemaleNames.contains(name.toLowerCase())) 
+		{
+			gender = StickmanFX.TYPE.FEMALE;
+		}
 
-        if (Names.sMaleNames.contains(name.toLowerCase())) {
-            gender = (gender == null) ? StickmanFX.TYPE.MALE : gender;
-        }
+		if (Names.sMaleNames.contains(name.toLowerCase())) 
+		{
+			gender = (gender == null) ? StickmanFX.TYPE.MALE : gender;
+		}
 
-        addStickmanFX(name, gender);
-    }
+		addStickmanFX(name, gender);
+	}
 
-    public static void addStickmanFX(String name, StickmanFX.TYPE gender) {
-        if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
-            if (sFullScreen) {
-            	
-                sStickmansOnStage.put(name.toLowerCase(),
-                        new StickmanFX(name,
-                                gender,
-                                mHeight / (float) StickmanFX.mDefaultSize.height * sScale,
-                                new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(), new Float(mHeight * sScale).intValue())
-                                ));
-                
-                getStickmanFX(name).mShowName = true;
-            } else {
-                sStickmansOnStage.put(name.toLowerCase(), new StickmanFX(name, gender, sScale));
-            }
-               
-        }
-        
-    }
+	public static void addStickmanFX(String name, StickmanFX.TYPE gender) 
+	{
+		if ( !sStickmanHashMap.containsKey(name.toLowerCase()) ) 
+		{
+			if (sFullScreen) 
+			{
+				sStickmanHashMap.put(name.toLowerCase(),
+						new StickmanFX(name, gender, mHeight / (float) StickmanFX.mDefaultSize.height * sScale,
+								new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(),
+										new Float(mHeight * sScale).intValue())));
 
-    public static StickmanFX getStickmanFX(String name) {
-        if (sStickmansOnStage.containsKey(name.toLowerCase())) {
-            return sStickmansOnStage.get(name.toLowerCase());
-        } else {
-            return null;
-        }
-    }
+				getStickmanFX(name).mShowName = true;
+			} 
+			else 
+			{
+				sStickmanHashMap.put(name.toLowerCase(), new StickmanFX(name, gender, sScale));
+			}
 
-    public static void clearStage() {
-        Set<String> deleteStickman = new HashSet<>();
-        sStickmansOnStage.keySet().stream().map((s) -> {
-            deleteStickman.add(s);
-            return s;
-        }).forEach((s) -> {
-            getStickmanFX(s).mAnimationSchedulerFX.end();
-        });
-        deleteStickman.stream().map((s) -> {
-            sStickmanPane.getChildren().remove(getStickmanFX(s));
-            return s;
-        }).forEach((s) -> {
-            sStickmansOnStage.remove(s);
-        });
+		}
 
-        if (mUseNetwork) {
-            mConnection.end();
-        }
+	}
 
-        sInstance = null;
-    }
+	public static StickmanFX getStickmanFX(String name) 
+	{
+		if (sStickmanHashMap.containsKey(name.toLowerCase())) 
+		{
+			return sStickmanHashMap.get(name.toLowerCase());
+		} 
+		else 
+		{
+			return null;
+		}
+	}
 
-    public static void showStickmanNameFX(boolean show) {
-        for (StickmanFX s : sStickmansOnStage.values()) {
-            s.mShowName = show;
-        }
-    }
+	public static void clearStage() 
+	{
+		Set<String> deleteStickman = new HashSet<>();
+		sStickmanHashMap.keySet().stream().map((s) -> 
+		{
+			deleteStickman.add(s);
+			return s;
+		}).forEach((s) -> 
+		{
+			getStickmanFX(s).mAnimationSchedulerFX.end();
+		});
+		deleteStickman.stream().map((s) -> 
+		{
+			sStickmanPane.getChildren().remove(getStickmanFX(s));
+			return s;
+		}).forEach((s) -> 
+		{
+			sStickmanHashMap.remove(s);
+		});
 
-    public static void animate(String stickmanname, String type, String name, int duration, String text, boolean block) {
-        StickmanFX sm = getStickmanFX(stickmanname);
-        sm.doAnimation(name, duration, text, block);
-    }
+		if (mUseNetwork) 
+		{
+			mConnection.end();
+		}
 
-    public static void parseStickmanMLCmd(String cmd) {
-        // TODO cut the crap with the two animation types ...
-        AnimationFX a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimationFX() : new AnimationFX();
+		sInstance = null;
+	}
 
-        boolean r = XMLUtilities.parseFromXMLStream(a, new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
+	public static void showStickmanNameFX(boolean show) 
+	{
+		for (StickmanFX s : sStickmanHashMap.values()) 
+		{
+			s.mShowName = show;
+		}
+	}
 
-        String stickmanname = a.mStickmanName;
-        String animationname = a.mName;
-        String id = a.mID;
-        int duration = a.mDuration;
-        boolean blocking = a.mBlocking;
-        Object parameter = a.mParameter;
-        if(stickmanname != null){
-            a = (a instanceof EventAnimationFX)
-                    ? AnimationLoaderFX.getInstance().loadEventAnimation(getStickmanFX(stickmanname), animationname, duration, blocking)
-                    : AnimationLoaderFX.getInstance().loadAnimation(getStickmanFX(stickmanname), animationname, duration, blocking);
+	public static void animate(String stickmanname, String type, String name, int duration, String text,
+			boolean block) 
+	{
+		StickmanFX sm = getStickmanFX(stickmanname);
+		sm.doAnimation(name, duration, text, block);
+	}
 
-            a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
-            a.mParameter = parameter;
+	public static void parseStickmanMLCmd(String cmd) 
+	{
+		// TODO cut the crap with the two animation types ...
+		AnimationFX a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimationFX() : new AnimationFX();
 
-            a.mStickmanFX.playAnimation(a);
-        }
-    }
+		boolean r = XMLUtilities.parseFromXMLStream(a,
+				new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
 
-    public static void sendTimeMarkInformation(String timemark) {
-        if (mConnection.mConnected) {
-            mConnection.sendToServer(timemark);
-        }
-    }
+		String stickmanname = a.mStickmanName;
+		String animationname = a.mName;
+		String id = a.mID;
+		int duration = a.mDuration;
+		boolean blocking = a.mBlocking;
+		Object parameter = a.mParameter;
+		if (stickmanname != null) 
+		{
+			a = (a instanceof EventAnimationFX)
+					? AnimationLoaderFX.getInstance().loadEventAnimation(getStickmanFX(stickmanname), animationname,
+							duration, blocking)
+					: AnimationLoaderFX.getInstance().loadAnimation(getStickmanFX(stickmanname), animationname,
+							duration, blocking);
 
-    public static void sendAnimationUpdate(String state, String id) {
-        if (mConnection.mConnected) {
-            mConnection.sendToServer("#ANIM#" + state + "#" + id);
-        }
-    }
-   
-    
-    public void start(Stage stage) throws Exception {  
+			a.setID(id); // give the animation the same id (TODO - This is bad
+							// design and caused that the animation has to be
+							// "reloaded"
+			a.mParameter = parameter;
 
-    	FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/View.fxml"));
-        HBox root = loader.load();
-        
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double width = screenSize.getWidth();
-        double height = screenSize.getHeight();
-        
-        Scene scene = new Scene(root, width, height, true, SceneAntialiasing.BALANCED);
-        
-        sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get StickmanFlowPane from Scene Builder
-        sStickmanPane.prefWidthProperty().bind(root.widthProperty());
-        
-        for(String key : sStickmansOnStage.keySet())
-        {
-    		sStickmanPane.getChildren().add(sStickmansOnStage.get(key));
-    		mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
-        }
-        
-        StickmanStageController mStickmanStageController = loader.getController();
-        mStickmanStageController.getStickmanStageFX(this);
-        mStickmanStageController.setlePerlinNoiseOn();
+			a.mStickmanFX.playAnimation(a);
+		}
+	}
 
-        stage.setTitle("StickmanFX");
-        stage.setScene(scene);
-        scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
-        stage.show();
+	public static void sendTimeMarkInformation(String timemark) 
+	{
+		if (mConnection.mConnected) 
+		{
+			mConnection.sendToServer(timemark);
+		}
+	}
 
-        stage.setFullScreen(true);
-        scene.lookup("#mSplitPane").setDepthTest(DepthTest.DISABLE);
-        scene.lookup("#mSplitPane").setTranslateZ(-150);
-        scene.setOnMouseClicked(mouseHandler);
-             
-    }
-    
-    public static void lauchStickman()
-    {
-    	launch();
-    }
+	public static void sendAnimationUpdate(String state, String id) 
+	{
+		if (mConnection.mConnected) 
+		{
+			mConnection.sendToServer("#ANIM#" + state + "#" + id);
+		}
+	}
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-    	getInstanceFullScreen();
-    	
-    	addStickmanFX("Bob");
-    	addStickmanFX("Anna");
-//    	addStickmanFX("character");
+	@Override
+	public void start(Stage stage) throws Exception 
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/View.fxml"));
+		HBox root = loader.load();
 
-    	lauchStickman();
-        
-    }
-    
-//  emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed, Excited, Fear, Happy, Loved, Sad, Smile, Surprised
-//  emotionStart: AngryStart, ContemptStart, DisgustedStart, FearStart, AngrySmallMouthStart,
-//                HappyStart, LovedStart, SadStart, SmileStart, SurprisedStart, EmbarrassedStart, ExcitedStart
-//  emotionEnd: AngryEnd, ContemptEnd, DisgustedEnd, FearEnd, HappyEnd, AngrySmallMouthEnd,
-//              LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
-//  action: HeadShake, Nod2   
-    
-    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
-   	 
-        @Override
-        public void handle(MouseEvent mouseEvent) {
+		Scene scene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
 
-    	getStickmanFX("Anna").doAnimation("Muster", 1000, true);
-//    	getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//    	getStickmanFX("character").doAnimation("Muster", 1000, true);
-        	//getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
-//        	getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir vor, Du kommst nach Hause, und ein Pferd steht in der Küche.", false);
-//        	if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
-//        		getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
-//        		getStickmanFX("Anna").doAnimation("FadeIn", 1000, true);
-//        	}else{
-//        		getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
-//        		getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
-//        	}
-//    
-        }
-     
-    }; 
+		// sStickmanPane = (HBox) scene.lookup("#StickmanFlowPane"); //get
+		// StickmanFlowPane from Scene Builder
+		AnchorPane controlPanel = (AnchorPane) scene.lookup("#mSplitPane");
 
-    private static class StickmanStageLogFormatter extends Formatter {
+		/*
+		 * Stage muss geteilt werden. ControlPanel gehoert zum Scene und
+		 * StickmanPane zum SubScene.
+		 * 
+		 */	
+		root.getChildren().remove(scene.lookup("#StickmanFlowPane"));
+		sSubscene = createSubScene(sStickmanPane, mWidth - controlPanel.getPrefWidth(), mHeight);
+		moveStickmanPane(scene);
+		sStickmanPane.setAlignment(Pos.CENTER);
+		sStickmanPane.setPadding(new Insets(580, 0, 150, 0));
+		// sStickmanPane.prefHeightProperty().bind(subScene.heightProperty());
+		root.getChildren().add(sSubscene);
+		// sStickmanPane.prefWidthProperty().bind(root.widthProperty());
 
-        @Override
-        public String format(LogRecord record) {
-            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
-        }
-    }
+		for (String key : sStickmanHashMap.keySet()) {
+			sStickmanPane.getChildren().add(sStickmanHashMap.get(key));
+			mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
+		}
+
+		StickmanStageController mStickmanStageController = loader.getController();
+		mStickmanStageController.getStickmanStageFX(this);
+		mStickmanStageController.setlePerlinNoiseOn();
+
+		stage.setTitle("StickmanFX");
+		stage.setScene(scene);
+		scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
+		stage.show();
+
+		stage.setFullScreen(true);
+		// scene.lookup("#mSplitPane").setDepthTest(DepthTest.DISABLE);
+		// scene.lookup("#mSplitPane").setTranslateZ(-150);
+		scene.setOnMouseClicked(mouseHandler);
+
+	}
+	
+	private void moveStickmanPane(Scene scene)
+	{
+		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				if(event.getCode() == KeyCode.NUMPAD6)
+				{
+					sStickmanPane.setTranslateX(sStickmanPane.getTranslateX() + 20);
+				}
+				else if(event.getCode() == KeyCode.NUMPAD4)
+				{
+					sStickmanPane.setTranslateX(sStickmanPane.getTranslateX() - 20);
+				}
+				else if(event.getCode() == KeyCode.NUMPAD8)
+				{
+					sStickmanPane.setTranslateY(sStickmanPane.getTranslateY() - 20);
+				}
+				else if(event.getCode() == KeyCode.NUMPAD2)
+				{
+					sStickmanPane.setTranslateY(sStickmanPane.getTranslateY() + 20);
+				}
+			}
+		});
+		
+		scene.setOnScroll(new EventHandler<ScrollEvent>() {
+
+			@Override
+			public void handle(ScrollEvent event) {
+				if(event.getDeltaY() < 0)
+				{
+//					if(StickmanStageController.isCameraStarted)
+					sStickmanPane.setScaleX(sStickmanPane.getScaleX() - 0.05);
+					sStickmanPane.setScaleY(sStickmanPane.getScaleY() - 0.05);
+					sStickmanPane.setScaleZ(sStickmanPane.getScaleZ() - 0.05);
+				}
+				else
+				{
+//					if(StickmanStageController.isCameraStarted)
+					sStickmanPane.setScaleX(sStickmanPane.getScaleX() + 0.05);
+					sStickmanPane.setScaleY(sStickmanPane.getScaleY() + 0.05);
+					sStickmanPane.setScaleZ(sStickmanPane.getScaleZ() + 0.05);
+				}
+			}
+		});
+	}
+	private static SubScene createSubScene(HBox root, double width, double height) {
+
+		sCamera = new PerspectiveCamera(true);
+		sCamera.setTranslateZ(-1400);
+		sCamera.setTranslateX(width - 450);
+		sCamera.setTranslateY(height / 2 + 50);
+		sCamera.setNearClip(0.8);
+		sCamera.setFarClip(15000.0);
+		sCamera.setFieldOfView(30);
+		
+		//Zoom Camera with Scrolling
+//		sStickmanPane.setOnScroll(new EventHandler<ScrollEvent>() {
+//
+//			@Override
+//			public void handle(ScrollEvent event) {
+//				if(event.getDeltaY() < 0)
+//				{
+//					if(StickmanStageController.isCameraStarted)
+//						sCamera.setTranslateZ(sCamera.getTranslateZ() -10);
+//				}
+//				else
+//				{
+//					if(StickmanStageController.isCameraStarted)
+//						sCamera.setTranslateZ(sCamera.getTranslateZ() +10);
+//				}
+//			}
+//		});
+		
+		//Move Camera with SecondarMouseButton
+//		sStickmanPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
+//
+//			@Override
+//			public void handle(MouseEvent event) {
+//				if(event.getButton() == MouseButton.SECONDARY)
+//				{
+//					if(StickmanStageController.isCameraStarted)
+//					{
+//						sCamera.setTranslateX(event.getSceneX() - 500);
+//						sCamera.setTranslateY(event.getSceneY());
+//					}
+//				}
+//				
+//			}
+//		});
+		SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
+
+		return subScene;
+	}
+
+	public static void lauchStickman() {
+		launch();
+	}
+
+	/**
+	 * @param args
+	 *            the command line arguments
+	 */
+	public static void main(String[] args) {
+		getInstanceFullScreen();
+
+		addStickmanFX("Bob");
+//		addStickmanFX("Anna");
+//		addStickmanFX("character");
+
+		lauchStickman();
+
+	}
+
+	// emotion: Angry, AngrySmallMouth, Contempt, Disgusted, Embarrassed,
+	// Excited, Fear, Happy, Loved, Sad, Smile, Surprised
+	// emotionStart: AngryStart, ContemptStart, DisgustedStart, FearStart,
+	// AngrySmallMouthStart,
+	// HappyStart, LovedStart, SadStart, SmileStart, SurprisedStart,
+	// EmbarrassedStart, ExcitedStart
+	// emotionEnd: AngryEnd, ContemptEnd, DisgustedEnd, FearEnd, HappyEnd,
+	// AngrySmallMouthEnd,
+	// LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
+	// action: HeadShake, Nod2
+
+	EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
+
+		@Override
+		public void handle(MouseEvent mouseEvent) {
+
+			if(mouseEvent.getButton() == MouseButton.PRIMARY)
+			{
+//				getStickmanFX("Anna").doAnimation("Muster", 1000, true);
+				getStickmanFX("Bob").doAnimation("Muster", 1000, true);
+			}
+			// getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor,
+			// Du kommst nach Hause, und ein Pferd steht in der Küche.",
+			// false);
+			// getStickmanFX("character").doAnimation("Muster", 1000, true);
+			// getStickmanFX("Bob").doAnimation("BombeExplosion", 1000, true);
+			// getStickmanFX("Bob").doAnimation("Speaking", 3000, "Stell Dir
+			// vor, Du kommst nach Hause, und ein Pferd steht in der Küche.",
+			// false);
+			// if(mouseEvent.getButton().equals(MouseButton.SECONDARY)){
+			// getStickmanFX("Bob").doAnimation("FadeIn", 1000, true);
+			// getStickmanFX("Anna").doAnimation("FadeIn", 1000, true);
+			// }else{
+			// getStickmanFX("Bob").doAnimation("FadeOut", 1000, true);
+			// getStickmanFX("Anna").doAnimation("FadeOut", 1000, true);
+			// }
+			//
+		}
+
+	};
+
+	private static class StickmanStageLogFormatter extends Formatter {
+
+		@Override
+		public String format(LogRecord record) {
+			return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
+					.append("\n")).toString();
+		}
+	}
 }

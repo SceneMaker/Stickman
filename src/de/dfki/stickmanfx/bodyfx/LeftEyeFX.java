@@ -61,7 +61,7 @@ public class LeftEyeFX extends BodyPartFX {
 	Path smallPupile;
 	
 	double borderXSize = 0;
-	float borderYSize = 0;
+	double borderYSize = 0;
 	double bigPupileYSize = 0;
 	double smallPupileYSize = 0;
 	
@@ -122,6 +122,18 @@ public class LeftEyeFX extends BodyPartFX {
 		mShape = LeftEyeFX.SHAPE.DEFAULT;
 	}
 
+	private void createDefaultEye()
+	{
+		border = createBorder(border);
+		bigPupile = createEllipsePath(bigPupile, 0, 0, 3.5, 3.5, 0, mColor, null);
+		smallPupile = createEllipsePath(smallPupile, 0, 0, 1.4, 1.4, 0, smallPupileColor, null);
+		smallPupile.setStroke(null);
+		
+		borderYSize = 0;
+		borderXSize = 0;
+		bigPupileYSize = 0;
+		smallPupileYSize = 0;
+	}
 	@Override
 	public void calculate(int step) {
 		
@@ -132,15 +144,7 @@ public class LeftEyeFX extends BodyPartFX {
 		case DEFAULT:
 			if(step == 20 || step == 0)
 			{
-				border = createBorder(border);
-				bigPupile = createEllipsePath(bigPupile, 0, 0, 3.5, 3.5, 0, mColor, null);
-				smallPupile = createEllipsePath(smallPupile, 0, 0, 1.4, 1.4, 0, smallPupileColor, null);
-				smallPupile.setStroke(null);
-				
-				borderYSize = 0;
-				borderXSize = 0;
-				bigPupileYSize = 0;
-				smallPupileYSize = 0;
+				createDefaultEye();
 			}
 			break;
 			
@@ -187,6 +191,14 @@ public class LeftEyeFX extends BodyPartFX {
 			borderYSize += 0.0450;
 			bigPupileYSize += 0.050;
 			smallPupileYSize += 0.050;
+
+			//Optimiere values
+			if(borderYSize > 0.8550001)
+				borderYSize = 0.8550001f;
+			if(bigPupileYSize > 0.9500000000000003)
+				bigPupileYSize = 0.9500000000000003;
+			if(smallPupileYSize > 0.9500000000000003)
+				smallPupileYSize = 0.9500000000000003;
 			
 			border.setScaleY(1 - borderYSize);
 			bigPupile.setScaleY(1 - bigPupileYSize);
@@ -197,9 +209,16 @@ public class LeftEyeFX extends BodyPartFX {
 			bigPupileYSize -= 0.050;
 			smallPupileYSize -= 0.050;
 			
-			border.setScaleY(1 - borderYSize);
-			bigPupile.setScaleY(1 - bigPupileYSize);
-			smallPupile.setScaleY(1 - smallPupileYSize);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				border.setScaleY(1 - borderYSize);
+				bigPupile.setScaleY(1 - bigPupileYSize);
+				smallPupile.setScaleY(1 - smallPupileYSize);
+			}
 			break;
 		case LOOKLEFT:
 			xMovement =  0.131f;

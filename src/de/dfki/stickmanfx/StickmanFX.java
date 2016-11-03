@@ -183,7 +183,7 @@ public class StickmanFX extends Pane {
 		mScale = scale;
 
 		//Test
-		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -220;
+		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -100;
 				
 		mName = name;
 		mType = gender;
@@ -357,9 +357,17 @@ public class StickmanFX extends Pane {
 		nameText.setFill(Color.YELLOW);
 		nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
 
-		nameText.setTranslateX(20);
-		nameText.setTranslateY(400);
-
+		if(this.mType == StickmanFX.TYPE.MALE)
+		{
+			nameText.setTranslateX(15);
+			nameText.setTranslateY(-120);
+		}
+		else
+		{
+			nameText.setTranslateX(10);
+			nameText.setTranslateY(-135);
+		}
+		nameText.setTranslateZ(-120);
 		
 		ConsoleHandler ch = new ConsoleHandler();
 		ch.setFormatter(new StickmanLogFormatter());

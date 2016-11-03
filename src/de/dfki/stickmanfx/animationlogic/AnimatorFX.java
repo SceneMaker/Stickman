@@ -1,19 +1,15 @@
 package de.dfki.stickmanfx.animationlogic;
 
 
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
+
 import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.util.TimingInfo;
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.StickmanStageFX;
 import de.dfki.stickmanfx.bodyfx.BodyPartFX;
-import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
-import static java.lang.Thread.sleep;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 
 /**
  *
@@ -52,7 +48,9 @@ public class AnimatorFX
         mAnimationFX = a;
         mAnimationComponents = animComps;
         mDescription = mAnimationFX.getClass().getSimpleName() + " (" + mAnimationFX.mID + "), " + mAnimationFX.toString();
-
+        
+//        if(duration < 50)
+//        	duration = 50;
         mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
         mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
         render();

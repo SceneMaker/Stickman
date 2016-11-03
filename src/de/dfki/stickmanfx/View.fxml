@@ -184,6 +184,33 @@
                         <ScrollPane fx:id="postureScrollPane" prefHeight="200.0" prefWidth="422.0" />
                      </content>
                   </Tab>
+                  <Tab closable="false" text="Other">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane layoutX="17.0" layoutY="14.0" prefHeight="200.0" prefWidth="387.0" style="-fx-background-color: blue; -fx-border-color: black;">
+                                 <children>
+                                    <Button fx:id="startCamera" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefWidth="100.0" text="Start Camera">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="stopCamera" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefWidth="100.0" text="Stop Camera">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="resetCamera" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefWidth="100.0" text="Reset Camera">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
             <Button fx:id="RestButton" layoutX="131.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="258.0" />

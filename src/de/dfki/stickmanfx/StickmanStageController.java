@@ -42,7 +42,7 @@ public class StickmanStageController {
 	private StickmanStageFX mStickmanstage;
 	private String mStickmancombobox = null;
 	final private ToggleGroup groupPerlin = new ToggleGroup();
-
+	
 	@FXML
 	private RadioButton WithPerlinNoise;
 	@FXML
@@ -60,6 +60,14 @@ public class StickmanStageController {
 	private Button RestButton;
 	@FXML
 	private Button ExitButton;
+	
+	@FXML
+	Button startCamera;
+	@FXML
+	Button stopCamera;
+	@FXML
+	Button resetCamera;
+	public static boolean isCameraStarted = false;
 
 	@FXML
 	private ColorPicker headColorPicker;
@@ -169,6 +177,36 @@ public class StickmanStageController {
 		});
 	}
 
+	@FXML
+	public void handleStopCamera()
+	{
+		if(isCameraStarted)
+		{
+			StickmanStageFX.sSubscene.setCamera(null);
+			isCameraStarted = false;
+		}
+	}
+	
+	@FXML
+	public void handleStartCamera()
+	{
+		if(!isCameraStarted)
+		{
+			StickmanStageFX.sSubscene.setCamera(StickmanStageFX.sCamera);
+			isCameraStarted = true;
+		}
+	}
+	
+	@FXML
+	public void handleResetCamera()
+	{
+		
+		StickmanStageFX.sCamera.setTranslateX(466);
+		StickmanStageFX.sCamera.setTranslateY(434);
+		StickmanStageFX.sCamera.setTranslateZ(-1400);
+		
+	}
+	
 	@FXML
 	public void handleHeadColor() {
 		if (currentStickman != null) {

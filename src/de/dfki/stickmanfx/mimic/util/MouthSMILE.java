@@ -1,11 +1,18 @@
 package de.dfki.stickmanfx.mimic.util;
 
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.TriangleMesh;
 
 public class MouthSMILE {
 	
+	
+	private float optimateValue(float movement, float movementFactor)
+	{
+		if(movement > movementFactor * 18)
+		{
+			movement = movement * 18;
+		}
+		return movement;
+	}
 	public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step, String sign)
 	{
 		int sig;
@@ -15,9 +22,9 @@ public class MouthSMILE {
 		else
 			sig = -1;
 		
-		float xMovement0;
-		float yMovement0;
-		float xMovement1;
+		float xMovement0 = 0;
+		float yMovement0 = 0;
+		float xMovement1 = 0;
 		float yMovement1;
 		float xMovement19;
 		float yMovement19;
@@ -37,8 +44,8 @@ public class MouthSMILE {
 		float yMovement6;
 		
 		 xMovement0 = sig * (20 - step) * 0.0263f;
-		 yMovement0 = sig * (20 - step) * 0.0316f;
-		 xMovement1 = sig * (20 - step) * 0.0158f;
+		 yMovement0 = sig *  (20 - step) * 0.0316f;
+		 xMovement1 = sig *  (20 - step) * 0.0158f;
 		 yMovement1 = sig * (20 - step) * 0.0105f;
 		 xMovement19 = sig * (20 - step) * 0.0158f;
 		 yMovement19 = sig * (20 - step) * 0.0105f;
