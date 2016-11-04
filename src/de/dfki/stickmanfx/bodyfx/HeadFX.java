@@ -1,12 +1,13 @@
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickmanfx.StickmanFX;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
+
+import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -34,7 +35,7 @@ public class HeadFX extends BodyPartFX {
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
 	int mPivotOffset = 55;
-	int mZTranslate = -100;
+	int mZTranslate = -105;
 
 	int mEarWidth = 10;
 
@@ -138,6 +139,7 @@ public class HeadFX extends BodyPartFX {
 		return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset + 4);
 	}
 
+	@Override
 	public void calculate(int step) {
 
 		Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
@@ -180,6 +182,7 @@ public class HeadFX extends BodyPartFX {
 		}
 	}
 
+	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
 		mHeadMeshView.setMaterial(material);

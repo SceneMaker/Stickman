@@ -1,17 +1,17 @@
 package de.dfki.stickmanfx.bodyfx;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.bodyfx.NeckFX.SHAPE;
-
-import java.awt.Dimension;
-import java.awt.Point;
-import java.net.URL;
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -88,9 +88,12 @@ public class UpperBody extends BodyPartFX {
 			mUpperBodyGroup.setTranslateY(mStart.y + 135);
 			mUpperBodyGroup.setTranslateZ(-105);
 		}
-		
 	}
 
+	public Point getUpperBodyPosition()
+	{
+		return new Point (mStart.x, mStart.y + 135);
+	}
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -102,6 +105,7 @@ public class UpperBody extends BodyPartFX {
 		mShape = UpperBody.SHAPE.DEFAULT;
 	}
 	
+	@Override
 	public void calculate(int step) {
 
 //		rx = new Rotate(mXRotation, Rotate.X_AXIS);
@@ -182,11 +186,13 @@ public class UpperBody extends BodyPartFX {
 		}
 	}
 
+	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
 		mBodyMeshView.setMaterial(material);
 	}
 
+	@Override
 	public void rotatePerlinNoise(double mWobble, int x, int y) {
 		Affine af = new Affine();
 		// Out put perlin noise

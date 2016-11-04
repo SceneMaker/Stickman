@@ -1,5 +1,6 @@
 package de.dfki.stickmanfx;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
@@ -24,6 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 /**
@@ -145,6 +148,16 @@ public class StickmanStageController {
 	private Button browColorBrighter;
 	@FXML
 	private Button browColorDarker;
+	@FXML
+	private Slider cameraXSlider;
+	@FXML
+	private Slider cameraYSlider;
+	@FXML
+	private Slider cameraZSlider;
+	
+	double xRotateFactor;
+	double yRotateFactor;
+	double zRotateFactor;
 
 	private StickmanFX currentStickman;
 	public static RadioButton currentRadioButton;
@@ -166,6 +179,69 @@ public class StickmanStageController {
 		fillHeadScrollPane();
 		fillEnvironmentScrollPane();
 		fillPostureScrollPane();
+		
+		cameraXSlider.setMin(-180);
+		cameraXSlider.setMax(180);
+		cameraXSlider.setValue(0);
+		cameraXSlider.valueProperty().addListener(new ChangeListener<Number>() 
+		{
+            @Override
+			public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) 
+            {
+            	if(isCameraStarted)
+            	{
+            		double newValue = new_val.doubleValue();
+            		double oldValue = old_val.doubleValue();
+        			xRotateFactor = newValue - oldValue;
+        			Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
+        			Rotate rx = new Rotate(xRotateFactor, pivot.x, pivot.y, 1505, Rotate.X_AXIS);
+        			StickmanStageFX.sCamera.getTransforms().addAll(rx);
+            	}
+            }
+        });
+		
+		cameraYSlider.setMin(-180);
+		cameraYSlider.setMax(180);
+		cameraYSlider.setValue(0);
+		cameraYSlider.valueProperty().addListener(new ChangeListener<Number>() 
+		{
+            @Override
+			public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) 
+            {
+            	if(isCameraStarted)
+            	{
+            		double newValue = new_val.doubleValue();
+            		double oldValue = old_val.doubleValue();
+        			yRotateFactor = newValue - oldValue;
+        			Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
+        			Rotate ry = new Rotate(yRotateFactor, pivot.x, pivot.y, 1505, Rotate.Y_AXIS);
+        			StickmanStageFX.sCamera.getTransforms().addAll(ry);
+            	}
+            }
+        });
+		
+		cameraZSlider.setMin(-180);
+		cameraZSlider.setMax(180);
+		cameraZSlider.setValue(0);
+		cameraZSlider.valueProperty().addListener(new ChangeListener<Number>() 
+		{
+            @Override
+			public void changed(ObservableValue<? extends Number> ov,
+                Number old_val, Number new_val) 
+            {
+            	if(isCameraStarted)
+            	{
+            		double newValue = new_val.doubleValue();
+            		double oldValue = old_val.doubleValue();
+        			zRotateFactor = newValue - oldValue;
+        			Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
+        			Rotate rz = new Rotate(zRotateFactor, pivot.x, pivot.y, 1505, Rotate.Z_AXIS);
+        			StickmanStageFX.sCamera.getTransforms().addAll(rz);
+            	}
+            }
+        });
 
 		ExitButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -841,6 +917,7 @@ public class StickmanStageController {
 		WithoutPerlinNoise.setToggleGroup(groupPerlin);
 
 		groupPerlin.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+			@Override
 			public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
 				if ((groupPerlin.getSelectedToggle() != null) && ((null != mStickmanstage.mStickmanComboList)
 						&& (!mStickmanstage.mStickmanComboList.isEmpty()))) {

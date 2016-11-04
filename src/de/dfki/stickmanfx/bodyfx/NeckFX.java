@@ -7,10 +7,9 @@ package de.dfki.stickmanfx.bodyfx;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.net.URL;
+
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import de.dfki.stickman.body.Neck;
-import de.dfki.stickmanfx.bodyfx.MaleHairFX.SHAPE;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -80,7 +79,7 @@ public class NeckFX extends BodyPartFX {
 		
 		neckMeshView.setTranslateX(mStart.x);
 		neckMeshView.setTranslateY(mStart.y + 5);
-		neckMeshView.setTranslateZ(-100);
+		neckMeshView.setTranslateZ(-105);
         
 		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
@@ -124,11 +123,13 @@ public class NeckFX extends BodyPartFX {
 		this.getChildren().add(neckMeshView);
 	}
 	
+	@Override
 	public void update()
 	{
 		material.setDiffuseColor(mColor);
 		neckMeshView.setMaterial(material);
 	}
+	@Override
 	protected void recordColor(){
 		if(mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;

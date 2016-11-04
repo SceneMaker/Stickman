@@ -44,22 +44,22 @@ import javafx.stage.Stage;
 public class StickmanStageFX extends Application {
 
 	static private final HashMap<String, StickmanFX> sStickmanHashMap = new HashMap<>();
-	static private HBox sStickmanHBox;
+	static public HBox sStickmanHBox;
 	static private StickmanStageFX sInstance;
 	ArrayList<String> mStickmanComboList = new ArrayList<>();
-	
+
 	// grahics
 	private static float sScale = 1.0f;
 	protected static boolean sFullScreen = false;
 	protected static int mHeight = 0;
 	protected static int mWidth = 0;
-	
+
 	// network interface
 	public static ClientConnectionHandlerFX mConnection;
 	public static boolean mUseNetwork = false;
 	private static String sHost = "127.0.0.1";
 	private static int sPort = 7777;
-	
+
 	// logging
 	public static final Logger mLogger = Logger.getAnonymousLogger();
 
@@ -70,14 +70,12 @@ public class StickmanStageFX extends Application {
 	private static double recordCameraYPosition = 466;
 	private static double recordCameraZPosition = 434;
 
-	public StickmanStageFX() 
-	{
+	public StickmanStageFX() {
 		sStickmanHBox = new HBox();
 		sStickmanHBox.setAlignment(Pos.CENTER);
 		sStickmanHBox.setPadding(new Insets(580, 0, 150, 0));
 
-		if (sFullScreen) 
-		{
+		if (sFullScreen) {
 			mLogger.info("Full Screen Mode ...");
 			Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 			mWidth = size.width;
@@ -87,56 +85,45 @@ public class StickmanStageFX extends Application {
 		ConsoleHandler ch = new ConsoleHandler();
 		ch.setFormatter(new StickmanStageLogFormatter());
 
-		if (mUseNetwork) 
-		{
+		if (mUseNetwork) {
 			mConnection = new ClientConnectionHandlerFX();
 			mConnection.connect(sHost, sPort);
 
-			while (!mConnection.mConnected) 
-			{
-				try 
-				{
+			while (!mConnection.mConnected) {
+				try {
 					mLogger.info("Waiting for connection to control application ...");
 					Thread.sleep(250);
-				} 
-				catch (InterruptedException ex) 
-				{
+				} catch (InterruptedException ex) {
 					mLogger.severe(ex.getMessage());
 				}
 			}
 		}
 	}
 
-	public static StickmanStageFX getInstance() 
-	{
-		if (sInstance == null) 
-		{
+	public static StickmanStageFX getInstance() {
+		if (sInstance == null) {
 			sInstance = new StickmanStageFX();
 		}
 		return sInstance;
 	}
 
-	public static StickmanStageFX getInstanceFullScreen() 
-	{
+	public static StickmanStageFX getInstanceFullScreen() {
 		sFullScreen = true;
 
-		if (sInstance == null) 
-		{
+		if (sInstance == null) {
 			sInstance = new StickmanStageFX();
 		}
 
 		return sInstance;
 	}
 
-	public static StickmanStageFX getNetworkInstance() 
-	{
+	public static StickmanStageFX getNetworkInstance() {
 		mUseNetwork = true;
 
 		return getInstance();
 	}
 
-	public static StickmanStageFX getNetworkInstanceFullScreen() 
-	{
+	public static StickmanStageFX getNetworkInstanceFullScreen() {
 		sFullScreen = true;
 
 		mUseNetwork = true;
@@ -144,8 +131,7 @@ public class StickmanStageFX extends Application {
 		return getInstance();
 	}
 
-	public static StickmanStageFX getNetworkInstance(String host, int port) 
-	{
+	public static StickmanStageFX getNetworkInstance(String host, int port) {
 		sHost = host;
 		sPort = port;
 
@@ -154,8 +140,7 @@ public class StickmanStageFX extends Application {
 		return getInstance();
 	}
 
-	public static StickmanStageFX getNetworkInstanceFullScreen(String host, int port) 
-	{
+	public static StickmanStageFX getNetworkInstanceFullScreen(String host, int port) {
 		sHost = host;
 		sPort = port;
 
@@ -166,37 +151,29 @@ public class StickmanStageFX extends Application {
 		return getInstance();
 	}
 
-	public static void addStickmanFX(String name) 
-	{
+	public static void addStickmanFX(String name) {
 		StickmanFX.TYPE gender = null;
-		if (Names.sFemaleNames.contains(name.toLowerCase())) 
-		{
+		if (Names.sFemaleNames.contains(name.toLowerCase())) {
 			gender = StickmanFX.TYPE.FEMALE;
 		}
 
-		if (Names.sMaleNames.contains(name.toLowerCase())) 
-		{
+		if (Names.sMaleNames.contains(name.toLowerCase())) {
 			gender = (gender == null) ? StickmanFX.TYPE.MALE : gender;
 		}
 
 		addStickmanFX(name, gender);
 	}
 
-	public static void addStickmanFX(String name, StickmanFX.TYPE gender) 
-	{
-		if ( !sStickmanHashMap.containsKey(name.toLowerCase()) ) 
-		{
-			if (sFullScreen) 
-			{
+	public static void addStickmanFX(String name, StickmanFX.TYPE gender) {
+		if (!sStickmanHashMap.containsKey(name.toLowerCase())) {
+			if (sFullScreen) {
 				sStickmanHashMap.put(name.toLowerCase(),
 						new StickmanFX(name, gender, mHeight / (float) StickmanFX.mDefaultSize.height * sScale,
 								new Dimension(new Float(mHeight * 1 / 3 * sScale).intValue(),
 										new Float(mHeight * sScale).intValue())));
 
 				getStickmanFX(name).mShowName = true;
-			} 
-			else 
-			{
+			} else {
 				sStickmanHashMap.put(name.toLowerCase(), new StickmanFX(name, gender, sScale));
 			}
 			mLogger.info("Create Stickman " + name + ": Done");
@@ -204,63 +181,49 @@ public class StickmanStageFX extends Application {
 
 	}
 
-	public static StickmanFX getStickmanFX(String name) 
-	{
-		if (sStickmanHashMap.containsKey(name.toLowerCase())) 
-		{
+	public static StickmanFX getStickmanFX(String name) {
+		if (sStickmanHashMap.containsKey(name.toLowerCase())) {
 			return sStickmanHashMap.get(name.toLowerCase());
-		} 
-		else 
-		{
+		} else {
 			return null;
 		}
 	}
 
-	public static void clearStage() 
-	{
+	public static void clearStage() {
 		Set<String> deleteStickman = new HashSet<>();
-		sStickmanHashMap.keySet().stream().map((s) -> 
-		{
+		sStickmanHashMap.keySet().stream().map((s) -> {
 			deleteStickman.add(s);
 			return s;
-		}).forEach((s) -> 
-		{
+		}).forEach((s) -> {
 			getStickmanFX(s).mAnimationSchedulerFX.end();
 		});
-		deleteStickman.stream().map((s) -> 
-		{
+		deleteStickman.stream().map((s) -> {
 			sStickmanHBox.getChildren().remove(getStickmanFX(s));
 			return s;
-		}).forEach((s) -> 
-		{
+		}).forEach((s) -> {
 			sStickmanHashMap.remove(s);
 		});
 
-		if (mUseNetwork) 
-		{
+		if (mUseNetwork) {
 			mConnection.end();
 		}
 
 		sInstance = null;
 	}
 
-	public static void showStickmanNameFX(boolean show) 
-	{
-		for (StickmanFX s : sStickmanHashMap.values()) 
-		{
+	public static void showStickmanNameFX(boolean show) {
+		for (StickmanFX s : sStickmanHashMap.values()) {
 			s.mShowName = show;
 		}
 	}
 
 	public static void animate(String stickmanname, String type, String name, int duration, String text,
-			boolean block) 
-	{
+			boolean block) {
 		StickmanFX sm = getStickmanFX(stickmanname);
 		sm.doAnimation(name, duration, text, block);
 	}
 
-	public static void parseStickmanMLCmd(String cmd) 
-	{
+	public static void parseStickmanMLCmd(String cmd) {
 		// TODO cut the crap with the two animation types ...
 		AnimationFX a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimationFX() : new AnimationFX();
 
@@ -273,8 +236,7 @@ public class StickmanStageFX extends Application {
 		int duration = a.mDuration;
 		boolean blocking = a.mBlocking;
 		Object parameter = a.mParameter;
-		if (stickmanname != null) 
-		{
+		if (stickmanname != null) {
 			a = (a instanceof EventAnimationFX)
 					? AnimationLoaderFX.getInstance().loadEventAnimation(getStickmanFX(stickmanname), animationname,
 							duration, blocking)
@@ -290,25 +252,20 @@ public class StickmanStageFX extends Application {
 		}
 	}
 
-	public static void sendTimeMarkInformation(String timemark) 
-	{
-		if (mConnection.mConnected) 
-		{
+	public static void sendTimeMarkInformation(String timemark) {
+		if (mConnection.mConnected) {
 			mConnection.sendToServer(timemark);
 		}
 	}
 
-	public static void sendAnimationUpdate(String state, String id) 
-	{
-		if (mConnection.mConnected) 
-		{
+	public static void sendAnimationUpdate(String state, String id) {
+		if (mConnection.mConnected) {
 			mConnection.sendToServer("#ANIM#" + state + "#" + id);
 		}
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception 
-	{
+	public void start(Stage stage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/de/dfki/stickmanfx/View.fxml"));
 		HBox root = loader.load();
@@ -317,14 +274,13 @@ public class StickmanStageFX extends Application {
 
 		AnchorPane controlPanel = (AnchorPane) scene.lookup("#controlPanel");
 
-		sSubscene = createSubScene(sStickmanHBox, mWidth - controlPanel.getPrefWidth(), mHeight);
+		sSubscene = createSubSceneAndCamera(sStickmanHBox, mWidth - controlPanel.getPrefWidth(), mHeight);
 		moveStickmanPane(scene);
-		
+
 		root.getChildren().add(sSubscene);
 
-		//Add Stickmans into stickmanHBox
-		for (String key : sStickmanHashMap.keySet()) 
-		{
+		// Add Stickmans into stickmanHBox
+		for (String key : sStickmanHashMap.keySet()) {
 			sStickmanHBox.getChildren().add(sStickmanHashMap.get(key));
 			mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
 			mLogger.info("Add Stickman " + sStickmanHashMap.get(key).mName + " into Stage: Done");
@@ -343,43 +299,32 @@ public class StickmanStageFX extends Application {
 		scene.setOnMouseClicked(mouseHandler);
 
 	}
-	
-	private void moveStickmanPane(Scene scene)
-	{
+
+	private void moveStickmanPane(Scene scene) {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
-				if(event.getCode() == KeyCode.NUMPAD6)
-				{
+				if (event.getCode() == KeyCode.NUMPAD6) {
 					sStickmanHBox.setTranslateX(sStickmanHBox.getTranslateX() + 20);
-				}
-				else if(event.getCode() == KeyCode.NUMPAD4)
-				{
+				} else if (event.getCode() == KeyCode.NUMPAD4) {
 					sStickmanHBox.setTranslateX(sStickmanHBox.getTranslateX() - 20);
-				}
-				else if(event.getCode() == KeyCode.NUMPAD8)
-				{
+				} else if (event.getCode() == KeyCode.NUMPAD8) {
 					sStickmanHBox.setTranslateY(sStickmanHBox.getTranslateY() - 20);
-				}
-				else if(event.getCode() == KeyCode.NUMPAD2)
-				{
+				} else if (event.getCode() == KeyCode.NUMPAD2) {
 					sStickmanHBox.setTranslateY(sStickmanHBox.getTranslateY() + 20);
 				}
 			}
 		});
-		
+
 		scene.setOnScroll(new EventHandler<ScrollEvent>() {
 
 			@Override
 			public void handle(ScrollEvent event) {
-				if(event.getDeltaY() < 0)
-				{
+				if (event.getDeltaY() < 0) {
 					sStickmanHBox.setScaleX(sStickmanHBox.getScaleX() - 0.05);
 					sStickmanHBox.setScaleY(sStickmanHBox.getScaleY() - 0.05);
 					sStickmanHBox.setScaleZ(sStickmanHBox.getScaleZ() - 0.05);
-				}
-				else
-				{
+				} else {
 					sStickmanHBox.setScaleX(sStickmanHBox.getScaleX() + 0.05);
 					sStickmanHBox.setScaleY(sStickmanHBox.getScaleY() + 0.05);
 					sStickmanHBox.setScaleZ(sStickmanHBox.getScaleZ() + 0.05);
@@ -387,50 +332,19 @@ public class StickmanStageFX extends Application {
 			}
 		});
 	}
-	private static SubScene createSubScene(HBox root, double width, double height) {
+
+	private static SubScene createSubSceneAndCamera(HBox root, double width, double height) {
 
 		sCamera = new PerspectiveCamera(true);
 		sCamera.setTranslateZ(-1400);
 		sCamera.setTranslateX(width - 450);
 		sCamera.setTranslateY(height / 2 + 50);
-		sCamera.setNearClip(0.4);
-		sCamera.setFarClip(1500.0);
-		sCamera.setFieldOfView(60);
+		sCamera.setNearClip(0.8);
+		sCamera.setFarClip(3000.0);
+		sCamera.setFieldOfView(30);
 		
-		//Zoom Camera with Scrolling
-//		sStickmanPane.setOnScroll(new EventHandler<ScrollEvent>() {
-//
-//			@Override
-//			public void handle(ScrollEvent event) {
-//				if(event.getDeltaY() < 0)
-//				{
-//					if(StickmanStageController.isCameraStarted)
-//						sCamera.setTranslateZ(sCamera.getTranslateZ() -10);
-//				}
-//				else
-//				{
-//					if(StickmanStageController.isCameraStarted)
-//						sCamera.setTranslateZ(sCamera.getTranslateZ() +10);
-//				}
-//			}
-//		});
+		root.setStyle("-fx-background-color: transparent");
 		
-		//Move Camera with SecondarMouseButton
-//		sStickmanPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
-//
-//			@Override
-//			public void handle(MouseEvent event) {
-//				if(event.getButton() == MouseButton.SECONDARY)
-//				{
-//					if(StickmanStageController.isCameraStarted)
-//					{
-//						sCamera.setTranslateX(event.getSceneX() - 500);
-//						sCamera.setTranslateY(event.getSceneY());
-//					}
-//				}
-//				
-//			}
-//		});
 		SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
 
 		return subScene;
@@ -444,13 +358,12 @@ public class StickmanStageFX extends Application {
 	 * @param args
 	 *            the command line arguments
 	 */
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
 		getInstanceFullScreen();
 
 		addStickmanFX("Bob");
-		addStickmanFX("Anna");
-		addStickmanFX("character");
+		 addStickmanFX("Anna");
+//		addStickmanFX("character");
 
 		lauchStickman();
 
@@ -472,9 +385,8 @@ public class StickmanStageFX extends Application {
 		@Override
 		public void handle(MouseEvent mouseEvent) {
 
-			if(mouseEvent.getButton() == MouseButton.PRIMARY)
-			{
-//				getStickmanFX("Anna").doAnimation("Muster", 1000, true);
+			if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+				// getStickmanFX("Anna").doAnimation("Muster", 1000, true);
 				getStickmanFX("Bob").doAnimation("Muster", 1000, true);
 			}
 			// getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor,
@@ -497,12 +409,10 @@ public class StickmanStageFX extends Application {
 
 	};
 
-	private static class StickmanStageLogFormatter extends Formatter 
-	{
+	private static class StickmanStageLogFormatter extends Formatter {
 
 		@Override
-		public String format(LogRecord record) 
-		{
+		public String format(LogRecord record) {
 			return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
 					.append("\n")).toString();
 		}

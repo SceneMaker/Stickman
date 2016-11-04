@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -183,31 +185,56 @@
                         <ScrollPane fx:id="postureScrollPane" prefHeight="200.0" prefWidth="422.0" />
                      </content>
                   </Tab>
-                  <Tab closable="false" text="Other">
+                  <Tab closable="false" text="Camera">
                      <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane layoutX="17.0" layoutY="14.0" prefHeight="156.0" prefWidth="161.0" style="-fx-background-color: blue; -fx-border-color: black;">
+                        <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #00010B;">
                                  <children>
-                                    <Button fx:id="startCamera" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
+                                    <Button fx:id="resetCamera1" layoutX="276.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="stopCamera" layoutX="14.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
+                                    <Button fx:id="startCamera1" layoutX="16.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="resetCamera" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
+                                    <Button fx:id="stopCamera1" layoutX="146.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Button>
+                                    <Slider fx:id="cameraXSlider" layoutX="38.0" layoutY="104.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                    <Label layoutX="171.0" layoutY="67.0" text="Rotate Camera" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+                                    <Label layoutX="16.0" layoutY="113.0" text="X" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="cameraYSlider" layoutX="38.0" layoutY="150.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                    <Label layoutX="16.0" layoutY="159.0" text="Y" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="cameraZSlider" layoutX="38.0" layoutY="195.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                    <Label layoutX="16.0" layoutY="204.0" text="Z" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
                                  </children>
                               </AnchorPane>
-                           </children>
-                        </AnchorPane>
+                          </items>
+                        </SplitPane>
                      </content>
                   </Tab>
               </tabs>
