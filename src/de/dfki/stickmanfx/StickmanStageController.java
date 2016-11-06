@@ -281,6 +281,12 @@ public class StickmanStageController {
 		StickmanStageFX.sCamera.setTranslateY(434);
 		StickmanStageFX.sCamera.setTranslateZ(-1400);
 		
+		cameraXSlider.setValue(0);
+		cameraYSlider.setValue(0);
+		cameraZSlider.setValue(0);
+		StickmanStageFX.sCamera.getTransforms().clear();
+		
+		
 	}
 	
 	@FXML
