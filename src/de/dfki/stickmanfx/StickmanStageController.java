@@ -21,6 +21,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -155,6 +156,19 @@ public class StickmanStageController {
 	@FXML
 	private Slider cameraZSlider;
 	
+	@FXML
+	private ImageView bg1;
+	@FXML
+	private ImageView bg2;
+	@FXML
+	private ImageView bg3;
+	@FXML
+	private ImageView bg4;
+	@FXML
+	private ImageView bg5;
+	@FXML
+	private ImageView bg6;
+	
 	double xRotateFactor;
 	double yRotateFactor;
 	double zRotateFactor;
@@ -253,6 +267,57 @@ public class StickmanStageController {
 		});
 	}
 
+	@FXML
+	private void handleBG1()
+	{
+		String bg1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
+		StickmanStageFX.sStickmanHBox.setStyle("-fx-background-image: url('" + bg1 + "'); " +
+		           "-fx-background-position: center center; " +
+		           "-fx-background-repeat: stretch;");
+	}
+	
+	@FXML
+	private void handleBG2()
+	{
+		String bg1 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
+		StickmanStageFX.sStickmanHBox.setStyle("-fx-background-image: url('" + bg1 + "'); " +
+		           "-fx-background-position: center center; " +
+		           "-fx-background-repeat: stretch;");
+	}
+	
+	@FXML
+	private void handleBG3()
+	{
+		String bg1 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
+		StickmanStageFX.sStickmanHBox.setStyle("-fx-background-image: url('" + bg1 + "'); " +
+		           "-fx-background-position: center center; " +
+		           "-fx-background-repeat: stretch;");
+	}
+	
+	@FXML
+	private void handleBG4()
+	{
+		String bg1 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
+		StickmanStageFX.sStickmanHBox.setStyle("-fx-background-image: url('" + bg1 + "'); " +
+		           "-fx-background-position: center center; " +
+		           "-fx-background-repeat: stretch;");
+	}
+	
+	@FXML
+	private void handleBG5()
+	{
+		String bg1 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
+		StickmanStageFX.sStickmanHBox.setStyle("-fx-background-image: url('" + bg1 + "'); " +
+		           "-fx-background-position: center center; " +
+		           "-fx-background-repeat: stretch;");
+	}
+	
+	@FXML
+	private void handleBG6()
+	{
+		String bg1 = getClass().getClassLoader().getResource("Images/bg6.jpg").toExternalForm();
+		StickmanStageFX.sStickmanHBox.setStyle("-fx-background-color: transparent");
+	}
 	@FXML
 	public void handleStopCamera()
 	{

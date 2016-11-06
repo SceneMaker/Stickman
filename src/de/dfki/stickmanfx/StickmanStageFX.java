@@ -346,7 +346,6 @@ public class StickmanStageFX extends Application {
 		root.setStyle("-fx-background-color: transparent");
 		
 		SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
-
 		return subScene;
 	}
 
