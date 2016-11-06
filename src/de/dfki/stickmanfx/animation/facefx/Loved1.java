@@ -5,12 +5,11 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
-import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *
@@ -19,9 +18,9 @@ import javafx.application.Platform;
  */
 public class Loved1 extends AnimationFX {
 
-	public Loved1() {
-		mAnimType = ANIMTYPE.ON;
-	}
+//	public Loved1() {
+//		mAnimType = ANIMTYPE.ON;
+//	}
 	
     public Loved1(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
