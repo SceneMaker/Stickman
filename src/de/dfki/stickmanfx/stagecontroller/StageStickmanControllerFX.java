@@ -84,6 +84,7 @@ public class StageStickmanControllerFX implements StageStickmanController {
         }
     }
     
+    @Override
     public void launchStickmanConfiguration(String filepath){
         commonStickmansOnStage.setmFilePath(filepath);
         XmlStickmanLoader loader = new XmlStickmanLoader((StickmansOnStageFX) commonStickmansOnStage);
