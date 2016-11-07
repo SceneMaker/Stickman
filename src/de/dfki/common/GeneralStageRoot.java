@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -30,7 +31,7 @@ public class GeneralStageRoot {
         invoke();
         if(root.getChildren().contains(mSplitPane)){
             root.getChildren().remove(mSplitPane);
-            sStickmanPane.setAlignment(Pos.CENTER_LEFT);
+            sStickmanPane.setAlignment(Pos.CENTER); //CENTER_LEFT
         }
         return root;
     }
@@ -47,7 +48,10 @@ public class GeneralStageRoot {
         mStickmanStageController = loader.getController();
         getmStickmanStageController().setlePerlinNoiseOn();
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
-        sStickmanPane.setAlignment(Pos.CENTER_RIGHT);
+        sStickmanPane.prefHeightProperty().bind(root.heightProperty());
+        sStickmanPane.setAlignment(Pos.CENTER_LEFT);
+//        sStickmanPane.setStyle("-fx-background-color: #7FFFD4;");
+        sStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanfx/image/office4.jpg');-fx-background-repeat: repeat;-fx-background-position: center center; -fx-background-size: contain;");
         return this;
     }
 
