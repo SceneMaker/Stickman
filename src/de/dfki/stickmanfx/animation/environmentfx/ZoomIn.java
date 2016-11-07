@@ -1,10 +1,6 @@
 package de.dfki.stickmanfx.animation.environmentfx;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import javafx.application.Platform;
 import javafx.geometry.Pos;

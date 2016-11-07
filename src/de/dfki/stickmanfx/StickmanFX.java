@@ -126,7 +126,8 @@ public class StickmanFX extends Pane implements CommonStickman {
 	public MaleHairFX mMaleHairFX;
 	public FemaleHairFX mFemaleHairFX;
 	public LeftEyebrowFX mLeftEyebrowFX;
-	public FaceWrinkleFX mFaceWrinkleFX; // added by Robbie FaceWrinkle
+	// added by Robbie FaceWrinkle
+	public FaceWrinkleFX mFaceWrinkleFX;
 	public LeftEyeFX mLeftEyeFX;
 	public RightEyebrowFX mRightEyebrowFX;
 	public RightEyeFX mRightEyeFX;
@@ -145,7 +146,8 @@ public class StickmanFX extends Pane implements CommonStickman {
 	public LeftUpperLegFX mLeftUpperLegFX;
 	public LeftForeLegFX mLeftForeLegFX;
 	public LeftFootFX mLeftFootFX;
-	public StarsFX mStarsFX; // added by Robbie Create Say bye or hi
+	// added by Robbie Create Say bye or hi
+	public StarsFX mStarsFX;
 	// public RightLegFX mRightLegFX;
 	public RightUpperLegFX mRightUpperLegFX;
 	public RightForeLegFX mRightForeLegFX;
@@ -247,7 +249,8 @@ public class StickmanFX extends Pane implements CommonStickman {
 		mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
 		mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-		mStarsFX = new StarsFX(mBodyFX); /// added by Robbie
+		// added by Robbie
+		mStarsFX = new StarsFX(mBodyFX);
 		// mRightLegFX = new RightLegFX(mBodyFX);
 		mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
@@ -493,7 +496,8 @@ public class StickmanFX extends Pane implements CommonStickman {
 	private void updateAll() {
 		// draw body parts
 		if (starShowControler == true) {
-			mStarsFX.update(); // Added by Robbie, to show stars or words here.
+		 // Added by Robbie, to show stars or words here.
+			mStarsFX.update(); 
 		} else {
 			if (starShowC == true)
 				mStarsFX.update();
