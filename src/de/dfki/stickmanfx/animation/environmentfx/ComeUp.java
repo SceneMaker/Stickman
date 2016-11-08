@@ -34,7 +34,7 @@ public class ComeUp extends AnimationFX
 		int rotationUnit = 5;
 		int speed = 7;
 
-		mStickmanFX.leaveSpeed = 480;
+		mStickmanFX.voffset = 480;
 
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
@@ -74,10 +74,10 @@ public class ComeUp extends AnimationFX
 	}
 
 	private void playComeSpeed(int Speed) {
-		if (mStickmanFX.leaveSpeed > 0) {
-			mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed - Speed;
+		if (mStickmanFX.voffset > 0) {
+			mStickmanFX.voffset = mStickmanFX.voffset - Speed;
 		} else {
-			mStickmanFX.leaveSpeed = 0;
+			mStickmanFX.voffset = 0;
 		}
 		Platform.runLater(() -> mStickmanFX.update());
 	}

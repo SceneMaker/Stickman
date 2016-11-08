@@ -98,8 +98,8 @@ public class StickmanFX extends Pane implements CommonStickman {
 	Font mFont;
 	
 	// Added by Robbie, to control the speed of leaving
-	public double leaveSpeed = 0; 
-	public double leftSpeed = 0; 
+	public double hoffset = 0; 
+	public double voffset = 0; 
 	// Added by Robbie, to control the star appear or not
 	public boolean starShowControler = false; 
 	// Added by Robbie, star with character appear at the same time or not
@@ -442,7 +442,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
 		// Added by Robbie, GoDown
-		af.appendTranslation(leftSpeed, leaveSpeed); 
+		af.appendTranslation(hoffset, voffset); 
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
 

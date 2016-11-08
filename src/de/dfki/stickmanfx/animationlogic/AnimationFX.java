@@ -212,6 +212,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable , 
             mID = element.getAttribute("id");
             mDuration = Integer.parseInt(element.getAttribute("duration"));
             mBlocking = Boolean.parseBoolean(element.getAttribute("blocking"));
+            mParameter = (String) element.getTextContent();
 
             // Process The Child Nodes
             XMLParseAction.processChildNodes(element, new XMLParseAction() 

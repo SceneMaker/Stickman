@@ -46,7 +46,7 @@ public class GoDown extends AnimationFX {
                 mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
                 mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
 
-                mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed + speed;
+                mStickmanFX.voffset = mStickmanFX.voffset + speed;
                 Platform.runLater(() -> mStickmanFX.update());
                 playAnimationPart(20);
             }
@@ -57,7 +57,7 @@ public class GoDown extends AnimationFX {
                 mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
                 mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
 
-                mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed + speed;
+                mStickmanFX.voffset = mStickmanFX.voffset + speed;
                 Platform.runLater(() -> mStickmanFX.update());
                 playAnimationPart(20);
             }
