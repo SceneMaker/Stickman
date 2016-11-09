@@ -276,6 +276,16 @@
                         </AnchorPane>
                      </content>
                   </Tab>
+                  <Tab closable="false" text="Kinect">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="startKinect" layoutX="36.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleStartKinectButton" text="Start Kinect" />
+                              <RadioButton fx:id="stopKinect" layoutX="36.0" layoutY="75.0" mnemonicParsing="false" text="Stop Kinect" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
               </tabs>
             </TabPane>
             <Button fx:id="RestButton" layoutX="131.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="258.0" />

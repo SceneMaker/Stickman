@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import de.dfki.stickmanfx.kinect.Kinect;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -168,10 +169,19 @@ public class StickmanStageController {
 	private ImageView bg5;
 	@FXML
 	private ImageView bg6;
+
+	@FXML
+	private RadioButton startKinect;
+	@FXML 
+	private RadioButton stopKinect;
+	
+	Kinect kinect = null;
 	
 	double xRotateFactor;
 	double yRotateFactor;
 	double zRotateFactor;
+	
+	private ToggleGroup kinectButtonToggleGroup;
 
 	private StickmanFX currentStickman;
 	public static RadioButton currentRadioButton;
@@ -193,6 +203,12 @@ public class StickmanStageController {
 		fillHeadScrollPane();
 		fillEnvironmentScrollPane();
 		fillPostureScrollPane();
+		
+		kinectButtonToggleGroup = new ToggleGroup();
+		startKinect.setToggleGroup(kinectButtonToggleGroup);
+		stopKinect.setToggleGroup(kinectButtonToggleGroup);
+		startKinect.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
+		stopKinect.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
 		
 		cameraXSlider.setMin(-180);
 		cameraXSlider.setMax(180);
@@ -802,6 +818,14 @@ public class StickmanStageController {
 		createAndHandleRadioButtons(getClassesNames, postureScrollPane);
 	}
 
+	@FXML
+	private void handleStartKinectButton()
+	{
+		System.out.println("handle gamoidzaxa");
+		if(kinect == null)
+			kinect = new Kinect(currentStickman);
+	}	
+	
 	private void createAndHandleRadioButtons(ArrayList<String> getClassesNames, ScrollPane container) {
 		GridPane gridPane = new GridPane();
 		container.setContent(gridPane);
