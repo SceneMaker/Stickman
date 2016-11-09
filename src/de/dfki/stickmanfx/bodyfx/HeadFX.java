@@ -82,7 +82,7 @@ public class HeadFX extends BodyPartFX {
 	public void init()
 	{
 		super.init();
-		mHead.setTranslateX(mHalfWidth+3);
+		mHead.setTranslateX(mHalfWidth+4);
 		mHead.setTranslateY(mHalfHeight - 3);
 		mHead.setTranslateZ(mZTranslate);
 	}
