@@ -10,6 +10,7 @@ import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -32,6 +33,11 @@ public class NoseFX extends BodyPartFX
 	ColModelImporter imorter;
 	MeshView mNose;
     PhongMaterial material;
+    
+    URL imageUrl;
+    Image im;
+    
+    double initOpacity = 0.83;
 	
 	public NoseFX.SHAPE mShape = NoseFX.SHAPE.DEFAULT;
 
@@ -41,15 +47,19 @@ public class NoseFX extends BodyPartFX
 		mSize = new Dimension(mLength, mLength);
 		
 		imorter = new ColModelImporter();
-		mColor = Color.rgb(242, 227, 217, 1);
+		mColor = Color.rgb(242, 227, 217, initOpacity);
 		
-		url = getClass().getClassLoader().getResource("BodyParts/nose1.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/nose2.dae");
+		
+		imageUrl  = getClass().getClassLoader().getResource("Images/difuseMap.png");
+		im = new Image(imageUrl.toExternalForm());
 		
 		imorter.read(url);
 		mNose = (MeshView) imorter.getImport()[0];
 		
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
+		material.setDiffuseMap(im);
 		mNose.setMaterial(material);
 		
 		mStart = mHeadFX.getLeftEyebrowPostion();
@@ -65,7 +75,7 @@ public class NoseFX extends BodyPartFX
 		super.init();
 		mNose.setTranslateX(mStart.x);
 		mNose.setTranslateY(mStart.y + 110);
-		mNose.setTranslateZ(7);
+		mNose.setTranslateZ(-15);
 	}
 	@Override
 	public void setShape(String s) {
@@ -92,7 +102,7 @@ public class NoseFX extends BodyPartFX
 			}
 			else if(mColor.getOpacity() != 0.0)
 			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - initOpacity/19);
 				update();
 			}
 			break;
@@ -102,12 +112,12 @@ public class NoseFX extends BodyPartFX
 			
 			if(step == 2)
 			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), initOpacity);
 				update();
 			}
 			else if(mColor.getOpacity() != 1.0)
 			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + initOpacity/19);
 				update();
 			}
 			break;
@@ -118,6 +128,7 @@ public class NoseFX extends BodyPartFX
 	public void update()
 	{
 		material.setDiffuseColor(mColor);
+		material.setDiffuseMap(im);
 		mNose.setMaterial(material);
 	}
 
