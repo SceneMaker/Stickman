@@ -1,29 +1,13 @@
 package de.dfki.stickmanfx.bodyfx;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.net.URL;
-
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
-
-import static de.dfki.stickman.animationlogic.util.Interpolator.linear;
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import java.awt.BasicStroke;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcTo;
 import javafx.scene.shape.ClosePath;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MeshView;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 /**
  *
@@ -224,8 +208,15 @@ public class RightEyeFX extends BodyPartFX {
 			xMovement =  -0.131f;
 			yMovement = -0.182f;
 			
-			bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
-			smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
+				smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
+			}
 			break;
 
 		case LOOKRIGHT:
@@ -240,8 +231,15 @@ public class RightEyeFX extends BodyPartFX {
 			xMovement =  -0.131f;
 			yMovement = -0.184f;
 			
-			bigPupile.setTranslateX(bigPupile.getTranslateX() - xMovement);
-			smallPupile.setTranslateX(smallPupile.getTranslateX() - yMovement);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				bigPupile.setTranslateX(bigPupile.getTranslateX() - xMovement);
+				smallPupile.setTranslateX(smallPupile.getTranslateX() - yMovement);
+			}
 			break;
 			
 		case LOOKDOWN:
@@ -256,8 +254,15 @@ public class RightEyeFX extends BodyPartFX {
 			xMovement =  -0.100f;
 			yMovement = -0.184f;
 			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+				smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			}
 			break;
 			
 		case LOOKUP:
@@ -272,8 +277,15 @@ public class RightEyeFX extends BodyPartFX {
 			xMovement =  0.100f;
 			yMovement = 0.184f;
 			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+				smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			}
 			break;
 
 		case ANGRY:
@@ -288,8 +300,15 @@ public class RightEyeFX extends BodyPartFX {
 			borderYSize -= 0.0210f;
 			bigPupileYSize -= 0.010;
 			
-			border.setScaleY(1 - borderYSize);
-			bigPupile.setScaleY(1 - bigPupileYSize);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				border.setScaleY(1 - borderYSize);
+				bigPupile.setScaleY(1 - bigPupileYSize);
+			}
 			break;
 
 		case SURPRISED:
@@ -299,7 +318,15 @@ public class RightEyeFX extends BodyPartFX {
 
 		case SURPRISEDEND:
 			borderYSize += 0.0158;
-			border.setScaleY(1 - borderYSize);
+			
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				border.setScaleY(1 - borderYSize);
+			}
 			break;
 
 		case HAPPY:
@@ -312,8 +339,16 @@ public class RightEyeFX extends BodyPartFX {
 		case HAPPYEND:
 			borderYSize -= 0.0105;
 			borderXSize -= 0.0052;
-			border.setScaleY(1 - borderYSize);
-			border.setScaleX(1 + borderXSize);
+			
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				border.setScaleY(1 - borderYSize);
+				border.setScaleX(1 + borderXSize);
+			}
 			break;
 
 		case DISGUSTED:
@@ -329,11 +364,18 @@ public class RightEyeFX extends BodyPartFX {
 		case DISGUSTEDEND:
 			borderYSize -= 0.0105;
 			
-			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
-			quadCurve_1.setY(quadCurve_1.getY() - 0.105);
-			border.getElements().set(1, quadCurve_1);
-			
-			border.setScaleY(1 - borderYSize);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
+				quadCurve_1.setY(quadCurve_1.getY() - 0.105);
+				border.getElements().set(1, quadCurve_1);
+				
+				border.setScaleY(1 - borderYSize);
+			}
 			break;
 
 		case CONTEMPT:
@@ -354,8 +396,16 @@ public class RightEyeFX extends BodyPartFX {
 		case EXCITEDEND:
 			borderYSize += 0.0105;
 			borderXSize += 0.0052;
-			border.setScaleY(1 - borderYSize);
-			border.setScaleX(1 + borderXSize);
+			
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				border.setScaleY(1 - borderYSize);
+				border.setScaleX(1 + borderXSize);
+			}
 			break;
 
 		case EMBARRASSED:
@@ -370,16 +420,25 @@ public class RightEyeFX extends BodyPartFX {
 			xMovement =  -0.100f;
 			yMovement = -0.184f;
 			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			if(step == 2)
+			{
+				createDefaultEye();
+			}
+			else
+			{
+				bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+				smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			}
 			break;
 		}
 	}
 
+	@Override
 	public void update()
 	{
 		bigPupile.setFill(mColor);
 	}
+	@Override
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;
