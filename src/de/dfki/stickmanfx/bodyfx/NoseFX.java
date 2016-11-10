@@ -37,7 +37,7 @@ public class NoseFX extends BodyPartFX
     URL imageUrl;
     Image im;
     
-    double initOpacity = 0.83;
+    double initOpacity = 0.85;
 	
 	public NoseFX.SHAPE mShape = NoseFX.SHAPE.DEFAULT;
 
@@ -51,7 +51,7 @@ public class NoseFX extends BodyPartFX
 		
 		url = getClass().getClassLoader().getResource("BodyParts/nose2.dae");
 		
-		imageUrl  = getClass().getClassLoader().getResource("Images/difuseMap.png");
+		imageUrl  = getClass().getClassLoader().getResource("Images/difuseMap1.png");
 		im = new Image(imageUrl.toExternalForm());
 		
 		imorter.read(url);
