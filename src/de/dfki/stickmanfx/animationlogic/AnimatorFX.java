@@ -160,7 +160,15 @@ public class AnimatorFX
                     }
                     if (action.equalsIgnoreCase("translate")) 
                     {
-                        bodypartFX.setTranslation(param);
+                        bodypartFX.set_X_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ytranslate")) 
+                    {
+                        bodypartFX.set_Y_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) 
+                    {
+                        bodypartFX.set_Z_Translation(param);
                     }
                     if (action.equalsIgnoreCase("shape")) 
                     {
@@ -195,9 +203,16 @@ public class AnimatorFX
 
                     if (action.equalsIgnoreCase("translate")) 
                     {
-                        bodypartFX.calculateTranslation(mCurrentStep);
+                        bodypartFX.calculate_X_Translation(mCurrentStep);
                     }
-
+                    if (action.equalsIgnoreCase("ytranslate")) 
+                    {
+                        bodypartFX.calculate_Y_Translation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) 
+                    {
+                        bodypartFX.calculate_Z_Translation(mCurrentStep);
+                    }
                     if (action.equalsIgnoreCase("shape")) 
                     {
                         bodypartFX.calculateShape(mCurrentStep);
@@ -295,7 +310,7 @@ public class AnimatorFX
                     }
                     if (action.equalsIgnoreCase("translate")) 
                     {
-                        bodypartFX.setTranslation(param);
+                        bodypartFX.set_X_Translation(param);
                     }
                     if (action.equalsIgnoreCase("shape")) 
                     {
@@ -330,7 +345,7 @@ public class AnimatorFX
 
                     if (action.equalsIgnoreCase("translate")) 
                     {
-                        bodypartFX.calculateTranslation(mCurrentStep);
+                        bodypartFX.calculate_X_Translation(mCurrentStep);
                     }
 
                     if (action.equalsIgnoreCase("shape")) 

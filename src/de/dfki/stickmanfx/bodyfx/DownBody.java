@@ -1,23 +1,24 @@
 package de.dfki.stickmanfx.bodyfx;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.net.URL;
+
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.bodyfx.UpperBody.SHAPE;
-
-import java.awt.Dimension;
-import java.awt.Point;
-import java.net.URL;
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -106,6 +107,7 @@ public class DownBody extends BodyPartFX {
 		mShape = DownBody.SHAPE.DEFAULT;
 	}
 	
+	@Override
 	public void calculate(int step) {
 		
 		rx = new Rotate(mXRotation, Rotate.X_AXIS);
@@ -115,9 +117,11 @@ public class DownBody extends BodyPartFX {
 			ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
 		
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		
+		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mDownBodyGroup.getTransforms().clear();
-		mDownBodyGroup.getTransforms().addAll(rx, ry, rz);
+		mDownBodyGroup.getTransforms().addAll(rx, ry, rz, translation);
 		
 		switch(mShape)
 		{
@@ -178,11 +182,13 @@ public class DownBody extends BodyPartFX {
 		}
 	}
 
+	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
 		mBodyMeshView.setMaterial(material);
 	}
 
+	@Override
 	public void rotatePerlinNoise(double mWobble, int x, int y) {
 		Affine af = new Affine();
 		// Out put perlin noise

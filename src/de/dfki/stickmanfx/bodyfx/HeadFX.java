@@ -14,6 +14,7 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -145,9 +146,11 @@ public class HeadFX extends BodyPartFX {
 		Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
+		
+		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mHead.getTransforms().clear();
-		mHead.getTransforms().addAll(rx, ry, rz);
+		mHead.getTransforms().addAll(rx, ry, rz, translation);
 		
 		switch(mShape)
 		{

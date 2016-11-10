@@ -5,22 +5,16 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.animationlogic.Animator;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
+import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -29,8 +23,6 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.Shape;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.transform.Affine;
 import javafx.util.Duration;
 
@@ -54,9 +46,16 @@ public abstract class BodyPartFX extends Pane {
 	public int mShapeAnimationStep = 0;
 
 	public int mDefaultTranslation = 0;
-	public double mTranslation = mDefaultTranslation;
-	public double mToTranslation = mDefaultTranslation;
-	public double mTranslationStep = 0.0f;
+	public double mXTranslation = mDefaultTranslation;
+	public double mYTranslation = mDefaultTranslation;
+	public double mZTranslation = mDefaultTranslation;
+	public double mXToTranslation = mDefaultTranslation;
+	public double mYToTranslation = mDefaultTranslation;
+	public double mZToTranslation = mDefaultTranslation;
+	
+	public double mXTranslationStep = 0.0f;
+	public double mYTranslationStep = 0.0f;
+	public double mZTranslationStep = 0.0f;
 
 	public int mDefaultRotation = 0;
 	public Point mDefaultRotationPoint = new Point(0, 0);
@@ -83,20 +82,46 @@ public abstract class BodyPartFX extends Pane {
 		calculate(0);
 	}
 
-	public void setTranslation(int length) {
-		mToTranslation = mTranslation + length;
-		mTranslationStep = (double) length / AnimatorFX.sMAX_ANIM_STEPS;
+	public void set_X_Translation(int length) {
+		mXToTranslation = mXTranslation + length;
+		mXTranslationStep = (double) length / AnimatorFX.sMAX_ANIM_STEPS;
+	}
+	
+	public void set_Y_Translation(int length) {
+		mYToTranslation = mYTranslation + length;
+		mYTranslationStep = (double) length / AnimatorFX.sMAX_ANIM_STEPS;
+	}
+	
+	public void set_Z_Translation(int length) {
+		mZToTranslation = mZTranslation + length;
+		mZTranslationStep = (double) length / AnimatorFX.sMAX_ANIM_STEPS;
 	}
 
-	public synchronized void calculateTranslation(int step) {
-		mTranslation += mTranslationStep;
-		mTranslation = (double) Math.round(mTranslation * 1000d) / 1000d; 
+	public synchronized void calculate_X_Translation(int step) {
+		mXTranslation += mXTranslationStep;
+		mXTranslation = Math.round(mXTranslation * 1000d) / 1000d; 
+
+		Platform.runLater(() -> calculate(step));
+	}
+	
+	public synchronized void calculate_Y_Translation(int step) {
+		mYTranslation += mYTranslationStep;
+		mYTranslation = Math.round(mYTranslation * 1000d) / 1000d; 
+
+		Platform.runLater(() -> calculate(step));
+	}
+	
+	public synchronized void calculate_Z_Translation(int step) {
+		mZTranslation += mZTranslationStep;
+		mZTranslation = Math.round(mZTranslation * 1000d) / 1000d; 
 
 		Platform.runLater(() -> calculate(step));
 	}
 
 	public void resetTranslation() {
-		mTranslationStep = 0.0d;
+		mXTranslationStep = 0.0d;
+		mYTranslationStep = 0.0d;
+		mZTranslationStep = 0.0d;
 	}
 
 	public void setDefaulRotation(int degree) {
@@ -133,21 +158,21 @@ public abstract class BodyPartFX extends Pane {
 
 	public synchronized void calculate_X_Rotation(int step) {
 		mXRotation += mXRotationStep;
-		mXRotation = (double) Math.round(mXRotation * 1000d) / 1000d; 
+		mXRotation = Math.round(mXRotation * 1000d) / 1000d; 
 		
 		Platform.runLater(() -> calculate(step));
 	}
 
 	public synchronized void calculate_Y_Rotation(int step) {
 		mYRotation += mYRotationStep;
-		mYRotation = (double) Math.round(mYRotation * 1000d) / 1000d; 
+		mYRotation = Math.round(mYRotation * 1000d) / 1000d; 
 		
 		Platform.runLater(() -> calculate(step));
 	}
 
 	public synchronized void calculate_Z_Rotation(int step) {
 		mZRotation += mZRotationStep;
-		mZRotation = (double) Math.round(mZRotation * 1000d) / 1000d; 
+		mZRotation = Math.round(mZRotation * 1000d) / 1000d; 
 		
 		Platform.runLater(() -> calculate(step));
 
@@ -155,7 +180,7 @@ public abstract class BodyPartFX extends Pane {
 
 	public void resetRotation() {
 
-		mTranslationStep = 0.0d;
+//		mTranslationStep = 0.0d;
 
 	}
 

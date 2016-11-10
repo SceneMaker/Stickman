@@ -18,6 +18,7 @@ import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 /**
  *
  * @author Beka Aptsiauri
@@ -119,9 +120,11 @@ public class UpperBody extends BodyPartFX {
 		}
 		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		
+		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mUpperBodyGroup.getTransforms().clear();
-		mUpperBodyGroup.getTransforms().addAll(rx, ry, rz);
+		mUpperBodyGroup.getTransforms().addAll(rx, ry, rz, translation);
 		
 		switch(mShape)
 		{

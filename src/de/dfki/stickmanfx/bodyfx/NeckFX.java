@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -85,8 +86,10 @@ public class NeckFX extends BodyPartFX {
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 		
+		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
+		
 		neckMeshView.getTransforms().clear();
-		neckMeshView.getTransforms().addAll(rx, ry, rz);
+		neckMeshView.getTransforms().addAll(rx, ry, rz, translation);
 		
 		switch(mShape)
 		{
