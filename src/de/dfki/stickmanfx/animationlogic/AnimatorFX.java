@@ -49,8 +49,8 @@ public class AnimatorFX
         mAnimationComponents = animComps;
         mDescription = mAnimationFX.getClass().getSimpleName() + " (" + mAnimationFX.mID + "), " + mAnimationFX.toString();
         
-//        if(duration < 50)
-//        	duration = 50;
+//        if(duration < 100)
+//        	duration = 100;
         mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
         mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
         render();
@@ -279,7 +279,7 @@ public class AnimatorFX
     
     private void render(int step) 
     {
-        mCurrentStep = step;
+    	mCurrentStep = step;
         while (mCurrentStep > 0) 
         {
             if (mCurrentStep == step) 
@@ -311,6 +311,14 @@ public class AnimatorFX
                     if (action.equalsIgnoreCase("translate")) 
                     {
                         bodypartFX.set_X_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ytranslate")) 
+                    {
+                        bodypartFX.set_Y_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) 
+                    {
+                        bodypartFX.set_Z_Translation(param);
                     }
                     if (action.equalsIgnoreCase("shape")) 
                     {
@@ -347,7 +355,14 @@ public class AnimatorFX
                     {
                         bodypartFX.calculate_X_Translation(mCurrentStep);
                     }
-
+                    if (action.equalsIgnoreCase("ytranslate")) 
+                    {
+                        bodypartFX.calculate_Y_Translation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) 
+                    {
+                        bodypartFX.calculate_Z_Translation(mCurrentStep);
+                    }
                     if (action.equalsIgnoreCase("shape")) 
                     {
                         bodypartFX.calculateShape(mCurrentStep);

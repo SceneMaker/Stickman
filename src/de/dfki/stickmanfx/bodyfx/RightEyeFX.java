@@ -96,9 +96,9 @@ public class RightEyeFX extends BodyPartFX {
 	
 	private void createDefaultEye()
 	{
-		border = createBorder(border);
-		bigPupile = createEllipsePath(bigPupile, 0, 0, 3.5, 3.5, 0, mColor, null);
-		smallPupile = createEllipsePath(smallPupile, 0, 0, 1.4, 1.4, 0, smallPupileColor, null);
+		border = createBorder();
+		bigPupile = createBigPupile(0, 0, 3.5, 3.5, 0, mColor, null);
+		smallPupile = createSmallPupile(0, 0, 1.4, 1.4, 0, smallPupileColor, null);
 		smallPupile.setStroke(null);
 		
 		borderYSize = 0;
@@ -444,7 +444,7 @@ public class RightEyeFX extends BodyPartFX {
 			mColorRecorder = mColor;
 	}
 	
-	private Path createEllipsePath(Path startPath, double centerX, double centerY, double radiusX, double radiusY, double rotate, Color eyeColor, Color borderColor) {
+	private Path createBigPupile( double centerX, double centerY, double radiusX, double radiusY, double rotate, Color eyeColor, Color borderColor) {
         ArcTo arcTo = new ArcTo();
         arcTo.setX(centerX - radiusX + 1); // to simulate a full 360 degree celcius circle.
         arcTo.setY(centerY - radiusY);
@@ -454,28 +454,70 @@ public class RightEyeFX extends BodyPartFX {
         arcTo.setRadiusY(radiusY);
         arcTo.setXAxisRotation(rotate);
         
-        startPath.getElements().add(new MoveTo(centerX - radiusX, centerY - radiusY));
-        startPath.getElements().add(arcTo);
-        startPath.getElements().add(new ClosePath());
+        Path bigPupile = new Path();
+        bigPupile.getElements().add(new MoveTo(centerX - radiusX, centerY - radiusY));
+        bigPupile.getElements().add(arcTo);
+        bigPupile.getElements().add(new ClosePath());
 
         if(borderColor != null)
         {
-        	startPath.setStroke(Color.BLACK);
-        	startPath.setStrokeWidth(1);
+        	bigPupile.setStroke(Color.BLACK);
+        	bigPupile.setStrokeWidth(1);
         }
         
-        startPath.setFill(eyeColor);
-        return startPath;
+        bigPupile.setFill(eyeColor);
+        
+        bigPupile.setTranslateX(mStart.x - 7);
+		bigPupile.setTranslateY(mStart.y);
+		bigPupile.setTranslateZ(-18);
+		
+		rightEyeGroup.getChildren().set(1, bigPupile);
+        return bigPupile;
     }
 	
-	private Path createBorder(Path startBorder)
+	private Path createSmallPupile(double centerX, double centerY, double radiusX, double radiusY, double rotate, Color eyeColor, Color borderColor) {
+        ArcTo arcTo = new ArcTo();
+        arcTo.setX(centerX - radiusX + 1); // to simulate a full 360 degree celcius circle.
+        arcTo.setY(centerY - radiusY);
+        arcTo.setSweepFlag(false);
+        arcTo.setLargeArcFlag(true);
+        arcTo.setRadiusX(radiusX);
+        arcTo.setRadiusY(radiusY);
+        arcTo.setXAxisRotation(rotate);
+        
+        Path smallPupile = new Path();
+        smallPupile.getElements().add(new MoveTo(centerX - radiusX, centerY - radiusY));
+        smallPupile.getElements().add(arcTo);
+        smallPupile.getElements().add(new ClosePath());
+
+        if(borderColor != null)
+        {
+        	smallPupile.setStroke(Color.BLACK);
+        	smallPupile.setStrokeWidth(1);
+        }
+        
+        smallPupile.setFill(eyeColor);
+        
+        smallPupile.setTranslateX(mStart.x - 9);
+		smallPupile.setTranslateY(mStart.y);
+		smallPupile.setTranslateZ(-19);
+		
+		rightEyeGroup.getChildren().set(2, smallPupile);
+        return smallPupile;
+    }
+	
+	private Path createBorder()
 	{
+		Path startBorder = new Path();
 		startBorder.getElements().add(new MoveTo(mStart.x, mStart.y));
 		startBorder.getElements().add(new QuadCurveTo(mStart.x - 10, mStart.y - 13, mStart.x - 20, mStart.y));
 		startBorder.getElements().add(new QuadCurveTo(mStart.x - 10, mStart.y + 13, mStart.x, mStart.y));
 		startBorder.setStrokeWidth(1);
 		startBorder.setStroke(Color.BLACK);
 		startBorder.setFill(Color.WHITE);
+		startBorder.setTranslateZ(-17);
+		
+		rightEyeGroup.getChildren().set(0, startBorder);
 		
 		return startBorder;
 	}
