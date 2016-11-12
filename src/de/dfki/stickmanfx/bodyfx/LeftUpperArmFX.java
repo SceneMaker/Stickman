@@ -8,13 +8,14 @@ package de.dfki.stickmanfx.bodyfx;
 import java.awt.Dimension;
 import java.net.URL;
 
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
+import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.stickmanfx.StickmanFX;
 /**
  *
  * @author Beka
@@ -93,7 +94,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 
 		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
 			leftUpperArmGroup.setTranslateX(mStart.x);
-			leftUpperArmGroup.setTranslateY(mStart.y - 85);
+			leftUpperArmGroup.setTranslateY(mStart.y - 105);
 			leftUpperArmGroup.setTranslateZ(0);
 		} else {
 			leftUpperArmGroup.setTranslateX(mStart.x - 10);

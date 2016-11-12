@@ -31,9 +31,13 @@ public class NeckFX extends BodyPartFX {
 	
 	URL url;
     ColModelImporter imorter;
-    MeshView neckMeshView;
+    public MeshView neckMeshView;
     
     PhongMaterial material;
+    
+    public int mPivotX = 0;
+    public int mPivotY = 0;
+    public int mPivotZ = 0;
 
     public NeckFX.SHAPE mShape = NeckFX.SHAPE.DEFAULT;
     
@@ -82,9 +86,9 @@ public class NeckFX extends BodyPartFX {
 		neckMeshView.setTranslateY(mStart.y + 5);
 		neckMeshView.setTranslateZ(-105);
         
-		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		Rotate rx = new Rotate(mXRotation, mPivotX, mPivotY, mPivotZ, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, mPivotX, mPivotY, mPivotZ, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, mPivotX, mPivotY, mPivotZ, Rotate.Z_AXIS);
 		
 		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 		

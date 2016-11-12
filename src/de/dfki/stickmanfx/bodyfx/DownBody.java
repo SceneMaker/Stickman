@@ -44,7 +44,7 @@ public class DownBody extends BodyPartFX {
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
 
-	Group mDownBodyGroup;
+	public Group mDownBodyGroup;
 	
 	URL url;
     ColModelImporter imorter;

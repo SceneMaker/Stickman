@@ -43,7 +43,7 @@ public class UpperBody extends BodyPartFX {
 	int mHalfSizeY = mSize.height / 2;
 	int mDrawOffset = 20;
 
-	Group mUpperBodyGroup;
+	public Group mUpperBodyGroup;
 
 	URL url;
 	ColModelImporter imorter;
@@ -59,7 +59,7 @@ public class UpperBody extends BodyPartFX {
 			url = getClass().getClassLoader().getResource("BodyParts/UpperFemaleBody.dae");
 			mColor = Color.rgb(154, 83, 198, 1);
 		} else {
-			url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody1.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody2.dae");
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
 
@@ -83,7 +83,7 @@ public class UpperBody extends BodyPartFX {
 		super.init();
 		mUpperBodyGroup.setTranslateX(mStart.x);
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
-			mUpperBodyGroup.setTranslateY(mStart.y + 135);
+			mUpperBodyGroup.setTranslateY(mStart.y + 155);
 			mUpperBodyGroup.setTranslateZ(-105);
 		} else {
 			mUpperBodyGroup.setTranslateY(mStart.y + 135);
@@ -109,17 +109,10 @@ public class UpperBody extends BodyPartFX {
 	@Override
 	public void calculate(int step) {
 
-//		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
-			rx = new Rotate(mXRotation, 0, 10, 0, Rotate.X_AXIS);
-		}
-		else
-		{
-			rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		}
-		ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+		//Setze PivotElement entsprechend der Y-Translation
+		rx = new Rotate(mXRotation, 0, mYTranslation, 0, Rotate.X_AXIS);
+		ry = new Rotate(mYRotation, 0, mYTranslation, 0, Rotate.Y_AXIS);
+		rz = new Rotate(mZRotation, 0, mYTranslation, 0,Rotate.Z_AXIS);
 		
 		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 

@@ -1,13 +1,8 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.logging.ConsoleHandler;
@@ -15,8 +10,8 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-import de.dfki.stickmanfx.animation.environmentfx.IdleBehavior;
-import de.dfki.stickmanfx.animation.environmentfx.SimplexNoise;
+import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
@@ -57,8 +52,9 @@ import de.dfki.stickmanfx.bodyfx.RightWrist;
 import de.dfki.stickmanfx.bodyfx.StarsFX;
 import de.dfki.stickmanfx.bodyfx.ThinkFX;
 import de.dfki.stickmanfx.bodyfx.UpperBody;
+import de.dfki.stickmanfx.bodyfx.UpperBodyAndHead;
 import de.dfki.stickmanfx.environmentfx.SpeechBubbleFX;
-import javafx.scene.control.Label;
+import javafx.scene.Group;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -170,6 +166,12 @@ public class StickmanFX extends Pane {
 	public RightFootFX mRightFootFX;
 	public ThinkFX mThinkFX;
 	public BombeFX mBombeFX;
+	
+	public UpperBodyAndHead mUpperBodyAndHand;
+	
+	//interior stuff
+	public Group table;
+	
 	// environment
 	public SpeechBubbleFX mSpeechBubbleFX;
 
@@ -228,6 +230,8 @@ public class StickmanFX extends Pane {
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
 		mBombeFX = new BombeFX(mHeadFX);
+		
+		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -282,6 +286,9 @@ public class StickmanFX extends Pane {
 		mThinkFX = new ThinkFX(mHeadFX);
 		mBombeFX = new BombeFX(mHeadFX);
 
+		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
+		
+
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
 		this.addAllParts();
@@ -333,6 +340,9 @@ public class StickmanFX extends Pane {
 		mThinkFX = new ThinkFX(mHeadFX);
 		mBombeFX = new BombeFX(mHeadFX);
 
+		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
+		
+
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
 		this.addAllParts();
@@ -344,6 +354,7 @@ public class StickmanFX extends Pane {
 		this.setPrefWidth(mSize.width);
 		this.setMinHeight(mSize.height);
 		this.setMinWidth(mSize.width);
+		this.setTranslateY(11);
 		// this.setStyle("-fx-border-color: black");
 
 		InnerShadow is = new InnerShadow();
@@ -495,7 +506,7 @@ public class StickmanFX extends Pane {
 		// (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
 		// change Screen.getPrimary().getVisualBounds().getHeight() to
 		// mSize.height to avoid the location changed after update. by Robbie
-		mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
+		mGeneralYTranslation = mSize.height - 700 * mScale;
 
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
@@ -524,7 +535,7 @@ public class StickmanFX extends Pane {
 		this.getChildren().addAll(mNeckFX, mHeadFX,
 				mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
 				mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameText);
+				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameText, mUpperBodyAndHand);
 		
 	}
 

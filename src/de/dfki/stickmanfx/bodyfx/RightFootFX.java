@@ -5,11 +5,11 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.bodyfx.RightForeLegFX.SHAPE;
-
 import java.net.URL;
+
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
+import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;

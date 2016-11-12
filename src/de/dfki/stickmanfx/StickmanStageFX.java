@@ -34,6 +34,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -343,9 +344,8 @@ public class StickmanStageFX extends Application {
 		sCamera.setFarClip(3000.0);
 		sCamera.setFieldOfView(30);
 		
-		root.setStyle("-fx-background-color: transparent");
-		
 		SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
+		subScene.setFill(Color.rgb(216, 216, 216));
 		return subScene;
 	}
 
