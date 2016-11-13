@@ -11,9 +11,11 @@ import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.interior.Interior;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 
 /**
  *
@@ -24,8 +26,9 @@ public class Muster extends AnimationFX
 {
 
 	private static boolean isInteriorElemtnLoaded = false;
-	Group table;
-	Group laptop;
+	static Group table;
+	static Group laptop;
+	static Group chair;
    
 	public Muster(StickmanFX sm, int duration, boolean block) 
         {
@@ -41,6 +44,7 @@ public class Muster extends AnimationFX
 			isInteriorElemtnLoaded = true;
 			table = Interior.createTable();
             laptop = Interior.createLaptop();
+            chair = Interior.createChair();
             
             table.setTranslateY(461);
     		table.setTranslateZ(-280);
@@ -49,13 +53,17 @@ public class Muster extends AnimationFX
     		laptop.setTranslateX(-20);
     		laptop.setRotationAxis(Rotate.Y_AXIS);
     		laptop.setRotate(10);
+    		chair.setTranslateZ(-250);
+    		chair.setTranslateY(461);
+    		chair.setTranslateX(70);
     		Platform.runLater(() -> 
     		{
-    			mStickmanFX.getChildren().addAll(table, laptop);
+    			mStickmanFX.getChildren().addAll(table, laptop, chair);
     		});
 		}
             
-    		
+    		double recordLaptopXPosition = laptop.getTranslateX();
+    		double recordChairZPosition = chair.getTranslateZ();
             
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", 50));
@@ -65,12 +73,18 @@ public class Muster extends AnimationFX
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "rotate", -80));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "rotate", 90));
             
+            TranslateTransition chairTr = new TranslateTransition(Duration.millis(400), chair);
+            chairTr.setFromZ(chair.getTranslateZ());
+            chairTr.setToZ(chair.getTranslateZ() - 50);
+    		chairTr.play();
+            
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 30));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -85));
             
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 30));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 20));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -85));
+            chairTr.play();
             playAnimationPart(500);
             
             mAnimationPartFX = new ArrayList<>();
@@ -89,7 +103,7 @@ public class Muster extends AnimationFX
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
             playAnimationPart(500);
             
-            
+            //TastaturArbeit
             for(int i = 0; i<40; i++)
             {
             	if(i%3 == 0)
@@ -168,31 +182,107 @@ public class Muster extends AnimationFX
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "ANGRY"));
             playAnimationPart(300);
             
-            //aq saxeze xeli moakidine gabrazebistvis
+            //PC 3mal schlagen
+            for(int i = 0; i<3; i++)
+            {
+            	mAnimationPartFX = new ArrayList<>();
+        		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -90));
+        		playAnimationPart(250);
+        		mAnimationPartFX = new ArrayList<>();
+        		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 90));
+        		playAnimationPart(250);
+        		pauseAnimation(400);
+            }
             
+            pauseAnimation(1000);
+            
+            //Kopf hinterneigen
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -20));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -30));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -100));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -180));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", 30));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -80));
+    		playAnimationPart(500);
+    		
+    		mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
+    		playAnimationPart(50);
+    		mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKUP"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKUP"));
+    		playAnimationPart(50);
+    		
+    		//4x Gesicht Beruehren
+    		for(int i = 0; i<4; i++)
+    		{
+    			mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 20));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -10));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -10));
+        		playAnimationPart(300);
+        		pauseAnimation(150);
+        		mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -20));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 10));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", 10));
+        		playAnimationPart(300);
+    		}
+    		
+    		mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKUPEND"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKUPEND"));
+    		playAnimationPart(50);
+    		mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
+    		playAnimationPart(50);
+    		
+    		pauseAnimation(1000);
+    		
+    		//Kopf wieder vorne Neigen
+    		mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 20));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 30));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 100));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 180));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", -30));
+    		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 80));
+    		playAnimationPart(500);
+            
+    		//10mal PC schlagen
             for(int i = 0; i<10; i++)
             {
             	mAnimationPartFX = new ArrayList<>();
         		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -90));
         		playAnimationPart(150);
-        		
         		mAnimationPartFX = new ArrayList<>();
         		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 90));
         		playAnimationPart(150);
             }
             
+            //Hand neben dem PC platzieren
             mAnimationPartFX = new ArrayList<>();
     		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "yrotate", -60));
     		playAnimationPart(150);
     		
-    		//aq kompi gadaagdebine
-    		
-            pauseAnimation(1000);
-    		mAnimationPartFX = new ArrayList<>();
+    		//PC wegschmeissen
+    		TranslateTransition translateTransition = new TranslateTransition(Duration.millis(400), laptop);
+	        translateTransition.setFromX(laptop.getTranslateX());
+	        translateTransition.setToX(laptop.getTranslateX() - 500);
+	        mAnimationPartFX = new ArrayList<>();
     		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "yrotate", 60));
+    		translateTransition.play();
     		playAnimationPart(150);
     		
             pauseAnimation(1000);
+            
+            TranslateTransition backchair = new TranslateTransition(Duration.millis(400), chair);
+            backchair.setFromZ(chair.getTranslateZ() - 50);
+            backchair.setToZ(recordChairZPosition);
+            backchair.play();
             
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", -50));
@@ -236,6 +326,10 @@ public class Muster extends AnimationFX
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "ANGRYEND"));
             playAnimationPart(300);
             
-
+            TranslateTransition backtrans = new TranslateTransition(Duration.millis(400), laptop);
+            backtrans.setFromX(laptop.getTranslateX() - 500);
+            backtrans.setToX(recordLaptopXPosition);
+            backtrans.play();
+            
 	}
 }

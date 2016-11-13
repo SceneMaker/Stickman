@@ -12,6 +12,7 @@ public class Interior
 	private static ColModelImporter imorter;
 	private static Group sTableMeshView;
 	private static Group sLaptop;
+	private static Group sChair;
 	
 	public static Group createTable()
 	{
@@ -31,5 +32,15 @@ public class Interior
 		sLaptop = (Group) imorter.getImport()[0];
 		
 		return sLaptop;
+	}
+	
+	public static Group createChair()
+	{
+		imorter = new ColModelImporter();
+		url = Interior.class.getClassLoader().getResource("BodyParts/chair.dae");
+		imorter.read(url);
+		sChair = (Group) imorter.getImport()[0];
+		
+		return sChair;
 	}
 }
