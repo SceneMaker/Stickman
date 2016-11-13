@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dfki.stickmanfx.animation.headfx;
+package de.dfki.stickmanfx.animation.posturefx;
 
 import java.util.ArrayList;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.interior.Interior;
@@ -22,15 +23,18 @@ import javafx.util.Duration;
  * @author Beka Aptsiauri
  *
  */
-public class Muster extends AnimationFX 
+public class Working extends AnimationFX 
 {
+	public Working() {
+		mAnimType = ANIMTYPE.ON;
+	}
 
 	private static boolean isInteriorElemtnLoaded = false;
 	static Group table;
 	static Group laptop;
 	static Group chair;
    
-	public Muster(StickmanFX sm, int duration, boolean block) 
+	public Working(StickmanFX sm, int duration, boolean block) 
         {
 		super(sm, duration, block);
 	}
@@ -57,20 +61,19 @@ public class Muster extends AnimationFX
     		chair.setTranslateY(461);
     		chair.setTranslateX(70);
     		
-
-            table.setVisible(true);
-            laptop.setVisible(true);
-            chair.setVisible(true);
-            
     		Platform.runLater(() -> 
     		{
     			mStickmanFX.getChildren().addAll(table, laptop, chair);
     		});
 		}
             
+			table.setVisible(true);
+	        laptop.setVisible(true);
+	        chair.setVisible(true);
+        
     		double recordLaptopXPosition = laptop.getTranslateX();
     		double recordChairZPosition = chair.getTranslateZ();
-            
+    		
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", 50));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mDownBody, "ytranslate", 50));
@@ -337,9 +340,12 @@ public class Muster extends AnimationFX
             backtrans.setToX(recordLaptopXPosition);
             backtrans.play();
             
+            pauseAnimation(1000);
+            
             table.setVisible(false);
             laptop.setVisible(false);
             chair.setVisible(false);
             
+            StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }
