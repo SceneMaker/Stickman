@@ -5,11 +5,11 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.bodyfx.LeftForeLegFX.SHAPE;
-
 import java.net.URL;
+
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
+import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -81,7 +81,7 @@ public class LeftFootFX extends BodyPartFX {
 		
 		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 		{
-			mLeftFootMeshView.setTranslateX(mStart.x+3);
+			mLeftFootMeshView.setTranslateX(mStart.x);
 			mLeftFootMeshView.setTranslateY(mStart.y+85);
 			mLeftFootMeshView.setTranslateZ(0);
 		}

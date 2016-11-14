@@ -43,7 +43,8 @@ public class CoverMouth extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -180));
 		playAnimationPart(500);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+		if(StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
 
 	}
 }

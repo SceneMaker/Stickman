@@ -5,14 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.headfx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
-
-import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *
@@ -46,6 +44,7 @@ public class Blink extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
 		playAnimationPart(20);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+		if(StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

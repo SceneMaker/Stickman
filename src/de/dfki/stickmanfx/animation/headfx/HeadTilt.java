@@ -5,14 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.headfx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
-
-import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *
@@ -35,11 +33,15 @@ public class HeadTilt extends AnimationFX
     	
     	mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", -10));
-		playAnimationPart(200);
+		playAnimationPart(mDuration);
+		
+		pauseAnimation(1000);
 		
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", 10));
-		playAnimationPart(200);
-    	StickmanStageController.currentRadioButton.setSelected(false);
+		playAnimationPart(mDuration);
+		
+		if(StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
     }
 }

@@ -21,8 +21,15 @@ public class IdleBehavior extends Thread {
     	mSleepTime = 100;
     	mStickmanFX = s;
         mSimplexNoise = noise;
-        mUnconsciouslyAction = new UnconsciouslyAction(mStickmanFX, mSimplexNoise);
+        mUnconsciouslyAction = new UnconsciouslyAction(mStickmanFX);
         mUnconsciouslyAction.start();
+    }
+    
+    public IdleBehavior(StickmanFX stickmanFX) 
+    {
+    	this.mStickmanFX = stickmanFX;
+    	this.mUnconsciouslyAction = new UnconsciouslyAction(stickmanFX);
+    	this.mUnconsciouslyAction.start();
     }
 
     @Override
@@ -38,9 +45,9 @@ public class IdleBehavior extends Thread {
                 count2 = 1;
             }
 
-            mStickmanFX.mWobble = ((mSimplexNoise.getNoise(count2, count1) * 600)) / 20;
-//        System.out.printf("%.5f",mSimplexNoise.getNoise(count1,count2));
-//        System.out.println();
+//            mStickmanFX.mWobble = ((mSimplexNoise.getNoise(count2, count1) * 600)) / 20;
+////        System.out.printf("%.5f",mSimplexNoise.getNoise(count1,count2));
+////        System.out.println();
             double mAdjust = mStickmanFX.mWobble;
 
             // 40 segments to achieve the wobble: come and back

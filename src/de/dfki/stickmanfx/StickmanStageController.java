@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import de.dfki.stickmanfx.kinect.Kinect;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,7 +19,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +50,7 @@ public class StickmanStageController {
 	private RadioButton WithPerlinNoise;
 	@FXML
 	private RadioButton WithoutPerlinNoise;
+	private ToggleGroup perlinNoiseGroup;
 
 	@FXML
 	private ComboBox<String> StickmanComboBox;
@@ -203,6 +202,10 @@ public class StickmanStageController {
 		fillHeadScrollPane();
 		fillEnvironmentScrollPane();
 		fillPostureScrollPane();
+		
+		perlinNoiseGroup = new ToggleGroup();
+		WithPerlinNoise.setToggleGroup(perlinNoiseGroup);
+		WithoutPerlinNoise.setToggleGroup(perlinNoiseGroup);
 		
 		kinectButtonToggleGroup = new ToggleGroup();
 		startKinect.setToggleGroup(kinectButtonToggleGroup);
@@ -1008,34 +1011,25 @@ public class StickmanStageController {
 	private void setIdForLabel() {
 	}
 
-	private void handlePerlinNoise() {
-		WithPerlinNoise.setUserData("With Perlin Noise");
-		WithoutPerlinNoise.setUserData("Without Perlin Noise");
-		WithPerlinNoise.setToggleGroup(groupPerlin);
-		WithoutPerlinNoise.setToggleGroup(groupPerlin);
-
-		groupPerlin.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-			@Override
-			public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
-				if ((groupPerlin.getSelectedToggle() != null) && ((null != mStickmanstage.mStickmanComboList)
-						&& (!mStickmanstage.mStickmanComboList.isEmpty()))) {
-					if (groupPerlin.getSelectedToggle().getUserData().toString() == "With Perlin Noise") {
-						Platform.runLater(() -> {
-							for (String key : mStickmanstage.mStickmanComboList)
-								mStickmanstage.getStickmanFX(key).doAnimation("StartIdle", 1000, true);
-						});
-					} else {
-						Platform.runLater(() -> {
-							for (String key : mStickmanstage.mStickmanComboList)
-								mStickmanstage.getStickmanFX(key).doAnimation("StopIdle", 1000, true);
-						});
-					}
-				}
+	@FXML
+	private void handleWithPerlinNoise()
+	{
+		
+		for(String key : mStickmanstage.mStickmanComboList)
+			{
+				StickmanStageFX.getStickmanFX(key).doAnimation("StartIdle", 1000, true);
 			}
-		});
+		
 	}
-
-	public void setlePerlinNoiseOn() {
-		WithPerlinNoise.setSelected(true);
+	
+	@FXML
+	private void handleWithoutPerlinNoise()
+	{
+		
+			for(String key : mStickmanstage.mStickmanComboList)
+			{
+				StickmanStageFX.getStickmanFX(key).doAnimation("StopIdle", 1000, true);
+			}
 	}
+	
 }

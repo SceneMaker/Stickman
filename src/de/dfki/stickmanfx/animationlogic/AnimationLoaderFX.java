@@ -5,12 +5,13 @@
  */
 package de.dfki.stickmanfx.animationlogic;
 
-import de.dfki.stickmanfx.StickmanFX;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import de.dfki.stickmanfx.StickmanFX;
 
 /**
  *

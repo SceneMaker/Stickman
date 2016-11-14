@@ -168,12 +168,12 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <RadioButton fx:id="WithPerlinNoise" layoutX="19.0" layoutY="28.0" mnemonicParsing="false" text="With Perlin Noise" textFill="WHITE">
+                              <RadioButton fx:id="WithPerlinNoise" layoutX="19.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleWithPerlinNoise" text="With Perlin Noise" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </RadioButton>
-                              <RadioButton fx:id="WithoutPerlinNoise" layoutX="19.0" layoutY="78.0" mnemonicParsing="false" text="Without Perlin Noise" textFill="WHITE">
+                              <RadioButton fx:id="WithoutPerlinNoise" layoutX="19.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleWithoutPerlinNoise" text="Without Perlin Noise" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>

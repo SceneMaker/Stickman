@@ -5,15 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.headfx;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.animationlogic.Animation;
-import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
+import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -41,6 +38,7 @@ public class Nod extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -10));
 		playAnimationPart(200);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+		if(StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

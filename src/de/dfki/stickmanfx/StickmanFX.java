@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
+import de.dfki.stickmanfx.animation.environmentfx.IdleBehavior;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
@@ -117,7 +118,7 @@ public class StickmanFX extends Pane {
 	public double mWobble = 0;
 	public Boolean mIdleRun = false; // the shared variable to decide the while
 										// loop in IdleBehavior break or not
-//	public IdleBehavior mIdleBehavior;
+	public IdleBehavior mIdleBehavior;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
 	// amimation stuff
@@ -390,7 +391,7 @@ public class StickmanFX extends Pane {
 		mAnimationSchedulerFX.start();
 
 //		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
-//		mIdleBehavior = new IdleBehavior(this, simplexNoise);
+//		mIdleBehavior = new IdleBehavior();
 		
 	}
 
@@ -488,7 +489,7 @@ public class StickmanFX extends Pane {
 		}
 	}
 
-	// Control IdleBehavior start(mStart == true) or not(mStart == false).
+//	 Control IdleBehavior start(mStart == true) or not(mStart == false).
 
 	private static boolean isAnimationTimerStartet = false;
 
@@ -515,8 +516,8 @@ public class StickmanFX extends Pane {
 		this.getTransforms().add(af);
 
 		// Out put perlin noise
-//		implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,
-//				mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
+//		implimentPerlinNoise(mWobble, (mUpperBody.getRightLegStartPostion().x + mUpperBody.getLeftLegStartPostion().x) / 2,
+//				mUpperBody.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
 
 		updateAll();
 	}
@@ -589,50 +590,48 @@ public class StickmanFX extends Pane {
 		// mSpeechBubble.update(g);
 	}
 
-//	private void implimentPerlinNoise(double mWobble, int x, int y) {
-//		if (starShowControler == true) {
-//			mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie, to
-//														// show stars or words
-//														// here
-//		} else {
-//			if (starShowC == true)
-//				mStarsFX.rotatePerlinNoise(mWobble, x, y);
-//			mHeadFX.rotatePerlinNoise(mWobble, x, y);
-//
-//			if (this.mType == StickmanFX.TYPE.MALE)
-//				mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
-//			else
-//				mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
-//			mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-//			mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y); // added by Robbie
-//			mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
-//			mMouthFX.rotatePerlinNoise(mWobble, x, y);
-//			mNeckFX.rotatePerlinNoise(mWobble, x, y);
-//			// BodyFX is not BodyPartFX Classe
-//			mBodyFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
-//			mRightShoulderFX.rotatePerlinNoise(mWobble, x, y);
-//			mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
-//			mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
-//			// mLeftLegFX.update();
-//			mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
-//			mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
-//			// mRightLegFX.update();
-//			mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
-//			mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
-//			mRightFootFX.rotatePerlinNoise(mWobble, x, y);
-//
-//			if (starShowC == true)
-//				mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie,
-//															// to show stars or
-//															// words here.
-//		}
-//	}
+	private void implimentPerlinNoise(double mWobble, int x, int y) {
+		if (starShowControler == true) {
+			mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie, to
+														// show stars or words
+														// here
+		} else {
+			if (starShowC == true)
+				mStarsFX.rotatePerlinNoise(mWobble, x, y);
+			mHeadFX.rotatePerlinNoise(mWobble, x, y);
+
+			if (this.mType == StickmanFX.TYPE.MALE)
+				mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
+			else
+				mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
+			mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
+			mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
+			mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
+			mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y); // added by Robbie
+			mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
+			mMouthFX.rotatePerlinNoise(mWobble, x, y);
+			mNeckFX.rotatePerlinNoise(mWobble, x, y);
+			// BodyFX is not BodyPartFX Classe
+			mUpperBody.rotatePerlinNoise(mWobble, x, y);
+			mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
+			mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
+			mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
+			mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
+			// mLeftLegFX.update();
+			mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
+			mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
+			mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
+			// mRightLegFX.update();
+			mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
+			mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
+			mRightFootFX.rotatePerlinNoise(mWobble, x, y);
+
+			if (starShowC == true)
+				mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie,
+															// to show stars or
+															// words here.
+		}
+	}
 	
 	public void hideAllPartsWithout(Pane p)
 	{
