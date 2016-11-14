@@ -1,10 +1,11 @@
 package de.dfki.stickmanfx.animationlogic;
 
-import de.dfki.stickmanfx.StickmanFX;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import de.dfki.stickmanfx.StickmanFX;
 
 /**
  *
