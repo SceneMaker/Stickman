@@ -75,7 +75,10 @@ public class Working extends AnimationFX
     		double recordChairZPosition = chair.getTranslateZ();
     		
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", 50));
+            if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", 60));
+            else 
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", 50));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mDownBody, "ytranslate", 50));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", -80));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", 90));
@@ -88,7 +91,10 @@ public class Working extends AnimationFX
     		chairTr.play();
             
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 30));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -85));
+            if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -88)); //<--
+            else
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -85));
             
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 30));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 20));
@@ -294,7 +300,10 @@ public class Working extends AnimationFX
             backchair.play();
             
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", -50));
+            if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", -60));
+            else
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "ytranslate", -50));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mDownBody, "ytranslate", -50));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 80));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", -90));
@@ -302,7 +311,10 @@ public class Working extends AnimationFX
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "rotate", -90));
             
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -30));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 85));
+            if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 88));
+            else
+            	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 85));
             
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -30));
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -20));

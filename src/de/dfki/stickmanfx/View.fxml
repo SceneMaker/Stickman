@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dfki.stickmanfx.StickmanStageController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dfki.stickmanfx.StickmanStageController">
    <children>
       <AnchorPane fx:id="controlPanel" minHeight="600.0" minWidth="450.0" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #00008B;">
          <children>
@@ -33,8 +33,8 @@
                </font>
             </Label>
             <ComboBox fx:id="StickmanComboBox" layoutX="244.0" layoutY="73.0" prefHeight="27.0" prefWidth="166.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="15.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-            <TabPane layoutX="14.0" layoutY="200.0" prefHeight="350.0" prefWidth="422.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="15.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+            <TabPane layoutX="14.0" layoutY="164.0" prefHeight="248.0" prefWidth="422.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab closable="false" text="Color">
                   <content>
@@ -189,54 +189,7 @@
                   </Tab>
                   <Tab closable="false" text="Camera">
                      <content>
-                        <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
-                          <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #00010B;">
-                                 <children>
-                                    <Button fx:id="resetCamera1" layoutX="276.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="startCamera1" layoutX="16.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="stopCamera1" layoutX="146.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Slider fx:id="cameraXSlider" layoutX="38.0" layoutY="104.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                    <Label layoutX="171.0" layoutY="67.0" text="Rotate Camera" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-                                    <Label layoutX="16.0" layoutY="113.0" text="X" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Slider fx:id="cameraYSlider" layoutX="38.0" layoutY="150.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                    <Label layoutX="16.0" layoutY="159.0" text="Y" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Slider fx:id="cameraZSlider" layoutX="38.0" layoutY="195.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                    <Label layoutX="16.0" layoutY="204.0" text="Z" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-                                 </children>
-                              </AnchorPane>
-                          </items>
-                        </SplitPane>
+                        <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" />
                      </content>
                   </Tab>
                   <Tab closable="false" text="Background">
@@ -291,6 +244,50 @@
             <Button fx:id="RestButton" layoutX="131.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="258.0" />
             <Button layoutX="207.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Apply" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="182.0" />
             <Button fx:id="ExitButton" layoutX="283.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="EXIT" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
+          <AnchorPane layoutX="18.0" layoutY="444.0" minHeight="0.0" minWidth="0.0" prefHeight="255.0" prefWidth="422.0" style="-fx-background-color: #00010B;">
+               <children>
+                  <Button fx:id="resetCamera1" layoutX="276.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="startCamera1" layoutX="16.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="stopCamera1" layoutX="146.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Slider fx:id="cameraXSlider" layoutX="38.0" layoutY="104.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Label layoutX="171.0" layoutY="67.0" text="Rotate Camera" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+                  <Label layoutX="16.0" layoutY="113.0" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="cameraYSlider" layoutX="38.0" layoutY="150.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Label layoutX="16.0" layoutY="159.0" text="Y" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="cameraZSlider" layoutX="38.0" layoutY="195.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Label layoutX="16.0" layoutY="204.0" text="Z" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
