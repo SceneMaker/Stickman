@@ -15,7 +15,7 @@ public class IdleBehavior extends Thread {
     private SimplexNoise mSimplexNoise;  // generate perlin noise Array 2d
     private int count1 = 1;    // index of perlin noise Array
     private int count2 = 1;    // index of perlin noise Array
-    private UnconsciouslyAction mUnconsciouslyAction;
+    public UnconsciouslyAction mUnconsciouslyAction;
 
     public IdleBehavior(StickmanFX s, SimplexNoise noise) {
     	mSleepTime = 100;

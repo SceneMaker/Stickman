@@ -19,6 +19,8 @@ public class StopIdle extends AnimationFX {
 	public void playAnimation() {
 		mStickmanFX.mIdleRun = false;
 		while (mStickmanFX.mIdleBehavior.isAlive());
+		mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBlinkAktion();
 		mStickmanFX.mIdleBehavior = null;
+		
 	}
 }

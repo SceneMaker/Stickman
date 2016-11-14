@@ -19,8 +19,9 @@ import javafx.util.Duration;
 public class UnconsciouslyAction extends Thread 
 {
     private StickmanFX mStickmanFX;
+    private Timeline timeline;
     private String[] behaviorArray = {"HeadTilt", "CoverMouth", "Nod", "TouchHead",
-    								  "HeadLeft", "HeadRight", "Itching", "HeadDown"};
+    								  "HeadLeft", "HeadRight", "Itching", "HeadDown", "HeadDown1"};
     private ArrayList<String> currentBehaviorList;
     
     Random random;
@@ -58,16 +59,22 @@ public class UnconsciouslyAction extends Thread
         }
     }
     
-    private void startBlinkAktion()
+    public void startBlinkAktion()
     {
-    	Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() 
+    	timeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() 
     	{
     	    @Override
     	    public void handle(ActionEvent event) {
-    	    	mStickmanFX.doAnimation("Blink", 500, false);
+    	    	mStickmanFX.doAnimation("Blink", 500, true);
     	    }
     	}));
     	timeline.setCycleCount(Timeline.INDEFINITE);
     	timeline.play();
+    }
+    
+    public void stopBlinkAktion()
+    {
+    	if(timeline != null)
+    		timeline.stop();
     }
 }

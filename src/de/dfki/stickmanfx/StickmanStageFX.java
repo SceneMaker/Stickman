@@ -361,7 +361,7 @@ public class StickmanStageFX extends Application {
 		getInstanceFullScreen();
 
 		addStickmanFX("Bob");
-//		 addStickmanFX("Anna");
+		 addStickmanFX("Anna");
 //		addStickmanFX("character");
 
 		lauchStickman();

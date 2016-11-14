@@ -118,6 +118,8 @@ public class StickmanFX extends Pane {
 	public double mWobble = 0;
 	public Boolean mIdleRun = false; // the shared variable to decide the while
 										// loop in IdleBehavior break or not
+	
+	//Es BehaviorThred. Es wird in StartIdle-Klasse initializiert
 	public IdleBehavior mIdleBehavior;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
@@ -371,13 +373,13 @@ public class StickmanFX extends Pane {
 
 		if(this.mType == StickmanFX.TYPE.MALE)
 		{
-			nameText.setTranslateX(15);
-			nameText.setTranslateY(-120);
+			nameText.setTranslateX(-80);
+			nameText.setTranslateY(350);
 		}
 		else
 		{
-			nameText.setTranslateX(10);
-			nameText.setTranslateY(-135);
+			nameText.setTranslateX(-90);
+			nameText.setTranslateY(350);
 		}
 		nameText.setTranslateZ(-120);
 		

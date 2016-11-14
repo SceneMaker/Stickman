@@ -206,6 +206,8 @@ public class StickmanStageController {
 		perlinNoiseGroup = new ToggleGroup();
 		WithPerlinNoise.setToggleGroup(perlinNoiseGroup);
 		WithoutPerlinNoise.setToggleGroup(perlinNoiseGroup);
+		WithoutPerlinNoise.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
+		WithPerlinNoise.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
 		
 		kinectButtonToggleGroup = new ToggleGroup();
 		startKinect.setToggleGroup(kinectButtonToggleGroup);
