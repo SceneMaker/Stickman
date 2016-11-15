@@ -162,5 +162,4 @@ public class StageStickmanControllerFX implements StageStickmanController {
         commonStickmansOnStage = new StickmansOnStageFX(getStickmanStage(), this);
         getStickmanStage().setStickamnsOnStage(getCommonStickmansOnStage());
     }
-
 }

@@ -114,23 +114,23 @@ public class StickmanStageFX extends Application implements StageStickman {
     }
 
     // To handle click action on scene
-    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
-	@Override
-	public void handle(MouseEvent mouseEvent) {
-	    // stickamnsOnStage.getStickman("Bob").doAnimation("Embarrassed",
-	    // 1000, false);
-	    if (mouseEvent.getButton().equals(MouseButton.SECONDARY)) {
-//		stickamnsOnStage.getStickman("Bob").doAnimation("MoveRight", 1000, true);
-//		stickamnsOnStage.getStickman("Bob").doAnimation("ZoomOut", 1000, true);
-		stickamnsOnStage.getStickman("Bob").doAnimation("SetBackground", 1000, true);
-		
-	    } else {
-//		stickamnsOnStage.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
-//		stickamnsOnStage.getStickman("Bob").doAnimation("MoveLeft", 1000, true);
-		stickamnsOnStage.getStickman("Bob").doAnimation("SetBackground2", 1000, true);
-	    }
-	}
-    };
+//    EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
+//	@Override
+//	public void handle(MouseEvent mouseEvent) {
+//	    // stickamnsOnStage.getStickman("Bob").doAnimation("Embarrassed",
+//	    // 1000, false);
+//	    if (mouseEvent.getButton().equals(MouseButton.SECONDARY)) {
+////		stickamnsOnStage.getStickman("Bob").doAnimation("MoveRight", 1000, true);
+////		stickamnsOnStage.getStickman("Bob").doAnimation("ZoomOut", 1000, true);
+//		stickamnsOnStage.getStickman("Bob").doAnimation("SetBackground", 1000, true);
+//		
+//	    } else {
+////		stickamnsOnStage.getStickman("Bob").doAnimation("ZoomIn", 1000, true);
+////		stickamnsOnStage.getStickman("Bob").doAnimation("MoveLeft", 1000, true);
+//		stickamnsOnStage.getStickman("Bob").doAnimation("SetBackground2", 1000, true);
+//	    }
+//	}
+//    };
 
     // public void createStage(String uuid) throws IOException {
     public void createStage(String uuid, int x, int y, boolean decoration) throws IOException {
@@ -147,7 +147,7 @@ public class StickmanStageFX extends Application implements StageStickman {
 	    stickmanFXStages.put(uuid, stage);
 
 	    /// added by R
-	    stageScene.setOnMouseClicked(mouseHandler);
+//	    stageScene.setOnMouseClicked(mouseHandler);
 	});
     }
 
@@ -170,8 +170,11 @@ public class StickmanStageFX extends Application implements StageStickman {
 	sStickmanPane.getChildren().clear();
 	for (String key : stickamnsOnStage.getStickmanNames()) {
 	    sStickmanPane.getChildren().add(stickamnsOnStage.getStickmanByKey(key));
-	    addStickmanName(key);
 	}
+//	if(stageIdentifier.equals(StageStickmanControllerFX.CONFIG_STAGE)){
+	    addStickmanName();
+//	}
+	
     }
 
     public void addStickmanToStage(String stageIdentifier, StickmanFX sman) throws Exception {
@@ -192,7 +195,7 @@ public class StickmanStageFX extends Application implements StageStickman {
 	return sStickmanPane;
     }
 
-    private void addStickmanName(String key) {
+    private void addStickmanName() {
 	generalConfigStageRoot.getmStickmanStageController().fillComboForStickman();
     }
 

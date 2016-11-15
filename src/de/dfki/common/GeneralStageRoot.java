@@ -20,19 +20,20 @@ public class GeneralStageRoot {
     public HBox getConfigRoot() throws IOException {
         invoke();
         if(!root.getChildren().contains(mSplitPane)){
+            root.getChildren().remove(stickmanScrollPane);
             root.getChildren().add(mSplitPane);
-            root.getChildren().add(stickmanScrollPane);
-            sStickmanPane.setAlignment(Pos.CENTER_LEFT);
+            root.getChildren().add(stickmanScrollPane);       
         }
+        sStickmanPane.setAlignment(Pos.CENTER_LEFT);
         return root;
     }
 
     public HBox getStageRoot() throws IOException {
         invoke();
         if(root.getChildren().contains(mSplitPane)){
-            root.getChildren().remove(mSplitPane);
-            sStickmanPane.setAlignment(Pos.CENTER); //CENTER_LEFT
-        }
+            root.getChildren().remove(mSplitPane);       
+        }      
+        sStickmanPane.setAlignment(Pos.CENTER); //CENTER_LEFT
         return root;
     }
 
@@ -49,7 +50,7 @@ public class GeneralStageRoot {
         getmStickmanStageController().setlePerlinNoiseOn();
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
         sStickmanPane.prefHeightProperty().bind(root.heightProperty());
-        sStickmanPane.setAlignment(Pos.CENTER_LEFT);
+//        sStickmanPane.setAlignment(Pos.CENTER_LEFT);
 //        sStickmanPane.setStyle("-fx-background-color: #7FFFD4;");
 //            sStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanfx/image/office4.jpg');-fx-background-repeat: repeat;-fx-background-position: center center; -fx-background-size: contain;");
         return this;

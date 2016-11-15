@@ -19,5 +19,5 @@ public interface StageStickman {
     void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage);
     public HBox getStickmanPane(String stageIdentifier) throws Exception;
     BufferedImage getStageAsImage(String stageIdentifier) throws Exception;
-	void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception;
+    void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception;
 }

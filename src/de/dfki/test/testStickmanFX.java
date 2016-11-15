@@ -20,22 +20,24 @@ import java.io.IOException;
 public class testStickmanFX {
     public static void main(String[] args) {
 
+//        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, true);
+//        StageStickmanController stickmanStageFull = new StageStickmanFullScreenControllerFXDecorator(stickmanStage);
+//        stickmanStage.addStickman("Anna");
+//        stickmanStage.addStickman("Bob");
+//        stickmanStage.launchStickmanStage(true, "/home/alvaro/Documents/tep/stickmantest");
 
+//        StageStickmanController stickmanStage2 = new StageStickmanControllerFX(1921, 0, true);
+//        StageStickmanController stickmanStageFull2 = new StageStickmanFullScreenControllerFXDecorator(stickmanStage2);
+//        stickmanStageFull2.addStickman("Patrick");
+//        stickmanStageFull2.addStickman("Sarah");
+//        stickmanStageFull2.launchStickmanStage(true);
+//        //stickmanStage2.launchStickmanStage(true);
+//        BufferedImage bufferedImage = null;
 
-        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, false);
-        StageStickmanController stickmanStageFull = new StageStickmanFullScreenControllerFXDecorator(stickmanStage);
-        stickmanStage.addStickman("Anna");
-        stickmanStage.addStickman("Bob");
-        stickmanStage.launchStickmanStage(true, "/home/alvaro/Documents/tep/stickmantest");
-
-
-        StageStickmanController stickmanStage2 = new StageStickmanControllerFX(1921, 0, true);
-        StageStickmanController stickmanStageFull2 = new StageStickmanFullScreenControllerFXDecorator(stickmanStage2);
-        stickmanStageFull2.addStickman("Patrick");
-        stickmanStageFull2.addStickman("Sarah");
-        stickmanStageFull2.launchStickmanStage(true);
-        //stickmanStage2.launchStickmanStage(true);
-        BufferedImage bufferedImage = null;
-
+        StageStickmanController stickmanStageConfig = new StageStickmanControllerFX(0,0, true);
+        StageStickmanController stickmanStageFull3 = new StageStickmanFullScreenControllerFXDecorator(stickmanStageConfig);
+        stickmanStageConfig.addStickman("addison");
+        stickmanStageConfig.addStickman("adam");
+        stickmanStageConfig.launchStickmanConfiguration("/home/alvaro/Documents/tep/stickmantest");
     }
 }
