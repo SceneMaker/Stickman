@@ -46,8 +46,10 @@ public class StickmanStageController {
     private String mStickmancombobox = null;
     final private ToggleGroup groupPerlin = new ToggleGroup();
     final private ToggleGroup groupEnvironmentRadioButton = new ToggleGroup();
-
+    private String backgroundRecord = null;
     private List<StickmanDataFX> mStickmanDataFX = new ArrayList<StickmanDataFX>();
+//    private final static ObservableList<String> backgroundList = FXCollections.observableArrayList("office",
+//	    "grassland");
 
     @FXML
     private Label Stickman;
@@ -139,9 +141,6 @@ public class StickmanStageController {
     @FXML
     private Button SaveButton;
 
-    private final static ObservableList<String> backgroundList = FXCollections.observableArrayList("office",
-	    "grassland");
-
     @FXML
     public void initialize() {
 	setIdForLabel();
@@ -151,7 +150,7 @@ public class StickmanStageController {
 		"Gold");
 	BodyComboBoxColor.getItems().addAll("Purple", "Green", "Beige", "Black", "Yellow", "White");
 	LimbsComboBoxColor.getItems().addAll("Black", "Yellow", "White");
-	BackgroundComboBoxPic.getItems().addAll(backgroundList);
+	BackgroundComboBoxPic.getItems().addAll(StickmanFX.backgroundList);
 	
 	// Default show
 //	handleStickman();
@@ -228,7 +227,7 @@ public class StickmanStageController {
 	BackgroundComboBoxPic.setOnAction((event) -> {
 	    String pic = BackgroundComboBoxPic.getSelectionModel().getSelectedItem();
 	    if (pic != null) {
-		if (backgroundList.contains(pic)) {
+		if (StickmanFX.backgroundList.contains(pic)) {
 		    Platform.runLater(() -> {
 			try {
 			    HBox mStickmanPane = ((StickmanStageFX) mStickmanOnstage.getStageStickman())
@@ -237,6 +236,7 @@ public class StickmanStageController {
 			    mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanfx/image/" + pic
 				    + ".jpg');"
 				    + "-fx-background-repeat: repeat;-fx-background-position: center center; -fx-background-size: contain;");
+			    backgroundRecord = pic;
 			} catch (Exception e) {
 			    // TODO Auto-generated catch block
 			    e.printStackTrace();
@@ -256,6 +256,7 @@ public class StickmanStageController {
 					    .getStageStickmanController()).CONFIG_STAGE));
 			    String hex = toHexCode(backgroundColor);
 		            mStickmanPane.setStyle("-fx-background-color: " + hex + ";");
+		            backgroundRecord = hex;
 			} catch (Exception e) {
 			    // TODO Auto-generated catch block
 			    e.printStackTrace();
@@ -327,9 +328,10 @@ public class StickmanStageController {
 			    default:
 				break;
 			    }
-
 			});
 		    }
+		    
+		    setBackgroundFunction();
 		}
 
 		EnvironmentRadioButtonNotSelected();
@@ -357,7 +359,6 @@ public class StickmanStageController {
     public void setStickamnOnStage(CommonStickmansOnStage commonStickmansOnStage) {
 	this.mStickmanOnstage = commonStickmansOnStage;
 //	fillComboForStickman();
-
     }
 
     private void fillComboForEmotionExpression() {
@@ -379,8 +380,34 @@ public class StickmanStageController {
 	if(!stickmanNames.isEmpty()){
 	    mStickmancombobox = stickmanNames.get(0);
 	}
-	StickmanComboBox.setValue(mStickmancombobox);
+	StickmanComboBox.setValue(mStickmancombobox);	
 	setComboboxValue(getStickmanAsFx(mStickmancombobox));
+	
+	setBackgroundFunction();
+    }
+
+    private void setBackgroundFunction() {
+	this.backgroundRecord = getStickmanAsFx(mStickmancombobox).backgroundRecord;
+	if (this.backgroundRecord != null) {
+	    HBox mStickmanPane;
+	    try {
+		mStickmanPane = ((StickmanStageFX) mStickmanOnstage.getStageStickman())
+			    .getStickmanPane((((StageStickmanControllerFX) mStickmanOnstage
+				    .getStageStickmanController()).CONFIG_STAGE));
+		// Upload the picture
+		if (StickmanFX.backgroundList.contains(this.backgroundRecord)) {
+		    mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanfx/image/"
+			    + this.backgroundRecord + ".jpg');"
+			    + "-fx-background-repeat: repeat;-fx-background-position: center center; -fx-background-size: contain;");
+		} else {
+		    // change the color of the background
+		    mStickmanPane.setStyle("-fx-background-color: " + this.backgroundRecord + ";");
+		}
+	    } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	    }
+	}
     }
 
     // set the setValue of combobox
@@ -621,7 +648,7 @@ public class StickmanStageController {
 			    String headColor = HandleColor.switchColorToString(mStick.mHeadFX.mColor);
 			    String limbsColor = HandleColor.switchColorToString(mStick.mLeftUpperLegFX.mColor);
 
-			    mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor));
+			    mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor, backgroundRecord));
 			}
 			((StickmansOnStageFX) mStickmanOnstage).getmXmlTransform()
 				.loadStickmanDataFXList(mStickmanDataFX);

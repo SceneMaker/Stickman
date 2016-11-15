@@ -38,6 +38,8 @@ public class testStickmanFX {
         StageStickmanController stickmanStageFull3 = new StageStickmanFullScreenControllerFXDecorator(stickmanStageConfig);
         stickmanStageConfig.addStickman("addison");
         stickmanStageConfig.addStickman("adam");
-        stickmanStageConfig.launchStickmanConfiguration("/home/alvaro/Documents/tep/stickmantest");
+//        stickmanStageConfig.launchStickmanConfiguration("/home/alvaro/Documents/tep/stickmantest");
+        stickmanStageConfig.launchStickmanConfiguration("/Users/Robbie/Documents");
+//        stickmanStageConfig.launchStickmanStage(true,"/Users/Robbie/Documents");
     }
 }
