@@ -7,8 +7,11 @@ package de.dfki.stickmanfx.bodyfx;
 
 import java.awt.Dimension;
 import java.net.URL;
+
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -41,6 +44,7 @@ public class LeftFinger2 extends BodyPartFX
     	
     	imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
+        activateConfigColor();
         
         url = getClass().getClassLoader().getResource("BodyParts/Finger2_3_4_2.dae");
         
@@ -59,6 +63,26 @@ public class LeftFinger2 extends BodyPartFX
         
         init();
     }
+    
+    private void activateConfigColor()
+   	{
+   		if(mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+   		{
+   			if(!XMLParser.femaleColor.isEmpty())
+   			{
+   				if(XMLParser.femaleColor.containsKey("LimbsColor"))
+   					this.mColor = XMLParser.femaleColor.get("LimbsColor");
+   			}
+   		}
+   		else
+   		{
+   			if(!XMLParser.maleColor.isEmpty())
+   			{
+   				if(XMLParser.maleColor.containsKey("LimbsColor"))
+   					this.mColor = XMLParser.maleColor.get("LimbsColor");
+   			}
+   		}
+   	}
 
     @Override
 	public void setShape(String s) {

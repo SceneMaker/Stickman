@@ -1,23 +1,36 @@
 <?xml version="1.0"?>
 <StickmanConfig>
-   <Behavior type="Behavior">
+   <!--<Behavior type="Male">
       <item>HeadTilt</item>
       <item>HeadLeft</item>
       <item>HeadDown</item>
       <item>CoverMouth</item>
    </Behavior>
-   
-   <Color type="Color">
-      <BodyColor>red</BodyColor>
-      <HeadColor>black</HeadColor>
-      <EyeColor>blue</EyeColor>
-      <BrowColor>grey</BrowColor>
+   <Behavior type="Female">
+      <item>HeadTilt</item>
+   </Behavior>
+   <Color type="Male">
+	  <HairColor>30, 90, 200, 1</HairColor>
+	  <HeadColor>30, 90, 200, 1</HeadColor>
+	  <UpperBodyColor>30, 90, 200, 1</UpperBodyColor>
+	  <DownBodyColor>30, 90, 200, 1</DownBodyColor>
+	  <LimbsColor>30, 90, 200, 1</LimbsColor>
+	  <ShoesColor>30, 90, 200, 1</ShoesColor>
+	  <LipsColor>30, 90, 200, 1</LipsColor>
+	  <EyeColor>30, 90, 200, 1</EyeColor>
+	  <BrowColor>30, 90, 200, 1</BrowColor>
+	  <NoseColor>30, 90, 200, 1</NoseColor>
    </Color>
-   
-   <config type="DefaultView">
-      <firstname>jasvir</firstname>
-      <lastname>singn</lastname>
-      <nickname>jazz</nickname>
-      <marks>90</marks>
-   </config>
+   <Color type="Female">
+	  <HairColor>0, 0, 0, 1</HairColor>
+	  <HeadColor>0, 0, 0, 1</HeadColor>
+	  <UpperBodyColor>0, 0, 0, 1</UpperBodyColor>
+	  <DownBodyColor>0, 0, 0, 1</DownBodyColor>
+	  <LimbsColor>0, 0, 0, 1</LimbsColor>
+	  <ShoesColor>0, 0, 0, 1</ShoesColor>
+	  <LipsColor>0, 0, 0, 1</LipsColor>
+	  <EyeColor>0, 0, 0, 1</EyeColor>
+	  <BrowColor>0, 0, 0, 1</BrowColor>
+	  <NoseColor>0, 0, 0, 1</NoseColor>
+   </Color>-->
 </StickmanConfig>

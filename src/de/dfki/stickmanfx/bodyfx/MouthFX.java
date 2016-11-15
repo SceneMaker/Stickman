@@ -2,6 +2,7 @@ package de.dfki.stickmanfx.bodyfx;
 
 import java.awt.Dimension;
 
+import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
 import de.dfki.stickmanfx.mimic.util.MouthANGRYSMALLMOUTH;
 import de.dfki.stickmanfx.mimic.util.MouthCONTEMPT;
@@ -21,6 +22,7 @@ import de.dfki.stickmanfx.mimic.util.MouthSMILE;
 import de.dfki.stickmanfx.mimic.util.MouthSURPRISED;
 import de.dfki.stickmanfx.mimic.util.MouthTREE;
 import de.dfki.stickmanfx.mimic.util.MouthTWO;
+import de.dfki.util.XMLParser;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 /**
@@ -46,6 +48,7 @@ public class MouthFX extends BodyPartFX {
 		mSize = new Dimension(mLength * 2, 5);
 
 		mColor = Color.rgb(230, 174, 161, 1.0);
+		activateConfigColor();
 		
 		currentUpperLipPolygon = new Polygon();
 		currentDownLipPolygon = new Polygon();
@@ -68,6 +71,27 @@ public class MouthFX extends BodyPartFX {
 		currentDownLipPolygon.setTranslateY(mStart.y+94);
 		currentDownLipPolygon.setTranslateZ(-17);
 	}
+	
+	private void activateConfigColor()
+   	{
+   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+   		{
+   			if(!XMLParser.femaleColor.isEmpty())
+   			{
+   				if(XMLParser.femaleColor.containsKey("LipsColor"))
+   					this.mColor = XMLParser.femaleColor.get("LipsColor");
+   			}
+   		}
+   		else
+   		{
+   			if(!XMLParser.maleColor.isEmpty())
+   			{
+   				if(XMLParser.maleColor.containsKey("LipsColor"))
+   					this.mColor = XMLParser.maleColor.get("LipsColor");
+   			}
+   		}
+   	}
+	
 	@Override
 	public void setShape(String s) {
 		MouthFX.SHAPE shape = MouthFX.SHAPE.valueOf(s);

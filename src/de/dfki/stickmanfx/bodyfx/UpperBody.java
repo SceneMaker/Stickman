@@ -12,6 +12,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
  * and open the template in the editor.
  */
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -62,6 +63,8 @@ public class UpperBody extends BodyPartFX {
 			url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody2.dae");
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
+		
+		activateConfigColor();
 
 		imorter.read(url);
 		mUpperBodyGroup = new Group();
@@ -91,6 +94,26 @@ public class UpperBody extends BodyPartFX {
 		}
 	}
 
+	private void activateConfigColor()
+	{
+		if(mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		{
+			if(!XMLParser.femaleColor.isEmpty())
+			{
+				if(XMLParser.femaleColor.containsKey("UpperBodyColor"))
+					this.mColor = XMLParser.femaleColor.get("UpperBodyColor");
+			}
+		}
+		else
+		{
+			if(!XMLParser.maleColor.isEmpty())
+			{
+				if(XMLParser.maleColor.containsKey("UpperBodyColor"))
+					this.mColor = XMLParser.maleColor.get("UpperBodyColor");
+			}
+		}
+	}
+	
 	public Point getUpperBodyPosition()
 	{
 		return new Point (mStart.x, mStart.y + 135);

@@ -78,6 +78,7 @@ public abstract class BodyPartFX extends Pane {
 	public void init() {
 		this.setPrefHeight(mSize.height);
 		this.setPrefWidth(mSize.width);
+		
 		mColorRecorder  = mColor;
 		calculate(0);
 	}

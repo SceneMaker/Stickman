@@ -1,30 +1,19 @@
 package de.dfki.stickmanfx.bodyfx;
 
+import java.awt.Dimension;
+
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import de.dfki.stickmanfx.mimic.util.LeftBrowANGRY;
-import de.dfki.stickmanfx.mimic.util.LeftBrowDEFAULT;
 import de.dfki.stickmanfx.mimic.util.LeftBrowEMBARRASSED;
 import de.dfki.stickmanfx.mimic.util.RightBrowANGRY;
 import de.dfki.stickmanfx.mimic.util.RightBrowDEFAULT;
 import de.dfki.stickmanfx.mimic.util.RightBrowDISGUSTED;
-import de.dfki.stickmanfx.mimic.util.RightBrowEMBARRASSED;
 import de.dfki.stickmanfx.mimic.util.RightBrowEXCITED;
 import de.dfki.stickmanfx.mimic.util.RightBrowHAPPY;
 import de.dfki.stickmanfx.mimic.util.RightBrowSAD;
 import de.dfki.stickmanfx.mimic.util.RightBrowSURPRISED;
-
-import java.awt.Dimension;
-import java.net.URL;
-
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
-
+import de.dfki.util.XMLParser;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.DrawMode;
-import javafx.scene.shape.MeshView;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.TriangleMesh;
 
 /**
  *
@@ -50,6 +39,7 @@ public class RightEyebrowFX extends BodyPartFX {
 			mColor = Color.rgb(88, 44, 13, 1);
 		else
 			mColor = Color.rgb(204, 163, 0, 1);
+		activateConfigColor();
 		
 		currentPolygon = new Polygon();
 		
@@ -68,6 +58,27 @@ public class RightEyebrowFX extends BodyPartFX {
 		currentPolygon.setTranslateY(mStart.y + 38);
 		currentPolygon.setTranslateZ(-17);
 	}
+	
+	private void activateConfigColor()
+   	{
+   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+   		{
+   			if(!XMLParser.femaleColor.isEmpty())
+   			{
+   				if(XMLParser.femaleColor.containsKey("BrowColor"))
+   					this.mColor = XMLParser.femaleColor.get("BrowColor");
+   			}
+   		}
+   		else
+   		{
+   			if(!XMLParser.maleColor.isEmpty())
+   			{
+   				if(XMLParser.maleColor.containsKey("BrowColor"))
+   					this.mColor = XMLParser.maleColor.get("BrowColor");
+   			}
+   		}
+   	}
+	
 	@Override
 	public void setShape(String s) {
 		RightEyebrowFX.SHAPE shape = RightEyebrowFX.SHAPE.valueOf(s);
@@ -173,11 +184,13 @@ public class RightEyebrowFX extends BodyPartFX {
 		}
 	}
 	
+	@Override
 	public void update()
 	{
 		currentPolygon.setFill(mColor);
 	}
 
+	@Override
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;

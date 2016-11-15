@@ -12,6 +12,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
  * and open the template in the editor.
  */
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -64,6 +65,7 @@ public class DownBody extends BodyPartFX {
 			url = getClass().getClassLoader().getResource("BodyParts/DownMaleBody1.dae");
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
+		activateConfigColor();
 		
 		imorter.read(url);
 		mDownBodyGroup = new Group();
@@ -95,6 +97,27 @@ public class DownBody extends BodyPartFX {
 			mDownBodyGroup.setTranslateZ(-105);
 		}
 	}
+	
+	private void activateConfigColor()
+	{
+		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		{
+			if(!XMLParser.femaleColor.isEmpty())
+			{
+				if(XMLParser.femaleColor.containsKey("DownBodyColor"))
+					this.mColor = XMLParser.femaleColor.get("DownBodyColor");
+			}
+		}
+		else
+		{
+			if(!XMLParser.maleColor.isEmpty())
+			{
+				if(XMLParser.maleColor.containsKey("DownBodyColor"))
+					this.mColor = XMLParser.maleColor.get("DownBodyColor");
+			}
+		}
+	}
+	
 
 	@Override
 	public void setShape(String s) {

@@ -5,8 +5,9 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
+import java.awt.Dimension;
+
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import de.dfki.stickmanfx.mimic.util.LeftBrowANGRY;
 import de.dfki.stickmanfx.mimic.util.LeftBrowDEFAULT;
 import de.dfki.stickmanfx.mimic.util.LeftBrowDISGUSTED;
@@ -15,7 +16,7 @@ import de.dfki.stickmanfx.mimic.util.LeftBrowEXCITED;
 import de.dfki.stickmanfx.mimic.util.LeftBrowHAPPY;
 import de.dfki.stickmanfx.mimic.util.LeftBrowSAD;
 import de.dfki.stickmanfx.mimic.util.LeftBrowSURPRISED;
-import java.awt.Dimension;
+import de.dfki.util.XMLParser;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
@@ -46,6 +47,7 @@ public class LeftEyebrowFX extends BodyPartFX
 			mColor = Color.rgb(88, 44, 13, 1);
 		else
 			mColor = Color.rgb(204, 163, 0, 1);
+		activateConfigColor();
 		
 		currentPolygon = new Polygon();
 		
@@ -64,6 +66,27 @@ public class LeftEyebrowFX extends BodyPartFX
 		currentPolygon.setTranslateY(mStart.y + 85);
 		currentPolygon.setTranslateZ(-17);
 	}
+	
+	private void activateConfigColor()
+   	{
+   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+   		{
+   			if(!XMLParser.femaleColor.isEmpty())
+   			{
+   				if(XMLParser.femaleColor.containsKey("BrowColor"))
+   					this.mColor = XMLParser.femaleColor.get("BrowColor");
+   			}
+   		}
+   		else
+   		{
+   			if(!XMLParser.maleColor.isEmpty())
+   			{
+   				if(XMLParser.maleColor.containsKey("BrowColor"))
+   					this.mColor = XMLParser.maleColor.get("BrowColor");
+   			}
+   		}
+   	}
+	
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = LeftEyebrowFX.SHAPE.valueOf(s);
@@ -169,11 +192,13 @@ public class LeftEyebrowFX extends BodyPartFX
 		}
 	}
 	
+	@Override
 	public void update()
 	{
 		currentPolygon.setFill(mColor);
 	}
 
+	@Override
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
 			mColorRecorder = mColor;

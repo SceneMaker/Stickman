@@ -35,8 +35,13 @@ public class UnconsciouslyAction extends Thread
     public UnconsciouslyAction(StickmanFX s) {
     	this.mStickmanFX = s;
     	this.currentBehaviorList = new ArrayList<>();
-    	
-    	ArrayList<String> tmpList = XMLParser.parseBehavior();
+    	ArrayList<String> tmpList;
+    	//parse config.xml
+    	XMLParser.parseBehavior();
+    	if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+    		tmpList = XMLParser.femaleBehavior;
+    	else
+    		tmpList = XMLParser.maleBehavior;
     	//Wenn config file leer ist, benutze default BehaviorArray
     	if(tmpList.isEmpty())
     		this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));

@@ -8,6 +8,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -58,6 +59,7 @@ public class HeadFX extends BodyPartFX {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 		mColor = Color.rgb(242, 227, 217, 1);
+		activateConfigColor();
 		
 		url = getClass().getClassLoader().getResource("BodyParts/maleHead.stl");
 		im = new StlMeshImporter();
@@ -79,6 +81,25 @@ public class HeadFX extends BodyPartFX {
 		calculate(0);
 	}
 	
+	private void activateConfigColor()
+	{
+		if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		{
+			if(!XMLParser.femaleColor.isEmpty())
+			{
+				if(XMLParser.femaleColor.containsKey("HeadColor"))
+					this.mColor = XMLParser.femaleColor.get("HeadColor");
+			}
+		}
+		else
+		{
+			if(!XMLParser.maleColor.isEmpty())
+			{
+				if(XMLParser.maleColor.containsKey("HeadColor"))
+					this.mColor = XMLParser.maleColor.get("HeadColor");
+			}
+		}
+	}
 	@Override
 	public void init()
 	{

@@ -1,11 +1,12 @@
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.bodyfx.HeadFX.SHAPE;
-
 import java.awt.Dimension;
 import java.net.URL;
+
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
+
+import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -44,6 +45,7 @@ public class MaleHairFX extends BodyPartFX
 	{
 		mStickmanFX = sm;
 		mColor = Color.rgb(97, 58, 0, 1);
+		activateConfigColor();
 
 		if (mStickmanFX.mHeadFX != null)
 			mYRotation = mStickmanFX.mHeadFX.mYRotation;
@@ -76,6 +78,22 @@ public class MaleHairFX extends BodyPartFX
 		maleHairMeshView.setTranslateY(mHalfHeight-52);
 		maleHairMeshView.setTranslateZ(mZTranslate);
 	}
+	
+	/*
+	 * es wird config-file geparst.
+	 * Wenn Color-Block(in config-file) nicht leer => aendere mcolor
+	 */
+	private void activateConfigColor()
+	{
+		if(!XMLParser.maleColor.isEmpty())
+		{
+			if(XMLParser.maleColor.containsKey("HairColor"))
+			{
+				this.mColor = XMLParser.maleColor.get("HairColor");
+			}
+		}
+	}
+	
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -87,6 +105,7 @@ public class MaleHairFX extends BodyPartFX
 		mShape = MaleHairFX.SHAPE.DEFAULT;
 	}
 
+	@Override
 	public void calculate(int step) 
 	{
 		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
@@ -129,6 +148,7 @@ public class MaleHairFX extends BodyPartFX
 		}
 	}
 
+	@Override
 	public void update() {
 		material.setDiffuseColor(mColor);
 		maleHairMeshView.setMaterial(material);

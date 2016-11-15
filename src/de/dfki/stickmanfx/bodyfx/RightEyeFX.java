@@ -1,6 +1,7 @@
 package de.dfki.stickmanfx.bodyfx;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcTo;
@@ -50,6 +51,7 @@ public class RightEyeFX extends BodyPartFX {
 			mColor = Color.rgb(0, 0, 0, 1);
 		else
 			mColor = Color.rgb(0, 0, 255, 1);
+		activateConfigColor();
 
 		smallPupileColor = Color.rgb(255, 255, 255, 1);
 		borderColor = Color.rgb(255, 255, 255, 1);
@@ -80,8 +82,27 @@ public class RightEyeFX extends BodyPartFX {
 		border.setTranslateZ(-17);
 		bigPupile.setTranslateZ(-18);
 		smallPupile.setTranslateZ(-19);
-
 	}
+	
+	private void activateConfigColor()
+   	{
+   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+   		{
+   			if(!XMLParser.femaleColor.isEmpty())
+   			{
+   				if(XMLParser.femaleColor.containsKey("EyeColor"))
+   					this.mColor = XMLParser.femaleColor.get("EyeColor");
+   			}
+   		}
+   		else
+   		{
+   			if(!XMLParser.maleColor.isEmpty())
+   			{
+   				if(XMLParser.maleColor.containsKey("EyeColor"))
+   					this.mColor = XMLParser.maleColor.get("EyeColor");
+   			}
+   		}
+   	}
 
 	@Override
 	public void setShape(String s) {
