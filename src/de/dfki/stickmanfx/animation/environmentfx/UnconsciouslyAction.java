@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.util.XMLParser;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -20,19 +21,31 @@ import javafx.util.Duration;
 public class UnconsciouslyAction extends Thread 
 {
     private StickmanFX mStickmanFX;
-    private Timeline timeline;
+    private Timeline blinkTimeline;
+    private Timeline breathTimeline;
+    
+    //Behavior Default Array
     private String[] behaviorArray = {"HeadTilt", "CoverMouth", "Nod", "TouchHead",
     								  "HeadLeft", "HeadRight", "Itching", "HeadDown", "HeadDown1"};
+    //
     private ArrayList<String> currentBehaviorList;
     
     Random random;
     
-    public boolean isBreatheOut = true;
-
     public UnconsciouslyAction(StickmanFX s) {
     	this.mStickmanFX = s;
     	this.currentBehaviorList = new ArrayList<>();
-    	this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
+    	
+    	ArrayList<String> tmpList = XMLParser.parseBehavior();
+    	//Wenn config file leer ist, benutze default BehaviorArray
+    	if(tmpList.isEmpty())
+    		this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
+    	else
+    	{
+    		int length = tmpList.size();
+    		behaviorArray = new String[length];
+    		behaviorArray = tmpList.toArray(behaviorArray);
+    	}
     	
     	this.random = new Random();
     	startBlinkAktion();
@@ -67,27 +80,27 @@ public class UnconsciouslyAction extends Thread
     
     public void startBlinkAktion()
     {
-    	timeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() 
+    	blinkTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() 
     	{
     	    @Override
     	    public void handle(ActionEvent event) {
     	    	mStickmanFX.doAnimation("Blink", 500, true);
     	    }
     	}));
-    	timeline.setCycleCount(Timeline.INDEFINITE);
-    	timeline.play();
+    	blinkTimeline.setCycleCount(Timeline.INDEFINITE);
+    	blinkTimeline.play();
     }
     
     public void stopBlinkAktion()
     {
-    	if(timeline != null)
-    		timeline.stop();
+    	if(blinkTimeline != null)
+    		blinkTimeline.stop();
     }
 
     //AtmenAktion
     public void startBreathing()
     {
-    	Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() 
+    	breathTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() 
     	{
     	    @Override
     	    public void handle(ActionEvent event) {
@@ -101,7 +114,13 @@ public class UnconsciouslyAction extends Thread
     	        scaleTransition.play();
     	    }
     	}));
-    	timeline.setCycleCount(Timeline.INDEFINITE);
-    	timeline.play();
+    	breathTimeline.setCycleCount(Timeline.INDEFINITE);
+    	breathTimeline.play();
+    }
+    
+    public void stopBreathAktion()
+    {
+    	if(breathTimeline != null)
+    		breathTimeline.stop();
     }
 }

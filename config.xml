@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<StickmanConfig>
+   <Behavior type="Behavior">
+      <item>HeadTilt</item>
+      <item>HeadLeft</item>
+      <item>HeadDown</item>
+      <item>CoverMouth</item>
+   </Behavior>
+   
+   <Color type="Color">
+      <BodyColor>red</BodyColor>
+      <HeadColor>black</HeadColor>
+      <EyeColor>blue</EyeColor>
+      <BrowColor>grey</BrowColor>
+   </Color>
+   
+   <config type="DefaultView">
+      <firstname>jasvir</firstname>
+      <lastname>singn</lastname>
+      <nickname>jazz</nickname>
+      <marks>90</marks>
+   </config>
+</StickmanConfig>

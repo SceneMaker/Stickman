@@ -119,7 +119,7 @@ public class StickmanFX extends Pane {
 	public Boolean mIdleRun = false; // the shared variable to decide the while
 										// loop in IdleBehavior break or not
 	
-	//Es BehaviorThred. Es wird in StartIdle-Klasse initializiert
+	//BehaviorThred. Es wird in StartIdle-Klasse initializiert
 	public IdleBehavior mIdleBehavior;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
