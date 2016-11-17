@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.FXViewController;
 import de.dfki.stickmanfx.stagecontroller.StickmansOnStageFX;
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
@@ -33,7 +34,7 @@ import javafx.scene.layout.HBox;
  *
  * @author Robbie
  */
-public class StickmanStageController {
+public class StickmanStageController implements FXViewController {
 
     
     private static String packEmotionExpression = "de.dfki.stickmanfx.animation.facefx";

@@ -16,8 +16,16 @@ public interface StageStickman {
     void addStickmanToStage(String stageIdentifier) throws Exception;
     void setStageFullScreen(String stageIdentifier);
     void setStageNonFullScreen(String stageIdentifier);
-    void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage);
+    void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage, String identifier);
     public HBox getStickmanPane(String stageIdentifier) throws Exception;
     BufferedImage getStageAsImage(String stageIdentifier) throws Exception;
 	void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception;
+
+    void lauchStickman();
+
+    void clearStage(String stageIdentifier);
+
+    void showStage(String configStage);
+
+    String createNewStage(int x, int y, boolean decoration) throws IOException;
 }

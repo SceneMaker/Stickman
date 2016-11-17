@@ -9,5 +9,6 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" name="jim3dsModelImporterJFX" level="project" />
   </component>
 </module>

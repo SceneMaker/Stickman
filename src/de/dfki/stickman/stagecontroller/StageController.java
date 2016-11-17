@@ -21,7 +21,7 @@ public class StageController implements StageStickmanController {
     public StageController(){
         stickmanStage = new StickmanStage();
         commonStickmansOnStage = new StickmansOnStage(stickmanStage, this);
-        stickmanStage.setStickamnsOnStage(commonStickmansOnStage);
+        //stickmanStage.setStickamnsOnStage(commonStickmansOnStage);
     }
 
     @Override

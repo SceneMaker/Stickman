@@ -3,6 +3,7 @@ package de.dfki.common;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.util.Names;
 import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -100,8 +101,8 @@ public abstract class CommonStickmansOnStage {
         return sStickmansOnStage.keySet();
     }
 
-    public StickmanFX getStickmanByKey(String key){
-        return (StickmanFX) sStickmansOnStage.get(key);
+    public CommonStickman getStickmanByKey(String key){
+        return  sStickmansOnStage.get(key);
     }
 
     public String getmFilePath() {
@@ -111,4 +112,6 @@ public abstract class CommonStickmansOnStage {
     public void setmFilePath(String mFilePath) {
         this.mFilePath = mFilePath;
     }
+
+
 }

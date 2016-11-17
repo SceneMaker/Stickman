@@ -76,7 +76,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable , 
 	public void setStickmanName(String stickmanName) 
         {
 		mStickmanName = stickmanName;
-		//mStickmanFX = StickmanStageFX.getStickman(mStickmanName);
+		//mStickmanFX = StickmanStage3D.getStickman(mStickmanName);
 		setName(mStickmanName + "'s Animation " + mName);
 	}
 

@@ -1,5 +1,6 @@
 package de.dfki.stickmanfx.utils;
 
+import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.stagecontroller.StickmansOnStage;
 import de.dfki.stickmanfx.StickmanFX;
@@ -18,9 +19,9 @@ import java.util.List;
  */
 public class XmlStickmanLoader {
     private String mFilePath;
-    private StickmansOnStageFX sStickmansOnStage;
+    private CommonStickmansOnStage sStickmansOnStage;
 
-    public XmlStickmanLoader( StickmansOnStageFX stickmansOnStage){
+    public XmlStickmanLoader( CommonStickmansOnStage stickmansOnStage){
         this.sStickmansOnStage = stickmansOnStage;
         mFilePath = stickmansOnStage.getmFilePath();
     }
@@ -32,12 +33,13 @@ public class XmlStickmanLoader {
             file = new File(mFilePath + File.separator + "stickman"+ File.separator+"stickman.xml");
 
         if (file != null) {
-            sStickmansOnStage.getmXmlTransform().loadStickmanDataFromFile(file);
+            //sStickmansOnStage.getmXmlTransform().loadStickmanDataFromFile(file);
         }
     }
 
     public   void initialStickmanWithXml()
     {
+        /*
         readXML();
         List<StickmanDataFX> mStickmanDataFX = sStickmansOnStage.getmXmlTransform().getStickmanDataFXList();
         if(!(mStickmanDataFX.isEmpty()))
@@ -122,6 +124,6 @@ public class XmlStickmanLoader {
                     }
                 }
             }
-        }
+        }*/
     }
 }

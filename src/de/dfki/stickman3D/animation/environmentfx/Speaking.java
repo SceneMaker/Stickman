@@ -1,0 +1,49 @@
+	/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package de.dfki.stickman3D.animation.environmentfx;
+
+    import de.dfki.stickman3D.StickmanFX;
+    import de.dfki.stickman3D.StickmanStageController;
+    import de.dfki.stickman3D.animationlogic.AnimationContentFX;
+    import de.dfki.stickman3D.animationlogic.AnimationFX;
+    import de.dfki.stickman3D.environmentfx.SpeechBubbleFX;
+
+    import java.util.ArrayList;
+
+    /**
+     *
+     * @author Patrick Gebhard
+     *
+     */
+    public class Speaking extends AnimationFX {
+
+        public Speaking() {
+            mAnimType = ANIMTYPE.ON;
+        }
+
+        public Speaking(StickmanFX sm, int duration, boolean block) {
+            super(sm, duration, block);
+        }
+
+        @Override
+        public void playAnimation() {
+            if (mParameter instanceof String) {
+                mStickmanFX.mSpeechBubbleFX.mText = (String) mParameter;
+            }
+            // nur zum Testen. Im Normalfall diese Zeile loeschen
+            mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter Stickman " + mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
+
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
+            playAnimationPart(mDuration);
+
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+            playAnimationPart(20);
+
+            if(StickmanStageController.currentRadioButton != null) // nur zum Testen. Im Normalfall diese 2 Zeilen loeschen
+                StickmanStageController.currentRadioButton.setSelected(false);
+        }
+    }

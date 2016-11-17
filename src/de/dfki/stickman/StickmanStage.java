@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
@@ -113,7 +114,7 @@ public class StickmanStage extends JFrame implements  StageStickman {
     }
 
     @Override
-    public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage) {
+    public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage, String identifier) {
         CommonStickmansOnStage stickamnsOnStage1 = stickamnsOnStage;
     }
 
@@ -150,4 +151,24 @@ public class StickmanStage extends JFrame implements  StageStickman {
 		// TODO Auto-generated method stub
 		
 	}
+
+    @Override
+    public void lauchStickman() {
+
+    }
+
+    @Override
+    public void clearStage(String stageIdentifier) {
+
+    }
+
+    @Override
+    public void showStage(String configStage) {
+
+    }
+
+    @Override
+    public String createNewStage(int x, int y, boolean decoration) throws IOException {
+        return null;
+    }
 }

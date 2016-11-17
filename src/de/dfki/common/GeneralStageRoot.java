@@ -50,8 +50,6 @@ public class GeneralStageRoot {
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
         sStickmanPane.prefHeightProperty().bind(root.heightProperty());
         sStickmanPane.setAlignment(Pos.CENTER_LEFT);
-//        sStickmanPane.setStyle("-fx-background-color: #7FFFD4;");
-//            sStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanfx/image/office4.jpg');-fx-background-repeat: repeat;-fx-background-position: center center; -fx-background-size: contain;");
         return this;
     }
 
