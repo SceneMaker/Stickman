@@ -83,21 +83,11 @@ public class HeadFX extends BodyPartFX {
 	
 	private void activateConfigColor()
 	{
-		if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		String stickmanName = mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
 		{
-			if(!XMLParser.femaleColor.isEmpty())
-			{
-				if(XMLParser.femaleColor.containsKey("HeadColor"))
-					this.mColor = XMLParser.femaleColor.get("HeadColor");
-			}
-		}
-		else
-		{
-			if(!XMLParser.maleColor.isEmpty())
-			{
-				if(XMLParser.maleColor.containsKey("HeadColor"))
-					this.mColor = XMLParser.maleColor.get("HeadColor");
-			}
+			if(XMLParser.getColorMap(stickmanName).containsKey("HeadColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("HeadColor");
 		}
 	}
 	@Override

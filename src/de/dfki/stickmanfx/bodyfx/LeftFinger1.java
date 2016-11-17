@@ -66,22 +66,13 @@ public class LeftFinger1 extends BodyPartFX
 
     private void activateConfigColor()
 	{
-		if(mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+    	String stickmanName = mLeftWrist.mLeftForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
 		{
-			if(!XMLParser.femaleColor.isEmpty())
-			{
-				if(XMLParser.femaleColor.containsKey("LimbsColor"))
-					this.mColor = XMLParser.femaleColor.get("LimbsColor");
-			}
+			if(XMLParser.getColorMap(stickmanName).containsKey("LimbsColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("LimbsColor");
 		}
-		else
-		{
-			if(!XMLParser.maleColor.isEmpty())
-			{
-				if(XMLParser.maleColor.containsKey("LimbsColor"))
-					this.mColor = XMLParser.maleColor.get("LimbsColor");
-			}
-		}
+		
 	}
     
     @Override

@@ -71,22 +71,13 @@ public class LeftEyeFX extends BodyPartFX {
 	
 	private void activateConfigColor()
    	{
-   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-   		{
-   			if(!XMLParser.femaleColor.isEmpty())
-   			{
-   				if(XMLParser.femaleColor.containsKey("EyeColor"))
-   					this.mColor = XMLParser.femaleColor.get("EyeColor");
-   			}
-   		}
-   		else
-   		{
-   			if(!XMLParser.maleColor.isEmpty())
-   			{
-   				if(XMLParser.maleColor.containsKey("EyeColor"))
-   					this.mColor = XMLParser.maleColor.get("EyeColor");
-   			}
-   		}
+		String stickmanName = mHeadFX.mStickmanFX.mName;
+   		
+		if(XMLParser.getColorMap(stickmanName) != null)
+		{
+			if(XMLParser.getColorMap(stickmanName).containsKey("EyeColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("EyeColor");
+		}
    	}
 
 	@Override

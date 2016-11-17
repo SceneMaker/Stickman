@@ -17,6 +17,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
+import de.dfki.util.XMLParser;
 import de.dfki.util.xml.XMLUtilities;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -358,10 +359,22 @@ public class StickmanStageFX extends Application {
 	 *            the command line arguments
 	 */
 	public static void main(String[] args) {
+		XMLParser.parse();
 		getInstanceFullScreen();
 
-		addStickmanFX("Bob");
-		 addStickmanFX("Anna");
+		if(XMLParser.getStickmanNames() != null)
+		{
+			for(int i = 0; i<XMLParser.getStickmanNames().size(); i++)
+			{
+				addStickmanFX(XMLParser.getStickmanNames().get(i));
+			}
+		}
+		else
+		{
+			addStickmanFX("Bob");
+		}
+		
+//		 addStickmanFX("Anna");
 //		addStickmanFX("character");
 
 		lauchStickman();

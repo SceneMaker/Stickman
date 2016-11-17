@@ -37,13 +37,9 @@ public class UnconsciouslyAction extends Thread
     	this.currentBehaviorList = new ArrayList<>();
     	ArrayList<String> tmpList;
     	//parse config.xml
-    	XMLParser.parseBehavior();
-    	if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-    		tmpList = XMLParser.femaleBehavior;
-    	else
-    		tmpList = XMLParser.maleBehavior;
+    		tmpList = XMLParser.getBehaviorList(mStickmanFX.mName);
     	//Wenn config file leer ist, benutze default BehaviorArray
-    	if(tmpList.isEmpty())
+    	if(tmpList == null)
     		this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
     	else
     	{

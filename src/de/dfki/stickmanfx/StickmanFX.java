@@ -55,7 +55,6 @@ import de.dfki.stickmanfx.bodyfx.ThinkFX;
 import de.dfki.stickmanfx.bodyfx.UpperBody;
 import de.dfki.stickmanfx.bodyfx.UpperBodyAndHead;
 import de.dfki.stickmanfx.environmentfx.SpeechBubbleFX;
-import de.dfki.util.XMLParser;
 import javafx.scene.Group;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
@@ -185,7 +184,6 @@ public class StickmanFX extends Pane {
 	private long mID = 0;
 
 	public StickmanFX(String name, TYPE gender, float scale, Dimension size) {
-		XMLParser.parseColor();
 		mSize = size;
 		mScale = scale;
 
@@ -245,7 +243,6 @@ public class StickmanFX extends Pane {
 	}
 
 	public StickmanFX(String name, TYPE gender, float scale) {
-		XMLParser.parseColor();
 		mScale = scale;
 
 		mName = name;
@@ -302,7 +299,6 @@ public class StickmanFX extends Pane {
 	}
 
 	public StickmanFX(String name, TYPE gender) {
-		XMLParser.parseColor();
 		mName = name;
 		mType = gender;
 

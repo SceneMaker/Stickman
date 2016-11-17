@@ -2,7 +2,6 @@ package de.dfki.stickmanfx.bodyfx;
 
 import java.awt.Dimension;
 
-import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.mimic.util.MouthANGRY;
 import de.dfki.stickmanfx.mimic.util.MouthANGRYSMALLMOUTH;
 import de.dfki.stickmanfx.mimic.util.MouthCONTEMPT;
@@ -74,22 +73,12 @@ public class MouthFX extends BodyPartFX {
 	
 	private void activateConfigColor()
    	{
-   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-   		{
-   			if(!XMLParser.femaleColor.isEmpty())
-   			{
-   				if(XMLParser.femaleColor.containsKey("LipsColor"))
-   					this.mColor = XMLParser.femaleColor.get("LipsColor");
-   			}
-   		}
-   		else
-   		{
-   			if(!XMLParser.maleColor.isEmpty())
-   			{
-   				if(XMLParser.maleColor.containsKey("LipsColor"))
-   					this.mColor = XMLParser.maleColor.get("LipsColor");
-   			}
-   		}
+   		String stickmanName = mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
+		{
+			if(XMLParser.getColorMap(stickmanName).containsKey("LipsColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("LipsColor");
+		}
    	}
 	
 	@Override

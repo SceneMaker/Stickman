@@ -854,7 +854,7 @@ public class StickmanStageController {
 
 			button.setOnAction((event) -> {
 				currentRadioButton = (RadioButton) event.getSource();
-				currentStickman.doAnimation(button.getText(), 500, true);
+				currentStickman.doAnimation(button.getText(), 500, false);
 			});
 			if (i % 3 == 2) {
 				gridPane.add(button, startIndex, endIndex);

@@ -10,7 +10,6 @@ import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.util.XMLParser;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -83,22 +82,12 @@ public class NoseFX extends BodyPartFX
 	
 	private void activateConfigColor()
    	{
-   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-   		{
-   			if(!XMLParser.femaleColor.isEmpty())
-   			{
-   				if(XMLParser.femaleColor.containsKey("NoseColor"))
-   					this.mColor = XMLParser.femaleColor.get("NoseColor");
-   			}
-   		}
-   		else
-   		{
-   			if(!XMLParser.maleColor.isEmpty())
-   			{
-   				if(XMLParser.maleColor.containsKey("NoseColor"))
-   					this.mColor = XMLParser.maleColor.get("");
-   			}
-   		}
+   		String stickmanName = mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
+		{
+			if(XMLParser.getColorMap(stickmanName).containsKey("NoseColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("NoseColor");
+		}
    	}
 	
 	@Override

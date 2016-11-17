@@ -85,11 +85,12 @@ public class MaleHairFX extends BodyPartFX
 	 */
 	private void activateConfigColor()
 	{
-		if(!XMLParser.maleColor.isEmpty())
+		String stickmanName = mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
 		{
-			if(XMLParser.maleColor.containsKey("HairColor"))
+			if(XMLParser.getColorMap(stickmanName).containsKey("HairColor"))
 			{
-				this.mColor = XMLParser.maleColor.get("HairColor");
+				this.mColor = XMLParser.getColorMap(stickmanName).get("HairColor");
 			}
 		}
 	}

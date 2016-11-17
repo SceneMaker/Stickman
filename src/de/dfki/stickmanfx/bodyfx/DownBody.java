@@ -100,21 +100,11 @@ public class DownBody extends BodyPartFX {
 	
 	private void activateConfigColor()
 	{
-		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		String stickmanName = mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
 		{
-			if(!XMLParser.femaleColor.isEmpty())
-			{
-				if(XMLParser.femaleColor.containsKey("DownBodyColor"))
-					this.mColor = XMLParser.femaleColor.get("DownBodyColor");
-			}
-		}
-		else
-		{
-			if(!XMLParser.maleColor.isEmpty())
-			{
-				if(XMLParser.maleColor.containsKey("DownBodyColor"))
-					this.mColor = XMLParser.maleColor.get("DownBodyColor");
-			}
+			if(XMLParser.getColorMap(stickmanName).containsKey("DownBodyColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("DownBodyColor");
 		}
 	}
 	

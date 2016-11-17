@@ -61,22 +61,12 @@ public class RightEyebrowFX extends BodyPartFX {
 	
 	private void activateConfigColor()
    	{
-   		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-   		{
-   			if(!XMLParser.femaleColor.isEmpty())
-   			{
-   				if(XMLParser.femaleColor.containsKey("BrowColor"))
-   					this.mColor = XMLParser.femaleColor.get("BrowColor");
-   			}
-   		}
-   		else
-   		{
-   			if(!XMLParser.maleColor.isEmpty())
-   			{
-   				if(XMLParser.maleColor.containsKey("BrowColor"))
-   					this.mColor = XMLParser.maleColor.get("BrowColor");
-   			}
-   		}
+   		String stickmanName = mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
+		{
+			if(XMLParser.getColorMap(stickmanName).containsKey("BrowColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("BrowColor");
+		}
    	}
 	
 	@Override

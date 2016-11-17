@@ -67,22 +67,12 @@ public class LeftFootFX extends BodyPartFX {
 
 	private void activateConfigColor()
    	{
-   		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
-   		{
-   			if(!XMLParser.femaleColor.isEmpty())
-   			{
-   				if(XMLParser.femaleColor.containsKey("ShoesColor"))
-   					this.mColor = XMLParser.femaleColor.get("ShoesColor");
-   			}
-   		}
-   		else
-   		{
-   			if(!XMLParser.maleColor.isEmpty())
-   			{
-   				if(XMLParser.maleColor.containsKey("ShoesColor"))
-   					this.mColor = XMLParser.maleColor.get("ShoesColor");
-   			}
-   		}
+		String stickmanName = mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)
+		{
+			if(XMLParser.getColorMap(stickmanName).containsKey("ShoesColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("ShoesColor");
+		}
    	}
 	
 	@Override

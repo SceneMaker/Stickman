@@ -96,22 +96,12 @@ public class UpperBody extends BodyPartFX {
 
 	private void activateConfigColor()
 	{
-		if(mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		String stickmanName = mNeckFX.mHeadFX.mStickmanFX.mName;
+		if(XMLParser.getColorMap(stickmanName) != null)			
 		{
-			if(!XMLParser.femaleColor.isEmpty())
-			{
-				if(XMLParser.femaleColor.containsKey("UpperBodyColor"))
-					this.mColor = XMLParser.femaleColor.get("UpperBodyColor");
+				if(XMLParser.getColorMap(stickmanName).containsKey("UpperBodyColor"))
+					this.mColor = XMLParser.getColorMap(stickmanName).get("UpperBodyColor");
 			}
-		}
-		else
-		{
-			if(!XMLParser.maleColor.isEmpty())
-			{
-				if(XMLParser.maleColor.containsKey("UpperBodyColor"))
-					this.mColor = XMLParser.maleColor.get("UpperBodyColor");
-			}
-		}
 	}
 	
 	public Point getUpperBodyPosition()
