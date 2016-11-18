@@ -133,6 +133,7 @@ public class StickmanFX extends Pane implements CommonStickman {
 	public BombeFX mBombeFX;
 	// environment
 	public SpeechBubbleFX mSpeechBubbleFX;
+	private StageStickmanController stageController;
 
 	// logging
 	public final Logger mLogger = Logger.getAnonymousLogger();
@@ -402,12 +403,12 @@ public class StickmanFX extends Pane implements CommonStickman {
 
 	@Override
 	public StageStickmanController getStickmanStageController() {
-		return null;
+		return stageController;
 	}
 
 	@Override
 	public void setStickmanStageController(StageStickmanController s) {
-
+		stageController = s;
 	}
 
 	@Override

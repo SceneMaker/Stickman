@@ -55,6 +55,7 @@ public class StageStickmanControllerFX extends StageStickmanControllerImpl {
     public void init(String stageIdentifier) {
         commonStickmansOnStage = new StickmansOnStageFX(getStickmanStage(), this);
         getStickmanStage().setStickamnsOnStage(getCommonStickmansOnStage(), stageIdentifier);
+        getStickmanStage().setStickamnsOnStage(getCommonStickmansOnStage(), CONFIG_STAGE);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class testStickmanFX {
 
 
 
-        StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, true);
+        /*StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, true);
         StageStickmanController stickmanStageFull = new StageStickmanFullScreenControllerFXDecorator(stickmanStage);
         stickmanStage.addStickman("Patrick");
         //stickmanStage.addStickman("Bob");
@@ -43,12 +43,18 @@ public class testStickmanFX {
         stickmanStage3D.addStickman("Martin");
         stickmanStage3D.addStickman("Bob");
         //stickmanStage3D.launchStickmanStage(true);
-        stickmanStage3D.launchStickmanStage(true);
+        stickmanStage3D.launchStickmanStage(true);*/
 
         StageStickmanController stickmanStage3D1 = new StageStickmanController3D(0,0, true);
         stickmanStage3D1.addStickman("Robbie");
         //stickmanStage3D.launchStickmanStage(true)
-        stickmanStage3D1.launchStickmanStage(true);
+        stickmanStage3D1.launchStickmanConfiguration();
+
+       /* StageStickmanController stickmanStage = new StageStickmanControllerFX(0,0, true);
+        StageStickmanController stickmanStageFull = new StageStickmanFullScreenControllerFXDecorator(stickmanStage);
+        stickmanStage.addStickman("Patrick");
+        //stickmanStage.addStickman("Bob");
+        stickmanStage.launchStickmanConfiguration();*/
 
 
         /*StageStickmanController oldStage = new StageController();
