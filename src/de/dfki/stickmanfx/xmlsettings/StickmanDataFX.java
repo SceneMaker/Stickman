@@ -3,11 +3,12 @@ package de.dfki.stickmanfx.xmlsettings;
 
 public class StickmanDataFX
 {
-	private String name;
+    private String name;
     private String hairColor;
     private String headColor;
     private String bodyColor;
     private String limbsColor;
+    private String backgroundRecord;
     
     /**
      * Default constructor.
@@ -18,15 +19,16 @@ public class StickmanDataFX
     	headColor = null;
     	bodyColor = null;
     	limbsColor = null;
-    	
+    	backgroundRecord = null;
     }
     
-    public StickmanDataFX(String name, String hairColor,String headColor, String bodyColor, String limbsColor) {
+    public StickmanDataFX(String name, String hairColor,String headColor, String bodyColor, String limbsColor, String backgroundRecord) {
         this.name = name;
         this.hairColor = hairColor;
         this.headColor = headColor;
         this.bodyColor = bodyColor;
         this.limbsColor = limbsColor;
+        this.backgroundRecord = backgroundRecord;
     }
     
     public String getName() {
@@ -67,5 +69,13 @@ public class StickmanDataFX
     
     public void setlimbsColor(String limbsColor) {
         this.limbsColor = limbsColor;
-    }   
+    }
+    
+    public String getbackgroundRecord() {
+        return backgroundRecord;
+    }
+    
+    public void setbackgroundRecord(String backgroundRecord) {
+        this.backgroundRecord = backgroundRecord;
+    }
 }

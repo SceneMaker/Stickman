@@ -29,6 +29,14 @@ public abstract class CommonStickmansOnStage {
         stickmanStage = stickmanStageFX;
         stageStickmanController = controllerFX;
     }
+    
+    public StageStickman getStageStickman() {
+        return stickmanStage;
+    }
+    
+    public StageStickmanController getStageStickmanController() {
+        return stageStickmanController;
+    }
 
     public void setStageStickmanController(StageStickmanController controllerFX){
         stageStickmanController = controllerFX;
@@ -89,7 +97,6 @@ public abstract class CommonStickmansOnStage {
         }).forEach((s) -> {
             getStickman(s).endAnimationScheduler();
         });
-
     }
 
     protected void putFullStickmanOnStage(String name, CommonStickman stickman) {

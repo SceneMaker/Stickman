@@ -20,10 +20,11 @@ public class GeneralStageRoot {
     public HBox getConfigRoot() throws IOException {
         invoke();
         if(!root.getChildren().contains(mSplitPane)){
+            root.getChildren().remove(stickmanScrollPane);
             root.getChildren().add(mSplitPane);
             root.getChildren().add(stickmanScrollPane);
-            sStickmanPane.setAlignment(Pos.CENTER_LEFT);
         }
+        sStickmanPane.setAlignment(Pos.CENTER_LEFT);
         return root;
     }
 
@@ -31,8 +32,8 @@ public class GeneralStageRoot {
         invoke();
         if(root.getChildren().contains(mSplitPane)){
             root.getChildren().remove(mSplitPane);
-            sStickmanPane.setAlignment(Pos.CENTER); //CENTER_LEFT
         }
+        sStickmanPane.setAlignment(Pos.CENTER); //CENTER_LEFT
         return root;
     }
 
@@ -49,7 +50,6 @@ public class GeneralStageRoot {
         getmStickmanStageController().setlePerlinNoiseOn();
         sStickmanPane.prefWidthProperty().bind(root.widthProperty());
         sStickmanPane.prefHeightProperty().bind(root.heightProperty());
-        sStickmanPane.setAlignment(Pos.CENTER_LEFT);
         return this;
     }
 
