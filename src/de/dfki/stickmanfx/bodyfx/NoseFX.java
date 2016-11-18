@@ -117,7 +117,7 @@ public class NoseFX extends BodyPartFX {
 			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), initOpacity);
 				update();
-			} else if (mColor.getOpacity() != 1.0) {
+			} else if (mColor.getOpacity() <= initOpacity) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
 						mColor.getOpacity() + initOpacity / 19);
 				update();
