@@ -42,14 +42,14 @@ public class TouchHead extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -88));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 180));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 130));
 			playAnimationPart(500);
 		} else {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 65));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -88));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 240));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 190));
 			playAnimationPart(500);
 		}
 
@@ -90,14 +90,14 @@ public class TouchHead extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 88));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -180));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -130));
 			playAnimationPart(500);
 		} else {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -65));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 88));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -240));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -190));
 			playAnimationPart(500);
 		}
 

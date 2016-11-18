@@ -101,10 +101,12 @@ public class Working extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -45));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 55));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", -40));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 50));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -45));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 55));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -40));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -50));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "rotate", 10));
 
@@ -308,10 +310,12 @@ public class Working extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 45));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -55));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", 40));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -50));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 45));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -55));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 40));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 50));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBodyAndHand, "rotate", -10));
 

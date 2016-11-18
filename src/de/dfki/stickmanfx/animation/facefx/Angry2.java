@@ -5,12 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  * An angry facial movement is created in this class. The face moves from the
@@ -70,7 +70,7 @@ public class Angry2 extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -20));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", -15));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -15));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 35));
 		playAnimationPart(mDuration);
 
 		// foot
@@ -117,7 +117,7 @@ public class Angry2 extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 20));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", 15));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 15));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -35));
 		playAnimationPart(mDuration);
 
 		if (StickmanStageController.currentRadioButton != null)

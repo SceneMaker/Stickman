@@ -368,6 +368,7 @@ public class StickmanStageFX extends Application {
 			}
 		} else {
 			addStickmanFX("Bob");
+			addStickmanFX("Anna");
 		}
 
 		// addStickmanFX("Anna");

@@ -5,12 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.gesturefx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  * An angry facial movement is created in this class. The face moves from the
@@ -48,6 +48,7 @@ public class NoNoNo extends AnimationFX {
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -100));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -60));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -50));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "rotate", 135));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "rotate", 135));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "zrotate", 40));
@@ -87,6 +88,7 @@ public class NoNoNo extends AnimationFX {
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 100));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 60));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 50));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "rotate", -135));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "rotate", -135));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger1, "zrotate", -40));

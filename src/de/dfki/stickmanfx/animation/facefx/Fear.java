@@ -5,11 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.facefx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import java.util.ArrayList;
 
 /**
  *
@@ -39,9 +40,9 @@ public class Fear extends AnimationFX {
 			// Left Hand
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -60));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -80));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -107));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -105));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -30));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -180));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -130));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", 20));
 
 			// Right Hand
@@ -49,15 +50,15 @@ public class Fear extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 80));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -95));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 30));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 180));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 130));
 
 		} else {
 			// Left Hand
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -60));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", -60));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -110));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -105));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -25));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -250));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -200));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", 20));
 
 			// Right Hand
@@ -65,7 +66,7 @@ public class Fear extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 60));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 25));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 250));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 200));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 20));
 		}
 		playAnimationPart(mDuration);
@@ -91,9 +92,9 @@ public class Fear extends AnimationFX {
 			// Left Hand
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 60));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", 80));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 107));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 105));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", 30));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 180));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 130));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", -20));
 
 			// Right Hand
@@ -101,14 +102,14 @@ public class Fear extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -80));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 95));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -30));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -180));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -130));
 		} else {
 			// Left Hand
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 60));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "zrotate", 60));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 110));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 105));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", 25));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 250));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 200));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "rotate", -20));
 
 			// Right Hand
@@ -116,7 +117,7 @@ public class Fear extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -60));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -25));
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -250));
+			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -200));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -20));
 
 		}

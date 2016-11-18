@@ -5,13 +5,12 @@
  */
 package de.dfki.stickmanfx.animation.posturefx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.StickmanFX.TYPE;
 import de.dfki.stickmanfx.StickmanStageController;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  * An angry facial movement is created in this class. The face moves from the
@@ -68,8 +67,8 @@ public class Dancing extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -60));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", -40));
 
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 110));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -110));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 60));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -60));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "rotate", 20));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "zrotate", -50));
@@ -159,8 +158,8 @@ public class Dancing extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", 60));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "zrotate", 40));
 
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -110));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 110));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -60));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 60));
 
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "rotate", -20));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFinger1, "zrotate", 50));
