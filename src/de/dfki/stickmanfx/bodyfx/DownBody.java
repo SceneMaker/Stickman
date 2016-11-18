@@ -31,9 +31,9 @@ public class DownBody extends BodyPartFX {
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public DownBody.SHAPE mShape = DownBody.SHAPE.DEFAULT;
-	
+
 	UpperBody mUpperBody;
 	Rotate rx;
 	Rotate ry;
@@ -46,18 +46,17 @@ public class DownBody extends BodyPartFX {
 	int mDrawOffset = 20;
 
 	public Group mDownBodyGroup;
-	
-	URL url;
-    ColModelImporter imorter;
-    MeshView mBodyMeshView;
-	PhongMaterial material;
 
+	URL url;
+	ColModelImporter imorter;
+	MeshView mBodyMeshView;
+	PhongMaterial material;
 
 	public DownBody(UpperBody upperBody) {
 		mUpperBody = upperBody;
 		mStart = mUpperBody.getDownBodyPosition();
 		imorter = new ColModelImporter();
-		
+
 		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
 			url = getClass().getClassLoader().getResource("BodyParts/DownFemaleBody.dae");
 			mColor = Color.rgb(154, 83, 198, 1);
@@ -66,7 +65,7 @@ public class DownBody extends BodyPartFX {
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
 		activateConfigColor();
-		
+
 		imorter.read(url);
 		mDownBodyGroup = new Group();
 		mBodyMeshView = (MeshView) imorter.getImport()[0];
@@ -75,39 +74,32 @@ public class DownBody extends BodyPartFX {
 		material.setDiffuseColor(mColor);
 		mBodyMeshView.setMaterial(material);
 		mDownBodyGroup.getChildren().add(mBodyMeshView);
-		
+
 		mStart = mUpperBody.getDownBodyPosition();
 		init();
 		this.getChildren().addAll(mDownBodyGroup);
 	}
-	
+
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
 		mDownBodyGroup.setTranslateX(mStart.x);
-		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
+		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
 			mDownBodyGroup.setTranslateY(mStart.y + 135);
 			mDownBodyGroup.setTranslateZ(-105);
-		}
-		else
-		{
+		} else {
 			mDownBodyGroup.setTranslateY(mStart.y + 135);
 			mDownBodyGroup.setTranslateZ(-105);
 		}
 	}
-	
-	private void activateConfigColor()
-	{
+
+	private void activateConfigColor() {
 		String stickmanName = mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("DownBodyColor"))
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("DownBodyColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("DownBodyColor");
 		}
 	}
-	
 
 	@Override
 	public void setShape(String s) {
@@ -119,49 +111,42 @@ public class DownBody extends BodyPartFX {
 	public void resetShape() {
 		mShape = DownBody.SHAPE.DEFAULT;
 	}
-	
+
 	@Override
 	public void calculate(int step) {
-		
+
 		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-			ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
+		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		else
-			ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
-		
+			ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+
 		rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-		
+
 		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mDownBodyGroup.getTransforms().clear();
 		mDownBodyGroup.getTransforms().addAll(rx, ry, rz, translation);
-		
-		switch(mShape)
-		{
+
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mBodyMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mBodyMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}
@@ -182,7 +167,8 @@ public class DownBody extends BodyPartFX {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
 		} else {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
-					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 3
+							: mSize.height);
 		}
 	}
 
@@ -191,7 +177,8 @@ public class DownBody extends BodyPartFX {
 			return new Point(mStart.x, mSize.height);
 		} else {
 			return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
-					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 5
+							: mSize.height);
 		}
 	}
 

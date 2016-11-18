@@ -7,6 +7,6 @@ import org.w3c.dom.Element;
  */
 public interface XMLParseable {
 
-    // Parse a parsable object from an XML document element
-    public void parseXML(final Element element) throws XMLParseError;
+	// Parse a parsable object from an XML document element
+	public void parseXML(final Element element) throws XMLParseError;
 }

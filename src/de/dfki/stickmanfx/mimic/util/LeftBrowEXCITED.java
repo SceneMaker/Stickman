@@ -5,16 +5,15 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class LeftBrowEXCITED {
-	
-	public static Polygon getANGRY(Polygon currentPolygon, float step, String sign)
-	{
+
+	public static Polygon getANGRY(Polygon currentPolygon, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		currentPolygon.getPoints().set(1, currentPolygon.getPoints().get(1) - (sig * 0.316));
 		currentPolygon.getPoints().set(3, currentPolygon.getPoints().get(3) - (sig * 0.263));
 		currentPolygon.getPoints().set(5, currentPolygon.getPoints().get(5) - (sig * 0.316));
@@ -31,8 +30,7 @@ public class LeftBrowEXCITED {
 		currentPolygon.getPoints().set(23, currentPolygon.getPoints().get(23) - (sig * 0.316));
 		currentPolygon.getPoints().set(25, currentPolygon.getPoints().get(25) - (sig * 0.263));
 		currentPolygon.getPoints().set(27, currentPolygon.getPoints().get(27) - (sig * 0.263));
-		
-		
+
 		return currentPolygon;
 	}
 

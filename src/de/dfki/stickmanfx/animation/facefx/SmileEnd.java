@@ -13,16 +13,16 @@ import javafx.application.Platform;
  */
 public class SmileEnd extends AnimationFX {
 
-    public SmileEnd(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	public SmileEnd(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        // smile end
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        playAnimationPart(mDuration);
-        pauseAnimation(10);
-    }
+	@Override
+	public void playAnimation() {
+		// smile end
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
+		playAnimationPart(mDuration);
+		pauseAnimation(10);
+	}
 }

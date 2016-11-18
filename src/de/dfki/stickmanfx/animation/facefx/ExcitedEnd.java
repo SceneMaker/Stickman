@@ -13,21 +13,21 @@ import javafx.application.Platform;
  */
 public class ExcitedEnd extends AnimationFX {
 
-    public ExcitedEnd(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	public ExcitedEnd(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        // no excited
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "EXCITEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "EXCITEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
-        playAnimationPart(mDuration);
+	@Override
+	public void playAnimation() {
+		// no excited
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "EXCITEDEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "EXCITEDEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITEDEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
+		playAnimationPart(mDuration);
 
-        pauseAnimation(10);
-    }
+		pauseAnimation(10);
+	}
 }

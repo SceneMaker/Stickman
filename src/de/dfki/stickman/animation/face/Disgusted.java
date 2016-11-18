@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  */
 public class Disgusted extends Animation {
-	
+
 	public Disgusted() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
@@ -34,7 +34,7 @@ public class Disgusted extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DISGUSTED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
-//		playAnimationPart(20);
+		// playAnimationPart(20);
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);

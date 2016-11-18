@@ -45,11 +45,12 @@ public class RightUpperArm extends BodyPart {
 	}
 
 	public Point getRightUpperArmEndPosition() {
-		return (mArm != null) ? new Point((int) mArm.getCurrentPoint().getX(), (int) mArm.getCurrentPoint().getY()) : new Point(0, 0);
+		return (mArm != null) ? new Point((int) mArm.getCurrentPoint().getX(), (int) mArm.getCurrentPoint().getY())
+				: new Point(0, 0);
 	}
 
 	@Override
-	public void calculate(int step) {  
+	public void calculate(int step) {
 		mStart = mRightShoulder.getRightShoulderEndPosition();
 		mEnd = new Point(mStart.x, mStart.y + mArmLength);
 
@@ -70,23 +71,24 @@ public class RightUpperArm extends BodyPart {
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		// draw outlines
 		g2.setColor(new Color(80, 80, 80));
-		
-		if(mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+
+		if (mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+			if (mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler == true) // Added
+																					// by
+																					// Robbie
 			{
-				int fadeFactor = mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
-			}
-			else
-			{
-				int fadeFactor = (20-mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
+				int fadeFactor = mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep * 12;
+				if (fadeFactor <= 24)
+					fadeFactor = 0;
+				g2.setColor(new Color(80, 80, 80, fadeFactor));
+			} else {
+				int fadeFactor = (20 - mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep) * 12;
+				if (fadeFactor >= 216)
+					fadeFactor = 255;
+				g2.setColor(new Color(80, 80, 80, fadeFactor));
 			}
 		}
-		
+
 		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
 		g2.draw(mArm);

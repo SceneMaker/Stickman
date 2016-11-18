@@ -31,9 +31,10 @@ public class Body extends JComponent {
 	int mDrawOffset = 20;
 	Point mStart;
 
-	Color mFemaleColor = new Color(154, 83, 198, 240);    // The color is changed in paintComponent
+	Color mFemaleColor = new Color(154, 83, 198, 240); // The color is changed
+														// in paintComponent
 	Color mMaleColor = new Color(14, 134, 122, 240);
-	public Color mColor  = mFemaleColor;
+	public Color mColor = mFemaleColor;
 
 	GeneralPath mFemaleBodyFront, mFemaleBodyLeft, mFemaleBodyRight;
 	GeneralPath mMaleBodyFront, mMaleBodyLeft, mMaleBodyRight;
@@ -54,13 +55,14 @@ public class Body extends JComponent {
 		mStart = mNeck.getBodyStartPosition();
 
 		mFemaleBodyFront = new GeneralPath();
-		mFemaleBodyFront.moveTo(mStart.x, mStart.y); 
-		
+		mFemaleBodyFront.moveTo(mStart.x, mStart.y);
+
 		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX, mSize.height + 10);
 
-		mFemaleBodyFront.curveTo(mStart.x + mHalfSizeX - 40, mSize.height - 10, mStart.x - mHalfSizeX + 40, mSize.height + 20, mStart.x - mHalfSizeX, mSize.height);
+		mFemaleBodyFront.curveTo(mStart.x + mHalfSizeX - 40, mSize.height - 10, mStart.x - mHalfSizeX + 40,
+				mSize.height + 20, mStart.x - mHalfSizeX, mSize.height);
 
-		//mFemaleBodyFront.lineTo(mStart.x - mHalfSizeX, mSize.height);
+		// mFemaleBodyFront.lineTo(mStart.x - mHalfSizeX, mSize.height);
 		mFemaleBodyFront.quadTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y);
 
 		mFemaleBodyLeft = new GeneralPath();
@@ -107,7 +109,7 @@ public class Body extends JComponent {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
 		} else {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset,
-			  (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+					(mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
 		}
 	}
 
@@ -116,7 +118,7 @@ public class Body extends JComponent {
 			return new Point(mStart.x, mSize.height);
 		} else {
 			return new Point(mStart.x - mHalfSizeX + mDrawOffset,
-			  (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+					(mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
 		}
 	}
 
@@ -176,38 +178,38 @@ public class Body extends JComponent {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+		super.paintComponent(g); // To change body of generated methods, choose
+									// Tools | Templates.
 
 		calculate();
 
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		if(mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+		if (mNeck.mHead.mStickman.setCharacterInvisible == true) {
+			if (mNeck.mHead.mStickman.fadeControler == true) // Added by Robbie
 			{
-			
-				int fadeFactor = mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
+
+				int fadeFactor = mNeck.mHead.mStickman.mMouth.mShapeAnimationStep * 12;
+				if (fadeFactor <= 24)
+					fadeFactor = 0;
 				mFemaleColor = new Color(154, 83, 198, fadeFactor);
 				mMaleColor = new Color(14, 134, 122, fadeFactor);
-			}
-			else
-			{
-				int fadeFactor = (20-mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*9;
-				if(fadeFactor >= 160) fadeFactor=240;
+			} else {
+				int fadeFactor = (20 - mNeck.mHead.mStickman.mMouth.mShapeAnimationStep) * 9;
+				if (fadeFactor >= 160)
+					fadeFactor = 240;
 				mFemaleColor = new Color(154, 83, 198, fadeFactor);
 				mMaleColor = new Color(14, 134, 122, fadeFactor);
 			}
 		}
-		
+
 		if (mNeck.mHead.mStickman.mType == Stickman.TYPE.FEMALE) {
 			g2.setColor(mFemaleColor);
 		} else {
 			g2.setColor(mMaleColor);
-		}		
-		
+		}
+
 		if (mNeck.mHead.mStickman.mOrientation == Stickman.ORIENTATION.LEFT) {
 			paintLeftOrientation(g2);
 		} else if (mNeck.mHead.mStickman.mOrientation == Stickman.ORIENTATION.RIGHT) {

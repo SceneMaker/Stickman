@@ -42,19 +42,23 @@ public class LeftHand extends BodyPart {
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearDrawObjects();
-		
-		if(mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+
+		if (mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+			if (mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.fadeControler == true) // Added
+																										// by
+																										// Robbie
 			{
-				int fadeFactor = mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
+				int fadeFactor = mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep
+						* 12;
+				if (fadeFactor <= 24)
+					fadeFactor = 0;
 				mColor = new Color(80, 80, 80, fadeFactor);
-			}
-			else
-			{
-				int fadeFactor = (20-mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
+			} else {
+				int fadeFactor = (20
+						- mLeftForeArm.mUpperArm.mLeftShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)
+						* 12;
+				if (fadeFactor >= 216)
+					fadeFactor = 255;
 				mColor = new Color(80, 80, 80, fadeFactor);
 			}
 		}

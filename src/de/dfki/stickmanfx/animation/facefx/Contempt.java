@@ -16,35 +16,34 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Contempt extends AnimationFX 
-{
+public class Contempt extends AnimationFX {
 	public Contempt() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
-    public Contempt(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
 
-    @Override
-    public void playAnimation() {
-        // Contempt
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
-        playAnimationPart(mDuration);
+	public Contempt(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-        pauseAnimation(1200);
+	@Override
+	public void playAnimation() {
+		// Contempt
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
+		playAnimationPart(mDuration);
 
-        // no Contempt
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
-        playAnimationPart(mDuration);
-        
-        if(StickmanStageController.currentRadioButton != null)
-        	StickmanStageController.currentRadioButton.setSelected(false);
-    }
+		pauseAnimation(1200);
+
+		// no Contempt
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
+		playAnimationPart(mDuration);
+
+		if (StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
+	}
 }

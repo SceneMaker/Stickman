@@ -10,7 +10,6 @@ import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.AnimationContent;
 
-
 import java.util.ArrayList;
 
 /**

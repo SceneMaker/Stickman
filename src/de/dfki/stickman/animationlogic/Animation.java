@@ -25,7 +25,10 @@ import org.w3c.dom.Element;
  */
 public class Animation extends Thread implements XMLParseable, XMLWriteable {
 
-	public enum ANIMTYPE { EmotionExpression, Gesture}	
+	public enum ANIMTYPE {
+		EmotionExpression, Gesture
+	}
+
 	public String mName = "";
 	public ArrayList<AnimationContent> mAnimationPart = new ArrayList<>();
 	public Semaphore mAnimationPartStart = new Semaphore(0);
@@ -38,13 +41,12 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	public int mDuration = -1;
 	public String mID;
 	public Object mParameter = "";
-	
-	public ANIMTYPE mAnimType = null;
-	
-	public Animation() {
-		
-	}
 
+	public ANIMTYPE mAnimType = null;
+
+	public Animation() {
+
+	}
 
 	public Animation(Stickman sm, int duration, boolean block) {
 		mName = getClass().getSimpleName();
@@ -83,20 +85,23 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	}
 
 	public void waitForClearance() {
-		//mStickman.mLogger.info("Introducing " + this.toString() + " to Animationcheduler");
+		// mStickman.mLogger.info("Introducing " + this.toString() + " to
+		// Animationcheduler");
 		mStickman.mAnimationScheduler.introduce(this);
-		//mStickman.mLogger.info("\tdone.");
+		// mStickman.mLogger.info("\tdone.");
 
-		// block this animation for animation - AnimationSheduler will unblock 
+		// block this animation for animation - AnimationSheduler will unblock
 		try {
-			//mStickman.mLogger.info("Block - give Animation Scheduler control when to start the animation" + this.toString());
+			// mStickman.mLogger.info("Block - give Animation Scheduler control
+			// when to start the animation" + this.toString());
 			mAnimationStart.acquire(1);
 		} catch (InterruptedException ex) {
 			mStickman.mLogger.severe(ex.getMessage());
 		}
 
-		// tell Stickman this animation has been scheduled and a next one can come
-		//mStickman.mLogger.info("Releasing launch for next animations");
+		// tell Stickman this animation has been scheduled and a next one can
+		// come
+		// mStickman.mLogger.info("Releasing launch for next animations");
 		mStickman.mAnimationLaunchControl.release();
 	}
 
@@ -137,10 +142,12 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	}
 
 	public void finalizeAnimation() {
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " with id " + mID + " has ended - notify Listeners!");
+		// mStickman.mLogger.info(mStickman.mName + "'s Animation " +
+		// getClass().getSimpleName() + " with id " + mID + " has ended - notify
+		// Listeners!");
 		// unblock AnimationScheduler if animation is a blocking animation
 		if (mBlocking) {
-			//mStickman.mLogger.info("unblocking AnimationScheduler");
+			// mStickman.mLogger.info("unblocking AnimationScheduler");
 			mStickman.mAnimationScheduler.proceed(this);
 		} else {
 			mStickman.mAnimationScheduler.removeAnimation(this);
@@ -157,7 +164,8 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 
 	@Override
 	public void writeXML(IOSIndentWriter out) throws XMLWriteError {
-		out.println("<StickmanAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
+		out.println("<StickmanAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID
+				+ "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
 		if (mParameter != null) {
 
 			if (mParameter instanceof WordTimeMarkSequence) {
@@ -201,13 +209,16 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 
 	@Override
 	public void run() {
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " wait for clearance.");
+		// mStickman.mLogger.info(mStickman.mName + "'s Animation " +
+		// getClass().getSimpleName() + " wait for clearance.");
 		waitForClearance();
 
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " play.");
+		// mStickman.mLogger.info(mStickman.mName + "'s Animation " +
+		// getClass().getSimpleName() + " play.");
 		play();
 
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " finalize.");
+		// mStickman.mLogger.info(mStickman.mName + "'s Animation " +
+		// getClass().getSimpleName() + " finalize.");
 		finalizeAnimation();
 	}
 

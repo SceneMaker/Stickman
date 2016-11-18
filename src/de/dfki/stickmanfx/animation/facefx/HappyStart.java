@@ -13,19 +13,19 @@ import javafx.application.Platform;
  */
 public class HappyStart extends AnimationFX {
 
-    public HappyStart(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	public HappyStart(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        // happy start
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "HAPPY"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "HAPPY"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "HAPPY"));
-        playAnimationPart(mDuration);
+	@Override
+	public void playAnimation() {
+		// happy start
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "HAPPY"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "HAPPY"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "HAPPY"));
+		playAnimationPart(mDuration);
 
-        pauseAnimation(10);
-    }
+		pauseAnimation(10);
+	}
 }

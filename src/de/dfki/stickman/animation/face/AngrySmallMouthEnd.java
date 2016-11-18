@@ -31,9 +31,9 @@ public class AngrySmallMouthEnd extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRYEND"));
-//		playAnimationPart(20);
+		// playAnimationPart(20);
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(10);
 	}
 }

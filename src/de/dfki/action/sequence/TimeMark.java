@@ -34,7 +34,7 @@ public class TimeMark extends Entry implements XMLParseable, XMLWriteable {
 		out.println(mContent);
 		out.pop().println("</TimeMarkEntry>");
 	}
-	
+
 	@Override
 	public final void parseXML(final Element element) throws XMLParseError {
 		mContent = element.getTextContent().trim();

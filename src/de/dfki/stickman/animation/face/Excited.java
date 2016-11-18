@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  */
 public class Excited extends Animation {
-	
+
 	public Excited() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
@@ -28,11 +28,11 @@ public class Excited extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EXCITED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITED"));		
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITED"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
-		
+
 		// no excited
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EXCITEDEND"));
@@ -40,7 +40,7 @@ public class Excited extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITEDEND"));
-		
+
 		playAnimationPart(20);
 	}
 }

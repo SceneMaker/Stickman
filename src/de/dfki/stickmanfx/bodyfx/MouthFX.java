@@ -24,6 +24,7 @@ import de.dfki.stickmanfx.mimic.util.MouthTWO;
 import de.dfki.util.XMLParser;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+
 /**
  *
  * @author Beka Aptsiauri
@@ -36,10 +37,10 @@ public class MouthFX extends BodyPartFX {
 	};
 
 	HeadFX mHeadFX;
-	
+
 	Polygon currentDownLipPolygon;
 	Polygon currentUpperLipPolygon;
-	
+
 	public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 
 	public MouthFX(HeadFX head) {
@@ -48,39 +49,36 @@ public class MouthFX extends BodyPartFX {
 
 		mColor = Color.rgb(230, 174, 161, 1.0);
 		activateConfigColor();
-		
+
 		currentUpperLipPolygon = new Polygon();
 		currentDownLipPolygon = new Polygon();
 		mStart = mHeadFX.getMouthPostion();
-		
+
 		init();
-		
+
 		mHeadFX.mHead.getChildren().addAll(currentUpperLipPolygon, currentDownLipPolygon);
 	}
 
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
-		currentUpperLipPolygon.setTranslateX(mStart.x-15);
-		currentUpperLipPolygon.setTranslateY(mStart.y+95);
+		currentUpperLipPolygon.setTranslateX(mStart.x - 15);
+		currentUpperLipPolygon.setTranslateY(mStart.y + 95);
 		currentUpperLipPolygon.setTranslateZ(-17);
-		
-		currentDownLipPolygon.setTranslateX(mStart.x-15);
-		currentDownLipPolygon.setTranslateY(mStart.y+94);
+
+		currentDownLipPolygon.setTranslateX(mStart.x - 15);
+		currentDownLipPolygon.setTranslateY(mStart.y + 94);
 		currentDownLipPolygon.setTranslateZ(-17);
 	}
-	
-	private void activateConfigColor()
-   	{
-   		String stickmanName = mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("LipsColor"))
+
+	private void activateConfigColor() {
+		String stickmanName = mHeadFX.mStickmanFX.mName;
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("LipsColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("LipsColor");
 		}
-   	}
-	
+	}
+
 	@Override
 	public void setShape(String s) {
 		MouthFX.SHAPE shape = MouthFX.SHAPE.valueOf(s);
@@ -94,9 +92,9 @@ public class MouthFX extends BodyPartFX {
 
 	@Override
 	public void calculate(int step) {
-		
+
 		boolean isFadeIn = false;
-		
+
 		switch (mShape) {
 		case DEFAULT:
 			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
@@ -104,28 +102,24 @@ public class MouthFX extends BodyPartFX {
 			currentUpperLipPolygon.setFill(mColor);
 			currentDownLipPolygon.setFill(mColor);
 			break;
-			
+
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				currentUpperLipPolygon.setVisible(false);
-		    	currentDownLipPolygon.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
+				currentDownLipPolygon.setVisible(false);
+			} else if (mColor.getOpacity() != 0.0)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 			break;
-			
+
 		case FADEOUT:
 			currentUpperLipPolygon.setVisible(true);
-	    	currentDownLipPolygon.setVisible(true);
-	    	
-			if(step == 2)
-			{
+			currentDownLipPolygon.setVisible(true);
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				isFadeIn = true;
-			}
-			else if(mColor.getOpacity() != 1.0)
+			} else if (mColor.getOpacity() != 1.0)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 			break;
 
@@ -133,16 +127,13 @@ public class MouthFX extends BodyPartFX {
 			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
-			
+
 		case SMILEEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
-				currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon,step, "minus");
+			} else {
+				currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
 			break;
@@ -152,13 +143,10 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case SADEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -169,13 +157,10 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case ANGRYEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -185,13 +170,10 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case ANGRYSMALLMOUTHEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -201,31 +183,25 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case SURPRISEDEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
 			break;
-			
+
 		case HAPPY:
 			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 
 		case HAPPYEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -236,13 +212,10 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case DISGUSTEDEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -253,13 +226,10 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case CONTEMPTEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -271,13 +241,10 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case FEAREND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -288,13 +255,10 @@ public class MouthFX extends BodyPartFX {
 			break;
 
 		case EXCITEDEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -305,13 +269,10 @@ public class MouthFX extends BodyPartFX {
 			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
 		case EMBARRASSEDEND:
-			if(step == 2)
-			{
+			if (step == 2) {
 				currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, 0);
 				currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, 0);
-			}
-			else
-			{
+			} else {
 				currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, step, "minus");
 				currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, step, "minus");
 			}
@@ -370,13 +331,13 @@ public class MouthFX extends BodyPartFX {
 
 		}
 	}
-	
+
 	@Override
-	public void update()
-	{
+	public void update() {
 		currentUpperLipPolygon.setFill(mColor);
 		currentDownLipPolygon.setFill(mColor);
 	}
+
 	@Override
 	protected void recordColor() {
 		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)

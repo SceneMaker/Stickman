@@ -23,8 +23,8 @@ public class WaveLeft extends Animation {
 
 	@Override
 	public void playAnimation() {
-//		mStickman.stopIdleBehavior();
-//		mStickman.startIdleBehavior("TouchHead");
+		// mStickman.stopIdleBehavior();
+		// mStickman.startIdleBehavior("TouchHead");
 		int rotationUnit = 10;
 
 		// 50 is the sum of all animation parts
@@ -35,7 +35,7 @@ public class WaveLeft extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 16));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 16));
-		
+
 		playAnimationPart(200);
 
 		pauseAnimation(200);
@@ -60,8 +60,8 @@ public class WaveLeft extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 16));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 16));
 		playAnimationPart(200);
-		
-//		mStickman.stopIdleBehavior();
-//		mStickman.startIdleBehavior("TouchHead");
+
+		// mStickman.stopIdleBehavior();
+		// mStickman.startIdleBehavior("TouchHead");
 	}
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  */
 public class Sad extends Animation {
-	
+
 	public Sad() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
@@ -30,8 +30,12 @@ public class Sad extends Animation {
 		// sad
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SAD"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED")); // add
+																								// by
+																								// Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add
+																									// by
+																									// Robbie
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
@@ -39,8 +43,12 @@ public class Sad extends Animation {
 		// no sad
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SADEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));  // add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND")); // add
+																									// by
+																									// Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add
+																									// by
+																									// Robbie
 		playAnimationPart(20);
 	}
 }

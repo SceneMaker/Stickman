@@ -14,10 +14,10 @@ public class StopIdle extends Animation {
 		super(sm, duration, block);
 	}
 
-
 	@Override
 	public void playAnimation() {
 		mStickman.mIdleRun = false;
-		while (mStickman.mIdleBehavior.isAlive());
+		while (mStickman.mIdleBehavior.isAlive())
+			;
 	}
 }

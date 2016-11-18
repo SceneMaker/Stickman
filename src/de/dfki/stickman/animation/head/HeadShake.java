@@ -15,17 +15,14 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class HeadShake extends Animation
-{
+public class HeadShake extends Animation {
 
-	public HeadShake(Stickman sm, int duration, boolean block)
-	{
+	public HeadShake(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
-	public void playAnimation()
-	{
+	public void playAnimation() {
 		int rotationUnit = 10;
 
 		// Its action is strange for the first time!
@@ -40,8 +37,7 @@ public class HeadShake extends Animation
 		pauseAnimation(100);
 
 		// shaking head 5 times from Robbie
-		for (int i = 0; i < 3; i++)
-		{
+		for (int i = 0; i < 3; i++) {
 			mAnimationPart = new ArrayList<>();
 			mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", rotationUnit * 2));
 			mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", rotationUnit * 2));

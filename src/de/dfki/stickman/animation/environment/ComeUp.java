@@ -18,63 +18,63 @@ import java.util.ArrayList;
  */
 public class ComeUp extends Animation {
 
-    private Stickman mStickman;
+	private Stickman mStickman;
 
-    public ComeUp(Stickman sm, int duration, boolean block) {
-        super(sm, duration, block);
-        mStickman = sm;
-    }
+	public ComeUp(Stickman sm, int duration, boolean block) {
+		super(sm, duration, block);
+		mStickman = sm;
+	}
 
-    // WaveLeft
-    @Override
-    public void playAnimation() {
-        int rotationUnit = 5;
-        int speed = 4;
+	// WaveLeft
+	@Override
+	public void playAnimation() {
+		int rotationUnit = 5;
+		int speed = 4;
 
-        mStickman.leaveSpeed = 480;
+		mStickman.leaveSpeed = 480;
 
-        // bring upper arm and fore arm in position
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
-        playAnimationPart(100);
+		// bring upper arm and fore arm in position
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+		playAnimationPart(100);
 
-        for (int i = 0; i < 8; i++) {
-            // wave right
-            for (int j = 0; j < 8; j++) {
-                mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+		for (int i = 0; i < 8; i++) {
+			// wave right
+			for (int j = 0; j < 8; j++) {
+				mAnimationPart = new ArrayList<>();
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
 
-                playComeSpeed(speed);
-                playAnimationPart(20);
-            }
+				playComeSpeed(speed);
+				playAnimationPart(20);
+			}
 
-            // wave left
-            for (int j = 0; j < 8; j++) {
-                mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+			// wave left
+			for (int j = 0; j < 8; j++) {
+				mAnimationPart = new ArrayList<>();
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
 
-                playComeSpeed(speed);
-                playAnimationPart(20);
-            }
-        }
+				playComeSpeed(speed);
+				playAnimationPart(20);
+			}
+		}
 
-        // go back in the default position
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
-        playAnimationPart(200);
-    }
+		// go back in the default position
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+		playAnimationPart(200);
+	}
 
-    private void playComeSpeed(int Speed) {
-        if (mStickman.leaveSpeed > 0) {
-            mStickman.leaveSpeed = mStickman.leaveSpeed - Speed;
-        } else {
-            mStickman.leaveSpeed = 0;
-        }
-    }
+	private void playComeSpeed(int Speed) {
+		if (mStickman.leaveSpeed > 0) {
+			mStickman.leaveSpeed = mStickman.leaveSpeed - Speed;
+		} else {
+			mStickman.leaveSpeed = 0;
+		}
+	}
 }

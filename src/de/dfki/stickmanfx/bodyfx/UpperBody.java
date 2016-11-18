@@ -20,6 +20,7 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
+
 /**
  *
  * @author Beka Aptsiauri
@@ -30,9 +31,9 @@ public class UpperBody extends BodyPartFX {
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public UpperBody.SHAPE mShape = UpperBody.SHAPE.DEFAULT;
-	
+
 	NeckFX mNeckFX;
 	Rotate rx;
 	Rotate ry;
@@ -63,7 +64,7 @@ public class UpperBody extends BodyPartFX {
 			url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody2.dae");
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
-		
+
 		activateConfigColor();
 
 		imorter.read(url);
@@ -74,15 +75,14 @@ public class UpperBody extends BodyPartFX {
 		material.setDiffuseColor(mColor);
 		mBodyMeshView.setMaterial(material);
 		mUpperBodyGroup.getChildren().add(mBodyMeshView);
-		
+
 		mStart = mNeckFX.getBodyStartPosition();
 		init();
 		this.getChildren().addAll(mUpperBodyGroup);
 	}
-	
+
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
 		mUpperBodyGroup.setTranslateX(mStart.x);
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
@@ -94,20 +94,18 @@ public class UpperBody extends BodyPartFX {
 		}
 	}
 
-	private void activateConfigColor()
-	{
+	private void activateConfigColor() {
 		String stickmanName = mNeckFX.mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)			
-		{
-				if(XMLParser.getColorMap(stickmanName).containsKey("UpperBodyColor"))
-					this.mColor = XMLParser.getColorMap(stickmanName).get("UpperBodyColor");
-			}
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("UpperBodyColor"))
+				this.mColor = XMLParser.getColorMap(stickmanName).get("UpperBodyColor");
+		}
 	}
-	
-	public Point getUpperBodyPosition()
-	{
-		return new Point (mStart.x, mStart.y + 135);
+
+	public Point getUpperBodyPosition() {
+		return new Point(mStart.x, mStart.y + 135);
 	}
+
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -118,46 +116,39 @@ public class UpperBody extends BodyPartFX {
 	public void resetShape() {
 		mShape = UpperBody.SHAPE.DEFAULT;
 	}
-	
+
 	@Override
 	public void calculate(int step) {
 
-		//Setze PivotElement entsprechend der Y-Translation
+		// Setze PivotElement entsprechend der Y-Translation
 		rx = new Rotate(mXRotation, 0, mYTranslation, 0, Rotate.X_AXIS);
 		ry = new Rotate(mYRotation, 0, mYTranslation, 0, Rotate.Y_AXIS);
-		rz = new Rotate(mZRotation, 0, mYTranslation, 0,Rotate.Z_AXIS);
-		
+		rz = new Rotate(mZRotation, 0, mYTranslation, 0, Rotate.Z_AXIS);
+
 		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mUpperBodyGroup.getTransforms().clear();
 		mUpperBodyGroup.getTransforms().addAll(rx, ry, rz, translation);
-		
-		switch(mShape)
-		{
+
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mBodyMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mBodyMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

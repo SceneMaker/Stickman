@@ -17,15 +17,13 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  * @author Beka Aptsiauri
  *
  */
-public class Blink extends AnimationFX 
-{
+public class Blink extends AnimationFX {
 
 	public Blink() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
-	public Blink(StickmanFX sm, int duration, boolean block) 
-        {
+
+	public Blink(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
@@ -35,16 +33,16 @@ public class Blink extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
 		playAnimationPart(20);
-		
-		 pauseAnimation(300);
 
-		 //blink up
+		pauseAnimation(300);
+
+		// blink up
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINKEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
 		playAnimationPart(20);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

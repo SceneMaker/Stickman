@@ -18,15 +18,15 @@ import javafx.application.Platform;
  */
 public class Mouth_NINE extends AnimationFX {
 
-    public Mouth_NINE(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	public Mouth_NINE(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        // smile
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "NINE"));
-        playAnimationPart(20);
-    }
+	@Override
+	public void playAnimation() {
+		// smile
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "NINE"));
+		playAnimationPart(20);
+	}
 }

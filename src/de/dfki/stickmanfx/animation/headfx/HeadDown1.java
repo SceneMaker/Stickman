@@ -17,15 +17,13 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  * @author Beka Aptsiauri
  *
  */
-public class HeadDown1 extends AnimationFX 
-{
+public class HeadDown1 extends AnimationFX {
 
 	public HeadDown1() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
-	public HeadDown1(StickmanFX sm, int duration, boolean block) 
-        {
+
+	public HeadDown1(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
@@ -36,18 +34,17 @@ public class HeadDown1 extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
 		playAnimationPart(mDuration);
-		
-		
-		 pauseAnimation(1000);
 
-		 //blink up
+		pauseAnimation(1000);
+
+		// blink up
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -15));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
 		playAnimationPart(mDuration);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

@@ -15,23 +15,18 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-////////////nod 3 time by Guo
-public class Nod2 extends Animation
-{
+//////////// nod 3 time by Guo
+public class Nod2 extends Animation {
 
-	public Nod2(Stickman sm, int duration, boolean block)
-	{
+	public Nod2(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
-	public void playAnimation()
-	{
+	public void playAnimation() {
 		int translationUnit = 3;
 
-
-		for (int i = 0; i < 3; i++)
-		{
+		for (int i = 0; i < 3; i++) {
 			// head down
 			mAnimationPart = new ArrayList<>();
 			mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "translate", translationUnit));
@@ -42,7 +37,7 @@ public class Nod2 extends Animation
 			mAnimationPart.add(new AnimationContent(mStickman.mMouth, "translate", translationUnit));
 			playAnimationPart(200);
 			pauseAnimation(200);
-			
+
 			// head up
 			mAnimationPart = new ArrayList<>();
 			mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "translate", -translationUnit));

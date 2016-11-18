@@ -17,35 +17,33 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  * @author Beka
  *
  */
-public class HeadRight extends AnimationFX 
-{
+public class HeadRight extends AnimationFX {
 	public HeadRight() {
 		mAnimType = ANIMTYPE.ON;
 	}
 
-    public HeadRight(StickmanFX sm, int duration, boolean block) 
-    {
-        super(sm, duration, block);
-    }
+	public HeadRight(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-    	
-    	mAnimationPartFX = new ArrayList<>();
+	@Override
+	public void playAnimation() {
+
+		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 30));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKRIGHT"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKRIGHT"));
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(1000);
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -30));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKRIGHTEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKRIGHTEND"));
 		playAnimationPart(mDuration);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
-    }
+	}
 }

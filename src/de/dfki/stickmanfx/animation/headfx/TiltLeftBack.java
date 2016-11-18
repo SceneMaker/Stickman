@@ -23,7 +23,7 @@ public class TiltLeftBack extends AnimationFX {
 	public TiltLeftBack() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public TiltLeftBack(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

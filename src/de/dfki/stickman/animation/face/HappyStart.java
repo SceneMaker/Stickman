@@ -22,7 +22,7 @@ public class HappyStart extends Animation {
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));		
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(10);

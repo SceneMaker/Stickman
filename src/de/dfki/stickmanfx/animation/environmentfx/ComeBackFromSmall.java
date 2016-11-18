@@ -20,7 +20,7 @@ import javafx.application.Platform;
  *
  */
 public class ComeBackFromSmall extends AnimationFX {
-	
+
 	public ComeBackFromSmall() {
 		mAnimType = ANIMTYPE.ON;
 	}
@@ -32,11 +32,11 @@ public class ComeBackFromSmall extends AnimationFX {
 
 	@Override
 	public void playAnimation() {
-		
+
 		int rotationUnit = 5;
-		
+
 		float recordOriginScale = mStickmanFX.mScale;
-		
+
 		for (int j = 0; j < 19; j++) {
 			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
 		}
@@ -46,7 +46,7 @@ public class ComeBackFromSmall extends AnimationFX {
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
 		playAnimationPart(20);
-		
+
 		pauseAnimation(20);
 
 		for (int i = 0; i < 2; i++) {

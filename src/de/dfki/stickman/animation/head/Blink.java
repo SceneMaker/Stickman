@@ -27,7 +27,7 @@ public class Blink extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "BLINK"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "BLINK"));
 		playAnimationPart(20);
-		
+
 		pauseAnimation(300);
 
 		// blink up

@@ -19,13 +19,13 @@ import javafx.scene.transform.Rotate;
  *
  */
 public class FemaleHairFX extends BodyPartFX {
-	
+
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public FemaleHairFX.SHAPE mShape = FemaleHairFX.SHAPE.DEFAULT;
-	
+
 	public Dimension mSize = new Dimension(120, 100);
 	public StickmanFX mStickmanFX;
 
@@ -50,7 +50,7 @@ public class FemaleHairFX extends BodyPartFX {
 		mStickmanFX = sm;
 		mColor = Color.rgb(240, 212, 0, 1);
 		activateConfigColor();
-		
+
 		if (mStickmanFX.mHeadFX != null)
 			mYRotation = mStickmanFX.mHeadFX.mYRotation;
 
@@ -65,35 +65,31 @@ public class FemaleHairFX extends BodyPartFX {
 		femaleHairMeshView.setMaterial(material);
 		femaleHairMeshView.setRotationAxis(Rotate.X_AXIS);
 		femaleHairMeshView.setRotate(-90);
-		
-		if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+
+		if (mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
 			mStickmanFX.mHeadFX.mHead.getChildren().add(femaleHairMeshView);
 
 		init();
 
 		calculate(0);
 	}
-	
+
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
-		femaleHairMeshView.setTranslateX(mHalfWidth-60);
-		femaleHairMeshView.setTranslateY(mHalfHeight-52);
+		femaleHairMeshView.setTranslateX(mHalfWidth - 60);
+		femaleHairMeshView.setTranslateY(mHalfHeight - 52);
 		femaleHairMeshView.setTranslateZ(mZTranslate);
 	}
-	
+
 	/*
-	 * es wird config-file geparst.
-	 * Wenn Color-Block(in config-file) nicht leer => aendere mcolor
+	 * es wird config-file geparst. Wenn Color-Block(in config-file) nicht leer
+	 * => aendere mcolor
 	 */
-	private void activateConfigColor()
-	{
+	private void activateConfigColor() {
 		String stickmanName = mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("HairColor"))
-			{
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("HairColor")) {
 				this.mColor = XMLParser.getColorMap(stickmanName).get("HairColor");
 			}
 		}
@@ -109,7 +105,7 @@ public class FemaleHairFX extends BodyPartFX {
 	public void resetShape() {
 		mShape = FemaleHairFX.SHAPE.DEFAULT;
 	}
-	
+
 	@Override
 	public void calculate(int step) {
 
@@ -120,32 +116,25 @@ public class FemaleHairFX extends BodyPartFX {
 		femaleHairMeshView.getTransforms().clear();
 		femaleHairMeshView.getTransforms().addAll(rx, ry, rz);
 
-		switch(mShape)
-		{
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				femaleHairMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			femaleHairMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

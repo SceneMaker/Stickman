@@ -18,12 +18,11 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class MaleHairFX extends BodyPartFX 
-{
+public class MaleHairFX extends BodyPartFX {
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public Dimension mSize = new Dimension(120, 100);
 	public StickmanFX mStickmanFX;
 
@@ -40,9 +39,8 @@ public class MaleHairFX extends BodyPartFX
 	PhongMaterial material;
 
 	public MaleHairFX.SHAPE mShape = MaleHairFX.SHAPE.DEFAULT;
-	
-	public MaleHairFX(StickmanFX sm) 
-	{
+
+	public MaleHairFX(StickmanFX sm) {
 		mStickmanFX = sm;
 		mColor = Color.rgb(97, 58, 0, 1);
 		activateConfigColor();
@@ -58,43 +56,39 @@ public class MaleHairFX extends BodyPartFX
 		maleHairMeshView.setId("MaleHair");
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
-		maleHairMeshView.setMaterial(material);	
+		maleHairMeshView.setMaterial(material);
 		maleHairMeshView.setRotationAxis(Rotate.X_AXIS);
 		maleHairMeshView.setRotate(-90);
-		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+
+		if (mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mStickmanFX.mHeadFX.mHead.getChildren().add(maleHairMeshView);
-		
+
 		init();
 
 		calculate(0);
 	}
-	
+
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
-		maleHairMeshView.setTranslateX(mHalfWidth-60);
-		maleHairMeshView.setTranslateY(mHalfHeight-52);
+		maleHairMeshView.setTranslateX(mHalfWidth - 60);
+		maleHairMeshView.setTranslateY(mHalfHeight - 52);
 		maleHairMeshView.setTranslateZ(mZTranslate);
 	}
-	
+
 	/*
-	 * es wird config-file geparst.
-	 * Wenn Color-Block(in config-file) nicht leer => aendere mcolor
+	 * es wird config-file geparst. Wenn Color-Block(in config-file) nicht leer
+	 * => aendere mcolor
 	 */
-	private void activateConfigColor()
-	{
+	private void activateConfigColor() {
 		String stickmanName = mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("HairColor"))
-			{
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("HairColor")) {
 				this.mColor = XMLParser.getColorMap(stickmanName).get("HairColor");
 			}
 		}
 	}
-	
+
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -107,41 +101,33 @@ public class MaleHairFX extends BodyPartFX
 	}
 
 	@Override
-	public void calculate(int step) 
-	{
+	public void calculate(int step) {
 		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
 		maleHairMeshView.getTransforms().clear();
 		maleHairMeshView.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
+
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				maleHairMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			maleHairMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

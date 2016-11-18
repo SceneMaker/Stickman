@@ -5,31 +5,27 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class LeftBrowEMBARRASSED {
-	
-	public static Polygon getEMBARRASSED(Polygon currentPolygon, float step, String sign, boolean isMALE)
-	{
+
+	public static Polygon getEMBARRASSED(Polygon currentPolygon, float step, String sign, boolean isMALE) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		currentPolygon.getPoints().set(1, currentPolygon.getPoints().get(1) - (sig * 0.317));
 		currentPolygon.getPoints().set(3, currentPolygon.getPoints().get(3) - (sig * 0.210));
 		currentPolygon.getPoints().set(7, currentPolygon.getPoints().get(7) + (sig * 0.105));
 		currentPolygon.getPoints().set(9, currentPolygon.getPoints().get(9) + (sig * 0.237));
 		currentPolygon.getPoints().set(11, currentPolygon.getPoints().get(11) + (sig * 0.263));
-		
-		if(!isMALE)
-		{
+
+		if (!isMALE) {
 			currentPolygon.getPoints().set(13, currentPolygon.getPoints().get(13) + (sig * 0.105));
 			currentPolygon.getPoints().set(19, currentPolygon.getPoints().get(19) + (sig * 0.105));
 			currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.158));
 			currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.158));
-		}
-		else
-		{
+		} else {
 			currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.263));
 			currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.263));
 		}
@@ -38,10 +34,7 @@ public class LeftBrowEMBARRASSED {
 		currentPolygon.getPoints().set(23, currentPolygon.getPoints().get(23) + (sig * 0.184));
 		currentPolygon.getPoints().set(25, currentPolygon.getPoints().get(25) + (sig * 0.105));
 		currentPolygon.getPoints().set(27, currentPolygon.getPoints().get(27) - (sig * 0.052));
-		
-		
-		
-		
+
 		return currentPolygon;
 	}
 

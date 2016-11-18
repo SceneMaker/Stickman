@@ -24,7 +24,7 @@ public class DisappearToSmall extends AnimationFX {
 	public DisappearToSmall() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public DisappearToSmall(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;
@@ -85,7 +85,7 @@ public class DisappearToSmall extends AnimationFX {
 		// show stars
 		mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX);
 		mStickmanFX.mScale = recordOriginScale;
-		
+
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

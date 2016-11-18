@@ -16,22 +16,20 @@ import javafx.application.Platform;
  * @author Beka Aptsiauri
  *
  */
-public class ContemptStart extends AnimationFX 
-{
-    public ContemptStart(StickmanFX sm, int duration, boolean block) 
-    {
-        super(sm, duration, block);
-    }
+public class ContemptStart extends AnimationFX {
+	public ContemptStart(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        // Contempt start
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
-       playAnimationPart(mDuration);
+	@Override
+	public void playAnimation() {
+		// Contempt start
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
+		playAnimationPart(mDuration);
 
-        pauseAnimation(10);
-    }
+		pauseAnimation(10);
+	}
 }

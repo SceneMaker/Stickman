@@ -6,7 +6,6 @@ package de.dfki.stickman.animation.face;
  * and open the template in the editor.
  */
 
-
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.AnimationContent;

@@ -1,8 +1,8 @@
-	/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package de.dfki.stickmanfx.animation.environmentfx;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Speaking extends AnimationFX {
 	public Speaking() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public Speaking(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
@@ -35,16 +35,24 @@ public class Speaking extends AnimationFX {
 			mStickmanFX.mSpeechBubbleFX.mText = (String) mParameter;
 		}
 		// nur zum Testen. Im Normalfall diese Zeile loeschen
-		mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter Stickman " + mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
-		
+		mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter Stickman "
+				+ mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
+
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
+		mAnimationPartFX
+				.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
 		playAnimationPart(mDuration);
 
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+		mAnimationPartFX
+				.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
 		playAnimationPart(20);
 
-		if(StickmanStageController.currentRadioButton != null) // nur zum Testen. Im Normalfall diese 2 Zeilen loeschen
-			StickmanStageController.currentRadioButton.setSelected(false); 
+		if (StickmanStageController.currentRadioButton != null) // nur zum
+																// Testen. Im
+																// Normalfall
+																// diese 2
+																// Zeilen
+																// loeschen
+			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

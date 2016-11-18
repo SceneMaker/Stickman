@@ -21,26 +21,26 @@ public class LookDown extends AnimationFX {
 	public LookDown() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public LookDown(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
 		playAnimationPart(100);
 
 		pauseAnimation(100);
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
 		playAnimationPart(100);
-		
+
 		StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

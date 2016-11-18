@@ -5,16 +5,15 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class MouthCONTEMPT {
-	
-	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
-	{
+
+	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float xMovement1;
 		float yMovement1;
@@ -44,7 +43,7 @@ public class MouthCONTEMPT {
 		float yMovement17;
 		float xMovement19;
 		float yMovement19;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0158f;
 		xMovement1 = sig * (20 - step) * 0.0105f;
 		yMovement1 = sig * (20 - step) * 0.0052f;
@@ -74,7 +73,7 @@ public class MouthCONTEMPT {
 		yMovement17 = sig * (20 - step) * 0.0052f;
 		xMovement19 = sig * (20 - step) * 0.0105f;
 		yMovement19 = sig * (20 - step) * 0.0052f;
-				
+
 		currentUpperLipMesh.getPoints().set(0, currentUpperLipMesh.getPoints().get(0) - xMovement0);
 		currentUpperLipMesh.getPoints().set(2, currentUpperLipMesh.getPoints().get(2) - xMovement1);
 		currentUpperLipMesh.getPoints().set(3, currentUpperLipMesh.getPoints().get(3) + yMovement1);
@@ -104,15 +103,14 @@ public class MouthCONTEMPT {
 		currentUpperLipMesh.getPoints().set(35, currentUpperLipMesh.getPoints().get(35) - yMovement17);
 		currentUpperLipMesh.getPoints().set(38, currentUpperLipMesh.getPoints().get(38) - xMovement19);
 		currentUpperLipMesh.getPoints().set(39, currentUpperLipMesh.getPoints().get(39) + yMovement19);
-		
+
 		return currentUpperLipMesh;
 	}
-	
-	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
-	{
+
+	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
@@ -131,7 +129,7 @@ public class MouthCONTEMPT {
 		float yMovement11;
 		float xMovement10;
 		float yMovement10;
-		
+
 		float yMovement1;
 		float yMovement2;
 		float yMovement3;
@@ -141,7 +139,7 @@ public class MouthCONTEMPT {
 		float yMovement7;
 		float yMovement8;
 		float yMovement9;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0158f;
 		xMovement19 = sig * (20 - step) * 0.0105f;
 		xMovement1 = sig * (20 - step) * 0.0105f;
@@ -166,7 +164,7 @@ public class MouthCONTEMPT {
 		yMovement7 = sig * (20 - step) * 0.0263f;
 		yMovement8 = sig * (20 - step) * 0.0263f;
 		yMovement9 = sig * (20 - step) * 0.0210f;
-		
+
 		currentDownLipMesh.getPoints().set(0, currentDownLipMesh.getPoints().get(0) - xMovement0);
 		currentDownLipMesh.getPoints().set(38, currentDownLipMesh.getPoints().get(38) - xMovement19);
 		currentDownLipMesh.getPoints().set(2, currentDownLipMesh.getPoints().get(2) - xMovement1);
@@ -182,7 +180,7 @@ public class MouthCONTEMPT {
 		currentDownLipMesh.getPoints().set(23, currentDownLipMesh.getPoints().get(23) - yMovement11);
 		currentDownLipMesh.getPoints().set(20, currentDownLipMesh.getPoints().get(20) + xMovement10);
 		currentDownLipMesh.getPoints().set(21, currentDownLipMesh.getPoints().get(21) - yMovement10);
-		
+
 		currentDownLipMesh.getPoints().set(3, currentDownLipMesh.getPoints().get(3) - yMovement1);
 		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) - yMovement2);
 		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) - yMovement3);

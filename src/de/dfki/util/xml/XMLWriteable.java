@@ -7,6 +7,6 @@ import de.dfki.util.ios.IOSIndentWriter;
  */
 public interface XMLWriteable {
 
-    // Write a writeable object in XML to an indent writer 
-    public void writeXML(final IOSIndentWriter writer) throws XMLWriteError;
+	// Write a writeable object in XML to an indent writer
+	public void writeXML(final IOSIndentWriter writer) throws XMLWriteError;
 }

@@ -20,19 +20,19 @@ import javafx.application.Platform;
  */
 public class LovedEnd extends AnimationFX {
 
-    public LovedEnd(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	public LovedEnd(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        // no loved
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOVEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOVEDEND"));
-        playAnimationPart(mDuration);
+	@Override
+	public void playAnimation() {
+		// no loved
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOVEDEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOVEDEND"));
+		playAnimationPart(mDuration);
 
-        pauseAnimation(10);
-    }
+		pauseAnimation(10);
+	}
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  */
 public class Speaking extends EventAnimation {
-	
+
 	public Speaking() {
 		super();
 	}
@@ -34,7 +34,8 @@ public class Speaking extends EventAnimation {
 		}
 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
+		mAnimationPart
+				.add(new AnimationContent(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
 
 		playEventAnimationPart();
 

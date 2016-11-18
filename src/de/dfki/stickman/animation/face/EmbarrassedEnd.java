@@ -23,7 +23,7 @@ public class EmbarrassedEnd extends Animation {
 
 	@Override
 	public void playAnimation() {
-		
+
 		// embarrassed end
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EMBARRASSEDEND"));
@@ -33,7 +33,7 @@ public class EmbarrassedEnd extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EMBARRASSEDEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EMBARRASSEDEND"));
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(10);
 	}
 }

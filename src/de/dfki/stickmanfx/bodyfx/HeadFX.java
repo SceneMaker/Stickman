@@ -23,11 +23,11 @@ import javafx.scene.transform.Translate;
  *
  */
 public class HeadFX extends BodyPartFX {
-	
+
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public Dimension mSize = new Dimension(120, 100);
 	public StickmanFX mStickmanFX;
 	TriangleMesh mHeadTriangleMesh;
@@ -54,19 +54,19 @@ public class HeadFX extends BodyPartFX {
 	int mHeadHeight = 30;
 
 	public HeadFX.SHAPE mShape = HeadFX.SHAPE.DEFAULT;
-	
+
 	public HeadFX(StickmanFX sm) {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 		mColor = Color.rgb(242, 227, 217, 1);
 		activateConfigColor();
-		
+
 		url = getClass().getClassLoader().getResource("BodyParts/maleHead.stl");
 		im = new StlMeshImporter();
 		im.read(url);
 		mHead = new Group();
 		mHeadTriangleMesh = im.getImport();
-		
+
 		mHeadMeshView = new MeshView(mHeadTriangleMesh);
 		mHeadMeshView.setId("MaleHead");
 		material = new PhongMaterial();
@@ -80,24 +80,23 @@ public class HeadFX extends BodyPartFX {
 		this.getChildren().add(mHead);
 		calculate(0);
 	}
-	
-	private void activateConfigColor()
-	{
+
+	private void activateConfigColor() {
 		String stickmanName = mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("HeadColor"))
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("HeadColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("HeadColor");
 		}
 	}
+
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
-		mHead.setTranslateX(mHalfWidth+4);
+		mHead.setTranslateX(mHalfWidth + 4);
 		mHead.setTranslateY(mHalfHeight - 3);
 		mHead.setTranslateZ(mZTranslate);
 	}
+
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -126,7 +125,7 @@ public class HeadFX extends BodyPartFX {
 	}
 
 	public Point getMouthPostion() {
-		return new Point(mHalfWidth-60, mHalfHeight-110 );
+		return new Point(mHalfWidth - 60, mHalfHeight - 110);
 	}
 
 	public Point getSpeechBubbleStartPosition() {
@@ -157,38 +156,31 @@ public class HeadFX extends BodyPartFX {
 		Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
 		Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
-		
+
 		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mHead.getTransforms().clear();
 		mHead.getTransforms().addAll(rx, ry, rz, translation);
-		
-		switch(mShape)
-		{
+
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mHeadMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mHeadMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

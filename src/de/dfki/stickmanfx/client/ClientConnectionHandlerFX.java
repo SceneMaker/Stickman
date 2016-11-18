@@ -46,7 +46,7 @@ public class ClientConnectionHandlerFX extends Thread {
 	}
 
 	public void sendToServer(String message) {
-		//StickmanStage.mLogger.info("Sending " + message);
+		// StickmanStage.mLogger.info("Sending " + message);
 
 		if (mSocket.isConnected()) {
 			mOut.println(message);
@@ -92,7 +92,7 @@ public class ClientConnectionHandlerFX extends Thread {
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-                                StickmanStageFX.parseStickmanMLCmd(inputLine);
+					StickmanStageFX.parseStickmanMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
 				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");

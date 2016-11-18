@@ -23,7 +23,7 @@ public class SurprisedStart extends Animation {
 
 	@Override
 	public void playAnimation() {
-		
+
 		// surprised start
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SURPRISED"));
@@ -32,7 +32,7 @@ public class SurprisedStart extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "SURPRISED"));
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(10);
 	}
 }

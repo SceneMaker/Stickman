@@ -42,10 +42,11 @@ public class AnimationScheduler extends Thread {
 
 	public synchronized void end() {
 		mRunning = false;
-		
+
 		// throw in a last animation that unblocks the scheduler letting him end
 		try {
-			mAnimationQueue.put(new Animation(mStickman, 1, false) { });
+			mAnimationQueue.put(new Animation(mStickman, 1, false) {
+			});
 		} catch (InterruptedException ex) {
 			Logger.getLogger(AnimationScheduler.class.getName()).log(Level.SEVERE, null, ex);
 		}

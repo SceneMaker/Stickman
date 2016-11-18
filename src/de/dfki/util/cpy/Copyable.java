@@ -9,11 +9,11 @@ import java.io.Serializable;
  */
 public interface Copyable extends Serializable {
 
-    /**
-     * Create a deep copy of the copyable object.
-     *
-     * @return A deep copy of the copyable object.
-     */
-    public abstract Copyable getCopy();
+	/**
+	 * Create a deep copy of the copyable object.
+	 *
+	 * @return A deep copy of the copyable object.
+	 */
+	public abstract Copyable getCopy();
 
 }

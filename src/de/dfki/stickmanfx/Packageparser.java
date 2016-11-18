@@ -11,84 +11,66 @@ import java.util.Enumeration;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 
-public class Packageparser
-{
+public class Packageparser {
 
 	ArrayList<String> classNameList = new ArrayList<>();
 	String packName = "de.dfki.stickmanfx.animation.facefx";
 	String packDir;
 	Enumeration<URL> dir;
 
-	public Packageparser(String packName)
-	{
+	public Packageparser(String packName) {
 		this.packName = packName;
 		ScanPackage();
 	}
 
-	private void ScanPackage()
-	{
+	private void ScanPackage() {
 		packDir = packName.replace(".", "/");
-		try
-		{
+		try {
 			dir = Thread.currentThread().getContextClassLoader().getResources(packDir);
-			while (dir.hasMoreElements())
-			{
+			while (dir.hasMoreElements()) {
 				URL url = dir.nextElement();
 				String protocol = url.getProtocol();
-				if ("file".equals(protocol))
-				{
+				if ("file".equals(protocol)) {
 					String filePath = URLDecoder.decode(url.getFile(), "UTF-8");
 					findAndAddClassesInPackageByFile(packName, filePath);
 				}
 			}
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void findAndAddClassesInPackageByFile(String packName, String filePath)
-	{
+	private void findAndAddClassesInPackageByFile(String packName, String filePath) {
 		File dir = new File(filePath);
-		if (dir.exists() && dir.isDirectory())
-		{
-			File[] dirfiles = dir.listFiles(new FileFilter()
-			{
+		if (dir.exists() && dir.isDirectory()) {
+			File[] dirfiles = dir.listFiles(new FileFilter() {
 				@Override
-				public boolean accept(File pathname)
-				{
+				public boolean accept(File pathname) {
 					return pathname.isDirectory() || pathname.getName().endsWith(".class");
 				}
 			});
-			
-			for (File file : dirfiles)
-			{
-				if (file.isDirectory())
-				{
+
+			for (File file : dirfiles) {
+				if (file.isDirectory()) {
 					findAndAddClassesInPackageByFile(packName + "." + file.getName(), file.getAbsolutePath());
-				}
-				else
-				{
+				} else {
 
 					String className = file.getName().substring(0, file.getName().length() - 6);
-					try
-					{
+					try {
 						Class<?> myClass = Thread.currentThread().getContextClassLoader()
 								.loadClass(packName + "." + className);
 
 						Object object = myClass.newInstance();
-						
+
 						AnimationFX class1 = null;
-						if (object instanceof AnimationFX)
-						{
+						if (object instanceof AnimationFX) {
 							class1 = (AnimationFX) object;
 						}
 
 						if (class1 != null && class1.mAnimType == ANIMTYPE.ON)
 							classNameList.add(className);
-					} catch (Exception e)
-					{
-//						e.printStackTrace();
+					} catch (Exception e) {
+						// e.printStackTrace();
 					}
 
 				}
@@ -96,8 +78,7 @@ public class Packageparser
 		}
 	}
 
-	public ArrayList<String> getClassNameList()
-	{
+	public ArrayList<String> getClassNameList() {
 		return classNameList;
 	}
 }

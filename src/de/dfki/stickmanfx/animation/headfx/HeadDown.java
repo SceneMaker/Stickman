@@ -17,15 +17,13 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  * @author Beka Aptsiauri
  *
  */
-public class HeadDown extends AnimationFX 
-{
+public class HeadDown extends AnimationFX {
 
 	public HeadDown() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
-	public HeadDown(StickmanFX sm, int duration, boolean block) 
-        {
+
+	public HeadDown(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
@@ -39,15 +37,15 @@ public class HeadDown extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", 20));
 		playAnimationPart(mDuration);
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", -35));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", -25));
 		playAnimationPart(mDuration);
-		
-		 pauseAnimation(500);
 
-		 //blink up
+		pauseAnimation(500);
+
+		// blink up
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -15));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 5));
@@ -56,8 +54,8 @@ public class HeadDown extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "rotate", 5));
 		playAnimationPart(mDuration);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

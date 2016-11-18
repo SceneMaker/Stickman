@@ -23,14 +23,14 @@ public class TiltLeft extends AnimationFX {
 	public TiltLeft() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public TiltLeft(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", 10));
 		playAnimationPart(200);

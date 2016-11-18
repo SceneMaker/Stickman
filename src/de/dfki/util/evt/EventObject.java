@@ -5,16 +5,16 @@ package de.dfki.util.evt;
  */
 public abstract class EventObject {
 
-    // The Event Source
-    protected transient Object mSource;
+	// The Event Source
+	protected transient Object mSource;
 
-    // Construct An Event
-    public EventObject(final Object source) {
-        mSource = source;
-    }
+	// Construct An Event
+	public EventObject(final Object source) {
+		mSource = source;
+	}
 
-    // Get The Event Source
-    public final Object getSource() {
-        return mSource;
-    }
+	// Get The Event Source
+	public final Object getSource() {
+		return mSource;
+	}
 }

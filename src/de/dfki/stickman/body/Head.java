@@ -23,7 +23,7 @@ public class Head extends BodyPart {
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
 	int mEarWidth = 10;
-	
+
 	int mDrawOffset = 10;
 	int mXCenterOffset = mEarWidth / 2;
 	int mYCenterOffset = mEarWidth / 2;
@@ -69,7 +69,7 @@ public class Head extends BodyPart {
 	}
 
 	public void calculate(int step) {
-		
+
 		// head
 		mHead = new GeneralPath();
 		mHead.moveTo(mEarWidth, mHalfHeight);
@@ -80,7 +80,7 @@ public class Head extends BodyPart {
 		t.translate(0, mTranslation);
 		mHead.transform(t);
 
-		//left ear
+		// left ear
 		mLeftEar = new GeneralPath();
 		mLeftEar.moveTo(10, mSize.height / 2 + 10);
 		mLeftEar.quadTo(7, mSize.height / 2, 10, mSize.height / 2 - 10);
@@ -90,11 +90,12 @@ public class Head extends BodyPart {
 		t.translate(1, 3 + mTranslation);
 		mLeftEar.transform(t);
 
-		//right ear
+		// right ear
 		mRightEar = new GeneralPath();
 		mRightEar.moveTo(mSize.width, mSize.height / 2 + 10);
 		mRightEar.quadTo(mSize.width + 3, mSize.height / 2, mSize.width, mSize.height / 2 - 10);
-		mRightEar.curveTo(mSize.width + 10, mSize.height / 2 - 10, mSize.width + 10, mSize.height / 2 + 10, mSize.width, mSize.height / 2 + 10);
+		mRightEar.curveTo(mSize.width + 10, mSize.height / 2 - 10, mSize.width + 10, mSize.height / 2 + 10, mSize.width,
+				mSize.height / 2 + 10);
 		t = new AffineTransform();
 		t.rotate(Math.toRadians(mRotation), mDefaultRotationPoint.x, mDefaultRotationPoint.y);
 		t.translate(-1, 3 + mTranslation);
@@ -106,13 +107,15 @@ public class Head extends BodyPart {
 		// right top locke
 		mFemaleHair.quadTo(mEarWidth + 10, mSize.height, mEarWidth, mHalfHeight);
 		// top hair
-		mFemaleHair.curveTo(mEarWidth + 20, -mHalfHeight / 8, mSize.width - 20, -mHalfHeight / 8, mSize.width, mHalfHeight);
+		mFemaleHair.curveTo(mEarWidth + 20, -mHalfHeight / 8, mSize.width - 20, -mHalfHeight / 8, mSize.width,
+				mHalfHeight);
 		// left top locke
 		mFemaleHair.quadTo(mEarWidth + mSize.width - 20, mSize.height, mSize.width + mEarWidth, mSize.height + 20);
 		// left down locke
 		mFemaleHair.quadTo(mSize.width - 10, mSize.height + 30, mSize.width - 10, mSize.height + 20);
 		// forehead hair
-		mFemaleHair.curveTo(mSize.width + 30, -mHalfHeight / 4, mStart.x - 20, -mHalfHeight / 4, mEarWidth + 10, mSize.height + 20);
+		mFemaleHair.curveTo(mSize.width + 30, -mHalfHeight / 4, mStart.x - 20, -mHalfHeight / 4, mEarWidth + 10,
+				mSize.height + 20);
 		// right down locke
 		mFemaleHair.quadTo(20, mSize.height + 30, mStart.x, mSize.height + 20);
 		// move it upwards a bit
@@ -135,9 +138,9 @@ public class Head extends BodyPart {
 
 		// TODO - This schould be done in all bodyparts
 		setBounds(mHead.getBounds().x + new Float(mStickman.mGeneralXTranslation).intValue(),
-		  mHead.getBounds().y + new Float(mStickman.mGeneralYTranslation).intValue(),
-		  new Float(mHead.getBounds().width * mStickman.mScale).intValue(),
-		  new Float(mHead.getBounds().height * mStickman.mScale).intValue());
+				mHead.getBounds().y + new Float(mStickman.mGeneralYTranslation).intValue(),
+				new Float(mHead.getBounds().width * mStickman.mScale).intValue(),
+				new Float(mHead.getBounds().height * mStickman.mScale).intValue());
 	}
 
 	@Override
@@ -147,23 +150,21 @@ public class Head extends BodyPart {
 		Graphics2D g2 = (Graphics2D) g;
 
 		// fill
-		if(mStickman.setCharacterInvisible == true)
-		{
-			if(mStickman.fadeControler==true)             //Added by Robbie
+		if (mStickman.setCharacterInvisible == true) {
+			if (mStickman.fadeControler == true) // Added by Robbie
 			{
-			
-				int fadeFactor = mStickman.mMouth.mShapeAnimationStep*10;
-				if(fadeFactor<=20) fadeFactor=0;
+
+				int fadeFactor = mStickman.mMouth.mShapeAnimationStep * 10;
+				if (fadeFactor <= 20)
+					fadeFactor = 0;
+				g2.setColor(new Color(242, 227, 217, fadeFactor));
+			} else {
+				int fadeFactor = (20 - mStickman.mMouth.mShapeAnimationStep) * 9;
+				if (fadeFactor >= 160)
+					fadeFactor = 200;
 				g2.setColor(new Color(242, 227, 217, fadeFactor));
 			}
-			else
-			{
-				int fadeFactor = (20-mStickman.mMouth.mShapeAnimationStep)*9;
-				if(fadeFactor >= 160) fadeFactor=200;
-				g2.setColor(new Color(242, 227, 217, fadeFactor));
-			}
-		}
-		else
+		} else
 			g2.setColor(new Color(242, 227, 217, 200));
 		// head
 		g2.fill(mHead);
@@ -175,7 +176,7 @@ public class Head extends BodyPart {
 		// draw outlines
 		g2.setColor(g2.getColor().darker());
 		g2.setStroke(new BasicStroke(2));
-		//head
+		// head
 		g2.draw(mHead);
 		// ears
 		g2.draw(mLeftEar);
@@ -183,26 +184,23 @@ public class Head extends BodyPart {
 
 		// hair
 		if (mStickman.mType == Stickman.TYPE.FEMALE) {
-			if(mStickman.setCharacterInvisible == true)
-			{
-				if(mStickman.fadeControler==true)             //Added by Robbie
+			if (mStickman.setCharacterInvisible == true) {
+				if (mStickman.fadeControler == true) // Added by Robbie
 				{
-				
-					int fadeFactor = mStickman.mMouth.mShapeAnimationStep*10;
-					if(fadeFactor<=20) fadeFactor=0;
+
+					int fadeFactor = mStickman.mMouth.mShapeAnimationStep * 10;
+					if (fadeFactor <= 20)
+						fadeFactor = 0;
+					g2.setColor(new Color(240, 212, 0, fadeFactor));
+				} else {
+					int fadeFactor = (20 - mStickman.mMouth.mShapeAnimationStep) * 9;
+					if (fadeFactor >= 160)
+						fadeFactor = 255;
 					g2.setColor(new Color(240, 212, 0, fadeFactor));
 				}
-				else
-				{
-					int fadeFactor = (20-mStickman.mMouth.mShapeAnimationStep)*9;
-					if(fadeFactor >= 160) fadeFactor=255;
-					g2.setColor(new Color(240, 212, 0, fadeFactor));
-				}
-			}
-			else
+			} else
 				g2.setColor(new Color(240, 212, 0, 255));
-			
-			
+
 			g2.fill(mFemaleHair);
 			// draw outlines
 			g2.setColor(g2.getColor().darker());
@@ -210,24 +208,22 @@ public class Head extends BodyPart {
 			g2.draw(mFemaleHair);
 		} else {
 
-			if(mStickman.setCharacterInvisible == true)
-			{
-				if(mStickman.fadeControler==true)             //Added by Robbie
+			if (mStickman.setCharacterInvisible == true) {
+				if (mStickman.fadeControler == true) // Added by Robbie
 				{
-				
-					int fadeFactor = mStickman.mMouth.mShapeAnimationStep*10;
-					if(fadeFactor<=20) fadeFactor=0;
-					g2.setColor(new Color(97, 58, 0,  fadeFactor));
-				}
-				else
-				{
-					int fadeFactor = (20-mStickman.mMouth.mShapeAnimationStep)*9;
-					if(fadeFactor >= 160) fadeFactor=255;
+
+					int fadeFactor = mStickman.mMouth.mShapeAnimationStep * 10;
+					if (fadeFactor <= 20)
+						fadeFactor = 0;
+					g2.setColor(new Color(97, 58, 0, fadeFactor));
+				} else {
+					int fadeFactor = (20 - mStickman.mMouth.mShapeAnimationStep) * 9;
+					if (fadeFactor >= 160)
+						fadeFactor = 255;
 					g2.setColor(new Color(97, 58, 0, fadeFactor));
 				}
-			}
-			else
-				g2.setColor(new Color(97, 58, 0, 255));		
+			} else
+				g2.setColor(new Color(97, 58, 0, 255));
 			g2.fill(mMaleHair);
 			// draw outlines
 			g2.setColor(g2.getColor().darker());

@@ -23,7 +23,7 @@ import java.util.ArrayList;
  *
  */
 public class Speaking extends EventAnimationFX {
-	
+
 	public Speaking() {
 		super();
 	}
@@ -39,11 +39,13 @@ public class Speaking extends EventAnimationFX {
 		}
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
+		mAnimationPartFX.add(
+				new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
 
 		playEventAnimationPart();
 
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+		mAnimationPartFX
+				.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
 		playAnimationPart(20);
 
 	}

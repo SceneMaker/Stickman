@@ -26,10 +26,12 @@ public class LookLeft extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "LOOKLEFT"));
 		playAnimationPart(20);
 
-//		// blink up
-//		mAnimationPart = new ArrayList<>();
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
-//		playAnimationPart(2);
+		// // blink up
+		// mAnimationPart = new ArrayList<>();
+		// mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape",
+		// "DEFAULT"));
+		// mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape",
+		// "DEFAULT"));
+		// playAnimationPart(2);
 	}
 }

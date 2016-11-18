@@ -44,7 +44,8 @@ public class RightForeArm extends BodyPart {
 	}
 
 	public Point getHandStartPosition() {
-		return (mArm != null) ? new Point((int) mArm.getCurrentPoint().getX(), (int) mArm.getCurrentPoint().getY()) : new Point(0, 0);
+		return (mArm != null) ? new Point((int) mArm.getCurrentPoint().getX(), (int) mArm.getCurrentPoint().getY())
+				: new Point(0, 0);
 	}
 
 	@Override
@@ -63,29 +64,32 @@ public class RightForeArm extends BodyPart {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
+		super.paintComponent(g); // To change body of generated methods, choose
+									// Tools | Templates.
 
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		// draw outlines
 		g2.setColor(new Color(80, 80, 80));
-		
-		if(mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+
+		if (mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+			if (mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler == true) // Added
+																							// by
+																							// Robbie
 			{
-				int fadeFactor = mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
-			}
-			else
-			{
-				int fadeFactor = (20-mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
+				int fadeFactor = mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep * 12;
+				if (fadeFactor <= 24)
+					fadeFactor = 0;
+				g2.setColor(new Color(80, 80, 80, fadeFactor));
+			} else {
+				int fadeFactor = (20 - mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)
+						* 12;
+				if (fadeFactor >= 216)
+					fadeFactor = 255;
+				g2.setColor(new Color(80, 80, 80, fadeFactor));
 			}
 		}
-	
+
 		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
 		g2.draw(mArm);

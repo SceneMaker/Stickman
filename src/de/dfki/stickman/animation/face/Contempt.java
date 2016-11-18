@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  */
 public class Contempt extends Animation {
-	
+
 	public Contempt() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}

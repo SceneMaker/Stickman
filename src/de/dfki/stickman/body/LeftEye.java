@@ -29,8 +29,8 @@ public class LeftEye extends BodyPart {
 		mLength = 5;
 		mDefaultRotationPoint = mHead.mDefaultRotationPoint;
 		mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0,
-		  mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
-		  mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, 144);
+				mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
+				mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, 144);
 		mStroke = new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 
 		init();
@@ -49,235 +49,243 @@ public class LeftEye extends BodyPart {
 
 	@Override
 	public void createShape() {
-//		mStart: right side
-//		mEnd:left side
+		// mStart: right side
+		// mEnd:left side
 		mStart = mHead.getLeftEyePostion();
 		mEnd = new Point(mStart.x - mLength, mStart.y);
 
 		double movement;
-		
+
 		clearDrawObjects();
 		GeneralPath gp = new GeneralPath();
 
 		switch (mShape) {
-			case DEFAULT:
-				
-				if(mHead.mStickman.setCharacterInvisible == true)
+		case DEFAULT:
+
+			if (mHead.mStickman.setCharacterInvisible == true) {
+				if (mHead.mStickman.fadeControler == true) // Added by Robbie
 				{
-					if(mHead.mStickman.fadeControler==true)             //Added by Robbie
-					{
-						int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep*7;
-						if(fadeFactor<=14) fadeFactor=0;
-						mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0, 
-								mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
-								mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, fadeFactor);
-					}
-					else
-					{
-						int fadeFactor = (20-mHead.mStickman.mMouth.mShapeAnimationStep)*7;
-						if(fadeFactor==126) fadeFactor=0;
-						if(fadeFactor >= 118) fadeFactor=145;
-						mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0,
-						  mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
-								  mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, fadeFactor);
-					}
+					int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep * 7;
+					if (fadeFactor <= 14)
+						fadeFactor = 0;
+					mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0,
+							mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
+							mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, fadeFactor);
+				} else {
+					int fadeFactor = (20 - mHead.mStickman.mMouth.mShapeAnimationStep) * 7;
+					if (fadeFactor == 126)
+						fadeFactor = 0;
+					if (fadeFactor >= 118)
+						fadeFactor = 145;
+					mColor = new Color(mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 22 : 0,
+							mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 40 : 0,
+							mHead.mStickman.mType == Stickman.TYPE.FEMALE ? 65 : 0, fadeFactor);
 				}
-				
-				gp = new GeneralPath();
+			}
+
+			gp = new GeneralPath();
+			gp.moveTo(mStart.x, mStart.y);
+			gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			break;
+
+		case BLINK:
+			gp = new GeneralPath();
+			gp.moveTo(mStart.x, mStart.y);
+			gp.lineTo(mEnd.x, mEnd.y);
+			break;
+
+		case LOOKLEFT:
+			gp = new GeneralPath();
+			gp.moveTo(mStart.x, mStart.y);
+			gp.quadTo(linear((mStart.x + mEnd.x) / 2, mStart.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
+			break;
+
+		case LOOKRIGHT:
+			gp = new GeneralPath();
+			gp.moveTo(mStart.x, mStart.y);
+			gp.quadTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
+			break;
+
+		case ANGRY:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			gp.moveTo(mStart.x - movement / 10, mStart.y);
+			gp.quadTo((mStart.x - movement / 10 + mEnd.x - movement / 8) / 2, mStart.y - movement / 6,
+					mEnd.x - movement / 8, mEnd.y);
+			gp.quadTo((mStart.x - movement / 10 + mEnd.x - movement / 8) / 2, mStart.y + movement / 6,
+					mStart.x - movement / 10, mStart.y);
+
+			break;
+
+		case ANGRYEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				break;
+			} else {
+				gp.moveTo(mStart.x - movement / 10, mStart.y);
+				gp.quadTo((mStart.x - movement / 10 + mEnd.x - movement / 8) / 2, mStart.y - movement / 6,
+						mEnd.x - movement / 8, mEnd.y);
+				gp.quadTo((mStart.x - movement / 10 + mEnd.x - movement / 8) / 2, mStart.y + movement / 6,
+						mStart.x - movement / 10, mStart.y);
+			}
+			break;
 
-			case BLINK:
-				gp = new GeneralPath();
-				gp.moveTo(mStart.x, mStart.y);
-				gp.lineTo(mEnd.x, mEnd.y);
-				break;
-				
-			case LOOKLEFT:
-				gp = new GeneralPath();
-				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo(linear((mStart.x + mEnd.x) / 2, mStart.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
-				break;
-				
-			case LOOKRIGHT:
-				gp = new GeneralPath();
-				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo(linear((mStart.x + mEnd.x) / 2, mEnd.x, mShapeAnimationStep), mStart.y - 3, mEnd.x, mEnd.y);
-				break;
-				
-			case ANGRY:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
-				gp.moveTo(mStart.x - movement/10, mStart.y);
-				gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y - movement/6, mEnd.x - movement/8, mEnd.y);
-				gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y + movement/6, mStart.x - movement/10, mStart.y);
+		case SURPRISED:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
-				break;
-				
-			case ANGRYEND:
-				movement = mShapeAnimationStep-1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{
-					gp.moveTo(mStart.x - movement/10, mStart.y);
-					gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y - movement/6, mEnd.x - movement/8, mEnd.y);
-					gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y + movement/6, mStart.x - movement/10, mStart.y);
-				}
-				break;
-				
-			
-			case SURPRISED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
-				gp.moveTo(mStart.x + movement/10, mStart.y);
-				gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y - movement/2, mEnd.x-movement/10, mStart.y);
-				gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y + movement/2, mStart.x+movement/10, mStart.y);
-				break;
-				
-			case SURPRISEDEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{
-					gp.moveTo(mStart.x + movement/10, mStart.y);
-					gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y - movement/2, mEnd.x-movement/10, mStart.y);
-					gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y + movement/2, mStart.x+movement/10, mStart.y);
-				}
-				break;
-				
-			case HAPPY:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-								
-				gp.moveTo(mStart.x + movement/10, mStart.y);
-				gp.quadTo((mStart.x + movement/10 + mEnd.x - movement/10)/2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
-				break;	
-				
-			case HAPPYEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{			
-					gp.moveTo(mStart.x + movement/10, mStart.y);
-					gp.quadTo((mStart.x + movement/10 + mEnd.x - movement/10)/2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
-				}
-				break;
-			case DISGUSTED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
-				gp.moveTo(mStart.x + movement/4, mStart.y - movement/4);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/8, mEnd.x - movement/8, mEnd.y + movement/8);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/4, mStart.x + movement/4, mStart.y + movement/8);				
-				break;
-				
-			case DISGUSTEDEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{	
-					gp.moveTo(mStart.x + movement/4, mStart.y - movement/4);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/8, mEnd.x - movement/8, mEnd.y + movement/8);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/4, mStart.x + movement/4, mStart.y + movement/8);
-				}
-				break;
-			
-			case LOVED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
-				double xMovement = movement/10*6;
-				double yMovement1 = movement/10*6;
-				double yMovement2 = movement/10*3;
-				
+			gp.moveTo(mStart.x + movement / 10, mStart.y);
+			gp.quadTo((mStart.x + movement / 10 + mEnd.x - movement / 10) / 2, mStart.y - movement / 2,
+					mEnd.x - movement / 10, mStart.y);
+			gp.quadTo((mStart.x + movement / 10 + mEnd.x - movement / 10) / 2, mStart.y + movement / 2,
+					mStart.x + movement / 10, mStart.y);
+			break;
+
+		case SURPRISEDEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				gp.moveTo(mStart.x + movement / 10, mStart.y);
+				gp.quadTo((mStart.x + movement / 10 + mEnd.x - movement / 10) / 2, mStart.y - movement / 2,
+						mEnd.x - movement / 10, mStart.y);
+				gp.quadTo((mStart.x + movement / 10 + mEnd.x - movement / 10) / 2, mStart.y + movement / 2,
+						mStart.x + movement / 10, mStart.y);
+			}
+			break;
+
+		case HAPPY:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			gp.moveTo(mStart.x + movement / 10, mStart.y);
+			gp.quadTo((mStart.x + movement / 10 + mEnd.x - movement / 10) / 2, mStart.y - 3, mEnd.x - movement / 10,
+					mEnd.y);
+			break;
+
+		case HAPPYEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				gp.moveTo(mStart.x + movement / 10, mStart.y);
+				gp.quadTo((mStart.x + movement / 10 + mEnd.x - movement / 10) / 2, mStart.y - 3, mEnd.x - movement / 10,
+						mEnd.y);
+			}
+			break;
+		case DISGUSTED:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			gp.moveTo(mStart.x + movement / 4, mStart.y - movement / 4);
+			gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8, mEnd.x - movement / 8,
+					mEnd.y + movement / 8);
+			gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4, mStart.x + movement / 4,
+					mStart.y + movement / 8);
+			break;
+
+		case DISGUSTEDEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				gp.moveTo(mStart.x + movement / 4, mStart.y - movement / 4);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 8, mEnd.x - movement / 8,
+						mEnd.y + movement / 8);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement / 4, mStart.x + movement / 4,
+						mStart.y + movement / 8);
+			}
+			break;
+
+		case LOVED:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			double xMovement = movement / 10 * 6;
+			double yMovement1 = movement / 10 * 6;
+			double yMovement2 = movement / 10 * 3;
+
+			gp.moveTo(mStart.x, mStart.y);
+			gp.quadTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
+			gp.moveTo(mStart.x, mStart.y);
+			gp.quadTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
+			break;
+
+		case LOVEDEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				xMovement = movement / 10 * 6;
+				yMovement1 = movement / 10 * 6;
+				yMovement2 = movement / 10 * 3;
+
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
-				break;	
-				
-			case LOVEDEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{
-					xMovement = movement/10*6;
-					yMovement1 = movement/10*6;
-					yMovement2 = movement/10*3;
-					
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo(mStart.x - xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo(mStart.x + xMovement, mEnd.y - yMovement2, mStart.x, mEnd.y + yMovement1);
-				}
-				break;	
-				
-			case CONTEMPT:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
+			}
+			break;
+
+		case CONTEMPT:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			gp.moveTo(mStart.x, mStart.y);
+			gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y);
+			gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y);
+			break;
+
+		case CONTEMPTEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
 				gp.moveTo(mStart.x, mStart.y);
-				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - movement/10, mEnd.x, mStart.y);
-				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y + movement/10, mStart.x, mStart.y);
-				break;
-				
-			case CONTEMPTEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - movement/10, mEnd.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x)/2, mStart.y + movement/10, mStart.x, mStart.y);
-				}break;
-				
-			case EXCITED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
-				gp.moveTo(mStart.x + movement/10, mStart.y);
-				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
-				break;
-				
-			case EXCITEDEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{
-					gp.moveTo(mStart.x + movement/10, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
-				}
-				break;		
-				
-			case EMBARRASSED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
-				
-				gp.moveTo(mStart.x + movement/2, mStart.y + movement/5*2);
-				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 4 + movement/2, mEnd.x + movement/2, mEnd.y + movement/5*2);			
-				break;
-				
-			case EMBARRASSEDEND:
-				movement = mShapeAnimationStep -1;
-				if(movement<=1){
-					gp.moveTo(mStart.x, mStart.y);
-					gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
-				}
-				else{
-					gp.moveTo(mStart.x + movement/2, mStart.y + movement/5*2);
-					gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 4 + movement/2, mEnd.x + movement/2, mEnd.y + movement/5*2);			
-				}
-				break;
-				
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - movement / 10, mEnd.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y + movement / 10, mStart.x, mStart.y);
+			}
+			break;
+
+		case EXCITED:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			gp.moveTo(mStart.x + movement / 10, mStart.y);
+			gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x - movement / 10, mEnd.y);
+			break;
+
+		case EXCITEDEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				gp.moveTo(mStart.x + movement / 10, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x - movement / 10, mEnd.y);
+			}
+			break;
+
+		case EMBARRASSED:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			gp.moveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2);
+			gp.quadTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2, mStart.y - 4 + movement / 2,
+					mEnd.x + movement / 2, mEnd.y + movement / 5 * 2);
+			break;
+
+		case EMBARRASSEDEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				gp.moveTo(mStart.x, mStart.y);
+				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x, mEnd.y);
+			} else {
+				gp.moveTo(mStart.x + movement / 2, mStart.y + movement / 5 * 2);
+				gp.quadTo((mStart.x + movement / 2 + mEnd.x + movement / 2) / 2, mStart.y - 4 + movement / 2,
+						mEnd.x + movement / 2, mEnd.y + movement / 5 * 2);
+			}
+			break;
+
 		}
 		addToDrawObjects(gp);
 	}

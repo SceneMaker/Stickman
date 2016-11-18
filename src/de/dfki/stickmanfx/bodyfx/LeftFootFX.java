@@ -26,26 +26,26 @@ public class LeftFootFX extends BodyPartFX {
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public LeftFootFX.SHAPE mShape = LeftFootFX.SHAPE.DEFAULT;
-	
+
 	LeftForeLegFX mLeftForeLegFX;
 
 	MeshView mLeftFootMeshView;
 	PhongMaterial material;
-	
+
 	URL url;
 	ColModelImporter im;
 
 	public LeftFootFX(LeftForeLegFX leftForeLeg) {
 		mLeftForeLegFX = leftForeLeg;
 		mLength = 20;
-		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-			mColor = Color.rgb(80,80,80, 1);
+		if (mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			mColor = Color.rgb(80, 80, 80, 1);
 		else
 			mColor = Color.rgb(154, 83, 198, 1);
 		activateConfigColor();
-		
+
 		setDefaulRotation(0);
 		mYRotation = 50;
 		mXRotation = 0;
@@ -54,27 +54,25 @@ public class LeftFootFX extends BodyPartFX {
 		im = new ColModelImporter();
 		im.read(url);
 		mLeftFootMeshView = (MeshView) im.getImport()[0];
-		
+
 		mLeftFootMeshView.setId("mLeftFootMeshView");
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor.darker());
 		mLeftFootMeshView.setMaterial(material);
-		
+
 		mLeftForeLegFX.leftForeLegGroup.getChildren().add(mLeftFootMeshView);
-        
-        init();
+
+		init();
 	}
 
-	private void activateConfigColor()
-   	{
+	private void activateConfigColor() {
 		String stickmanName = mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("ShoesColor"))
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("ShoesColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("ShoesColor");
 		}
-   	}
-	
+	}
+
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -85,55 +83,45 @@ public class LeftFootFX extends BodyPartFX {
 	public void resetShape() {
 		mShape = LeftFootFX.SHAPE.DEFAULT;
 	}
-	
+
 	@Override
 	public void calculate(int step) {
-		Rotate rx = new Rotate(mXRotation, 	Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
-		
-		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+		if (mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
 			mLeftFootMeshView.setTranslateX(mStart.x);
-			mLeftFootMeshView.setTranslateY(mStart.y+85);
+			mLeftFootMeshView.setTranslateY(mStart.y + 85);
 			mLeftFootMeshView.setTranslateZ(0);
-		}
-		else
-		{
+		} else {
 			mLeftFootMeshView.setTranslateX(mStart.x + 3);
 			mLeftFootMeshView.setTranslateY(mStart.y + 79);
 			mLeftFootMeshView.setTranslateZ(0);
 		}
-		
+
 		mLeftFootMeshView.getTransforms().clear();
 		mLeftFootMeshView.getTransforms().addAll(rx, ry, rz);
 
-		switch(mShape)
-		{
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mLeftFootMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mLeftFootMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

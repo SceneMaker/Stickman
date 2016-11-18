@@ -6,15 +6,14 @@ import javafx.scene.shape.TriangleMesh;
 
 public class MouthEXCITED {
 	////////////////////////////////
-	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
-	{
+	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float yMovement0;
 		float yMovement1;
@@ -27,7 +26,7 @@ public class MouthEXCITED {
 		float yMovement8;
 		float yMovement9;
 		float yMovement10;
-		
+
 		float xMovement10;
 		float yMovement12;
 		float yMovement13;
@@ -36,7 +35,7 @@ public class MouthEXCITED {
 		float yMovement16;
 		float yMovement17;
 		float yMovement18;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0158f;
 		yMovement0 = sig * (20 - step) * 0.0210f;
 		yMovement1 = sig * (20 - step) * 0.0052f;
@@ -49,7 +48,7 @@ public class MouthEXCITED {
 		yMovement8 = sig * (20 - step) * 0.0105f;
 		yMovement9 = sig * (20 - step) * 0.0052f;
 		yMovement10 = sig * (20 - step) * 0.0210f;
-		
+
 		xMovement10 = sig * (20 - step) * 0.0158f;
 		yMovement12 = sig * (20 - step) * 0.0158f;
 		yMovement13 = sig * (20 - step) * 0.0210f;
@@ -58,7 +57,7 @@ public class MouthEXCITED {
 		yMovement16 = sig * (20 - step) * 0.0263f;
 		yMovement17 = sig * (20 - step) * 0.0210f;
 		yMovement18 = sig * (20 - step) * 0.0158f;
-		
+
 		currentUpperLipMesh.getPoints().set(0, currentUpperLipMesh.getPoints().get(0) - xMovement0);
 		currentUpperLipMesh.getPoints().set(1, currentUpperLipMesh.getPoints().get(1) - yMovement0);
 		currentUpperLipMesh.getPoints().set(3, currentUpperLipMesh.getPoints().get(3) - yMovement1);
@@ -71,7 +70,7 @@ public class MouthEXCITED {
 		currentUpperLipMesh.getPoints().set(17, currentUpperLipMesh.getPoints().get(17) + yMovement8);
 		currentUpperLipMesh.getPoints().set(19, currentUpperLipMesh.getPoints().get(19) - yMovement9);
 		currentUpperLipMesh.getPoints().set(21, currentUpperLipMesh.getPoints().get(21) - yMovement10);
-		
+
 		currentUpperLipMesh.getPoints().set(20, currentUpperLipMesh.getPoints().get(20) + xMovement10);
 		currentUpperLipMesh.getPoints().set(25, currentUpperLipMesh.getPoints().get(25) + yMovement12);
 		currentUpperLipMesh.getPoints().set(27, currentUpperLipMesh.getPoints().get(27) + yMovement13);
@@ -82,16 +81,15 @@ public class MouthEXCITED {
 		currentUpperLipMesh.getPoints().set(37, currentUpperLipMesh.getPoints().get(37) + yMovement18);
 		return currentUpperLipMesh;
 	}
-	
-	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
-	{
+
+	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float yMovement0;
 		float yMovement18;
@@ -112,10 +110,10 @@ public class MouthEXCITED {
 		float yMovement3;
 		float yMovement2;
 		float yMovement1;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0158f;
 		yMovement0 = sig * (20 - step) * 0.0210f;
-		
+
 		yMovement18 = sig * (20 - step) * 0.0316f;
 		yMovement17 = sig * (20 - step) * 0.0474f;
 		yMovement16 = sig * (20 - step) * 0.0579f;
@@ -134,10 +132,10 @@ public class MouthEXCITED {
 		yMovement3 = sig * (20 - step) * 0.0421f;
 		yMovement2 = sig * (20 - step) * 0.0368f;
 		yMovement1 = sig * (20 - step) * 0.0316f;
-		
+
 		currentDownLipMesh.getPoints().set(0, currentDownLipMesh.getPoints().get(0) - xMovement0);
 		currentDownLipMesh.getPoints().set(1, currentDownLipMesh.getPoints().get(1) - yMovement0);
-		
+
 		currentDownLipMesh.getPoints().set(37, currentDownLipMesh.getPoints().get(37) + yMovement18);
 		currentDownLipMesh.getPoints().set(35, currentDownLipMesh.getPoints().get(35) + yMovement17);
 		currentDownLipMesh.getPoints().set(33, currentDownLipMesh.getPoints().get(33) + yMovement16);
@@ -156,7 +154,7 @@ public class MouthEXCITED {
 		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + yMovement3);
 		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) + yMovement2);
 		currentDownLipMesh.getPoints().set(3, currentDownLipMesh.getPoints().get(3) + yMovement1);
-		
+
 		return currentDownLipMesh;
 	}
 

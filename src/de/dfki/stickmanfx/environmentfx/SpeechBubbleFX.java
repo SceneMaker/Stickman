@@ -33,11 +33,9 @@ import com.sun.javafx.tk.Toolkit;
  * @author Beka
  *
  */
-public class SpeechBubbleFX extends BodyPartFX 
-{
+public class SpeechBubbleFX extends BodyPartFX {
 
-	public static enum SHAPE 
-	{
+	public static enum SHAPE {
 
 		DEFAULT, SPEAK, THINK
 	};
@@ -51,28 +49,24 @@ public class SpeechBubbleFX extends BodyPartFX
 
 	GeneralPath mBubble;
 
-	public SpeechBubbleFX(HeadFX head) 
-	{
+	public SpeechBubbleFX(HeadFX head) {
 		mHeadFX = head;
 		mColor = Color.rgb(255, 255, 255, (192 * 100 / 255) / 100f);
 	}
 
 	@Override
-	public void setShape(String s) 
-	{
+	public void setShape(String s) {
 		SpeechBubbleFX.SHAPE shape = SpeechBubbleFX.SHAPE.valueOf(s);
 		mShape = (shape != null) ? shape : SpeechBubbleFX.SHAPE.DEFAULT;
 	}
 
 	@Override
-	public void resetShape() 
-	{
+	public void resetShape() {
 		mShape = SpeechBubbleFX.SHAPE.DEFAULT;
 	}
 
 	@Override
-	public void createShape() 
-	{
+	public void createShape() {
 		mStart = mHeadFX.getSpeechBubbleStartPosition();
 
 		clearChildren(this);
@@ -90,23 +84,22 @@ public class SpeechBubbleFX extends BodyPartFX
 			message.setWrapText(true);
 			message.getStyleClass().add("message-bubble");
 			this.bubblePane.addRow(0, message);
-			
+
 			this.getStylesheets().add(getClass().getResource("bubbleCSS.css").toExternalForm());
 			this.setLayoutX(mStart.x + 20);
 			this.setLayoutY(mStart.y - this.getHeight());
 			this.setTranslateZ(-120);
 
 			this.getChildren().add(bubblePane);
-			
-			//if message is Empty
+
+			// if message is Empty
 			if (this.getHeight() == 0)
 				this.setVisible(false);
-			else
-			{
+			else {
 				this.setVisible(true);
 				this.toFront();
 			}
-				
+
 			break;
 		}
 

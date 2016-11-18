@@ -46,7 +46,9 @@ public class LeftShoulder extends BodyPart {
 	}
 
 	public Point getLeftShoulderEndPosition() {
-		return (mShoulder != null) ? new Point((int) mShoulder.getCurrentPoint().getX() + 1, (int) mShoulder.getCurrentPoint().getY()) : new Point(0, 0);
+		return (mShoulder != null)
+				? new Point((int) mShoulder.getCurrentPoint().getX() + 1, (int) mShoulder.getCurrentPoint().getY())
+				: new Point(0, 0);
 	}
 
 	@Override
@@ -60,7 +62,7 @@ public class LeftShoulder extends BodyPart {
 
 		AffineTransform t = new AffineTransform();
 		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
-		
+
 		mShoulder.transform(t);
 	}
 
@@ -68,28 +70,28 @@ public class LeftShoulder extends BodyPart {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		//create();
+		// create();
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		// draw outlines
 		g2.setColor(new Color(80, 80, 80));
-		
-		if(mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+
+		if (mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+			if (mBody.mNeck.mHead.mStickman.fadeControler == true) // Added by
+																	// Robbie
 			{
-				int fadeFactor = mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
-			}
-			else
-			{
-				int fadeFactor = (20-mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
+				int fadeFactor = mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep * 12;
+				if (fadeFactor <= 24)
+					fadeFactor = 0;
+				g2.setColor(new Color(80, 80, 80, fadeFactor));
+			} else {
+				int fadeFactor = (20 - mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep) * 12;
+				if (fadeFactor >= 216)
+					fadeFactor = 255;
+				g2.setColor(new Color(80, 80, 80, fadeFactor));
 			}
 		}
-		
+
 		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
 		g2.draw(mShoulder);

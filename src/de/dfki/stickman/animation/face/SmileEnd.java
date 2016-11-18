@@ -21,7 +21,7 @@ public class SmileEnd extends Animation {
 		// smile end
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILEEND"));
- 		playAnimationPart(mDuration);
+		playAnimationPart(mDuration);
 		pauseAnimation(10);
 	}
 }

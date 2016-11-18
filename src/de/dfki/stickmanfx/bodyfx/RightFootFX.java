@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
+
 /**
  *
  * @author Beka
@@ -25,26 +26,26 @@ public class RightFootFX extends BodyPartFX {
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public RightFootFX.SHAPE mShape = RightFootFX.SHAPE.DEFAULT;
-	
+
 	RightForeLegFX mRightForeLegFX;
 
 	MeshView mRightFootMeshView;
 	PhongMaterial material;
-	
+
 	URL url;
 	ColModelImporter im;
 
 	public RightFootFX(RightForeLegFX rightForeLeg) {
 		mRightForeLegFX = rightForeLeg;
 		mLength = 20;
-		if(mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if (mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mColor = Color.rgb(80, 80, 80, 1);
 		else
 			mColor = Color.rgb(154, 83, 198, 1);
 		activateConfigColor();
-		
+
 		setDefaulRotation(0);
 		mYRotation = 130;
 		mXRotation = 0;
@@ -53,27 +54,25 @@ public class RightFootFX extends BodyPartFX {
 		im = new ColModelImporter();
 		im.read(url);
 		mRightFootMeshView = (MeshView) im.getImport()[0];
-		
+
 		mRightFootMeshView.setId("mRightFootMeshView");
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor.darker());
 		mRightFootMeshView.setMaterial(material);
-		
+
 		mRightForeLegFX.rightForeLegGroup.getChildren().add(mRightFootMeshView);
-        
-        init();
+
+		init();
 	}
 
-	private void activateConfigColor()
-   	{
-   		String stickmanName = mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mName;
-   		if(XMLParser.getColorMap(stickmanName) != null)
-   		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("ShoesColor"))
+	private void activateConfigColor() {
+		String stickmanName = mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mName;
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("ShoesColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("ShoesColor");
 		}
-   	}
-	
+	}
+
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = SHAPE.valueOf(s);
@@ -84,56 +83,46 @@ public class RightFootFX extends BodyPartFX {
 	public void resetShape() {
 		mShape = RightFootFX.SHAPE.DEFAULT;
 	}
-	
+
 	@Override
 	public void calculate(int step) {
 
-		Rotate rx = new Rotate(mXRotation, 	Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
-		
-		if(mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
+		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+		if (mRightForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE) {
 			mRightFootMeshView.setTranslateX(mStart.x);
-			mRightFootMeshView.setTranslateY(mStart.y+85);
+			mRightFootMeshView.setTranslateY(mStart.y + 85);
 			mRightFootMeshView.setTranslateZ(0);
-		}
-		else
-		{
+		} else {
 			mRightFootMeshView.setTranslateX(mStart.x);
 			mRightFootMeshView.setTranslateY(mStart.y + 80);
 			mRightFootMeshView.setTranslateZ(0);
 		}
-		
+
 		mRightFootMeshView.getTransforms().clear();
 		mRightFootMeshView.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
+
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mRightFootMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mRightFootMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

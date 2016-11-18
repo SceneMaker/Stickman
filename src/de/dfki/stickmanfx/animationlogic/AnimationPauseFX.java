@@ -1,6 +1,5 @@
 package de.dfki.stickmanfx.animationlogic;
 
-
 import de.dfki.stickmanfx.StickmanFX;
 import java.util.concurrent.Semaphore;
 
@@ -9,55 +8,44 @@ import java.util.concurrent.Semaphore;
  * @author Beka Aptsiauri
  *
  */
-public class AnimationPauseFX  
-{
-    private final StickmanFX mStickmanFX;
-    private final AnimationFX mAnimationFX;
-    public Semaphore mPauseEnd = new Semaphore(0);
+public class AnimationPauseFX {
+	private final StickmanFX mStickmanFX;
+	private final AnimationFX mAnimationFX;
+	public Semaphore mPauseEnd = new Semaphore(0);
 
-    public AnimationPauseFX(StickmanFX sm, AnimationFX a, int duration) 
-    {
-        mStickmanFX = sm;
-        mAnimationFX = a;
+	public AnimationPauseFX(StickmanFX sm, AnimationFX a, int duration) {
+		mStickmanFX = sm;
+		mAnimationFX = a;
 
-        new WaitThread(duration).start();
+		new WaitThread(duration).start();
 
-        // block this until WaitThread will unblock 
-        try 
-        {
-            mPauseEnd.acquire(1);
-        } 
-        catch (InterruptedException ex) 
-        {
-            mStickmanFX.mLogger.severe(ex.getMessage());
-        }
+		// block this until WaitThread will unblock
+		try {
+			mPauseEnd.acquire(1);
+		} catch (InterruptedException ex) {
+			mStickmanFX.mLogger.severe(ex.getMessage());
+		}
 
-        // tell animation to proceed
-        mAnimationFX.mAnimationPartStart.release();
-    }
+		// tell animation to proceed
+		mAnimationFX.mAnimationPartStart.release();
+	}
 
-    private class WaitThread extends Thread 
-    {
-        int mSleepTime = 0;
+	private class WaitThread extends Thread {
+		int mSleepTime = 0;
 
-        public WaitThread(int time) 
-        {
-            mSleepTime = time;
-        }
+		public WaitThread(int time) {
+			mSleepTime = time;
+		}
 
-        @Override
-        public void run() 
-        {
-            // directly go to sleep
-            try 
-            {
-                sleep(mSleepTime);
-            } 
-            catch (InterruptedException ex) 
-            {
-                mStickmanFX.mLogger.severe(ex.getMessage());
-            }
-            mPauseEnd.release();
-        }
-    }
+		@Override
+		public void run() {
+			// directly go to sleep
+			try {
+				sleep(mSleepTime);
+			} catch (InterruptedException ex) {
+				mStickmanFX.mLogger.severe(ex.getMessage());
+			}
+			mPauseEnd.release();
+		}
+	}
 }

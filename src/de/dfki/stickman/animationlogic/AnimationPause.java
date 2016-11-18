@@ -8,12 +8,12 @@ import java.util.concurrent.Semaphore;
  * @author Patrick Gebhard
  *
  */
-public class AnimationPause  {
+public class AnimationPause {
 
 	private final Stickman mStickman;
 	private final Animation mAnimation;
 	public Semaphore mPauseEnd = new Semaphore(0);
-	//private long mPreparationTime = 0;
+	// private long mPreparationTime = 0;
 
 	public AnimationPause(Stickman sm, Animation a, int duration) {
 		mStickman = sm;
@@ -21,7 +21,7 @@ public class AnimationPause  {
 
 		new WaitThread(duration).start();
 
-		// block this until WaitThread will unblock 
+		// block this until WaitThread will unblock
 		try {
 			mPauseEnd.acquire(1);
 		} catch (InterruptedException ex) {

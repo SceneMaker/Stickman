@@ -17,7 +17,7 @@ public class LookLeft extends AnimationFX {
 	public LookLeft() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public LookLeft(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
@@ -31,13 +31,13 @@ public class LookLeft extends AnimationFX {
 		playAnimationPart(100);
 
 		pauseAnimation(100);
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKLEFTEND"));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKLEFTEND"));
 		playAnimationPart(100);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

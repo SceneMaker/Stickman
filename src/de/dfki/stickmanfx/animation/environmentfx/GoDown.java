@@ -23,7 +23,9 @@ public class GoDown extends AnimationFX {
 	public GoDown() {
 		mAnimType = ANIMTYPE.ON;
 	}
+
 	double recordOriginLeaveSpeed;
+
 	public GoDown(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;

@@ -290,7 +290,7 @@ public class StickmanStageFX extends Application {
 
 		StickmanStageController mStickmanStageController = loader.getController();
 		mStickmanStageController.getStickmanStageFX(this);
-//		mStickmanStageController.setlePerlinNoiseOn();
+		// mStickmanStageController.setlePerlinNoiseOn();
 
 		stage.setTitle("StickmanFX");
 		stage.setScene(scene);
@@ -344,7 +344,7 @@ public class StickmanStageFX extends Application {
 		sCamera.setNearClip(0.8);
 		sCamera.setFarClip(3000.0);
 		sCamera.setFieldOfView(30);
-		
+
 		SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
 		subScene.setFill(Color.rgb(216, 216, 216));
 		return subScene;
@@ -362,20 +362,16 @@ public class StickmanStageFX extends Application {
 		XMLParser.parse();
 		getInstanceFullScreen();
 
-		if(XMLParser.getStickmanNames() != null)
-		{
-			for(int i = 0; i<XMLParser.getStickmanNames().size(); i++)
-			{
+		if (XMLParser.getStickmanNames() != null) {
+			for (int i = 0; i < XMLParser.getStickmanNames().size(); i++) {
 				addStickmanFX(XMLParser.getStickmanNames().get(i));
 			}
-		}
-		else
-		{
+		} else {
 			addStickmanFX("Bob");
 		}
-		
-//		 addStickmanFX("Anna");
-//		addStickmanFX("character");
+
+		// addStickmanFX("Anna");
+		// addStickmanFX("character");
 
 		lauchStickman();
 

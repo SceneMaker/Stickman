@@ -101,9 +101,11 @@ public class StickmanFX extends Pane {
 	FontMetrics mFontMetrics;
 	Font mFont;
 
-	//steuert leaveSpeed von GoDown und ComeUp und Stickman Position auf Y Achse
-	public double leaveSpeedAndStickmanYPosition = 0; // Added by Robbie, to control the speed of
-									// leaving
+	// steuert leaveSpeed von GoDown und ComeUp und Stickman Position auf Y
+	// Achse
+	public double leaveSpeedAndStickmanYPosition = 0; // Added by Robbie, to
+														// control the speed of
+	// leaving
 	public boolean starShowControler = false; // Added by Robbie, to control the
 												// star appear or not
 	public boolean starShowC = false; // Added by Robbie, star with character
@@ -118,10 +120,10 @@ public class StickmanFX extends Pane {
 	public double mWobble = 0;
 	public Boolean mIdleRun = false; // the shared variable to decide the while
 										// loop in IdleBehavior break or not
-	
-	//BehaviorThred. Es wird in StartIdle-Klasse initializiert
+
+	// BehaviorThred. Es wird in StartIdle-Klasse initializiert
 	public IdleBehavior mIdleBehavior;
-//	public SimplexNoise simplexNoise; // Perlin noise
+	// public SimplexNoise simplexNoise; // Perlin noise
 
 	// amimation stuff
 	public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -149,7 +151,7 @@ public class StickmanFX extends Pane {
 	public LeftFinger2 mLeftFinger2;
 	public LeftFinger3 mLeftFinger3;
 	public LeftFinger4 mLeftFinger4;
-	
+
 	public RightUpperArmFX mRightUpperArmFX;
 	public RightForeArmFX mRightForeArmFX;
 	public RightWrist mRightWrist;
@@ -157,7 +159,7 @@ public class StickmanFX extends Pane {
 	public RightFinger2 mRightFinger2;
 	public RightFinger3 mRightFinger3;
 	public RightFinger4 mRightFinger4;
-	
+
 	// public LeftLegFX mLeftLegFX;
 	public LeftUpperLegFX mLeftUpperLegFX;
 	public LeftForeLegFX mLeftForeLegFX;
@@ -169,12 +171,12 @@ public class StickmanFX extends Pane {
 	public RightFootFX mRightFootFX;
 	public ThinkFX mThinkFX;
 	public BombeFX mBombeFX;
-	
+
 	public UpperBodyAndHead mUpperBodyAndHand;
-	
-	//interior stuff
+
+	// interior stuff
 	public Group table;
-	
+
 	// environment
 	public SpeechBubbleFX mSpeechBubbleFX;
 
@@ -187,9 +189,9 @@ public class StickmanFX extends Pane {
 		mSize = size;
 		mScale = scale;
 
-		//Test
+		// Test
 		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -100;
-				
+
 		mName = name;
 		mType = gender;
 
@@ -213,7 +215,7 @@ public class StickmanFX extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		
+
 		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -221,7 +223,7 @@ public class StickmanFX extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-		
+
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
@@ -233,7 +235,7 @@ public class StickmanFX extends Pane {
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
 		mBombeFX = new BombeFX(mHeadFX);
-		
+
 		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
@@ -268,7 +270,7 @@ public class StickmanFX extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		
+
 		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -276,7 +278,7 @@ public class StickmanFX extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-		
+
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
@@ -290,7 +292,6 @@ public class StickmanFX extends Pane {
 		mBombeFX = new BombeFX(mHeadFX);
 
 		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
-		
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -322,7 +323,7 @@ public class StickmanFX extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		
+
 		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
 		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -330,7 +331,7 @@ public class StickmanFX extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-		
+
 		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
 		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
@@ -344,7 +345,6 @@ public class StickmanFX extends Pane {
 		mBombeFX = new BombeFX(mHeadFX);
 
 		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
-		
 
 		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
 		init();
@@ -363,7 +363,7 @@ public class StickmanFX extends Pane {
 		InnerShadow is = new InnerShadow();
 		is.setOffsetX(4.0f);
 		is.setOffsetY(4.0f);
-		
+
 		nameText.setEffect(is);
 		nameText.setX(20);
 		nameText.setY(100);
@@ -371,18 +371,15 @@ public class StickmanFX extends Pane {
 		nameText.setFill(Color.YELLOW);
 		nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
 
-		if(this.mType == StickmanFX.TYPE.MALE)
-		{
+		if (this.mType == StickmanFX.TYPE.MALE) {
 			nameText.setTranslateX(-80);
 			nameText.setTranslateY(350);
-		}
-		else
-		{
+		} else {
 			nameText.setTranslateX(-90);
 			nameText.setTranslateY(350);
 		}
 		nameText.setTranslateZ(-120);
-		
+
 		ConsoleHandler ch = new ConsoleHandler();
 		ch.setFormatter(new StickmanLogFormatter());
 
@@ -392,9 +389,9 @@ public class StickmanFX extends Pane {
 		mAnimationSchedulerFX = new AnimationSchedulerFX(this);
 		mAnimationSchedulerFX.start();
 
-//		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
-//		mIdleBehavior = new IdleBehavior();
-		
+		// simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
+		// mIdleBehavior = new IdleBehavior();
+
 	}
 
 	public void addListener(AnimationListener al) {
@@ -491,7 +488,7 @@ public class StickmanFX extends Pane {
 		}
 	}
 
-//	 Control IdleBehavior start(mStart == true) or not(mStart == false).
+	// Control IdleBehavior start(mStart == true) or not(mStart == false).
 
 	private static boolean isAnimationTimerStartet = false;
 
@@ -513,13 +510,17 @@ public class StickmanFX extends Pane {
 
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
-		af.appendTranslation(0, leaveSpeedAndStickmanYPosition); // Added by Robbie, GoDown
+		af.appendTranslation(0, leaveSpeedAndStickmanYPosition); // Added by
+																	// Robbie,
+																	// GoDown
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
 
 		// Out put perlin noise
-//		implimentPerlinNoise(mWobble, (mUpperBody.getRightLegStartPostion().x + mUpperBody.getLeftLegStartPostion().x) / 2,
-//				mUpperBody.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
+		// implimentPerlinNoise(mWobble, (mUpperBody.getRightLegStartPostion().x
+		// + mUpperBody.getLeftLegStartPostion().x) / 2,
+		// mUpperBody.getRightLegStartPostion().y + mLeftUpperLegFX.mLength +
+		// mLeftForeLegFX.mLength);
 
 		updateAll();
 	}
@@ -534,12 +535,11 @@ public class StickmanFX extends Pane {
 	}
 
 	private void addAllParts() {
-	
-		this.getChildren().addAll(mNeckFX, mHeadFX,
-				mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
-				mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameText, mUpperBodyAndHand);
-		
+
+		this.getChildren().addAll(mNeckFX, mHeadFX, mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX,
+				mLeftForeLegFX, mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX, mStarsFX,
+				mSpeechBubbleFX, mThinkFX, mBombeFX, nameText, mUpperBodyAndHand);
+
 	}
 
 	private void updateAll() {
@@ -549,37 +549,37 @@ public class StickmanFX extends Pane {
 		} else {
 			if (starShowC == true)
 				mStarsFX.update();
-//			mHeadFX.update();
+			// mHeadFX.update();
 
-//			if (this.mType == StickmanFX.TYPE.MALE)
-//				mMaleHairFX.update();
-//			else
-//				mFemaleHairFX.update();
-//			mLeftEyebrowFX.update();
-//			mLeftEyeFX.update();
-//			mRightEyebrowFX.update();
-//			mFaceWrinkleFX.update(); // added by Robbie
-//			mRightEyeFX.update();
-//			mMouthFX.update();
-//			mNeckFX.update();
+			// if (this.mType == StickmanFX.TYPE.MALE)
+			// mMaleHairFX.update();
+			// else
+			// mFemaleHairFX.update();
+			// mLeftEyebrowFX.update();
+			// mLeftEyeFX.update();
+			// mRightEyebrowFX.update();
+			// mFaceWrinkleFX.update(); // added by Robbie
+			// mRightEyeFX.update();
+			// mMouthFX.update();
+			// mNeckFX.update();
 			// BodyFX is not BodyPartFX Classe
-//			mBodyFX.update();
-//			mLeftShoulderFX.update();
-//			mLeftUpperArmFX.update();
-//			mLeftForeArmFX.update();
-//			mLeftHandFX.update();
-//			mRightShoulderFX.update();
-//			mRightUpperArmFX.update();
-//			mRightForeArmFX.update();
-//			mRightHandFX.update();
+			// mBodyFX.update();
+			// mLeftShoulderFX.update();
+			// mLeftUpperArmFX.update();
+			// mLeftForeArmFX.update();
+			// mLeftHandFX.update();
+			// mRightShoulderFX.update();
+			// mRightUpperArmFX.update();
+			// mRightForeArmFX.update();
+			// mRightHandFX.update();
 			// mLeftLegFX.update();
-//			mLeftUpperLegFX.update();
-//			mLeftForeLegFX.update();
-//			mLeftFootFX.update();
+			// mLeftUpperLegFX.update();
+			// mLeftForeLegFX.update();
+			// mLeftFootFX.update();
 			// mRightLegFX.update();
-//			mRightUpperLegFX.update();
-//			mRightForeLegFX.update();
-//			mRightFootFX.update();
+			// mRightUpperLegFX.update();
+			// mRightForeLegFX.update();
+			// mRightFootFX.update();
 
 			// mSpeechBubbleFX.update();
 
@@ -634,22 +634,17 @@ public class StickmanFX extends Pane {
 															// words here.
 		}
 	}
-	
-	public void hideAllPartsWithout(Pane p)
-	{
-		this.getChildren().forEach(child -> 
-		{
-			if(! child.equals(p))
-			{
+
+	public void hideAllPartsWithout(Pane p) {
+		this.getChildren().forEach(child -> {
+			if (!child.equals(p)) {
 				child.setVisible(false);
 			}
 		});
 	}
-	
-	public void showAllParts()
-	{
-		this.getChildren().forEach(child -> 
-		{
+
+	public void showAllParts() {
+		this.getChildren().forEach(child -> {
 			child.setVisible(true);
 		});
 	}

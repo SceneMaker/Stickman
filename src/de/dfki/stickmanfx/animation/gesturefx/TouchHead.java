@@ -22,30 +22,29 @@ public class TouchHead extends AnimationFX {
 	public TouchHead() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
+
 	public TouchHead(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 
 	@Override
 	public void playAnimation() {
-		
-//		mAnimationPartFX = new ArrayList<>();
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -90));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -90));
-//		playAnimationPart(500);
-		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
+
+		// mAnimationPartFX = new ArrayList<>();
+		// mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody,
+		// "yrotate", -90));
+		// mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX,
+		// "yrotate", -90));
+		// playAnimationPart(500);
+
+		if (mStickmanFX.mType == StickmanFX.TYPE.MALE) {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -88));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 180));
 			playAnimationPart(500);
-		}
-		else
-		{
+		} else {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", 65));
@@ -53,53 +52,47 @@ public class TouchHead extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 240));
 			playAnimationPart(500);
 		}
-		
-		
-		for(int i = 0; i<4; i++)
-		{
+
+		for (int i = 0; i < 4; i++) {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -5));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "rotate", 40));
 			playAnimationPart(100);
-			
+
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -5));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "rotate", 70));
 			playAnimationPart(100);
-			
+
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", -5));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "rotate", 70));
 			playAnimationPart(100);
-			
+
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 5));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger3, "rotate", -70));
 			playAnimationPart(100);
-			
+
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 5));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger2, "rotate", -70));
 			playAnimationPart(100);
-			
+
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "rotate", 5));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFinger4, "rotate", -40));
 			playAnimationPart(100);
 		}
-		
-		
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
-		{
+
+		if (mStickmanFX.mType == StickmanFX.TYPE.MALE) {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 88));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -180));
 			playAnimationPart(500);
-		}
-		else
-		{
+		} else {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 100));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "zrotate", -65));
@@ -107,13 +100,15 @@ public class TouchHead extends AnimationFX {
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -240));
 			playAnimationPart(500);
 		}
-		
-//		mAnimationPartFX = new ArrayList<>();
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", 90));
-//		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 90));
-//		playAnimationPart(500);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		// mAnimationPartFX = new ArrayList<>();
+		// mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody,
+		// "yrotate", 90));
+		// mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX,
+		// "yrotate", 90));
+		// playAnimationPart(500);
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

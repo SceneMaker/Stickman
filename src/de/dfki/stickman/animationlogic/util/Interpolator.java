@@ -25,15 +25,17 @@ public class Interpolator {
 	}
 
 	public static double linearOffset(double start, double end, int currentStep) {
-//		System.out.println("Math.abs(start) - Math.abs(end))" + (Math.abs(start) - Math.abs(end)));
-//		System.out.println("end - start " + (end - start));
+		// System.out.println("Math.abs(start) - Math.abs(end))" +
+		// (Math.abs(start) - Math.abs(end)));
+		// System.out.println("end - start " + (end - start));
 
 		return (end - start) / sMAX_ANIM_STEPS * currentStep;
 	}
 
 	public static double linear(double start, double end, int currentStep) {
-//		System.out.println("Math.abs(start) - Math.abs(end))" + (Math.abs(start) - Math.abs(end)));
-//		System.out.println("end - start " + (end - start));
+		// System.out.println("Math.abs(start) - Math.abs(end))" +
+		// (Math.abs(start) - Math.abs(end)));
+		// System.out.println("end - start " + (end - start));
 		double offset = (end - start) / sMAX_ANIM_STEPS * (sMAX_ANIM_STEPS - currentStep + 1);
 
 		return start + offset;

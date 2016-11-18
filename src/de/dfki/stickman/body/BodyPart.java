@@ -36,7 +36,7 @@ public abstract class BodyPart extends JComponent {
 	public Point mStart = new Point(0, 0), mEnd = new Point(0, 0);
 	public int mLength = 0;
 
-	public double mAnimationStep = 0;   
+	public double mAnimationStep = 0;
 	public int mShapeAnimationStep = 0;
 
 	public int mDefaultTranslation = 0;
@@ -53,7 +53,7 @@ public abstract class BodyPart extends JComponent {
 	List<GeneralPath> mGraphicPaths = Collections.synchronizedList(new ArrayList());
 
 	public Color mColor = new Color(0, 0, 0);
-	
+
 	public BasicStroke mStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 
 	public void init() {
@@ -64,15 +64,21 @@ public abstract class BodyPart extends JComponent {
 	}
 
 	public void setTranslation(int length) {
-		mToTranslation = mTranslation + length;		
-//		mTranslationStep = Math.abs(Math.abs(mTranslation) - Math.abs(mToTranslation)) / Animator.sMAX_ANIM_STEPS * (length / Math.abs(length));
-		mTranslationStep = (double)length / Animator.sMAX_ANIM_STEPS;
+		mToTranslation = mTranslation + length;
+		// mTranslationStep = Math.abs(Math.abs(mTranslation) -
+		// Math.abs(mToTranslation)) / Animator.sMAX_ANIM_STEPS * (length /
+		// Math.abs(length));
+		mTranslationStep = (double) length / Animator.sMAX_ANIM_STEPS;
 
 	}
 
 	public synchronized void calculateTranslation(int step) {
 		mTranslation += mTranslationStep;
-		mTranslation = (double) Math.round(mTranslation * 1000d) / 1000d; // the poor man's round method
+		mTranslation = (double) Math.round(mTranslation * 1000d) / 1000d; // the
+																			// poor
+																			// man's
+																			// round
+																			// method
 
 		calculate(step);
 	}
@@ -90,19 +96,24 @@ public abstract class BodyPart extends JComponent {
 
 	public void setRotation(int degree) {
 		mToDegree = mRotation + degree;
-//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
-		mRotationStep = (double)degree / Animator.sMAX_ANIM_STEPS;	    
+		// mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) /
+		// Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+		mRotationStep = (double) degree / Animator.sMAX_ANIM_STEPS;
 	}
 
 	public void setTilt(int degree) {
 		mToDegree = mRotation + degree;
-//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
-		mRotationStep = (double)degree / Animator.sMAX_ANIM_STEPS;
+		// mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) /
+		// Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+		mRotationStep = (double) degree / Animator.sMAX_ANIM_STEPS;
 	}
 
 	public synchronized void calculateRotation(int step) {
 		mRotation += mRotationStep;
-		mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor man's round method
+		mRotation = (double) Math.round(mRotation * 1000d) / 1000d; // the poor
+																	// man's
+																	// round
+																	// method
 		calculate(step);
 	}
 
@@ -156,7 +167,7 @@ public abstract class BodyPart extends JComponent {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(mColor);
 		g2.setStroke(mStroke);
-		
+
 		for (GeneralPath gp : mGraphicPaths) {
 			g2.draw(gp);
 		}

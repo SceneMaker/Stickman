@@ -5,37 +5,36 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class MouthSAD {
-	
-	public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step, String sign)
-	{
+
+	public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float yMovement0;
 		float xMovement1;
 		float yMovement1;
 		float xMovement19;
 		float yMovement19;
-		
+
 		float xMovement10;
 		float yMovement10;
 		float xMovement9;
 		float yMovement9;
 		float xMovement11;
 		float yMovement11;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0263f;
 		yMovement0 = sig * (20 - step) * 0.0421f;
 		xMovement1 = sig * (20 - step) * 0.0158f;
 		yMovement1 = sig * (20 - step) * 0.0105f;
 		xMovement19 = sig * (20 - step) * 0.0158f;
 		yMovement19 = sig * (20 - step) * 0.0105f;
-		
+
 		xMovement10 = sig * (20 - step) * 0.0263f;
 		yMovement10 = sig * (20 - step) * 0.0421f;
 		xMovement9 = sig * (20 - step) * 0.0158f;
@@ -55,19 +54,18 @@ public class MouthSAD {
 		currentUpperLipPolygon.getPoints().set(25, currentUpperLipPolygon.getPoints().get(25) + yMovement9);
 		currentUpperLipPolygon.getPoints().set(18, currentUpperLipPolygon.getPoints().get(18) + xMovement11);
 		currentUpperLipPolygon.getPoints().set(19, currentUpperLipPolygon.getPoints().get(19) + yMovement11);
-		
+
 		return currentUpperLipPolygon;
 	}
-	
-	public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step, String sign)
-	{
+
+	public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float yMovement0;
 		float xMovement1;
@@ -98,7 +96,7 @@ public class MouthSAD {
 		yMovement3 = sig * (20 - step) * 0.0105f;
 		yMovement4 = sig * (20 - step) * 0.0158f;
 		yMovement5 = sig * (20 - step) * 0.0053f;
-		
+
 		xMovement10 = sig * (20 - step) * 0.0263f;
 		yMovement10 = sig * (20 - step) * 0.0421f;
 		xMovement9 = sig * (20 - step) * 0.0158f;
@@ -108,7 +106,7 @@ public class MouthSAD {
 		yMovement8 = sig * (20 - step) * 0.0053f;
 		yMovement7 = sig * (20 - step) * 0.0105f;
 		yMovement6 = sig * (20 - step) * 0.0158f;
-		
+
 		currentDownLipPolygon.getPoints().set(0, currentDownLipPolygon.getPoints().get(0) - xMovement0);
 		currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) + yMovement0);
 		currentDownLipPolygon.getPoints().set(2, currentDownLipPolygon.getPoints().get(2) - xMovement1);
@@ -119,7 +117,7 @@ public class MouthSAD {
 		currentDownLipPolygon.getPoints().set(7, currentDownLipPolygon.getPoints().get(7) - yMovement3);
 		currentDownLipPolygon.getPoints().set(9, currentDownLipPolygon.getPoints().get(9) - yMovement4);
 		currentDownLipPolygon.getPoints().set(11, currentDownLipPolygon.getPoints().get(11) - yMovement5);
-		//------------------------------//
+		// ------------------------------//
 		currentDownLipPolygon.getPoints().set(20, currentDownLipPolygon.getPoints().get(20) + xMovement10);
 		currentDownLipPolygon.getPoints().set(21, currentDownLipPolygon.getPoints().get(21) + yMovement10);
 		currentDownLipPolygon.getPoints().set(18, currentDownLipPolygon.getPoints().get(18) + xMovement9);
@@ -129,7 +127,7 @@ public class MouthSAD {
 		currentDownLipPolygon.getPoints().set(17, currentDownLipPolygon.getPoints().get(17) - yMovement8);
 		currentDownLipPolygon.getPoints().set(15, currentDownLipPolygon.getPoints().get(15) - yMovement7);
 		currentDownLipPolygon.getPoints().set(13, currentDownLipPolygon.getPoints().get(13) - yMovement6);
-		
+
 		return currentDownLipPolygon;
 	}
 

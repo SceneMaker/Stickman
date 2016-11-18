@@ -18,91 +18,92 @@ import java.util.ArrayList;
  */
 public class ComeBackFromSmall extends Animation {
 
-    private Stickman mStickman;
+	private Stickman mStickman;
 
-    public ComeBackFromSmall(Stickman sm, int duration, boolean block) {
-        super(sm, duration, block);
-        mStickman = sm;
-    }
+	public ComeBackFromSmall(Stickman sm, int duration, boolean block) {
+		super(sm, duration, block);
+		mStickman = sm;
+	}
 
-    @Override
-    public void playAnimation() {
-        float mScaleRecord = 0.0f;
+	@Override
+	public void playAnimation() {
+		float mScaleRecord = 0.0f;
 
-        for (int j = 0; j < 19; j++) {
-            mStickman.mScale = mStickman.mScale * 0.95f;
-        }
+		for (int j = 0; j < 19; j++) {
+			mStickman.mScale = mStickman.mScale * 0.95f;
+		}
 
-        mScaleRecord = mStickman.mScale;
-        mStickman.starShowControler = true;
+		mScaleRecord = mStickman.mScale;
+		mStickman.starShowControler = true;
 
-//		Show words		
-//		for(int i=0; i<15;i++)
-//		{
-//			mStickman.mScale = mStickman.mScale*1.05f;
-//			if(mStickman.mScale >= 1)
-//				mStickman.mScale = 1;
-//			mAnimationPart = new ArrayList<>();
-//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYHI"));
-//			playAnimationPart(2);	
-//		}
-//		show stars
-        mStickman.mScale = 1.334445f;
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSDISAPPEAR"));
-        playAnimationPart(1000);
+		// Show words
+		// for(int i=0; i<15;i++)
+		// {
+		// mStickman.mScale = mStickman.mScale*1.05f;
+		// if(mStickman.mScale >= 1)
+		// mStickman.mScale = 1;
+		// mAnimationPart = new ArrayList<>();
+		// mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape",
+		// "SAYHI"));
+		// playAnimationPart(2);
+		// }
+		// show stars
+		mStickman.mScale = 1.334445f;
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSDISAPPEAR"));
+		playAnimationPart(1000);
 
-//		disappeared words or stars
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "DEFAULT"));
-        playAnimationPart(2);
+		// disappeared words or stars
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "DEFAULT"));
+		playAnimationPart(2);
 
-        mStickman.starShowControler = false;
-        mStickman.mScale = mScaleRecord;
+		mStickman.starShowControler = false;
+		mStickman.mScale = mScaleRecord;
 
-        int rotationUnit = 5;
+		int rotationUnit = 5;
 
-        // bring upper arm and fore arm in position
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
-        playAnimationPart(20);
-        pauseAnimation(20);
+		// bring upper arm and fore arm in position
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+		playAnimationPart(20);
+		pauseAnimation(20);
 
-        for (int i = 0; i < 2; i++) {
-            // wave right		
-            for (int j = 0; j < 9; j++) {
-                mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+		for (int i = 0; i < 2; i++) {
+			// wave right
+			for (int j = 0; j < 9; j++) {
+				mAnimationPart = new ArrayList<>();
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
 
-                mStickman.mScale = mStickman.mScale * 1.05f;
-                if (mStickman.mScale >= 1.3) {
-                    mStickman.mScale = 1.334445f;
-                }
-                playAnimationPart(20);
-            }
+				mStickman.mScale = mStickman.mScale * 1.05f;
+				if (mStickman.mScale >= 1.3) {
+					mStickman.mScale = 1.334445f;
+				}
+				playAnimationPart(20);
+			}
 
-            // wave left
-            for (int j = 0; j < 9; j++) {
-                mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+			// wave left
+			for (int j = 0; j < 9; j++) {
+				mAnimationPart = new ArrayList<>();
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
+				mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
 
-                mStickman.mScale = mStickman.mScale * 1.05f;
-                if (mStickman.mScale >= 1.3) {
-                    mStickman.mScale = 1.334445f;
-                }
-                playAnimationPart(20);
-            }
-        }
+				mStickman.mScale = mStickman.mScale * 1.05f;
+				if (mStickman.mScale >= 1.3) {
+					mStickman.mScale = 1.334445f;
+				}
+				playAnimationPart(20);
+			}
+		}
 
-        // go back in the default position
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
-        playAnimationPart(20);
-    }
+		// go back in the default position
+		mAnimationPart = new ArrayList<>();
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
+		mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+		playAnimationPart(20);
+	}
 }

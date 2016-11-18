@@ -5,16 +5,15 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.TriangleMesh;
 
 public class MouthEMBARRASSED {
-	
-	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
-	{
+
+	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float yMovement0;
 		float xMovement1;
@@ -29,7 +28,7 @@ public class MouthEMBARRASSED {
 		float yMovement16;
 		float xMovement19;
 		float yMovement19;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0210f;
 		yMovement0 = sig * (20 - step) * 0.0210f;
 		xMovement1 = sig * (20 - step) * 0.0052f;
@@ -45,8 +44,7 @@ public class MouthEMBARRASSED {
 		xMovement19 = sig * (20 - step) * 0.0052f;
 		yMovement19 = sig * (20 - step) * 0.0052f;
 
-		
-		currentUpperLipMesh.getPoints().set(0, currentUpperLipMesh.getPoints().get(0) - xMovement0);	
+		currentUpperLipMesh.getPoints().set(0, currentUpperLipMesh.getPoints().get(0) - xMovement0);
 		currentUpperLipMesh.getPoints().set(1, currentUpperLipMesh.getPoints().get(1) + yMovement0);
 		currentUpperLipMesh.getPoints().set(2, currentUpperLipMesh.getPoints().get(2) - xMovement1);
 		currentUpperLipMesh.getPoints().set(3, currentUpperLipMesh.getPoints().get(3) + yMovement1);
@@ -60,19 +58,18 @@ public class MouthEMBARRASSED {
 		currentUpperLipMesh.getPoints().set(33, currentUpperLipMesh.getPoints().get(33) - yMovement16);
 		currentUpperLipMesh.getPoints().set(38, currentUpperLipMesh.getPoints().get(38) - xMovement19);
 		currentUpperLipMesh.getPoints().set(39, currentUpperLipMesh.getPoints().get(39) + yMovement19);
-		
+
 		return currentUpperLipMesh;
 	}
-	
-	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
-	{
+
+	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign) {
 		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
+
+		if (sign.equalsIgnoreCase("PLUS"))
 			sig = 1;
 		else
 			sig = -1;
-		
+
 		float xMovement0;
 		float yMovement0;
 		float xMovement19;
@@ -85,7 +82,7 @@ public class MouthEMBARRASSED {
 		float yMovement3;
 		float yMovement2;
 		float xMovement1;
-		
+
 		xMovement0 = sig * (20 - step) * 0.0210f;
 		yMovement0 = sig * (20 - step) * 0.0210f;
 		xMovement19 = sig * (20 - step) * 0.0052f;
@@ -98,7 +95,7 @@ public class MouthEMBARRASSED {
 		yMovement3 = sig * (20 - step) * 0.0052f;
 		yMovement2 = sig * (20 - step) * 0.0052f;
 		xMovement1 = sig * (20 - step) * 0.0052f;
-		
+
 		currentDownLipMesh.getPoints().set(0, currentDownLipMesh.getPoints().get(0) - xMovement0);
 		currentDownLipMesh.getPoints().set(1, currentDownLipMesh.getPoints().get(1) + yMovement0);
 		currentDownLipMesh.getPoints().set(38, currentDownLipMesh.getPoints().get(38) - xMovement19);
@@ -111,8 +108,7 @@ public class MouthEMBARRASSED {
 		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) - yMovement3);
 		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) - yMovement2);
 		currentDownLipMesh.getPoints().set(2, currentDownLipMesh.getPoints().get(2) - xMovement1);
-		
-		
+
 		return currentDownLipMesh;
 	}
 

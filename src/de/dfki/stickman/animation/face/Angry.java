@@ -13,26 +13,32 @@ import de.dfki.stickman.animationlogic.Animation.ANIMTYPE;
 import java.util.ArrayList;
 
 /**
- * An angry facial movement is created in this class.
- * The face moves from the default state to the angry state, and then comes back to the default state.
+ * An angry facial movement is created in this class. The face moves from the
+ * default state to the angry state, and then comes back to the default state.
  * 
  * @author Patrick Gebhard
  */
 public class Angry extends Animation {
-/**
- * 
- * @param sm Stickman
- * @param duration Control the speed of the movement from one emotion state to another emotion state.
- * @param block block or not the others movements, when one movement is not finished.
- * 
- */
+	/**
+	 * 
+	 * @param sm
+	 *            Stickman
+	 * @param duration
+	 *            Control the speed of the movement from one emotion state to
+	 *            another emotion state.
+	 * @param block
+	 *            block or not the others movements, when one movement is not
+	 *            finished.
+	 * 
+	 */
 	public Angry() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
-	
+
 	public Angry(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
+
 	/**
 	 * This method creates the angry facial movement.
 	 */
@@ -43,12 +49,14 @@ public class Angry extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY")); /// Add
+																							/// by
+																							/// Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
-//		playAnimationPart(20);
+		// playAnimationPart(20);
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(1200);
 
 		// no angry
@@ -56,7 +64,9 @@ public class Angry extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND")); /// Add
+																								/// by
+																								/// Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRYEND"));
 		playAnimationPart(20);

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  */
 public class CoverMouth extends Animation {
-   
+
 	public CoverMouth(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}

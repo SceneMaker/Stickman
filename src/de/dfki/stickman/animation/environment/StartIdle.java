@@ -11,8 +11,8 @@ import de.dfki.stickman.animationlogic.Animation;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template file, choose Tools | Templates and open the template
+ * in the editor.
  */
 
 public class StartIdle extends Animation {
@@ -21,14 +21,12 @@ public class StartIdle extends Animation {
 		super(sm, duration, block);
 	}
 
-
 	@Override
 	public void playAnimation() {
 		if (!mStickman.mIdleBehavior.isAlive()) {
-          mStickman.mIdleRun = true;
-          mStickman.mIdleBehavior = new IdleBehavior(mStickman, mStickman.simplexNoise);
-          mStickman.mIdleBehavior.start();
+			mStickman.mIdleRun = true;
+			mStickman.mIdleBehavior = new IdleBehavior(mStickman, mStickman.simplexNoise);
+			mStickman.mIdleBehavior.start();
 		}
 	}
 }
-

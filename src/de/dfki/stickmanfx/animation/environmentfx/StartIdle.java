@@ -11,8 +11,8 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template file, choose Tools | Templates and open the template
+ * in the editor.
  */
 
 public class StartIdle extends AnimationFX {
@@ -22,15 +22,12 @@ public class StartIdle extends AnimationFX {
 		mStickmanFX = sm;
 	}
 
-
 	@Override
 	public void playAnimation() {
-		if (mStickmanFX.mIdleBehavior == null) 
-		{
+		if (mStickmanFX.mIdleBehavior == null) {
 			mStickmanFX.mIdleRun = true;
 			mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX);
 			mStickmanFX.mIdleBehavior.start();
 		}
 	}
 }
-

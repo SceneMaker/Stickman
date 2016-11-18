@@ -17,6 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
+
 /**
  *
  * @author Beka
@@ -27,9 +28,9 @@ public class LeftUpperArmFX extends BodyPartFX {
 	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
-	
+
 	public LeftUpperArmFX.SHAPE mShape = LeftUpperArmFX.SHAPE.DEFAULT;
-	
+
 	UpperBody mBodyFX;
 
 	int mArmLength = 70;
@@ -74,16 +75,14 @@ public class LeftUpperArmFX extends BodyPartFX {
 
 		init();
 	}
-	
-	 private void activateConfigColor()
-	 {
+
+	private void activateConfigColor() {
 		String stickmanName = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("LimbsColor"))
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("LimbsColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("LimbsColor");
 		}
-		}
+	}
 
 	@Override
 	public void setShape(String s) {
@@ -95,7 +94,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 	public void resetShape() {
 		mShape = LeftUpperArmFX.SHAPE.DEFAULT;
 	}
-	
+
 	@Override
 	public void calculate(int step) {
 		mStart = mBodyFX.getLeftArmStartPostion();
@@ -115,33 +114,26 @@ public class LeftUpperArmFX extends BodyPartFX {
 		}
 		leftUpperArmGroup.getTransforms().clear();
 		leftUpperArmGroup.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
+
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mLeftUpperArmMesh.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mLeftUpperArmMesh.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 				update();
 			}

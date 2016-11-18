@@ -24,13 +24,13 @@ public class TouchHead extends Animation {
 	@Override
 	public void playAnimation() {
 		int rotationUnit = 10;
-		
+
 		// bring Shoulder, upper arm and fore arm in position
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightShoulder, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", rotationUnit* 8));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit*14));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate",-rotationUnit*2 ));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", rotationUnit * 8));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", -rotationUnit * 14));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 2));
 		playAnimationPart(200);
 
 		pauseAnimation(200);
@@ -43,7 +43,7 @@ public class TouchHead extends Animation {
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", -rotationUnit * 4));
 		playAnimationPart(100);
-		
+
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit * 4));
 		playAnimationPart(100);
@@ -56,9 +56,9 @@ public class TouchHead extends Animation {
 		// go back in the default position
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mRightShoulder, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit* 8));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationUnit*14)); //14
-		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit*2 ));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightUpperArm, "rotate", -rotationUnit * 8));
+		mAnimationPart.add(new AnimationContent(mStickman.mRightForeArm, "rotate", rotationUnit * 14)); // 14
+		mAnimationPart.add(new AnimationContent(mStickman.mRightHand, "rotate", rotationUnit * 2));
 		playAnimationPart(200);
 	}
 }

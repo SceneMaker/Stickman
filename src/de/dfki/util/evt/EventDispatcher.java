@@ -14,67 +14,68 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class EventDispatcher {
 
-    // The Singelton Instance
-    private static EventDispatcher sInstance = null;
+	// The Singelton Instance
+	private static EventDispatcher sInstance = null;
 
-    // The Logger Instance
-    private final LOGDefaultLogger mLogger = LOGDefaultLogger.getInstance();
+	// The Logger Instance
+	private final LOGDefaultLogger mLogger = LOGDefaultLogger.getInstance();
 
-    // The Listener List
-    private final List<EventListener> mListenerList =  new CopyOnWriteArrayList<EventListener>();
+	// The Listener List
+	private final List<EventListener> mListenerList = new CopyOnWriteArrayList<EventListener>();
 
-    // The Timer Thread
-    private final Timer mTimer = new Timer("EventCasterTimer");
+	// The Timer Thread
+	private final Timer mTimer = new Timer("EventCasterTimer");
 
-    // Construct The Instance
-    private EventDispatcher() {
-    }
+	// Construct The Instance
+	private EventDispatcher() {
+	}
 
-    // Get The Singelton Instance
-    public final static synchronized EventDispatcher getInstance() {
-        if (sInstance == null) {
-            sInstance = new EventDispatcher();
-        }
+	// Get The Singelton Instance
+	public final static synchronized EventDispatcher getInstance() {
+		if (sInstance == null) {
+			sInstance = new EventDispatcher();
+		}
 
-        return sInstance;
-    }
+		return sInstance;
+	}
 
-    // Cancel The Timer Thread
-    public final /*synchronized*/ void cancel() {
-        mTimer.cancel();
-    }
+	// Cancel The Timer Thread
+	public final /* synchronized */ void cancel() {
+		mTimer.cancel();
+	}
 
-    // Add An Event Listener
-    public final /*synchronized*/ void register(final EventListener listener) {       
-            //mLogger.message("Registering '" + listener + "'");
-            mListenerList.add(listener);
-    }
+	// Add An Event Listener
+	public final /* synchronized */ void register(final EventListener listener) {
+		// mLogger.message("Registering '" + listener + "'");
+		mListenerList.add(listener);
+	}
 
-    public final /*synchronized*/ void remove(final EventListener listener) {  
-            //mLogger.message("Remove '" + listener + "'");
-            mListenerList.remove(listener);
-    }
+	public final /* synchronized */ void remove(final EventListener listener) {
+		// mLogger.message("Remove '" + listener + "'");
+		mListenerList.remove(listener);
+	}
 
-    public final /*synchronized*/ void convey(final EventObject event) {
+	public final /* synchronized */ void convey(final EventObject event) {
 
-        for (final EventListener listener : mListenerList) {
-            //mLogger.message("Conveying '" + event + "' To '" + listener + "'");
-            listener.update(event);
-        }
+		for (final EventListener listener : mListenerList) {
+			// mLogger.message("Conveying '" + event + "' To '" + listener +
+			// "'");
+			listener.update(event);
+		}
 
-    }
+	}
 
-    public final /*synchronized*/ void schedule(final EventObject event, final long timeout) {
+	public final /* synchronized */ void schedule(final EventObject event, final long timeout) {
 
-        // Create The Timer Task
-        final TimerTask timer = new TimerTask() {
-            @Override
-            public void run() {
-                convey(event);
-            }
-        };
+		// Create The Timer Task
+		final TimerTask timer = new TimerTask() {
+			@Override
+			public void run() {
+				convey(event);
+			}
+		};
 
-        // Schedule The Event
-        mTimer.schedule(timer, timeout);
-    }
+		// Schedule The Event
+		mTimer.schedule(timer, timeout);
+	}
 }

@@ -17,31 +17,29 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  * @author Beka
  *
  */
-public class HeadTilt extends AnimationFX 
-{
+public class HeadTilt extends AnimationFX {
 	public HeadTilt() {
 		mAnimType = ANIMTYPE.ON;
 	}
 
-    public HeadTilt(StickmanFX sm, int duration, boolean block) 
-    {
-        super(sm, duration, block);
-    }
+	public HeadTilt(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-    	
-    	mAnimationPartFX = new ArrayList<>();
+	@Override
+	public void playAnimation() {
+
+		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", -10));
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(1000);
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", 10));
 		playAnimationPart(mDuration);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
-    }
+	}
 }

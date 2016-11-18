@@ -21,30 +21,38 @@ public class Sad extends AnimationFX {
 	public Sad() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	
-    public Sad(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
 
-    @Override
-    public void playAnimation() {
-        // sad
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SAD"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SAD"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SAD")); // add by Robbie
-        playAnimationPart(mDuration);
+	public Sad(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-        pauseAnimation(1200);
+	@Override
+	public void playAnimation() {
+		// sad
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SAD"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SAD")); // add
+																									// by
+																									// Robbie
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SAD")); // add
+																									// by
+																									// Robbie
+		playAnimationPart(mDuration);
 
-        // no sad
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SADEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add by Robbie
-        playAnimationPart(mDuration);
-        
-        if(StickmanStageController.currentRadioButton != null)
-        	StickmanStageController.currentRadioButton.setSelected(false);
-    }
+		pauseAnimation(1200);
+
+		// no sad
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SADEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND")); // add
+																										// by
+																										// Robbie
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add
+																										// by
+																										// Robbie
+		playAnimationPart(mDuration);
+
+		if (StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
+	}
 }

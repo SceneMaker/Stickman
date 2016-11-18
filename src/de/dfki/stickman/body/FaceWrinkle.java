@@ -17,8 +17,7 @@ public class FaceWrinkle extends BodyPart {
 
 	public static enum SHAPE {
 
-		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, 
-		EMBARRASSED, EMBARRASSEDEND
+		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
 	};
 
 	Head mHead;
@@ -47,93 +46,87 @@ public class FaceWrinkle extends BodyPart {
 
 	@Override
 	public void createShape() {
-//		mStart: right side
-//		mEnd: left side
+		// mStart: right side
+		// mEnd: left side
 		mStart = mHead.getRightEyebrowPostion();
 		mEnd = new Point(mStart.x - mLength, mStart.y);
 
 		double movement;
-		
+
 		clearDrawObjects();
 		GeneralPath gp = new GeneralPath();
 
 		switch (mShape) {
-			case DEFAULT:
+		case DEFAULT:
 
-				break;
-				
-			case ANGRY:	
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+			break;
 
-//				Add wrinkle for angry face:
-				int angryColorChange = (int)(movement/4*16);
+		case ANGRY:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			// Add wrinkle for angry face:
+			int angryColorChange = (int) (movement / 4 * 16);
+			mColor = new Color(0, 0, 0, angryColorChange);
+			gp.moveTo(mStart.x + 14, mStart.y + 7);
+			gp.lineTo(mStart.x + 14, mStart.y - 1);
+			gp.moveTo(mStart.x + 20, mStart.y + 7);
+			gp.lineTo(mStart.x + 20, mStart.y - 1);
+			break;
+
+		// End wrinkle for angry face:
+		case ANGRYEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				mColor = new Color(0, 0, 0, 0);
+			} else {
+				angryColorChange = (int) (movement / 4 * 16);
 				mColor = new Color(0, 0, 0, angryColorChange);
 				gp.moveTo(mStart.x + 14, mStart.y + 7);
 				gp.lineTo(mStart.x + 14, mStart.y - 1);
 				gp.moveTo(mStart.x + 20, mStart.y + 7);
-				gp.lineTo(mStart.x + 20, mStart.y - 1);				
-				break;
-				
-//				End wrinkle for angry face:
-			case ANGRYEND:	
-				movement = mShapeAnimationStep-1;
-				if(movement<=1)
-				{
-					mColor = new Color(0, 0, 0, 0);
-				}
-				else
-				{
-					angryColorChange = (int)(movement/4*16);
-					mColor = new Color(0, 0, 0, angryColorChange);
-					gp.moveTo(mStart.x + 14, mStart.y + 7);
-					gp.lineTo(mStart.x + 14, mStart.y - 1);
-					gp.moveTo(mStart.x + 20, mStart.y + 7);
-					gp.lineTo(mStart.x + 20, mStart.y - 1);	
-				}
-							
-				break;
-				
-			case DISGUSTED:			
+				gp.lineTo(mStart.x + 20, mStart.y - 1);
+			}
 
-				break;
-				
-			case SURPRISED:
-				
-				break;
-				
-			case EXCITED:
-				
-				break;
-				
-			case EMBARRASSED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+			break;
 
-//				Add wrinkles for embarrassed face:
-				int embarrassedColorChange = (int)(movement/4*16);
+		case DISGUSTED:
+
+			break;
+
+		case SURPRISED:
+
+			break;
+
+		case EXCITED:
+
+			break;
+
+		case EMBARRASSED:
+			movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+			// Add wrinkles for embarrassed face:
+			int embarrassedColorChange = (int) (movement / 4 * 16);
+			mColor = new Color(0, 0, 0, embarrassedColorChange);
+			gp.moveTo(mStart.x - 15, mStart.y);
+			gp.lineTo(mStart.x - 15, mStart.y + 10);
+			gp.moveTo(mStart.x - 25, mStart.y + 5);
+			gp.lineTo(mStart.x - 25, mStart.y + 20);
+			break;
+
+		case EMBARRASSEDEND:
+			movement = mShapeAnimationStep - 1;
+			if (movement <= 1) {
+				mColor = new Color(0, 0, 0, 0);
+			} else {
+				// Add wrinkles for embarrassed face:
+				embarrassedColorChange = (int) (movement / 4 * 16);
 				mColor = new Color(0, 0, 0, embarrassedColorChange);
 				gp.moveTo(mStart.x - 15, mStart.y);
-				gp.lineTo(mStart.x - 15, mStart.y + 10);			
+				gp.lineTo(mStart.x - 15, mStart.y + 10);
 				gp.moveTo(mStart.x - 25, mStart.y + 5);
-				gp.lineTo(mStart.x - 25, mStart.y + 20);				
-				break;
-				
-			case EMBARRASSEDEND:
-				movement = mShapeAnimationStep-1;
-				if(movement<=1)
-				{
-					mColor = new Color(0, 0, 0, 0);
-				}
-				else
-				{
-//				Add wrinkles for embarrassed face:
-					embarrassedColorChange = (int)(movement/4*16);
-					mColor = new Color(0, 0, 0, embarrassedColorChange);
-					gp.moveTo(mStart.x - 15, mStart.y);
-					gp.lineTo(mStart.x - 15, mStart.y + 10);			
-					gp.moveTo(mStart.x - 25, mStart.y + 5);
-					gp.lineTo(mStart.x - 25, mStart.y + 20);
-				}
-				break;
+				gp.lineTo(mStart.x - 25, mStart.y + 20);
+			}
+			break;
 		}
 		addToDrawObjects(gp);
 	}

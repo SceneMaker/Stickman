@@ -21,7 +21,7 @@ public class SmileStart extends Animation {
 		// smile start
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILE"));
-//		playAnimationPart(20);
+		// playAnimationPart(20);
 		playAnimationPart(mDuration);
 		pauseAnimation(10);
 

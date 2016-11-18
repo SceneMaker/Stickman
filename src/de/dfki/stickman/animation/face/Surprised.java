@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  */
 public class Surprised extends Animation {
-	
+
 	public Surprised() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
@@ -27,7 +27,7 @@ public class Surprised extends Animation {
 
 	@Override
 	public void playAnimation() {
-		
+
 		// surprised
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SURPRISED"));
@@ -35,7 +35,7 @@ public class Surprised extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "SURPRISED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISED"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "SURPRISED"));
-//		playAnimationPart(20);mDuration
+		// playAnimationPart(20);mDuration
 		playAnimationPart(mDuration);
 		pauseAnimation(1200);
 

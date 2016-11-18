@@ -18,7 +18,7 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  *
  */
 public class Nod extends AnimationFX {
-	
+
 	public Nod() {
 		mAnimType = ANIMTYPE.ON;
 	}
@@ -29,16 +29,16 @@ public class Nod extends AnimationFX {
 
 	@Override
 	public void playAnimation() {
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 10));
 		playAnimationPart(200);
-		
+
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -10));
 		playAnimationPart(200);
-		
-		if(StickmanStageController.currentRadioButton != null)
+
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

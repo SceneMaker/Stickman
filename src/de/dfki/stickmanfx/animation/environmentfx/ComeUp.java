@@ -24,7 +24,9 @@ public class ComeUp extends AnimationFX {
 	public ComeUp() {
 		mAnimType = ANIMTYPE.ON;
 	}
+
 	double recordOriginLeaveSpeed;
+
 	public ComeUp(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;

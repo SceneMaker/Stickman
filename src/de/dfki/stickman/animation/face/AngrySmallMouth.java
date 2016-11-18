@@ -18,11 +18,11 @@ import java.util.ArrayList;
  *
  */
 public class AngrySmallMouth extends Animation {
-	
+
 	public AngrySmallMouth() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
-	
+
 	public AngrySmallMouth(Stickman sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
@@ -34,12 +34,14 @@ public class AngrySmallMouth extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYSMALLMOUTH"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRY")); /// Add
+																							/// by
+																							/// Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRY"));
-//		playAnimationPart(20);
+		// playAnimationPart(20);
 		playAnimationPart(mDuration);
-		
+
 		pauseAnimation(1200);
 
 		// no angry
@@ -47,7 +49,9 @@ public class AngrySmallMouth extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "ANGRYSMALLMOUTHEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "ANGRYEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "ANGRYEND")); /// Add
+																								/// by
+																								/// Robbie
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "ANGRYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "ANGRYEND"));
 		playAnimationPart(2000);

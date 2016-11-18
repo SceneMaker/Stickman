@@ -45,7 +45,7 @@ public class ClientConnectionHandler extends Thread {
 	}
 
 	public void sendToServer(String message) {
-		//StickmanStage.mLogger.info("Sending " + message);
+		// StickmanStage.mLogger.info("Sending " + message);
 
 		if (mSocket.isConnected()) {
 			mOut.println(message);

@@ -26,7 +26,7 @@ public class RightEyebrowFX extends BodyPartFX {
 	};
 
 	HeadFX mHeadFX;
-	
+
 	Polygon currentPolygon;
 
 	public RightEyebrowFX.SHAPE mShape = RightEyebrowFX.SHAPE.DEFAULT;
@@ -34,41 +34,38 @@ public class RightEyebrowFX extends BodyPartFX {
 	public RightEyebrowFX(HeadFX head) {
 		mHeadFX = head;
 		mSize = new Dimension(mLength, 5);
-		
-		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+
+		if (mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mColor = Color.rgb(88, 44, 13, 1);
 		else
 			mColor = Color.rgb(204, 163, 0, 1);
 		activateConfigColor();
-		
+
 		currentPolygon = new Polygon();
-		
+
 		mStart = mHeadFX.getRightEyebrowPostion();
-		
+
 		init();
-		
+
 		mHeadFX.mHead.getChildren().add(currentPolygon);
 	}
 
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
 		currentPolygon.setTranslateX(mStart.x - 9);
 		currentPolygon.setTranslateY(mStart.y + 38);
 		currentPolygon.setTranslateZ(-17);
 	}
-	
-	private void activateConfigColor()
-   	{
-   		String stickmanName = mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("BrowColor"))
+
+	private void activateConfigColor() {
+		String stickmanName = mHeadFX.mStickmanFX.mName;
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("BrowColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("BrowColor");
 		}
-   	}
-	
+	}
+
 	@Override
 	public void setShape(String s) {
 		RightEyebrowFX.SHAPE shape = RightEyebrowFX.SHAPE.valueOf(s);
@@ -82,29 +79,28 @@ public class RightEyebrowFX extends BodyPartFX {
 
 	@Override
 	public void calculate(int step) {
-		
 
 		switch (mShape) {
 		case DEFAULT:
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			if (mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 				currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
 			else
 				currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
 			currentPolygon.setFill(mColor);
 			break;
-			
+
 		case FADEIN:
-			if(step == 2)
+			if (step == 2)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-			else if(mColor.getOpacity() != 0.0)
+			else if (mColor.getOpacity() != 0.0)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
 			currentPolygon.setFill(mColor);
 			break;
-			
+
 		case FADEOUT:
-			if(step == 2)
+			if (step == 2)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-			else if(mColor.getOpacity() != 1.0)
+			else if (mColor.getOpacity() != 1.0)
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
 			currentPolygon.setFill(mColor);
 			break;
@@ -112,71 +108,70 @@ public class RightEyebrowFX extends BodyPartFX {
 		case ANGRY:
 			currentPolygon = RightBrowANGRY.getANGRY(currentPolygon, step, "PLUS");
 			break;
-			
+
 		case ANGRYEND:
 			currentPolygon = RightBrowANGRY.getANGRY(currentPolygon, step, "MINUS");
 			break;
-			
+
 		case DISGUSTED:
 			currentPolygon = RightBrowDISGUSTED.getANGRY(currentPolygon, step, "PLUS");
 			break;
-			
+
 		case DISGUSTEDEND:
 			currentPolygon = RightBrowDISGUSTED.getANGRY(currentPolygon, step, "MINUS");
 			break;
-			
+
 		case SURPRISED:
 			currentPolygon = RightBrowSURPRISED.getANGRY(currentPolygon, step, "PLUS");
 			break;
-			
+
 		case SURPRISEDEND:
 			currentPolygon = RightBrowSURPRISED.getANGRY(currentPolygon, step, "MINUS");
 			break;
-			
+
 		case EXCITED:
 			currentPolygon = RightBrowEXCITED.getANGRY(currentPolygon, step, "PLUS");
 			break;
-			
+
 		case EXCITEDEND:
 			currentPolygon = RightBrowEXCITED.getANGRY(currentPolygon, step, "MINUS");
 			break;
-			
+
 		case EMBARRASSED:
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			if (mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", true);
 			else
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", false);
 			break;
-			
+
 		case EMBARRASSEDEND:
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			if (mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", true);
 			else
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", false);
 			break;
-			
+
 		case HAPPY:
 			currentPolygon = RightBrowHAPPY.getANGRY(currentPolygon, step, "PLUS");
 			break;
-			
+
 		case HAPPYEND:
 			currentPolygon = RightBrowHAPPY.getANGRY(currentPolygon, step, "MINUS");
 			break;
-			
+
 		case SAD:
 			currentPolygon = RightBrowSAD.getANGRY(currentPolygon, step, "PLUS");
 			break;
-			
+
 		case SADEND:
 			currentPolygon = RightBrowSAD.getANGRY(currentPolygon, step, "MINUS");
 			break;
 
 		}
 	}
-	
+
 	@Override
-	public void update()
-	{
+	public void update() {
 		currentPolygon.setFill(mColor);
 	}
 

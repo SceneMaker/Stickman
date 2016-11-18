@@ -14,14 +14,14 @@ public class StopIdle extends AnimationFX {
 		super(sm, duration, block);
 	}
 
-
 	@Override
 	public void playAnimation() {
 		mStickmanFX.mIdleRun = false;
-		while (mStickmanFX.mIdleBehavior.isAlive());
+		while (mStickmanFX.mIdleBehavior.isAlive())
+			;
 		mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBlinkAktion();
 		mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBreathAktion();
 		mStickmanFX.mIdleBehavior = null;
-		
+
 	}
 }

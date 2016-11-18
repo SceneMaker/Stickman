@@ -18,30 +18,30 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
  */
 public class Loved1 extends AnimationFX {
 
-//	public Loved1() {
-//		mAnimType = ANIMTYPE.ON;
-//	}
-	
-    public Loved1(StickmanFX sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	// public Loved1() {
+	// mAnimType = ANIMTYPE.ON;
+	// }
 
-    @Override
-    public void playAnimation() {
-        // loved
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOVED1"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOVED1"));
-        playAnimationPart(mDuration);
+	public Loved1(StickmanFX sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-        pauseAnimation(10000);
+	@Override
+	public void playAnimation() {
+		// loved
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILE"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOVED1"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOVED1"));
+		playAnimationPart(mDuration);
 
-        // no loved
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOVEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOVEDEND"));
-        playAnimationPart(20);
-    }
+		pauseAnimation(10000);
+
+		// no loved
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOVEDEND"));
+		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOVEDEND"));
+		playAnimationPart(20);
+	}
 }

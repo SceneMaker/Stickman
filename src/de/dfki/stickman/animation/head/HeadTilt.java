@@ -36,9 +36,9 @@ public class HeadTilt extends Animation {
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "tilt", translationUnit));
 
 		playAnimationPart(150);
-		
+
 		pauseAnimation(200);
-		
+
 		mAnimationPart = new ArrayList<>();
 		// which bodyparts are involved - check dependencies
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "tilt", -translationUnit));

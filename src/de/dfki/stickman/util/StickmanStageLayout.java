@@ -20,16 +20,16 @@ public class StickmanStageLayout implements LayoutManager {
 	private boolean sizeUnknown = true;
 
 	public StickmanStageLayout() {
-		//sScale = scale;
+		// sScale = scale;
 	}
 
-//	public void setScale(double scale) {
-//		sScale = scale;
-//	}
-//
-//	private int scale(int input) {
-//		return new Double(input * sScale).intValue();
-//	}
+	// public void setScale(double scale) {
+	// sScale = scale;
+	// }
+	//
+	// private int scale(int input) {
+	// return new Double(input * sScale).intValue();
+	// }
 
 	@Override
 	public void addLayoutComponent(String name, Component comp) {
@@ -66,8 +66,10 @@ public class StickmanStageLayout implements LayoutManager {
 		setSizes(parent);
 
 		Insets insets = parent.getInsets();
-		d.width = preferredWidth + insets.left + insets.right;;
-		d.height = preferredHeight + insets.top + insets.bottom;;
+		d.width = preferredWidth + insets.left + insets.right;
+		;
+		d.height = preferredHeight + insets.top + insets.bottom;
+		;
 
 		sizeUnknown = false;
 
@@ -78,7 +80,6 @@ public class StickmanStageLayout implements LayoutManager {
 	public Dimension minimumLayoutSize(Container parent) {
 		return preferredLayoutSize(parent);
 	}
-
 
 	/*
 	 * provides a flow layout with letting the subcomponents size untouched
@@ -103,7 +104,8 @@ public class StickmanStageLayout implements LayoutManager {
 					x += previousWidth;
 				}
 
-				//c.setBounds(x, y, (sScale > 1.0d) ? scale(d.width) : d.width, (sScale > 1.0d) ? scale(d.height) : d.height);
+				// c.setBounds(x, y, (sScale > 1.0d) ? scale(d.width) : d.width,
+				// (sScale > 1.0d) ? scale(d.height) : d.height);
 				c.setBounds(x, y, d.width, d.height);
 
 				previousWidth = d.width;

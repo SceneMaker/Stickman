@@ -21,75 +21,69 @@ import javafx.scene.shape.MeshView;
  * @author Beka Aptsiauri
  *
  */
-public class NoseFX extends BodyPartFX 
-{
-	public static enum SHAPE 
-	{
+public class NoseFX extends BodyPartFX {
+	public static enum SHAPE {
 		DEFAULT, FADEIN, FADEOUT
 	};
 
 	HeadFX mHeadFX;
-	
+
 	URL url;
 	ColModelImporter imorter;
 	MeshView mNose;
-    PhongMaterial material;
-    
-    URL imageUrl;
-    Image im;
-    
-    double initOpacity = 0.85;
-	
+	PhongMaterial material;
+
+	URL imageUrl;
+	Image im;
+
+	double initOpacity = 0.85;
+
 	public NoseFX.SHAPE mShape = NoseFX.SHAPE.DEFAULT;
 
-	public NoseFX(HeadFX head) 
-	{
+	public NoseFX(HeadFX head) {
 		mHeadFX = head;
 		mSize = new Dimension(mLength, mLength);
-		
+
 		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, initOpacity);
 		activateConfigColor();
-		
+
 		url = getClass().getClassLoader().getResource("BodyParts/nose2.dae");
-		
-		imageUrl  = getClass().getClassLoader().getResource("Images/difuseMap1.png");
+
+		imageUrl = getClass().getClassLoader().getResource("Images/difuseMap1.png");
 		im = new Image(imageUrl.toExternalForm());
-		
+
 		imorter.read(url);
 		mNose = (MeshView) imorter.getImport()[0];
-		
+
 		material = new PhongMaterial();
 		material.setDiffuseColor(mColor);
 		material.setDiffuseMap(im);
 		mNose.setMaterial(material);
-		
+
 		mStart = mHeadFX.getLeftEyebrowPostion();
-		
+
 		init();
-		
+
 		mHeadFX.mHead.getChildren().add(mNose);
 	}
 
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
 		mNose.setTranslateX(mStart.x);
 		mNose.setTranslateY(mStart.y + 110);
 		mNose.setTranslateZ(-15);
 	}
-	
-	private void activateConfigColor()
-   	{
-   		String stickmanName = mHeadFX.mStickmanFX.mName;
-		if(XMLParser.getColorMap(stickmanName) != null)
-		{
-			if(XMLParser.getColorMap(stickmanName).containsKey("NoseColor"))
+
+	private void activateConfigColor() {
+		String stickmanName = mHeadFX.mStickmanFX.mName;
+		if (XMLParser.getColorMap(stickmanName) != null) {
+			if (XMLParser.getColorMap(stickmanName).containsKey("NoseColor"))
 				this.mColor = XMLParser.getColorMap(stickmanName).get("NoseColor");
 		}
-   	}
-	
+	}
+
 	@Override
 	public void setShape(String s) {
 		SHAPE shape = NoseFX.SHAPE.valueOf(s);
@@ -104,42 +98,36 @@ public class NoseFX extends BodyPartFX
 	@Override
 	public void calculate(int step) {
 
-		switch (mShape) 
-		{
+		switch (mShape) {
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
 				update();
 				mNose.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - initOpacity/19);
+			} else if (mColor.getOpacity() != 0.0) {
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+						mColor.getOpacity() - initOpacity / 19);
 				update();
 			}
 			break;
-			
+
 		case FADEOUT:
 			mNose.setVisible(true);
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), initOpacity);
 				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + initOpacity/19);
+			} else if (mColor.getOpacity() != 1.0) {
+				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(),
+						mColor.getOpacity() + initOpacity / 19);
 				update();
 			}
 			break;
 		}
 	}
-	
+
 	@Override
-	public void update()
-	{
+	public void update() {
 		material.setDiffuseColor(mColor);
 		material.setDiffuseMap(im);
 		mNose.setMaterial(material);
@@ -151,4 +139,3 @@ public class NoseFX extends BodyPartFX
 			mColorRecorder = mColor;
 	}
 }
-

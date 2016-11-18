@@ -16,11 +16,9 @@ import javafx.application.Platform;
  * @author Beka Aptsiauri
  *
  */
-public class ContemptEnd extends AnimationFX 
-{
+public class ContemptEnd extends AnimationFX {
 
-	public ContemptEnd(StickmanFX sm, int duration, boolean block) 
-        {
+	public ContemptEnd(StickmanFX sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 

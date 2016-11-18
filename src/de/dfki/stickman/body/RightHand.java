@@ -40,19 +40,23 @@ public class RightHand extends BodyPart {
 		mEnd = new Point(mStart.x, mStart.y + mLength);
 
 		clearDrawObjects();
-		
-		if(mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
+
+		if (mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+			if (mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler == true) // Added
+																											// by
+																											// Robbie
 			{
-				int fadeFactor = mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
+				int fadeFactor = mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep
+						* 12;
+				if (fadeFactor <= 24)
+					fadeFactor = 0;
 				mColor = new Color(80, 80, 80, fadeFactor);
-			}
-			else
-			{
-				int fadeFactor = (20-mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
+			} else {
+				int fadeFactor = (20
+						- mRightForeArm.mUpperArm.mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)
+						* 12;
+				if (fadeFactor >= 216)
+					fadeFactor = 255;
 				mColor = new Color(80, 80, 80, fadeFactor);
 			}
 		}
@@ -76,11 +80,11 @@ public class RightHand extends BodyPart {
 
 		AffineTransform t = new AffineTransform();
 		// flip hand when rotation is more than 60 degrees
-		if (mRotation  < -60) {
+		if (mRotation < -60) {
 			t.scale(-1.0, 1.0);
 			t.translate(-mStart.x * 2, 0);
 		}
-		
+
 		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
 		for (GeneralPath g : mGraphicPaths) {
 			g.transform(t);

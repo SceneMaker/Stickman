@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  */
 public class Happy extends Animation {
-	
+
 	public Happy() {
 		mAnimType = ANIMTYPE.EmotionExpression;
 	}
@@ -26,17 +26,17 @@ public class Happy extends Animation {
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPY"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPY"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));		
+		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPY"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
-		
+
 		// no happy
 		mAnimationPart = new ArrayList<>();
 		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "HAPPYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "HAPPYEND"));
 		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "HAPPYEND"));
-		
+
 		playAnimationPart(20);
 	}
 }
