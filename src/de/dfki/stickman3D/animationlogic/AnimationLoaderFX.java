@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animationlogic;
 
+import de.dfki.common.CommonStickman;
 import de.dfki.stickman3D.StickmanFX;
 
 import java.lang.reflect.Constructor;
@@ -85,11 +86,11 @@ public class AnimationLoaderFX
         return classPath;
     }
 
-    public AnimationFX loadAnimation(StickmanFX sm, String name, int duration, boolean block)
+    public AnimationFX loadAnimation(CommonStickman sm, String name, int duration, boolean block)
     {
         AnimationFX a = null;
 
-        String cp = getAnimationClasspath(sm.mType, name);
+        String cp = getAnimationClasspath(((StickmanFX)sm).mType, name);
         try 
         {
             Class c = Class.forName(cp);
@@ -111,7 +112,7 @@ public class AnimationLoaderFX
         } 
         catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
         {
-            sm.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            ((StickmanFX)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         if (a != null) 
@@ -121,11 +122,11 @@ public class AnimationLoaderFX
         return a;
     }
 
-    public EventAnimationFX loadEventAnimation(StickmanFX sm, String name, int duration, boolean block)
+    public EventAnimationFX loadEventAnimation(CommonStickman sm, String name, int duration, boolean block)
     {
         EventAnimationFX a = null;
 
-        String cp = getEventAnimationClasspath(sm.mType, name);
+        String cp = getEventAnimationClasspath(((StickmanFX)sm).mType, name);
 
         try 
         {
@@ -138,7 +139,7 @@ public class AnimationLoaderFX
 
                 if (params.length == 3) 
                 {
-                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3D")
+                    if (params[0].getSimpleName().equalsIgnoreCase("stickmanfx")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
                         a = (EventAnimationFX) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
@@ -148,7 +149,7 @@ public class AnimationLoaderFX
         } 
         catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
         {
-            sm.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            ((StickmanFX)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         a.mID = getNextID();

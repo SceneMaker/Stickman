@@ -13,12 +13,12 @@ public class StageStickmanControllerFX extends StageStickmanControllerImpl {
 
     public StageStickmanControllerFX(){
         getStickmanStageInstance();
-        createNewStickmanStage(0,0, false);
+        createNewStickmanStage(0,0, true);
     }
 
     public StageStickmanControllerFX(int x, int y){
         getStickmanStageInstance();
-        createNewStickmanStage(x, y, false);
+        createNewStickmanStage(x, y, true);
     }
 
     public StageStickmanControllerFX(int x, int y, boolean decoration){

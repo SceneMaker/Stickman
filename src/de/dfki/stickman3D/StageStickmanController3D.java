@@ -12,12 +12,12 @@ public class StageStickmanController3D extends StageStickmanControllerImpl {
 
     public StageStickmanController3D(){
         getStickmanStageInstance();
-        createNewStickmanStage(0,0, false);
+        createNewStickmanStage(0,0, true);
     }
 
     public StageStickmanController3D(int x, int y){
         getStickmanStageInstance();
-        createNewStickmanStage(x, y, false);
+        createNewStickmanStage(x, y, true);
     }
 
     public StageStickmanController3D(int x, int y, boolean decoration){
