@@ -61,7 +61,7 @@ public class DownBody extends BodyPartFX {
 			url = getClass().getClassLoader().getResource("BodyParts/DownFemaleBody.dae");
 			mColor = Color.rgb(154, 83, 198, 1);
 		} else {
-			url = getClass().getClassLoader().getResource("BodyParts/DownMaleBody1.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/DownMaleBody.dae");
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
 		activateConfigColor();

@@ -50,7 +50,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 		mColor = Color.rgb(242, 227, 217, 1);
 		activateConfigColor();
 
-		url = getClass().getClassLoader().getResource("BodyParts/UpperArm1.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/UpperArm.dae");
 
 		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
 			mDefaultRotation = -10;

@@ -48,7 +48,7 @@ public class NoseFX extends BodyPartFX {
 		mColor = Color.rgb(242, 227, 217, initOpacity);
 		activateConfigColor();
 
-		url = getClass().getClassLoader().getResource("BodyParts/nose2.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/nose.dae");
 
 		imageUrl = getClass().getClassLoader().getResource("Images/difuseMap1.png");
 		im = new Image(imageUrl.toExternalForm());

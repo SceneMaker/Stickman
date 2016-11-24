@@ -17,7 +17,6 @@ import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.AnimationSchedulerFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
-import de.dfki.stickmanfx.bodyfx.BombeFX;
 import de.dfki.stickmanfx.bodyfx.DownBody;
 import de.dfki.stickmanfx.bodyfx.FaceWrinkleFX;
 import de.dfki.stickmanfx.bodyfx.FemaleHairFX;
@@ -170,7 +169,6 @@ public class StickmanFX extends Pane {
 	public RightForeLegFX mRightForeLegFX;
 	public RightFootFX mRightFootFX;
 	public ThinkFX mThinkFX;
-	public BombeFX mBombeFX;
 
 	public UpperBodyAndHead mUpperBodyAndHand;
 
@@ -234,7 +232,6 @@ public class StickmanFX extends Pane {
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
 
 		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
@@ -289,7 +286,6 @@ public class StickmanFX extends Pane {
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
 
 		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
@@ -342,7 +338,6 @@ public class StickmanFX extends Pane {
 		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
 		mRightFootFX = new RightFootFX(mRightForeLegFX);
 		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
 
 		mUpperBodyAndHand = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
@@ -538,7 +533,7 @@ public class StickmanFX extends Pane {
 
 		this.getChildren().addAll(mNeckFX, mHeadFX, mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX,
 				mLeftForeLegFX, mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX, mStarsFX,
-				mSpeechBubbleFX, mThinkFX, mBombeFX, nameText, mUpperBodyAndHand);
+				mSpeechBubbleFX, mThinkFX, nameText, mUpperBodyAndHand);
 
 	}
 

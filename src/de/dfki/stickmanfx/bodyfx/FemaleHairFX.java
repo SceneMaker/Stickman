@@ -38,7 +38,7 @@ public class FemaleHairFX extends BodyPartFX {
 	int mYCenterOffset = mEarWidth / 2;
 
 	int mPivotOffset = 55;
-	int mZTranslate = 20;
+	int mZTranslate = 17;
 
 	URL url;
 	StlMeshImporter importer;
@@ -78,7 +78,7 @@ public class FemaleHairFX extends BodyPartFX {
 	public void init() {
 		super.init();
 		femaleHairMeshView.setTranslateX(mHalfWidth - 60);
-		femaleHairMeshView.setTranslateY(mHalfHeight - 52);
+		femaleHairMeshView.setTranslateY(mHalfHeight - 57);
 		femaleHairMeshView.setTranslateZ(mZTranslate);
 	}
 

@@ -24,7 +24,7 @@ public class Interior {
 
 	public static Group createLaptop() {
 		imorter = new ColModelImporter();
-		url = Interior.class.getClassLoader().getResource("BodyParts/Laptop1.dae");
+		url = Interior.class.getClassLoader().getResource("BodyParts/Laptop.dae");
 		imorter.read(url);
 		sLaptop = (Group) imorter.getImport()[0];
 

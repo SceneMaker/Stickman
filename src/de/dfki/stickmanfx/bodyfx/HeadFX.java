@@ -61,7 +61,7 @@ public class HeadFX extends BodyPartFX {
 		mColor = Color.rgb(242, 227, 217, 1);
 		activateConfigColor();
 
-		url = getClass().getClassLoader().getResource("BodyParts/maleHead.stl");
+		url = getClass().getClassLoader().getResource("BodyParts/Head.stl");
 		im = new StlMeshImporter();
 		im.read(url);
 		mHead = new Group();

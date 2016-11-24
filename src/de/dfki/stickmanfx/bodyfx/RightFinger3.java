@@ -46,7 +46,7 @@ public class RightFinger3 extends BodyPartFX {
 		mColor = Color.rgb(242, 227, 217, 1);
 		activateConfigColor();
 
-		url = getClass().getClassLoader().getResource("BodyParts/Finger2_3_4_2.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/Finger2_3_4.dae");
 
 		mDefaultRotation = -20;
 		mZRotation = 0;
