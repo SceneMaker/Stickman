@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dfki.stickman3D.StickmanStageController">
+   <children>
+      <AnchorPane fx:id="controlPanel" minHeight="600.0" minWidth="450.0" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #00008B;">
+         <children>
+            <Label layoutX="124.0" layoutY="14.0" text="CONTROL PANEL" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="15.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+            <Label layoutX="23.0" layoutY="71.0" text="Stickman Choose" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="StickmanComboBox" layoutX="244.0" layoutY="73.0" prefHeight="27.0" prefWidth="166.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="15.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+            <TabPane layoutX="14.0" layoutY="164.0" prefHeight="248.0" prefWidth="422.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab closable="false" text="Color">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TabPane prefHeight="359.0" prefWidth="422.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab closable="false" text="Head">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="135.0" prefWidth="422.0">
+                                             <children>
+                                                <ColorPicker fx:id="headColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleHeadColor" />
+                                                <Button fx:id="headColorReset" layoutX="326.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="headColorDarker" layoutX="148.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="headColorBrighter" layoutX="237.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab closable="false" text="Hair">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="hairColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleHairColor" />
+                                                <Button fx:id="hairColorDarker" layoutX="148.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="hairColorReset" layoutX="326.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="hairColorBrighter" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab closable="false" text="Body">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="bodyColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleBodyColor" />
+                                                <Button fx:id="bodyColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="bodyColorBrighter" layoutX="235.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="bodyColorReset" layoutX="325.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab closable="false" text="Limbs">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="limbsColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleLimbsColor" />
+                                                <Button fx:id="limbsColorDarker" layoutX="146.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="limbsColorBrighter" layoutX="235.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="limbsColorReset" layoutX="323.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab closable="false" text="Shoes">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="shoesColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleShoesColor" />
+                                                <Button fx:id="shoesColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="shoesColorBrighter" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="shoesColorReset" layoutX="325.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab closable="false" text="Lips">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="lipsColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleLipsColor" />
+                                                <Button fx:id="lipsColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="lipsColorBrighter" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="lipsColorReset" layoutX="324.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab closable="false" text="Eye">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="eyeColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleEyeColor" />
+                                                <Button fx:id="eyeColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="eyeColorBrighter" layoutX="233.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="eyeColorReset" layoutX="321.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab closable="false" text="Brow">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="browColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleBrowColor" />
+                                                <Button fx:id="browColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="browColorBrighter" layoutX="234.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="browColorReset" layoutX="321.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab closable="false" text="Emotion">
+                     <content>
+                        <ScrollPane fx:id="emotionsScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
+                </Tab>
+                  <Tab closable="false" text="Gesture">
+                     <content>
+                        <ScrollPane fx:id="gestureScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Head">
+                     <content>
+                        <ScrollPane fx:id="headScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Environment">
+                     <content>
+                        <ScrollPane fx:id="environmentScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Idle Section">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <RadioButton fx:id="WithPerlinNoise" layoutX="19.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleWithPerlinNoise" text="With Perlin Noise" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="WithoutPerlinNoise" layoutX="19.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleWithoutPerlinNoise" text="Without Perlin Noise" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Posture">
+                     <content>
+                        <ScrollPane fx:id="postureScrollPane" prefHeight="200.0" prefWidth="422.0" />
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Background">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="bg1" fitHeight="70.0" fitWidth="95.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleBG1" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../res/Images/bg1.jpg" />
+                                 </image></ImageView>
+                              <ImageView fx:id="bg2" fitHeight="70.0" fitWidth="95.0" layoutX="115.0" layoutY="14.0" onMouseClicked="#handleBG2" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../res/Images/bg2.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="bg3" fitHeight="70.0" fitWidth="95.0" layoutX="217.0" layoutY="14.0" onMouseClicked="#handleBG3" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../res/Images/bg3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="bg4" fitHeight="70.0" fitWidth="95.0" layoutX="318.0" layoutY="14.0" onMouseClicked="#handleBG4" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../res/Images/bg4.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="bg5" fitHeight="70.0" fitWidth="95.0" layoutX="14.0" layoutY="111.0" onMouseClicked="#handleBG5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../res/Images/bg5.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="bg6" fitHeight="70.0" fitWidth="95.0" layoutX="115.0" layoutY="111.0" onMouseClicked="#handleBG6" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../res/Images/bg6.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Button fx:id="RestButton" layoutX="131.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="258.0" />
+            <Button layoutX="207.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Apply" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="182.0" />
+            <Button fx:id="ExitButton" layoutX="283.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="EXIT" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
+          <AnchorPane layoutX="18.0" layoutY="444.0" minHeight="0.0" minWidth="0.0" prefHeight="255.0" prefWidth="422.0" style="-fx-background-color: #00010B;">
+               <children>
+                  <Button fx:id="resetCamera1" layoutX="276.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="startCamera1" layoutX="16.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="stopCamera1" layoutX="146.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Slider fx:id="cameraXSlider" layoutX="38.0" layoutY="104.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Label layoutX="171.0" layoutY="67.0" text="Rotate Camera" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+                  <Label layoutX="16.0" layoutY="113.0" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="cameraYSlider" layoutX="38.0" layoutY="150.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Label layoutX="16.0" layoutY="159.0" text="Y" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Slider fx:id="cameraZSlider" layoutX="38.0" layoutY="195.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Label layoutX="16.0" layoutY="204.0" text="Z" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>
