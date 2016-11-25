@@ -3,12 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/jim3dsModelImporterJFX.jar"/>
 	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/jimColModelImporterJFX.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/jimFxmlModelImporterJFX.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/jimObjModelImporterJFX.jar"/>
 	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/jimStlMeshImporterJFX.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/jimX3dModelImporterJFX.jar"/>
-	<classpathentry kind="lib" path="C:/Users/bafci_000/Desktop/Stickman3D/Stickman/lib/ufdw.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
