@@ -164,21 +164,14 @@ public class UpperBody extends BodyPart {
 	}
 
 	public Point getLeftLegStartPostion() {
-		if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == Stickman3D.ORIENTATION.LEFT) {
-			return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
-		} else {
+		
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
 					(mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
-		}
 	}
 
 	public Point getRightLegStartPostion() {
-		if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == Stickman3D.ORIENTATION.RIGHT) {
-			return new Point(mStart.x, mSize.height);
-		} else {
 			return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
 					(mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
-		}
 	}
 
 	@Override

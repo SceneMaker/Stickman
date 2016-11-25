@@ -53,7 +53,6 @@ import de.dfki.stickman3D.body.Stars;
 import de.dfki.stickman3D.body.UpperBody;
 import de.dfki.stickman3D.body.UpperBodyAndHead;
 import de.dfki.stickman3D.environment.SpeechBubble;
-import javafx.scene.Group;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -72,10 +71,6 @@ import javafx.scene.transform.Affine;
  *
  */
 public class Stickman3D extends Pane {
-	// general stuff
-	public static enum ORIENTATION {
-		FRONT, LEFT, RIGHT
-	};
 
 	public static enum TYPE {
 		FEMALE, MALE
@@ -84,7 +79,6 @@ public class Stickman3D extends Pane {
 	static public final Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
 	public TYPE mType = TYPE.FEMALE;
 	public String mName = "Stickman";
-	public ORIENTATION mOrientation = ORIENTATION.FRONT;
 	public float mScale = 1.0f;
 	public boolean mShowBackground = true;
 	public boolean mShowStage = true;
@@ -101,27 +95,18 @@ public class Stickman3D extends Pane {
 
 	// steuert leaveSpeed von GoDown und ComeUp und Stickman Position auf Y
 	// Achse
-	public double leaveSpeedAndStickmanYPosition = 0; // Added by Robbie, to
-														// control the speed of
+	public double leaveSpeedAndStickmanYPosition = 0;
 	// leaving
-	public boolean starShowControler = false; // Added by Robbie, to control the
-												// star appear or not
-	public boolean starShowC = false; // Added by Robbie, star with character
-										// appear at the same time or not
-	public boolean fadeControler = false; // Added by Robbie, to control the
-											// character to fade out or fade in.
-											// true: Fade out
-	public boolean setCharacterInvisible = false; // Added by Robbie, to control
-													// the character to fade
-													// out.
+	public boolean starShowControler = false;
+	public boolean starShowC = false;
+	public boolean fadeControler = false;
+	public boolean setCharacterInvisible = false;
 	// True: visible False:invisible
 	public double mWobble = 0;
-	public Boolean mIdleRun = false; // the shared variable to decide the while
-										// loop in IdleBehavior break or not
-
+	// the shared variable to decide the while loop in IdleBehavior break or not
+	public Boolean mIdleRun = false;
 	// BehaviorThred. Es wird in StartIdle-Klasse initializiert
 	public IdleBehavior mIdleBehavior;
-	// public SimplexNoise simplexNoise; // Perlin noise
 
 	// amimation stuff
 	public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -139,7 +124,7 @@ public class Stickman3D extends Pane {
 	public RightEye mRightEyeFX;
 	public Mouth mMouthFX;
 	public Neck mNeckFX;
-	public FaceWrinkle mFaceWrinkleFX; // added by Robbie FaceWrinkle
+	public FaceWrinkle mFaceWrinkleFX;
 	public UpperBody mUpperBody;
 	public DownBody mDownBody;
 	public LeftUpperArm mLeftUpperArmFX;
@@ -149,7 +134,6 @@ public class Stickman3D extends Pane {
 	public LeftFinger2 mLeftFinger2;
 	public LeftFinger3 mLeftFinger3;
 	public LeftFinger4 mLeftFinger4;
-
 	public RightUpperArm mRightUpperArmFX;
 	public RightForeArm mRightForeArmFX;
 	public RightWrist mRightWrist;
@@ -157,25 +141,16 @@ public class Stickman3D extends Pane {
 	public RightFinger2 mRightFinger2;
 	public RightFinger3 mRightFinger3;
 	public RightFinger4 mRightFinger4;
-
-	// public LeftLegFX mLeftLegFX;
 	public LeftUpperLeg mLeftUpperLegFX;
 	public LeftForeLeg mLeftForeLegFX;
 	public LeftFoot mLeftFootFX;
-	public Stars mStarsFX; // added by Robbie Create Say bye or hi
-	// public RightLegFX mRightLegFX;
+	public Stars mStarsFX;
 	public RightUpperLeg mRightUpperLegFX;
 	public RightForeLeg mRightForeLegFX;
 	public RightFoot mRightFootFX;
-
 	public UpperBodyAndHead mUpperBodyAndHand;
-
-	// interior stuff
-	public Group table;
-
 	// environment
 	public SpeechBubble mSpeechBubbleFX;
-
 	// logging
 	public final Logger mLogger = Logger.getAnonymousLogger();
 	// id
@@ -185,7 +160,6 @@ public class Stickman3D extends Pane {
 		mSize = size;
 		mScale = scale;
 
-		// Test
 		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -100;
 
 		mName = name;
@@ -200,7 +174,7 @@ public class Stickman3D extends Pane {
 		mRightEyeFX = new RightEye(mHeadFX);
 		mNoseFX = new Nose(mHeadFX);
 		mMouthFX = new Mouth(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkle(mHeadFX); /// added by Robbie
+		mFaceWrinkleFX = new FaceWrinkle(mHeadFX);
 		mNeckFX = new Neck(mHeadFX);
 		mUpperBody = new UpperBody(mNeckFX);
 		mDownBody = new DownBody(mUpperBody);
@@ -211,7 +185,6 @@ public class Stickman3D extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-
 		mRightUpperArmFX = new RightUpperArm(mUpperBody);
 		mRightForeArmFX = new RightForeArm(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -219,13 +192,10 @@ public class Stickman3D extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLeg(mDownBody);
 		mLeftForeLegFX = new LeftForeLeg(mLeftUpperLegFX);
 		mLeftFootFX = new LeftFoot(mLeftForeLegFX);
-		mStarsFX = new Stars(mUpperBody); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
+		mStarsFX = new Stars(mUpperBody);
 		mRightUpperLegFX = new RightUpperLeg(mDownBody);
 		mRightForeLegFX = new RightForeLeg(mRightUpperLegFX);
 		mRightFootFX = new RightFoot(mRightForeLegFX);
@@ -253,7 +223,7 @@ public class Stickman3D extends Pane {
 		mRightEyeFX = new RightEye(mHeadFX);
 		mNoseFX = new Nose(mHeadFX);
 		mMouthFX = new Mouth(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkle(mHeadFX); /// added by Robbie
+		mFaceWrinkleFX = new FaceWrinkle(mHeadFX);
 		mNeckFX = new Neck(mHeadFX);
 		mUpperBody = new UpperBody(mNeckFX);
 		mDownBody = new DownBody(mUpperBody);
@@ -264,7 +234,6 @@ public class Stickman3D extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-
 		mRightUpperArmFX = new RightUpperArm(mUpperBody);
 		mRightForeArmFX = new RightForeArm(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -272,13 +241,10 @@ public class Stickman3D extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLeg(mDownBody);
 		mLeftForeLegFX = new LeftForeLeg(mLeftUpperLegFX);
 		mLeftFootFX = new LeftFoot(mLeftForeLegFX);
-		mStarsFX = new Stars(mUpperBody); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
+		mStarsFX = new Stars(mUpperBody);
 		mRightUpperLegFX = new RightUpperLeg(mDownBody);
 		mRightForeLegFX = new RightForeLeg(mRightUpperLegFX);
 		mRightFootFX = new RightFoot(mRightForeLegFX);
@@ -304,7 +270,7 @@ public class Stickman3D extends Pane {
 		mRightEyeFX = new RightEye(mHeadFX);
 		mNoseFX = new Nose(mHeadFX);
 		mMouthFX = new Mouth(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkle(mHeadFX); /// added by Robbie
+		mFaceWrinkleFX = new FaceWrinkle(mHeadFX);
 		mNeckFX = new Neck(mHeadFX);
 		mUpperBody = new UpperBody(mNeckFX);
 		mDownBody = new DownBody(mUpperBody);
@@ -315,7 +281,6 @@ public class Stickman3D extends Pane {
 		mLeftFinger2 = new LeftFinger2(mLeftWrist);
 		mLeftFinger3 = new LeftFinger3(mLeftWrist);
 		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-
 		mRightUpperArmFX = new RightUpperArm(mUpperBody);
 		mRightForeArmFX = new RightForeArm(mRightUpperArmFX);
 		mRightWrist = new RightWrist(mRightForeArmFX);
@@ -323,13 +288,10 @@ public class Stickman3D extends Pane {
 		mRightFinger2 = new RightFinger2(mRightWrist);
 		mRightFinger3 = new RightFinger3(mRightWrist);
 		mRightFinger4 = new RightFinger4(mRightWrist);
-
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
 		mLeftUpperLegFX = new LeftUpperLeg(mDownBody);
 		mLeftForeLegFX = new LeftForeLeg(mLeftUpperLegFX);
 		mLeftFootFX = new LeftFoot(mLeftForeLegFX);
-		mStarsFX = new Stars(mUpperBody); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
+		mStarsFX = new Stars(mUpperBody);
 		mRightUpperLegFX = new RightUpperLeg(mDownBody);
 		mRightForeLegFX = new RightForeLeg(mRightUpperLegFX);
 		mRightFootFX = new RightFoot(mRightForeLegFX);
@@ -348,7 +310,6 @@ public class Stickman3D extends Pane {
 		this.setMinHeight(mSize.height);
 		this.setMinWidth(mSize.width);
 		this.setTranslateY(11);
-		// this.setStyle("-fx-border-color: black");
 
 		InnerShadow is = new InnerShadow();
 		is.setOffsetX(4.0f);
@@ -378,10 +339,6 @@ public class Stickman3D extends Pane {
 
 		mAnimationSchedulerFX = new AnimationScheduler(this);
 		mAnimationSchedulerFX.start();
-
-		// simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
-		// mIdleBehavior = new IdleBehavior();
-
 	}
 
 	public void addListener(AnimationListener al) {
@@ -406,23 +363,6 @@ public class Stickman3D extends Pane {
 
 	public String getID() {
 		return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
-	}
-
-	// @Override
-	// public String getName() {
-	// return mName;
-	// }
-
-	// Sets the orientation of the character, allowed values are: LEFT, RIGHT,
-	// FRONT
-	public void setOrientation(String orientation) {
-		if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
-			mOrientation = ORIENTATION.LEFT;
-		} else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
-			mOrientation = ORIENTATION.RIGHT;
-		} else {
-			mOrientation = ORIENTATION.FRONT;
-		}
 	}
 
 	public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
@@ -455,12 +395,11 @@ public class Stickman3D extends Pane {
 	public Animation doAnimation(String name, int duration, Object param, boolean block) {
 		Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
 
-		a.setParameter(param); // this is for now only used by the Speech Bubble
+		// this is for now only used by the Speech Bubble
+		a.setParameter(param);
 
 		try {
 			mAnimationLaunchControl.acquire();
-			// Platform.runLater(() ->
-			// a.start());/////////////////////////////////////////////////
 			a.start();
 		} catch (InterruptedException ex) {
 			mLogger.severe(ex.getMessage());
@@ -478,41 +417,17 @@ public class Stickman3D extends Pane {
 		}
 	}
 
-	// Control IdleBehavior start(mStart == true) or not(mStart == false).
-
-	private static boolean isAnimationTimerStartet = false;
-
 	public void update() {
-		Color currColor = sFOREGROUND;
-		int width = new Float(mSize.width).intValue();
-		int height = new Float(mSize.height).intValue();
-
 		// draw everthing in the middle and scaled
 		Affine af = new Affine();
 		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-		// mGeneralYTranslation = (float)
-		// (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
-		// mGeneralYTranslation = (float)
-		// (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
-		// change Screen.getPrimary().getVisualBounds().getHeight() to
-		// mSize.height to avoid the location changed after update. by Robbie
 		mGeneralYTranslation = mSize.height - 700 * mScale;
 
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
-		af.appendTranslation(0, leaveSpeedAndStickmanYPosition); // Added by
-																	// Robbie,
-																	// GoDown
+		af.appendTranslation(0, leaveSpeedAndStickmanYPosition);
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
-
-		// Out put perlin noise
-		// implimentPerlinNoise(mWobble, (mUpperBody.getRightLegStartPostion().x
-		// + mUpperBody.getLeftLegStartPostion().x) / 2,
-		// mUpperBody.getRightLegStartPostion().y + mLeftUpperLegFX.mLength +
-		// mLeftForeLegFX.mLength);
-
-		updateAll();
 	}
 
 	private static class StickmanLogFormatter extends Formatter {
@@ -530,99 +445,6 @@ public class Stickman3D extends Pane {
 				mLeftForeLegFX, mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX, mStarsFX,
 				mSpeechBubbleFX, nameText, mUpperBodyAndHand);
 
-	}
-
-	private void updateAll() {
-		// draw body parts
-		if (starShowControler == true) {
-			mStarsFX.update(); // Added by Robbie, to show stars or words here.
-		} else {
-			if (starShowC == true)
-				mStarsFX.update();
-			// mHeadFX.update();
-
-			// if (this.mType == StickmanFX.TYPE.MALE)
-			// mMaleHairFX.update();
-			// else
-			// mFemaleHairFX.update();
-			// mLeftEyebrowFX.update();
-			// mLeftEyeFX.update();
-			// mRightEyebrowFX.update();
-			// mFaceWrinkleFX.update(); // added by Robbie
-			// mRightEyeFX.update();
-			// mMouthFX.update();
-			// mNeckFX.update();
-			// BodyFX is not BodyPart Classe
-			// mBodyFX.update();
-			// mLeftShoulderFX.update();
-			// mLeftUpperArmFX.update();
-			// mLeftForeArmFX.update();
-			// mLeftHandFX.update();
-			// mRightShoulderFX.update();
-			// mRightUpperArmFX.update();
-			// mRightForeArmFX.update();
-			// mRightHandFX.update();
-			// mLeftLegFX.update();
-			// mLeftUpperLegFX.update();
-			// mLeftForeLegFX.update();
-			// mLeftFootFX.update();
-			// mRightLegFX.update();
-			// mRightUpperLegFX.update();
-			// mRightForeLegFX.update();
-			// mRightFootFX.update();
-
-			// mSpeechBubbleFX.update();
-
-			if (starShowC == true)
-				mStarsFX.update(); // Added by Robbie, to show stars or words
-									// here.
-		}
-
-		// draw environment
-		// mSpeechBubble.update(g);
-	}
-
-	private void implimentPerlinNoise(double mWobble, int x, int y) {
-		if (starShowControler == true) {
-			mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie, to
-														// show stars or words
-														// here
-		} else {
-			if (starShowC == true)
-				mStarsFX.rotatePerlinNoise(mWobble, x, y);
-			mHeadFX.rotatePerlinNoise(mWobble, x, y);
-
-			if (this.mType == Stickman3D.TYPE.MALE)
-				mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
-			else
-				mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
-			mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-			mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
-			mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-			mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y); // added by Robbie
-			mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
-			mMouthFX.rotatePerlinNoise(mWobble, x, y);
-			mNeckFX.rotatePerlinNoise(mWobble, x, y);
-			// BodyFX is not BodyPart Classe
-			mUpperBody.rotatePerlinNoise(mWobble, x, y);
-			mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
-			mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
-			mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
-			mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
-			// mLeftLegFX.update();
-			mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
-			mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
-			mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
-			// mRightLegFX.update();
-			mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
-			mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
-			mRightFootFX.rotatePerlinNoise(mWobble, x, y);
-
-			if (starShowC == true)
-				mStarsFX.rotatePerlinNoise(mWobble, x, y); // Added by Robbie,
-															// to show stars or
-															// words here.
-		}
 	}
 
 	public void hideAllPartsWithout(Pane p) {
