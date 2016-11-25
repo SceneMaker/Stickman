@@ -1,16 +1,10 @@
 package de.dfki.stickman3D.body;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Point;
 
 import de.dfki.stickman3D.animationlogic.Animator;
 import de.dfki.stickman3D.mimic.util.FaceWrinkleANGRY;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.scene.shape.Polygon;
 
 /**

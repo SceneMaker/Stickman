@@ -68,9 +68,6 @@ public class StickmanStage extends Application {
 	// Camera
 	public static SubScene sSubscene;
 	public static PerspectiveCamera sCamera;
-	private static double recordCameraXPosition = -1400;
-	private static double recordCameraYPosition = 466;
-	private static double recordCameraZPosition = 434;
 
 	public StickmanStage() {
 		sStickmanHBox = new HBox();
@@ -229,8 +226,7 @@ public class StickmanStage extends Application {
 		// TODO cut the crap with the two animation types ...
 		Animation a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimation() : new Animation();
 
-		boolean r = XMLUtilities.parseFromXMLStream(a,
-				new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
+		XMLUtilities.parseFromXMLStream(a, new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
 
 		String stickmanname = a.mStickmanName;
 		String animationname = a.mName;
@@ -242,8 +238,8 @@ public class StickmanStage extends Application {
 			a = (a instanceof EventAnimation)
 					? AnimationLoader.getInstance().loadEventAnimation(getStickmanFX(stickmanname), animationname,
 							duration, blocking)
-					: AnimationLoader.getInstance().loadAnimation(getStickmanFX(stickmanname), animationname,
-							duration, blocking);
+					: AnimationLoader.getInstance().loadAnimation(getStickmanFX(stickmanname), animationname, duration,
+							blocking);
 
 			a.setID(id); // give the animation the same id (TODO - This is bad
 							// design and caused that the animation has to be
@@ -368,7 +364,7 @@ public class StickmanStage extends Application {
 			}
 		} else {
 			addStickmanFX("Bob");
-//			addStickmanFX("Anna");
+			// addStickmanFX("Anna");
 		}
 
 		// addStickmanFX("Anna");

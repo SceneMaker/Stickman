@@ -6,12 +6,7 @@
 package de.dfki.action.sequence;
 
 import de.dfki.util.ios.IOSIndentWriter;
-import de.dfki.util.xml.XMLParseAction;
-import de.dfki.util.xml.XMLParseError;
-import de.dfki.util.xml.XMLParseable;
 import de.dfki.util.xml.XMLWriteError;
-import de.dfki.util.xml.XMLWriteable;
-import org.w3c.dom.Element;
 
 /**
  *

@@ -10,7 +10,6 @@ import de.dfki.stickman3D.animationlogic.AnimationContent;
 import de.dfki.stickman3D.animationlogic.Animation;
 
 import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *
@@ -32,8 +31,8 @@ public class SadStart extends Animation {
 																										// by
 																										// Robbie
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTED")); // add
-																											// by
-																											// Robbie
+																										// by
+																										// Robbie
 		playAnimationPart(mDuration);
 
 		pauseAnimation(10);

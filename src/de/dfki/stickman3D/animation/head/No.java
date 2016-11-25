@@ -50,7 +50,7 @@ public class No extends Animation {
 			}
 		}
 
-		if(StickmanStageController.currentRadioButton != null)
+		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }

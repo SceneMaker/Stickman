@@ -1,8 +1,6 @@
 package de.dfki.stickman3D.mimic.util;
 
-import de.dfki.stickman3D.animationlogic.Animator;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.TriangleMesh;
 
 public class MouthDISGUSTED {
 

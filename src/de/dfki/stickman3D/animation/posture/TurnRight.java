@@ -11,7 +11,6 @@ import de.dfki.stickman3D.animationlogic.AnimationContent;
 import de.dfki.stickman3D.animationlogic.Animation;
 
 import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  * An angry facial movement is created in this class. The face moves from the

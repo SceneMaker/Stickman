@@ -24,7 +24,6 @@ public class CoverMouth extends Animation {
 
 	@Override
 	public void playAnimation() {
-		int rotationUnit = 16;
 
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();

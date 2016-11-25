@@ -35,8 +35,8 @@ public class Speaking extends EventAnimation {
 		}
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(
-				new AnimationContent(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
+		mAnimationPartFX
+				.add(new AnimationContent(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
 
 		playEventAnimationPart();
 

@@ -1,31 +1,9 @@
 package de.dfki.stickman3D.environment;
 
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-
-import java.awt.Dimension;
-
-import java.awt.Point;
-import java.awt.font.FontRenderContext;
-import java.awt.font.LineBreakMeasurer;
-import java.awt.font.TextAttribute;
-import java.awt.font.TextLayout;
 import java.awt.geom.GeneralPath;
-import java.text.AttributedString;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
-import com.sun.javafx.tk.FontMetrics;
-import com.sun.javafx.tk.Toolkit;
-
 import de.dfki.stickman3D.body.BodyPart;
 import de.dfki.stickman3D.body.Head;
 

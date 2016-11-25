@@ -33,8 +33,8 @@ public class Sad extends Animation {
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "SAD"));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyebrowFX, "shape", "SAD")); // add
-																									// by
-																									// Robbie
+																								// by
+																								// Robbie
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyebrowFX, "shape", "SAD")); // add
 																									// by
 																									// Robbie
@@ -46,11 +46,11 @@ public class Sad extends Animation {
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "SADEND"));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND")); // add
-																										// by
-																										// Robbie
+																									// by
+																									// Robbie
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add
-																										// by
-																										// Robbie
+																									// by
+																									// Robbie
 		playAnimationPart(mDuration);
 
 		if (StickmanStageController.currentRadioButton != null)

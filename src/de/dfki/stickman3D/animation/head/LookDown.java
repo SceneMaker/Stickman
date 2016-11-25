@@ -4,7 +4,6 @@ import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContent;
 import de.dfki.stickman3D.animationlogic.Animation;
-import de.dfki.stickman3D.animationlogic.Animation.ANIMTYPE;
 
 import java.util.ArrayList;
 

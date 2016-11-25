@@ -5,7 +5,6 @@ import de.dfki.stickman3D.animationlogic.AnimationContent;
 import de.dfki.stickman3D.animationlogic.Animation;
 
 import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *

@@ -24,8 +24,6 @@ public class Itching extends Animation {
 
 	@Override
 	public void playAnimation() {
-		int rotationUnit = 16;
-
 		// bring upper arm and fore arm in position
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftUpperArmFX, "zrotate", -30));

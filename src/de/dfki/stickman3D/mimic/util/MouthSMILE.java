@@ -4,13 +4,6 @@ import javafx.scene.shape.Polygon;
 
 public class MouthSMILE {
 
-	private float optimateValue(float movement, float movementFactor) {
-		if (movement > movementFactor * 18) {
-			movement = movement * 18;
-		}
-		return movement;
-	}
-
 	public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step, String sign) {
 		int sig;
 
