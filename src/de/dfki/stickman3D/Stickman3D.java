@@ -2,6 +2,7 @@ package de.dfki.stickman3D;
 
 import java.awt.Dimension;
 import java.awt.FontMetrics;
+import java.awt.Toolkit;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
@@ -309,7 +310,10 @@ public class Stickman3D extends Pane {
 		this.setPrefWidth(mSize.width);
 		this.setMinHeight(mSize.height);
 		this.setMinWidth(mSize.width);
-		this.setTranslateY(11);
+		if(Toolkit.getDefaultToolkit().getScreenSize().getHeight() <= 768)
+			this.setTranslateY(11);
+		else
+			this.setTranslateY(155);
 
 		InnerShadow is = new InnerShadow();
 		is.setOffsetX(4.0f);
