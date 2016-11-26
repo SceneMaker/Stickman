@@ -69,6 +69,10 @@ public class StickmanStage extends Application {
 	// Camera
 	public static SubScene sSubscene;
 	public static PerspectiveCamera sCamera;
+	
+	public static double recordCameraXPosition;
+	public static double recordCameraYPosition;
+	public static double recordCameraZPosition;
 
 	public StickmanStage() {
 		sStickmanHBox = new HBox();
@@ -348,6 +352,10 @@ public class StickmanStage extends Application {
 			sCamera.setTranslateX(width - 700);
 		}
 		sCamera.setTranslateY(height / 2 + 50);
+		
+		recordCameraXPosition = sCamera.getTranslateX();
+		recordCameraYPosition = sCamera.getTranslateY();
+		recordCameraZPosition = sCamera.getTranslateZ();
 		sCamera.setNearClip(0.8);
 		sCamera.setFarClip(3000.0);
 		sCamera.setFieldOfView(30);

@@ -316,9 +316,9 @@ public class StickmanStageController {
 	@FXML
 	public void handleResetCamera() {
 
-		StickmanStage.sCamera.setTranslateX(466);
-		StickmanStage.sCamera.setTranslateY(434);
-		StickmanStage.sCamera.setTranslateZ(-1400);
+		StickmanStage.sCamera.setTranslateX(StickmanStage.recordCameraXPosition);
+		StickmanStage.sCamera.setTranslateY(StickmanStage.recordCameraYPosition);
+		StickmanStage.sCamera.setTranslateZ(StickmanStage.recordCameraZPosition);
 
 		cameraXSlider.setValue(0);
 		cameraYSlider.setValue(0);
