@@ -347,7 +347,6 @@ public class StickmanStage extends Application {
 			sCamera.setTranslateZ(-2500);
 			sCamera.setTranslateX(width - 700);
 		}
-		sCamera.setTranslateX(width - 450);
 		sCamera.setTranslateY(height / 2 + 50);
 		sCamera.setNearClip(0.8);
 		sCamera.setFarClip(3000.0);
