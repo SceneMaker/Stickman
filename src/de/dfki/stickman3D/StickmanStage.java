@@ -1,6 +1,7 @@
 package de.dfki.stickman3D;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -333,8 +334,19 @@ public class StickmanStage extends Application {
 
 	private static SubScene createSubSceneAndCamera(HBox root, double width, double height) {
 
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		sCamera = new PerspectiveCamera(true);
-		sCamera.setTranslateZ(-1400);
+		
+		if(dim.getHeight() <= 768)
+		{
+			sCamera.setTranslateZ(-1400);
+			sCamera.setTranslateX(width - 450);
+		}
+		else
+		{
+			sCamera.setTranslateZ(-2500);
+			sCamera.setTranslateX(width - 700);
+		}
 		sCamera.setTranslateX(width - 450);
 		sCamera.setTranslateY(height / 2 + 50);
 		sCamera.setNearClip(0.8);
