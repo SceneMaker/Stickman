@@ -1,7 +1,7 @@
 package de.dfki.stickmanfx.stagecontroller;
 
 import de.dfki.StageFX.StageStickmanControllerImpl;
-import de.dfki.common.ApplicationFXLauncherImpl;
+import de.dfki.common.ApplicationLauncherImpl;
 import de.dfki.stickmanfx.StickmanStageFX;
 
 import java.io.IOException;
@@ -29,8 +29,8 @@ public class StageStickmanControllerFX extends StageStickmanControllerImpl {
 
     @Override
     protected void getStickmanStageInstance() {
-        applicationFXLauncher = new ApplicationLauncher2D();
-        if(ApplicationFXLauncherImpl.isRunning()){
+        applicationFXLauncher = new ApplicationLauncherFX();
+        if(ApplicationLauncherImpl.isRunning()){
             stickmanStageFX = StickmanStageFX.getInstance();
 
         }else{

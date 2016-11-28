@@ -1,6 +1,6 @@
 package de.dfki.stickmanSwing.client;
 
-import de.dfki.common.CommonCommandParser;
+import de.dfki.common.CommandParser;
 import de.dfki.stickmanSwing.StickmanStage;
 import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
 
@@ -31,7 +31,7 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 	private boolean mRunning = true;
 	public boolean mConnected = false;
 	private StickmanStage mStickmanStage;
-	private CommonCommandParser stickmanParser;
+	private CommandParser stickmanParser;
 
 	public ClientConnectionHandler() {
 		super.setName("StickmanStage Socket Connection Handler");
@@ -42,7 +42,7 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 		mStickmanStage = stage;
 	}
 
-	public ClientConnectionHandler(CommonCommandParser parser) {
+	public ClientConnectionHandler(CommandParser parser) {
 		super.setName("StickmanStage Socket Connection Handler");
 		stickmanParser = parser;
 	}

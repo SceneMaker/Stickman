@@ -15,7 +15,7 @@ public class StageStickmanNetworkControllerDecorator3DFX extends CommonStageStic
 
     @Override
     protected void initConnectionToServer(StageStickmanController wrappedController) {
-        commonCommandParser = new CommandParser3DFX(getCommonStickmansOnStage());
+        commonCommandParser = new CommandParser3D(getCommonStickmansOnStage());
         mConnection = new ClientConnectionHandlerFX(commonCommandParser);
         mConnection.tryToConnect(mHost, mPort);
     }

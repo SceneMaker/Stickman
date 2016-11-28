@@ -1,8 +1,7 @@
 package de.dfki.stickmanfx.client;
 
-import de.dfki.common.CommonCommandParser;
-import de.dfki.common.CommonStickmansOnStage;
-import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.common.CommandParser;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
 import de.dfki.stickmanfx.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;
@@ -14,8 +13,8 @@ import java.nio.charset.Charset;
 /**
  * Created by alvaro on 9/19/16.
  */
-public class CommandParserFX extends CommonCommandParser {
-    public CommandParserFX(CommonStickmansOnStage stage) {
+public class CommandParserFX extends CommandParser {
+    public CommandParserFX(StickmansOnStage stage) {
         super(stage);
     }
 

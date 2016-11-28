@@ -1,7 +1,7 @@
 package de.dfki.StageFX;
 
 import de.dfki.common.*;
-import de.dfki.common.interfaces.ApplicationFXLauncher;
+import de.dfki.common.interfaces.ApplicationLauncher;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
@@ -15,9 +15,9 @@ import java.awt.image.BufferedImage;
 public abstract class StageStickmanControllerImpl implements StageStickmanController {
 
     public static final String CONFIG_STAGE = "configStage";
-    protected ApplicationFXLauncher applicationFXLauncher ;
+    protected ApplicationLauncher applicationFXLauncher ;
     protected StageStickman stickmanStageFX;
-    protected CommonStickmansOnStage commonStickmansOnStage;
+    protected StickmansOnStage commonStickmansOnStage;
     protected String stageIdentifier;
     private boolean fullScreen = false;
     private int x;
@@ -103,7 +103,7 @@ public abstract class StageStickmanControllerImpl implements StageStickmanContro
     }
 
     @Override
-    public CommonStickmansOnStage getCommonStickmansOnStage() {
+    public StickmansOnStage getCommonStickmansOnStage() {
         return commonStickmansOnStage;
     }
 

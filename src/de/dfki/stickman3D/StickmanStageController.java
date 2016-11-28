@@ -1,6 +1,6 @@
 package de.dfki.stickman3D;
 
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.FXViewController;
 import de.dfki.stickman3D.kinect.Kinect;
 import javafx.beans.value.ChangeListener;
@@ -173,7 +173,7 @@ public class StickmanStageController implements FXViewController {
 	@FXML 
 	private RadioButton stopKinect;
 
-    private CommonStickmansOnStage mStickmanOnstage;
+    private StickmansOnStage mStickmanOnstage;
 	
 	Kinect kinect = null;
 	
@@ -293,7 +293,7 @@ public class StickmanStageController implements FXViewController {
         return (Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox);
     }
 
-    public void setStickamnOnStage(CommonStickmansOnStage commonStickmansOnStage)
+    public void setStickamnOnStage(StickmansOnStage commonStickmansOnStage)
     {
         this.mStickmanOnstage = commonStickmansOnStage;
         fillComboForStickman();

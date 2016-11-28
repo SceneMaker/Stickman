@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.layout.HBox;
 
@@ -17,7 +17,7 @@ public interface StageStickman {
     void addStickmanToStage(String stageIdentifier) throws Exception;
     void setStageFullScreen(String stageIdentifier);
     void setStageNonFullScreen(String stageIdentifier);
-    void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage, String identifier);
+    void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier);
     public HBox getStickmanPane(String stageIdentifier) throws Exception;
     BufferedImage getStageAsImage(String stageIdentifier) throws Exception;
 	void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception;

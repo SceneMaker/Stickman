@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.FXViewController;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.stagecontroller.StickmansOnStageFX;
@@ -44,7 +44,7 @@ public class StickmanStageController implements FXViewController {
     private static String packGesture = "de.dfki.stickmanfx.animation.esturefx";
     private ArrayList<String> mStickmanComboList = new ArrayList<>();
     private static StickmanFX sStickman;
-    private CommonStickmansOnStage mStickmanOnstage;
+    private StickmansOnStage mStickmanOnstage;
     private String mStickmancombobox = null;
     final private ToggleGroup groupPerlin = new ToggleGroup();
     final private ToggleGroup groupEnvironmentRadioButton = new ToggleGroup();
@@ -358,7 +358,7 @@ public class StickmanStageController implements FXViewController {
 	return (StickmanFX) mStickmanOnstage.getStickman(mStickmancombobox);
     }
 
-    public void setStickamnOnStage(CommonStickmansOnStage commonStickmansOnStage) {
+    public void setStickamnOnStage(StickmansOnStage commonStickmansOnStage) {
 	this.mStickmanOnstage = commonStickmansOnStage;
 //	fillComboForStickman();
     }

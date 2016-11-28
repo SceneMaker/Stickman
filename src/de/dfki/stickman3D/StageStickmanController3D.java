@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
 import de.dfki.StageFX.StageStickmanControllerImpl;
-import de.dfki.common.ApplicationFXLauncherImpl;
+import de.dfki.common.ApplicationLauncherImpl;
 
 import java.io.IOException;
 
@@ -38,7 +38,7 @@ public class StageStickmanController3D extends StageStickmanControllerImpl {
 
     protected void getStickmanStageInstance() {
         applicationFXLauncher = new ApplicationLauncher3D();
-        if(ApplicationFXLauncherImpl.isRunning()){
+        if(ApplicationLauncherImpl.isRunning()){
             stickmanStageFX = StickmanStage3D.getInstance();
         }else{
             applicationFXLauncher.launchStickmanAndWait();

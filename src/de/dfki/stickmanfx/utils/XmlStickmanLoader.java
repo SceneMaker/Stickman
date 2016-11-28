@@ -1,6 +1,6 @@
 package de.dfki.stickmanfx.utils;
 
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 
 import java.io.File;
 
@@ -9,9 +9,9 @@ import java.io.File;
  */
 public class XmlStickmanLoader {
     private String mFilePath;
-    private CommonStickmansOnStage sStickmansOnStage;
+    private StickmansOnStage sStickmansOnStage;
 
-    public XmlStickmanLoader( CommonStickmansOnStage stickmansOnStage){
+    public XmlStickmanLoader( StickmansOnStage stickmansOnStage){
         this.sStickmansOnStage = stickmansOnStage;
         mFilePath = stickmansOnStage.getmFilePath();
     }

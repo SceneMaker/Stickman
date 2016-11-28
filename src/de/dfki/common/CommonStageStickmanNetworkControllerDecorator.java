@@ -8,7 +8,7 @@ import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanDecorator;
  * Created by alvaro on 9/17/16.
  */
 public abstract class CommonStageStickmanNetworkControllerDecorator extends StageStickmanDecorator {
-    protected CommonCommandParser commonCommandParser;
+    protected CommandParser commonCommandParser;
     protected   String mHost;
     protected int mPort;
     protected CommonClientConnectionHandler mConnection;

@@ -3,7 +3,7 @@ package de.dfki.stickmanSwing.stagecontroller;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.StickmanStage;
 
@@ -13,13 +13,13 @@ import java.awt.image.BufferedImage;
  * Created by alvaro on 9/19/16.
  */
 public class StageController implements StageStickmanController {
-    private CommonStickmansOnStage commonStickmansOnStage;
+    private StickmansOnStage commonStickmansOnStage;
     private StageStickman stickmanStage;
     private boolean fullScreen = false;
 
     public StageController(){
         stickmanStage = new StickmanStage();
-        commonStickmansOnStage = new StickmansOnStage(stickmanStage, this);
+        commonStickmansOnStage = new StickmansOnStageSwing(stickmanStage, this);
         //stickmanStage.setStickamnsOnStage(commonStickmansOnStage);
     }
 
@@ -67,7 +67,7 @@ public class StageController implements StageStickmanController {
         return stickmanStage;
     }
 
-    public CommonStickmansOnStage getCommonStickmansOnStage() {
+    public StickmansOnStage getCommonStickmansOnStage() {
         return commonStickmansOnStage;
     }
 

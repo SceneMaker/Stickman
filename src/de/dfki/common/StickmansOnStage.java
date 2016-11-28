@@ -15,18 +15,18 @@ import java.util.Set;
  * Created by alvaro on 9/12/16.
  * Manage StickmanSwing on the Stage
  */
-public abstract class CommonStickmansOnStage {
+public abstract class StickmansOnStage {
     public static final float DEFAULT_SCALE = 0.8f;
-    private Map<String, Stickman> sStickmansOnStage = new HashMap<>();
     protected StageStickman stickmanStage;
+    private Map<String, Stickman> sStickmansOnStage = new HashMap<>();
     private StageStickmanController stageStickmanController;
     private String mFilePath;
 
-    public CommonStickmansOnStage(StageStickman stageStickman){
+    public StickmansOnStage(StageStickman stageStickman){
         stickmanStage = stageStickman;
     }
 
-    public CommonStickmansOnStage(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
+    public StickmansOnStage(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
         stickmanStage = stickmanStageFX;
         stageStickmanController = controllerFX;
     }

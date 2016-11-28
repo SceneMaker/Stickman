@@ -3,7 +3,7 @@ package de.dfki.stickmanSwing.stagecontroller.decorators;
 import de.dfki.common.CommonStageStickmanNetworkControllerDecorator;
 import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickmanSwing.client.ClientConnectionHandler;
-import de.dfki.stickmanSwing.client.CommandParser;
+import de.dfki.stickmanSwing.client.CommandParserSwing;
 
 /**
  * Created by alvaro on 9/17/16.
@@ -13,7 +13,7 @@ public class StageStickmanNetworkControllerDecorator extends CommonStageStickman
         super(wrappedController, host, port);
     }
     protected void initConnectionToServer(StageStickmanController wrappedController){
-        commonCommandParser = new CommandParser(getCommonStickmansOnStage());
+        commonCommandParser = new CommandParserSwing(getCommonStickmansOnStage());
         mConnection = new ClientConnectionHandler(commonCommandParser);
         mConnection.tryToConnect(mHost, mPort);
     }

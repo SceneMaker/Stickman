@@ -11,7 +11,7 @@ import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 /**
  * Created by alvaro on 9/19/16.
  */
-public class StickmansOnStageFX extends CommonStickmansOnStage{
+public class StickmansOnStageFX extends StickmansOnStage {
     public StickmansOnStageFX(StageStickman stageStickman) {
         super(stageStickman);
     }

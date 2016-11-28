@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
-import de.dfki.common.CommonCommandParser;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.CommandParser;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.AnimationLoader3D;
 import de.dfki.stickman3D.animationlogic.EventAnimation3D;
@@ -13,8 +13,8 @@ import java.nio.charset.Charset;
 /**
  * Created by alvaro on 11/19/16.
  */
-public class CommandParser3DFX extends CommonCommandParser {
-    public CommandParser3DFX(CommonStickmansOnStage stage) {
+public class CommandParser3D extends CommandParser {
+    public CommandParser3D(StickmansOnStage stage) {
         super(stage);
     }
 

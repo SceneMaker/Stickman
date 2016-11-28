@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
 import de.dfki.common.interfaces.Stickman;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickmanSwing.StickmanSwing;
@@ -10,7 +10,7 @@ import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 /**
  * Created by alvaro on 9/19/16.
  */
-public class StickmansOnStage3DFX extends CommonStickmansOnStage{
+public class StickmansOnStage3DFX extends StickmansOnStage {
     public StickmansOnStage3DFX(StageStickman stageStickman) {
         super(stageStickman);
     }

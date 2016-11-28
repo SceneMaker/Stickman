@@ -1,7 +1,7 @@
 package de.dfki.stickmanfx;
 
-import de.dfki.common.ApplicationFXLauncherImpl;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.ApplicationLauncherImpl;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.common.GeneralStageRoot;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
@@ -36,7 +36,7 @@ public class StickmanStageFX extends Application implements StageStickman {
     public static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
     static private StickmanStageFX sInstance;
     Stage configStage;
-    private HashMap<String,CommonStickmansOnStage> stickamnsOnStage = new HashMap<>();
+    private HashMap<String,StickmansOnStage> stickamnsOnStage = new HashMap<>();
     private float sScale = 1.0f;
     private Map<String, Stage> stickmanFXStages = new HashMap<>();
     private LinkedList<String> stickmanNames = new LinkedList<>();
@@ -76,7 +76,7 @@ public class StickmanStageFX extends Application implements StageStickman {
         stage.setTitle("Stickman3D");
         stage.setScene(scene);
         stickmanFXStages.put(StageStickmanControllerFX.CONFIG_STAGE, stage);
-        ApplicationFXLauncherImpl.setIsRunning();
+        ApplicationLauncherImpl.setIsRunning();
     }
 
     private HBox getStageRoot() throws java.io.IOException {
@@ -130,7 +130,7 @@ public class StickmanStageFX extends Application implements StageStickman {
         launch();
     }
 
-    public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage, String identifier) {
+    public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier) {
         this.stickamnsOnStage.put(identifier,stickamnsOnStage);
         generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
     }

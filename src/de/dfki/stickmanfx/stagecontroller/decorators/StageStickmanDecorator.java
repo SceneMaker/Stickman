@@ -3,7 +3,7 @@ package de.dfki.stickmanfx.stagecontroller.decorators;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 
 import java.awt.image.BufferedImage;
 
@@ -60,7 +60,7 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
         return controllerFX.getStickman(name);
     }
 
-    public CommonStickmansOnStage getCommonStickmansOnStage(){
+    public StickmansOnStage getCommonStickmansOnStage(){
         return controllerFX.getCommonStickmansOnStage();
     }
 

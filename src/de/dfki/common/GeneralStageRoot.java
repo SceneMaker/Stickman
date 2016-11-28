@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -57,7 +56,7 @@ public class GeneralStageRoot {
         return mStickmanStageController;
     }
 
-    public void setStickmansOnStage(CommonStickmansOnStage stickmans){
+    public void setStickmansOnStage(StickmansOnStage stickmans){
         mStickmanStageController.setStickamnOnStage(stickmans);
     }
 

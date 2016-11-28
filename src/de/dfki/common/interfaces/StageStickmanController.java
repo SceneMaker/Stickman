@@ -1,6 +1,6 @@
 package de.dfki.common.interfaces;
 
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 
 import java.awt.image.BufferedImage;
 
@@ -17,7 +17,7 @@ public interface StageStickmanController {
     Stickman getStickman(String name);
     void launchStickmanStage(boolean show);
     StageStickman getStickmanStage();
-    CommonStickmansOnStage getCommonStickmansOnStage();
+    StickmansOnStage getCommonStickmansOnStage();
     String getStageIdentifier();
     void setFullScreen(boolean fullScreen);
     void addStickman(String name, boolean onlyFace);

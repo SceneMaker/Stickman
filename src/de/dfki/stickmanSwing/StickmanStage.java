@@ -1,6 +1,6 @@
 package de.dfki.stickmanSwing;
 
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.stickmanSwing.util.StickmanStageLayout;
 import de.dfki.stickmanfx.StickmanFX;
@@ -114,8 +114,8 @@ public class StickmanStage extends JFrame implements  StageStickman {
     }
 
     @Override
-    public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage, String identifier) {
-        CommonStickmansOnStage stickamnsOnStage1 = stickamnsOnStage;
+    public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier) {
+        StickmansOnStage stickamnsOnStage1 = stickamnsOnStage;
     }
 
     @Override

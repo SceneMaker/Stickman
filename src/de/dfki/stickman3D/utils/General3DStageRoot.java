@@ -21,7 +21,7 @@ public class General3DStageRoot {
     private FXViewController mStickmanStageController;
 
     public General3DStageRoot(){
-        if(ApplicationFXLauncherImpl.isRunning()) {
+        if(ApplicationLauncherImpl.isRunning()) {
             try {
                 invoke();
             } catch (IOException e) {
@@ -60,7 +60,7 @@ public class General3DStageRoot {
         return mStickmanStageController;
     }
 
-    public void setStickmansOnStage(CommonStickmansOnStage stickmans){
+    public void setStickmansOnStage(StickmansOnStage stickmans){
         mStickmanStageController.setStickamnOnStage(stickmans);
     }
 

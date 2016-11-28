@@ -1,7 +1,7 @@
 package de.dfki.stickmanSwing.client;
 
-import de.dfki.common.CommonCommandParser;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.CommandParser;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
 import de.dfki.stickmanSwing.animationlogic.AnimationLoaderSwing;
 import de.dfki.stickmanSwing.animationlogic.EventAnimationSwing;
@@ -13,8 +13,8 @@ import java.nio.charset.Charset;
 /**
  * Created by alvaro on 9/19/16.
  */
-public class CommandParser extends CommonCommandParser {
-    public CommandParser(CommonStickmansOnStage stage) {
+public class CommandParserSwing extends CommandParser {
+    public CommandParserSwing(StickmansOnStage stage) {
         super(stage);
     }
 

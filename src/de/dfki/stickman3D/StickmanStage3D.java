@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
-import de.dfki.common.ApplicationFXLauncherImpl;
-import de.dfki.common.CommonStickmansOnStage;
+import de.dfki.common.ApplicationLauncherImpl;
+import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.stickman3D.utils.General3DStageRoot;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
@@ -54,7 +54,7 @@ public class StickmanStage3D extends Application implements StageStickman {
 
     static private StickmanStage3D sInstance;
     Stage configStage;
-    private HashMap<String,CommonStickmansOnStage> stickamnsOnStage = new HashMap<>();
+    private HashMap<String,StickmansOnStage> stickamnsOnStage = new HashMap<>();
     private float sScale = 1.0f;
     private Map<String, Stage> stickmanFXStages = new HashMap<>();
     private General3DStageRoot generalConfigStageRoot;
@@ -125,7 +125,7 @@ public class StickmanStage3D extends Application implements StageStickman {
         stickmanFXStages.put(StageStickmanControllerFX.CONFIG_STAGE, stage);
 
 
-        ApplicationFXLauncherImpl.setIsRunning();
+        ApplicationLauncherImpl.setIsRunning();
         //stage.show();
 
 
@@ -241,7 +241,7 @@ public class StickmanStage3D extends Application implements StageStickman {
     }
 
     @Override
-    public void setStickamnsOnStage(CommonStickmansOnStage stickamnsOnStage, String identifier) {
+    public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier) {
         this.stickamnsOnStage.put(identifier, stickamnsOnStage);
         generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
     }

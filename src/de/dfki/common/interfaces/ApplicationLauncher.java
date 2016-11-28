@@ -3,7 +3,7 @@ package de.dfki.common.interfaces;
 /**
  * Created by alvaro on 11/13/16.
  */
-public interface ApplicationFXLauncher {
+public interface ApplicationLauncher {
     void launchStickmanAndWait();
     void waitForApplicationToStart();
     Thread getLaunchStickmanThread(final StageStickman fx);
