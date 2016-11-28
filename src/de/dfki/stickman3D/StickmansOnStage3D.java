@@ -10,12 +10,12 @@ import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 /**
  * Created by alvaro on 9/19/16.
  */
-public class StickmansOnStage3DFX extends StickmansOnStage {
-    public StickmansOnStage3DFX(StageStickman stageStickman) {
+public class StickmansOnStage3D extends StickmansOnStage {
+    public StickmansOnStage3D(StageStickman stageStickman) {
         super(stageStickman);
     }
     private  XmlTransform mXmlTransform = new XmlTransform();
-    public StickmansOnStage3DFX(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
+    public StickmansOnStage3D(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
         super(stickmanStageFX, controllerFX);
     }
 

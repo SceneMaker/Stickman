@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.interfaces.CommonAnimation;
+import de.dfki.common.interfaces.Animation;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.*;
@@ -21,7 +21,7 @@ import java.util.concurrent.Semaphore;
  * @modified Beka Aptsiauri
  *
  */
-public class Animation3D extends Thread implements XMLParseable, XMLWriteable, CommonAnimation
+public class Animation3D extends Thread implements XMLParseable, XMLWriteable, Animation
 {
 	public String mName = "";
 	public ArrayList<AnimationContent3D> mAnimationPartFX = new ArrayList<>();

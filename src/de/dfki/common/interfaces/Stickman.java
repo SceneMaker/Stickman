@@ -16,7 +16,7 @@ public interface Stickman {
 
     void endAnimationScheduler();
     StickmanSwing.TYPE getType();
-    CommonAnimation doAnimation(String name, int duration, boolean block);
-    CommonAnimation doAnimation(String name, Object param, boolean block);
-    CommonAnimation doAnimation(String name, int duration, Object param, boolean block);
+    Animation doAnimation(String name, int duration, boolean block);
+    Animation doAnimation(String name, Object param, boolean block);
+    Animation doAnimation(String name, int duration, Object param, boolean block);
 }

@@ -6,7 +6,7 @@
 package de.dfki.stickmanSwing.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.interfaces.CommonAnimation;
+import de.dfki.common.interfaces.Animation;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.XMLParseAction;
@@ -23,7 +23,7 @@ import org.w3c.dom.Element;
  * @author Patrick Gebhard
  *
  */
-public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable, CommonAnimation {
+public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable, Animation {
 
 	public enum ANIMTYPE { EmotionExpression, Gesture}	
 	public String mName = "";
