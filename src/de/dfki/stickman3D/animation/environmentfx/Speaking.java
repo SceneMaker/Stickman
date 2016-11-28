@@ -34,7 +34,6 @@ package de.dfki.stickman3D.animation.environmentfx;
                 mStickmanFX.mSpeechBubbleFX.mText = (String) mParameter;
             }
             // nur zum Testen. Im Normalfall diese Zeile loeschen
-            mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter StickmanSwing " + mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
 
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));

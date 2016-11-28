@@ -1,6 +1,7 @@
 package de.dfki.test;
 
 import de.dfki.common.interfaces.StageRoom;
+import de.dfki.stickman3D.stage.StageRoom3D;
 import de.dfki.stickmanFX.stage.StageRoomFX;
 import de.dfki.stickmanSwing.stage.StageRoomSwing;
 
@@ -17,16 +18,16 @@ public class testStickmanFX {
         stickmanStage.launchStickmanStage(true);
         stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
 
-        /*StageRoom stickmanStage3D1 = new StageRoom3D(500,0, true);
+        StageRoom stickmanStage3D1 = new StageRoom3D(500,0, true);
         stickmanStage3D1.addStickman("Robbie");
         stickmanStage3D1.launchStickmanStage(true);
-     //   stickmanStage3D1.getStickman("Robbie").doAnimation("Smile", 2000, "", true);*/
+        stickmanStage3D1.getStickman("Robbie").doAnimation("Speaking", 2000, "Hello World", true);
 
-        StageRoom stickmanStageFx = new StageRoomFX(0,500, true);
+        /*StageRoom stickmanStageFx = new StageRoomFX(0,500, true);
         //StageRoom stickmanStageFull = new StageRoomFullScreenDecorator(stickmanStageFx);
         stickmanStageFx.addStickman("Anna");
         //stickmanStage.addStickman("Bob");
-        stickmanStageFx.launchStickmanStage(true);
+        stickmanStageFx.launchStickmanStage(true);*/
 
 
 
