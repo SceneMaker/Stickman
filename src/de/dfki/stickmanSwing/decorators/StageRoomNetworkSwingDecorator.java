@@ -1,4 +1,4 @@
-package de.dfki.stickmanSwing.stagecontroller.decorators;
+package de.dfki.stickmanSwing.decorators;
 
 import de.dfki.common.decorators.StageRoomNetworkDecorator;
 import de.dfki.common.interfaces.StageRoom;

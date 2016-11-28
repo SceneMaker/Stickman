@@ -1,9 +1,9 @@
-package de.dfki.stickmanFX;
+package de.dfki.stickmanFX.stage;
 
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StickmanStage;
-import de.dfki.stickmanFX.stagecontroller.StageRoomFX;
+import de.dfki.stickmanFX.StickmanFX;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
@@ -71,7 +71,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
         configStage = stage;
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
+        scene.getStylesheets().add(this.getClass().getResource("css/StickmanCSS.css").toExternalForm());
         stage.setTitle("Stickman3D");
         stage.setScene(scene);
         stickmanFXStages.put(StageRoomFX.CONFIG_STAGE, stage);

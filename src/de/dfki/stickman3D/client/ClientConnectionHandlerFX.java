@@ -1,7 +1,8 @@
 package de.dfki.stickman3D.client;
 
 import de.dfki.common.XMLCommandParser;
-import de.dfki.stickmanSwing.StickmanStageSwing;
+import de.dfki.stickmanFX.stage.StickmanStageFX;
+import de.dfki.stickmanSwing.stage.StickmanStageSwing;
 import de.dfki.stickmanFX.client.CommonClientConnectionHandler;
 
 import java.io.BufferedReader;
@@ -26,7 +27,7 @@ public class ClientConnectionHandlerFX extends Thread implements CommonClientCon
 
 	private boolean mRunning = true;
 	private boolean mConnected = false;
-	private de.dfki.stickmanFX.StickmanStageFX mStickmanStage;
+	private StickmanStageFX mStickmanStage;
 	private XMLCommandParser stickmanParser;
 
 	public ClientConnectionHandlerFX() {

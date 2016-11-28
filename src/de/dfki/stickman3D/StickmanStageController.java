@@ -3,6 +3,7 @@ package de.dfki.stickman3D;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickman3D.kinect.Kinect;
+import de.dfki.stickman3D.stage.StickmanStage3D;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -213,8 +214,8 @@ public class StickmanStageController implements ViewController {
 		kinectButtonToggleGroup = new ToggleGroup();
 		startKinect.setToggleGroup(kinectButtonToggleGroup);
 		stopKinect.setToggleGroup(kinectButtonToggleGroup);
-		startKinect.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
-		stopKinect.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
+		startKinect.getStylesheets().add(this.getClass().getResource("css/RadioButtonCSS.css").toExternalForm());
+		stopKinect.getStylesheets().add(this.getClass().getResource("css/RadioButtonCSS.css").toExternalForm());
 		
 		cameraXSlider.setMin(-180);
 		cameraXSlider.setMax(180);
@@ -858,7 +859,7 @@ public class StickmanStageController implements ViewController {
 		for (int i = 0; i < getClassesNames.size(); i++) {
 			RadioButton button = new RadioButton(getClassesNames.get(i));
 			button.setToggleGroup(toggleGroup);
-			button.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
+			button.getStylesheets().add(this.getClass().getResource("css/RadioButtonCSS.css").toExternalForm());
 			button.setFont(Font.font("Arial", 15));
 
 			button.setOnAction((event) -> {

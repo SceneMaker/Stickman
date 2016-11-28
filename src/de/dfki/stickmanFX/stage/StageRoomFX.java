@@ -1,8 +1,8 @@
-package de.dfki.stickmanFX.stagecontroller;
+package de.dfki.stickmanFX.stage;
 
 import de.dfki.common.commonFX3D.StageRoomImpl;
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
-import de.dfki.stickmanFX.StickmanStageFX;
+import de.dfki.stickmanFX.ApplicationLauncherFX;
 
 import java.io.IOException;
 

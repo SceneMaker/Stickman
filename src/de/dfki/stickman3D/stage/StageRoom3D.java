@@ -1,7 +1,8 @@
-package de.dfki.stickman3D;
+package de.dfki.stickman3D.stage;
 
 import de.dfki.common.commonFX3D.StageRoomImpl;
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
+import de.dfki.stickman3D.ApplicationLauncher3D;
 
 import java.io.IOException;
 

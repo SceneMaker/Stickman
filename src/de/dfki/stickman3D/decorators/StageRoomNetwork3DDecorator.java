@@ -1,7 +1,8 @@
-package de.dfki.stickman3D;
+package de.dfki.stickman3D.decorators;
 
 import de.dfki.common.decorators.StageRoomNetworkDecorator;
 import de.dfki.common.interfaces.StageRoom;
+import de.dfki.stickman3D.XMLCommandParser3D;
 import de.dfki.stickmanFX.client.ClientConnectionHandlerFX;
 
 

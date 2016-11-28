@@ -1,4 +1,4 @@
-package de.dfki.stickmanFX.stagecontroller;
+package de.dfki.stickmanFX.stage;
 
 import de.dfki.common.*;
 import de.dfki.common.interfaces.Stickman;

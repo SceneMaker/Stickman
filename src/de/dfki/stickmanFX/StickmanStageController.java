@@ -8,8 +8,10 @@ import java.util.stream.Collectors;
 
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
+import de.dfki.stickmanFX.stage.StickmanStageFX;
+import de.dfki.stickmanFX.stage.StageRoomFX;
+import de.dfki.stickmanFX.stage.StickmansOnStageFX;
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanFX.stagecontroller.StickmansOnStageFX;
 import de.dfki.stickmanFX.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
 import de.dfki.util.StickmanFillCombo;
@@ -32,7 +34,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import de.dfki.stickmanFX.stagecontroller.StageRoomFX;
 
 /**
  *

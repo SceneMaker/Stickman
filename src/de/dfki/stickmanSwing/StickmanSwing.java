@@ -51,6 +51,7 @@ import javax.swing.JComponent;
 
 import de.dfki.stickmanSwing.animation.environment.IdleBehavior;
 import de.dfki.stickmanSwing.animation.environment.SimplexNoise;
+import de.dfki.stickmanSwing.stage.StickmanStageSwing;
 
 /**
  *

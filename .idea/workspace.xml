@@ -2,184 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/decorators/StageRoomNetworkFXDecorator.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageStickmanFullScreenDecorator.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/StageFX/StageStickmanControllerImpl.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/commonFX3D/StageRoomImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/ApplicationLauncherImpl.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/commonFX3D/ApplicationLauncherImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/CommandParser.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/XMLCommandParser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/CommonStageStickmanNetworkControllerDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomNetworkDecorator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/GeneralStageRoot.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StagePaneHandlerFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/interfaces/FXViewController.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/commonFX3D/ViewController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/interfaces/StageStickman.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/interfaces/StickmanStage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/common/interfaces/StageStickmanController.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/interfaces/StageRoom.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/CommandParser3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/XMLCommandParser3D.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StageStickmanController3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoom3D.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StageStickmanNetworkControllerDecorator3DFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoomNetwork3DDecorator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/utils/General3DStageRoot.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/StagePaneHandler3D.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/StickmanStage.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/StickmanStageSwing.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/client/CommandParserSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/client/XMLCommandParserSwing.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StageRoomSwing.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageStickmanNetworkControllerDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageRoomNetworkSwingDecorator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanCSS.css" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanCSS.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/StickmanStageView.fxml" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageView.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/BombeExplosion.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/BombeExplosion.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/ComeBackFromSmall.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/ComeBackFromSmall.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/ComeUp.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/ComeUp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/DisappearToSmall.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/DisappearToSmall.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/FadeIn.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/FadeIn.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/FadeOut.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/FadeOut.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/GoDown.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/GoDown.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/IdleBehavior.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/IdleBehavior.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/MoveLR.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/MoveLR.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/MoveUD.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/MoveUD.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/SetBackground.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/SetBackground.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/SimplexNoise.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/SimplexNoise.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/SimplexNoise_octave.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/SimplexNoise_octave.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/Speaking.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/Speaking.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/StartIdle.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/StartIdle.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/StopIdle.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/StopIdle.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/UnconsciouslyAction.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/UnconsciouslyAction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/ZoomBack.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/ZoomBack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/ZoomIO.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/ZoomIO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/environmentfx/event/Speaking.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/environmentfx/event/Speaking.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Angry.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Angry.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Angry2.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Angry2.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/AngryEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/AngryEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/AngrySmallMouth.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/AngrySmallMouth.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/AngrySmallMouthEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/AngrySmallMouthEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/AngrySmallMouthStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/AngrySmallMouthStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/AngryStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/AngryStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Contempt.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Contempt.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/ContemptEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/ContemptEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/ContemptStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/ContemptStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Disgusted.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Disgusted.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/DisgustedEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/DisgustedEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/DisgustedStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/DisgustedStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Embarrassed.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Embarrassed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/EmbarrassedEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/EmbarrassedEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/EmbarrassedStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/EmbarrassedStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Excited.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Excited.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/ExcitedEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/ExcitedEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/ExcitedStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/ExcitedStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Fear.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Fear.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/FearEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/FearEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/FearStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/FearStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Happy.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Happy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/HappyEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/HappyEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/HappyStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/HappyStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Loved.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Loved.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Loved1.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Loved1.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/LovedEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/LovedEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/LovedStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/LovedStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_Default.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_Default.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_FIVE.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_FIVE.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_FOUR.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_FOUR.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_NINE.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_NINE.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_O.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_O.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_ONE.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_ONE.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_SEVEN.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_SEVEN.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_SIX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_SIX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_THREE.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_THREE.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Mouth_TWO.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Mouth_TWO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Sad.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Sad.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/SadEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/SadEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/SadStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/SadStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Smile.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Smile.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/SmileEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/SmileEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/SmileStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/SmileStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/Surprised.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/Surprised.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/SurprisedEnd.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/SurprisedEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/SurprisedStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/SurprisedStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/facefx/ThinkOfLove.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/facefx/ThinkOfLove.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/gesturefx/CoverMouth.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/gesturefx/CoverMouth.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/gesturefx/TouchHead.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/gesturefx/TouchHead.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/gesturefx/WaveLeft.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/gesturefx/WaveLeft.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/gesturefx/WaveRight.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/gesturefx/WaveRight.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/Blink.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/HeadShake.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/HeadShake.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/HeadTilt.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/HeadTilt.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/LookLeft.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/LookLeft.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/LookRight.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/LookRight.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/Muster.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Muster.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/Nod.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Nod.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/Nod2.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Nod2.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/TiltLeft.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/TiltLeft.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animation/headfx/TiltLeftBack.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/TiltLeftBack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/AnimationContentFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimationContentFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/AnimationFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimationFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/AnimationLoaderFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimationLoaderFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/AnimationPauseFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimationPauseFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/AnimationSchedulerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimationSchedulerFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/AnimatorFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/EventAnimationFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/EventAnimationFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/animationlogic/EventAnimationSchedulerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/EventAnimationSchedulerFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/BodyFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/BodyFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/BodyPartFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/BodyPartFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/BombeFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/BombeFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/FaceWrinkleFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/FaceWrinkleFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/FemaleHairFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/FemaleHairFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/HeadFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/HeadFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftEyeFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftEyeFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftEyebrowFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftEyebrowFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftFootFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftFootFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftForeArmFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftForeArmFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftForeLegFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftForeLegFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftHandFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftHandFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftLegFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftLegFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftShoulderFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftShoulderFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftUpperArmFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftUpperArmFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/LeftUpperLegFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/LeftUpperLegFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/MaleHairFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/MaleHairFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/MouthFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/MouthFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/NeckFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/NeckFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightEyeFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightEyeFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightEyebrowFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightEyebrowFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightFootFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightFootFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightForeArmFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightForeArmFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightForeLegFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightForeLegFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightHandFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightHandFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightLegFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightLegFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightShoulderFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightShoulderFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightUpperArmFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightUpperArmFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/RightUpperLegFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/RightUpperLegFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/StarsFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/StarsFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/bodyfx/ThinkFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/ThinkFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/client/ClientConnectionHandlerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/client/ClientConnectionHandlerFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/client/CommandParserFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/client/XMLCommandParserFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/client/CommonClientConnectionHandler.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/client/CommonClientConnectionHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/environmentfx/SpeechBubbleFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/environmentfx/SpeechBubbleFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/environmentfx/bubbleCSS.css" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/environmentfx/bubbleCSS.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/image/grassland.jpg" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/image/grassland.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/image/office.jpg" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/image/office.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/ApplicationLauncherFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/ApplicationLauncherFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StageStickmanControllerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/StageRoomFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StickmansOnStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/StickmansOnStageFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/decorators/StageStickmanDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomDecorator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/decorators/StageStickmanFullScreenControllerFXDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomFullScreenDecorator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/utils/XmlStickmanLoader.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/utils/XmlStickmanLoader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/xmlsettings/StickmanDataFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/StickmanDataFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/xmlsettings/StickmanDataListWrappeFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/StickmanDataListWrappeFX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/xmlsettings/XmlTransform.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/XmlTransform.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/decorators/StageStickmanNetworkControllerDecoratorFX.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/RadioButtonCSS.css" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/css/RadioButtonCSS.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StagePaneHandler3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StagePaneHandler3D.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoom3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StageRoom3D.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoomNetwork3DDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/decorators/StageRoomNetwork3DDecorator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanCSS.css" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/css/StickmanCSS.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStage3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmansOnStage3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmansOnStage3D.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StagePaneHandlerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StagePaneHandlerFX.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanCSS.css" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/css/StickmanCSS.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/ApplicationLauncherFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/ApplicationLauncherFX.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/StageRoomFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StageRoomFX.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/StickmansOnStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/decorators/StageRoomNetworkFXDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/decorators/StageRoomNetworkFXDecorator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/StickmanStageSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmanStageSwing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StageRoomSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StageRoomSwing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StickmansOnStageSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmansOnStageSwing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageRoomNetworkSwingDecorator.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/decorators/StageRoomNetworkSwingDecorator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stickman.iml" afterPath="$PROJECT_DIR$/Stickman.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/project.properties" afterPath="$PROJECT_DIR$/nbproject/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/common/StickmansOnStage.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/StickmansOnStage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/common/interfaces/ApplicationLauncher.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/interfaces/ApplicationLauncher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/ApplicationLauncher3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/ApplicationLauncher3D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStage3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStage3D.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmansOnStage3D.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmansOnStage3D.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickman3D/client/ClientConnectionHandlerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickman3D/client/ClientConnectionHandlerFX.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/client/ClientConnectionHandlerFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/client/ClientConnectionHandlerFX.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/XmlTransform.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/XmlTransform.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/StickmanSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/StickmanSwing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/animationlogic/AnimationSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/animationlogic/AnimationSwing.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/client/ClientConnectionHandler.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/client/ClientConnectionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StickmansOnStageSwing.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StickmansOnStageSwing.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/util/StickmanFillCombo.java" afterPath="$PROJECT_DIR$/src/de/dfki/util/StickmanFillCombo.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -205,108 +58,7 @@
     <favorites_list name="Stickman" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ViewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/commonFX3D/ViewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StickmanStageController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6495">
-              <caret line="360" column="16" selection-start-line="360" selection-start-column="16" selection-end-line="360" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StickmanStageFX.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="31" column="73" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StickmanStage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/interfaces/StickmanStage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StageRoomNetworkDecorator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomNetworkDecorator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StageRoomDecorator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomDecorator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StageRoomFullScreenDecorator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomFullScreenDecorator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StagePaneHandlerFX.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StagePaneHandlerFX.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="11" column="31" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StickmanFX.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="163" column="12" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StageRoomNetworkFXDecorator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/decorators/StageRoomNetworkFXDecorator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -327,20 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmansOnStage3DFX.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmansOnStage3D.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/common/interfaces/CommonStickmanStage.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/common/interfaces/CommonAnimation.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/common/interfaces/Animation.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/common/interfaces/StageStickmanController.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/common/CommonStageStickmanNetworkControllerDecorator.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/common/StageRoomNetworkDecorator.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/decorators/StageStickmanDecorator.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/decorators/StageRoomDecorator.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/StageFX/StageStickmanControllerImpl.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StageStickmanController3D.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoom3D.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StageStickmanControllerFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/StageRoomFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanfx/stagecontroller/decorators/StageStickmanFullScreenControllerFXDecorator.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageStickmanFullScreenDecorator.java" />
@@ -378,6 +116,20 @@
         <option value="$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomNetworkDecorator.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomFullScreenDecorator.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/StagePaneHandlerFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStage3D.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/decorators/StageRoomNetwork3DDecorator.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StagePaneHandler3D.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageController.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/ApplicationLauncherFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StageRoomSwing.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmansOnStageSwing.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmanStageSwing.java" />
       </list>
     </option>
   </component>
@@ -503,37 +255,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dfki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stickmanFX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dfki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -550,7 +272,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
@@ -564,6 +286,10 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="de.dfki.stickmanfx.client" />
       <recent name="de.dfki.stickmanfx.stagecontroller.decorators" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/de/dfki/stickmanFX/css" />
+      <recent name="$PROJECT_DIR$/src/de/dfki/stickman3D/css" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="de.dfki.common.interfaces" />
@@ -584,11 +310,11 @@
     <configuration default="false" name="StickmanStageFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="de.dfki.stickmanFX.StickmanStageFX" />
+          <option name="PATTERN" value="de.dfki.stickmanFX.stage.StickmanStageFX" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="de.dfki.stickmanFX.StickmanStageFX" />
+      <option name="MAIN_CLASS_NAME" value="de.dfki.stickmanFX.stage.StickmanStageFX" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -624,11 +350,11 @@
     <configuration default="false" name="StickmanStage3D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="de.dfki.stickman3D.*" />
+          <option name="PATTERN" value="de.dfki.stickman3D.decorators.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="de.dfki.stickman3D.StickmanStage3D" />
+      <option name="MAIN_CLASS_NAME" value="de.dfki.stickman3D.stage.StickmanStage3D" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -1112,7 +838,7 @@
       <workItem from="1480323488306" duration="620000" />
       <workItem from="1480328047913" duration="4769000" />
       <workItem from="1480333357012" duration="2083000" />
-      <workItem from="1480342236300" duration="2815000" />
+      <workItem from="1480342236300" duration="4487000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring removing static">
       <created>1473845928949</created>
@@ -1317,18 +1043,34 @@
       <option name="project" value="LOCAL" />
       <updated>1480339345076</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Renaming of classes, moving classes">
+      <created>1480345107439</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1480345107439</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250305000" />
+    <option name="totallyTimeSpent" value="251977000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1340,9 +1082,9 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19871795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19871795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32821077" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16613248" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1400,8 +1142,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactoring for Root" />
-    <MESSAGE value="Selecting stickmans" />
     <MESSAGE value="Refactoring before decorators" />
     <MESSAGE value="Decorator for Network" />
     <MESSAGE value="Decorator for Network and FullScreen" />
@@ -1425,7 +1165,9 @@
     <MESSAGE value="Change animation name to AnimationSwing" />
     <MESSAGE value="Change animation name to Animation3D in stickman3D" />
     <MESSAGE value="Chang stickamanStage names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chang stickamanStage names" />
+    <MESSAGE value="Renaming of classes, moving classes" />
+    <MESSAGE value="Move css, creating new packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move css, creating new packages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1444,7 +1186,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java</url>
-          <line>627</line>
+          <line>628</line>
           <properties />
           <option name="timeStamp" value="105" />
         </line-breakpoint>
@@ -1461,32 +1203,32 @@
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java</url>
+          <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java</url>
           <line>56</line>
           <properties />
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java</url>
+          <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java</url>
           <line>60</line>
           <properties />
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java</url>
-          <line>865</line>
+          <line>866</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStage3D.java</url>
+          <url>file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java</url>
           <line>261</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java</url>
-          <line>33</line>
+          <line>34</line>
           <properties />
           <option name="timeStamp" value="193" />
         </line-breakpoint>
@@ -1514,8 +1256,14 @@
           <properties />
           <option name="timeStamp" value="206" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java</url>
+          <line>73</line>
+          <properties />
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="209" />
+      <option name="time" value="210" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1530,35 +1278,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/animationlogic/EventAnimationSchedulerSwing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/animationlogic/EventAnimationSwing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStage3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/animation/facefx/Smile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/animationlogic/AnimationLoaderSwing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1540">
@@ -1596,6 +1315,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1603,6 +1323,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1618,13 +1339,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/ApplicationLauncherFX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1633,14 +1347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/ApplicationLauncher3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1660,22 +1366,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StickmansOnStageSwing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmansOnStage3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1705,34 +1395,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoom3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageRoomFullScreenDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StageRoomNetwork3DDecorator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -1745,42 +1411,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/decorators/StageRoomNetworkSwingDecorator.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/decorators/StageRoomNetworkSwingDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/StageRoomFX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stagecontroller/StageRoomSwing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="39" />
-          <folding>
-            <element signature="e#2086#2087#0" expanded="false" />
-            <element signature="e#2122#2123#0" expanded="false" />
-            <element signature="e#2181#2182#0" expanded="false" />
-            <element signature="e#2226#2227#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/StickmanStageSwing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1816,26 +1451,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StagePaneHandler3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/common/XMLCommandParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/commonFX3D/StageRoomImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1848,14 +1467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/common/commonFX3D/ViewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1864,7 +1475,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stagecontroller/decorators/StageRoomNetworkFXDecorator.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/decorators/StageRoomNetworkFXDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
@@ -1888,26 +1499,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomFullScreenDecorator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="163" column="12" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6495">
-          <caret line="360" column="16" selection-start-line="360" selection-start-column="16" selection-end-line="360" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1920,19 +1515,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageFX.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/css/StickmanCSS.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="31" column="73" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="73" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StagePaneHandlerFX.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomFullScreenDecorator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="180">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding>
+            <element signature="e#262#263#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/jdk1.8.0_92/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="2600" column="0" selection-start-line="2600" selection-start-column="0" selection-end-line="2600" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="216" column="73" selection-start-line="216" selection-start-column="73" selection-end-line="216" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/ApplicationLauncher3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="22" column="88" selection-start-line="19" selection-start-column="8" selection-end-line="22" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/decorators/StageRoomNetwork3DDecorator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmansOnStage3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StagePaneHandler3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StagePaneHandlerFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StageRoom3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/commonFX3D/StageRoomImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StageRoomFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/ApplicationLauncherFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="230" column="6" selection-start-line="230" selection-start-column="6" selection-end-line="230" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StageRoomSwing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmansOnStageSwing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmanStageSwing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

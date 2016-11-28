@@ -1,4 +1,4 @@
-package de.dfki.stickman3D;
+package de.dfki.stickman3D.stage;
 
 import de.dfki.common.*;
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;

@@ -1,6 +1,7 @@
-package de.dfki.stickmanFX;
+package de.dfki.stickmanFX.stage;
 
 import de.dfki.common.StickmansOnStage;
+import de.dfki.stickmanFX.StickmanStageController;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;

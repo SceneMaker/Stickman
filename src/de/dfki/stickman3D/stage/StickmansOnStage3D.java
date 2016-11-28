@@ -1,9 +1,10 @@
-package de.dfki.stickman3D;
+package de.dfki.stickman3D.stage;
 
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanFX.xmlsettings.XmlTransform;
 

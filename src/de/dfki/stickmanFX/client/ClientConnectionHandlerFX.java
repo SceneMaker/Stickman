@@ -1,8 +1,8 @@
 package de.dfki.stickmanFX.client;
 
 import de.dfki.common.XMLCommandParser;
-import de.dfki.stickmanSwing.StickmanStageSwing;
-import de.dfki.stickmanFX.StickmanStageFX;
+import de.dfki.stickmanSwing.stage.StickmanStageSwing;
+import de.dfki.stickmanFX.stage.StickmanStageFX;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

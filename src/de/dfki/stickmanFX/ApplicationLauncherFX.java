@@ -1,8 +1,8 @@
-package de.dfki.stickmanFX.stagecontroller;
+package de.dfki.stickmanFX;
 
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.common.interfaces.StickmanStage;
-import de.dfki.stickmanFX.StickmanStageFX;
+import de.dfki.stickmanFX.stage.StickmanStageFX;
 
 /**
  * Created by alvaro on 11/13/16.

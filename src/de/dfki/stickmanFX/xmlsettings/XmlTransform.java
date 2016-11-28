@@ -7,7 +7,7 @@ import java.util.prefs.Preferences;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import de.dfki.stickmanFX.StickmanStageFX;
+import de.dfki.stickmanFX.stage.StickmanStageFX;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
