@@ -12,7 +12,7 @@ import javafx.application.Platform;
 /**
  *
  * @author Robbie
- * This is used when ZoomIn is used to only show a head of the stickman
+ * This is used when ZoomIn is used to only show a head of the stickmanSwing
  *
  */
 public class MoveUD extends AnimationFX {

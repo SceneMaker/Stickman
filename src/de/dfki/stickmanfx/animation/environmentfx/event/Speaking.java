@@ -6,10 +6,6 @@
 package de.dfki.stickmanfx.animation.environmentfx.event;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.animationlogic.AnimationContent;
-import de.dfki.stickman.animationlogic.EventAnimation;
-import de.dfki.stickman.environment.SpeechBubble;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.EventAnimationFX;

@@ -7,7 +7,7 @@ package de.dfki.stickman3D.bodyfx;
  */
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -55,7 +55,7 @@ public class DownBody extends BodyPartFX {
 		mStart = mUpperBody.getDownBodyPosition();
 		imorter = new ColModelImporter();
 
-		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) {
+		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) {
 			url = getClass().getClassLoader().getResource("BodyParts/DownFemaleBody.dae");
 			mColor = Color.rgb(154, 83, 198, 1);
 		} else {
@@ -82,7 +82,7 @@ public class DownBody extends BodyPartFX {
 	{
 		super.init();
 		mDownBodyGroup.setTranslateX(mStart.x);
-		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 		{
 			mDownBodyGroup.setTranslateY(mStart.y + 135);
 			mDownBodyGroup.setTranslateZ(-105);
@@ -108,7 +108,7 @@ public class DownBody extends BodyPartFX {
 	public void calculate(int step) {
 		
 		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 			ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
 		else
 			ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
@@ -160,20 +160,20 @@ public class DownBody extends BodyPartFX {
 	}
 
 	public Point getLeftLegStartPostion() {
-		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT) {
+		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mOrientation == Stickman3D.ORIENTATION.LEFT) {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
 		} else {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
-					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
 		}
 	}
 
 	public Point getRightLegStartPostion() {
-		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.RIGHT) {
+		if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mOrientation == Stickman3D.ORIENTATION.RIGHT) {
 			return new Point(mStart.x, mSize.height);
 		} else {
 			return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
-					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+					(mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
 		}
 	}
 

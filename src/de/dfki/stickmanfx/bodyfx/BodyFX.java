@@ -5,11 +5,11 @@ package de.dfki.stickmanfx.bodyfx;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import de.dfki.stickman.Stickman;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.StickmanFX;
 import java.awt.Dimension;
 import java.awt.Point;
-import javafx.scene.Group;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.CubicCurveTo;
@@ -52,7 +52,7 @@ public class BodyFX extends Pane {
     public BodyFX(NeckFX neck) {
         mNeckFX = neck;
         mStart = mNeckFX.getBodyStartPosition();
-        mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
+        mColor = (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE) ? mFemaleColor : mMaleColor;
         mFemaleBodyFront = new Path();
         mFemaleBodyLeft = new Path();
         mFemaleBodyRight = new Path();
@@ -137,7 +137,7 @@ public class BodyFX extends Pane {
         else 
         {
             return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
-                    (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+                    (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
         }
     }
 
@@ -149,13 +149,13 @@ public class BodyFX extends Pane {
         else 
         {
             return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
-                    (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+                    (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
         }
     }
 
     private void paintLeftOrientation(Color c) 
     {
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
         	this.getChildren().remove(mFemaleBodyLeft);
             mFemaleBodyLeft.setFill(c);
@@ -169,7 +169,7 @@ public class BodyFX extends Pane {
         }
 
         // draw outlines
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
             mFemaleBodyLeft.setStroke(c.darker());
             mFemaleBodyLeft.setStrokeLineCap(StrokeLineCap.ROUND);
@@ -187,7 +187,7 @@ public class BodyFX extends Pane {
 
     private void paintRightOrientation(Color c) 
     {
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
         	this.getChildren().remove(mFemaleBodyRight);
             mFemaleBodyRight.setFill(c);
@@ -201,7 +201,7 @@ public class BodyFX extends Pane {
         }
 
         // draw outlines
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
             mFemaleBodyRight.setStroke(c.darker());
             mFemaleBodyRight.setStrokeLineCap(StrokeLineCap.ROUND);
@@ -219,7 +219,7 @@ public class BodyFX extends Pane {
 
     public void paintFrontOrientation(Color c) 
     {
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
         	this.getChildren().clear();
             mFemaleBodyFront.setFill(c);
@@ -233,7 +233,7 @@ public class BodyFX extends Pane {
         }
 
         // draw outlines
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
             mFemaleBodyFront.setStroke(c.darker());
             mFemaleBodyFront.setStrokeLineCap(StrokeLineCap.ROUND);
@@ -288,7 +288,7 @@ public class BodyFX extends Pane {
             }
         }
 
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         {
             currentColor = mFemaleColor;
         } 

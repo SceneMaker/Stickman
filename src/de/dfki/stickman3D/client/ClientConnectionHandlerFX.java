@@ -1,7 +1,7 @@
 package de.dfki.stickman3D.client;
 
 import de.dfki.common.CommonCommandParser;
-import de.dfki.stickman.StickmanStage;
+import de.dfki.stickmanSwing.StickmanStage;
 import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
 
 import java.io.BufferedReader;

@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.animation.environmentfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
 /**
@@ -17,7 +17,7 @@ import de.dfki.stickman3D.animationlogic.AnimationFX;
 
 public class StartIdle extends AnimationFX {
 
-	public StartIdle(StickmanFX sm, int duration, boolean block) {
+	public StartIdle(Stickman3D sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 

@@ -2,29 +2,16 @@ package de.dfki.stickmanfx.bodyfx;
 
 
 import java.awt.Point;
-import java.util.ArrayList;
 
-import static de.dfki.stickman.animationlogic.util.Interpolator.linear;
+import static de.dfki.stickmanSwing.animationlogic.util.Interpolator.linear;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.PathTransition;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.Shape;
-import javafx.util.Duration;
 
 /**
  *
@@ -52,9 +39,9 @@ public class LeftEyeFX extends BodyPartFX
         mHeadFX = head;
         mLength = 5;
         mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
-        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 22 : 0,
-                mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 40 : 0,
-                mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
+        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 22 : 0,
+                mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 40 : 0,
+                mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 65 : 0, (144 * 100 / 255) / 100f);
         mPath = new Path();
         this.getChildren().add(mPath);
         init();
@@ -100,9 +87,9 @@ public class LeftEyeFX extends BodyPartFX
                         {
                             fadeFactor = 0;
                         }
-                        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 22 : 0,
-                                mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 40 : 0,
-                                mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
+                        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 22 : 0,
+                                mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 40 : 0,
+                                mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     } 
                     else 
                     {
@@ -113,9 +100,9 @@ public class LeftEyeFX extends BodyPartFX
                         	mColor = mColorRecorder;
                         }
                         else
-                        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 22 : 0,
-                                mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 40 : 0,
-                                mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
+                        mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 22 : 0,
+                                mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 40 : 0,
+                                mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 65 : 0, (fadeFactor * 100 / 255) / 100f);
                     }
                 }
                 

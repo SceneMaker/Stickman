@@ -1,6 +1,6 @@
 package de.dfki.stickmanfx.stagecontroller.decorators;
 
-import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.common.CommonStickmansOnStage;
@@ -56,7 +56,7 @@ public abstract class StageStickmanDecorator implements StageStickmanController 
     }
 
     @Override
-    public CommonStickman getStickman(String name) {
+    public Stickman getStickman(String name) {
         return controllerFX.getStickman(name);
     }
 

@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.posturefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -23,7 +23,7 @@ public class TurnRight extends AnimationFX
 
     /**
      *
-     * @param sm Stickman
+     * @param sm StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
      * to another emotion state.
      * @param block block or not the others movements, when one movement is not
@@ -34,7 +34,7 @@ public class TurnRight extends AnimationFX
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-    public TurnRight(StickmanFX sm, int duration, boolean block) 
+    public TurnRight(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
     }
@@ -49,7 +49,7 @@ public class TurnRight extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 20));
         playAnimationPart(100);
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
         {
         	mAnimationPartFX = new ArrayList<>();
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", 40));
@@ -68,7 +68,7 @@ public class TurnRight extends AnimationFX
         
         pauseAnimation(1000);
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
         {
         	mAnimationPartFX = new ArrayList<>();
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightWrist, "yrotate", -40));

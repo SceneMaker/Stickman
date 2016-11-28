@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.environmentfx;
 
-    import de.dfki.stickman3D.StickmanFX;
+    import de.dfki.stickman3D.Stickman3D;
     import de.dfki.stickman3D.StickmanStageController;
     import de.dfki.stickman3D.animationlogic.AnimationContentFX;
     import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -24,7 +24,7 @@ package de.dfki.stickman3D.animation.environmentfx;
             mAnimType = ANIMTYPE.ON;
         }
 
-        public Speaking(StickmanFX sm, int duration, boolean block) {
+        public Speaking(Stickman3D sm, int duration, boolean block) {
             super(sm, duration, block);
         }
 
@@ -34,7 +34,7 @@ package de.dfki.stickman3D.animation.environmentfx;
                 mStickmanFX.mSpeechBubbleFX.mText = (String) mParameter;
             }
             // nur zum Testen. Im Normalfall diese Zeile loeschen
-            mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter Stickman " + mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
+            mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter StickmanSwing " + mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
 
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));

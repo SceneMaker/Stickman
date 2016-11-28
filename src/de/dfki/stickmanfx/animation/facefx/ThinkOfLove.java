@@ -5,14 +5,11 @@ package de.dfki.stickmanfx.animation.facefx;
  * and open the template in the editor.
  */
 
-import de.dfki.stickman.animationlogic.AnimationContent;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
 
 import java.util.ArrayList;
-import javafx.application.Platform;
 
 /**
  *

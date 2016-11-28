@@ -21,7 +21,7 @@ public class ZoomBack extends AnimationFX {
 
     @Override
     public void playAnimation() {
-	// make Stickman to become original size
+	// make StickmanSwing to become original size
 	mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 
 	String mStageIdentifier = mStickmanFX.getStickmanStageController().getStageIdentifier();

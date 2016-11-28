@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
  *
  * @author Robbie
  *
- * Set background for StickmanFX
+ * Set background for Stickman3D
  */
 public class SetBackground extends AnimationFX {
 

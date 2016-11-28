@@ -7,7 +7,7 @@ package de.dfki.stickman3D.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.interfaces.CommonAnimation;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.*;
 import org.w3c.dom.Element;
@@ -29,7 +29,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 	public Semaphore mAnimationStart = new Semaphore(1);
 	public AnimatorFX mAnimatorFX;
 	public AnimationPauseFX mAnimationPauseFX;
-	public StickmanFX mStickmanFX;
+	public Stickman3D mStickmanFX;
 	public String mStickmanName;
 	public boolean mBlocking = false;
 	public int mDuration = -1;
@@ -42,7 +42,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
         {
 	}
 
-	public AnimationFX(StickmanFX sm, int duration, boolean block) 
+	public AnimationFX(Stickman3D sm, int duration, boolean block)
         {
 		mName = getClass().getSimpleName();
 		mStickmanFX = sm;
@@ -102,7 +102,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
                 mStickmanFX.mLogger.severe(ex.getMessage());
             }
 
-            // tell Stickman this animation has been scheduled and a next one can come
+            // tell StickmanSwing this animation has been scheduled and a next one can come
             mStickmanFX.mAnimationLaunchControl.release();
 	}
 

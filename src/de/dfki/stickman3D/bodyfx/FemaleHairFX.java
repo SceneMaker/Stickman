@@ -1,7 +1,7 @@
 package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -25,7 +25,7 @@ public class FemaleHairFX extends BodyPartFX {
 	public FemaleHairFX.SHAPE mShape = FemaleHairFX.SHAPE.DEFAULT;
 
 	public Dimension mSize = new Dimension(120, 100);
-	public StickmanFX mStickmanFX;
+	public Stickman3D mStickmanFX;
 
 	int mHalfHeight = mSize.height / 2;
 	int mHalfWidth = mSize.width / 2;
@@ -44,7 +44,7 @@ public class FemaleHairFX extends BodyPartFX {
 	MeshView femaleHairMeshView;
 	PhongMaterial material;
 
-	public FemaleHairFX(StickmanFX sm) {
+	public FemaleHairFX(Stickman3D sm) {
 		mStickmanFX = sm;
 		mColor = Color.rgb(240, 212, 0, 1);
 
@@ -63,7 +63,7 @@ public class FemaleHairFX extends BodyPartFX {
 		femaleHairMeshView.setRotationAxis(Rotate.X_AXIS);
 		femaleHairMeshView.setRotate(-90);
 
-		if(mStickmanFX.mType == StickmanFX.TYPE.FEMALE)
+		if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
 			mStickmanFX.mHeadFX.mHead.getChildren().add(femaleHairMeshView);
 
 		init();

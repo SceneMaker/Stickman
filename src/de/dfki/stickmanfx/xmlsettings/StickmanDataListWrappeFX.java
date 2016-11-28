@@ -5,7 +5,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "StickmanFX")
+@XmlRootElement(name = "Stickman3D")
 public class StickmanDataListWrappeFX
 {
 	private List<StickmanDataFX> mStickmanDataFX;
@@ -13,7 +13,7 @@ public class StickmanDataListWrappeFX
 	public StickmanDataListWrappeFX()
 	{
 	}
-	@XmlElement(name = "Stickman")
+	@XmlElement(name = "StickmanSwing")
 	public List<StickmanDataFX> getStickmanDataFX() {
 		return mStickmanDataFX;
 	    }

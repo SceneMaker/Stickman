@@ -10,6 +10,6 @@ public interface CommonStickmanStage {
     public StageStickman getNetworkInstanceFullScreen(String host, int port);
     public void addStickman(String name);
     public void clearStage();
-    public CommonStickman getStickman(String name);
+    public Stickman getStickman(String name);
     public  void launchStickman(String filepath);
 }

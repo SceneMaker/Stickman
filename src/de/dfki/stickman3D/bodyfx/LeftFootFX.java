@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -38,7 +38,7 @@ public class LeftFootFX extends BodyPartFX {
 	public LeftFootFX(LeftForeLegFX leftForeLeg) {
 		mLeftForeLegFX = leftForeLeg;
 		mLength = 20;
-		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 			mColor = Color.rgb(80,80,80, 1);
 		else
 			mColor = Color.rgb(154, 83, 198, 1);
@@ -78,7 +78,7 @@ public class LeftFootFX extends BodyPartFX {
 		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
-		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mLeftForeLegFX.mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 		{
 			mLeftFootMeshView.setTranslateX(mStart.x+3);
 			mLeftFootMeshView.setTranslateY(mStart.y+85);

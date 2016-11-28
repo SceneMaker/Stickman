@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ContemptStart extends AnimationFX
 {
-    public ContemptStart(StickmanFX sm, int duration, boolean block)
+    public ContemptStart(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
     }

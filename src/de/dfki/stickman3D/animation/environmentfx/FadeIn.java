@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.environmentfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -23,7 +23,7 @@ public class FadeIn extends AnimationFX {
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-    public FadeIn(StickmanFX sm, int duration, boolean block) {
+    public FadeIn(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
         mStickmanFX = sm;
     }

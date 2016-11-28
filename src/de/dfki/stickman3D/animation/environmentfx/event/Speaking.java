@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.animation.environmentfx.event;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.EventAnimationFX;
 import de.dfki.stickman3D.environmentfx.SpeechBubbleFX;
@@ -24,7 +24,7 @@ public class Speaking extends EventAnimationFX {
 		super();
 	}
 
-	public Speaking(StickmanFX sm, int duration, boolean block) {
+	public Speaking(Stickman3D sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 

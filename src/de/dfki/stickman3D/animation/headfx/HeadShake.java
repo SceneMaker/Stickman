@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.headfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -22,7 +22,7 @@ public class HeadShake extends AnimationFX
 	public HeadShake() {
 		mAnimType = ANIMTYPE.ON;
 	}
-	public HeadShake(StickmanFX sm, int duration, boolean block) 
+	public HeadShake(Stickman3D sm, int duration, boolean block)
 	{
 		super(sm, duration, block);
 		this.mStickmanFX = sm;

@@ -1,12 +1,10 @@
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.Dimension;
 import java.awt.Point;
 
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -36,7 +34,7 @@ public class MouthFX extends BodyPartFX
 		mLength = 20;
 		mSize = new Dimension(mLength * 2, 5);
 		mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
-		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 64 : 32, 0, 0, (128 * 100 / 255) / 100f);
+		mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 64 : 32, 0, 0, (128 * 100 / 255) / 100f);
 		mPath = new Path();
 		this.getChildren().add(mPath);
 		init();
@@ -82,7 +80,7 @@ public class MouthFX extends BodyPartFX
 					{
 						fadeFactor = 0;
 					}
-					mColor = Color.rgb(mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 64 : 32, 0, 0,
+					mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 64 : 32, 0, 0,
 							(fadeFactor * 100 / 255) / 100f);
 				} 
 				else 
@@ -93,7 +91,7 @@ public class MouthFX extends BodyPartFX
 						mColor = mColorRecorder;
 					}
 					else
-						mColor = Color.rgb(mHeadFX.mStickmanFX.mType == Stickman.TYPE.FEMALE ? 64 : 32, 0, 0, (fadeFactor * 100 / 255) / 100f);
+						mColor = Color.rgb(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.FEMALE ? 64 : 32, 0, 0, (fadeFactor * 100 / 255) / 100f);
 				}
 			}
 

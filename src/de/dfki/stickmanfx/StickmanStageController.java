@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.common.interfaces.FXViewController;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.stagecontroller.StickmansOnStageFX;
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;
@@ -158,7 +159,7 @@ public class StickmanStageController implements FXViewController {
 	handleBodyColour();
 
 	fillComboForEmotionExpression();
-	// Select a stickman
+	// Select a stickmanSwing
 	StickmanComboBox.setOnAction((event) -> {
 	    mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();
 	    // set the setValue of combobox
@@ -183,7 +184,7 @@ public class StickmanStageController implements FXViewController {
 	    String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
 	    if ((color != null) && (mStickmancombobox != null)) {
 		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+		    if (getStickmanAsFx(mStickmancombobox).mType == StickmanSwing.TYPE.MALE) {
 			getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = HandleColor.switchColor(color);
 			getStickmanAsFx(mStickmancombobox).update();
 		    } else {
@@ -200,7 +201,7 @@ public class StickmanStageController implements FXViewController {
 	    String color = HairComboBoxColor.getSelectionModel().getSelectedItem();
 	    if ((color != null) && (mStickmancombobox != null)) {
 		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+		    if (getStickmanAsFx(mStickmancombobox).mType == StickmanSwing.TYPE.MALE) {
 			getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = HandleColor.switchColor(color);
 			getStickmanAsFx(mStickmancombobox).update();
 		    } else {
@@ -300,7 +301,7 @@ public class StickmanStageController implements FXViewController {
 	    public void handle(ActionEvent event) {
 		if ((mStickmancombobox != null)) {
 		    Platform.runLater(() -> {
-			if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+			if (getStickmanAsFx(mStickmancombobox).mType == StickmanSwing.TYPE.MALE) {
 			    HeadComboBoxColor.setValue("Festucine");
 			    HairComboBoxColor.setValue("Brown");
 			    BodyComboBoxColor.setValue("Green");
@@ -413,7 +414,7 @@ public class StickmanStageController implements FXViewController {
 
     // set the setValue of combobox
     private void setComboboxValue(StickmanFX mStick) {
-	if (mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+	if (mStick.mType == StickmanSwing.TYPE.MALE) {
 	    String sBodyComboBoxColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
 	    if (sBodyComboBoxColor != null)
 		BodyComboBoxColor.setValue(sBodyComboBoxColor);
@@ -423,7 +424,7 @@ public class StickmanStageController implements FXViewController {
 		BodyComboBoxColor.setValue(sBodyComboBoxColor);
 	}
 
-	if (mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+	if (mStick.mType == StickmanSwing.TYPE.MALE) {
 	    String sHairComboBoxColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
 	    if (sHairComboBoxColor != null)
 		HairComboBoxColor.setValue(sHairComboBoxColor);
@@ -634,13 +635,13 @@ public class StickmanStageController implements FXViewController {
 			    String bodyColor;
 			    String hairColor;
 			    StickmanFX mStick = getStickmanAsFx(key);
-			    if (mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+			    if (mStick.mType == StickmanSwing.TYPE.MALE) {
 				bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
 			    } else {
 				bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mFemaleColor);
 			    }
 
-			    if (mStick.mType == de.dfki.stickman.Stickman.TYPE.MALE) {
+			    if (mStick.mType == StickmanSwing.TYPE.MALE) {
 				hairColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
 			    } else {
 				hairColor = HandleColor.switchColorToString(mStick.mFemaleHairFX.mColor);
@@ -666,11 +667,11 @@ public class StickmanStageController implements FXViewController {
 	File filexml = null;
 	if (mStickmanOnstage.getmFilePath() != null)
 	    filexml = new File(
-		    mStickmanOnstage.getmFilePath() + File.separator + "stickman" + File.separator + "stickman.xml");
+		    mStickmanOnstage.getmFilePath() + File.separator + "stickmanSwing" + File.separator + "stickmanSwing.xml");
 	else {
 	    try {
-		filexml = new File(new File(".").getCanonicalPath() + File.separator + "stickman" + File.separator
-			+ "stickman.xml");
+		filexml = new File(new File(".").getCanonicalPath() + File.separator + "stickmanSwing" + File.separator
+			+ "stickmanSwing.xml");
 	    } catch (IOException e) {
 		e.printStackTrace();
 	    }

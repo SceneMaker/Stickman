@@ -5,7 +5,6 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.animationlogic.Animator;
 import de.dfki.stickmanfx.animationlogic.AnimatorFX;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
@@ -16,11 +15,9 @@ import java.util.List;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

@@ -3,7 +3,7 @@ package de.dfki.stickmanfx.animationlogic;
 
 import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.util.TimingInfo;
+import de.dfki.stickmanSwing.util.TimingInfo;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.bodyfx.BodyPartFX;
 import java.util.ArrayList;

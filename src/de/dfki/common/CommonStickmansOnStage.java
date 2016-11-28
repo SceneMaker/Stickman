@@ -1,10 +1,10 @@
 package de.dfki.common;
 
-import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.util.Names;
+import de.dfki.stickmanSwing.StickmanSwing;
+import de.dfki.stickmanSwing.util.Names;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,11 +13,11 @@ import java.util.Set;
 
 /**
  * Created by alvaro on 9/12/16.
- * Manage Stickman on the Stage
+ * Manage StickmanSwing on the Stage
  */
 public abstract class CommonStickmansOnStage {
     public static final float DEFAULT_SCALE = 0.8f;
-    private Map<String, CommonStickman> sStickmansOnStage = new HashMap<>();
+    private Map<String, Stickman> sStickmansOnStage = new HashMap<>();
     protected StageStickman stickmanStage;
     private StageStickmanController stageStickmanController;
     private String mFilePath;
@@ -44,49 +44,49 @@ public abstract class CommonStickmansOnStage {
     }
 
     public void addStickman(String name, boolean fullScreen) {
-        Stickman.TYPE gender = getStickmanGender(name);
+        StickmanSwing.TYPE gender = getStickmanGender(name);
         addStickman(name, gender, fullScreen);
     }
 
-    public Stickman.TYPE getStickmanGender(String name) {
-        Stickman.TYPE gender = null;
+    public StickmanSwing.TYPE getStickmanGender(String name) {
+        StickmanSwing.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
-            gender = Stickman.TYPE.FEMALE;
+            gender = StickmanSwing.TYPE.FEMALE;
         }
         if (Names.sMaleNames.contains(name.toLowerCase())) {
-            gender = (gender == null) ? Stickman.TYPE.MALE : gender;
+            gender = (gender == null) ? StickmanSwing.TYPE.MALE : gender;
         }
         return gender;
     }
 
-    public  void addStickman(String name, Stickman.TYPE gender, boolean fullScreen) {
+    public  void addStickman(String name, StickmanSwing.TYPE gender, boolean fullScreen) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender, false);
         }
     }
 
     public  void addStickman(String name, boolean fullScreen, boolean onlyFace) {
-        Stickman.TYPE gender = getStickmanGender(name);
+        StickmanSwing.TYPE gender = getStickmanGender(name);
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender, onlyFace);
         }
     }
 
     public  void showStickmanNameFX(boolean show) {
-        for (CommonStickman s : sStickmansOnStage.values()) {
+        for (Stickman s : sStickmansOnStage.values()) {
             s.setShowName(show);
         }
     }
 
-    protected abstract void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender);
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender);
 
-    protected abstract void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender, boolean onlyFace);
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender, boolean onlyFace);
 
-    public CommonStickman getStickman(String name) {
+    public Stickman getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {
             return sStickmansOnStage.get(name.toLowerCase());
         }
-        throw new NullPointerException("No stickman with name " + name);
+        throw new NullPointerException("No stickmanSwing with name " + name);
 
     }
 
@@ -100,7 +100,7 @@ public abstract class CommonStickmansOnStage {
         });
     }
 
-    protected void putFullStickmanOnStage(String name, CommonStickman stickman) {
+    protected void putFullStickmanOnStage(String name, Stickman stickman) {
         sStickmansOnStage.put(name.toLowerCase(),stickman );
         stickman.setStickmanStageController(stageStickmanController);
     }
@@ -109,7 +109,7 @@ public abstract class CommonStickmansOnStage {
         return sStickmansOnStage.keySet();
     }
 
-    public CommonStickman getStickmanByKey(String key){
+    public Stickman getStickmanByKey(String key){
         return  sStickmansOnStage.get(key);
     }
 

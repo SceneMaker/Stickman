@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.animationlogic;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
@@ -14,12 +14,12 @@ import java.util.logging.Logger;
  */
 public class AnimationSchedulerFX extends Thread {
 
-	StickmanFX mStickmanFX;
+	Stickman3D mStickmanFX;
 	boolean mRunning = true;
 	public LinkedBlockingQueue<AnimationFX> mAnimationQueue = new LinkedBlockingQueue<>();
 	public Semaphore mTheBlockOfHell = new Semaphore(1);
 
-	public AnimationSchedulerFX(StickmanFX s) {
+	public AnimationSchedulerFX(Stickman3D s) {
 		setName(s.mName + "'s AnimationScheduler");
 		mStickmanFX = s;
 	}

@@ -73,7 +73,7 @@ public class StickmanStageFX extends Application implements StageStickman {
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(this.getClass().getResource("StickmanCSS.css").toExternalForm());
-        stage.setTitle("StickmanFX");
+        stage.setTitle("Stickman3D");
         stage.setScene(scene);
         stickmanFXStages.put(StageStickmanControllerFX.CONFIG_STAGE, stage);
         ApplicationFXLauncherImpl.setIsRunning();

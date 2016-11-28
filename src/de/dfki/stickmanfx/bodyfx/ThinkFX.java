@@ -1,23 +1,13 @@
 package de.dfki.stickmanfx.bodyfx;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.net.URL;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.animationlogic.AnimatorFX;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import de.dfki.stickmanSwing.StickmanSwing;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.util.Duration;
 
 /**
  *
@@ -87,7 +77,7 @@ public class ThinkFX extends BodyPartFX
 				break;
 				
 			case THINKOFLOVE:
-				if(mHeadFX.mStickmanFX.mType == Stickman.TYPE.MALE)
+				if(mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.MALE)
 					url = getClass().getClassLoader().getResource("girl2.gif");
 				else
 					url = getClass().getClassLoader().getResource("boy2.jpg");

@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.XMLParseAction;
 import de.dfki.util.xml.XMLParseError;
@@ -30,7 +30,7 @@ public class EventAnimationFX extends AnimationFX
         super();
     }
 
-    public EventAnimationFX(StickmanFX sm, int duration, boolean block) 
+    public EventAnimationFX(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
         mName = getClass().getSimpleName();

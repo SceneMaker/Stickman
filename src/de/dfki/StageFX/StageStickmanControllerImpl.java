@@ -2,7 +2,7 @@ package de.dfki.StageFX;
 
 import de.dfki.common.*;
 import de.dfki.common.interfaces.ApplicationFXLauncher;
-import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickmanfx.utils.XmlStickmanLoader;
@@ -35,7 +35,7 @@ public abstract class StageStickmanControllerImpl implements StageStickmanContro
 
     @Override
     public  void animate(String stickmanname, String name, int duration, String text, boolean block) {
-        CommonStickman sm = getCommonStickmansOnStage().getStickman(stickmanname);
+        Stickman sm = getCommonStickmansOnStage().getStickman(stickmanname);
         sm.doAnimation(name, duration, text, block);
     }
 
@@ -98,7 +98,7 @@ public abstract class StageStickmanControllerImpl implements StageStickmanContro
     }
 
     @Override
-    public CommonStickman getStickman(String name){
+    public Stickman getStickman(String name){
         return getCommonStickmansOnStage().getStickman(name);
     }
 

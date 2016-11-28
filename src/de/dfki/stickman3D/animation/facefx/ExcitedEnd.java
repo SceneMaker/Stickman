@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.animation.facefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ExcitedEnd extends AnimationFX {
 
-    public ExcitedEnd(StickmanFX sm, int duration, boolean block) {
+    public ExcitedEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.gesturefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -23,7 +23,7 @@ public class NoNoNo extends AnimationFX
 
     /**
      *
-     * @param sm Stickman
+     * @param sm StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
      * to another emotion state.
      * @param block block or not the others movements, when one movement is not
@@ -34,7 +34,7 @@ public class NoNoNo extends AnimationFX
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-    public NoNoNo(StickmanFX sm, int duration, boolean block) 
+    public NoNoNo(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
     }

@@ -1,10 +1,10 @@
 package de.dfki.stickmanfx.stagecontroller;
 
 import de.dfki.common.*;
-import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickman;
 import de.dfki.common.interfaces.StageStickmanController;
-import de.dfki.stickman.Stickman;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 
@@ -21,27 +21,27 @@ public class StickmansOnStageFX extends CommonStickmansOnStage{
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender) {
+    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender) {
         if (fullScreen) {
-            CommonStickman stickman = new StickmanFX(name, Stickman.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
+            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
         }else{
-            CommonStickman stickman = new StickmanFX(name, Stickman.TYPE.MALE, DEFAULT_SCALE);
+            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, DEFAULT_SCALE);
             putFullStickmanOnStage(name, stickman);
         }
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, Stickman.TYPE gender, boolean onlyFace) {
+    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender, boolean onlyFace) {
         if (fullScreen) {
-            CommonStickman stickman = new StickmanFX(name, Stickman.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
+            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
         }else{
             float scale = DEFAULT_SCALE;
             if(onlyFace){
                 scale = 1.0f;
             }
-            CommonStickman stickman = new StickmanFX(name, Stickman.TYPE.MALE, scale);
+            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, scale);
             putFullStickmanOnStage(name, stickman);
         }
     }

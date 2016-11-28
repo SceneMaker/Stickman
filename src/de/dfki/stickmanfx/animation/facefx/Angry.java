@@ -22,7 +22,7 @@ public class Angry extends AnimationFX
 
     /**
      *
-     * @param sm Stickman
+     * @param sm StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
      * to another emotion state.
      * @param block block or not the others movements, when one movement is not

@@ -3,8 +3,8 @@ package de.dfki.stickman3D.animationlogic;
 
 import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman.util.TimingInfo;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
+import de.dfki.stickmanSwing.util.TimingInfo;
 import de.dfki.stickman3D.bodyfx.BodyPartFX;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class AnimatorFX
 {
     public static int sMAX_ANIM_STEPS = 20;
     public int mCurrentStep = sMAX_ANIM_STEPS;
-    private final StickmanFX mStickmanFX;
+    private final Stickman3D mStickmanFX;
     private final AnimationFX mAnimationFX;
     private ArrayList<AnimationContentFX> mAnimationComponents = new ArrayList<AnimationContentFX>();
     private String mDescription = "";
@@ -30,7 +30,7 @@ public class AnimatorFX
     public static String sCurrentAction;
 
     //private long mPreparationTime = 0;
-    public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps)
+    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -41,7 +41,7 @@ public class AnimatorFX
         render();
     }
 
-    public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration)
+    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -55,7 +55,7 @@ public class AnimatorFX
         render();
     }
 
-    public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration, int step)
+    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration, int step)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -67,7 +67,7 @@ public class AnimatorFX
         render(step);
     }
 
-    public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, WordTimeMarkSequence wts)
+    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, WordTimeMarkSequence wts)
     {
         mStickmanFX = sm;
         mAnimationFX = a;

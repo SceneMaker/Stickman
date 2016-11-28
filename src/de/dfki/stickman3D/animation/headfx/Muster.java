@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.headfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
@@ -20,7 +20,7 @@ public class Muster extends AnimationFX
 {
 
    
-	public Muster(StickmanFX sm, int duration, boolean block) 
+	public Muster(Stickman3D sm, int duration, boolean block)
         {
 		super(sm, duration, block);
 	}

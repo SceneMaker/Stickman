@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.environmentfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -24,7 +24,7 @@ public class GoDown extends AnimationFX {
 		mAnimType = ANIMTYPE.ON;
 	}
 	double recordOriginLeaveSpeed;
-	public GoDown(StickmanFX sm, int duration, boolean block) {
+	public GoDown(Stickman3D sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mStickmanFX = sm;
 		recordOriginLeaveSpeed = mStickmanFX.leaveSpeedAndStickmanYPosition;

@@ -108,7 +108,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable , 
                 mStickmanFX.mLogger.severe(ex.getMessage());
             }
 
-            // tell Stickman this animation has been scheduled and a next one can come
+            // tell StickmanSwing this animation has been scheduled and a next one can come
             mStickmanFX.mAnimationLaunchControl.release();
 	}
 

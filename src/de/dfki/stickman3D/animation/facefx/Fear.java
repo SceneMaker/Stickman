@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -23,7 +23,7 @@ public class Fear extends AnimationFX {
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-    public Fear(StickmanFX sm, int duration, boolean block) {
+    public Fear(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -36,7 +36,7 @@ public class Fear extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SAD"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 20));
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
         {
         	//Left Hand
 	        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -60));
@@ -90,7 +90,7 @@ public class Fear extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SADEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -20));
         
-        if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
         {
         	//Left Hand
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", 60));

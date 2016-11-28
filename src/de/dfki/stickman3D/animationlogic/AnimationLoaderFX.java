@@ -5,8 +5,8 @@
  */
 package de.dfki.stickman3D.animationlogic;
 
-import de.dfki.common.interfaces.CommonStickman;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.common.interfaces.Stickman;
+import de.dfki.stickman3D.Stickman3D;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -45,7 +45,7 @@ public class AnimationLoaderFX
         return "a" + sID;
     }
 
-    private String getAnimationClasspath(StickmanFX.TYPE stickmantype, String name) {
+    private String getAnimationClasspath(Stickman3D.TYPE stickmantype, String name) {
         String classPath = "";
 
         for (String s : sAnimationSubPackages) 
@@ -65,7 +65,7 @@ public class AnimationLoaderFX
         return classPath;
     }
 
-    private String getEventAnimationClasspath(StickmanFX.TYPE stickmantype, String name)
+    private String getEventAnimationClasspath(Stickman3D.TYPE stickmantype, String name)
     {
         String classPath = "";
 
@@ -86,11 +86,11 @@ public class AnimationLoaderFX
         return classPath;
     }
 
-    public AnimationFX loadAnimation(CommonStickman sm, String name, int duration, boolean block)
+    public AnimationFX loadAnimation(Stickman sm, String name, int duration, boolean block)
     {
         AnimationFX a = null;
 
-        String cp = getAnimationClasspath(((StickmanFX)sm).mType, name);
+        String cp = getAnimationClasspath(((Stickman3D)sm).mType, name);
         try 
         {
             Class c = Class.forName(cp);
@@ -112,7 +112,7 @@ public class AnimationLoaderFX
         } 
         catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
         {
-            ((StickmanFX)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            ((Stickman3D)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         if (a != null) 
@@ -122,11 +122,11 @@ public class AnimationLoaderFX
         return a;
     }
 
-    public EventAnimationFX loadEventAnimation(CommonStickman sm, String name, int duration, boolean block)
+    public EventAnimationFX loadEventAnimation(Stickman sm, String name, int duration, boolean block)
     {
         EventAnimationFX a = null;
 
-        String cp = getEventAnimationClasspath(((StickmanFX)sm).mType, name);
+        String cp = getEventAnimationClasspath(((Stickman3D)sm).mType, name);
 
         try 
         {
@@ -149,7 +149,7 @@ public class AnimationLoaderFX
         } 
         catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
         {
-            ((StickmanFX)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            ((Stickman3D)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         a.mID = getNextID();

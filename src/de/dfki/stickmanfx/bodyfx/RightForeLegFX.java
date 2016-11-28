@@ -5,10 +5,9 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.body.*;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;

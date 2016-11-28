@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
@@ -22,13 +22,13 @@ import java.util.ArrayList;
 public class AngryEnd extends AnimationFX 
 {
     /**
-     * @param sm Stickman
+     * @param sm StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
      * to another emotion state.
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-    public AngryEnd(StickmanFX sm, int duration, boolean block) 
+    public AngryEnd(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
     }

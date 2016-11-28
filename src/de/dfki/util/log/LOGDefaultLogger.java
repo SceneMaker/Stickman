@@ -35,7 +35,7 @@ public class LOGDefaultLogger {
             install(new LOGConsoleHandler());
 
             // Install The Logfile Handler
-            install(new LOGLogFileHandler("./log/stickman.log", 10485760, 1, true));    // 10 MB Size
+            install(new LOGLogFileHandler("./log/stickmanSwing.log", 10485760, 1, true));    // 10 MB Size
         } catch (Exception exc) {
             exc.printStackTrace();
             sLogger.severe(exc.toString());

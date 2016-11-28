@@ -5,13 +5,11 @@
  */
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.body.*;
-import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanSwing.StickmanSwing;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -39,7 +37,7 @@ public class LeftForeLegFX extends BodyPartFX {
     public LeftForeLegFX(LeftUpperLegFX leftUpperLegFX) 
     {
         mUpperLegFX = leftUpperLegFX;
-        if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.MALE)
+        if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.MALE)
         	mLegLength = 90;
         else
         	mLegLength = 92;

@@ -6,7 +6,7 @@ package de.dfki.stickman3D.animation.facefx;
  * and open the template in the editor.
  */
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class Mouth_NINE extends AnimationFX {
 
-    public Mouth_NINE(StickmanFX sm, int duration, boolean block) {
+    public Mouth_NINE(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

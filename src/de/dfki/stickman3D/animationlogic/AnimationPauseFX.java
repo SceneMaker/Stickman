@@ -1,7 +1,7 @@
 package de.dfki.stickman3D.animationlogic;
 
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 
 import java.util.concurrent.Semaphore;
 
@@ -12,11 +12,11 @@ import java.util.concurrent.Semaphore;
  */
 public class AnimationPauseFX  
 {
-    private final StickmanFX mStickmanFX;
+    private final Stickman3D mStickmanFX;
     private final AnimationFX mAnimationFX;
     public Semaphore mPauseEnd = new Semaphore(0);
 
-    public AnimationPauseFX(StickmanFX sm, AnimationFX a, int duration) 
+    public AnimationPauseFX(Stickman3D sm, AnimationFX a, int duration)
     {
         mStickmanFX = sm;
         mAnimationFX = a;

@@ -1,8 +1,5 @@
 package de.dfki.stickmanfx.animation.headfx;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.animationlogic.Animation;
-import de.dfki.stickman.animationlogic.AnimationContent;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;

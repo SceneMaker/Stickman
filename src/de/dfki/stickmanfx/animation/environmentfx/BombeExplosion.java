@@ -7,7 +7,7 @@ package de.dfki.stickmanfx.animation.environmentfx;
 
 import java.util.ArrayList;
 
-import de.dfki.stickman.Stickman;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -46,7 +46,7 @@ public class BombeExplosion extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", translationUnit));
         
-        if(mStickmanFX.mType == Stickman.TYPE.MALE)
+        if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
@@ -73,7 +73,7 @@ public class BombeExplosion extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", -translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", -translationUnit));
         
-        if(mStickmanFX.mType == Stickman.TYPE.MALE)
+        if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", -translationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", -translationUnit));
@@ -122,7 +122,7 @@ public class BombeExplosion extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", translationUnit));
         
-        if(mStickmanFX.mType == Stickman.TYPE.MALE)
+        if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
@@ -194,7 +194,7 @@ public class BombeExplosion extends AnimationFX
         mAnimationPartFX = new ArrayList<>();
         mStickmanFX.mHeadFX.translateRight = true;
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "Translate", -2000)); 
-        if(mStickmanFX.mType == Stickman.TYPE.FEMALE)
+        if(mStickmanFX.mType == StickmanSwing.TYPE.FEMALE)
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "Translate", -2000)); 
         else
         	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "Translate", -2000)); 

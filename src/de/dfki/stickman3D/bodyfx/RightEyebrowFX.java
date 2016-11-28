@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.bodyfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.mimic.util.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
@@ -27,7 +27,7 @@ public class RightEyebrowFX extends BodyPartFX {
 		mHeadFX = head;
 		mSize = new Dimension(mLength, 5);
 
-		if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 			mColor = Color.rgb(88, 44, 13, 1);
 		else
 			mColor = Color.rgb(204, 163, 0, 1);
@@ -66,7 +66,7 @@ public class RightEyebrowFX extends BodyPartFX {
 
 		switch (mShape) {
 		case DEFAULT:
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			if(mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 				currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
 			else
 				currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
@@ -122,14 +122,14 @@ public class RightEyebrowFX extends BodyPartFX {
 			break;
 			
 		case EMBARRASSED:
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			if(mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", true);
 			else
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", false);
 			break;
 			
 		case EMBARRASSEDEND:
-			if(mHeadFX.mStickmanFX.mType == StickmanFX.TYPE.MALE)
+			if(mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", true);
 			else
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", false);

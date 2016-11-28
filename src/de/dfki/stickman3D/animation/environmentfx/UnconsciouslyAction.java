@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.animation.environmentfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 
 /**
  *
@@ -9,7 +9,7 @@ import de.dfki.stickman3D.StickmanFX;
  */
 public class UnconsciouslyAction extends Thread {
 
-    private StickmanFX mStickmanFX;
+    private Stickman3D mStickmanFX;
     private SimplexNoise mSimplexNoise;  // generate perlin noise Array 2d
     private int count1 = 1;    			// index of perlin noise Array
     private int count2 = 1;    			// index of perlin noise Array
@@ -20,7 +20,7 @@ public class UnconsciouslyAction extends Thread {
     private int NoiseNumber;
     private int mSleepTime=0;
 
-    public UnconsciouslyAction(StickmanFX s, SimplexNoise noise) {
+    public UnconsciouslyAction(Stickman3D s, SimplexNoise noise) {
     	mStickmanFX = s;
         mSimplexNoise = noise;
         mSleepTime = 60;

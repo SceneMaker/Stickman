@@ -7,7 +7,7 @@ package de.dfki.stickmanfx.animation.headfx;
 
 import java.util.ArrayList;
 
-import de.dfki.stickman.Stickman;
+import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.animationlogic.AnimationContentFX;
 import de.dfki.stickmanfx.animationlogic.AnimationFX;
@@ -42,7 +42,7 @@ public class Nod2 extends AnimationFX
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "translate", translationUnit));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "translate", translationUnit));
 			
-			if(mStickmanFX.mType == Stickman.TYPE.MALE)
+			if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "translate", translationUnit));
 			else
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "translate", translationUnit));
@@ -59,7 +59,7 @@ public class Nod2 extends AnimationFX
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "translate", -translationUnit));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "translate", -translationUnit));
 			
-			if(mStickmanFX.mType == Stickman.TYPE.MALE)
+			if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "translate", -translationUnit));
 			else
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "translate", -translationUnit));

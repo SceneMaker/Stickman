@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.animation.gesturefx;
 
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -24,7 +24,7 @@ public class WaveLeft extends AnimationFX
 		mAnimType = ANIMTYPE.ON;
 	}
 	
-	public WaveLeft(StickmanFX sm, int duration, boolean block) {
+	public WaveLeft(Stickman3D sm, int duration, boolean block) {
 		super(sm, duration, block);
 	}
 

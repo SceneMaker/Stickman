@@ -2,7 +2,7 @@ package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -25,7 +25,7 @@ public class HeadFX extends BodyPartFX {
 	};
 	
 	public Dimension mSize = new Dimension(120, 100);
-	public StickmanFX mStickmanFX;
+	public Stickman3D mStickmanFX;
 	TriangleMesh mHeadTriangleMesh;
 	MeshView mHeadMeshView;
 	PhongMaterial material;
@@ -51,7 +51,7 @@ public class HeadFX extends BodyPartFX {
 
 	public HeadFX.SHAPE mShape = HeadFX.SHAPE.DEFAULT;
 
-	public HeadFX(StickmanFX sm) {
+	public HeadFX(Stickman3D sm) {
 		mStickmanFX = sm;
 		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
 		mColor = Color.rgb(242, 227, 217, 1);

@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Angry2 extends AnimationFX 
 {
 	
-	StickmanFX mStickmanFX;
+	Stickman3D mStickmanFX;
 	int rotationUnit;
 	
 	public Angry2() {
@@ -30,13 +30,13 @@ public class Angry2 extends AnimationFX
 	
 	/**
     *
-    * @param sm Stickman
+    * @param sm StickmanSwing
     * @param duration Control the speed of the movement from one emotion state
     * to another emotion state.
     * @param block block or not the others movements, when one movement is not
     * finished.
     */
-    public Angry2(StickmanFX sm, int duration, boolean block) 
+    public Angry2(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
         mStickmanFX = sm;
@@ -48,7 +48,7 @@ public class Angry2 extends AnimationFX
     @Override
 	public void playAnimation() 
 	{
-		if(mStickmanFX.mType == StickmanFX.TYPE.MALE)
+		if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
 			rotationUnit = 20;
 		else
 			rotationUnit = 30;

@@ -1,14 +1,14 @@
 package de.dfki.stickman3D.kinect;
 
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 import edu.ufl.digitalworlds.j4k.J4KSDK;
 import edu.ufl.digitalworlds.j4k.Skeleton;
 
 public class Kinect extends AnimationFX
 {
-   StickmanFX currentStickman;
+   Stickman3D currentStickman;
    
   class SkeletonTracker extends J4KSDK 
   {
@@ -34,7 +34,7 @@ public class Kinect extends AnimationFX
     public void onDepthFrameEvent( short[] depthFrame, byte[] playerIndex, float[] xyz, float[] uv ) { }
   }
  
-  public Kinect(StickmanFX currentStickman)
+  public Kinect(Stickman3D currentStickman)
   {
 	this.currentStickman = currentStickman;
     new SkeletonTracker().start( J4KSDK.SKELETON );

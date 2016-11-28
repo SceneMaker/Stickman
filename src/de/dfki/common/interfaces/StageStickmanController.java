@@ -14,7 +14,7 @@ public interface StageStickmanController {
     void sendTimeMarkInformation(String timemark);
     void sendAnimationUpdate(String state, String id);
     void addStickman(String name);
-    CommonStickman getStickman(String name);
+    Stickman getStickman(String name);
     void launchStickmanStage(boolean show);
     StageStickman getStickmanStage();
     CommonStickmansOnStage getCommonStickmansOnStage();

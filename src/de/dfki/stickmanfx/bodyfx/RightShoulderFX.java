@@ -1,17 +1,10 @@
 package de.dfki.stickmanfx.bodyfx;
 
-import de.dfki.stickman.Stickman;
-import de.dfki.stickman.body.*;
-import de.dfki.stickmanfx.StickmanFX;
+import de.dfki.stickmanSwing.StickmanSwing;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.GeneralPath;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -40,7 +33,7 @@ public class RightShoulderFX extends BodyPartFX
 
 	public RightShoulderFX(BodyFX body) {
 		mBodyFX = body;
-		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman.TYPE.MALE)
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.MALE)
             mShoulderLength = 25;
         else
             mShoulderLength = 15;

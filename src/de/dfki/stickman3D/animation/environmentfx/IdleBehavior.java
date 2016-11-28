@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.animation.environmentfx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import javafx.application.Platform;
 
 /**
@@ -11,13 +11,13 @@ import javafx.application.Platform;
 public class IdleBehavior extends Thread {
 
     private int mSleepTime = 100;  // control the duration after one segment. control the speed of the wobble
-    private StickmanFX mStickmanFX;
+    private Stickman3D mStickmanFX;
     private SimplexNoise mSimplexNoise;  // generate perlin noise Array 2d
     private int count1 = 1;    // index of perlin noise Array
     private int count2 = 1;    // index of perlin noise Array
     private UnconsciouslyAction mUnconsciouslyAction;
 
-    public IdleBehavior(StickmanFX s, SimplexNoise noise) {
+    public IdleBehavior(Stickman3D s, SimplexNoise noise) {
     	mSleepTime = 100;
     	mStickmanFX = s;
         mSimplexNoise = noise;

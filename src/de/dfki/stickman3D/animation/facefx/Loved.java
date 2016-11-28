@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
-import de.dfki.stickman3D.StickmanFX;
+import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.AnimationContentFX;
 import de.dfki.stickman3D.animationlogic.AnimationFX;
 
@@ -22,7 +22,7 @@ public class Loved extends AnimationFX {
 //		mAnimType = ANIMTYPE.ON;
 //	}
 	
-    public Loved(StickmanFX sm, int duration, boolean block) {
+    public Loved(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
