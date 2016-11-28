@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman.animationlogic;
 
-import de.dfki.common.CommonStickman;
+import de.dfki.common.interfaces.CommonStickman;
 import de.dfki.stickman.Stickman;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

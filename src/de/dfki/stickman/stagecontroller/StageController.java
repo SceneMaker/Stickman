@@ -1,14 +1,13 @@
 package de.dfki.stickman.stagecontroller;
 
-import de.dfki.common.CommonStickman;
-import de.dfki.common.StageStickman;
-import de.dfki.common.StageStickmanController;
+import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.StageStickman;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.StickmanStage;
 
 import java.awt.image.BufferedImage;
-import java.util.UUID;
 
 /**
  * Created by alvaro on 9/19/16.

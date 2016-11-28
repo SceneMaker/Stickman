@@ -1,8 +1,8 @@
 package de.dfki.stickmanfx.stagecontroller.decorators;
 
-import de.dfki.common.CommonStickman;
-import de.dfki.common.StageStickman;
-import de.dfki.common.StageStickmanController;
+import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.StageStickman;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.common.CommonStickmansOnStage;
 
 import java.awt.image.BufferedImage;

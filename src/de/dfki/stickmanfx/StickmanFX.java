@@ -1,7 +1,8 @@
 package de.dfki.stickmanfx;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.*;
+import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;

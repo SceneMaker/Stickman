@@ -1,7 +1,7 @@
 package de.dfki.stickman;
 
 import de.dfki.common.CommonStickmansOnStage;
-import de.dfki.common.StageStickman;
+import de.dfki.common.interfaces.StageStickman;
 import de.dfki.stickman.util.StickmanStageLayout;
 import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.layout.HBox;

@@ -3,7 +3,7 @@ package de.dfki.stickmanfx;
 import de.dfki.common.ApplicationFXLauncherImpl;
 import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.common.GeneralStageRoot;
-import de.dfki.common.StageStickman;
+import de.dfki.common.interfaces.StageStickman;
 import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
 import javafx.application.Application;
 import javafx.application.Platform;

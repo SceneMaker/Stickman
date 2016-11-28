@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.animationlogic;
 
-import de.dfki.common.CommonStickman;
+import de.dfki.common.interfaces.CommonStickman;
 import de.dfki.stickman3D.StickmanFX;
 
 import java.lang.reflect.Constructor;

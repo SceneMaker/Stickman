@@ -1,9 +1,10 @@
 package de.dfki.common;
 
+import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.StageStickman;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickman.util.Names;
-import de.dfki.stickmanfx.StickmanFX;
-import de.dfki.stickmanfx.xmlsettings.XmlTransform;
 
 import java.util.HashMap;
 import java.util.HashSet;

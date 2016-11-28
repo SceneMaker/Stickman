@@ -6,9 +6,8 @@
 package de.dfki.stickman.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.CommonAnimation;
+import de.dfki.common.interfaces.CommonAnimation;
 import de.dfki.stickman.Stickman;
-import de.dfki.stickman.StickmanStage;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.XMLParseAction;
 import de.dfki.util.xml.XMLParseError;

@@ -1,6 +1,9 @@
 package de.dfki.stickmanfx.stagecontroller;
 
 import de.dfki.common.*;
+import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.StageStickman;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman.Stickman;
 import de.dfki.stickmanfx.StickmanFX;
 import de.dfki.stickmanfx.xmlsettings.XmlTransform;

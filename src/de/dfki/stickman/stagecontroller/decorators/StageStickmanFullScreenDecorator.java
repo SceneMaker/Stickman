@@ -1,7 +1,6 @@
 package de.dfki.stickman.stagecontroller.decorators;
 
-import de.dfki.common.StageStickman;
-import de.dfki.common.StageStickmanController;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanDecorator;
 
 /**

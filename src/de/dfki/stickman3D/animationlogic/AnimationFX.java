@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.CommonAnimation;
+import de.dfki.common.interfaces.CommonAnimation;
 import de.dfki.stickman3D.StickmanFX;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.*;

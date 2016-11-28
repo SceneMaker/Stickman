@@ -1,9 +1,10 @@
-package de.dfki.common;
+package de.dfki.common.interfaces;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+import de.dfki.common.CommonStickmansOnStage;
 import de.dfki.stickmanfx.StickmanFX;
 import javafx.scene.layout.HBox;
 

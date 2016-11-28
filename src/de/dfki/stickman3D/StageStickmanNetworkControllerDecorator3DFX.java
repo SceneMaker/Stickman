@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
 import de.dfki.common.CommonStageStickmanNetworkControllerDecorator;
-import de.dfki.common.StageStickmanController;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickmanfx.client.ClientConnectionHandlerFX;
 
 

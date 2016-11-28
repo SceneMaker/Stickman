@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
 import de.dfki.common.CommonStickmansOnStage;
-import de.dfki.common.FXViewController;
+import de.dfki.common.interfaces.FXViewController;
 import de.dfki.stickman3D.kinect.Kinect;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

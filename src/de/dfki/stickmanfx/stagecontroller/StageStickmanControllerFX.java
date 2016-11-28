@@ -29,7 +29,7 @@ public class StageStickmanControllerFX extends StageStickmanControllerImpl {
 
     @Override
     protected void getStickmanStageInstance() {
-        applicationFXLauncher = new ApplicationLauncher2DFx();
+        applicationFXLauncher = new ApplicationLauncher2D();
         if(ApplicationFXLauncherImpl.isRunning()){
             stickmanStageFX = StickmanStageFX.getInstance();
 

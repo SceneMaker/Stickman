@@ -1,10 +1,9 @@
 package de.dfki.stickman.stagecontroller.decorators;
 
 import de.dfki.common.CommonStageStickmanNetworkControllerDecorator;
-import de.dfki.common.StageStickmanController;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman.client.ClientConnectionHandler;
 import de.dfki.stickman.client.CommandParser;
-import de.dfki.stickmanfx.client.CommandParserFX;
 
 /**
  * Created by alvaro on 9/17/16.

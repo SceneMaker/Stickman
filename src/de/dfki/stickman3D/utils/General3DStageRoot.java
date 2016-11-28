@@ -1,12 +1,8 @@
 package de.dfki.stickman3D.utils;
 
 import de.dfki.common.*;
-import de.dfki.stickman3D.StageStickmanController3D;
-import de.dfki.stickmanfx.StickmanStageController;
+import de.dfki.common.interfaces.FXViewController;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;

@@ -1,4 +1,6 @@
-package de.dfki.common;
+package de.dfki.common.interfaces;
+
+import de.dfki.common.CommonStickmansOnStage;
 
 import java.awt.image.BufferedImage;
 

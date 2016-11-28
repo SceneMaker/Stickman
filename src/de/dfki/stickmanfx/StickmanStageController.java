@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import de.dfki.common.CommonStickmansOnStage;
-import de.dfki.common.FXViewController;
+import de.dfki.common.interfaces.FXViewController;
 import de.dfki.stickmanfx.stagecontroller.StickmansOnStageFX;
 import de.dfki.stickmanfx.xmlsettings.StickmanDataFX;
 import de.dfki.util.HandleColor;

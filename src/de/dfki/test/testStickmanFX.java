@@ -1,19 +1,7 @@
 package de.dfki.test;
 
-import de.dfki.common.CommonStageStickmanNetworkControllerDecorator;
-import de.dfki.common.StageStickmanController;
-import de.dfki.stickman.stagecontroller.StageController;
-import de.dfki.stickman.stagecontroller.decorators.StageStickmanFullScreenDecorator;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman3D.StageStickmanController3D;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
-import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanFullScreenControllerFXDecorator;
-import de.dfki.stickmanfx.stagecontroller.decorators.StageStickmanNetworkControllerDecoratorFX;
-import javafx.scene.input.MouseButton;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by alvaro on 9/13/16.

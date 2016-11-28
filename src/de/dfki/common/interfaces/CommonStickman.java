@@ -1,7 +1,6 @@
-package de.dfki.common;
+package de.dfki.common.interfaces;
 
 import de.dfki.stickman.Stickman;
-import de.dfki.stickmanfx.animationlogic.AnimationFX;
 
 /**
  * Created by alvaro on 9/4/16.

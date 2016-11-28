@@ -1,4 +1,4 @@
-package de.dfki.common;
+package de.dfki.common.interfaces;
 
 /**
  * Created by alvaro on 11/13/16.

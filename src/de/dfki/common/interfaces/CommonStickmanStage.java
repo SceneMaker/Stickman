@@ -1,6 +1,4 @@
-package de.dfki.common;
-
-import de.dfki.stickman.Stickman;
+package de.dfki.common.interfaces;
 
 /**
  * Created by alvaro on 9/4/16.

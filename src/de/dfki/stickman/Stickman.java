@@ -1,8 +1,8 @@
 package de.dfki.stickman;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.CommonStickman;
-import de.dfki.common.StageStickmanController;
+import de.dfki.common.interfaces.CommonStickman;
+import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman.animationlogic.Animation;
 import de.dfki.stickman.animationlogic.listener.AnimationListener;
 import de.dfki.stickman.animationlogic.AnimationScheduler;

@@ -1,8 +1,9 @@
 package de.dfki.common;
 
-import de.dfki.stickmanfx.StickmanStageFX;
+import de.dfki.common.interfaces.ApplicationFXLauncher;
+import de.dfki.common.interfaces.StageStickman;
 
-public abstract class ApplicationFXLauncherImpl implements de.dfki.common.ApplicationFXLauncher {
+public abstract class ApplicationFXLauncherImpl implements ApplicationFXLauncher {
     private static boolean isRunning = false;
     @Override
     public void waitForApplicationToStart() {

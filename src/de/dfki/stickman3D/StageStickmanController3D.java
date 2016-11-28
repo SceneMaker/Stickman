@@ -37,7 +37,7 @@ public class StageStickmanController3D extends StageStickmanControllerImpl {
     }
 
     protected void getStickmanStageInstance() {
-        applicationFXLauncher = new ApplicationLauncher3DFx();
+        applicationFXLauncher = new ApplicationLauncher3D();
         if(ApplicationFXLauncherImpl.isRunning()){
             stickmanStageFX = StickmanStage3D.getInstance();
         }else{
