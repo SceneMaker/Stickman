@@ -66,6 +66,8 @@ public abstract class BodyPartFX extends Pane
     List<Path> mGraphicPaths = Collections.synchronizedList(new ArrayList());
 
     public Color mColor = Color.rgb(0, 0, 0);
+    public float mColoropacity = 1.0f;
+
     protected Color mColorRecorder = mColor;
 
     public BasicStroke mStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);

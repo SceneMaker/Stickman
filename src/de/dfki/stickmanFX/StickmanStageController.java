@@ -34,6 +34,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.control.Slider;
+
 
 /**
  *
@@ -44,7 +46,6 @@ public class StickmanStageController implements ViewController {
     private static String packEmotionExpression = "de.dfki.stickmanFX.animation.facefx";
     private static String packGesture = "de.dfki.stickmanFX.animation.esturefx";
     private ArrayList<String> mStickmanComboList = new ArrayList<>();
-    private static StickmanFX sStickman;
     private StickmansOnStage mStickmanOnstage;
     private String mStickmancombobox = null;
     final private ToggleGroup groupPerlin = new ToggleGroup();
@@ -107,11 +108,27 @@ public class StickmanStageController implements ViewController {
     @FXML
     private ComboBox<String> HeadComboBoxColor;
     @FXML
+    private ColorPicker HeadColorPicker;
+    @FXML
+    private Slider HeadColorSlider;
+    @FXML
     private ComboBox<String> HairComboBoxColor;
+    @FXML
+    private ColorPicker HairColorPicker;
+    @FXML
+    private Slider HairColorSlider;
     @FXML
     private ComboBox<String> BodyComboBoxColor;
     @FXML
+    private ColorPicker BodyColorPicker;
+    @FXML
+    private Slider BodyColorSlider;
+    @FXML
     private ComboBox<String> LimbsComboBoxColor;
+    @FXML
+    private ColorPicker LimbsColorPicker;
+    @FXML
+    private Slider LimbsColorSlider;
     @FXML
     private ComboBox<String> EmotionExpressionComboBox;
     @FXML
@@ -146,6 +163,7 @@ public class StickmanStageController implements ViewController {
 
     @FXML
     public void initialize() {
+	initColorSlider();
 	setIdForLabel();
 	handleGroupForEnvironmentRadioButton();
 	HeadComboBoxColor.getItems().addAll("Festucine", "Beige", "Blue", "Black", "Red");
@@ -156,7 +174,7 @@ public class StickmanStageController implements ViewController {
 	BackgroundComboBoxPic.getItems().addAll(StickmanFX.backgroundList);
 	
 	// Default show
-//	handleStickman();
+	handleStickman();
 	handleBodyColour();
 
 	fillComboForEmotionExpression();
@@ -197,7 +215,52 @@ public class StickmanStageController implements ViewController {
 
 	});
 
-	// change bodyColor
+//	BodyColorPicker.setOnAction((event) -> {
+//	    Color bodyColor = BodyColorPicker.getValue();
+//	    if ((bodyColor != null) && (mStickmancombobox != null)) {
+//		Platform.runLater(() -> {
+//		    if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+//			float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mBodyFX.mColoropacity;
+//			getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = new Color(bodyColor.getRed(),
+//				bodyColor.getGreen(), bodyColor.getBlue(), mOpacityRecord);
+//			;
+//			getStickmanAsFx(mStickmancombobox).update();
+//		    } else {
+//			float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mBodyFX.mColoropacity;
+//			getStickmanAsFx(mStickmancombobox).mBodyFX.mFemaleColor = new Color(bodyColor.getRed(),
+//				bodyColor.getGreen(), bodyColor.getBlue(), mOpacityRecord);
+//			;
+//			getStickmanAsFx(mStickmancombobox).update();
+//		    }
+//		});
+//	    }
+//	});
+//
+//	BodyColorSlider.valueProperty().addListener(new ChangeListener<Number>() {
+//	    public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+//		if (mStickmancombobox != null) {
+//		    Platform.runLater(() -> {
+//			if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+//			    getStickmanAsFx(mStickmancombobox).mBodyFX.mColoropacity = new_val.floatValue();
+//			    Color mColorRecord = getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor;
+//			    getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = new Color(mColorRecord.getRed(),
+//				    mColorRecord.getGreen(), mColorRecord.getBlue(), new_val.floatValue());
+//			    ;
+//			    getStickmanAsFx(mStickmancombobox).update();
+//			} else {
+//			    getStickmanAsFx(mStickmancombobox).mBodyFX.mColoropacity = new_val.floatValue();
+//			    Color mColorRecord = getStickmanAsFx(mStickmancombobox).mBodyFX.mFemaleColor;
+//			    getStickmanAsFx(mStickmancombobox).mBodyFX.mFemaleColor = new Color(mColorRecord.getRed(),
+//				    mColorRecord.getGreen(), mColorRecord.getBlue(), new_val.floatValue());
+//			    ;
+//			    getStickmanAsFx(mStickmancombobox).update();
+//			}
+//		    });
+//		}
+//	    }
+//	});
+
+	// change hairColor
 	HairComboBoxColor.setOnAction((event) -> {
 	    String color = HairComboBoxColor.getSelectionModel().getSelectedItem();
 	    if ((color != null) && (mStickmancombobox != null)) {
@@ -213,7 +276,53 @@ public class StickmanStageController implements ViewController {
 	    }
 
 	});
+	
+//	HairColorPicker.setOnAction((event) -> {
+//	    Color hairColor = HaieColorPicker.getValue();
+//	    if ((hairColor != null) && (mStickmancombobox != null)) {
+//		Platform.runLater(() -> {
+//		    if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+//			float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColoropacity;
+//			getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = new Color(hairColor.getRed(),
+//				hairColor.getGreen(), hairColor.getBlue(), mOpacityRecord);
+//			;
+//			getStickmanAsFx(mStickmancombobox).update();
+//		    } else {
+//			float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColoropacity;
+//			getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColor = new Color(hairColor.getRed(),
+//				hairColor.getGreen(), hairColor.getBlue(), mOpacityRecord);
+//			;
+//			getStickmanAsFx(mStickmancombobox).update();
+//		    }
+//		});
+//	    }
+//	});
+//
+//	HairColorSlider.valueProperty().addListener(new ChangeListener<Number>() {
+//	    public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+//		if (mStickmancombobox != null) {
+//		    Platform.runLater(() -> {
+//			if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+//			    getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColoropacity = new_val.floatValue();
+//			    Color mColorRecord = getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor;
+//			    getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = new Color(mColorRecord.getRed(),
+//				    mColorRecord.getGreen(), mColorRecord.getBlue(), new_val.floatValue());
+//			    ;
+//			    getStickmanAsFx(mStickmancombobox).update();
+//			} else {
+//			    getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColoropacity = new_val.floatValue();
+//			    Color mColorRecord = getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColor;
+//			    getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColor = new Color(mColorRecord.getRed(),
+//				    mColorRecord.getGreen(), mColorRecord.getBlue(), new_val.floatValue());
+//			    ;
+//			    getStickmanAsFx(mStickmancombobox).update();
+//			}
+//		    });
+//		}
+//	    }
+//	});
 
+	
 	// change head Color
 	HeadComboBoxColor.setOnAction((event) -> {
 	    String color = HeadComboBoxColor.getSelectionModel().getSelectedItem();
@@ -226,6 +335,36 @@ public class StickmanStageController implements ViewController {
 	    }
 	});
 
+	HeadColorPicker.setOnAction((event) -> {
+	    Color headColor = HeadColorPicker.getValue();
+	    if ((headColor != null) && (mStickmancombobox != null)) {
+		Platform.runLater(() -> {
+		    // getStickmanAsFx(mStickmancombobox).mHeadFX.mColor =
+		    // headColor;
+		    float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mHeadFX.mColoropacity;
+		    getStickmanAsFx(mStickmancombobox).mHeadFX.mColor = new Color(headColor.getRed(),
+			    headColor.getGreen(), headColor.getBlue(), mOpacityRecord);
+		    if (getStickmanAsFx(mStickmancombobox).mHeadFX.mColor != null)
+			getStickmanAsFx(mStickmancombobox).update();
+		});
+	    }
+	});
+
+	HeadColorSlider.valueProperty().addListener(new ChangeListener<Number>() {
+	    public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+		if (mStickmancombobox != null) {
+		    Platform.runLater(() -> {
+			getStickmanAsFx(mStickmancombobox).mHeadFX.mColoropacity = new_val.floatValue();
+			Color mColorRecord = getStickmanAsFx(mStickmancombobox).mHeadFX.mColor;
+			getStickmanAsFx(mStickmancombobox).mHeadFX.mColor = new Color(mColorRecord.getRed(),
+				mColorRecord.getGreen(), mColorRecord.getBlue(), new_val.floatValue());
+			getStickmanAsFx(mStickmancombobox).update();
+		    });
+		}
+	    }
+	});
+
+	
 	// change background PICTURE
 	BackgroundComboBoxPic.setOnAction((event) -> {
 	    String pic = BackgroundComboBoxPic.getSelectionModel().getSelectedItem();
@@ -295,6 +434,79 @@ public class StickmanStageController implements ViewController {
 		});
 	    }
 	});
+	
+//	LimbsColorPicker.setOnAction((event) -> {
+//	    Color limbsColor = LimbsColorPicker.getValue();
+//	    if ((limbsColor != null) && (mStickmancombobox != null)) {
+//		Platform.runLater(() -> {
+//		    float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColoropacity;
+//		    Color mColorChange = new Color(limbsColor.getRed(), limbsColor.getGreen(), limbsColor.getBlue(),
+//			    mOpacityRecord);
+//		    getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mLeftForeLegFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mLeftFootFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightUpperLegFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightForeLegFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightFootFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mLeftHandFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightHandFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mLeftShoulderFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightShoulderFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mLeftUpperArmFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mLeftForeArmFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightUpperArmFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mRightForeArmFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).mNeckFX.mColor = mColorChange;
+//		    getStickmanAsFx(mStickmancombobox).update();
+//		});
+//	    }
+//	});
+//
+//	LimbsColorSlider.valueProperty().addListener(new ChangeListener<Number>() {
+//	    public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+//		if (mStickmancombobox != null) {
+//		    Platform.runLater(() -> {
+//
+//			getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mLeftForeLegFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mLeftFootFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightUpperLegFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightForeLegFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightFootFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mLeftHandFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightHandFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mLeftShoulderFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightShoulderFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mLeftUpperArmFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mLeftForeArmFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightUpperArmFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mRightForeArmFX.mColoropacity = new_val.floatValue();
+//			getStickmanAsFx(mStickmancombobox).mNeckFX.mColoropacity = new_val.floatValue();
+//
+//			Color mColorRecord = getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColor;
+//			Color mColorChange = new Color(mColorRecord.getRed(), mColorRecord.getGreen(),
+//				mColorRecord.getBlue(), new_val.floatValue());
+//			getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mLeftForeLegFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mLeftFootFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightUpperLegFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightForeLegFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightFootFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mLeftHandFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightHandFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mLeftShoulderFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightShoulderFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mLeftUpperArmFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mLeftForeArmFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightUpperArmFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mRightForeArmFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).mNeckFX.mColor = mColorChange;
+//			getStickmanAsFx(mStickmancombobox).update();
+//		    });
+//		}
+//	    }
+//	});
+
 
 	// set the color to default value
 	RestButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -353,6 +565,44 @@ public class StickmanStageController implements ViewController {
 
 	saveToXml();
 	handlePerlinNoise();
+    }
+    
+    private void initColorSlider() {
+	HeadColorSlider.setMin(0);
+	HeadColorSlider.setMax(1);
+	HeadColorSlider.setValue(1);
+	HeadColorSlider.setShowTickLabels(true);
+	HeadColorSlider.setShowTickMarks(true);
+	HeadColorSlider.setMajorTickUnit(0.2);
+	HeadColorSlider.setMinorTickCount(5);
+	HeadColorSlider.setBlockIncrement(0.01);
+
+//	HairColorSlider.setMin(0);
+//	HairColorSlider.setMax(1);
+//	HairColorSlider.setValue(1);
+//	HairColorSlider.setShowTickLabels(true);
+//	HairColorSlider.setShowTickMarks(true);
+//	HairColorSlider.setMajorTickUnit(0.2);
+//	HairColorSlider.setMinorTickCount(5);
+//	HairColorSlider.setBlockIncrement(0.01);
+//
+//	BodyColorSlider.setMin(0);
+//	BodyColorSlider.setMax(1);
+//	BodyColorSlider.setValue(1);
+//	BodyColorSlider.setShowTickLabels(true);
+//	BodyColorSlider.setShowTickMarks(true);
+//	BodyColorSlider.setMajorTickUnit(0.2);
+//	BodyColorSlider.setMinorTickCount(5);
+//	BodyColorSlider.setBlockIncrement(0.01);
+//
+//	LimbsColorSlider.setMin(0);
+//	LimbsColorSlider.setMax(1);
+//	LimbsColorSlider.setValue(1);
+//	LimbsColorSlider.setShowTickLabels(true);
+//	LimbsColorSlider.setShowTickMarks(true);
+//	LimbsColorSlider.setMajorTickUnit(0.2);
+//	LimbsColorSlider.setMinorTickCount(5);
+//	LimbsColorSlider.setBlockIncrement(0.01);
     }
 
     public StickmanFX getStickmanAsFx(String mStickmancombobox) {

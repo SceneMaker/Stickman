@@ -38,8 +38,12 @@ public class BodyFX extends Pane {
     Point mLefShoulderPosition;     //Added by Beka
     Point mRightShoulderPosition;   //Added by Beka
 
-    public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);    // The color is changed in paintComponent
-    public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
+//    public Color mFemaleColor = Color.rgb(154, 83, 198, (240 * 100 / 255) / 100f);    // The color is changed in paintComponent
+//    public Color mMaleColor = Color.rgb(14, 134, 122, (240 * 100 / 255) / 100f);
+    public float mColoropacity = (240 * 100 / 255) / 100f;
+    public Color mFemaleColor = Color.rgb(154, 83, 198, mColoropacity);    // The color is changed in paintComponent
+    public Color mMaleColor = Color.rgb(14, 134, 122, mColoropacity);
+
     public Color mColor = mFemaleColor;
     public Color currentColor = null;
     

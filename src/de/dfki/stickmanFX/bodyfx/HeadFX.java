@@ -42,7 +42,9 @@ public class HeadFX extends BodyPartFX
         mHead = new Path();
         mLeftEar = new Path();
         mRightEar = new Path();
-        mColor = Color.rgb(242, 227, 217, 1);
+        mColoropacity = 1f;
+        mColor = Color.rgb(242, 227, 217, mColoropacity);
+//        mColor = Color.rgb(242, 227, 217, 1);
         this.getChildren().addAll(mHead, mLeftEar, mRightEar);
         
         init();
