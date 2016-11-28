@@ -16,39 +16,39 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dfki.stickman3D.StickmanStageController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dfki.stickman3D.StickmanStageController">
    <children>
-      <AnchorPane fx:id="controlPanel" minHeight="600.0" minWidth="450.0" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: #00008B;">
+      <AnchorPane fx:id="controlPanel" minHeight="600.0" minWidth="500.0" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #00008B;">
          <children>
             <Label layoutX="124.0" layoutY="14.0" text="CONTROL PANEL" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="15.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-            <Label layoutX="23.0" layoutY="71.0" text="Stickman Choose" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="41.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+            <Label layoutX="49.0" layoutY="71.0" text="Stickman Choose" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ComboBox fx:id="StickmanComboBox" layoutX="244.0" layoutY="73.0" prefHeight="27.0" prefWidth="166.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="15.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-            <TabPane layoutX="14.0" layoutY="164.0" prefHeight="248.0" prefWidth="422.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
+            <ComboBox fx:id="StickmanComboBox" layoutX="270.0" layoutY="73.0" prefHeight="27.0" prefWidth="166.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="41.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+            <TabPane layoutX="14.0" layoutY="164.0" prefHeight="248.0" prefWidth="470.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab closable="false" text="Color">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TabPane prefHeight="359.0" prefWidth="422.0" tabClosingPolicy="UNAVAILABLE">
+                              <TabPane prefHeight="209.0" prefWidth="470.0" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
                                   <Tab closable="false" text="Head">
                                     <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="135.0" prefWidth="422.0">
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="451.0">
                                              <children>
                                                 <ColorPicker fx:id="headColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleHeadColor" />
-                                                <Button fx:id="headColorReset" layoutX="326.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
-                                                <Button fx:id="headColorDarker" layoutX="148.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="headColorBrighter" layoutX="237.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="headColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="headColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="headColorBrighter" layoutX="272.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -58,9 +58,9 @@
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="hairColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleHairColor" />
-                                                <Button fx:id="hairColorDarker" layoutX="148.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="hairColorReset" layoutX="326.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
-                                                <Button fx:id="hairColorBrighter" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="hairColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="hairColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="hairColorBrighter" layoutX="271.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -70,9 +70,9 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="bodyColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleBodyColor" />
-                                                <Button fx:id="bodyColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="bodyColorBrighter" layoutX="235.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="bodyColorReset" layoutX="325.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="bodyColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="bodyColorBrighter" layoutX="271.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="bodyColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -82,9 +82,9 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="limbsColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleLimbsColor" />
-                                                <Button fx:id="limbsColorDarker" layoutX="146.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="limbsColorBrighter" layoutX="235.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="limbsColorReset" layoutX="323.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="limbsColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="limbsColorBrighter" layoutX="272.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="limbsColorReset" layoutX="360.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -94,9 +94,9 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="shoesColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleShoesColor" />
-                                                <Button fx:id="shoesColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="shoesColorBrighter" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="shoesColorReset" layoutX="325.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="shoesColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="shoesColorBrighter" layoutX="272.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="shoesColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -106,9 +106,9 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="lipsColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleLipsColor" />
-                                                <Button fx:id="lipsColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="lipsColorBrighter" layoutX="236.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="lipsColorReset" layoutX="324.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="lipsColorDarker" layoutX="182.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="lipsColorBrighter" layoutX="271.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="lipsColorReset" layoutX="359.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -118,9 +118,9 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="eyeColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleEyeColor" />
-                                                <Button fx:id="eyeColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="eyeColorBrighter" layoutX="233.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="eyeColorReset" layoutX="321.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="eyeColorDarker" layoutX="182.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="eyeColorBrighter" layoutX="268.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="eyeColorReset" layoutX="356.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -130,9 +130,9 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <ColorPicker fx:id="browColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleBrowColor" />
-                                                <Button fx:id="browColorDarker" layoutX="147.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="browColorBrighter" layoutX="234.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="browColorReset" layoutX="321.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Button fx:id="browColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="browColorBrighter" layoutX="270.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="browColorReset" layoutX="357.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -228,48 +228,47 @@
             <Button fx:id="RestButton" layoutX="131.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Reset" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="258.0" />
             <Button layoutX="207.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Apply" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="182.0" />
             <Button fx:id="ExitButton" layoutX="283.0" layoutY="559.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="EXIT" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="106.0" />
-          <AnchorPane layoutX="18.0" layoutY="444.0" minHeight="0.0" minWidth="0.0" prefHeight="255.0" prefWidth="422.0" style="-fx-background-color: #00010B;">
+          <AnchorPane layoutX="18.0" layoutY="444.0" minHeight="0.0" minWidth="0.0" prefHeight="255.0" prefWidth="470.0" style="-fx-background-color: #00010B;">
                <children>
-                  <Button fx:id="resetCamera1" layoutX="276.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
+                  <Button fx:id="resetCamera1" layoutX="302.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="startCamera1" layoutX="16.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
+                  <Button fx:id="startCamera1" layoutX="42.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStartCamera" prefHeight="35.0" prefWidth="130.0" text="Start Camera">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="stopCamera1" layoutX="146.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
+                  <Button fx:id="stopCamera1" layoutX="172.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleStopCamera" prefHeight="35.0" prefWidth="130.0" text="Stop Camera">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Slider fx:id="cameraXSlider" layoutX="38.0" layoutY="104.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Slider fx:id="cameraXSlider" layoutX="38.0" layoutY="104.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
                   <Label layoutX="171.0" layoutY="67.0" text="Rotate Camera" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="26.0" layoutY="53.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
                   <Label layoutX="16.0" layoutY="113.0" text="X" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Slider fx:id="cameraYSlider" layoutX="38.0" layoutY="150.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Slider fx:id="cameraYSlider" layoutX="38.0" layoutY="150.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
                   <Label layoutX="16.0" layoutY="159.0" text="Y" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Slider fx:id="cameraZSlider" layoutX="38.0" layoutY="195.0" majorTickUnit="50.0" max="360.0" prefHeight="38.0" prefWidth="375.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                  <Slider fx:id="cameraZSlider" layoutX="38.0" layoutY="195.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
                   <Label layoutX="16.0" layoutY="204.0" text="Z" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
                </children>
             </AnchorPane>
          </children>
