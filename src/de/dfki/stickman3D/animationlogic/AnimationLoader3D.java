@@ -19,21 +19,21 @@ import java.util.Set;
  * @author Beka Aptsiauri
  *
  */
-public class AnimationLoaderFX 
+public class AnimationLoader3D
 {
     private final static String sANIMATIONPATH = "de.dfki.stickman3D";
     private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("headfx", "facefx", "gesturefx", "environmentfx", "posturefx"));
-    private static AnimationLoaderFX sInstance = null;
+    private static AnimationLoader3D sInstance = null;
     private static long sID = 0;
 
-    private AnimationLoaderFX() {
+    private AnimationLoader3D() {
     }
 
-    public static AnimationLoaderFX getInstance()
+    public static AnimationLoader3D getInstance()
     {
         if (sInstance == null) 
         {
-            sInstance = new AnimationLoaderFX();
+            sInstance = new AnimationLoader3D();
         }
 
         return sInstance;
@@ -86,9 +86,9 @@ public class AnimationLoaderFX
         return classPath;
     }
 
-    public AnimationFX loadAnimation(Stickman sm, String name, int duration, boolean block)
+    public Animation3D loadAnimation(Stickman sm, String name, int duration, boolean block)
     {
-        AnimationFX a = null;
+        Animation3D a = null;
 
         String cp = getAnimationClasspath(((Stickman3D)sm).mType, name);
         try 
@@ -104,7 +104,7 @@ public class AnimationLoaderFX
                     if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
-                        a = (AnimationFX) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
+                        a = (Animation3D) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
                     }
                 }
 
@@ -122,9 +122,9 @@ public class AnimationLoaderFX
         return a;
     }
 
-    public EventAnimationFX loadEventAnimation(Stickman sm, String name, int duration, boolean block)
+    public EventAnimation3D loadEventAnimation(Stickman sm, String name, int duration, boolean block)
     {
-        EventAnimationFX a = null;
+        EventAnimation3D a = null;
 
         String cp = getEventAnimationClasspath(((Stickman3D)sm).mType, name);
 
@@ -142,7 +142,7 @@ public class AnimationLoaderFX
                     if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
-                        a = (EventAnimationFX) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
+                        a = (EventAnimation3D) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
                     }
                 }
             }

@@ -3,12 +3,11 @@ package de.dfki.stickman3D;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickmanController;
+import de.dfki.stickman3D.animationlogic.*;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
-import de.dfki.stickman3D.animationlogic.AnimationFX;
-import de.dfki.stickman3D.animationlogic.AnimationLoaderFX;
-import de.dfki.stickman3D.animationlogic.AnimationSchedulerFX;
-import de.dfki.stickman3D.animationlogic.EventAnimationFX;
+import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.EventAnimation3D;
 import de.dfki.stickman3D.bodyfx.*;
 import de.dfki.stickman3D.environmentfx.SpeechBubbleFX;
 import javafx.scene.effect.InnerShadow;
@@ -87,7 +86,7 @@ public class Stickman3D extends Pane implements Stickman {
 
 	// amimation stuff
 	public Semaphore mAnimationLaunchControl = new Semaphore(1);
-	public AnimationSchedulerFX mAnimationSchedulerFX;
+	public AnimationScheduler3D mAnimationSchedulerFX;
 	private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
 
 	// body parts
@@ -337,7 +336,7 @@ public class Stickman3D extends Pane implements Stickman {
 		mLogger.addHandler(ch);
 		mLogger.setUseParentHandlers(false);
 
-		mAnimationSchedulerFX = new AnimationSchedulerFX(this);
+		mAnimationSchedulerFX = new AnimationScheduler3D(this);
 		mAnimationSchedulerFX.start();
 
 //		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
@@ -386,8 +385,8 @@ public class Stickman3D extends Pane implements Stickman {
 		}
 	}
 
-	public AnimationFX doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
-		EventAnimationFX a = AnimationLoaderFX.getInstance().loadEventAnimation(this, name, duration, block);
+	public Animation3D doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+		EventAnimation3D a = AnimationLoader3D.getInstance().loadEventAnimation(this, name, duration, block);
 
 		a.setParameter(wts);
 
@@ -431,20 +430,20 @@ public class Stickman3D extends Pane implements Stickman {
 		return null;
 	}
 
-	public AnimationFX doAnimation(String name, int duration, boolean block) {
+	public Animation3D doAnimation(String name, int duration, boolean block) {
 		return doAnimation(name, duration, "", block);
 	}
 
-	public AnimationFX doAnimation(String name, Object param, boolean block) {
+	public Animation3D doAnimation(String name, Object param, boolean block) {
 		return doAnimation(name, -1, param, block);
 	}
 
-	public AnimationFX doAnimation(String name, boolean block) {
+	public Animation3D doAnimation(String name, boolean block) {
 		return doAnimation(name, -1, "", block);
 	}
 
-	public AnimationFX doAnimation(String name, int duration, Object param, boolean block) {
-		AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
+	public Animation3D doAnimation(String name, int duration, Object param, boolean block) {
+		Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, duration, block);
 
 		a.setParameter(param); // this is for now only used by the Speech Bubble
 
@@ -460,7 +459,7 @@ public class Stickman3D extends Pane implements Stickman {
 		return a;
 	}
 
-	public void playAnimation(AnimationFX a) {
+	public void playAnimation(Animation3D a) {
 		try {
 			mAnimationLaunchControl.acquire();
 			a.start();

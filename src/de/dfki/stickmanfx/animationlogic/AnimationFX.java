@@ -172,7 +172,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable , 
             {
                 mStickmanFX.mAnimationSchedulerFX.removeAnimation(this);
             }
-            // send event that AnimationFX is ended
+            // send event that Animation3D is ended
 
             // API or TCP-Interface
             if (!mStickmanFX.getStickmanStageController().ismNetwork())

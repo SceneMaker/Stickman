@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.facefx;
  */
 
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-import de.dfki.stickman3D.animationlogic.AnimationFX;
+import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author Beka
  *
  */
-public class Mouth_FOUR extends AnimationFX {
+public class Mouth_FOUR extends Animation3D {
 
     public Mouth_FOUR(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
@@ -27,7 +27,7 @@ public class Mouth_FOUR extends AnimationFX {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "FOUR"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "FOUR"));
         playAnimationPart(20);
     }
 }

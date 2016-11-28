@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.headfx;
 
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-import de.dfki.stickman3D.animationlogic.AnimationFX;
+import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author Beka
  *
  */
-public class HeadTilt extends AnimationFX 
+public class HeadTilt extends Animation3D
 {
 	public HeadTilt() {
 		mAnimType = ANIMTYPE.ON;
@@ -32,11 +32,11 @@ public class HeadTilt extends AnimationFX
     public void playAnimation() {
     	
     	mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", -10));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", -10));
 		playAnimationPart(200);
 		
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "zrotate", 10));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", 10));
 		playAnimationPart(200);
     	StickmanStageController.currentRadioButton.setSelected(false);
     }

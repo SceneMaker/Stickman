@@ -24,7 +24,7 @@ import javafx.util.Duration;
 /**
  *
  * @author Beka
- *movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+ *movement = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
  */
 public class BombeFX extends BodyPartFX 
 {

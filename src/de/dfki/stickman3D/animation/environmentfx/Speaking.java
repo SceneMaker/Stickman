@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.environmentfx;
 
     import de.dfki.stickman3D.Stickman3D;
     import de.dfki.stickman3D.StickmanStageController;
-    import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-    import de.dfki.stickman3D.animationlogic.AnimationFX;
+    import de.dfki.stickman3D.animationlogic.AnimationContent3D;
+    import de.dfki.stickman3D.animationlogic.Animation3D;
     import de.dfki.stickman3D.environmentfx.SpeechBubbleFX;
 
     import java.util.ArrayList;
@@ -18,7 +18,7 @@ package de.dfki.stickman3D.animation.environmentfx;
      * @author Patrick Gebhard
      *
      */
-    public class Speaking extends AnimationFX {
+    public class Speaking extends Animation3D {
 
         public Speaking() {
             mAnimType = ANIMTYPE.ON;
@@ -37,10 +37,10 @@ package de.dfki.stickman3D.animation.environmentfx;
             mStickmanFX.mSpeechBubbleFX.mText = "Ich bin in 3D-Welt geborener und mit JavaFX ausgeruesteter StickmanSwing " + mStickmanFX.mName + ". Deswegen sehe ich so toll aus";
 
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
             playAnimationPart(mDuration);
 
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
             playAnimationPart(20);
 
             if(StickmanStageController.currentRadioButton != null) // nur zum Testen. Im Normalfall diese 2 Zeilen loeschen

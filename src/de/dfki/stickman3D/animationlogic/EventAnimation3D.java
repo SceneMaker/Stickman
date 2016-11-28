@@ -20,17 +20,17 @@ import java.util.List;
  * @author Beka Aptsiauri
  *
  */
-public class EventAnimationFX extends AnimationFX 
+public class EventAnimation3D extends Animation3D
 {
     public List<Long> mTimepoints;
     public WordTimeMarkSequence mWTS;
 
-    public EventAnimationFX() 
+    public EventAnimation3D()
     {
         super();
     }
 
-    public EventAnimationFX(Stickman3D sm, int duration, boolean block)
+    public EventAnimation3D(Stickman3D sm, int duration, boolean block)
     {
         super(sm, duration, block);
         mName = getClass().getSimpleName();
@@ -39,7 +39,7 @@ public class EventAnimationFX extends AnimationFX
 
     public void playEventAnimationPart() 
     {
-        mAnimatorFX = new AnimatorFX(mStickmanFX, this, mAnimationPartFX, mWTS);
+        mAnimatorFX = new Animator3D(mStickmanFX, this, mAnimationPartFX, mWTS);
 
         try 
         {

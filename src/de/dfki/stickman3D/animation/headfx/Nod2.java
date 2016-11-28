@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.headfx;
 
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-import de.dfki.stickman3D.animationlogic.AnimationFX;
+import de.dfki.stickman3D.animationlogic.AnimationContent3D;
+import de.dfki.stickman3D.animationlogic.Animation3D;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  */
 ////////////nod 3 time by Guo
-public class Nod2 extends AnimationFX
+public class Nod2 extends Animation3D
 {
 
 	public Nod2() {
@@ -38,25 +38,25 @@ public class Nod2 extends AnimationFX
 			if(i == 0)
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 10));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 10));
 				playAnimationPart(200);
 			}
 			else if(i == 5)
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -10));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -10));
 				playAnimationPart(200);
 			}
 			else if(i % 2 == 1)
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -20));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -20));
 				playAnimationPart(200);
 			}
 			else
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", 20));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 20));
 				playAnimationPart(200);
 			}
 		}

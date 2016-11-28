@@ -21,14 +21,14 @@ import java.util.concurrent.Semaphore;
  * @modified Beka Aptsiauri
  *
  */
-public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, CommonAnimation
+public class Animation3D extends Thread implements XMLParseable, XMLWriteable, CommonAnimation
 {
 	public String mName = "";
-	public ArrayList<AnimationContentFX> mAnimationPartFX = new ArrayList<>();
+	public ArrayList<AnimationContent3D> mAnimationPartFX = new ArrayList<>();
 	public Semaphore mAnimationPartStart = new Semaphore(0);
 	public Semaphore mAnimationStart = new Semaphore(1);
-	public AnimatorFX mAnimatorFX;
-	public AnimationPauseFX mAnimationPauseFX;
+	public Animator3D mAnimatorFX;
+	public AnimationPause3D mAnimationPauseFX;
 	public Stickman3D mStickmanFX;
 	public String mStickmanName;
 	public boolean mBlocking = false;
@@ -38,11 +38,11 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 	public enum ANIMTYPE { ON, OFF}
 	public ANIMTYPE mAnimType = null;
 
-	public AnimationFX() 
+	public Animation3D()
         {
 	}
 
-	public AnimationFX(Stickman3D sm, int duration, boolean block)
+	public Animation3D(Stickman3D sm, int duration, boolean block)
         {
 		mName = getClass().getSimpleName();
 		mStickmanFX = sm;
@@ -128,7 +128,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 
 	public void playAnimationPart(int duration) 
         {
-            mAnimatorFX = new AnimatorFX(mStickmanFX, this, mAnimationPartFX, duration);
+            mAnimatorFX = new Animator3D(mStickmanFX, this, mAnimationPartFX, duration);
 
             try 
             {
@@ -143,7 +143,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 	
 	public void playAnimationPart(int duration, int step) 
     {
-        mAnimatorFX = new AnimatorFX(mStickmanFX, this, mAnimationPartFX, duration, step);
+        mAnimatorFX = new Animator3D(mStickmanFX, this, mAnimationPartFX, duration, step);
 
         try 
         {
@@ -158,7 +158,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 
 	public void pauseAnimation(int duration) 
         {
-            mAnimationPauseFX = new AnimationPauseFX(mStickmanFX, this, duration);
+            mAnimationPauseFX = new AnimationPause3D(mStickmanFX, this, duration);
 
             try 
             {
@@ -181,7 +181,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
             {
                 mStickmanFX.mAnimationSchedulerFX.removeAnimation(this);
             }
-            // send event that AnimationFX is ended
+            // send event that Animation3D is ended
 
             // API or TCP-Interface
             if (!mStickmanFX.getStickmanStageController().ismNetwork())

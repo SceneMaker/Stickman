@@ -12,19 +12,19 @@ import java.util.logging.Logger;
  * @author Beka Aptsiauri
  *
  */
-public class AnimationSchedulerFX extends Thread {
+public class AnimationScheduler3D extends Thread {
 
 	Stickman3D mStickmanFX;
 	boolean mRunning = true;
-	public LinkedBlockingQueue<AnimationFX> mAnimationQueue = new LinkedBlockingQueue<>();
+	public LinkedBlockingQueue<Animation3D> mAnimationQueue = new LinkedBlockingQueue<>();
 	public Semaphore mTheBlockOfHell = new Semaphore(1);
 
-	public AnimationSchedulerFX(Stickman3D s) {
+	public AnimationScheduler3D(Stickman3D s) {
 		setName(s.mName + "'s AnimationScheduler");
 		mStickmanFX = s;
 	}
 
-	public void introduce(AnimationFX a) {
+	public void introduce(Animation3D a) {
 		try {
 			mAnimationQueue.put(a);
 		} catch (InterruptedException ex) {
@@ -32,12 +32,12 @@ public class AnimationSchedulerFX extends Thread {
 		}
 	}
 
-	public void proceed(AnimationFX a) {
+	public void proceed(Animation3D a) {
 		removeAnimation(a);
 		mTheBlockOfHell.release();
 	}
 
-	public void removeAnimation(AnimationFX a) {
+	public void removeAnimation(Animation3D a) {
 		mAnimationQueue.remove(a);
 	}
 
@@ -46,10 +46,10 @@ public class AnimationSchedulerFX extends Thread {
 
 		// throw in a last animation that unblocks the scheduler letting him end
 		try {
-			mAnimationQueue.put(new AnimationFX(mStickmanFX, 1, false) {
+			mAnimationQueue.put(new Animation3D(mStickmanFX, 1, false) {
 			});
 		} catch (InterruptedException ex) {
-			Logger.getLogger(AnimationSchedulerFX.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(AnimationScheduler3D.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -61,7 +61,7 @@ public class AnimationSchedulerFX extends Thread {
 				mTheBlockOfHell.acquire(1);
 
 				// get the next animation in the animation queue
-				AnimationFX animationFX = mAnimationQueue.take();
+				Animation3D animationFX = mAnimationQueue.take();
 
 				// tell the animation to render itself
 				animationFX.mAnimationStart.release();

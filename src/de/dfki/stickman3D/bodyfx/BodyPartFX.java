@@ -5,7 +5,7 @@
  */
 package de.dfki.stickman3D.bodyfx;
 
-import de.dfki.stickman3D.animationlogic.AnimatorFX;
+import de.dfki.stickman3D.animationlogic.Animator3D;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.PathTransition;
@@ -72,7 +72,7 @@ public abstract class BodyPartFX extends Pane {
 
 	public void setTranslation(int length) {
 		mToTranslation = mTranslation + length;
-		mTranslationStep = (double) length / AnimatorFX.sMAX_ANIM_STEPS;
+		mTranslationStep = (double) length / Animator3D.sMAX_ANIM_STEPS;
 	}
 
 	public synchronized void calculateTranslation(int step) {
@@ -100,22 +100,22 @@ public abstract class BodyPartFX extends Pane {
 
 	public void set_X_Rotation(int degree) {
 		mToDegreeX = mXRotation + degree;
-		mXRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mXRotationStep = (double) degree / Animator3D.sMAX_ANIM_STEPS;
 	}
 
 	public void set_Y_Rotation(int degree) {
 		mToDegreeY = mYRotation + degree;
-		mYRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mYRotationStep = (double) degree / Animator3D.sMAX_ANIM_STEPS;
 	}
 
 	public void set_Z_Rotation(int degree) {
 		mToDegreeZ = mZRotation + degree;
-		mZRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mZRotationStep = (double) degree / Animator3D.sMAX_ANIM_STEPS;
 	}
 
 	public void setTilt(int degree) {
 		mToDegreeX = mXRotation + degree;
-		mXRotationStep = (double) degree / AnimatorFX.sMAX_ANIM_STEPS;
+		mXRotationStep = (double) degree / Animator3D.sMAX_ANIM_STEPS;
 	}
 
 	public synchronized void calculate_X_Rotation(int step) {

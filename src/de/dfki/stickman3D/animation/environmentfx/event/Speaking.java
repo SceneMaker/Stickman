@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.environmentfx.event;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-import de.dfki.stickman3D.animationlogic.EventAnimationFX;
+import de.dfki.stickman3D.animationlogic.AnimationContent3D;
+import de.dfki.stickman3D.animationlogic.EventAnimation3D;
 import de.dfki.stickman3D.environmentfx.SpeechBubbleFX;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author Beka
  *
  */
-public class Speaking extends EventAnimationFX {
+public class Speaking extends EventAnimation3D {
 	
 	public Speaking() {
 		super();
@@ -35,11 +35,11 @@ public class Speaking extends EventAnimationFX {
 		}
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
 
 		playEventAnimationPart();
 
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
 		playAnimationPart(20);
 
 	}

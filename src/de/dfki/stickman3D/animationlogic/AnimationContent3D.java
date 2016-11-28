@@ -12,7 +12,7 @@ import de.dfki.stickman3D.bodyfx.BodyPartFX;
  * @author Beka Aptsiauri
  *
  */
-public class AnimationContentFX 
+public class AnimationContent3D
 {
 	public BodyPartFX mBodyPartFX;
 	public String mAction;
@@ -20,7 +20,7 @@ public class AnimationContentFX
 	public String mParamString;
 	public WordTimeMarkSequence mWTS;
 
-	public AnimationContentFX(BodyPartFX bp, String a, int p) 
+	public AnimationContent3D(BodyPartFX bp, String a, int p)
         {
             mBodyPartFX = bp;
             mAction = a;
@@ -28,7 +28,7 @@ public class AnimationContentFX
             mParamString = "";
 	}
 
-	public AnimationContentFX(BodyPartFX bp, String a, String p) 
+	public AnimationContent3D(BodyPartFX bp, String a, String p)
         {
             mBodyPartFX = bp;
             mAction = a;
@@ -36,7 +36,7 @@ public class AnimationContentFX
             mParamString = p;
 	}
 
-	public AnimationContentFX(BodyPartFX bp, String a, String p, WordTimeMarkSequence wts) 
+	public AnimationContent3D(BodyPartFX bp, String a, String p, WordTimeMarkSequence wts)
         {
             mBodyPartFX = bp;
             mAction = a;

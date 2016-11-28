@@ -12,7 +12,7 @@ import javafx.scene.shape.Circle;
 /**
  *
  * @author Beka
- *movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+ *movement = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
  */
 public class ThinkFX extends BodyPartFX 
 {

@@ -15,13 +15,13 @@ import java.util.concurrent.Semaphore;
  * @author Beka Aptsiauri
  *
  */
-public class AnimatorFX
+public class Animator3D
 {
     public static int sMAX_ANIM_STEPS = 20;
     public int mCurrentStep = sMAX_ANIM_STEPS;
     private final Stickman3D mStickmanFX;
-    private final AnimationFX mAnimationFX;
-    private ArrayList<AnimationContentFX> mAnimationComponents = new ArrayList<AnimationContentFX>();
+    private final Animation3D mAnimationFX;
+    private ArrayList<AnimationContent3D> mAnimationComponents = new ArrayList<AnimationContent3D>();
     private String mDescription = "";
     public WordTimeMarkSequence mWTS;
     private int mRenderPauseDuration = 0;
@@ -30,7 +30,7 @@ public class AnimatorFX
     public static String sCurrentAction;
 
     //private long mPreparationTime = 0;
-    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps)
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -41,7 +41,7 @@ public class AnimatorFX
         render();
     }
 
-    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration)
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, int duration)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -55,7 +55,7 @@ public class AnimatorFX
         render();
     }
 
-    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, int duration, int step)
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, int duration, int step)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -67,7 +67,7 @@ public class AnimatorFX
         render(step);
     }
 
-    public AnimatorFX(Stickman3D sm, AnimationFX a, ArrayList<AnimationContentFX> animComps, WordTimeMarkSequence wts)
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, WordTimeMarkSequence wts)
     {
         mStickmanFX = sm;
         mAnimationFX = a;
@@ -170,7 +170,7 @@ public class AnimatorFX
 
             if (mCurrentStep > 1)
             {
-                for (AnimationContentFX ba : mAnimationComponents)
+                for (AnimationContent3D ba : mAnimationComponents)
                 {
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
                     String action = ba.mAction;
@@ -216,7 +216,7 @@ public class AnimatorFX
             }
 
             if (mCurrentStep == 1) {
-                for (AnimationContentFX ba : mAnimationComponents) {
+                for (AnimationContent3D ba : mAnimationComponents) {
                     String action = ba.mAction;
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
 
@@ -305,7 +305,7 @@ public class AnimatorFX
 
             if (mCurrentStep > 1)
             {
-                for (AnimationContentFX ba : mAnimationComponents)
+                for (AnimationContent3D ba : mAnimationComponents)
                 {
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
                     String action = ba.mAction;
@@ -351,7 +351,7 @@ public class AnimatorFX
             }
 
             if (mCurrentStep == 1) {
-                for (AnimationContentFX ba : mAnimationComponents) {
+                for (AnimationContent3D ba : mAnimationComponents) {
                     String action = ba.mAction;
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
 

@@ -12,20 +12,20 @@ import java.util.logging.Logger;
  * @author Beka Aptsiauri
  *
  */
-public class EventAnimationSchedulerFX extends Thread 
+public class EventAnimationScheduler3D extends Thread
 {
     Stickman3D mStickmanFX;
     boolean mRunning = true;
-    public LinkedBlockingQueue<AnimationFX> mAnimationQueue = new LinkedBlockingQueue<>();
+    public LinkedBlockingQueue<Animation3D> mAnimationQueue = new LinkedBlockingQueue<>();
     public Semaphore mTheBlockOfHell = new Semaphore(1);
 
-    public EventAnimationSchedulerFX(Stickman3D s)
+    public EventAnimationScheduler3D(Stickman3D s)
     {
         setName(s.mName + "'s Event AnimationScheduler");
         mStickmanFX = s;
     }
 
-    public void introduce(AnimationFX a)
+    public void introduce(Animation3D a)
     {
         try 
         {
@@ -39,13 +39,13 @@ public class EventAnimationSchedulerFX extends Thread
         }
     }
 
-    public void proceed(AnimationFX a)
+    public void proceed(Animation3D a)
     {
         removeAnimation(a);
         mTheBlockOfHell.release();
     }
 
-    public void removeAnimation(AnimationFX a)
+    public void removeAnimation(Animation3D a)
     {
         mAnimationQueue.remove(a);
     }
@@ -57,11 +57,11 @@ public class EventAnimationSchedulerFX extends Thread
         // throw in a last animationFX that unblocks the scheduler letting him end
         try 
         {
-            mAnimationQueue.put(new AnimationFX(mStickmanFX, 1, false) {});
+            mAnimationQueue.put(new Animation3D(mStickmanFX, 1, false) {});
         } 
         catch (InterruptedException ex) 
         {
-            Logger.getLogger(EventAnimationSchedulerFX.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EventAnimationScheduler3D.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -75,7 +75,7 @@ public class EventAnimationSchedulerFX extends Thread
                 mTheBlockOfHell.acquire(1);
 
                 // get the next animationFX in the animationFX queue
-                AnimationFX animationFX = mAnimationQueue.take();
+                Animation3D animationFX = mAnimationQueue.take();
 
                 // tell the animationFX to render itself
                 animationFX.mAnimationStart.release();

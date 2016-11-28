@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.gesturefx;
 
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-import de.dfki.stickman3D.animationlogic.AnimationFX;
+import de.dfki.stickman3D.animationlogic.AnimationContent3D;
+import de.dfki.stickman3D.animationlogic.Animation3D;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author Beka
  *
  */
-public class WaveRight extends AnimationFX {
+public class WaveRight extends Animation3D {
 
 	public WaveRight() {
 		mAnimType = ANIMTYPE.ON;
@@ -30,8 +30,8 @@ public class WaveRight extends AnimationFX {
 	@Override
 	public void playAnimation() {
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -35));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -120));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -35));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -120));
 		playAnimationPart(200);
 		
 		for(int i = 0; i<6; i++)
@@ -39,25 +39,25 @@ public class WaveRight extends AnimationFX {
 			if(i == 0)
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -10));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -10));
 				playAnimationPart(200);
 			}
 			else if(i == 5)
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 10));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 10));
 				playAnimationPart(200);
 			}
 			else if(i % 2 == 1)
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", 20));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 20));
 				playAnimationPart(200);
 			}
 			else
 			{
 				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "zrotate", -20));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -20));
 				playAnimationPart(200);	
 			}
 		}
@@ -65,8 +65,8 @@ public class WaveRight extends AnimationFX {
 		pauseAnimation(1000);
 		
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", 35));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", 120));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 35));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 120));
 		playAnimationPart(200);
 		
 		StickmanStageController.currentRadioButton.setSelected(false);

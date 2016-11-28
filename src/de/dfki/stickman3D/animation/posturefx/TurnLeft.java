@@ -7,8 +7,8 @@ package de.dfki.stickman3D.animation.posturefx;
 
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContentFX;
-import de.dfki.stickman3D.animationlogic.AnimationFX;
+import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Beka Aptsiauri
  */
-public class TurnLeft extends AnimationFX 
+public class TurnLeft extends Animation3D
 {
 
     /**
@@ -46,23 +46,23 @@ public class TurnLeft extends AnimationFX
     public void playAnimation() 
     {
     	mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -20));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -20));
         playAnimationPart(100);
         
         if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
         {
         	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -40));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -60));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -20));
+        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -40));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -20));
             playAnimationPart(500);
         }
         else
         {
         	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", -70));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", -60));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", -20));
+        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -70));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -20));
             playAnimationPart(500);
         }
         
@@ -71,17 +71,17 @@ public class TurnLeft extends AnimationFX
         if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
         {
         	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 40));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", 60));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 40));
+        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", 40));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 60));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 40));
             playAnimationPart(500);
         }
         else
         {
         	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftWrist, "yrotate", 70));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mUpperBody, "yrotate", 60));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "yrotate", 40));
+        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", 70));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 60));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 40));
             playAnimationPart(500);
         }
         

@@ -1,6 +1,6 @@
 package de.dfki.stickman3D.bodyfx;
 
-import de.dfki.stickman3D.animationlogic.AnimatorFX;
+import de.dfki.stickman3D.animationlogic.Animator3D;
 import javafx.animation.Interpolator;
 import javafx.animation.PathTransition;
 import javafx.scene.image.Image;
@@ -16,7 +16,7 @@ import java.net.URL;
 /**
  *
  * @author Beka
- *movement = AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep;
+ *movement = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
  */
 public class BombeFX extends BodyPartFX
 {
@@ -75,7 +75,7 @@ public class BombeFX extends BodyPartFX
 				break;
 				
 			case BOMBETRANSITION:
-				if(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep == 0)
+				if(Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep == 0)
 				{
 					clearChildren(this);
 					url = getClass().getClassLoader().getResource("bombe.gif");
@@ -94,7 +94,7 @@ public class BombeFX extends BodyPartFX
 				}
 				break;
 			case BOMBEEXPLOSION:
-				if(AnimatorFX.sMAX_ANIM_STEPS - mShapeAnimationStep == 0)
+				if(Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep == 0)
 				{
 					clearChildren(this);
 					url = getClass().getClassLoader().getResource("explosion.gif");

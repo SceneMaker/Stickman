@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
-import de.dfki.stickman3D.animationlogic.AnimationFX;
-import de.dfki.stickman3D.animationlogic.AnimationFX.ANIMTYPE;
+import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.Animation3D.ANIMTYPE;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -78,10 +78,10 @@ public class Packageparser
 
 						Object object = myClass.newInstance();
 						
-						AnimationFX class1 = null;
-						if (object instanceof AnimationFX)
+						Animation3D class1 = null;
+						if (object instanceof Animation3D)
 						{
-							class1 = (AnimationFX) object;
+							class1 = (Animation3D) object;
 						}
 
 						if (class1 != null && class1.mAnimType == ANIMTYPE.ON)
