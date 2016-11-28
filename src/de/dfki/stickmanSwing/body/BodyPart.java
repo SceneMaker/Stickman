@@ -5,7 +5,8 @@
  */
 package de.dfki.stickmanSwing.body;
 
-import de.dfki.stickmanSwing.animationlogic.Animator;
+import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -65,8 +66,8 @@ public abstract class BodyPart extends JComponent {
 
 	public void setTranslation(int length) {
 		mToTranslation = mTranslation + length;		
-//		mTranslationStep = Math.abs(Math.abs(mTranslation) - Math.abs(mToTranslation)) / Animator.sMAX_ANIM_STEPS * (length / Math.abs(length));
-		mTranslationStep = (double)length / Animator.sMAX_ANIM_STEPS;
+//		mTranslationStep = Math.abs(Math.abs(mTranslation) - Math.abs(mToTranslation)) / AnimatorSwing.sMAX_ANIM_STEPS * (length / Math.abs(length));
+		mTranslationStep = (double)length / AnimatorSwing.sMAX_ANIM_STEPS;
 
 	}
 
@@ -90,14 +91,14 @@ public abstract class BodyPart extends JComponent {
 
 	public void setRotation(int degree) {
 		mToDegree = mRotation + degree;
-//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
-		mRotationStep = (double)degree / Animator.sMAX_ANIM_STEPS;	    
+//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / AnimatorSwing.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+		mRotationStep = (double)degree / AnimatorSwing.sMAX_ANIM_STEPS;
 	}
 
 	public void setTilt(int degree) {
 		mToDegree = mRotation + degree;
-//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / Animator.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
-		mRotationStep = (double)degree / Animator.sMAX_ANIM_STEPS;
+//		mRotationStep = Math.abs(Math.abs(mRotation) - Math.abs(mToDegree)) / AnimatorSwing.sMAX_ANIM_STEPS * (degree / Math.abs(degree));
+		mRotationStep = (double)degree / AnimatorSwing.sMAX_ANIM_STEPS;
 	}
 
 	public synchronized void calculateRotation(int step) {

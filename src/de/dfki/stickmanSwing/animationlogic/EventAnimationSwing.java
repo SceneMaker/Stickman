@@ -19,23 +19,23 @@ import org.w3c.dom.Element;
  * @author Patrick Gebhard
  *
  */
-public class EventAnimation extends Animation {
+public class EventAnimationSwing extends AnimationSwing {
 
 	public List<Long> mTimepoints;
 	public WordTimeMarkSequence mWTS;
 	
-	public EventAnimation() {
+	public EventAnimationSwing() {
 		super();
 	}
 
-	public EventAnimation(StickmanSwing sm, int duration, boolean block) {
+	public EventAnimationSwing(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
 		mName = getClass().getSimpleName();
-		setName(sm.mName + "'s Event Animation " + mName);
+		setName(sm.mName + "'s Event AnimationSwing " + mName);
 	}
 
 	public void playEventAnimationPart() {
-		mAnimator = new Animator(mStickman, this, mAnimationPart, mWTS);
+		mAnimator = new AnimatorSwing(mStickman, this, mAnimationPart, mWTS);
 
 		try {
 			mAnimationPartStart.acquire();

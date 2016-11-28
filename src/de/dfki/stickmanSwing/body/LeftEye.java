@@ -1,7 +1,7 @@
 package de.dfki.stickmanSwing.body;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animator;
+import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -107,7 +107,7 @@ public class LeftEye extends BodyPart {
 				break;
 				
 			case ANGRY:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x - movement/10, mStart.y);
 				gp.quadTo((mStart.x - movement/10 + mEnd.x - movement/8) / 2, mStart.y - movement/6, mEnd.x - movement/8, mEnd.y);
@@ -130,7 +130,7 @@ public class LeftEye extends BodyPart {
 				
 			
 			case SURPRISED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x + movement/10, mStart.y);
 				gp.quadTo((mStart.x + movement/10 + mEnd.x-movement/10)/2, mStart.y - movement/2, mEnd.x-movement/10, mStart.y);
@@ -151,7 +151,7 @@ public class LeftEye extends BodyPart {
 				break;
 				
 			case HAPPY:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 								
 				gp.moveTo(mStart.x + movement/10, mStart.y);
 				gp.quadTo((mStart.x + movement/10 + mEnd.x - movement/10)/2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
@@ -169,7 +169,7 @@ public class LeftEye extends BodyPart {
 				}
 				break;
 			case DISGUSTED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x + movement/4, mStart.y - movement/4);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3 + movement/8, mEnd.x - movement/8, mEnd.y + movement/8);
@@ -190,7 +190,7 @@ public class LeftEye extends BodyPart {
 				break;
 			
 			case LOVED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				double xMovement = movement/10*6;
 				double yMovement1 = movement/10*6;
@@ -221,7 +221,7 @@ public class LeftEye extends BodyPart {
 				break;	
 				
 			case CONTEMPT:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x)/2, mStart.y - movement/10, mEnd.x, mStart.y);
@@ -241,7 +241,7 @@ public class LeftEye extends BodyPart {
 				}break;
 				
 			case EXCITED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x + movement/10, mStart.y);
 				gp.quadTo((mStart.x + mEnd.x) / 2, mStart.y - 3, mEnd.x - movement/10, mEnd.y);
@@ -260,7 +260,7 @@ public class LeftEye extends BodyPart {
 				break;		
 				
 			case EMBARRASSED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x + movement/2, mStart.y + movement/5*2);
 				gp.quadTo((mStart.x + movement/2 + mEnd.x + movement/2) / 2, mStart.y - 4 + movement/2, mEnd.x + movement/2, mEnd.y + movement/5*2);			

@@ -1,6 +1,6 @@
 package de.dfki.stickmanSwing.animationlogic.util;
 
-import static de.dfki.stickmanSwing.animationlogic.Animator.sMAX_ANIM_STEPS;
+import static de.dfki.stickmanSwing.animationlogic.AnimatorSwing.sMAX_ANIM_STEPS;
 
 /**
  *

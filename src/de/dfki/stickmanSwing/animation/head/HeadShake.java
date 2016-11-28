@@ -6,8 +6,9 @@
 package de.dfki.stickmanSwing.animation.head;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class HeadShake extends Animation
+public class HeadShake extends AnimationSwing
 {
 
 	public HeadShake(StickmanSwing sm, int duration, boolean block)
@@ -30,12 +31,12 @@ public class HeadShake extends Animation
 
 		// Its action is strange for the first time!
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "rotate", -rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "rotate", -rotationUnit));
 		playAnimationPart(200);
 		pauseAnimation(100);
 
@@ -43,33 +44,33 @@ public class HeadShake extends Animation
 		for (int i = 0; i < 3; i++)
 		{
 			mAnimationPart = new ArrayList<>();
-			mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "rotate", rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "rotate", rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "rotate", rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "rotate", rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "rotate", rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "rotate", rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "rotate", rotationUnit * 2));
 			playAnimationPart(200);
 			pauseAnimation(100);
 
 			mAnimationPart = new ArrayList<>();
-			mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", -rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", -rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "rotate", -rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", -rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", -rotationUnit * 2));
-			mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", -rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "rotate", -rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "rotate", -rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "rotate", -rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "rotate", -rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "rotate", -rotationUnit * 2));
+			mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "rotate", -rotationUnit * 2));
 			playAnimationPart(200);
 			pauseAnimation(100);
 		}
 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mHead, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "rotate", rotationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "rotate", rotationUnit));
 
 		playAnimationPart(200);
 		pauseAnimation(100);

@@ -29,8 +29,8 @@ public class LookLeft extends AnimationFX {
 
 //		// blink up
 //		mAnimationPart = new ArrayList<>();
-//		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-//		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
+//		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DEFAULT"));
+//		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DEFAULT"));
 //		playAnimationPart(2);
 	}
 }

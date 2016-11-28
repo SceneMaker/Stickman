@@ -6,8 +6,8 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class ContemptEnd extends Animation {
+public class ContemptEnd extends AnimationSwing {
 
 	public ContemptEnd(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -25,9 +25,9 @@ public class ContemptEnd extends Animation {
 	public void playAnimation() {
 		// Contempt end
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPTEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPTEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPTEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPTEND"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(10);

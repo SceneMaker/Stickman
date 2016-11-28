@@ -12,11 +12,11 @@ import java.util.concurrent.Semaphore;
 public class AnimationPause  {
 
 	private final StickmanSwing mStickman;
-	private final Animation mAnimation;
+	private final AnimationSwing mAnimation;
 	public Semaphore mPauseEnd = new Semaphore(0);
 	//private long mPreparationTime = 0;
 
-	public AnimationPause(StickmanSwing sm, Animation a, int duration) {
+	public AnimationPause(StickmanSwing sm, AnimationSwing a, int duration) {
 		mStickman = sm;
 		mAnimation = a;
 

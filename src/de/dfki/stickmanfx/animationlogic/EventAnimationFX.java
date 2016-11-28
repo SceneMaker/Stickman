@@ -33,7 +33,7 @@ public class EventAnimationFX extends AnimationFX
     {
         super(sm, duration, block);
         mName = getClass().getSimpleName();
-        setName(sm.mName + "'s Event Animation " + mName);
+        setName(sm.mName + "'s Event AnimationSwing " + mName);
     }
 
     public void playEventAnimationPart() 

@@ -15,7 +15,7 @@ public class AnimationScheduler extends Thread {
 
 	StickmanSwing mStickman;
 	boolean mRunning = true;
-	public LinkedBlockingQueue<Animation> mAnimationQueue = new LinkedBlockingQueue<>();
+	public LinkedBlockingQueue<AnimationSwing> mAnimationQueue = new LinkedBlockingQueue<>();
 	public Semaphore mTheBlockOfHell = new Semaphore(1);
 
 	public AnimationScheduler(StickmanSwing s) {
@@ -23,7 +23,7 @@ public class AnimationScheduler extends Thread {
 		mStickman = s;
 	}
 
-	public void introduce(Animation a) {
+	public void introduce(AnimationSwing a) {
 		try {
 			mAnimationQueue.put(a);
 		} catch (InterruptedException ex) {
@@ -31,12 +31,12 @@ public class AnimationScheduler extends Thread {
 		}
 	}
 
-	public void proceed(Animation a) {
+	public void proceed(AnimationSwing a) {
 		removeAnimation(a);
 		mTheBlockOfHell.release();
 	}
 
-	public void removeAnimation(Animation a) {
+	public void removeAnimation(AnimationSwing a) {
 		mAnimationQueue.remove(a);
 	}
 
@@ -45,7 +45,7 @@ public class AnimationScheduler extends Thread {
 		
 		// throw in a last animation that unblocks the scheduler letting him end
 		try {
-			mAnimationQueue.put(new Animation(mStickman, 1, false) { });
+			mAnimationQueue.put(new AnimationSwing(mStickman, 1, false) { });
 		} catch (InterruptedException ex) {
 			Logger.getLogger(AnimationScheduler.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -59,7 +59,7 @@ public class AnimationScheduler extends Thread {
 				mTheBlockOfHell.acquire(1);
 
 				// get the next animation in the animation queue
-				Animation animation = mAnimationQueue.take();
+				AnimationSwing animation = mAnimationQueue.take();
 
 				// tell the animation to render itself
 				animation.mAnimationStart.release();

@@ -29,7 +29,7 @@ public class EventAnimationSchedulerFX extends Thread
     {
         try 
         {
-            mStickmanFX.mLogger.info("Animation " + a + " added to event animation scheduler");
+            mStickmanFX.mLogger.info("AnimationSwing " + a + " added to event animation scheduler");
 
             mAnimationQueue.put(a);
         } 

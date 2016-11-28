@@ -112,7 +112,7 @@ public class AnimationLoaderFX
         } 
         catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
         {
-            StickmanSwing.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            StickmanSwing.mLogger.severe("AnimationSwing \"" + name + "\" cannot be found in " + cp);
         }
 
         if (a != null) 
@@ -149,7 +149,7 @@ public class AnimationLoaderFX
         } 
         catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
         {
-            StickmanSwing.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            StickmanSwing.mLogger.severe("AnimationSwing \"" + name + "\" cannot be found in " + cp);
         }
 
         a.mID = getNextID();

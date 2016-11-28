@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
 
-import de.dfki.stickmanSwing.animationlogic.Animator;
+import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
 
 /**
  *
@@ -63,7 +63,7 @@ public class FaceWrinkle extends BodyPart {
 				break;
 				
 			case ANGRY:	
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 //				Add wrinkle for angry face:
 				int angryColorChange = (int)(movement/4*16);
@@ -106,7 +106,7 @@ public class FaceWrinkle extends BodyPart {
 				break;
 				
 			case EMBARRASSED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 //				Add wrinkles for embarrassed face:
 				int embarrassedColorChange = (int)(movement/4*16);

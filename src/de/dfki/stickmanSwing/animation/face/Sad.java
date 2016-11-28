@@ -6,8 +6,9 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Sad extends Animation {
+public class Sad extends AnimationSwing {
 	
 	public Sad() {
 		mAnimType = ANIMTYPE.EmotionExpression;
@@ -29,18 +30,18 @@ public class Sad extends Animation {
 	public void playAnimation() {
 		// sad
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SAD"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SAD"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
 
 		// no sad
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SADEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));  // add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add by Robbie
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SADEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));  // add by Robbie
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add by Robbie
 		playAnimationPart(20);
 	}
 }

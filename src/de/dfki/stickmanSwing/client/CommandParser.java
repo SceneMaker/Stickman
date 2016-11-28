@@ -2,9 +2,9 @@ package de.dfki.stickmanSwing.client;
 
 import de.dfki.common.CommonCommandParser;
 import de.dfki.common.CommonStickmansOnStage;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationLoader;
-import de.dfki.stickmanSwing.animationlogic.EventAnimation;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationLoaderSwing;
+import de.dfki.stickmanSwing.animationlogic.EventAnimationSwing;
 import de.dfki.util.xml.XMLUtilities;
 
 import java.io.ByteArrayInputStream;
@@ -21,7 +21,7 @@ public class CommandParser extends CommonCommandParser {
     @Override
     public void parseStickmanMLCmd(String cmd) {
 // TODO cut the crap with the two animation types ...
-        Animation a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimation() : new Animation();
+        AnimationSwing a = (cmd.contains("StickmanEventAnimation")) ? new EventAnimationSwing() : new AnimationSwing();
 
         boolean r = XMLUtilities.parseFromXMLStream(a, new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
 
@@ -32,9 +32,9 @@ public class CommandParser extends CommonCommandParser {
         boolean blocking = a.mBlocking;
         Object parameter = a.mParameter;
         if(stickmanname != null){
-            a = (a instanceof EventAnimation)
-                    ? AnimationLoader.getInstance().loadEventAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking)
-                    : AnimationLoader.getInstance().loadAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking);
+            a = (a instanceof EventAnimationSwing)
+                    ? AnimationLoaderSwing.getInstance().loadEventAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking)
+                    : AnimationLoaderSwing.getInstance().loadAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking);
 
             a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
             a.mParameter = parameter;

@@ -47,7 +47,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 		mName = getClass().getSimpleName();
 		mStickmanFX = sm;
 		mStickmanName = mStickmanFX.mName;
-		setName(mStickmanName + "'s Animation " + mName);
+		setName(mStickmanName + "'s AnimationSwing " + mName);
 		mID = mStickmanFX.getID(); // default ID;
 		mBlocking = block;
 		mDuration = duration;
@@ -71,7 +71,7 @@ public class AnimationFX extends Thread implements XMLParseable, XMLWriteable, C
 	public void setStickmanName(String stickmanName) 
         {
             mStickmanName = stickmanName;
-            setName(mStickmanName + "'s Animation " + mName);
+            setName(mStickmanName + "'s AnimationSwing " + mName);
 	}
 
 	public void setAnimationName(String animationName) 

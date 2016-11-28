@@ -3,10 +3,10 @@ package de.dfki.stickmanSwing;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StageStickmanController;
-import de.dfki.stickmanSwing.animationlogic.Animation;
+import de.dfki.stickmanSwing.animationlogic.*;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
-import de.dfki.stickmanSwing.animationlogic.AnimationScheduler;
-import de.dfki.stickmanSwing.animationlogic.EventAnimation;
+import de.dfki.stickmanSwing.animationlogic.EventAnimationSwing;
 import de.dfki.stickmanSwing.body.Body;
 import de.dfki.stickmanSwing.body.Head;
 import de.dfki.stickmanSwing.body.LeftEye;
@@ -28,7 +28,7 @@ import de.dfki.stickmanSwing.body.RightLeg;
 import de.dfki.stickmanSwing.body.RightShoulder;
 import de.dfki.stickmanSwing.body.RightUpperArm;
 import de.dfki.stickmanSwing.environment.SpeechBubble;
-import de.dfki.stickmanSwing.animationlogic.AnimationLoader;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -329,7 +329,7 @@ public class StickmanSwing extends JComponent implements Stickman {
     }
 
     public String getID() {
-        return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
+        return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
     }
 
     @Override
@@ -348,9 +348,9 @@ public class StickmanSwing extends JComponent implements Stickman {
         }
     }
 
-    public Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+    public AnimationSwing doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
 
-        EventAnimation a = AnimationLoader.getInstance().loadEventAnimation(this, name, duration, block);
+        EventAnimationSwing a = AnimationLoaderSwing.getInstance().loadEventAnimation(this, name, duration, block);
 
         a.setParameter(wts);
 
@@ -364,20 +364,20 @@ public class StickmanSwing extends JComponent implements Stickman {
         return a;
     }
 
-    public Animation doAnimation(String name, int duration, boolean block) {
+    public AnimationSwing doAnimation(String name, int duration, boolean block) {
         return doAnimation(name, duration, "", block);
     }
 
-    public Animation doAnimation(String name, Object param, boolean block) {
+    public AnimationSwing doAnimation(String name, Object param, boolean block) {
         return doAnimation(name, -1, param, block);
     }
 
-    public Animation doAnimation(String name, boolean block) {
+    public AnimationSwing doAnimation(String name, boolean block) {
         return doAnimation(name, -1, "", block);
     }
 
-    public Animation doAnimation(String name, int duration, Object param, boolean block) {
-        Animation a = AnimationLoader.getInstance().loadAnimation(this, name, duration, block);
+    public AnimationSwing doAnimation(String name, int duration, Object param, boolean block) {
+        AnimationSwing a = AnimationLoaderSwing.getInstance().loadAnimation(this, name, duration, block);
 
         a.setParameter(param); // this is for now only used by the Speech Bubble
 
@@ -391,7 +391,7 @@ public class StickmanSwing extends JComponent implements Stickman {
         return a;
     }
 
-    public void playAnimation(Animation a) {
+    public void playAnimation(AnimationSwing a) {
         try {
             //mLogger.info("Waiting for allowance to play animation " + a.toString());
             mAnimationLaunchControl.acquire();

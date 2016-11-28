@@ -6,8 +6,8 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Fear extends Animation {
+public class Fear extends AnimationSwing {
 
 //	mType ) ANIMTYPE.EmotionExpression;
 	
@@ -32,22 +32,22 @@ public class Fear extends Animation {
 	public void playAnimation() {
 		// fear
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "FEAR"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "SURPRISED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "FEAR"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
 
 		// no fear
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "FEAREND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "FEAREND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND"));
 		playAnimationPart(20);
 	}
 }

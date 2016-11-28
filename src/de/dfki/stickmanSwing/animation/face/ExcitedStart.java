@@ -1,8 +1,9 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class ExcitedStart extends Animation {
+public class ExcitedStart extends AnimationSwing {
 
 	public ExcitedStart(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -20,11 +21,11 @@ public class ExcitedStart extends Animation {
 	public void playAnimation() {
 		// excited start
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITED"));		
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EXCITED"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(10);

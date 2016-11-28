@@ -13,7 +13,7 @@ import de.dfki.stickmanSwing.body.BodyPart;
  * @author Patrick Gebhard
  *
  */
-public class AnimationContent {
+public class AnimationContentSwing {
 
 	public BodyPart mBodyPart;
 	public String mAction;
@@ -21,21 +21,21 @@ public class AnimationContent {
 	public String mParamString;
 	public WordTimeMarkSequence mWTS;
 
-	public AnimationContent(BodyPart bp, String a, int p) {
+	public AnimationContentSwing(BodyPart bp, String a, int p) {
 		mBodyPart = bp;
 		mAction = a;
 		mParam = p;
 		mParamString = "";
 	}
 
-	public AnimationContent(BodyPart bp, String a, String p) {
+	public AnimationContentSwing(BodyPart bp, String a, String p) {
 		mBodyPart = bp;
 		mAction = a;
 		mParam = 0;
 		mParamString = p;
 	}
 
-	public AnimationContent(BodyPart bp, String a, String p, WordTimeMarkSequence wts) {
+	public AnimationContentSwing(BodyPart bp, String a, String p, WordTimeMarkSequence wts) {
 		mBodyPart = bp;
 		mAction = a;
 		mParam = 0;

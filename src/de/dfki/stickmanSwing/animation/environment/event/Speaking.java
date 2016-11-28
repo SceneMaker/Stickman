@@ -7,8 +7,8 @@ package de.dfki.stickmanSwing.animation.environment.event;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
-import de.dfki.stickmanSwing.animationlogic.EventAnimation;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.EventAnimationSwing;
 import de.dfki.stickmanSwing.environment.SpeechBubble;
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Speaking extends EventAnimation {
+public class Speaking extends EventAnimationSwing {
 	
 	public Speaking() {
 		super();
@@ -34,11 +34,11 @@ public class Speaking extends EventAnimation {
 		}
 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
 
 		playEventAnimationPart();
 
-		mAnimationPart.add(new AnimationContent(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.DEFAULT.name()));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.DEFAULT.name()));
 		playAnimationPart(20);
 
 	}

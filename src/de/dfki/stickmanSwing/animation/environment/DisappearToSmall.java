@@ -6,8 +6,8 @@
 package de.dfki.stickmanSwing.animation.environment;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class DisappearToSmall extends Animation {
+public class DisappearToSmall extends AnimationSwing {
 
     private StickmanSwing mStickman;
 
@@ -33,30 +33,30 @@ public class DisappearToSmall extends Animation {
 
         // bring upper arm and fore arm in position
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 32));
         playAnimationPart(200);
         pauseAnimation(100);
 
         // wave right
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 8));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 8));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 8));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 8));
         playAnimationPart(180);
 
         // wave left
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 8));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 8));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 8));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 8));
         playAnimationPart(180);
 
         for (int i = 0; i < 1; i++) {
             // wave right		
             for (int j = 0; j < 9; j++) {
                 mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit));
 
                 mStickman.mScale = mStickman.mScale * 0.95f;
                 playAnimationPart(20);
@@ -65,8 +65,8 @@ public class DisappearToSmall extends Animation {
             // wave left
             for (int j = 0; j < 9; j++) {
                 mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit));
 
                 mStickman.mScale = mStickman.mScale * 0.95f;
                 playAnimationPart(20);
@@ -75,9 +75,9 @@ public class DisappearToSmall extends Animation {
 
         // go back in the default position
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
         playAnimationPart(20);
 
 //		Show words syebye
@@ -88,20 +88,20 @@ public class DisappearToSmall extends Animation {
 //			if(mStickman.mScale >= 1.3)
 //				mStickman.mScale = 1.334445f;
 //			mAnimationPart = new ArrayList<>();
-//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYBYE"));
+//			mAnimationPart.add(new AnimationContentSwing(mStickman.mWordShow, "shape", "SAYBYE"));
 //			playAnimationPart(2);	
 //		}
 //		pauseAnimation(200);
 //		
 ////		disappeared words
 //		mAnimationPart = new ArrayList<>();
-//		mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "DEFAULT"));
+//		mAnimationPart.add(new AnimationContentSwing(mStickman.mWordShow, "shape", "DEFAULT"));
 //		playAnimationPart(2);	
 //		show stars
         mStickman.starShowControler = true;
         mStickman.mScale = 1.334445f;
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSDISAPPEAR"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mStars, "shape", "STARSDISAPPEAR"));
         playAnimationPart(1000);
     }
 }

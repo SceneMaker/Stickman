@@ -1,8 +1,9 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Excited extends Animation {
+public class Excited extends AnimationSwing {
 	
 	public Excited() {
 		mAnimType = ANIMTYPE.EmotionExpression;
@@ -24,22 +25,22 @@ public class Excited extends Animation {
 	public void playAnimation() {
 		// excited
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITED"));		
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EXCITED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EXCITED"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
 		
 		// no excited
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EXCITEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EXCITEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EXCITEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EXCITEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EXCITEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EXCITEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EXCITEDEND"));
 		
 		playAnimationPart(20);
 	}

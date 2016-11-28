@@ -14,20 +14,20 @@ import java.util.concurrent.Semaphore;
  * @author Patrick Gebhard
  *
  */
-public class Animator {
+public class AnimatorSwing {
 
     public static int sMAX_ANIM_STEPS = 20;
     public int mCurrentStep = sMAX_ANIM_STEPS;
     private final StickmanSwing mStickman;
-    private final Animation mAnimation;
-    private ArrayList<AnimationContent> mAnimationComponents = new ArrayList<>();
+    private final AnimationSwing mAnimation;
+    private ArrayList<AnimationContentSwing> mAnimationComponents = new ArrayList<>();
     private String mDescription = "";
     public WordTimeMarkSequence mWTS;
     private int mRenderPauseDuration = 0;
     public Semaphore mRenderingPause = new Semaphore(0);
 
     //private long mPreparationTime = 0;
-    public Animator(StickmanSwing sm, Animation a, ArrayList<AnimationContent> animComps) {
+    public AnimatorSwing(StickmanSwing sm, AnimationSwing a, ArrayList<AnimationContentSwing> animComps) {
         mStickman = sm;
         mAnimation = a;
         mAnimationComponents = animComps;
@@ -37,7 +37,7 @@ public class Animator {
         render();
     }
 
-    public Animator(StickmanSwing sm, Animation a, ArrayList<AnimationContent> animComps, int duration) {
+    public AnimatorSwing(StickmanSwing sm, AnimationSwing a, ArrayList<AnimationContentSwing> animComps, int duration) {
         //mPreparationTime = System.currentTimeMillis();
         mStickman = sm;
         mAnimation = a;
@@ -49,7 +49,7 @@ public class Animator {
         render();
     }
 
-    public Animator(StickmanSwing sm, Animation a, ArrayList<AnimationContent> animComps, WordTimeMarkSequence wts) {
+    public AnimatorSwing(StickmanSwing sm, AnimationSwing a, ArrayList<AnimationContentSwing> animComps, WordTimeMarkSequence wts) {
         //mPreparationTime = System.currentTimeMillis();
         mStickman = sm;
         mAnimation = a;
@@ -89,7 +89,7 @@ public class Animator {
                 mRenderPauseDuration = new Float(duration / sMAX_ANIM_STEPS).intValue();
                 mRenderPauseDuration = (mRenderPauseDuration < 1) ? 1 : mRenderPauseDuration; // minimum delay is 1 millisecond
 
-                //mStickman.mLogger.info("Animator - animation " + mAnimation + " render pause " + mRenderPauseDuration + " duration " + duration);
+                //mStickman.mLogger.info("AnimatorSwing - animation " + mAnimation + " render pause " + mRenderPauseDuration + " duration " + duration);
                 render();
             }
 
@@ -136,7 +136,7 @@ public class Animator {
             }
 
             if (mCurrentStep > 1) {
-                for (AnimationContent ba : mAnimationComponents) {
+                for (AnimationContentSwing ba : mAnimationComponents) {
                     BodyPart bodypart = ba.mBodyPart;
                     String action = ba.mAction;
 
@@ -169,7 +169,7 @@ public class Animator {
             }
 
             if (mCurrentStep == 1) {
-                for (AnimationContent ba : mAnimationComponents) {
+                for (AnimationContentSwing ba : mAnimationComponents) {
                     String action = ba.mAction;
                     BodyPart bodypart = ba.mBodyPart;
 

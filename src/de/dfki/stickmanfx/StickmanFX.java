@@ -362,7 +362,7 @@ public class StickmanFX extends Pane implements Stickman {
     }
 
     public String getID() {
-	return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
+	return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
     }
 
     // Sets the orientation of the character, allowed values are: LEFT, RIGHT,

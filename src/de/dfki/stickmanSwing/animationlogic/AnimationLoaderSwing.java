@@ -19,19 +19,19 @@ import java.util.Set;
  * @author Patrick Gebhard
  *
  */
-public class AnimationLoader {
+public class AnimationLoaderSwing {
 
     private final static String sANIMATIONPATH = "de.dfki.stickmanSwing";
     private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("head", "face", "gesture", "environment"));
-    private static AnimationLoader sInstance = null;
+    private static AnimationLoaderSwing sInstance = null;
     private static long sID = 0;
 
-    private AnimationLoader() {
+    private AnimationLoaderSwing() {
     }
 
-    public static AnimationLoader getInstance() {
+    public static AnimationLoaderSwing getInstance() {
         if (sInstance == null) {
-            sInstance = new AnimationLoader();
+            sInstance = new AnimationLoaderSwing();
         }
 
         return sInstance;
@@ -74,8 +74,8 @@ public class AnimationLoader {
         return classPath;
     }
 
-    public Animation loadAnimation(Stickman sm, String name, int duration, boolean block) {
-        Animation a = null;
+    public AnimationSwing loadAnimation(Stickman sm, String name, int duration, boolean block) {
+        AnimationSwing a = null;
 
         String cp = getAnimationClasspath(sm.getType(), name);
 
@@ -89,13 +89,13 @@ public class AnimationLoader {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickmanSwing")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
-                        a = (Animation) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
+                        a = (AnimationSwing) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
                     }
                 }
 
             }
         } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            StickmanSwing.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            StickmanSwing.mLogger.severe("AnimationSwing \"" + name + "\" cannot be found in " + cp);
         }
 
         if (a != null) {
@@ -104,8 +104,8 @@ public class AnimationLoader {
         return a;
     }
 
-    public EventAnimation loadEventAnimation(Stickman sm, String name, int duration, boolean block) {
-        EventAnimation a = null;
+    public EventAnimationSwing loadEventAnimation(Stickman sm, String name, int duration, boolean block) {
+        EventAnimationSwing a = null;
 
         String cp = getEventAnimationClasspath(sm.getType(), name);
 
@@ -120,13 +120,13 @@ public class AnimationLoader {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickmanSwing")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
-                        a = (EventAnimation) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
+                        a = (EventAnimationSwing) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
                     }
                 }
 
             }
         } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-            StickmanSwing.mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+            StickmanSwing.mLogger.severe("AnimationSwing \"" + name + "\" cannot be found in " + cp);
         }
 
         a.mID = getNextID();

@@ -6,8 +6,9 @@
 package de.dfki.stickmanSwing.animation.head;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Blink extends Animation {
+public class Blink extends AnimationSwing {
 
 	public Blink(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -24,16 +25,16 @@ public class Blink extends Animation {
 	@Override
 	public void playAnimation() {
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "BLINK"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "BLINK"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "BLINK"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "BLINK"));
 		playAnimationPart(20);
 		
 		pauseAnimation(300);
 
 		// blink up
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "DEFAULT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DEFAULT"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DEFAULT"));
 		playAnimationPart(20);
 	}
 }

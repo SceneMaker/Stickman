@@ -1,8 +1,8 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Smile extends Animation {
+public class Smile extends AnimationSwing {
 	
 	public Smile() {
 		mAnimType = ANIMTYPE.EmotionExpression;
@@ -24,14 +24,14 @@ public class Smile extends Animation {
 	public void playAnimation() {
 		// smile
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILE"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
 //		playAnimationPart(20);
 		playAnimationPart(mDuration);
 		pauseAnimation(1200);
 		
 		// no smile
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "SMILEEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILEEND"));
 		
 		playAnimationPart(20);
 	}

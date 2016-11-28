@@ -366,7 +366,7 @@ public class Stickman3D extends Pane implements Stickman {
 	}
 
 	public String getID() {
-		return (new StringBuffer()).append(mName).append(" Animation ").append(mID++).toString();
+		return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
 	}
 
 	// @Override

@@ -1,7 +1,7 @@
 package de.dfki.stickmanSwing.body;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animator;
+import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -83,7 +83,7 @@ public class Mouth extends BodyPart {
 				break;
 
 			case SMILE:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 				gp.moveTo(mStart.x - mLength / 2 - movement/3*2, mStart.y - movement/2);
 				gp.quadTo(mStart.x, mStart.y + 1 + movement/3*2, mEnd.x + movement/3*2, mStart.y - movement/2);
@@ -103,7 +103,7 @@ public class Mouth extends BodyPart {
 				break;
 
 			case SAD:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 				gp.moveTo(mStart.x - mLength/2 - movement/2, mStart.y + movement/4);
 				gp.quadTo(mStart.x, mStart.y - movement, mEnd.x + movement/2, mEnd.y + movement/4);
@@ -123,7 +123,7 @@ public class Mouth extends BodyPart {
 				break;
 
 			case ANGRY:				
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 					gp.moveTo(mStart.x - mLength/2 - movement/4, mStart.y + movement/10);
 					gp.quadTo(mStart.x, mStart.y +1 - movement/3*2, mEnd.x + movement/4, mStart.y + movement/10);
@@ -149,7 +149,7 @@ public class Mouth extends BodyPart {
 				break;
 				
 			case ANGRYSMALLMOUTH:				
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x - mLength/2 + movement/10, mStart.y + movement/10);
 				gp.quadTo(mStart.x, mStart.y +1 - movement/4, mEnd.x - movement/10, mStart.y + movement/10);
@@ -169,7 +169,7 @@ public class Mouth extends BodyPart {
 				break;
 			
 			case SURPRISED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 				gp.moveTo(mStart.x - mLength / 2, mStart.y);
 				gp.quadTo(mStart.x-movement/4-4, mStart.y - movement/2, mStart.x, mStart.y - movement/2-1);
@@ -195,7 +195,7 @@ public class Mouth extends BodyPart {
 				break;
 				
 			case HAPPY:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 
 				gp.moveTo(mStart.x - mLength/2 - movement/2, mStart.y - movement/4);
 				gp.quadTo(mStart.x, mStart.y + 1 + movement, mEnd.x + movement/2, mStart.y - movement/4);
@@ -217,7 +217,7 @@ public class Mouth extends BodyPart {
 				break;
 				
 			case DISGUSTED:
-				movement = mLength/2 + (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep)/2;
+				movement = mLength/2 + (AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep)/2;
 
 				gp.moveTo(mStart.x - movement, mStart.y);
 				gp.quadTo(mStart.x - movement*2/3, mStart.y - movement/4 , mStart.x - movement/3, mStart.y);
@@ -241,7 +241,7 @@ public class Mouth extends BodyPart {
 				break;
 		
 			case CONTEMPT:		
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x - mLength / 2, mStart.y);
 				gp.quadTo(mStart.x, mStart.y - movement/1.5, mEnd.x + movement/2, mEnd.y-movement/2);	
@@ -263,7 +263,7 @@ public class Mouth extends BodyPart {
 				break;
 						
 			case FEAR:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 				
 				gp.moveTo(mStart.x - mLength / 2-movement/4, mStart.y);
 				gp.quadTo(mStart.x, mStart.y - movement/2, mEnd.x+movement/4, mEnd.y);
@@ -287,7 +287,7 @@ public class Mouth extends BodyPart {
 				break;
 				
 			case EXCITED:
-				movement = Animator.sMAX_ANIM_STEPS - mShapeAnimationStep;
+				movement = AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep;
 		
 				gp.moveTo(mStart.x - mLength / 2 - movement/3*2, mStart.y - movement / 2);
 				gp.quadTo(mStart.x, mStart.y + movement, mEnd.x + movement/3*2, mStart.y- movement / 2);
@@ -311,7 +311,7 @@ public class Mouth extends BodyPart {
 				break;
 				
 			case EMBARRASSED:
-				movement = (Animator.sMAX_ANIM_STEPS - mShapeAnimationStep);
+				movement = (AnimatorSwing.sMAX_ANIM_STEPS - mShapeAnimationStep);
 				
 				gp.moveTo(mStart.x - mLength/2 + movement/10*7, mStart.y + movement/20);
 				gp.quadTo((mStart.x - mLength/2 + mEnd.x + movement/10*3)/2, mStart.y+1, mEnd.x + movement/10*3, mEnd.y + movement/20);

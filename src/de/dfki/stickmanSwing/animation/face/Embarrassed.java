@@ -6,8 +6,9 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Embarrassed extends Animation {
+public class Embarrassed extends AnimationSwing {
 	
 	public Embarrassed() {
 		mAnimType = ANIMTYPE.EmotionExpression;
@@ -30,12 +31,12 @@ public class Embarrassed extends Animation {
 		
 		// embarrassed
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EMBARRASSED"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EMBARRASSED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EMBARRASSED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EMBARRASSED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EMBARRASSED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EMBARRASSED"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EMBARRASSED"));
 		playAnimationPart(mDuration);
 //		playAnimationPart(20);
 		
@@ -43,12 +44,12 @@ public class Embarrassed extends Animation {
 
 		// no embarrassed
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mFaceWrinkle, "shape", "EMBARRASSEDEND"));   ///Add by Robbie
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "shape", "EMBARRASSEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EMBARRASSEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EMBARRASSEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EMBARRASSEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mFaceWrinkle, "shape", "EMBARRASSEDEND"));   ///Add by Robbie
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EMBARRASSEDEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EMBARRASSEDEND"));
 		playAnimationPart(20);
 	}
 }

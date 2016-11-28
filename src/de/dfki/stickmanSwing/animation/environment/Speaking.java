@@ -6,8 +6,8 @@
 package de.dfki.stickmanSwing.animation.environment;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
 import de.dfki.stickmanSwing.environment.SpeechBubble;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Speaking extends Animation {
+public class Speaking extends AnimationSwing {
 
 	public Speaking(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -29,10 +29,10 @@ public class Speaking extends Animation {
 		}
 
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name()));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name()));
 		playAnimationPart(mDuration);
 
-		mAnimationPart.add(new AnimationContent(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.DEFAULT.name()));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.DEFAULT.name()));
 		playAnimationPart(20);
 
 	}

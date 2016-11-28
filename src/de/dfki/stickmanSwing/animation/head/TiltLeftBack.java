@@ -6,8 +6,8 @@
 package de.dfki.stickmanSwing.animation.head;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class TiltLeftBack extends Animation {
+public class TiltLeftBack extends AnimationSwing {
 
 	public TiltLeftBack(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -28,12 +28,12 @@ public class TiltLeftBack extends Animation {
 		// head down
 		mAnimationPart = new ArrayList<>();
 		// which bodyparts are involved - check dependencies
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mHead, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "tilt", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "tilt", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "tilt", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "tilt", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "tilt", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "tilt", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "tilt", -translationUnit));
 
 		playAnimationPart(200);
 	}

@@ -101,7 +101,7 @@ public class AnimationLoaderFX
 
                 if (params.length == 3) 
                 {
-                    if (params[0].getSimpleName().equalsIgnoreCase("stickmanfx")
+                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
                         a = (AnimationFX) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
@@ -139,7 +139,7 @@ public class AnimationLoaderFX
 
                 if (params.length == 3) 
                 {
-                    if (params[0].getSimpleName().equalsIgnoreCase("stickmanfx")
+                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
                         a = (EventAnimationFX) c.getDeclaredConstructor(params).newInstance(sm, duration, block);

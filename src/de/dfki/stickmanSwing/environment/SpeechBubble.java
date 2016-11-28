@@ -1,6 +1,6 @@
 package de.dfki.stickmanSwing.environment;
 
-import de.dfki.stickmanSwing.animationlogic.Animator;
+import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
 import de.dfki.stickmanSwing.body.BodyPart;
 import de.dfki.stickmanSwing.body.Head;
 import java.awt.BasicStroke;
@@ -168,7 +168,7 @@ public class SpeechBubble extends BodyPart {
         }
 
         if (mCurrentlySpokenText.isEmpty()) {
-            g2.setColor(new Color(0, 0, 0, 64 - (Animator.sMAX_ANIM_STEPS - (new Double(mShapeAnimationStep)).intValue()) * 3));
+            g2.setColor(new Color(0, 0, 0, 64 - (AnimatorSwing.sMAX_ANIM_STEPS - (new Double(mShapeAnimationStep)).intValue()) * 3));
         } else {
             g2.setColor(new Color(0, 0, 0, 64));
         }

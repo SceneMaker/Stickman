@@ -6,8 +6,9 @@
 package de.dfki.stickmanSwing.animation.face;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Contempt extends Animation {
+public class Contempt extends AnimationSwing {
 	
 	public Contempt() {
 		mAnimType = ANIMTYPE.EmotionExpression;
@@ -29,18 +30,18 @@ public class Contempt extends Animation {
 	public void playAnimation() {
 		// Contempt
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPT"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPT"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPT"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPT"));
 		playAnimationPart(mDuration);
 
 		pauseAnimation(1200);
 
 		// no Contempt
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "shape", "CONTEMPTEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "shape", "CONTEMPTEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPTEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPTEND"));
 		playAnimationPart(20);
 	}
 }

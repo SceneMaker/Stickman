@@ -23,14 +23,14 @@ import org.w3c.dom.Element;
  * @author Patrick Gebhard
  *
  */
-public class Animation extends Thread implements XMLParseable, XMLWriteable, CommonAnimation {
+public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable, CommonAnimation {
 
 	public enum ANIMTYPE { EmotionExpression, Gesture}	
 	public String mName = "";
-	public ArrayList<AnimationContent> mAnimationPart = new ArrayList<>();
+	public ArrayList<AnimationContentSwing> mAnimationPart = new ArrayList<>();
 	public Semaphore mAnimationPartStart = new Semaphore(0);
 	public Semaphore mAnimationStart = new Semaphore(1);
-	public Animator mAnimator;
+	public AnimatorSwing mAnimator;
 	public AnimationPause mAnimationPause;
 	public StickmanSwing mStickman;
 	public String mStickmanName;
@@ -41,7 +41,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 	
 	public ANIMTYPE mAnimType = null;
 	
-	public Animation() {
+	public AnimationSwing() {
 		
 	}
 
@@ -50,11 +50,11 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 	}
 
 
-	public Animation(StickmanSwing sm, int duration, boolean block) {
+	public AnimationSwing(StickmanSwing sm, int duration, boolean block) {
 		mName = getClass().getSimpleName();
 		mStickman = sm;
 		mStickmanName = mStickman.mName;
-		setName(mStickmanName + "'s Animation " + mName);
+		setName(mStickmanName + "'s AnimationSwing " + mName);
 		mID = mStickman.getID(); // default ID;
 		mBlocking = block;
 		mDuration = duration;
@@ -71,7 +71,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 	public void setStickmanName(String stickmanName) {
 		mStickmanName = stickmanName;
 		//mStickman = StickmanStage.getStickman(mStickmanName);
-		setName(mStickmanName + "'s Animation " + mName);
+		setName(mStickmanName + "'s AnimationSwing " + mName);
 	}
 
 	public void setAnimationName(String animationName) {
@@ -93,7 +93,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 
 		// block this animation for animation - AnimationSheduler will unblock 
 		try {
-			//mStickman.mLogger.info("Block - give Animation Scheduler control when to start the animation" + this.toString());
+			//mStickman.mLogger.info("Block - give AnimationSwing Scheduler control when to start the animation" + this.toString());
 			mAnimationStart.acquire(1);
 		} catch (InterruptedException ex) {
 			mStickman.mLogger.severe(ex.getMessage());
@@ -120,7 +120,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 	}
 
 	public void playAnimationPart(int duration) {
-		mAnimator = new Animator(mStickman, this, mAnimationPart, duration);
+		mAnimator = new AnimatorSwing(mStickman, this, mAnimationPart, duration);
 
 		try {
 			mAnimationPartStart.acquire();
@@ -141,7 +141,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 	}
 
 	public void finalizeAnimation() {
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " with id " + mID + " has ended - notify Listeners!");
+		//mStickman.mLogger.info(mStickman.mName + "'s AnimationSwing " + getClass().getSimpleName() + " with id " + mID + " has ended - notify Listeners!");
 		// unblock AnimationScheduler if animation is a blocking animation
 		if (mBlocking) {
 			//mStickman.mLogger.info("unblocking AnimationScheduler");
@@ -149,7 +149,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 		} else {
 			mStickman.mAnimationScheduler.removeAnimation(this);
 		}
-		// send event that Animation is ended
+		// send event that AnimationSwing is ended
 
 		// API or TCP-Interface
 		if (!mStickman.getStickmanStageController().ismNetwork()) {
@@ -205,13 +205,13 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable, Com
 
 	@Override
 	public void run() {
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " wait for clearance.");
+		//mStickman.mLogger.info(mStickman.mName + "'s AnimationSwing " + getClass().getSimpleName() + " wait for clearance.");
 		waitForClearance();
 
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " play.");
+		//mStickman.mLogger.info(mStickman.mName + "'s AnimationSwing " + getClass().getSimpleName() + " play.");
 		play();
 
-		//mStickman.mLogger.info(mStickman.mName + "'s Animation " + getClass().getSimpleName() + " finalize.");
+		//mStickman.mLogger.info(mStickman.mName + "'s AnimationSwing " + getClass().getSimpleName() + " finalize.");
 		finalizeAnimation();
 	}
 

@@ -1,14 +1,14 @@
 package de.dfki.stickmanSwing.animation.environment;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
 
 /**
  *
  * @author Robbie
  *
  */
-public class StopIdle extends Animation {
+public class StopIdle extends AnimationSwing {
 
 	public StopIdle(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);

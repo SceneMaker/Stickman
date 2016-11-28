@@ -6,8 +6,9 @@
 package de.dfki.stickmanSwing.animation.head;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
+
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class Nod extends Animation {
+public class Nod extends AnimationSwing {
 
 	public Nod(StickmanSwing sm, int duration, boolean block) {
 		super(sm, duration, block);
@@ -27,22 +28,22 @@ public class Nod extends Animation {
 
 		// head down
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "translate", translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "translate", translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "translate", translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "translate", translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mHead, "translate", translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "translate", translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "translate", translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "translate", translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "translate", translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "translate", translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "translate", translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "translate", translationUnit));
 		playAnimationPart(200);
 
 		// head up
 		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEyebrow, "translate", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mRightEye, "translate", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEyebrow, "translate", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mLeftEye, "translate", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mHead, "translate", -translationUnit));
-		mAnimationPart.add(new AnimationContent(mStickman.mMouth, "translate", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "translate", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "translate", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "translate", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "translate", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "translate", -translationUnit));
+		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "translate", -translationUnit));
 
 		playAnimationPart(200);
 	}

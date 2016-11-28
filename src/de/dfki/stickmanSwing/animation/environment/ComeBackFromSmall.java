@@ -6,8 +6,8 @@
 package de.dfki.stickmanSwing.animation.environment;
 
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.Animation;
-import de.dfki.stickmanSwing.animationlogic.AnimationContent;
+import de.dfki.stickmanSwing.animationlogic.AnimationContentSwing;
+import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class ComeBackFromSmall extends Animation {
+public class ComeBackFromSmall extends AnimationSwing {
 
     private StickmanSwing mStickman;
 
@@ -43,18 +43,18 @@ public class ComeBackFromSmall extends Animation {
 //			if(mStickman.mScale >= 1)
 //				mStickman.mScale = 1;
 //			mAnimationPart = new ArrayList<>();
-//			mAnimationPart.add(new AnimationContent(mStickman.mWordShow, "shape", "SAYHI"));
+//			mAnimationPart.add(new AnimationContentSwing(mStickman.mWordShow, "shape", "SAYHI"));
 //			playAnimationPart(2);	
 //		}
 //		show stars
         mStickman.mScale = 1.334445f;
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "STARSDISAPPEAR"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mStars, "shape", "STARSDISAPPEAR"));
         playAnimationPart(1000);
 
 //		disappeared words or stars
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mStars, "shape", "DEFAULT"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mStars, "shape", "DEFAULT"));
         playAnimationPart(2);
 
         mStickman.starShowControler = false;
@@ -64,9 +64,9 @@ public class ComeBackFromSmall extends Animation {
 
         // bring upper arm and fore arm in position
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", rotationUnit * 2));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 32));
         playAnimationPart(20);
         pauseAnimation(20);
 
@@ -74,8 +74,8 @@ public class ComeBackFromSmall extends Animation {
             // wave right		
             for (int j = 0; j < 9; j++) {
                 mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit));
 
                 mStickman.mScale = mStickman.mScale * 1.05f;
                 if (mStickman.mScale >= 1.3) {
@@ -87,8 +87,8 @@ public class ComeBackFromSmall extends Animation {
             // wave left
             for (int j = 0; j < 9; j++) {
                 mAnimationPart = new ArrayList<>();
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", rotationUnit));
-                mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit));
+                mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit));
 
                 mStickman.mScale = mStickman.mScale * 1.05f;
                 if (mStickman.mScale >= 1.3) {
@@ -100,9 +100,9 @@ public class ComeBackFromSmall extends Animation {
 
         // go back in the default position
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
-        mAnimationPart.add(new AnimationContent(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", -rotationUnit * 2));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 32));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 32));
         playAnimationPart(20);
     }
 }
