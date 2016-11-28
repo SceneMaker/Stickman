@@ -37,7 +37,7 @@ public class LeftForeArm extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mLeftForeArmMesh;
+	public MeshView mLeftForeArmMesh;
 	PhongMaterial material;
 
 	Group leftForeArmGroup;

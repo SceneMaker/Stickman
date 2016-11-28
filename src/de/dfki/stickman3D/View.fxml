@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dfki.stickman3D.StickmanStageController">
    <children>
@@ -49,6 +50,12 @@
                                                 <Button fx:id="headColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                                 <Button fx:id="headColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="headColorBrighter" layoutX="272.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHeadColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Slider fx:id="headOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -61,6 +68,12 @@
                                                 <Button fx:id="hairColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="hairColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
                                                 <Button fx:id="hairColorBrighter" layoutX="271.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleHairColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Slider fx:id="hairOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity" wrappingWidth="66.15234375">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -73,6 +86,12 @@
                                                 <Button fx:id="bodyColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="bodyColorBrighter" layoutX="271.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                                 <Button fx:id="bodyColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBodyColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="bodyOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity" wrappingWidth="66.15234375">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -85,6 +104,12 @@
                                                 <Button fx:id="limbsColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="limbsColorBrighter" layoutX="272.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                                 <Button fx:id="limbsColorReset" layoutX="360.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLimbsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="limbsOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity" wrappingWidth="66.15234375">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -97,6 +122,12 @@
                                                 <Button fx:id="shoesColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="shoesColorBrighter" layoutX="272.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                                 <Button fx:id="shoesColorReset" layoutX="361.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleShoesColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="shoesOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -109,6 +140,12 @@
                                                 <Button fx:id="lipsColorDarker" layoutX="182.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="lipsColorBrighter" layoutX="271.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                                 <Button fx:id="lipsColorReset" layoutX="359.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleLipsColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="lipsOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -121,6 +158,12 @@
                                                 <Button fx:id="eyeColorDarker" layoutX="182.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="eyeColorBrighter" layoutX="268.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                                 <Button fx:id="eyeColorReset" layoutX="356.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="eyeOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -133,6 +176,12 @@
                                                 <Button fx:id="browColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
                                                 <Button fx:id="browColorBrighter" layoutX="270.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
                                                 <Button fx:id="browColorReset" layoutX="357.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="browOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </AnchorPane>
                                        </content>

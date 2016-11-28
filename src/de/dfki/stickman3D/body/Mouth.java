@@ -38,8 +38,8 @@ public class Mouth extends BodyPart {
 
 	Head mHeadFX;
 
-	Polygon currentDownLipPolygon;
-	Polygon currentUpperLipPolygon;
+	public Polygon currentDownLipPolygon;
+	public Polygon currentUpperLipPolygon;
 
 	public Mouth.SHAPE mShape = Mouth.SHAPE.DEFAULT;
 

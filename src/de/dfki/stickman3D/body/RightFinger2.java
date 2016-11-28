@@ -36,7 +36,7 @@ public class RightFinger2 extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mRightFinger2;
+	public MeshView mRightFinger2;
 	PhongMaterial material;
 
 	public RightFinger2(RightWrist rightWrist) {

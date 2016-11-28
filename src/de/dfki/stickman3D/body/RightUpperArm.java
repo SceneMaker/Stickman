@@ -38,7 +38,7 @@ public class RightUpperArm extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mRightpperArmMesh;
+	public MeshView mRightpperArmMesh;
 	PhongMaterial material;
 
 	Group rightUpperArmGroup;

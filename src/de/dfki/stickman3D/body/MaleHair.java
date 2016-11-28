@@ -35,7 +35,7 @@ public class MaleHair extends BodyPart {
 	URL url;
 	StlMeshImporter importer;
 	TriangleMesh maleHairTriangleMesh;
-	MeshView maleHairMeshView;
+	public MeshView maleHairMeshView;
 	PhongMaterial material;
 
 	public MaleHair.SHAPE mShape = MaleHair.SHAPE.DEFAULT;

@@ -35,7 +35,7 @@ public class LeftUpperLeg extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mLeftUpperLegMesh;
+	public MeshView mLeftUpperLegMesh;
 	PhongMaterial material;
 
 	Group leftUpperLegGroup;

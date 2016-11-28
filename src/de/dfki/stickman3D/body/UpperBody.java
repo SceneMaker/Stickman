@@ -44,7 +44,7 @@ public class UpperBody extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mBodyMeshView;
+	public MeshView mBodyMeshView;
 	PhongMaterial material;
 
 	public UpperBody(Neck neck) {

@@ -30,7 +30,7 @@ public class Nose extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mNose;
+	public MeshView mNose;
 	PhongMaterial material;
 
 	URL imageUrl;

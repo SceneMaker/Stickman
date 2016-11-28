@@ -32,7 +32,7 @@ public class LeftEyebrow extends BodyPart {
 
 	Head mHeadFX;
 
-	Polygon currentPolygon;
+	public Polygon currentPolygon;
 
 	public LeftEyebrow.SHAPE mShape = LeftEyebrow.SHAPE.DEFAULT;
 

@@ -43,7 +43,7 @@ public class FemaleHair extends BodyPart {
 	URL url;
 	StlMeshImporter importer;
 	TriangleMesh femaleHairTriangleMesh;
-	MeshView femaleHairMeshView;
+	public MeshView femaleHairMeshView;
 	PhongMaterial material;
 
 	public FemaleHair(Stickman3D sm) {

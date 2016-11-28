@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -151,6 +152,22 @@ public class StickmanStageController {
 	private Slider cameraYSlider;
 	@FXML
 	private Slider cameraZSlider;
+	@FXML
+	private Slider headOpacitySlider;
+	@FXML
+	private Slider hairOpacitySlider;
+	@FXML
+	private Slider bodyOpacitySlider;
+	@FXML
+	private Slider limbsOpacitySlider;
+	@FXML
+	private Slider shoesOpacitySlider;
+	@FXML
+	private Slider lipsOpacitySlider;
+	@FXML
+	private Slider eyeOpacitySlider;
+	@FXML
+	private Slider browOpacitySlider;
 
 	@FXML
 	private ImageView bg1;
@@ -206,6 +223,318 @@ public class StickmanStageController {
 					Rotate rx = new Rotate(xRotateFactor, pivot.x, pivot.y, 1505, Rotate.X_AXIS);
 					StickmanStage.sCamera.getTransforms().addAll(rx);
 				}
+			}
+		});
+		
+		headOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+					currentStickman.mHeadFX.mHeadMeshView.setVisible(false);
+				else
+					currentStickman.mHeadFX.mHeadMeshView.setVisible(true);
+				Color col = currentStickman.mHeadFX.mColor;
+				col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+				currentStickman.mHeadFX.mColor = col;
+				currentStickman.mHeadFX.update();
+			}
+		});
+		
+		hairOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					if(currentStickman.mType == Stickman3D.TYPE.FEMALE)
+						currentStickman.mFemaleHairFX.femaleHairMeshView.setVisible(false);
+					else
+						currentStickman.mMaleHairFX.maleHairMeshView.setVisible(false);
+				}
+				else
+				{
+					if(currentStickman.mType == Stickman3D.TYPE.FEMALE)
+						currentStickman.mFemaleHairFX.femaleHairMeshView.setVisible(true);
+					else
+						currentStickman.mMaleHairFX.maleHairMeshView.setVisible(true);
+				}
+				
+				Color col = null;
+				if(currentStickman.mType == Stickman3D.TYPE.FEMALE)
+				{
+					col = currentStickman.mFemaleHairFX.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					currentStickman.mFemaleHairFX.mColor = col;
+					currentStickman.mFemaleHairFX.update();
+				}
+				else
+				{
+					col = currentStickman.mMaleHairFX.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					currentStickman.mMaleHairFX.mColor = col;
+					currentStickman.mMaleHairFX.update();
+				}
+				
+			}
+		});
+		
+		bodyOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					currentStickman.mDownBody.mBodyMeshView.setVisible(false);
+					currentStickman.mUpperBody.mBodyMeshView.setVisible(false);
+				}
+				else
+				{
+					currentStickman.mDownBody.mBodyMeshView.setVisible(true);
+					currentStickman.mUpperBody.mBodyMeshView.setVisible(true);
+				}
+					
+					Color col = currentStickman.mDownBody.mColor;
+					Color col1 = currentStickman.mUpperBody.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
+					currentStickman.mDownBody.mColor = col;
+					currentStickman.mDownBody.update();
+					currentStickman.mUpperBody.mColor = col;
+					currentStickman.mUpperBody.update();
+			}
+		});
+		
+		limbsOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					currentStickman.mNeckFX.neckMeshView.setVisible(false);
+					
+					currentStickman.mLeftUpperLegFX.mLeftUpperLegMesh.setVisible(false);
+					currentStickman.mLeftForeLegFX.mLeftForeLegMesh.setVisible(false);
+					
+					currentStickman.mLeftUpperArmFX.mLeftUpperArmMesh.setVisible(false);
+					currentStickman.mLeftForeArmFX.mLeftForeArmMesh.setVisible(false);
+					currentStickman.mLeftWrist.mLeftWristMesh.setVisible(false);
+					
+					currentStickman.mLeftFinger1.mLeftFinger1.setVisible(false);
+					currentStickman.mLeftFinger2.mLeftFinger2.setVisible(false);
+					currentStickman.mLeftFinger3.mLeftFinger3.setVisible(false);
+					currentStickman.mLeftFinger4.mLeftFinger4.setVisible(false);
+					
+					currentStickman.mRightUpperLegFX.mRightUpperLegMesh.setVisible(false);
+					currentStickman.mRightForeLegFX.mRightForeLegMesh.setVisible(false);
+					
+					currentStickman.mRightUpperArmFX.mRightpperArmMesh.setVisible(false);
+					currentStickman.mRightForeArmFX.mRightForeArmMesh.setVisible(false);
+					currentStickman.mRightWrist.mRightWristMesh.setVisible(false);
+					
+					currentStickman.mRightFinger1.mRightFinger1.setVisible(false);
+					currentStickman.mRightFinger2.mRightFinger2.setVisible(false);
+					currentStickman.mRightFinger3.mRightFinger3.setVisible(false);
+					currentStickman.mRightFinger4.mRightFinger4.setVisible(false);
+				}
+				else
+				{
+					currentStickman.mNeckFX.neckMeshView.setVisible(true);
+					
+					currentStickman.mLeftUpperLegFX.mLeftUpperLegMesh.setVisible(true);
+					currentStickman.mLeftForeLegFX.mLeftForeLegMesh.setVisible(true);
+					
+					currentStickman.mLeftUpperArmFX.mLeftUpperArmMesh.setVisible(true);
+					currentStickman.mLeftForeArmFX.mLeftForeArmMesh.setVisible(true);
+					currentStickman.mLeftWrist.mLeftWristMesh.setVisible(true);
+					
+					currentStickman.mLeftFinger1.mLeftFinger1.setVisible(true);
+					currentStickman.mLeftFinger2.mLeftFinger2.setVisible(true);
+					currentStickman.mLeftFinger3.mLeftFinger3.setVisible(true);
+					currentStickman.mLeftFinger4.mLeftFinger4.setVisible(true);
+					
+					currentStickman.mRightUpperLegFX.mRightUpperLegMesh.setVisible(true);
+					currentStickman.mRightForeLegFX.mRightForeLegMesh.setVisible(true);
+					
+					currentStickman.mRightUpperArmFX.mRightpperArmMesh.setVisible(true);
+					currentStickman.mRightForeArmFX.mRightForeArmMesh.setVisible(true);
+					currentStickman.mRightWrist.mRightWristMesh.setVisible(true);
+					
+					currentStickman.mRightFinger1.mRightFinger1.setVisible(true);
+					currentStickman.mRightFinger2.mRightFinger2.setVisible(true);
+					currentStickman.mRightFinger3.mRightFinger3.setVisible(true);
+					currentStickman.mRightFinger4.mRightFinger4.setVisible(true);
+				}
+					
+					Color col = currentStickman.mNeckFX.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					
+					currentStickman.mNeckFX.mColor = col;
+					
+					currentStickman.mLeftUpperLegFX.mColor = col;
+					currentStickman.mLeftForeLegFX.mColor = col;
+					
+					currentStickman.mLeftUpperArmFX.mColor = col;
+					currentStickman.mLeftForeArmFX.mColor = col;
+					currentStickman.mLeftWrist.mColor = col;
+					
+					currentStickman.mLeftFinger1.mColor = col;
+					currentStickman.mLeftFinger2.mColor = col;
+					currentStickman.mLeftFinger3.mColor = col;
+					currentStickman.mLeftFinger4.mColor = col;
+					
+					currentStickman.mRightUpperLegFX.mColor = col;
+					currentStickman.mRightForeLegFX.mColor = col;
+					
+					currentStickman.mRightUpperArmFX.mColor = col;
+					currentStickman.mRightForeArmFX.mColor = col;
+					currentStickman.mRightWrist.mColor = col;
+					
+					currentStickman.mRightFinger1.mColor = col;
+					currentStickman.mRightFinger2.mColor = col;
+					currentStickman.mRightFinger3.mColor = col;
+					currentStickman.mRightFinger4.mColor = col;
+					
+					currentStickman.mNeckFX.update();
+					
+					currentStickman.mLeftUpperLegFX.update();
+					currentStickman.mLeftForeLegFX.update();
+					
+					currentStickman.mLeftUpperArmFX.update();
+					currentStickman.mLeftForeArmFX.update();
+					currentStickman.mLeftWrist.update();
+					
+					currentStickman.mLeftFinger1.update();
+					currentStickman.mLeftFinger2.update();
+					currentStickman.mLeftFinger3.update();
+					currentStickman.mLeftFinger4.update();
+					
+					currentStickman.mRightUpperLegFX.update();
+					currentStickman.mRightForeLegFX.update();
+					
+					currentStickman.mRightUpperArmFX.update();
+					currentStickman.mRightForeArmFX.update();
+					currentStickman.mRightWrist.update();
+					
+					currentStickman.mRightFinger1.update();
+					currentStickman.mRightFinger2.update();
+					currentStickman.mRightFinger3.update();
+					currentStickman.mRightFinger4.update();
+			}
+		});
+		
+		shoesOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					currentStickman.mLeftFootFX.mLeftFootMeshView.setVisible(false);
+					currentStickman.mRightFootFX.mRightFootMeshView.setVisible(false);
+				}
+				else
+				{
+					currentStickman.mLeftFootFX.mLeftFootMeshView.setVisible(true);
+					currentStickman.mRightFootFX.mRightFootMeshView.setVisible(true);
+				}
+					
+					Color col = currentStickman.mLeftFootFX.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					
+					currentStickman.mLeftFootFX.mColor = col;
+					currentStickman.mRightFootFX.mColor = col;
+
+					currentStickman.mLeftFootFX.update();
+					currentStickman.mRightFootFX.update();
+			}
+		});
+		
+		lipsOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					currentStickman.mMouthFX.currentDownLipPolygon.setVisible(false);
+					currentStickman.mMouthFX.currentUpperLipPolygon.setVisible(false);
+				}
+				else
+				{
+					currentStickman.mMouthFX.currentDownLipPolygon.setVisible(true);
+					currentStickman.mMouthFX.currentUpperLipPolygon.setVisible(true);
+				}
+					
+					Color col = currentStickman.mMouthFX.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					
+					currentStickman.mMouthFX.mColor = col;
+
+					currentStickman.mMouthFX.update();
+			}
+		});
+		
+		eyeOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					currentStickman.mLeftEyeFX.bigPupile.setVisible(false);
+					currentStickman.mLeftEyeFX.smallPupile.setVisible(false);
+					currentStickman.mLeftEyeFX.border.setVisible(false);
+					
+					currentStickman.mRightEyeFX.bigPupile.setVisible(false);
+					currentStickman.mRightEyeFX.smallPupile.setVisible(false);
+					currentStickman.mRightEyeFX.border.setVisible(false);
+				}
+				else
+				{
+					currentStickman.mLeftEyeFX.bigPupile.setVisible(true);
+					currentStickman.mLeftEyeFX.smallPupile.setVisible(true);
+					currentStickman.mLeftEyeFX.border.setVisible(true);
+					
+					currentStickman.mRightEyeFX.bigPupile.setVisible(true);
+					currentStickman.mRightEyeFX.smallPupile.setVisible(true);
+					currentStickman.mRightEyeFX.border.setVisible(true);
+				}
+					
+					Color col = currentStickman.mLeftEyeFX.mColor;
+					col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+					
+					currentStickman.mLeftEyeFX.mColor = col;
+					currentStickman.mRightEyeFX.mColor = col;
+					currentStickman.mLeftEyeFX.update();
+					currentStickman.mRightEyeFX.update();
+			}
+		});
+		
+		browOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+					
+				Color col = currentStickman.mLeftEyebrowFX.mColor;
+				Color col1 = currentStickman.mNoseFX.mColor;
+				col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+				col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
+				
+				currentStickman.mLeftEyebrowFX.mColor = col;
+				currentStickman.mRightEyebrowFX.mColor = col;
+				
+				currentStickman.mNoseFX.mColor = col1;
+				
+				currentStickman.mLeftEyebrowFX.update();
+				currentStickman.mRightEyebrowFX.update();
+				
+				currentStickman.mNoseFX.update();
 			}
 		});
 

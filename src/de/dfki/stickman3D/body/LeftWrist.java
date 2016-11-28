@@ -37,7 +37,7 @@ public class LeftWrist extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mLeftWristMesh;
+	public MeshView mLeftWristMesh;
 	PhongMaterial material;
 
 	Group leftWristGroup;

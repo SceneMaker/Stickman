@@ -37,7 +37,7 @@ public class RightForeArm extends BodyPart {
 
 	URL url;
 	ColModelImporter imorter;
-	MeshView mRightForeArmMesh;
+	public MeshView mRightForeArmMesh;
 	PhongMaterial material;
 
 	Group rightForeArmGroup;
