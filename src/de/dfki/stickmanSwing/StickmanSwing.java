@@ -1,8 +1,8 @@
 package de.dfki.stickmanSwing;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
-import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickmanSwing.animationlogic.*;
 import de.dfki.stickmanSwing.animationlogic.AnimationSwing;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
@@ -129,14 +129,14 @@ public class StickmanSwing extends JComponent implements Stickman {
     public LeftLeg mLeftLeg;
     public Stars mStars;         // added by Robbie Create Say bye or hi
     public RightLeg mRightLeg;
-    private StageStickmanController stageController;
+    private StageRoom stageController;
     // environment
     public SpeechBubble mSpeechBubble;
 
     // logging
     public static final Logger mLogger = Logger.getAnonymousLogger();
 
-    private StickmanStage stage;
+    private StickmanStageSwing stage;
 
     // id
     private long mID = 0;
@@ -272,12 +272,12 @@ public class StickmanSwing extends JComponent implements Stickman {
 
 
     @Override
-    public StageStickmanController getStickmanStageController() {
+    public StageRoom getStickmanStageController() {
         return stageController;
     }
 
     @Override
-    public void setStickmanStageController(StageStickmanController s) {
+    public void setStickmanStageController(StageRoom s) {
         stageController = s;
     }
 
@@ -301,10 +301,10 @@ public class StickmanSwing extends JComponent implements Stickman {
         return mType;
     }
 
-    public StickmanStage getStage(){
+    public StickmanStageSwing getStage(){
         return stage;
     }
-    public void setStage(StickmanStage s){
+    public void setStage(StickmanStageSwing s){
         stage = s;
     }
 

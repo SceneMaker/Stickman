@@ -12,14 +12,14 @@ import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import de.dfki.stickmanfx.animationlogic.AnimationFX;
-import de.dfki.stickmanfx.animationlogic.AnimationFX.ANIMTYPE;
+import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationFX.ANIMTYPE;
 
 public class StickmanFillCombo
 {
 
 	ArrayList<String> mComboList = new ArrayList<>();
-	String packName = "de.dfki.stickmanfx.animation.facefx";
+	String packName = "de.dfki.stickmanFX.animation.facefx";
 	String packDir;
 	Enumeration<URL> dir;
 	ClassLoader loaderjar;

@@ -1,10 +1,9 @@
 package de.dfki.stickman3D;
 
-import de.dfki.common.ApplicationLauncherImpl;
+import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.common.StickmansOnStage;
-import de.dfki.common.interfaces.StageStickman;
-import de.dfki.stickman3D.utils.General3DStageRoot;
-import de.dfki.stickmanfx.stagecontroller.StageStickmanControllerFX;
+import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.stickmanFX.stagecontroller.StageRoomFX;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -39,12 +38,12 @@ import java.util.logging.Logger;
 // AngrySmallMouthEnd,
 // LovedEnd, SadEnd, SmileEnd, SurprisedEnd, EmbarrassedEnd, ExcitedEnd
 // action: HeadShake, Nod2
-public class StickmanStage3D extends Application implements StageStickman {
+public class StickmanStage3D extends Application implements StickmanStage {
 
     public static final float STICKMAN_SIZE_FACTOR = 0.8f;
     public static final float HEIGHT_ADJUSTMENT = 3 / 5.0f;
     public static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
-    public static final String STICKMAN_STAGE = "StickmanStage";
+    public static final String STICKMAN_STAGE = "StickmanStageSwing";
 
 
 	// grahics
@@ -57,7 +56,7 @@ public class StickmanStage3D extends Application implements StageStickman {
     private HashMap<String,StickmansOnStage> stickamnsOnStage = new HashMap<>();
     private float sScale = 1.0f;
     private Map<String, Stage> stickmanFXStages = new HashMap<>();
-    private General3DStageRoot generalConfigStageRoot;
+    private StagePaneHandler3D generalConfigStageRoot;
 
 
 	// logging
@@ -71,7 +70,7 @@ public class StickmanStage3D extends Application implements StageStickman {
         Platform.setImplicitExit(false);
         ConsoleHandler ch = new ConsoleHandler();
         sInstance = this;
-        generalConfigStageRoot = new General3DStageRoot();
+        generalConfigStageRoot = new StagePaneHandler3D();
 	}
 
 	public static StickmanStage3D getInstance() {
@@ -104,7 +103,7 @@ public class StickmanStage3D extends Application implements StageStickman {
 	public void start(Stage stage) throws Exception {
 
         HBox sStickmanHBox = new HBox();
-        sStickmanHBox.setId("StickmanStage");
+        sStickmanHBox.setId("StickmanStageSwing");
         sStickmanHBox.setAlignment(Pos.CENTER);
         sStickmanHBox.setPadding(new javafx.geometry.Insets(580, 0, 150, 0));
 
@@ -122,7 +121,7 @@ public class StickmanStage3D extends Application implements StageStickman {
         stage.setTitle("Stickman3D");
         stage.setScene(scene);
        // sStickmanHBox.setMouseTransparent(true);
-        stickmanFXStages.put(StageStickmanControllerFX.CONFIG_STAGE, stage);
+        stickmanFXStages.put(StageRoomFX.CONFIG_STAGE, stage);
 
 
         ApplicationLauncherImpl.setIsRunning();
@@ -189,7 +188,7 @@ public class StickmanStage3D extends Application implements StageStickman {
 
     @Override
     public float getFullScreenScale() {
-        return getHeight() / (float) de.dfki.stickmanfx.StickmanFX.mDefaultSize.height * sScale * STICKMAN_SIZE_FACTOR;
+        return getHeight() / (float) de.dfki.stickmanFX.StickmanFX.mDefaultSize.height * sScale * STICKMAN_SIZE_FACTOR;
     }
 
     @Override
@@ -273,7 +272,7 @@ public class StickmanStage3D extends Application implements StageStickman {
     }
 
     @Override
-    public void addStickmanToStage(String stageIdentifier, de.dfki.stickmanfx.StickmanFX sman) throws Exception {
+    public void addStickmanToStage(String stageIdentifier, de.dfki.stickmanFX.StickmanFX sman) throws Exception {
         HBox sStickmanPane;
         sStickmanPane = getStickmanPane(stageIdentifier);
         sStickmanPane.getChildren().clear();
@@ -344,7 +343,7 @@ public class StickmanStage3D extends Application implements StageStickman {
     }
 
     private HBox getStageRoot() throws java.io.IOException {
-        General3DStageRoot generalStageRoot = new General3DStageRoot();
+        StagePaneHandler3D generalStageRoot = new StagePaneHandler3D();
         HBox pane =  generalStageRoot.getStageRoot();
         pane.setId(STICKMAN_STAGE);
         return pane;

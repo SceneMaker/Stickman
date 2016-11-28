@@ -1,21 +1,21 @@
 package de.dfki.stickman3D;
 
+import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.StickmansOnStage;
-import de.dfki.common.interfaces.StageStickman;
-import de.dfki.common.interfaces.StageStickmanController;
+import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanfx.xmlsettings.XmlTransform;
+import de.dfki.stickmanFX.xmlsettings.XmlTransform;
 
 /**
  * Created by alvaro on 9/19/16.
  */
 public class StickmansOnStage3D extends StickmansOnStage {
-    public StickmansOnStage3D(StageStickman stageStickman) {
-        super(stageStickman);
+    public StickmansOnStage3D(StickmanStage stickmanStage) {
+        super(stickmanStage);
     }
     private  XmlTransform mXmlTransform = new XmlTransform();
-    public StickmansOnStage3D(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
+    public StickmansOnStage3D(StickmanStage stickmanStageFX, StageRoom controllerFX) {
         super(stickmanStageFX, controllerFX);
     }
 

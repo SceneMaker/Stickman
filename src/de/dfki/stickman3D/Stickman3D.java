@@ -1,8 +1,8 @@
 package de.dfki.stickman3D;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
-import de.dfki.common.interfaces.StageStickmanController;
 import de.dfki.stickman3D.animationlogic.*;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
@@ -132,7 +132,7 @@ public class Stickman3D extends Pane implements Stickman {
 	public BombeFX mBombeFX;
 	// environment
 	public SpeechBubbleFX mSpeechBubbleFX;
-	private StageStickmanController stageController;
+	private StageRoom stageController;
 
 	// logging
 	public final Logger mLogger = Logger.getAnonymousLogger();
@@ -401,12 +401,12 @@ public class Stickman3D extends Pane implements Stickman {
 	}
 
 	@Override
-	public StageStickmanController getStickmanStageController() {
+	public StageRoom getStickmanStageController() {
 		return stageController;
 	}
 
 	@Override
-	public void setStickmanStageController(StageStickmanController s) {
+	public void setStickmanStageController(StageRoom s) {
 		stageController = s;
 	}
 

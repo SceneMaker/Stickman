@@ -2,19 +2,19 @@ package de.dfki.stickmanSwing.stagecontroller;
 
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.StickmansOnStage;
-import de.dfki.common.interfaces.StageStickman;
-import de.dfki.common.interfaces.StageStickmanController;
+import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.common.interfaces.StageRoom;
 import de.dfki.stickmanSwing.StickmanSwing;
 
 /**
  * Created by alvaro on 9/19/16.
  */
 public class StickmansOnStageSwing extends StickmansOnStage {
-    public StickmansOnStageSwing(StageStickman stageStickman) {
-        super(stageStickman);
+    public StickmansOnStageSwing(StickmanStage stickmanStage) {
+        super(stickmanStage);
     }
 
-    public StickmansOnStageSwing(StageStickman stickmanStage, StageStickmanController controller) {
+    public StickmansOnStageSwing(StickmanStage stickmanStage, StageRoom controller) {
         super(stickmanStage, controller);
     }
     @Override

@@ -1,8 +1,8 @@
 package de.dfki.common;
 
+import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
-import de.dfki.common.interfaces.StageStickman;
-import de.dfki.common.interfaces.StageStickmanController;
+import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.util.Names;
 
@@ -17,30 +17,30 @@ import java.util.Set;
  */
 public abstract class StickmansOnStage {
     public static final float DEFAULT_SCALE = 0.8f;
-    protected StageStickman stickmanStage;
+    protected StickmanStage stickmanStage;
     private Map<String, Stickman> sStickmansOnStage = new HashMap<>();
-    private StageStickmanController stageStickmanController;
+    private StageRoom stageRoom;
     private String mFilePath;
 
-    public StickmansOnStage(StageStickman stageStickman){
-        stickmanStage = stageStickman;
+    public StickmansOnStage(StickmanStage stickmanStage){
+        this.stickmanStage = stickmanStage;
     }
 
-    public StickmansOnStage(StageStickman stickmanStageFX, StageStickmanController controllerFX) {
+    public StickmansOnStage(StickmanStage stickmanStageFX, StageRoom controllerFX) {
         stickmanStage = stickmanStageFX;
-        stageStickmanController = controllerFX;
+        stageRoom = controllerFX;
     }
     
-    public StageStickman getStageStickman() {
+    public StickmanStage getStageStickman() {
         return stickmanStage;
     }
     
-    public StageStickmanController getStageStickmanController() {
-        return stageStickmanController;
+    public StageRoom getStageRoom() {
+        return stageRoom;
     }
 
-    public void setStageStickmanController(StageStickmanController controllerFX){
-        stageStickmanController = controllerFX;
+    public void setStageRoom(StageRoom controllerFX){
+        stageRoom = controllerFX;
     }
 
     public void addStickman(String name, boolean fullScreen) {
@@ -102,7 +102,7 @@ public abstract class StickmansOnStage {
 
     protected void putFullStickmanOnStage(String name, Stickman stickman) {
         sStickmansOnStage.put(name.toLowerCase(),stickman );
-        stickman.setStickmanStageController(stageStickmanController);
+        stickman.setStickmanStageController(stageRoom);
     }
 
     public Set<String> getStickmanNames(){

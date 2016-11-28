@@ -6,5 +6,5 @@ package de.dfki.common.interfaces;
 public interface ApplicationLauncher {
     void launchStickmanAndWait();
     void waitForApplicationToStart();
-    Thread getLaunchStickmanThread(final StageStickman fx);
+    Thread getLaunchStickmanThread(final StickmanStage fx);
 }

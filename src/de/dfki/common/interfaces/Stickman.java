@@ -6,9 +6,9 @@ import de.dfki.stickmanSwing.StickmanSwing;
  * Created by alvaro on 9/4/16.
  */
 public interface Stickman {
-    StageStickmanController getStickmanStageController();
+    StageRoom getStickmanStageController();
 
-    void setStickmanStageController(StageStickmanController s);
+    void setStickmanStageController(StageRoom s);
 
     void setShowName(boolean show);
 

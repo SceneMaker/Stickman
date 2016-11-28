@@ -1,8 +1,8 @@
 package de.dfki.stickmanSwing.client;
 
-import de.dfki.common.CommandParser;
-import de.dfki.stickmanSwing.StickmanStage;
-import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
+import de.dfki.common.XMLCommandParser;
+import de.dfki.stickmanSwing.StickmanStageSwing;
+import de.dfki.stickmanFX.client.CommonClientConnectionHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,24 +26,24 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 	private int mPort = 7777;
 	private PrintWriter mOut;
 	private BufferedReader mIn;
-	private static String sIDENTIFIER = "StickmanStage";
+	private static String sIDENTIFIER = "StickmanStageSwing";
 
 	private boolean mRunning = true;
 	public boolean mConnected = false;
-	private StickmanStage mStickmanStage;
-	private CommandParser stickmanParser;
+	private StickmanStageSwing mStickmanStage;
+	private XMLCommandParser stickmanParser;
 
 	public ClientConnectionHandler() {
-		super.setName("StickmanStage Socket Connection Handler");
+		super.setName("StickmanStageSwing Socket Connection Handler");
 	}
-	public ClientConnectionHandler(StickmanStage stage) {
+	public ClientConnectionHandler(StickmanStageSwing stage) {
 
-		super.setName("StickmanStage Socket Connection Handler");
+		super.setName("StickmanStageSwing Socket Connection Handler");
 		mStickmanStage = stage;
 	}
 
-	public ClientConnectionHandler(CommandParser parser) {
-		super.setName("StickmanStage Socket Connection Handler");
+	public ClientConnectionHandler(XMLCommandParser parser) {
+		super.setName("StickmanStageSwing Socket Connection Handler");
 		stickmanParser = parser;
 	}
 
@@ -55,12 +55,12 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 			mRunning = false;
 			mConnected = false;
 		} catch (IOException ex) {
-			StickmanStage.mLogger.severe("Error closing socket to " + mHost + ", " + mPort);
+			StickmanStageSwing.mLogger.severe("Error closing socket to " + mHost + ", " + mPort);
 		}
 	}
 
 	public void sendToServer(String message) {
-		//StickmanStage.mLogger.info("Sending " + message);
+		//StickmanStageSwing.mLogger.info("Sending " + message);
 
 		if (mSocket.isConnected()) {
 			mOut.println(message);
@@ -75,7 +75,7 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 	}
 
 	public void connect() {
-		StickmanStage.mLogger.info("StickmanStage tries to connect with control application ...");
+		StickmanStageSwing.mLogger.info("StickmanStageSwing tries to connect with control application ...");
 		try {
 			InetAddress inteAddress = InetAddress.getByName(mHost);
 			SocketAddress socketAddress = new InetSocketAddress(inteAddress, mPort);
@@ -86,12 +86,12 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 			mOut = new PrintWriter(mSocket.getOutputStream(), true);
 			mIn = new BufferedReader(new InputStreamReader(mSocket.getInputStream(), "UTF-8"));
 		} catch (UnknownHostException e) {
-			StickmanStage.mLogger.severe(mHost + " is unknown - aborting!");
+			StickmanStageSwing.mLogger.severe(mHost + " is unknown - aborting!");
 		} catch (IOException e) {
-			StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
+			StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
 		}
 		mConnected = true;
-		StickmanStage.mLogger.info("StickmanStage connected to control application at " + mSocket.toString());
+		StickmanStageSwing.mLogger.info("StickmanStageSwing connected to control application at " + mSocket.toString());
 		// register at server
 		sendToServer("CLIENTID#" + sIDENTIFIER);
 		start();
@@ -121,10 +121,10 @@ public class ClientConnectionHandler extends Thread implements CommonClientConne
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-					stickmanParser.parseStickmanMLCmd(inputLine);
+					stickmanParser.parseStickmanXMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
-				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
+				StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
 			}
 		}
 	}

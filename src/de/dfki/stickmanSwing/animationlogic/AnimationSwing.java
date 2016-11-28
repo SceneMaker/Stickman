@@ -70,7 +70,7 @@ public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable
 
 	public void setStickmanName(String stickmanName) {
 		mStickmanName = stickmanName;
-		//mStickman = StickmanStage.getStickman(mStickmanName);
+		//mStickman = StickmanStageSwing.getStickman(mStickmanName);
 		setName(mStickmanName + "'s AnimationSwing " + mName);
 	}
 

@@ -1,7 +1,7 @@
 package de.dfki.stickman3D;
 
 import de.dfki.common.StickmansOnStage;
-import de.dfki.common.interfaces.FXViewController;
+import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickman3D.kinect.Kinect;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  *
  * @author Robbie
  */
-public class StickmanStageController implements FXViewController {
+public class StickmanStageController implements ViewController {
 
 	private static String packEmotionExpression = "de.dfki.stickman3D.animation.facefx";
 	private static String packGesture = "de.dfki.stickman3D.animation.gesturefx";

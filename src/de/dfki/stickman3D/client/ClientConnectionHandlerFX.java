@@ -1,8 +1,8 @@
 package de.dfki.stickman3D.client;
 
-import de.dfki.common.CommandParser;
-import de.dfki.stickmanSwing.StickmanStage;
-import de.dfki.stickmanfx.client.CommonClientConnectionHandler;
+import de.dfki.common.XMLCommandParser;
+import de.dfki.stickmanSwing.StickmanStageSwing;
+import de.dfki.stickmanFX.client.CommonClientConnectionHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,19 +22,19 @@ public class ClientConnectionHandlerFX extends Thread implements CommonClientCon
 	private int mPort = 7777;
 	private PrintWriter mOut;
 	private BufferedReader mIn;
-	private static String sIDENTIFIER = "StickmanStage";
+	private static String sIDENTIFIER = "StickmanStageSwing";
 
 	private boolean mRunning = true;
 	private boolean mConnected = false;
-	private de.dfki.stickmanfx.StickmanStageFX mStickmanStage;
-	private CommandParser stickmanParser;
+	private de.dfki.stickmanFX.StickmanStageFX mStickmanStage;
+	private XMLCommandParser stickmanParser;
 
 	public ClientConnectionHandlerFX() {
-		super.setName("StickmanStage Socket Connection Handler");
+		super.setName("StickmanStageSwing Socket Connection Handler");
 	}
 
-	public ClientConnectionHandlerFX(CommandParser parser) {
-		super.setName("StickmanStage Socket Connection Handler");
+	public ClientConnectionHandlerFX(XMLCommandParser parser) {
+		super.setName("StickmanStageSwing Socket Connection Handler");
 		stickmanParser = parser;
 	}
 
@@ -48,13 +48,13 @@ public class ClientConnectionHandlerFX extends Thread implements CommonClientCon
 			mRunning = false;
 			mConnected = false;
 		} catch (IOException ex) {
-			StickmanStage.mLogger.severe("Error closing socket to " + mHost + ", " + mPort);
+			StickmanStageSwing.mLogger.severe("Error closing socket to " + mHost + ", " + mPort);
 		}
 	}
 
 	@Override
 	public void sendToServer(String message) {
-		//StickmanStage.mLogger.info("Sending " + message);
+		//StickmanStageSwing.mLogger.info("Sending " + message);
 
 		if (mSocket.isConnected()) {
 			mOut.println(message);
@@ -71,7 +71,7 @@ public class ClientConnectionHandlerFX extends Thread implements CommonClientCon
 
 	@Override
 	public void connect() {
-		StickmanStage.mLogger.info("StickmanStage tries to connect with control application ...");
+		StickmanStageSwing.mLogger.info("StickmanStageSwing tries to connect with control application ...");
 		try {
 			InetAddress inteAddress = InetAddress.getByName(mHost);
 			SocketAddress socketAddress = new InetSocketAddress(inteAddress, mPort);
@@ -82,12 +82,12 @@ public class ClientConnectionHandlerFX extends Thread implements CommonClientCon
 			mOut = new PrintWriter(mSocket.getOutputStream(), true);
 			mIn = new BufferedReader(new InputStreamReader(mSocket.getInputStream(), "UTF-8"));
 		} catch (UnknownHostException e) {
-			StickmanStage.mLogger.severe(mHost + " is unknown - aborting!");
+			StickmanStageSwing.mLogger.severe(mHost + " is unknown - aborting!");
 		} catch (IOException e) {
-			StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
+			StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
 		}
 		mConnected = true;
-		StickmanStage.mLogger.info("StickmanStage connected to control application at " + mSocket.toString());
+		StickmanStageSwing.mLogger.info("StickmanStageSwing connected to control application at " + mSocket.toString());
 		// register at server
 		sendToServer("CLIENTID#" + sIDENTIFIER);
 		start();
@@ -117,10 +117,10 @@ public class ClientConnectionHandlerFX extends Thread implements CommonClientCon
 				inputLine = mIn.readLine();
 
 				if (inputLine != null) {
-					stickmanParser.parseStickmanMLCmd(inputLine);
+					stickmanParser.parseStickmanXMLCmd(inputLine);
 				}
 			} catch (IOException ex) {
-				StickmanStage.mLogger.severe(mHost + " i/o exception - aborting!");
+				StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
 			}
 		}
 	}
