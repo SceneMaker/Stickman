@@ -88,6 +88,8 @@ public class StickmanStageController {
 	private ColorPicker eyeColorPicker;
 	@FXML
 	private ColorPicker browColorPicker;
+	@FXML
+	private ColorPicker noseColorPicker;
 
 	@FXML
 	ScrollPane emotionsScrollPane;
@@ -149,6 +151,12 @@ public class StickmanStageController {
 	@FXML
 	private Button browColorDarker;
 	@FXML
+	private Button noseColorReset;
+	@FXML
+	private Button noseColorBrighter;
+	@FXML
+	private Button noseColorDarker;
+	@FXML
 	private Slider cameraXSlider;
 	@FXML
 	private Slider cameraYSlider;
@@ -170,6 +178,8 @@ public class StickmanStageController {
 	private Slider eyeOpacitySlider;
 	@FXML
 	private Slider browOpacitySlider;
+	@FXML
+	private Slider noseOpacitySlider;
 
 	@FXML
 	private ImageView bg1;
@@ -270,6 +280,7 @@ public class StickmanStageController {
 		OpacityHelper.lipsOpacityChanger(this, lipsOpacitySlider);
 		OpacityHelper.eyeOpacityChanger(this, eyeOpacitySlider);
 		OpacityHelper.browOpacityChanger(this, browOpacitySlider);
+		OpacityHelper.noseOpacityChanger(this, noseOpacitySlider);
 		
 		ExitButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -393,6 +404,11 @@ public class StickmanStageController {
 	public void handleBrowColor() {
 		ColorHelper.browColorChanger(currentStickman, browColorPicker);
 	}
+	
+	@FXML
+	public void handleNoseColor() {
+		ColorHelper.noseColorChanger(currentStickman, noseColorPicker);
+	}
 
 	@FXML
 	public void handleHeadColorButtons(MouseEvent ev) {
@@ -432,6 +448,11 @@ public class StickmanStageController {
 	@FXML
 	public void handleBrowColorButtons(MouseEvent ev) {
 		ColorHelper.handleBrowColorButtons(currentStickman, ev, browColorBrighter, browColorDarker, browColorReset);
+	}
+	
+	@FXML
+	public void handleNoseColorButtons(MouseEvent ev) {
+		ColorHelper.handleNoseColorButtons(currentStickman, ev, noseColorBrighter, noseColorDarker, noseColorReset);
 	}
 
 	public void getStickmanStageFX(StickmanStage Stickmanstage) {

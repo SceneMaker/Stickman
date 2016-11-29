@@ -345,4 +345,29 @@ public class OpacityHelper
 		});
 
 	}
+	
+	public static void noseOpacityChanger(StickmanStageController controller,Slider noseOpacitySlider)
+	{
+		noseOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) 
+			{
+				if(newValue.doubleValue() <= 0.1)
+				{
+					controller.currentStickman.mNoseFX.mNose.setVisible(false);
+				}
+				else
+				{
+					controller.currentStickman.mNoseFX.mNose.setVisible(true);
+				}
+				Color col = controller.currentStickman.mNoseFX.mColor;
+				col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
+				
+				controller.currentStickman.mNoseFX.mColor = col;
+				controller.currentStickman.mNoseFX.update();
+			}
+		});
+
+	}
 }

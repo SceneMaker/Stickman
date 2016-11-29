@@ -112,6 +112,13 @@ public class ColorHelper {
 			currentStickman.mRightEyebrowFX.update();
 		}
 	}
+	
+	public static void noseColorChanger(Stickman3D currentStickman, ColorPicker noseColorPicker) {
+		if (currentStickman != null) {
+			currentStickman.mNoseFX.mColor = noseColorPicker.getValue();
+			currentStickman.mNoseFX.update();
+		}
+	}
 
 	public static void handleHeadColorButtons(Stickman3D currentStickman, MouseEvent ev, Button headColorBrighter,
 			Button headColorDarker, Button headColorReset) {
@@ -388,6 +395,22 @@ public class ColorHelper {
 				currentStickman.mRightEyebrowFX.mColor = currentStickman.mRightEyebrowFX.mColorRecorder;
 				currentStickman.mLeftEyebrowFX.update();
 				currentStickman.mRightEyebrowFX.update();
+			}
+		}
+	}
+	
+	public static void handleNoseColorButtons(Stickman3D currentStickman, MouseEvent ev, Button noseColorBrighter,
+			Button noseColorDarker, Button noseColorReset) {
+		if (currentStickman != null) {
+			if (ev.getSource().equals(noseColorBrighter)) {
+				currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColor.brighter();
+				currentStickman.mNoseFX.update();
+			} else if (ev.getSource().equals(noseColorDarker)) {
+				currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColor.darker();
+				currentStickman.mNoseFX.update();
+			} else if (ev.getSource().equals(noseColorReset)) {
+				currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColorRecorder;
+				currentStickman.mNoseFX.update();
 			}
 		}
 	}

@@ -186,6 +186,24 @@
                                           </AnchorPane>
                                        </content>
                                     </Tab>
+                                    <Tab closable="false" text="Nose">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ColorPicker fx:id="noseColorPicker" layoutX="14.0" layoutY="14.0" onAction="#handleNoseColor" />
+                                                <Button fx:id="noseColorDarker" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleNoseColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
+                                                <Button fx:id="noseColorBrighter" layoutX="270.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleNoseColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
+                                                <Button fx:id="noseColorReset" layoutX="357.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleNoseColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
+                                                <Slider fx:id="noseOpacitySlider" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
+                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
                                 </tabs>
                               </TabPane>
                            </children>
