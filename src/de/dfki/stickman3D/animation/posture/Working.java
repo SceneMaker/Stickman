@@ -11,7 +11,7 @@ import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContent;
 import de.dfki.stickman3D.animationlogic.Animation;
-import de.dfki.stickman3D.interior.Interior;
+import de.dfki.stickman3D.decoration.Decorator;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -42,9 +42,9 @@ public class Working extends Animation {
 		// Lade die InteriorElemente nur einmal
 		if (!isInteriorElemtnLoaded) {
 			isInteriorElemtnLoaded = true;
-			table = Interior.createTable();
-			laptop = Interior.createLaptop();
-			chair = Interior.createChair();
+			table = Decorator.createTable();
+			laptop = Decorator.createLaptop();
+			chair = Decorator.createChair();
 
 			table.setTranslateY(461);
 			table.setTranslateZ(-280);

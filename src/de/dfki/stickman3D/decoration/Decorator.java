@@ -1,4 +1,4 @@
-package de.dfki.stickman3D.interior;
+package de.dfki.stickman3D.decoration;
 
 import java.net.URL;
 
@@ -6,7 +6,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import javafx.scene.Group;
 
-public class Interior {
+public class Decorator {
 	private static URL url;
 	private static ColModelImporter imorter;
 	private static Group sTableMeshView;
@@ -15,7 +15,7 @@ public class Interior {
 
 	public static Group createTable() {
 		imorter = new ColModelImporter();
-		url = Interior.class.getClassLoader().getResource("BodyParts/table.dae");
+		url = Decorator.class.getClassLoader().getResource("BodyParts/table.dae");
 		imorter.read(url);
 		sTableMeshView = (Group) imorter.getImport()[0];
 
@@ -24,7 +24,7 @@ public class Interior {
 
 	public static Group createLaptop() {
 		imorter = new ColModelImporter();
-		url = Interior.class.getClassLoader().getResource("BodyParts/Laptop.dae");
+		url = Decorator.class.getClassLoader().getResource("BodyParts/Laptop.dae");
 		imorter.read(url);
 		sLaptop = (Group) imorter.getImport()[0];
 
@@ -33,7 +33,7 @@ public class Interior {
 
 	public static Group createChair() {
 		imorter = new ColModelImporter();
-		url = Interior.class.getClassLoader().getResource("BodyParts/chair.dae");
+		url = Decorator.class.getClassLoader().getResource("BodyParts/chair.dae");
 		imorter.read(url);
 		sChair = (Group) imorter.getImport()[0];
 
