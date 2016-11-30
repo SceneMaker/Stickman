@@ -152,7 +152,6 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case ANGRY:
-			System.out.println(step);
 			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
