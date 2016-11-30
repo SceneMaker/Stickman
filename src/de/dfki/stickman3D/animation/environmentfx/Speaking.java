@@ -33,7 +33,6 @@ package de.dfki.stickman3D.animation.environmentfx;
             if (mParameter instanceof String) {
                 mStickmanFX.mSpeechBubbleFX.mText = (String) mParameter;
             }
-            // nur zum Testen. Im Normalfall diese Zeile loeschen
 
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));

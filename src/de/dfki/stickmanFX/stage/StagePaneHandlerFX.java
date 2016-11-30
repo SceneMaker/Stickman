@@ -1,6 +1,7 @@
 package de.dfki.stickmanFX.stage;
 
 import de.dfki.common.StickmansOnStage;
+import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.stickmanFX.StickmanStageController;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -16,6 +17,16 @@ public class StagePaneHandlerFX {
     private SplitPane mSplitPane;
     private HBox sStickmanPane;
     private StickmanStageController mStickmanStageController;
+
+    public StagePaneHandlerFX(){
+        if(ApplicationLauncherImpl.isRunning()) {
+            try {
+                invoke();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public HBox getConfigRoot() throws IOException {
         invoke();

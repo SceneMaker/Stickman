@@ -50,6 +50,9 @@ public class StickmanStageFX extends Application implements StickmanStage {
     }
 
     public static StickmanStageFX getInstance() {
+        if(sInstance == null){
+            sInstance = new StickmanStageFX();
+        }
         return sInstance;
     }
 
