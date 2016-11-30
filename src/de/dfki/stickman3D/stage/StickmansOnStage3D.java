@@ -1,5 +1,6 @@
 package de.dfki.stickman3D.stage;
 
+import de.dfki.common.Gender;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.StickmansOnStage;
@@ -21,27 +22,27 @@ public class StickmansOnStage3D extends StickmansOnStage {
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender) {
+    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender) {
         if (fullScreen) {
-            Stickman stickman = new Stickman3D(name, Stickman3D.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
+            Stickman stickman = new Stickman3D(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
         }else{
-            Stickman stickman = new Stickman3D(name, Stickman3D.TYPE.MALE, DEFAULT_SCALE);
+            Stickman stickman = new Stickman3D(name, gender, DEFAULT_SCALE);
             putFullStickmanOnStage(name, stickman);
         }
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender, boolean onlyFace) {
+    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace) {
         if (fullScreen) {
-            Stickman stickman = new Stickman3D(name, Stickman3D.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
+            Stickman stickman = new Stickman3D(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
         }else{
             float scale = DEFAULT_SCALE;
             if(onlyFace){
                 scale = 1.0f;
             }
-            Stickman stickman = new Stickman3D(name, Stickman3D.TYPE.MALE, scale);
+            Stickman stickman = new Stickman3D(name, gender, scale);
             putFullStickmanOnStage(name, stickman);
         }
     }

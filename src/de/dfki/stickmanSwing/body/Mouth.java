@@ -1,5 +1,6 @@
 package de.dfki.stickmanSwing.body;
 
+import de.dfki.common.Gender;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
 
@@ -32,7 +33,7 @@ public class Mouth extends BodyPart {
 		mLength = 20;
 		mSize = new Dimension(mLength * 2, 5);
 		mDefaultRotationPoint = mHead.mDefaultRotationPoint;
-		mColor = new Color(mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 64 : 32, 0, 0, 128);
+		mColor = new Color(mHead.mStickman.mType == Gender.TYPE.FEMALE ? 64 : 32, 0, 0, 128);
 
 		init();
 	}
@@ -68,13 +69,13 @@ public class Mouth extends BodyPart {
 					{
 						int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep*6;
 						if(fadeFactor<=12) fadeFactor=0;
-						mColor = new Color(mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 64 : 32, 0, 0, fadeFactor);
+						mColor = new Color(mHead.mStickman.mType == Gender.TYPE.FEMALE ? 64 : 32, 0, 0, fadeFactor);
 					}
 					else
 					{
 						int fadeFactor = (20-mHead.mStickman.mMouth.mShapeAnimationStep)*6;
 						if(fadeFactor >= 107) fadeFactor=128;
-						mColor = new Color(mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 64 : 32, 0, 0, fadeFactor);
+						mColor = new Color(mHead.mStickman.mType == Gender.TYPE.FEMALE ? 64 : 32, 0, 0, fadeFactor);
 					}
 				}
 				

@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animation.posturefx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -52,12 +53,12 @@ public class Dancing extends Animation3D
     	
         	mAnimationPartFX = new ArrayList<>();
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -40));
-        	if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        	if(mStickmanFX.mType == Gender.TYPE.MALE)
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "zrotate", -110));
         	else
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "zrotate", -30));
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -40));
-        	if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        	if(mStickmanFX.mType == Gender.TYPE.MALE)
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", 110));
         	else
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", 30));
@@ -89,7 +90,7 @@ public class Dancing extends Animation3D
             for(int i = 0; i<20; i++)
             {
             	mAnimationPartFX = new ArrayList<>();
-            	if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+            	if(mStickmanFX.mType == Gender.TYPE.MALE)
             	{
             		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -30));
                 	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -30));
@@ -121,7 +122,7 @@ public class Dancing extends Animation3D
             	playAnimationPart(200);
             	
             	mAnimationPartFX = new ArrayList<>();
-            	if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+            	if(mStickmanFX.mType == Gender.TYPE.MALE)
             	{
             		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 30));
                 	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", 30));
@@ -155,12 +156,12 @@ public class Dancing extends Animation3D
             
             mAnimationPartFX = new ArrayList<>();
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", 40));
-        	if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        	if(mStickmanFX.mType == Gender.TYPE.MALE)
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "zrotate", 110));
         	else
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "zrotate", 30));
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 40));
-        	if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        	if(mStickmanFX.mType == Gender.TYPE.MALE)
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", -110));
         	else
         		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", -30));

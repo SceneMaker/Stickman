@@ -43,7 +43,7 @@ public class XmlStickmanLoader {
                     {
 
                         Runnable bodyRunnable = () -> {
-                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mType == StickmanSwing.TYPE.MALE)
+                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE)
                             {
                                 ((Stickman3D)sStickmansOnStage.getStickman(name)).mBodyFX.mMaleColor = HandleColor.switchColor(bodycolor);
                                 ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
@@ -62,7 +62,7 @@ public class XmlStickmanLoader {
                     {
                         Runnable hairColor = () ->
                         {
-                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mType == StickmanSwing.TYPE.MALE)
+                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE)
                             {
                                 ((Stickman3D)sStickmansOnStage.getStickman(name)).mMaleHairFX.mColor = HandleColor.switchColor(haircolor);
                                 ((Stickman3D)sStickmansOnStage.getStickman(name)).update();

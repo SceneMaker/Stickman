@@ -1,5 +1,6 @@
 package de.dfki.stickmanSwing.stage;
 
+import de.dfki.common.Gender;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StickmanStage;
@@ -18,7 +19,7 @@ public class StickmansOnStageSwing extends StickmansOnStage {
         super(stickmanStage, controller);
     }
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender) {
+    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender) {
         if (fullScreen) {
             Stickman stickman = new StickmanSwing(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
@@ -29,7 +30,7 @@ public class StickmansOnStageSwing extends StickmansOnStage {
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender, boolean onlyFace) {
+    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace) {
         addStickmanToStage(name, fullScreen, gender);
     }
 }

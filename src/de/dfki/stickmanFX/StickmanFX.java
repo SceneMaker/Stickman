@@ -1,6 +1,7 @@
 package de.dfki.stickmanFX;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.Gender;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.stickmanSwing.StickmanSwing;
@@ -82,7 +83,7 @@ public class StickmanFX extends Pane implements Stickman {
 	    "grassland");
     // record the backgroundRecord(pic or color) of the stickmanSwing
     public String backgroundRecord = null;
-    public StickmanSwing.TYPE mType = StickmanSwing.TYPE.FEMALE;
+    public Gender.TYPE mType = Gender.TYPE.FEMALE;
     public String mName = "StickmanSwing";
     public ORIENTATION mOrientation = ORIENTATION.FRONT;
     public float mScale = 1.0f;
@@ -168,7 +169,7 @@ public class StickmanFX extends Pane implements Stickman {
     // id
     private long mID = 0;
 
-    public StickmanFX(String name, StickmanSwing.TYPE gender, float scale, Dimension size) {
+    public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size) {
 	mSize = size;
 	mScale = scale;
 	mScaleOriginal = scale;
@@ -184,7 +185,7 @@ public class StickmanFX extends Pane implements Stickman {
 	update();
     }
 
-    public StickmanFX(String name, StickmanSwing.TYPE gender, float scale) {
+    public StickmanFX(String name, Gender.TYPE gender, float scale) {
 	mScale = scale;
 	mScaleOriginal = scale;
 
@@ -199,7 +200,7 @@ public class StickmanFX extends Pane implements Stickman {
 	update();
     }
 
-    public StickmanFX(String name, StickmanSwing.TYPE gender, float scale, boolean faceOnly) {
+    public StickmanFX(String name, Gender.TYPE gender, float scale, boolean faceOnly) {
 	mScale = scale;
 	mScaleOriginal = scale;
 
@@ -218,7 +219,7 @@ public class StickmanFX extends Pane implements Stickman {
 	update();
     }
 
-    public StickmanFX(String name, StickmanSwing.TYPE gender) {
+    public StickmanFX(String name, Gender.TYPE gender) {
 	mName = name;
 	mType = gender;
 
@@ -264,7 +265,7 @@ public class StickmanFX extends Pane implements Stickman {
 	mBombeFX = new BombeFX(mHeadFX);
     }
 
-    public StickmanFX(String name, StickmanSwing.TYPE gender, float scale, Dimension size, boolean faceOnly) {
+    public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size, boolean faceOnly) {
 	mSize = size;
 	mScale = scale;
 	mScaleOriginal = scale;
@@ -337,7 +338,7 @@ public class StickmanFX extends Pane implements Stickman {
     }
 
     @Override
-    public StickmanSwing.TYPE getType() {
+    public Gender.TYPE getType() {
 	return mType;
     }
 
@@ -475,7 +476,7 @@ public class StickmanFX extends Pane implements Stickman {
     private void addOnlyHeadParts() {
 	this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
 		mFaceWrinkleFX, mSpeechBubbleFX);
-	if (this.mType == StickmanSwing.TYPE.MALE)
+	if (this.mType == Gender.TYPE.MALE)
 	    this.getChildren().add(mMaleHairFX);
 	else
 	    this.getChildren().add(mFemaleHairFX);
@@ -487,7 +488,7 @@ public class StickmanFX extends Pane implements Stickman {
 		mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
 		mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
 		mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameLabel);
-	if (this.mType == StickmanSwing.TYPE.MALE)
+	if (this.mType == Gender.TYPE.MALE)
 	    this.getChildren().add(mMaleHairFX);
 	else
 	    this.getChildren().add(mFemaleHairFX);
@@ -503,7 +504,7 @@ public class StickmanFX extends Pane implements Stickman {
 		mStarsFX.update();
 	    mHeadFX.update();
 
-	    if (this.mType == StickmanSwing.TYPE.MALE)
+	    if (this.mType == Gender.TYPE.MALE)
 		mMaleHairFX.update();
 	    else
 		mFemaleHairFX.update();
@@ -554,7 +555,7 @@ public class StickmanFX extends Pane implements Stickman {
 		mStarsFX.rotatePerlinNoise(mWobble, x, y);
 	    mHeadFX.rotatePerlinNoise(mWobble, x, y);
 
-	    if (this.mType == StickmanSwing.TYPE.MALE)
+	    if (this.mType == Gender.TYPE.MALE)
 		mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
 	    else
 		mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);

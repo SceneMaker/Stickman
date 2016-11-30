@@ -45,7 +45,7 @@ package de.dfki.stickman3D.animation.environmentfx;///*
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "tilt", translationUnit));
 //        
-//        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+//        if(mStickmanFX.mType == Gender.TYPE.MALE)
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
 //        else
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
@@ -72,7 +72,7 @@ package de.dfki.stickman3D.animation.environmentfx;///*
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "tilt", -translationUnit));
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "tilt", -translationUnit));
 //        
-//        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+//        if(mStickmanFX.mType == Gender.TYPE.MALE)
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMaleHairFX, "tilt", -translationUnit));
 //        else
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFemaleHairFX, "tilt", -translationUnit));
@@ -121,7 +121,7 @@ package de.dfki.stickman3D.animation.environmentfx;///*
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "tilt", translationUnit));
 //        
-//        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+//        if(mStickmanFX.mType == Gender.TYPE.MALE)
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
 //        else
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
@@ -193,7 +193,7 @@ package de.dfki.stickman3D.animation.environmentfx;///*
 //        mAnimationPartFX = new ArrayList<>();
 //        mStickmanFX.mHeadFX.translateRight = true;
 //        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "Translate", -2000));
-//        if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
+//        if(mStickmanFX.mType == Gender.TYPE.FEMALE)
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFemaleHairFX, "Translate", -2000));
 //        else
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMaleHairFX, "Translate", -2000));

@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animationlogic;
 
+import de.dfki.common.Gender;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.stickman3D.Stickman3D;
 
@@ -45,7 +46,7 @@ public class AnimationLoader3D
         return "a" + sID;
     }
 
-    private String getAnimationClasspath(Stickman3D.TYPE stickmantype, String name) {
+    private String getAnimationClasspath(Gender.TYPE stickmantype, String name) {
         String classPath = "";
 
         for (String s : sAnimationSubPackages) 
@@ -65,7 +66,7 @@ public class AnimationLoader3D
         return classPath;
     }
 
-    private String getEventAnimationClasspath(Stickman3D.TYPE stickmantype, String name)
+    private String getEventAnimationClasspath(Gender.TYPE stickmantype, String name)
     {
         String classPath = "";
 

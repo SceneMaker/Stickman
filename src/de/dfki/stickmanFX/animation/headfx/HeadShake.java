@@ -7,6 +7,7 @@ package de.dfki.stickmanFX.animation.headfx;
 
 import java.util.ArrayList;
 
+import de.dfki.common.Gender;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanFX.StickmanFX;
 import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
@@ -38,7 +39,7 @@ public class HeadShake extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", -rotationUnit));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -rotationUnit));
 		
-		if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
+		if(mStickmanFX.mType == Gender.TYPE.MALE)
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", -rotationUnit));
 		else
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", -rotationUnit));
@@ -56,7 +57,7 @@ public class HeadShake extends AnimationFX
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", rotationUnit * 2));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", rotationUnit * 2));
 			
-			if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
+			if(mStickmanFX.mType == Gender.TYPE.MALE)
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", rotationUnit * 2));
 			else
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", rotationUnit * 2));
@@ -72,7 +73,7 @@ public class HeadShake extends AnimationFX
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", -rotationUnit * 2));
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -rotationUnit * 2));
 			
-			if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
+			if(mStickmanFX.mType == Gender.TYPE.MALE)
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", -rotationUnit * 2));
 			else
 				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", -rotationUnit * 2));
@@ -89,7 +90,7 @@ public class HeadShake extends AnimationFX
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", rotationUnit));
 		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", rotationUnit));
 		
-		if(mStickmanFX.mType == StickmanSwing.TYPE.MALE)
+		if(mStickmanFX.mType == Gender.TYPE.MALE)
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", rotationUnit));
 		else
 			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", rotationUnit));

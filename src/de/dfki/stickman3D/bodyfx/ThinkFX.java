@@ -1,5 +1,6 @@
 package de.dfki.stickman3D.bodyfx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -77,7 +78,7 @@ public class ThinkFX extends BodyPartFX
 				break;
 				
 			case THINKOFLOVE:
-				if(mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+				if(mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 					url = getClass().getClassLoader().getResource("girl2.gif");
 				else
 					url = getClass().getClassLoader().getResource("boy2.jpg");

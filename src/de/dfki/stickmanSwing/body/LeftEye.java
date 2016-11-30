@@ -1,5 +1,6 @@
 package de.dfki.stickmanSwing.body;
 
+import de.dfki.common.Gender;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.animationlogic.AnimatorSwing;
 
@@ -28,9 +29,9 @@ public class LeftEye extends BodyPart {
 		mHead = head;
 		mLength = 5;
 		mDefaultRotationPoint = mHead.mDefaultRotationPoint;
-		mColor = new Color(mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 22 : 0,
-		  mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 40 : 0,
-		  mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 65 : 0, 144);
+		mColor = new Color(mHead.mStickman.mType == Gender.TYPE.FEMALE ? 22 : 0,
+		  mHead.mStickman.mType == Gender.TYPE.FEMALE ? 40 : 0,
+		  mHead.mStickman.mType == Gender.TYPE.FEMALE ? 65 : 0, 144);
 		mStroke = new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 
 		init();
@@ -68,18 +69,18 @@ public class LeftEye extends BodyPart {
 					{
 						int fadeFactor = mHead.mStickman.mMouth.mShapeAnimationStep*7;
 						if(fadeFactor<=14) fadeFactor=0;
-						mColor = new Color(mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 22 : 0,
-								mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 40 : 0,
-								mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 65 : 0, fadeFactor);
+						mColor = new Color(mHead.mStickman.mType == Gender.TYPE.FEMALE ? 22 : 0,
+								mHead.mStickman.mType == Gender.TYPE.FEMALE ? 40 : 0,
+								mHead.mStickman.mType == Gender.TYPE.FEMALE ? 65 : 0, fadeFactor);
 					}
 					else
 					{
 						int fadeFactor = (20-mHead.mStickman.mMouth.mShapeAnimationStep)*7;
 						if(fadeFactor==126) fadeFactor=0;
 						if(fadeFactor >= 118) fadeFactor=145;
-						mColor = new Color(mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 22 : 0,
-						  mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 40 : 0,
-								  mHead.mStickman.mType == StickmanSwing.TYPE.FEMALE ? 65 : 0, fadeFactor);
+						mColor = new Color(mHead.mStickman.mType == Gender.TYPE.FEMALE ? 22 : 0,
+						  mHead.mStickman.mType == Gender.TYPE.FEMALE ? 40 : 0,
+								  mHead.mStickman.mType == Gender.TYPE.FEMALE ? 65 : 0, fadeFactor);
 					}
 				}
 				

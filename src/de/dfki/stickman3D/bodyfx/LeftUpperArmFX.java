@@ -6,6 +6,7 @@
 package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -49,7 +50,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 
 		url = getClass().getClassLoader().getResource("BodyParts/UpperArm1.dae");
 
-		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 			mDefaultRotation = -10;
 		else
 			mDefaultRotation = -15;
@@ -92,7 +93,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE) {
+		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
 			leftUpperArmGroup.setTranslateX(mStart.x);
 			leftUpperArmGroup.setTranslateY(mStart.y - 85);
 			leftUpperArmGroup.setTranslateZ(0);

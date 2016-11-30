@@ -5,6 +5,7 @@
  */
 package de.dfki.stickmanFX.bodyfx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickmanSwing.StickmanSwing;
 
 import java.awt.Dimension;
@@ -37,7 +38,7 @@ public class LeftForeLegFX extends BodyPartFX {
     public LeftForeLegFX(LeftUpperLegFX leftUpperLegFX) 
     {
         mUpperLegFX = leftUpperLegFX;
-        if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.MALE)
+        if(mUpperLegFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
         	mLegLength = 90;
         else
         	mLegLength = 92;

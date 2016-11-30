@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -48,7 +49,7 @@ public class Angry2 extends Animation3D
     @Override
 	public void playAnimation() 
 	{
-		if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if(mStickmanFX.mType == Gender.TYPE.MALE)
 			rotationUnit = 20;
 		else
 			rotationUnit = 30;

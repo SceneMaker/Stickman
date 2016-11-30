@@ -1,6 +1,6 @@
 package de.dfki.common.interfaces;
 
-import de.dfki.stickmanSwing.StickmanSwing;
+import de.dfki.common.Gender;
 
 /**
  * Created by alvaro on 9/4/16.
@@ -15,7 +15,7 @@ public interface Stickman {
     boolean isShowName();
 
     void endAnimationScheduler();
-    StickmanSwing.TYPE getType();
+    Gender.TYPE getType();
     Animation doAnimation(String name, int duration, boolean block);
     Animation doAnimation(String name, Object param, boolean block);
     Animation doAnimation(String name, int duration, Object param, boolean block);

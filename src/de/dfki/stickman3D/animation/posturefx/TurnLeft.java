@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animation.posturefx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -49,7 +50,7 @@ public class TurnLeft extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -20));
         playAnimationPart(100);
         
-        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        if(mStickmanFX.mType == Gender.TYPE.MALE)
         {
         	mAnimationPartFX = new ArrayList<>();
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -40));
@@ -68,7 +69,7 @@ public class TurnLeft extends Animation3D
         
         pauseAnimation(1000);
         
-        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        if(mStickmanFX.mType == Gender.TYPE.MALE)
         {
         	mAnimationPartFX = new ArrayList<>();
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", 40));

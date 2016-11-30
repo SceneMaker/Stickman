@@ -1,5 +1,6 @@
 package de.dfki.stickman3D.bodyfx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -42,7 +43,7 @@ public class RightEyeFX extends BodyPartFX {
 	public RightEyeFX(HeadFX head) {
 		mHeadFX = head;
 
-		if(mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if(mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 			mColor = Color.rgb(0, 0, 0, 1);
 		else
 			mColor = Color.rgb(0, 0, 255, 1);

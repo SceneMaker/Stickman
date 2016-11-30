@@ -1,6 +1,7 @@
 package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -63,7 +64,7 @@ public class FemaleHairFX extends BodyPartFX {
 		femaleHairMeshView.setRotationAxis(Rotate.X_AXIS);
 		femaleHairMeshView.setRotate(-90);
 
-		if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
+		if(mStickmanFX.mType == Gender.TYPE.FEMALE)
 			mStickmanFX.mHeadFX.mHead.getChildren().add(femaleHairMeshView);
 
 		init();

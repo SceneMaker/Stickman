@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animation.gesturefx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -35,7 +36,7 @@ public class TouchHead extends Animation3D {
 //		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -90));
 //		playAnimationPart(500);
 		
-		if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if(mStickmanFX.mType == Gender.TYPE.MALE)
 		{
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -100));
@@ -89,7 +90,7 @@ public class TouchHead extends Animation3D {
 		}
 		
 		
-		if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if(mStickmanFX.mType == Gender.TYPE.MALE)
 		{
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 100));

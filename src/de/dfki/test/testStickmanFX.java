@@ -19,9 +19,9 @@ public class testStickmanFX {
         stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
 
         StageRoom stickmanStage3D1 = new StageRoom3D(500,0, true);
-        stickmanStage3D1.addStickman("Robbie");
+        stickmanStage3D1.addStickman("Anna");
         stickmanStage3D1.launchStickmanStage(true);
-        stickmanStage3D1.getStickman("Robbie").doAnimation("Speaking", 2000, "Hello World", true);
+        stickmanStage3D1.getStickman("Anna").doAnimation("Speaking", 2000, "Hello World", true);
 
 
         StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);

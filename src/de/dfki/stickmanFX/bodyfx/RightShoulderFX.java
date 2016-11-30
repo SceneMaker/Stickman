@@ -1,5 +1,6 @@
 package de.dfki.stickmanFX.bodyfx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickmanSwing.StickmanSwing;
 
 import java.awt.Dimension;
@@ -33,7 +34,7 @@ public class RightShoulderFX extends BodyPartFX
 
 	public RightShoulderFX(BodyFX body) {
 		mBodyFX = body;
-		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == StickmanSwing.TYPE.MALE)
+		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
             mShoulderLength = 25;
         else
             mShoulderLength = 15;

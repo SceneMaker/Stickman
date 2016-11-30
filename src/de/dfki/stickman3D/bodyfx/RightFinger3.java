@@ -6,6 +6,7 @@
 package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -80,7 +81,7 @@ public class RightFinger3 extends BodyPartFX
 		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
 		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
 		
-		if(mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if(mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 		{
 			mRightFinger3.setTranslateX(mStart.x - 1);
 			mRightFinger3.setTranslateY(mStart.y + 17);

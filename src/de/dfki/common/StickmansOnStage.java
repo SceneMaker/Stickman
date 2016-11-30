@@ -44,29 +44,29 @@ public abstract class StickmansOnStage {
     }
 
     public void addStickman(String name, boolean fullScreen) {
-        StickmanSwing.TYPE gender = getStickmanGender(name);
+        Gender.TYPE gender = getStickmanGender(name);
         addStickman(name, gender, fullScreen);
     }
 
-    public StickmanSwing.TYPE getStickmanGender(String name) {
-        StickmanSwing.TYPE gender = null;
+    public Gender.TYPE getStickmanGender(String name) {
+        Gender.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
-            gender = StickmanSwing.TYPE.FEMALE;
+            gender = Gender.TYPE.FEMALE;
         }
         if (Names.sMaleNames.contains(name.toLowerCase())) {
-            gender = (gender == null) ? StickmanSwing.TYPE.MALE : gender;
+            gender = (gender == null) ? Gender.TYPE.MALE : gender;
         }
         return gender;
     }
 
-    public  void addStickman(String name, StickmanSwing.TYPE gender, boolean fullScreen) {
+    public  void addStickman(String name, Gender.TYPE gender, boolean fullScreen) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender, false);
         }
     }
 
     public  void addStickman(String name, boolean fullScreen, boolean onlyFace) {
-        StickmanSwing.TYPE gender = getStickmanGender(name);
+        Gender.TYPE gender = getStickmanGender(name);
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender, onlyFace);
         }
@@ -78,9 +78,9 @@ public abstract class StickmansOnStage {
         }
     }
 
-    protected abstract void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender);
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender);
 
-    protected abstract void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender, boolean onlyFace);
+    protected abstract void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace);
 
     public Stickman getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {

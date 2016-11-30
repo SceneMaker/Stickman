@@ -1,6 +1,7 @@
 package de.dfki.stickmanSwing;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.Gender;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.stickmanSwing.animationlogic.*;
@@ -77,7 +78,7 @@ public class StickmanSwing extends JComponent implements Stickman {
     };
 
     static public final Color sFOREGROUND = new Color(188, 188, 188, 128);
-    public TYPE mType = TYPE.FEMALE;
+    public Gender.TYPE mType = Gender.TYPE.FEMALE;
     public String mName = "StickmanSwing";
     public ORIENTATION mOrientation = ORIENTATION.FRONT;
     public float mScale = 1.0f;
@@ -142,7 +143,7 @@ public class StickmanSwing extends JComponent implements Stickman {
     // id
     private long mID = 0;
 
-    public StickmanSwing(String name, TYPE gender, float scale, Dimension size) {
+    public StickmanSwing(String name, Gender.TYPE gender, float scale, Dimension size) {
         mSize = size;
         mScale = scale;
 
@@ -178,7 +179,7 @@ public class StickmanSwing extends JComponent implements Stickman {
         mIdleBehavior = new IdleBehavior(this,simplexNoise);
     }
 
-    public StickmanSwing(String name, TYPE gender, float scale) {
+    public StickmanSwing(String name, Gender.TYPE gender, float scale) {
         mScale = scale;
 
         mName = name;
@@ -211,7 +212,7 @@ public class StickmanSwing extends JComponent implements Stickman {
         simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
     }
 
-    public StickmanSwing(String name, TYPE gender) {
+    public StickmanSwing(String name, Gender.TYPE gender) {
         mName = name;
         mType = gender;
 
@@ -298,7 +299,7 @@ public class StickmanSwing extends JComponent implements Stickman {
     }
 
     @Override
-    public StickmanSwing.TYPE getType() {
+    public Gender.TYPE getType() {
         return mType;
     }
 

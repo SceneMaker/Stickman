@@ -1,6 +1,7 @@
 package de.dfki.stickman3D.bodyfx;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -54,7 +55,7 @@ public class UpperBody extends BodyPartFX {
 		mStart = mNeckFX.getBodyStartPosition();
 		imorter = new ColModelImporter();
 
-		if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) {
+		if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
 			url = getClass().getClassLoader().getResource("BodyParts/UpperFemaleBody.dae");
 			mColor = Color.rgb(154, 83, 198, 1);
 		} else {
@@ -81,7 +82,7 @@ public class UpperBody extends BodyPartFX {
 	{
 		super.init();
 		mUpperBodyGroup.setTranslateX(mStart.x);
-		if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE) {
+		if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
 			mUpperBodyGroup.setTranslateY(mStart.y + 135);
 			mUpperBodyGroup.setTranslateZ(-105);
 		} else {
@@ -109,7 +110,7 @@ public class UpperBody extends BodyPartFX {
 	public void calculate(int step) {
 
 //		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		if (mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+		if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 		{
 			rx = new Rotate(mXRotation, 0, 10, 0, Rotate.X_AXIS);
 		}
@@ -173,7 +174,7 @@ public class UpperBody extends BodyPartFX {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
 		} else {
 			return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
-					(mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+					(mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
 		}
 	}
 
@@ -182,7 +183,7 @@ public class UpperBody extends BodyPartFX {
 			return new Point(mStart.x, mSize.height);
 		} else {
 			return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
-					(mNeckFX.mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+					(mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
 		}
 	}
 

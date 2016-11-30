@@ -1,10 +1,10 @@
 package de.dfki.stickman3D;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.Gender;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.stickman3D.animationlogic.*;
-import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.EventAnimation3D;
@@ -42,12 +42,10 @@ public class Stickman3D extends Pane implements Stickman {
 		FRONT, LEFT, RIGHT
 	};
 
-	public static enum TYPE {
-		FEMALE, MALE
-	};
+
 
 	static public final Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
-	public TYPE mType = TYPE.FEMALE;
+	public Gender.TYPE mType = Gender.TYPE.FEMALE;
 	public String mName = "StickmanSwing";
 	public ORIENTATION mOrientation = ORIENTATION.FRONT;
 	public float mScale = 1.0f;
@@ -139,7 +137,7 @@ public class Stickman3D extends Pane implements Stickman {
 	// id
 	private long mID = 0;
 
-	public Stickman3D(String name, TYPE gender, float scale, Dimension size) {
+	public Stickman3D(String name, Gender.TYPE gender, float scale, Dimension size) {
 		mSize = size;
 		mScale = scale;
 
@@ -196,7 +194,7 @@ public class Stickman3D extends Pane implements Stickman {
 		update();
 	}
 
-	public Stickman3D(String name, TYPE gender, float scale) {
+	public Stickman3D(String name, Gender.TYPE gender, float scale) {
 		mScale = scale;
 
 		mName = name;
@@ -249,7 +247,7 @@ public class Stickman3D extends Pane implements Stickman {
 		update();
 	}
 
-	public Stickman3D(String name, TYPE gender) {
+	public Stickman3D(String name, Gender.TYPE gender) {
 		mName = name;
 		mType = gender;
 
@@ -318,7 +316,7 @@ public class Stickman3D extends Pane implements Stickman {
 		nameText.setFill(Color.YELLOW);
 		nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
 
-		if(this.mType == Stickman3D.TYPE.MALE)
+		if(this.mType == Gender.TYPE.MALE)
 		{
 			nameText.setTranslateX(15);
 			nameText.setTranslateY(-120);
@@ -426,7 +424,7 @@ public class Stickman3D extends Pane implements Stickman {
 	}
 
 	@Override
-	public StickmanSwing.TYPE getType() {
+	public Gender.TYPE getType() {
 		return null;
 	}
 
@@ -528,7 +526,7 @@ public class Stickman3D extends Pane implements Stickman {
 				mStarsFX.update();
 //			mHeadFX.update();
 
-//			if (this.mType == Stickman3D.TYPE.MALE)
+//			if (this.mType == Gender.TYPE.MALE)
 //				mMaleHairFX.update();
 //			else
 //				mFemaleHairFX.update();
@@ -579,7 +577,7 @@ public class Stickman3D extends Pane implements Stickman {
 //				mStarsFX.rotatePerlinNoise(mWobble, x, y);
 //			mHeadFX.rotatePerlinNoise(mWobble, x, y);
 //
-//			if (this.mType == Stickman3D.TYPE.MALE)
+//			if (this.mType == Gender.TYPE.MALE)
 //				mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
 //			else
 //				mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);

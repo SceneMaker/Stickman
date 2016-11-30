@@ -1,5 +1,6 @@
 package de.dfki.stickman3D;
 
+import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickman3D.kinect.Kinect;
@@ -399,7 +400,7 @@ public class StickmanStageController implements ViewController {
 	@FXML
 	public void handleHairColor() {
 		if (currentStickman != null) {
-			if (currentStickman.mType == Stickman3D.TYPE.MALE) {
+			if (currentStickman.mType == Gender.TYPE.MALE) {
 				currentStickman.mMaleHairFX.mColor = hairColorPicker.getValue();
 				currentStickman.mMaleHairFX.update();
 			} else {
@@ -522,7 +523,7 @@ public class StickmanStageController implements ViewController {
 	public void handleHairColorButtons(MouseEvent ev) {
 		if (currentStickman != null) {
 			if (ev.getSource().equals(hairColorBrighter)) {
-				if (currentStickman.mType == Stickman3D.TYPE.MALE) {
+				if (currentStickman.mType == Gender.TYPE.MALE) {
 					currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColor.brighter();
 					currentStickman.mMaleHairFX.update();
 				} else {
@@ -530,7 +531,7 @@ public class StickmanStageController implements ViewController {
 					currentStickman.mFemaleHairFX.update();
 				}
 			} else if (ev.getSource().equals(hairColorDarker)) {
-				if (currentStickman.mType == Stickman3D.TYPE.MALE) {
+				if (currentStickman.mType == Gender.TYPE.MALE) {
 					currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColor.darker();
 					currentStickman.mMaleHairFX.update();
 				} else {
@@ -538,7 +539,7 @@ public class StickmanStageController implements ViewController {
 					currentStickman.mFemaleHairFX.update();
 				}
 			} else if (ev.getSource().equals(hairColorReset)) {
-				if (currentStickman.mType == Stickman3D.TYPE.MALE) {
+				if (currentStickman.mType == Gender.TYPE.MALE) {
 					currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColorRecorder;
 					currentStickman.mMaleHairFX.update();
 				} else {
@@ -965,7 +966,7 @@ public class StickmanStageController implements ViewController {
 
 	// set the setValue of combobox
 	private void setComboboxValue(Stickman3D mStick) {
-		if (mStick.mType == Stickman3D.TYPE.MALE) {
+		if (mStick.mType == Gender.TYPE.MALE) {
 			// String sBodyComboBoxColor =
 			// switchColorToString(mStick.mBodyFX.mMaleColor);
 			// if(sBodyComboBoxColor!=null)
@@ -977,7 +978,7 @@ public class StickmanStageController implements ViewController {
 			// BodyComboBoxColor.setValue(sBodyComboBoxColor);
 		}
 
-		if (mStick.mType == Stickman3D.TYPE.MALE) {
+		if (mStick.mType == Gender.TYPE.MALE) {
 			String sHairComboBoxColor = switchColorToString(mStick.mMaleHairFX.mColor);
 			// if(sHairComboBoxColor!=null)
 			// HairComboBoxColor.setValue(sHairComboBoxColor);

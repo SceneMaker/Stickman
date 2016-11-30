@@ -21,27 +21,27 @@ public class StickmansOnStageFX extends StickmansOnStage {
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender) {
+    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender) {
         if (fullScreen) {
-            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
+            Stickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
         }else{
-            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, DEFAULT_SCALE);
+            Stickman stickman = new StickmanFX(name, gender, DEFAULT_SCALE);
             putFullStickmanOnStage(name, stickman);
         }
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, StickmanSwing.TYPE gender, boolean onlyFace) {
+    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace) {
         if (fullScreen) {
-            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
+            Stickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
         }else{
             float scale = DEFAULT_SCALE;
             if(onlyFace){
                 scale = 1.0f;
             }
-            Stickman stickman = new StickmanFX(name, StickmanSwing.TYPE.MALE, scale);
+            Stickman stickman = new StickmanFX(name, gender, scale);
             putFullStickmanOnStage(name, stickman);
         }
     }

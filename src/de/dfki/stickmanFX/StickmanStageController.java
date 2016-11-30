@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickmanFX.stage.StickmanStageFX;
@@ -203,7 +204,7 @@ public class StickmanStageController implements ViewController {
 	    String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
 	    if ((color != null) && (mStickmancombobox != null)) {
 		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == StickmanSwing.TYPE.MALE) {
+		    if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = HandleColor.switchColor(color);
 			getStickmanAsFx(mStickmancombobox).update();
 		    } else {
@@ -219,7 +220,7 @@ public class StickmanStageController implements ViewController {
 	    Color bodyColor = BodyColorPicker.getValue();
 	    if ((bodyColor != null) && (mStickmancombobox != null)) {
 		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+		    if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mBodyFX.mColoropacity;
 			getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = new Color(bodyColor.getRed(),
 				bodyColor.getGreen(), bodyColor.getBlue(), mOpacityRecord);
@@ -240,7 +241,7 @@ public class StickmanStageController implements ViewController {
 	    public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
 		if (mStickmancombobox != null) {
 		    Platform.runLater(() -> {
-			if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+			if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			    getStickmanAsFx(mStickmancombobox).mBodyFX.mColoropacity = new_val.floatValue();
 			    Color mColorRecord = getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor;
 			    getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = new Color(mColorRecord.getRed(),
@@ -265,7 +266,7 @@ public class StickmanStageController implements ViewController {
 	    String color = HairComboBoxColor.getSelectionModel().getSelectedItem();
 	    if ((color != null) && (mStickmancombobox != null)) {
 		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == StickmanSwing.TYPE.MALE) {
+		    if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = HandleColor.switchColor(color);
 			getStickmanAsFx(mStickmancombobox).update();
 		    } else {
@@ -281,7 +282,7 @@ public class StickmanStageController implements ViewController {
 	    Color hairColor = HairColorPicker.getValue();
 	    if ((hairColor != null) && (mStickmancombobox != null)) {
 		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+		    if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColoropacity;
 			getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = new Color(hairColor.getRed(),
 				hairColor.getGreen(), hairColor.getBlue(), mOpacityRecord);
@@ -302,7 +303,7 @@ public class StickmanStageController implements ViewController {
 	    public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
 		if (mStickmancombobox != null) {
 		    Platform.runLater(() -> {
-			if (getStickmanAsFx(mStickmancombobox).mType == de.dfki.stickmanSwing.StickmanSwing.TYPE.MALE) {
+			if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			    getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColoropacity = new_val.floatValue();
 			    Color mColorRecord = getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor;
 			    getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = new Color(mColorRecord.getRed(),
@@ -514,7 +515,7 @@ public class StickmanStageController implements ViewController {
 	    public void handle(ActionEvent event) {
 		if ((mStickmancombobox != null)) {
 		    Platform.runLater(() -> {
-			if (getStickmanAsFx(mStickmancombobox).mType == StickmanSwing.TYPE.MALE) {
+			if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
 			    HeadComboBoxColor.setValue("Festucine");
 			    HairComboBoxColor.setValue("Brown");
 			    BodyComboBoxColor.setValue("Green");
@@ -665,7 +666,7 @@ public class StickmanStageController implements ViewController {
 
     // set the setValue of combobox
     private void setComboboxValue(StickmanFX mStick) {
-	if (mStick.mType == StickmanSwing.TYPE.MALE) {
+	if (mStick.mType == Gender.TYPE.MALE) {
 	    String sBodyComboBoxColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
 	    if (sBodyComboBoxColor != null)
 		BodyComboBoxColor.setValue(sBodyComboBoxColor);
@@ -675,7 +676,7 @@ public class StickmanStageController implements ViewController {
 		BodyComboBoxColor.setValue(sBodyComboBoxColor);
 	}
 
-	if (mStick.mType == StickmanSwing.TYPE.MALE) {
+	if (mStick.mType == Gender.TYPE.MALE) {
 	    String sHairComboBoxColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
 	    if (sHairComboBoxColor != null)
 		HairComboBoxColor.setValue(sHairComboBoxColor);
@@ -886,13 +887,13 @@ public class StickmanStageController implements ViewController {
 			    String bodyColor;
 			    String hairColor;
 			    StickmanFX mStick = getStickmanAsFx(key);
-			    if (mStick.mType == StickmanSwing.TYPE.MALE) {
+			    if (mStick.mType == Gender.TYPE.MALE) {
 				bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
 			    } else {
 				bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mFemaleColor);
 			    }
 
-			    if (mStick.mType == StickmanSwing.TYPE.MALE) {
+			    if (mStick.mType == Gender.TYPE.MALE) {
 				hairColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
 			    } else {
 				hairColor = HandleColor.switchColorToString(mStick.mFemaleHairFX.mColor);

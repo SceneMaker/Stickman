@@ -5,6 +5,7 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
+import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -36,7 +37,7 @@ public class Fear extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "SAD"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 20));
         
-        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        if(mStickmanFX.mType == Gender.TYPE.MALE)
         {
         	//Left Hand
 	        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -60));
@@ -90,7 +91,7 @@ public class Fear extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "SADEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -20));
         
-        if(mStickmanFX.mType == Stickman3D.TYPE.MALE)
+        if(mStickmanFX.mType == Gender.TYPE.MALE)
         {
         	//Left Hand
         	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", 60));

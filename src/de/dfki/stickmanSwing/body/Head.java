@@ -1,5 +1,6 @@
 package de.dfki.stickmanSwing.body;
 
+import de.dfki.common.Gender;
 import de.dfki.stickmanSwing.StickmanSwing;
 
 import java.awt.BasicStroke;
@@ -183,7 +184,7 @@ public class Head extends BodyPart {
 		g2.draw(mRightEar);
 
 		// hair
-		if (mStickman.mType == StickmanSwing.TYPE.FEMALE) {
+		if (mStickman.mType == Gender.TYPE.FEMALE) {
 			if(mStickman.setCharacterInvisible == true)
 			{
 				if(mStickman.fadeControler==true)             //Added by Robbie
