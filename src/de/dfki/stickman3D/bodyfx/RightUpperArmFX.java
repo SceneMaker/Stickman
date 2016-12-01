@@ -97,7 +97,7 @@ public class RightUpperArmFX extends BodyPartFX {
 		if(mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 		{
 			rightUpperArmGroup.setTranslateX(mStart.x);
-			rightUpperArmGroup.setTranslateY(mStart.y - 85);
+			rightUpperArmGroup.setTranslateY(mStart.y - 105);
 			rightUpperArmGroup.setTranslateZ(0);
 		}
 		else

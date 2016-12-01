@@ -3,67 +3,65 @@ package de.dfki.stickman3D.mimic.util;
 import javafx.scene.shape.Polygon;
 
 public class MouthONE {
-	
-	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
-	{
-		int sig;
+
+	public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step) {
 		
-		if(sign.equalsIgnoreCase("PLUS"))
-			sig = 1;
-		else
-			sig = -1;
-		
-		float yMovement18;
-		float yMovement17;
-		float yMovement16;
-		float yMovement15;
-		
-		yMovement18 = sig * (20 - step) * 0.0052f;
-		yMovement17 = sig * (20 - step) * 0.0105f;
-		yMovement16 = sig * (20 - step) * 0.0105f;
-		yMovement15 = sig * (20 - step) * 0.0105f;
-		
-		currentUpperLipMesh.getPoints().set(37, currentUpperLipMesh.getPoints().get(37) - yMovement18);
-		currentUpperLipMesh.getPoints().set(35, currentUpperLipMesh.getPoints().get(35) - yMovement17);
-		currentUpperLipMesh.getPoints().set(33, currentUpperLipMesh.getPoints().get(33) - yMovement16);
-		currentUpperLipMesh.getPoints().set(31, currentUpperLipMesh.getPoints().get(31) - yMovement15);
-		currentUpperLipMesh.getPoints().set(29, currentUpperLipMesh.getPoints().get(29) - yMovement16);
-		currentUpperLipMesh.getPoints().set(27, currentUpperLipMesh.getPoints().get(27) - yMovement17);
-		currentUpperLipMesh.getPoints().set(25, currentUpperLipMesh.getPoints().get(25) - yMovement18);
-		
-		return currentUpperLipMesh;
-	}
-	
-	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
-	{
-		
-		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
-			sig = 1;
-		else
-			sig = -1;
-		
-		float yMovement18;
-		float yMovement17;
-		float yMovement16;
-		float yMovement15;
-		
-		yMovement18 = sig * (20 - step) * 0.0052f;
-		yMovement17 = sig * (20 - step) * 0.0105f;
-		yMovement16 = sig * (20 - step) * 0.0105f;
-		yMovement15 = sig * (20 - step) * 0.0105f;
-		
-		currentDownLipMesh.getPoints().set(37, currentDownLipMesh.getPoints().get(37) + yMovement18);
-		currentDownLipMesh.getPoints().set(35, currentDownLipMesh.getPoints().get(35) + yMovement17);
-		currentDownLipMesh.getPoints().set(33, currentDownLipMesh.getPoints().get(33) + yMovement16);
-		currentDownLipMesh.getPoints().set(31, currentDownLipMesh.getPoints().get(31) + yMovement15);
-		currentDownLipMesh.getPoints().set(29, currentDownLipMesh.getPoints().get(29) + yMovement16);
-		currentDownLipMesh.getPoints().set(27, currentDownLipMesh.getPoints().get(27) + yMovement17);
-		currentDownLipMesh.getPoints().set(25, currentDownLipMesh.getPoints().get(25) + yMovement18);
-		
-		
-		return currentDownLipMesh;
+		if (step == 20 || step == 0) {
+			currentUpperLipPolygon.getPoints().clear();
+			currentUpperLipPolygon.getPoints().addAll(
+					// x y z
+					0.0, 0.0, // Point 0
+					3.0, -2.0, // Point 1
+					6.0, -4.0, // Point 2
+					9.0, -5.0, // Point 3
+					13.0, -5.0, // Point 4
+					16.0, -3.0, // Point 5
+					19.0, -5.0, // Point 6
+					23.0, -5.0, // Point 7
+					26.0, -4.0, // Point 8
+					29.0, -2.0, // Point 9
+					32.0, 0.0, // Point 10
+					29.0, 0.0, // Point 11
+					26.0, -1.0, // Point 12
+					23.0, -2.0, // Point 13
+					19.0, -2.0, // Point 14
+					16.0, -2.0, // Point 15
+					13.0, -2.0, // Point 16
+					9.0, -2.0, // Point 17
+					6.0, -1.0, // Point 18
+					3.0, 0.0 // Point 19
+			);
+		}
+		return currentUpperLipPolygon;
 	}
 
+	public static Polygon modifyDownLip(Polygon currentDownPolygon, float step) {
+		if (step == 20 || step == 0) {
+			currentDownPolygon.getPoints().clear();
+			currentDownPolygon.getPoints().addAll(
+					// x y z
+					0.0, 0.0, // Point 0
+					3.0, 2.0, // Point 1
+					6.0, 4.0, // Point 2
+					9.0, 5.0, // Point 3
+					13.0, 5.0, // Point 4
+					16.0, 3.0, // Point 5
+					19.0, 5.0, // Point 6
+					23.0, 5.0, // Point 7
+					26.0, 4.0, // Point 8
+					29.0, 2.0, // Point 9
+					32.0, 0.0, // Point 10
+					29.0, 0.0, // Point 11
+					26.0, 1.0, // Point 12
+					23.0, 2.0, // Point 13
+					19.0, 2.0, // Point 14
+					16.0, 2.0, // Point 15
+					13.0, 2.0, // Point 16
+					9.0, 2.0, // Point 17
+					6.0, 1.0, // Point 18
+					3.0, 0.0 // Point 19
+			);
+		}
+		return currentDownPolygon;
+	}
 }

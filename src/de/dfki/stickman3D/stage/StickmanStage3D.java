@@ -103,7 +103,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
 	public void start(Stage stage) throws Exception {
 
         HBox sStickmanHBox = new HBox();
-        sStickmanHBox.setId("StickmanStageSwing");
+        sStickmanHBox.setId("StickmanStageSwing");//TODO: Chage for 3D
         sStickmanHBox.setAlignment(Pos.CENTER);
         sStickmanHBox.setPadding(new javafx.geometry.Insets(580, 0, 150, 0));
 
@@ -175,8 +175,8 @@ public class StickmanStage3D extends Application implements StickmanStage {
 		sCamera.setNearClip(0.8);
 		sCamera.setFarClip(3000.0);
 		sCamera.setFieldOfView(30);
-		
-		root.setStyle("-fx-background-color: transparent");
+                
+//		root.setStyle("-fx-background-color: red");
 		
 		SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
 		return subScene;
@@ -250,6 +250,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
         HBox sStickmanPane;
         if (stickmanFXStages.containsKey(stageIdentifier)) {
             sStickmanPane = (HBox)  stickmanFXStages.get(stageIdentifier).getScene().getRoot();
+            sStickmanPane.setAlignment(Pos.BASELINE_CENTER);
             return (sStickmanPane.getId()!=null && sStickmanPane.getId().equals(STICKMAN_STAGE))?  sStickmanPane:  findStagePane(sStickmanPane);
         } else {
             throw new Exception("Stage Not found");
@@ -323,6 +324,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
     public void createStage(String uuid, int x, int y, boolean decoration) throws IOException {
         final HBox root = getStageRoot();
         Platform.runLater(() -> {
+            root.setAlignment(Pos.BASELINE_CENTER);
             Scene stageScene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
             Stage stage = new Stage();
             stage.setScene(stageScene);
