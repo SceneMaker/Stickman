@@ -43,7 +43,7 @@ public class CoverMouth extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -180));
 		playAnimationPart(500);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 
 	}
 }

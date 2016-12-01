@@ -59,7 +59,7 @@ public class HeadShake extends Animation3D
 			}
 		}
 
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 
 }

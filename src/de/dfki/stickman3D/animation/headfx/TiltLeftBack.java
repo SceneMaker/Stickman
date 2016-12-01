@@ -33,6 +33,6 @@ public class TiltLeftBack extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", -10));
 		playAnimationPart(200);
 
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

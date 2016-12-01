@@ -66,7 +66,7 @@ public class ComeUp extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
 		playAnimationPart(200);
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 
 	private void playComeSpeed(int Speed) {

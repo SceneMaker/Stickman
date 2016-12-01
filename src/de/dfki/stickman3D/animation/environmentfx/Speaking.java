@@ -42,6 +42,6 @@ package de.dfki.stickman3D.animation.environmentfx;
             playAnimationPart(20);
 
             if(StickmanStageController.currentRadioButton != null) // nur zum Testen. Im Normalfall diese 2 Zeilen loeschen
-                StickmanStageController.currentRadioButton.setSelected(false);
+
         }
     }

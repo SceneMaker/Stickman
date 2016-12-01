@@ -104,6 +104,6 @@ public class NoNoNo extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
         playAnimationPart(500);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

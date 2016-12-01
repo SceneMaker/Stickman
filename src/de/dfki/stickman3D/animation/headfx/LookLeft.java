@@ -37,6 +37,6 @@ public class LookLeft extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKLEFTEND"));
 		playAnimationPart(100);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

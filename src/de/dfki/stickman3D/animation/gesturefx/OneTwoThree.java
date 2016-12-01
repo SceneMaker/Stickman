@@ -134,6 +134,6 @@ public class OneTwoThree extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -25));
         playAnimationPart(500);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

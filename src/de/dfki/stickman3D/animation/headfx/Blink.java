@@ -44,6 +44,6 @@ public class Blink extends Animation3D
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
 		playAnimationPart(20);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

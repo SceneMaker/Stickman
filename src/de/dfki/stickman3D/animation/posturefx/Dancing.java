@@ -193,6 +193,6 @@ public class Dancing extends Animation3D
 //        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 90));
 //        	playAnimationPart(500);
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

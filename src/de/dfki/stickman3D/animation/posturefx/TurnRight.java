@@ -86,6 +86,6 @@ public class TurnRight extends Animation3D
             playAnimationPart(500);
         }
         
-        StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

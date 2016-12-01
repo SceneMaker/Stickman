@@ -45,6 +45,6 @@ public class Happy extends Animation3D {
         playAnimationPart(mDuration);
         
         if(StickmanStageController.currentRadioButton != null)
-        	StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

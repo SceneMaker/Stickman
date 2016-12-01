@@ -37,6 +37,6 @@ public class LookUp extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUPEND"));
 		playAnimationPart(100);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

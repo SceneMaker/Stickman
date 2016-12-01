@@ -85,6 +85,6 @@ public class DisappearToSmall extends Animation3D {
 		mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX);
 		mStickmanFX.mScale = recordOriginScale;
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

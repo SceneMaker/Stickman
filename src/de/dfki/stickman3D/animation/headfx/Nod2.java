@@ -61,6 +61,6 @@ public class Nod2 extends Animation3D
 			}
 		}
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

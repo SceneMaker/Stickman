@@ -215,8 +215,8 @@ public class StickmanStageController implements ViewController {
 		kinectButtonToggleGroup = new ToggleGroup();
 		startKinect.setToggleGroup(kinectButtonToggleGroup);
 		stopKinect.setToggleGroup(kinectButtonToggleGroup);
-		startKinect.getStylesheets().add(this.getClass().getResource("css/RadioButtonCSS.css").toExternalForm());
-		stopKinect.getStylesheets().add(this.getClass().getResource("css/RadioButtonCSS.css").toExternalForm());
+		startKinect.getStylesheets().add("de.dfki.stickman3D.css.RadioButtonCSS.css");
+		stopKinect.getStylesheets().add("de.dfki.stickman3D.css.RadioButtonCSS.css");
 		
 		cameraXSlider.setMin(-180);
 		cameraXSlider.setMax(180);
@@ -860,7 +860,7 @@ public class StickmanStageController implements ViewController {
 		for (int i = 0; i < getClassesNames.size(); i++) {
 			RadioButton button = new RadioButton(getClassesNames.get(i));
 			button.setToggleGroup(toggleGroup);
-			button.getStylesheets().add(this.getClass().getResource("css/RadioButtonCSS.css").toExternalForm());
+			button.getStylesheets().add("de.dfki.stickman3D.css.RadioButtonCSS.css");
 			button.setFont(Font.font("Arial", 15));
 
 			button.setOnAction((event) -> {

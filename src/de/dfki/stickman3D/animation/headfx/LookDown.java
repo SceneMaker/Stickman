@@ -37,6 +37,6 @@ public class LookDown extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
 		playAnimationPart(100);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

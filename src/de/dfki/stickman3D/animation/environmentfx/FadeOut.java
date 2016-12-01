@@ -76,6 +76,6 @@ public class FadeOut extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFootFX, "shape", "FADEOUT"));
         playAnimationPart(500);
         
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 	}
 }

@@ -74,6 +74,6 @@ public class FadeIn extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeLegFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFootFX, "shape", "FADEIN"));
         playAnimationPart(500);
-		StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

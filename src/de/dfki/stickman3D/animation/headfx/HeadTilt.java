@@ -38,6 +38,6 @@ public class HeadTilt extends Animation3D
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", 10));
 		playAnimationPart(200);
-    	StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }

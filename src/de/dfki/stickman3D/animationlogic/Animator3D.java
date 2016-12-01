@@ -98,7 +98,7 @@ public class Animator3D
                 String allText = "";
                 allText = mWTS.getText().replace("oe", "ö").replace("ae", "ä").replace("ue", "ü").replace("Oe", "Ö").replace("Ae", "Ä").replace("Ue", "Ü").replace("ss", "ß").replace("\n", " ").replace("   ", " ").replace("  ", " ");
 
-                //mStickmanFX.mSpeechBubble.mText = allText;
+                mStickmanFX.mSpeechBubbleFX.mText = allText;
                 //mStickmanFX.mSpeechBubble.mCurrentlySpokenText = currentlySpokenText;
 
                 // do the rendering ...

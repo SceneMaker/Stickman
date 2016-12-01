@@ -117,7 +117,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
         moveStickmanPane(scene, sStickmanHBox);
         root.getChildren().add(sSubscene);
 
-        scene.getStylesheets().add(this.getClass().getResource("../css/StickmanCSS.css").toExternalForm());
+        scene.getStylesheets().add("de.dfki.stickman3D.css.StickmanCSS.css");
         stage.setTitle("Stickman3D");
         stage.setScene(scene);
        // sStickmanHBox.setMouseTransparent(true);

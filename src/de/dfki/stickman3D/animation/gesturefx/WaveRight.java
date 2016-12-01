@@ -69,7 +69,7 @@ public class WaveRight extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 120));
 		playAnimationPart(200);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 
 	}
 	

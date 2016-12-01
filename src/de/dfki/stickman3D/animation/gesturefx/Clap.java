@@ -66,7 +66,7 @@ public class Clap extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -40));
         playAnimationPart(500);
 		
-		StickmanStageController.currentRadioButton.setSelected(false);
+
 
 	}
 	

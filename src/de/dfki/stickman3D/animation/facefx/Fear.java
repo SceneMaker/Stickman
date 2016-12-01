@@ -137,6 +137,6 @@ public class Fear extends Animation3D {
 //        playAnimationPart(500);
         
         if(StickmanStageController.currentRadioButton != null)
-        	StickmanStageController.currentRadioButton.setSelected(false);
+
     }
 }
