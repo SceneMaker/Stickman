@@ -3,7 +3,7 @@ package de.dfki.stickmanFX.utils;
 import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanFX.xmlsettings.StickmanDataFX;
-import de.dfki.util.HandleColor;
+import javafx.scene.paint.Color;
 import de.dfki.stickmanFX.stage.StickmanStageFX;
 import de.dfki.stickmanFX.stage.StickmansOnStageFX;
 import de.dfki.stickmanFX.StickmanFX;
@@ -18,195 +18,127 @@ public class XmlStickmanLoader {
     private String mFilePath;
     private StickmansOnStage sStickmansOnStage;
 
-    public XmlStickmanLoader( StickmansOnStage stickmansOnStage){
-        this.sStickmansOnStage = stickmansOnStage;
-        mFilePath = stickmansOnStage.getmFilePath();
+    public XmlStickmanLoader(StickmansOnStage stickmansOnStage) {
+	this.sStickmansOnStage = stickmansOnStage;
+	mFilePath = stickmansOnStage.getmFilePath();
     }
 
-    private void readXML()
-    {
-        File file = null;
-        if(mFilePath != null)
-            file = new File(mFilePath + File.separator + "stickmanfx"+ File.separator+"stickmanfx.xml");
+    private void readXML() {
+	File file = null;
+	if (mFilePath != null)
+	    file = new File(mFilePath + File.separator + "stickmanfx" + File.separator + "stickmanfx.xml");
 
-        if (file != null) {
-            sStickmansOnStage.getmXmlTransform().loadStickmanDataFromFile(file);
-        }
+	if (file != null) {
+	    sStickmansOnStage.getmXmlTransform().loadStickmanDataFromFile(file);
+	}
     }
 
-    public   void initialStickmanWithXml()
-    {
-        /*
-        readXML();
-        List<StickmanDataFX> mStickmanDataFX = sStickmansOnStage.getmXmlTransform().getStickmanDataFXList();
-        if(!(mStickmanDataFX.isEmpty()))
-        {
-            for(StickmanDataFX mStick : mStickmanDataFX)
-            {
-                String name = mStick.getName();
-                if (sStickmansOnStage.getStickmanNames().contains(name.toLowerCase())){
-                    String bodycolor = mStick.getbodyColor();
-                    if(bodycolor != null)
-                    {
-
-                        Runnable bodyRunnable = () -> {
-                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE)
-                            {
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).mBodyFX.mMaleColor = HandleColor.switchColor(bodycolor);
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
-                            }
-                            else
-                            {
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).mBodyFX.mFemaleColor = HandleColor.switchColor(bodycolor);
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
-                            }
-                        };
-                        StickmanStageFX.getInstance().runLater(bodyRunnable);
-                    }
-
-                    String haircolor = mStick.gethairColor();
-                    if((haircolor != null))
-                    {
-                        Runnable hairColor = () ->
-                        {
-                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE)
-                            {
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).mMaleHairFX.mColor = HandleColor.switchColor(haircolor);
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
-                            }
-                            else
-                            {
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).mFemaleHairFX.mColor = HandleColor.switchColor(haircolor);
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
-                            }
-                        };
-                        StickmanStageFX.getInstance().runLater(hairColor);
-                    }
-
-                    String headcolor = mStick.getheadColor();
-                    if(headcolor != null)
-                    {
-                        Runnable headColor =() ->
-                        {
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mHeadFX.mColor = HandleColor.switchColor(headcolor);
-                            if(((Stickman3D)sStickmansOnStage.getStickman(name)).mHeadFX.mColor != null)
-                                ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
-                        };
-                        StickmanStageFX.getInstance().runLater(headColor);
-                    }
-
-                    String limbscolor = mStick.getlimbsColor();
-                    if(limbscolor != null)
-                    {
-                        Runnable limbsColor = () ->
-                        {
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftUpperLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftForeLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftFootFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightUpperLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightForeLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightFootFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftHandFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightHandFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftShoulderFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightShoulderFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftUpperArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mLeftForeArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightUpperArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mRightForeArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).mNeckFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((Stickman3D)sStickmansOnStage.getStickman(name)).update();
-                        };
-                        StickmanStageFX.getInstance().runLater(limbsColor);
-                    }
-                }
-            }
-        }*/
-	
+    public void initialStickmanWithXml() {
 	readXML();
-        List<StickmanDataFX> mStickmanDataFX = ((StickmansOnStageFX)sStickmansOnStage).getmXmlTransform().getStickmanDataFXList();
-        if(!(mStickmanDataFX.isEmpty()))
-        {
-            for(StickmanDataFX mStick : mStickmanDataFX)
-            {
-                String name = mStick.getName();
-                if (sStickmansOnStage.getStickmanNames().contains(name.toLowerCase())){
-                    String bodycolor = mStick.getbodyColor();
-                    if(bodycolor != null)
-                    {
+	List<StickmanDataFX> mStickmanDataFX = ((StickmansOnStageFX) sStickmansOnStage).getmXmlTransform()
+		.getStickmanDataFXList();
+	if (!(mStickmanDataFX.isEmpty())) {
+	    for (StickmanDataFX mStick : mStickmanDataFX) {
+		String name = mStick.getName();
+		if (sStickmansOnStage.getStickmanNames().contains(name.toLowerCase())) {
+		    String bodycolor = mStick.getbodyColor();
+		    float bodyColorOpacity = mStick.getbodyColorOpacity();
+		    if (bodycolor != null) {
 
-                        Runnable bodyRunnable = () -> {
-                            if(((StickmanFX)sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE)
-                            {
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).mBodyFX.mMaleColor = HandleColor.switchColor(bodycolor);
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).update();
-                            }
-                            else
-                            {
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).mBodyFX.mFemaleColor = HandleColor.switchColor(bodycolor);
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).update();
-                            }
-                        };
-                        StickmanStageFX.getInstance().runLater(bodyRunnable);
-                    }
+			Runnable bodyRunnable = () -> {
+			    if (((StickmanFX) sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE) {
+				((StickmanFX) sStickmansOnStage.getStickman(name)).mBodyFX.mMaleColor = Color
+					.web(bodycolor, bodyColorOpacity);
+				((StickmanFX) sStickmansOnStage
+					.getStickman(name)).mBodyFX.mColoropacity = bodyColorOpacity;
+				((StickmanFX) sStickmansOnStage.getStickman(name)).update();
+			    } else {
+				((StickmanFX) sStickmansOnStage.getStickman(name)).mBodyFX.mFemaleColor = Color
+					.web(bodycolor, bodyColorOpacity);
+				((StickmanFX) sStickmansOnStage
+					.getStickman(name)).mBodyFX.mColoropacity = bodyColorOpacity;
+				((StickmanFX) sStickmansOnStage.getStickman(name)).update();
+			    }
+			};
+			StickmanStageFX.getInstance().runLater(bodyRunnable);
+		    }
 
-                    String haircolor = mStick.gethairColor();
-                    if((haircolor != null))
-                    {
-                        Runnable hairColor = () ->
-                        {
-                            if(((StickmanFX)sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE)
-                            {
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).mMaleHairFX.mColor = HandleColor.switchColor(haircolor);
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).update();
-                            }
-                            else
-                            {
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).mFemaleHairFX.mColor = HandleColor.switchColor(haircolor);
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).update();
-                            }
-                        };
-                        StickmanStageFX.getInstance().runLater(hairColor);
-                    }
+		    String haircolor = mStick.gethairColor();
+		    float hairColorOpacity = mStick.gethairColorOpacity();
+		    if ((haircolor != null)) {
+			Runnable hairColor = () -> {
+			    if (((StickmanFX) sStickmansOnStage.getStickman(name)).mType == Gender.TYPE.MALE) {
+				((StickmanFX) sStickmansOnStage.getStickman(name)).mMaleHairFX.mColor = Color
+					.web(haircolor, hairColorOpacity);
+				((StickmanFX) sStickmansOnStage
+					.getStickman(name)).mMaleHairFX.mColoropacity = hairColorOpacity;
+				((StickmanFX) sStickmansOnStage.getStickman(name)).update();
+			    } else {
+				((StickmanFX) sStickmansOnStage.getStickman(name)).mFemaleHairFX.mColor = Color
+					.web(haircolor, hairColorOpacity);
+				((StickmanFX) sStickmansOnStage
+					.getStickman(name)).mFemaleHairFX.mColoropacity = hairColorOpacity;
+				((StickmanFX) sStickmansOnStage.getStickman(name)).update();
+			    }
+			};
+			StickmanStageFX.getInstance().runLater(hairColor);
+		    }
 
-                    String headcolor = mStick.getheadColor();
-                    if(headcolor != null)
-                    {
-                        Runnable headColor =() ->
-                        {
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mHeadFX.mColor = HandleColor.switchColor(headcolor);
-                            if(((StickmanFX)sStickmansOnStage.getStickman(name)).mHeadFX.mColor != null)
-                                ((StickmanFX)sStickmansOnStage.getStickman(name)).update();
-                        };
-                        StickmanStageFX.getInstance().runLater(headColor);
-                    }
+		    String headcolor = mStick.getheadColor();
+		    float headColorOpacity = mStick.getheadColorOpacity();
+		    if (headcolor != null) {
+			Runnable headColor = () -> {
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mHeadFX.mColor = Color.web(headcolor,
+				    headColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mHeadFX.mColoropacity = headColorOpacity;
+			    if (((StickmanFX) sStickmansOnStage.getStickman(name)).mHeadFX.mColor != null)
+				((StickmanFX) sStickmansOnStage.getStickman(name)).update();
+			};
+			StickmanStageFX.getInstance().runLater(headColor);
+		    }
 
-                    String limbscolor = mStick.getlimbsColor();
-                    if(limbscolor != null)
-                    {
-                        Runnable limbsColor = () ->
-                        {
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftUpperLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftForeLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftFootFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightUpperLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightForeLegFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightFootFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftHandFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightHandFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftShoulderFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightShoulderFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftUpperArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mLeftForeArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightUpperArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mRightForeArmFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).mNeckFX.mColor = HandleColor.switchColor(limbscolor);
-                            ((StickmanFX)sStickmansOnStage.getStickman(name)).update();
-                        };
-                        StickmanStageFX.getInstance().runLater(limbsColor);
-                    }
-                }
-            }
-        }
+		    String limbscolor = mStick.getlimbsColor();
+		    float limbsColorOpacity = mStick.getlimbsColorOpacity();
+		    if (limbscolor != null) {
+			Runnable limbsColor = () -> {
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftUpperLegFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftForeLegFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftFootFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightUpperLegFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightForeLegFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightFootFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftHandFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightHandFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftShoulderFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightShoulderFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftUpperArmFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mLeftForeArmFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightUpperArmFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mRightForeArmFX.mColor = Color
+				    .web(limbscolor, limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).mNeckFX.mColor = Color.web(limbscolor,
+				    limbsColorOpacity);
+			    ((StickmanFX) sStickmansOnStage
+				    .getStickman(name)).mLeftUpperLegFX.mColoropacity = limbsColorOpacity;
+			    ((StickmanFX) sStickmansOnStage.getStickman(name)).update();
+			};
+			StickmanStageFX.getInstance().runLater(limbsColor);
+		    }
+		}
+	    }
+	}
     }
 }

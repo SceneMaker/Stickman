@@ -8,6 +8,10 @@ public class StickmanDataFX
     private String headColor;
     private String bodyColor;
     private String limbsColor;
+    private float hairColorOpacity;
+    private float headColorOpacity;
+    private float bodyColorOpacity;
+    private float limbsColorOpacity;
     private String backgroundRecord;
     
     /**
@@ -19,15 +23,23 @@ public class StickmanDataFX
     	headColor = null;
     	bodyColor = null;
     	limbsColor = null;
+    	hairColorOpacity = 1;
+    	headColorOpacity = 1;
+    	bodyColorOpacity = 1;
+    	limbsColorOpacity = 1;
     	backgroundRecord = null;
     }
     
-    public StickmanDataFX(String name, String hairColor,String headColor, String bodyColor, String limbsColor, String backgroundRecord) {
+    public StickmanDataFX(String name, String hairColor,String headColor, String bodyColor, String limbsColor, float hairColorOpacity, float headColorOpacity, float bodyColorOpacity, float limbsColorOpacity, String backgroundRecord) {
         this.name = name;
         this.hairColor = hairColor;
         this.headColor = headColor;
         this.bodyColor = bodyColor;
         this.limbsColor = limbsColor;
+        this.hairColorOpacity = hairColorOpacity;
+        this.headColorOpacity = headColorOpacity;
+        this.bodyColorOpacity = bodyColorOpacity;
+        this.limbsColorOpacity = limbsColorOpacity;
         this.backgroundRecord = backgroundRecord;
     }
     
@@ -69,6 +81,38 @@ public class StickmanDataFX
     
     public void setlimbsColor(String limbsColor) {
         this.limbsColor = limbsColor;
+    }
+    
+    public float gethairColorOpacity() {
+        return hairColorOpacity;
+    }
+    
+    public void sethairColorOpacity(float hairColorOpacity) {
+        this.hairColorOpacity = hairColorOpacity;
+    }
+    
+    public float getheadColorOpacity() {
+        return headColorOpacity;
+    }
+    
+    public void setheadColorOpacity(float headColorOpacity) {
+        this.headColorOpacity = headColorOpacity;
+    }
+    
+    public float getbodyColorOpacity() {
+        return bodyColorOpacity;
+    }
+    
+    public void setbodyColorOpacity(float bodyColorOpacity) {
+        this.bodyColorOpacity = bodyColorOpacity;
+    }
+    
+    public float getlimbsColorOpacity() {
+        return limbsColorOpacity;
+    }
+    
+    public void setlimbsColorOpacity(float limbsColorOpacity) {
+        this.limbsColorOpacity = limbsColorOpacity;
     }
     
     public String getbackgroundRecord() {

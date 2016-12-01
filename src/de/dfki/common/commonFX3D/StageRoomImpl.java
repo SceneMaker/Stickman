@@ -70,16 +70,17 @@ public abstract class StageRoomImpl implements StageRoom {
     public void launchStickmanConfiguration(String filepath){
         commonStickmansOnStage.setmFilePath(filepath);
         XmlStickmanLoader loader = new XmlStickmanLoader( commonStickmansOnStage);
-        launchStickmanConfiguration();
         loader.initialStickmanWithXml();
+        launchStickmanConfiguration();
+//        loader.initialStickmanWithXml();
     }
 
     public void launchStickmanStage(boolean show, String filepath){
         commonStickmansOnStage.setmFilePath(filepath);
         XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
-        launchStickmanStage(show);
         loader.initialStickmanWithXml();
-
+        launchStickmanStage(show);
+//        loader.initialStickmanWithXml();
     }
 
     @Override

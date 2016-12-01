@@ -12,9 +12,7 @@ import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickmanFX.stage.StickmanStageFX;
 import de.dfki.stickmanFX.stage.StageRoomFX;
 import de.dfki.stickmanFX.stage.StickmansOnStageFX;
-import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanFX.xmlsettings.StickmanDataFX;
-import de.dfki.util.HandleColor;
 import de.dfki.util.StickmanFillCombo;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -166,12 +164,8 @@ public class StickmanStageController implements ViewController {
     public void initialize() {
 	initColorSlider();
 	setIdForLabel();
+	
 	handleGroupForEnvironmentRadioButton();
-	HeadComboBoxColor.getItems().addAll("Festucine", "Beige", "Blue", "Black", "Red");
-	HairComboBoxColor.getItems().addAll("Saffron Yellow", "Brown", "Yellow", "Beige", "Blue", "Black", "Red",
-		"Gold");
-	BodyComboBoxColor.getItems().addAll("Purple", "Green", "Beige", "Black", "Yellow", "White");
-	LimbsComboBoxColor.getItems().addAll("Black", "Yellow", "White");
 	BackgroundComboBoxPic.getItems().addAll(StickmanFX.backgroundList);
 	
 	// Default show
@@ -200,22 +194,6 @@ public class StickmanStageController implements ViewController {
 	});
 
 	// change bodyColor
-	BodyComboBoxColor.setOnAction((event) -> {
-	    String color = BodyComboBoxColor.getSelectionModel().getSelectedItem();
-	    if ((color != null) && (mStickmancombobox != null)) {
-		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
-			getStickmanAsFx(mStickmancombobox).mBodyFX.mMaleColor = HandleColor.switchColor(color);
-			getStickmanAsFx(mStickmancombobox).update();
-		    } else {
-			getStickmanAsFx(mStickmancombobox).mBodyFX.mFemaleColor = HandleColor.switchColor(color);
-			getStickmanAsFx(mStickmancombobox).update();
-		    }
-		});
-	    }
-
-	});
-
 	BodyColorPicker.setOnAction((event) -> {
 	    Color bodyColor = BodyColorPicker.getValue();
 	    if ((bodyColor != null) && (mStickmancombobox != null)) {
@@ -261,23 +239,7 @@ public class StickmanStageController implements ViewController {
 	    }
 	});
 
-	// change hairColor
-	HairComboBoxColor.setOnAction((event) -> {
-	    String color = HairComboBoxColor.getSelectionModel().getSelectedItem();
-	    if ((color != null) && (mStickmancombobox != null)) {
-		Platform.runLater(() -> {
-		    if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
-			getStickmanAsFx(mStickmancombobox).mMaleHairFX.mColor = HandleColor.switchColor(color);
-			getStickmanAsFx(mStickmancombobox).update();
-		    } else {
-			getStickmanAsFx(mStickmancombobox).mFemaleHairFX.mColor = HandleColor.switchColor(color);
-			getStickmanAsFx(mStickmancombobox).update();
-		    }
-		});
-	    }
-
-	});
-	
+	// change hairColor	
 	HairColorPicker.setOnAction((event) -> {
 	    Color hairColor = HairColorPicker.getValue();
 	    if ((hairColor != null) && (mStickmancombobox != null)) {
@@ -325,17 +287,6 @@ public class StickmanStageController implements ViewController {
 
 	
 	// change head Color
-	HeadComboBoxColor.setOnAction((event) -> {
-	    String color = HeadComboBoxColor.getSelectionModel().getSelectedItem();
-	    if ((color != null) && (mStickmancombobox != null)) {
-		Platform.runLater(() -> {
-		    getStickmanAsFx(mStickmancombobox).mHeadFX.mColor = HandleColor.switchColor(color);
-		    if (getStickmanAsFx(mStickmancombobox).mHeadFX.mColor != null)
-			getStickmanAsFx(mStickmancombobox).update();
-		});
-	    }
-	});
-
 	HeadColorPicker.setOnAction((event) -> {
 	    Color headColor = HeadColorPicker.getValue();
 	    if ((headColor != null) && (mStickmancombobox != null)) {
@@ -408,34 +359,6 @@ public class StickmanStageController implements ViewController {
 	});
 
 	// change limbs Color
-	LimbsComboBoxColor.setOnAction((event) -> {
-	    String color = LimbsComboBoxColor.getSelectionModel().getSelectedItem();
-	    if ((color != null) && (mStickmancombobox != null)) {
-		Platform.runLater(() -> {
-		    // mStickmanOnstage.getStickman(mStickmancombobox).mLeftLegFX.mColor
-		    // = switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftUpperLegFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftForeLegFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftFootFX.mColor = HandleColor.switchColor(color);
-		    // mStickmanOnstage.getStickman(mStickmancombobox).mRightLegFX.mColor
-		    // = switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightUpperLegFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightForeLegFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightFootFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftHandFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightHandFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftShoulderFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightShoulderFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftUpperArmFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mLeftForeArmFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightUpperArmFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mRightForeArmFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).mNeckFX.mColor = HandleColor.switchColor(color);
-		    getStickmanAsFx(mStickmancombobox).update();
-		});
-	    }
-	});
-	
 	LimbsColorPicker.setOnAction((event) -> {
 	    Color limbsColor = LimbsColorPicker.getValue();
 	    if ((limbsColor != null) && (mStickmancombobox != null)) {
@@ -515,17 +438,7 @@ public class StickmanStageController implements ViewController {
 	    public void handle(ActionEvent event) {
 		if ((mStickmancombobox != null)) {
 		    Platform.runLater(() -> {
-			if (getStickmanAsFx(mStickmancombobox).mType == Gender.TYPE.MALE) {
-			    HeadComboBoxColor.setValue("Festucine");
-			    HairComboBoxColor.setValue("Brown");
-			    BodyComboBoxColor.setValue("Green");
-			    LimbsComboBoxColor.setValue("Black");
-			} else {
-			    HeadComboBoxColor.setValue("Festucine");
-			    HairComboBoxColor.setValue("Saffron Yellow");
-			    BodyComboBoxColor.setValue("Purple");
-			    LimbsComboBoxColor.setValue("Black");
-			}
+
 		    });
 
 		    if ((groupEnvironmentRadioButton.getSelectedToggle() != null)) {
@@ -667,33 +580,26 @@ public class StickmanStageController implements ViewController {
     // set the setValue of combobox
     private void setComboboxValue(StickmanFX mStick) {
 	if (mStick.mType == Gender.TYPE.MALE) {
-	    String sBodyComboBoxColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
-	    if (sBodyComboBoxColor != null)
-		BodyComboBoxColor.setValue(sBodyComboBoxColor);
+	    BodyColorPicker.setValue(colorWithoutOpacity(mStick.mBodyFX.mMaleColor));
+	    BodyColorSlider.setValue(mStick.mBodyFX.mColoropacity);
 	} else {
-	    String sBodyComboBoxColor = HandleColor.switchColorToString(mStick.mBodyFX.mFemaleColor);
-	    if (sBodyComboBoxColor != null)
-		BodyComboBoxColor.setValue(sBodyComboBoxColor);
+	    BodyColorPicker.setValue(colorWithoutOpacity(mStick.mBodyFX.mFemaleColor));
+	    BodyColorSlider.setValue(mStick.mBodyFX.mColoropacity);
 	}
 
 	if (mStick.mType == Gender.TYPE.MALE) {
-	    String sHairComboBoxColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
-	    if (sHairComboBoxColor != null)
-		HairComboBoxColor.setValue(sHairComboBoxColor);
+	    HairColorPicker.setValue(colorWithoutOpacity(mStick.mMaleHairFX.mColor));
+	    HairColorSlider.setValue(mStick.mMaleHairFX.mColoropacity);
 	} else {
-	    String sHairComboBoxColor = HandleColor.switchColorToString(mStick.mFemaleHairFX.mColor);
-	    if (sHairComboBoxColor != null)
-		HairComboBoxColor.setValue(sHairComboBoxColor);
-
+	    HairColorPicker.setValue(colorWithoutOpacity(mStick.mFemaleHairFX.mColor));
+	    HairColorSlider.setValue(mStick.mFemaleHairFX.mColoropacity);
 	}
 
-	String sHeadComboBoxColor = HandleColor.switchColorToString(mStick.mHeadFX.mColor);
-	if (sHeadComboBoxColor != null)
-	    HeadComboBoxColor.setValue(sHeadComboBoxColor);
+	HeadColorPicker.setValue(colorWithoutOpacity(mStick.mHeadFX.mColor));
+	HeadColorSlider.setValue(mStick.mHeadFX.mColoropacity);
 
-	String sLimbsComboBoxColor = HandleColor.switchColorToString(mStick.mLeftUpperLegFX.mColor);
-	if (sLimbsComboBoxColor != null)
-	    LimbsComboBoxColor.setValue(sLimbsComboBoxColor);
+	LimbsColorPicker.setValue(colorWithoutOpacity(mStick.mLeftUpperLegFX.mColor));
+	LimbsColorSlider.setValue(mStick.mLeftUpperLegFX.mColoropacity);
     }
 
     @FXML
@@ -886,23 +792,35 @@ public class StickmanStageController implements ViewController {
 			    String name = key;
 			    String bodyColor;
 			    String hairColor;
+			    String headColor;
+			    String limbsColor;
+			    float hairColorOpacity;
+			    float headColorOpacity;
+			    float bodyColorOpacity;
+			    float limbsColorOpacity;
 			    StickmanFX mStick = getStickmanAsFx(key);
 			    if (mStick.mType == Gender.TYPE.MALE) {
-				bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mMaleColor);
+				bodyColor = toHexCode(mStick.mBodyFX.mMaleColor);
 			    } else {
-				bodyColor = HandleColor.switchColorToString(mStick.mBodyFX.mFemaleColor);
+				bodyColor = toHexCode(mStick.mBodyFX.mFemaleColor);
 			    }
+			    bodyColorOpacity = mStick.mBodyFX.mColoropacity;
 
 			    if (mStick.mType == Gender.TYPE.MALE) {
-				hairColor = HandleColor.switchColorToString(mStick.mMaleHairFX.mColor);
+				hairColor = toHexCode(mStick.mMaleHairFX.mColor);
+				hairColorOpacity = mStick.mMaleHairFX.mColoropacity;
 			    } else {
-				hairColor = HandleColor.switchColorToString(mStick.mFemaleHairFX.mColor);
+				hairColor = toHexCode(mStick.mFemaleHairFX.mColor);
+				hairColorOpacity = mStick.mFemaleHairFX.mColoropacity;
 			    }
 
-			    String headColor = HandleColor.switchColorToString(mStick.mHeadFX.mColor);
-			    String limbsColor = HandleColor.switchColorToString(mStick.mLeftUpperLegFX.mColor);
+			    headColor = toHexCode(mStick.mHeadFX.mColor);
+			    headColorOpacity = mStick.mHeadFX.mColoropacity;
+			    
+			    limbsColor = toHexCode(mStick.mLeftUpperLegFX.mColor);
+			    limbsColorOpacity = mStick.mLeftUpperLegFX.mColoropacity;
 
-			    mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor, backgroundRecord));
+			    mStickmanDataFX.add(new StickmanDataFX(name, hairColor, headColor, bodyColor, limbsColor, hairColorOpacity, headColorOpacity, bodyColorOpacity, limbsColorOpacity, backgroundRecord));
 			}
 			((StickmansOnStageFX) mStickmanOnstage).getmXmlTransform()
 				.loadStickmanDataFXList(mStickmanDataFX);
@@ -945,5 +863,9 @@ public class StickmanStageController implements ViewController {
                 (int) (color.getRed() * 255),
                 (int) (color.getGreen() * 255),
                 (int) (color.getBlue() * 255));
+    }
+    
+    private Color colorWithoutOpacity(Color color) {
+        return new Color (color.getRed(), color.getGreen(), color.getBlue(), 1);
     }
 }
