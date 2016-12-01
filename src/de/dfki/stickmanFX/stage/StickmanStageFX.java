@@ -74,7 +74,8 @@ public class StickmanStageFX extends Application implements StickmanStage {
         configStage = stage;
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("de.dfki.stickmanFX.css.StickmanCSS.css");
+//        scene.getStylesheets().add("de.dfki.stickmanFX.css.StickmanCSS.css");
+        scene.getStylesheets().add("de//dfki//stickmanFX//css//StickmanCSS.css");
         stage.setTitle("Stickman3D");
         stage.setScene(scene);
         stickmanFXStages.put(StageRoomFX.CONFIG_STAGE, stage);

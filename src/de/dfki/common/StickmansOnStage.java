@@ -3,6 +3,7 @@ package de.dfki.common;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.stickmanFX.xmlsettings.XmlTransform;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.util.Names;
 
@@ -81,6 +82,8 @@ public abstract class StickmansOnStage {
     protected abstract void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender);
 
     protected abstract void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace);
+    
+    public abstract XmlTransform getmXmlTransform();
 
     public Stickman getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {

@@ -175,7 +175,7 @@ public class StickmanStageController implements ViewController {
 	BackgroundComboBoxPic.getItems().addAll(StickmanFX.backgroundList);
 	
 	// Default show
-	handleStickman();
+//	handleStickman();
 	handleBodyColour();
 
 	fillComboForEmotionExpression();
@@ -919,11 +919,11 @@ public class StickmanStageController implements ViewController {
 	File filexml = null;
 	if (mStickmanOnstage.getmFilePath() != null)
 	    filexml = new File(
-		    mStickmanOnstage.getmFilePath() + File.separator + "stickmanSwing" + File.separator + "stickmanSwing.xml");
+		    mStickmanOnstage.getmFilePath() + File.separator + "stickmanfx" + File.separator + "stickmanfx.xml");
 	else {
 	    try {
-		filexml = new File(new File(".").getCanonicalPath() + File.separator + "stickmanSwing" + File.separator
-			+ "stickmanSwing.xml");
+		filexml = new File(new File(".").getCanonicalPath() + File.separator + "stickmanfx" + File.separator
+			+ "stickmanfx.xml");
 	    } catch (IOException e) {
 		e.printStackTrace();
 	    }
