@@ -64,7 +64,7 @@ public class NoseFX extends BodyPartFX
 		super.init();
 		mNose.setTranslateX(mStart.x);
 		mNose.setTranslateY(mStart.y + 110);
-		mNose.setTranslateZ(7);
+		mNose.setTranslateZ(-15);
 	}
 	@Override
 	public void setShape(String s) {

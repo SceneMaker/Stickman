@@ -10,6 +10,7 @@ import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.EventAnimation3D;
 import de.dfki.stickman3D.bodyfx.*;
 import de.dfki.stickman3D.environmentfx.SpeechBubbleFX;
+import static de.dfki.stickmanFX.StickmanFX.mSize;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -303,6 +304,11 @@ public class Stickman3D extends Pane implements Stickman {
 		this.setPrefWidth(mSize.width);
 		this.setMinHeight(mSize.height);
 		this.setMinWidth(mSize.width);
+//                if(Toolkit.getDefaultToolkit().getScreenSize().getHeight() <= 768)
+//			this.setTranslateY(11);
+//		else
+//			this.setTranslateY(250);
+                
 		// this.setStyle("-fx-border-color: black");
 
 		InnerShadow is = new InnerShadow();
@@ -478,13 +484,7 @@ public class Stickman3D extends Pane implements Stickman {
 		// draw everthing in the middle and scaled
 		Affine af = new Affine();
 		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-		// mGeneralYTranslation = (float)
-		// (Screen.getPrimary().getVisualBounds().getHeight() - 477 * mScale);
-		// mGeneralYTranslation = (float)
-		// (Screen.getPrimary().getVisualBounds().getHeight() - 700 * mScale);
-		// change Screen.getPrimary().getVisualBounds().getHeight() to
-		// mSize.height to avoid the location changed after update. by Robbie
-		mGeneralYTranslation = (float) (mSize.height - 700 * mScale);
+                mGeneralYTranslation = (float) (mSize.height / 5);
 
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);

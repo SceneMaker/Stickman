@@ -59,7 +59,7 @@ public class UpperBody extends BodyPartFX {
 			url = getClass().getClassLoader().getResource("BodyParts/UpperFemaleBody.dae");
 			mColor = Color.rgb(154, 83, 198, 1);
 		} else {
-			url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody1.dae");
+			url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody.dae");
 			mColor = Color.rgb(14, 134, 122, 1);
 		}
 
@@ -83,7 +83,7 @@ public class UpperBody extends BodyPartFX {
 		super.init();
 		mUpperBodyGroup.setTranslateX(mStart.x);
 		if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
-			mUpperBodyGroup.setTranslateY(mStart.y + 135);
+			mUpperBodyGroup.setTranslateY(mStart.y + 155);
 			mUpperBodyGroup.setTranslateZ(-105);
 		} else {
 			mUpperBodyGroup.setTranslateY(mStart.y + 135);
