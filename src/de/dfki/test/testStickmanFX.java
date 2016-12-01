@@ -12,11 +12,11 @@ public class testStickmanFX {
     public static void main(String[] args) {
 
 
-        StageRoom stickmanStage = new StageRoomSwing();
-        stickmanStage.addStickman("Patrick");
-        //stickmanStage.addStickman("Bob");
-        stickmanStage.launchStickmanStage(true);
-        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
+//        StageRoom stickmanStage = new StageRoomSwing();
+//        stickmanStage.addStickman("Patrick");
+//        //stickmanStage.addStickman("Bob");
+//        stickmanStage.launchStickmanStage(true);
+//        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
 
         StageRoom stickmanStage3D1 = new StageRoom3D(500,0, true);
         stickmanStage3D1.addStickman("Anna");
@@ -24,9 +24,9 @@ public class testStickmanFX {
         stickmanStage3D1.getStickman("Anna").doAnimation("Speaking", 2000, "Hello World", true);
 
 
-        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
-        stickmanStage2.addStickman("Sarah");
-        stickmanStage2.launchStickmanStage(true);
+//        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
+//        stickmanStage2.addStickman("Sarah");
+//        stickmanStage2.launchStickmanStage(true);
         //stickmanStage2.launchStickmanStage(true);
 
         /*StageRoom stickmanStageFx = new StageRoomFX(0,500, true);

@@ -48,7 +48,7 @@ public class LeftForeArmFX extends BodyPartFX
         imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
 
-        url = getClass().getClassLoader().getResource("BodyParts/ForeArm1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/ForeArm.dae");
 
         mXRotation = -15;
         mZRotation = 10;

@@ -42,7 +42,7 @@ public class NoseFX extends BodyPartFX
 		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, 1);
 
-		url = getClass().getClassLoader().getResource("BodyParts/nose1.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/nose.dae");
 
 		imorter.read(url);
 		mNose = (MeshView) imorter.getImport()[0];

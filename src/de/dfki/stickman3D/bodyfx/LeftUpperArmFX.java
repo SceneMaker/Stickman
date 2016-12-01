@@ -48,7 +48,7 @@ public class LeftUpperArmFX extends BodyPartFX {
 		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, 1);
 
-		url = getClass().getClassLoader().getResource("BodyParts/UpperArm1.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/UpperArm.dae");
 
 		if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
 			mDefaultRotation = -10;
