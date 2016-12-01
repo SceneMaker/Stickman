@@ -66,7 +66,7 @@ public class Angry extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "ANGRYEND"));
         playAnimationPart(mDuration);
         
-        if(StickmanStageController.currentRadioButton != null)
+       
 
     }
 }

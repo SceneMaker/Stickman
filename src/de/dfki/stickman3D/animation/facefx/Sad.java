@@ -45,7 +45,6 @@ public class Sad extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add by Robbie
         playAnimationPart(mDuration);
         
-        if(StickmanStageController.currentRadioButton != null)
 
     }
 }

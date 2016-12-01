@@ -45,7 +45,6 @@ public class Contempt extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
         playAnimationPart(mDuration);
         
-        if(StickmanStageController.currentRadioButton != null)
 
     }
 }

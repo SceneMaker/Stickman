@@ -121,7 +121,6 @@ public class Angry2 extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", 15));
         playAnimationPart(mDuration);
         
-        if(StickmanStageController.currentRadioButton != null)
 
 	}
 }

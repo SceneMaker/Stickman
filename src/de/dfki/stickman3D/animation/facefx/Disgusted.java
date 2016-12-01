@@ -50,7 +50,6 @@ public class Disgusted extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTEDEND"));
         playAnimationPart(mDuration);
         
-        if(StickmanStageController.currentRadioButton != null)
 
     }
 }
