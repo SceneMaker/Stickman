@@ -4,6 +4,7 @@ import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
+import de.dfki.stickmanFX.bodyfx.*;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
 import java.awt.Dimension;
@@ -26,35 +27,8 @@ import de.dfki.stickmanFX.animationlogic.AnimationFX;
 import de.dfki.stickmanFX.animationlogic.AnimationLoaderFX;
 import de.dfki.stickmanFX.animationlogic.AnimationSchedulerFX;
 import de.dfki.stickmanFX.animationlogic.EventAnimationFX;
-import de.dfki.stickmanFX.bodyfx.BodyFX;
-import de.dfki.stickmanFX.bodyfx.BombeFX;
-import de.dfki.stickmanFX.bodyfx.FaceWrinkleFX;
-import de.dfki.stickmanFX.bodyfx.FemaleHairFX;
-import de.dfki.stickmanFX.bodyfx.HeadFX;
-import de.dfki.stickmanFX.bodyfx.LeftEyeFX;
-import de.dfki.stickmanFX.bodyfx.LeftEyebrowFX;
-import de.dfki.stickmanFX.bodyfx.LeftFootFX;
-import de.dfki.stickmanFX.bodyfx.LeftForeArmFX;
-import de.dfki.stickmanFX.bodyfx.LeftForeLegFX;
-import de.dfki.stickmanFX.bodyfx.LeftHandFX;
-import de.dfki.stickmanFX.bodyfx.LeftShoulderFX;
-import de.dfki.stickmanFX.bodyfx.LeftUpperArmFX;
-import de.dfki.stickmanFX.bodyfx.LeftUpperLegFX;
-import de.dfki.stickmanFX.bodyfx.MaleHairFX;
-import de.dfki.stickmanFX.bodyfx.MouthFX;
-import de.dfki.stickmanFX.bodyfx.NeckFX;
-import de.dfki.stickmanFX.bodyfx.RightEyeFX;
-import de.dfki.stickmanFX.bodyfx.RightEyebrowFX;
-import de.dfki.stickmanFX.bodyfx.RightFootFX;
-import de.dfki.stickmanFX.bodyfx.RightForeArmFX;
-import de.dfki.stickmanFX.bodyfx.RightForeLegFX;
-import de.dfki.stickmanFX.bodyfx.RightHandFX;
-import de.dfki.stickmanFX.bodyfx.RightShoulderFX;
-import de.dfki.stickmanFX.bodyfx.RightUpperArmFX;
-import de.dfki.stickmanFX.bodyfx.RightUpperLegFX;
-import de.dfki.stickmanFX.bodyfx.StarsFX;
-import de.dfki.stickmanFX.bodyfx.ThinkFX;
 import de.dfki.stickmanFX.environmentfx.SpeechBubbleFX;
+import de.dfki.util.observers.AnimationObserver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -163,6 +137,8 @@ public class StickmanFX extends Pane implements Stickman {
     // environment
     public SpeechBubbleFX mSpeechBubbleFX;
     private StageRoom stageController;
+	public NoseFX mNose;
+	private boolean faceOnly = false;
 
     // logging
     public final Logger mLogger = Logger.getAnonymousLogger();
@@ -206,6 +182,7 @@ public class StickmanFX extends Pane implements Stickman {
 
 	mName = name;
 	mType = gender;
+		this.faceOnly = faceOnly;
 
 	initBodyParts();
 
@@ -263,6 +240,7 @@ public class StickmanFX extends Pane implements Stickman {
 	mRightFootFX = new RightFootFX(mRightForeLegFX);
 	mThinkFX = new ThinkFX(mHeadFX);
 	mBombeFX = new BombeFX(mHeadFX);
+		mNose = new NoseFX(mHeadFX);
     }
 
     public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size, boolean faceOnly) {
@@ -392,6 +370,10 @@ public class StickmanFX extends Pane implements Stickman {
 	return a;
     }
 
+	public AnimationFX doAnimationAsImage(String name, int duration, boolean block, AnimationObserver obs) {
+		return doAnimation(name, duration, obs, block);
+	}
+
     public AnimationFX doAnimation(String name, int duration, boolean block) {
 	return doAnimation(name, duration, "", block);
     }
@@ -442,6 +424,8 @@ public class StickmanFX extends Pane implements Stickman {
 	mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
 	mGeneralYTranslation = (float) (mSize.height / 5);
 	// mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
+		if(this.faceOnly)
+			mGeneralYTranslation = -250;
 	af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 	af.appendScale(mScale, mScale);
 	// Added by Robbie, GoDown
@@ -475,7 +459,7 @@ public class StickmanFX extends Pane implements Stickman {
 
     private void addOnlyHeadParts() {
 	this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
-		mFaceWrinkleFX, mSpeechBubbleFX);
+		mFaceWrinkleFX, mSpeechBubbleFX, mNose);
 	if (this.mType == Gender.TYPE.MALE)
 	    this.getChildren().add(mMaleHairFX);
 	else

@@ -6,7 +6,11 @@ import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickmanSwing.util.TimingInfo;
 import de.dfki.stickmanFX.StickmanFX;
 import de.dfki.stickmanFX.bodyfx.BodyPartFX;
+import de.dfki.util.observers.AnimationObserver;
+
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 import static java.lang.Thread.sleep;
 
@@ -26,6 +30,7 @@ public class AnimatorFX
     public WordTimeMarkSequence mWTS;
     private int mRenderPauseDuration = 0;
     public Semaphore mRenderingPause = new Semaphore(0);
+    private static LinkedList<AnimationObserver> observers = new LinkedList<>();
 
     //private long mPreparationTime = 0;
     public AnimatorFX(StickmanFX sm, AnimationFX a, ArrayList<AnimationContentFX> animComps) 
@@ -214,12 +219,40 @@ public class AnimatorFX
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
                 mAnimationFX.mAnimationPartStart.release();
+                if(mAnimationFX.mParameter instanceof AnimationObserver){
+                    try {
+                        BufferedImage image = mStickmanFX.getStickmanStageController().getStageAsImage();
+                        notifyAllObservers(image);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
                 return;
             }
 
             mCurrentStep -= 1;
         }
     }
+
+    public void notifyOnIdentifier(String image){
+        notifyAllObservers(image);
+    }
+
+    public static void register(AnimationObserver obj) {
+        observers.add(obj);
+    }
+
+    public static void unregister(AnimationObserver obj) {
+        observers.remove(obj);
+    }
+
+    public static void notifyAllObservers(Object obj) {
+        for (AnimationObserver observer: observers ) {
+            observer.update(obj);
+        }
+    }
+
 
     private class WaitThread extends Thread 
     {

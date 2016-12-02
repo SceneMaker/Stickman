@@ -193,24 +193,23 @@ public class StickmanStageFX extends Application implements StickmanStage {
         }
     }
 
-    public BufferedImage getStageAsImage(String stageIdentifier) throws Exception {
+    public synchronized BufferedImage getStageAsImage(String stageIdentifier) throws Exception {
         if (stickmanFXStages.containsKey(stageIdentifier)) {
-            Stage stage = stickmanFXStages.get(stageIdentifier);
+            Stage stage =  stickmanFXStages.get(stageIdentifier);
             final CountDownLatch latch = new CountDownLatch(1);
-            ImageContainer imageContainer = new ImageContainer();
-            Platform.runLater(() -> {
-                WritableImage snapshot = stage.getScene().getRoot().snapshot(new SnapshotParameters(), null);
+            ImageContainer imageContainer= new ImageContainer();
+            Platform.runLater(()->{
+                SnapshotParameters sp = new SnapshotParameters();
+                sp.setFill(javafx.scene.paint.Color.TRANSPARENT);
+                WritableImage snapshot = stage.getScene().getRoot().snapshot(sp, null);
                 BufferedImage bi = SwingFXUtils.fromFXImage(snapshot, null);
-                BufferedImage imageRGB = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.OPAQUE);
-                Graphics2D graphics = imageRGB.createGraphics();
-                graphics.drawImage(bi, 0, 0, null);
-                imageContainer.setImage(imageRGB);
+                imageContainer.setImage(bi);
                 latch.countDown();
             });
             latch.await();
             return imageContainer.getImage();
 
-        } else {
+        }else {
             throw new Exception("Stage Not found");
         }
 

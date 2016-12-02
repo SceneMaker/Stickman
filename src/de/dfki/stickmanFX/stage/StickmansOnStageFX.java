@@ -39,7 +39,7 @@ public class StickmansOnStageFX extends StickmansOnStage {
         }else{
             float scale = DEFAULT_SCALE;
             if(onlyFace){
-                scale = 1.0f;
+                scale = 9.0f;
             }
             Stickman stickman = new StickmanFX(name, gender, scale);
             putFullStickmanOnStage(name, stickman);

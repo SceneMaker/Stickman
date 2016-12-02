@@ -1,5 +1,6 @@
 package de.dfki.common.interfaces;
 
+import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
 
 /**
@@ -19,4 +20,5 @@ public interface Stickman {
     Animation doAnimation(String name, int duration, boolean block);
     Animation doAnimation(String name, Object param, boolean block);
     Animation doAnimation(String name, int duration, Object param, boolean block);
+    Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block);
 }
