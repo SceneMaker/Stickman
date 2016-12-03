@@ -36,12 +36,16 @@ public class Muster extends Animation {
 	public void playAnimation() {
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "NINE"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
 		playAnimationPart(10);
-		
-		pauseAnimation(10);
+
+		pauseAnimation(300);
+
+		// blink up
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "DEFAULT"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyeFX, "shape", "BLINKEND"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
 		playAnimationPart(10);
 
 	}

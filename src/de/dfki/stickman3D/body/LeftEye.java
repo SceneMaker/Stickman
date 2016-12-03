@@ -169,6 +169,13 @@ public class LeftEye extends BodyPart {
 			bigPupileYSize += 0.050;
 			smallPupileYSize += 0.050;
 
+			if (borderYSize > 0.8550001)
+				borderYSize = 0.8550001f;
+			if (bigPupileYSize > 0.9500000000000003)
+				bigPupileYSize = 0.9500000000000003;
+			if (smallPupileYSize > 0.9500000000000003)
+				smallPupileYSize = 0.9500000000000003;
+			
 			border.setScaleY(1 - borderYSize);
 			bigPupile.setScaleY(1 - bigPupileYSize);
 			smallPupile.setScaleY(1 - smallPupileYSize);
