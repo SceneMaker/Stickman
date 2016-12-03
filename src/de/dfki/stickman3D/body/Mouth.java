@@ -63,7 +63,7 @@ public class Mouth extends BodyPart {
 	public void init() {
 		super.init();
 		currentUpperLipPolygon.setTranslateX(mStart.x - 15);
-		currentUpperLipPolygon.setTranslateY(mStart.y + 95);
+		currentUpperLipPolygon.setTranslateY(mStart.y + 94.5);
 		currentUpperLipPolygon.setTranslateZ(-17);
 
 		currentDownLipPolygon.setTranslateX(mStart.x - 15);
@@ -124,6 +124,8 @@ public class Mouth extends BodyPart {
 			break;
 
 		case SMILE:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthSMILE.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthSMILE.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -139,6 +141,8 @@ public class Mouth extends BodyPart {
 			break;
 
 		case SAD:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthSAD.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthSAD.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -152,6 +156,8 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case ANGRY:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthANGRY.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthANGRY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -165,6 +171,8 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case ANGRYSMALLMOUTH:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthANGRYSMALLMOUTH.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthANGRYSMALLMOUTH.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -178,6 +186,8 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case SURPRISED:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthSURPRISED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthSURPRISED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -192,6 +202,8 @@ public class Mouth extends BodyPart {
 			break;
 
 		case HAPPY:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthHAPPY.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthHAPPY.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -206,6 +218,8 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case DISGUSTED:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthDISGUSTED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthDISGUSTED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -220,6 +234,8 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case CONTEMPT:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthCONTEMPT.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthCONTEMPT.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -235,6 +251,8 @@ public class Mouth extends BodyPart {
 			break;
 
 		case FEAR:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthFEAR.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthFEAR.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -249,6 +267,8 @@ public class Mouth extends BodyPart {
 			}
 			break;
 		case EXCITED:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthEXCITED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthEXCITED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -264,6 +284,8 @@ public class Mouth extends BodyPart {
 			break;
 
 		case EMBARRASSED:
+			currentUpperLipPolygon = MouthDEFAULT.modifyUpperLip(currentUpperLipPolygon, step);
+			currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
 			currentUpperLipPolygon = MouthEMBARRASSED.modifyUpperLip(currentUpperLipPolygon, step, "plus");
 			currentDownLipPolygon = MouthEMBARRASSED.modifyDownLip(currentDownLipPolygon, step, "plus");
 			break;
@@ -301,6 +323,7 @@ public class Mouth extends BodyPart {
 			break;
 
 		case FOUR:
+			currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, step);
 			currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, step);
 			break;
 
