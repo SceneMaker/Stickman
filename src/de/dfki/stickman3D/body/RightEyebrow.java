@@ -106,6 +106,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case ANGRY:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			currentPolygon = RightBrowANGRY.getANGRY(currentPolygon, step, "PLUS");
 			break;
 
@@ -114,6 +121,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case DISGUSTED:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			currentPolygon = RightBrowDISGUSTED.getANGRY(currentPolygon, step, "PLUS");
 			break;
 
@@ -122,6 +136,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case SURPRISED:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			currentPolygon = RightBrowSURPRISED.getANGRY(currentPolygon, step, "PLUS");
 			break;
 
@@ -130,6 +151,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case EXCITED:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			currentPolygon = RightBrowEXCITED.getANGRY(currentPolygon, step, "PLUS");
 			break;
 
@@ -138,6 +166,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case EMBARRASSED:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
 				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", true);
 			else
@@ -152,6 +187,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case HAPPY:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			currentPolygon = RightBrowHAPPY.getANGRY(currentPolygon, step, "PLUS");
 			break;
 
@@ -160,6 +202,13 @@ public class RightEyebrow extends BodyPart {
 			break;
 
 		case SAD:
+			if(step == 20)
+			{
+				if (mHeadFX.mStickmanFX.mType == Stickman3D.TYPE.MALE)
+					currentPolygon = RightBrowDEFAULT.createMaleBrow(currentPolygon, step);
+				else
+					currentPolygon = RightBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+			}
 			currentPolygon = RightBrowSAD.getANGRY(currentPolygon, step, "PLUS");
 			break;
 
