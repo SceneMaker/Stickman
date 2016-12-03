@@ -273,6 +273,8 @@ public class LeftEye extends BodyPart {
 			}
 			break;
 		case ANGRY:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize += 0.0210;
 			bigPupileYSize += 0.010;
 
@@ -293,6 +295,8 @@ public class LeftEye extends BodyPart {
 			break;
 
 		case SURPRISED:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize -= 0.0158;
 			border.setScaleY(1 - borderYSize);
 			break;
@@ -308,6 +312,8 @@ public class LeftEye extends BodyPart {
 			break;
 
 		case HAPPY:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize += 0.0105;
 			borderXSize += 0.0052;
 			border.setScaleY(1 - borderYSize);
@@ -327,6 +333,8 @@ public class LeftEye extends BodyPart {
 			break;
 
 		case DISGUSTED:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize += 0.0105;
 
 			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
@@ -351,6 +359,8 @@ public class LeftEye extends BodyPart {
 			break;
 
 		case CONTEMPT:
+			if(step == 20)
+				createDefaultEye();
 			// NOTE: marjvena tvalze araferi ar gaaketo datove carieli
 			borderYSize += 0.0105;
 			borderXSize += 0.0052;
@@ -371,6 +381,8 @@ public class LeftEye extends BodyPart {
 			break;
 
 		case EXCITED:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize -= 0.0105;
 			borderXSize -= 0.0052;
 			border.setScaleY(1 - borderYSize);
@@ -390,6 +402,8 @@ public class LeftEye extends BodyPart {
 			break;
 
 		case EMBARRASSED:
+			if(step == 20)
+				createDefaultEye();
 			xMovement = 0.100f;
 			yMovement = 0.184f;
 
