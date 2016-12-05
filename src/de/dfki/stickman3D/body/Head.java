@@ -160,7 +160,7 @@ public class Head extends BodyPart {
 		Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
 		mHead.getTransforms().clear();
-		mHead.getTransforms().addAll(rx, ry, rz, translation);
+		mHead.getTransforms().addAll(rz, ry, rx, translation);
 
 		switch (mShape) {
 		case FADEIN:
