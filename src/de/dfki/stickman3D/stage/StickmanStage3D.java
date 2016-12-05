@@ -237,9 +237,51 @@ public class StickmanStage3D extends Application implements StickmanStage {
     @Override
     public HBox getStickmanPane(String stageIdentifier) throws Exception {
         HBox sStickmanPane;
+        Stage stage = stickmanFXStages.get(stageIdentifier);
+
         if (stickmanFXStages.containsKey(stageIdentifier)) {
             sStickmanPane = (HBox) stickmanFXStages.get(stageIdentifier).getScene().getRoot();
             sStickmanPane.setAlignment(Pos.BASELINE_CENTER);
+
+            sStickmanPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    System.out.println(".handle()");
+                }
+
+            });
+
+            stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    if (event.getCode() == KeyCode.RIGHT) {
+                        sStickmanPane.setTranslateX(sStickmanPane.getTranslateX() + 20);
+                    } else if (event.getCode() == KeyCode.LEFT) {
+                        sStickmanPane.setTranslateX(sStickmanPane.getTranslateX() - 20);
+                    } else if (event.getCode() == KeyCode.UP) {
+                        sStickmanPane.setTranslateY(sStickmanPane.getTranslateY() - 20);
+                    } else if (event.getCode() == KeyCode.DOWN) {
+                        sStickmanPane.setTranslateY(sStickmanPane.getTranslateY() + 20);
+                    }
+                }
+            });
+
+            stage.getScene().setOnScroll(new EventHandler<ScrollEvent>() {
+
+                @Override
+                public void handle(ScrollEvent event) {
+                    if (event.getDeltaY() < 0) {
+                        sStickmanPane.setScaleX(sStickmanPane.getScaleX() - 0.05);
+                        sStickmanPane.setScaleY(sStickmanPane.getScaleY() - 0.05);
+                        sStickmanPane.setScaleZ(sStickmanPane.getScaleZ() - 0.05);
+                    } else {
+                        sStickmanPane.setScaleX(sStickmanPane.getScaleX() + 0.05);
+                        sStickmanPane.setScaleY(sStickmanPane.getScaleY() + 0.05);
+                        sStickmanPane.setScaleZ(sStickmanPane.getScaleZ() + 0.05);
+                    }
+                }
+            });
+
             return (sStickmanPane.getId() != null && sStickmanPane.getId().equals(STICKMAN_STAGE)) ? sStickmanPane : findStagePane(sStickmanPane);
         } else {
             throw new Exception("Stage Not found");
