@@ -33,6 +33,12 @@ public class IdleBehavior extends Thread {
 		this.mUnconsciouslyAction.start();
 	}
 
+        public IdleBehavior(Stickman3D stickmanFX, int breathFrequent) {
+		this.mStickmanFX = stickmanFX;
+		this.mUnconsciouslyAction = new UnconsciouslyAction(stickmanFX, breathFrequent);
+		this.mUnconsciouslyAction.start();
+	}
+        
 	@Override
 	public void run() {
 		while (mStickmanFX.mIdleRun) {

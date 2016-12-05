@@ -38,8 +38,19 @@ public class UnconsciouslyAction extends Thread {
 		this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
 
 		this.random = new Random();
-		startBlinkAktion();
-		startBreathing();
+//		startBlinkAktion();
+		startBreathing(5);
+	}
+        
+        public UnconsciouslyAction(Stickman3D s, int breathFrequent) {
+		this.mStickmanFX = s;
+		this.currentBehaviorList = new ArrayList<>();
+		ArrayList<String> tmpList;
+		this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
+
+		this.random = new Random();
+//		startBlinkAktion();
+		startBreathing(breathFrequent);
 	}
 
 	@Override
@@ -62,29 +73,29 @@ public class UnconsciouslyAction extends Thread {
 //		}
 	}
 
-	public void startBlinkAktion() {
-		blinkTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mStickmanFX.doAnimation("Blink", 500, true);
-			}
-		}));
-		blinkTimeline.setCycleCount(Timeline.INDEFINITE);
-		blinkTimeline.play();
-	}
+//	public void startBlinkAktion() {
+//		blinkTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
+//			@Override
+//			public void handle(ActionEvent event) {
+//				mStickmanFX.doAnimation("Blink", 500, true);
+//			}
+//		}));
+//		blinkTimeline.setCycleCount(Timeline.INDEFINITE);
+//		blinkTimeline.play();
+//	}
 
-	public void stopBlinkAktion() {
-		if (blinkTimeline != null)
-			blinkTimeline.stop();
-	}
+//	public void stopBlinkAktion() {
+//		if (blinkTimeline != null)
+//			blinkTimeline.stop();
+//	}
 
 	// AtmenAktion
-	public void startBreathing() {
-		breathTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
+	public void startBreathing(int seconds) {
+		breathTimeline = new Timeline(new KeyFrame(Duration.seconds(seconds), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 
-				ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(2000),
+				ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(500),
 						mStickmanFX.mUpperBody.mUpperBodyGroup);
 				scaleTransition.setToX(1.05f);
 				scaleTransition.setToZ(1.05f);

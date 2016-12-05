@@ -22,7 +22,7 @@ public class testStickmanFX {
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
         stickmanStage3DFull.addStickman("Anna");
         stickmanStage3DFull.launchStickmanStage(true);
-        stickmanStage3DFull.getStickman("Anna").doAnimation("Speaking", 2000, "Hello World", true);
+        stickmanStage3DFull.getStickman("Anna").doAnimation("StartIdle", 1000, true);
 
 //        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
 //        stickmanStage2.addStickman("Sarah");
