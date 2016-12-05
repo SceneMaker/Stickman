@@ -109,27 +109,26 @@ public class RightEyeFX extends BodyPartFX {
 		
 		float xMovement;
 		float yMovement;
-		
+
 		switch (mShape) {
 		case DEFAULT:
-			if(step == 20 || step == 0)
-			{
+			if (step == 20 || step == 0) {
 				createDefaultEye();
 			}
 			break;
-			
+
 		case FADEIN:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), 0.0);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(),
+						smallPupileColor.getBlue(), 0.0);
 				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), 0.0);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
+			} else if (mColor.getOpacity() != 0.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), smallPupileColor.getOpacity() - 0.052);
-				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getOpacity() - 0.052);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(),
+						smallPupileColor.getBlue(), smallPupileColor.getOpacity() - 0.052);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(),
+						borderColor.getOpacity() - 0.052);
 			}
 			border.setFill(borderColor);
 			bigPupile.setFill(mColor);
@@ -137,19 +136,19 @@ public class RightEyeFX extends BodyPartFX {
 			border.setStroke(borderColor);
 			bigPupile.setStroke(mColor);
 			break;
-			
+
 		case FADEOUT:
-			if(step == 2)
-			{
+			if (step == 2) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), 1.0);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(),
+						smallPupileColor.getBlue(), 1.0);
 				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), 1.0);
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
+			} else if (mColor.getOpacity() != 1.0) {
 				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(), smallPupileColor.getBlue(), smallPupileColor.getOpacity() + 0.052);
-				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(), borderColor.getOpacity() + 0.052);
+				smallPupileColor = new Color(smallPupileColor.getRed(), smallPupileColor.getGreen(),
+						smallPupileColor.getBlue(), smallPupileColor.getOpacity() + 0.052);
+				borderColor = new Color(borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue(),
+						borderColor.getOpacity() + 0.052);
 			}
 			border.setFill(borderColor);
 			bigPupile.setFill(mColor);
@@ -162,15 +161,15 @@ public class RightEyeFX extends BodyPartFX {
 			borderYSize += 0.0450;
 			bigPupileYSize += 0.050;
 			smallPupileYSize += 0.050;
-			
-			//Optimiere values
-			if(borderYSize > 0.8550001)
+
+			// Optimiere values
+			if (borderYSize > 0.8550001)
 				borderYSize = 0.8550001f;
-			if(bigPupileYSize > 0.9500000000000003)
+			if (bigPupileYSize > 0.9500000000000003)
 				bigPupileYSize = 0.9500000000000003;
-			if(smallPupileYSize > 0.9500000000000003)
+			if (smallPupileYSize > 0.9500000000000003)
 				smallPupileYSize = 0.9500000000000003;
-			
+
 			border.setScaleY(1 - borderYSize);
 			bigPupile.setScaleY(1 - bigPupileYSize);
 			smallPupile.setScaleY(1 - smallPupileYSize);
@@ -180,87 +179,102 @@ public class RightEyeFX extends BodyPartFX {
 			borderYSize -= 0.0450;
 			bigPupileYSize -= 0.050;
 			smallPupileYSize -= 0.050;
-			
-			if(step == 2)
-			{
+
+			if (step == 2) {
 				createDefaultEye();
-			}
-			else
-			{
+			} else {
 				border.setScaleY(1 - borderYSize);
 				bigPupile.setScaleY(1 - bigPupileYSize);
 				smallPupile.setScaleY(1 - smallPupileYSize);
 			}
 			break;
-			
+
 		case LOOKLEFT:
-			xMovement =  0.131f;
+			xMovement = 0.131f;
 			yMovement = 0.184f;
-			
+
 			bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
 			smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
 			break;
-			
+
 		case LOOKLEFTEND:
-			xMovement =  -0.131f;
+			xMovement = -0.131f;
 			yMovement = -0.182f;
-			
-			bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
-			smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				bigPupile.setTranslateX(bigPupile.getTranslateX() + xMovement);
+				smallPupile.setTranslateX(smallPupile.getTranslateX() + yMovement);
+			}
 			break;
 
 		case LOOKRIGHT:
-			xMovement =  0.131f;
+			xMovement = 0.131f;
 			yMovement = 0.184f;
-			
+
 			bigPupile.setTranslateX(bigPupile.getTranslateX() - xMovement);
 			smallPupile.setTranslateX(smallPupile.getTranslateX() - yMovement);
 			break;
-			
+
 		case LOOKRIGHTEND:
-			xMovement =  -0.131f;
+			xMovement = -0.131f;
 			yMovement = -0.184f;
-			
-			bigPupile.setTranslateX(bigPupile.getTranslateX() - xMovement);
-			smallPupile.setTranslateX(smallPupile.getTranslateX() - yMovement);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				bigPupile.setTranslateX(bigPupile.getTranslateX() - xMovement);
+				smallPupile.setTranslateX(smallPupile.getTranslateX() - yMovement);
+			}
 			break;
-			
+
 		case LOOKDOWN:
-			xMovement =  0.100f;
+			xMovement = 0.100f;
 			yMovement = 0.184f;
-			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
-			break;
-			
-		case LOOKDOWNEND:
-			xMovement =  -0.100f;
-			yMovement = -0.184f;
-			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
-			break;
-			
-		case LOOKUP:
-			xMovement =  -0.100f;
-			yMovement = -0.184f;
-			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
-			break;
-			
-		case LOOKUPEND:
-			xMovement =  0.100f;
-			yMovement = 0.184f;
-			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);	
+
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
 			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
 			break;
 
+		case LOOKDOWNEND:
+			xMovement = -0.100f;
+			yMovement = -0.184f;
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+				smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			}
+			break;
+
+		case LOOKUP:
+			xMovement = -0.100f;
+			yMovement = -0.184f;
+
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			break;
+
+		case LOOKUPEND:
+			xMovement = 0.100f;
+			yMovement = 0.184f;
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+				smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			}
+			break;
+
 		case ANGRY:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize += 0.0210;
 			bigPupileYSize += 0.010;
-			
+
 			border.setScaleY(1 - borderYSize);
 			bigPupile.setScaleY(1 - bigPupileYSize);
 			break;
@@ -268,22 +282,35 @@ public class RightEyeFX extends BodyPartFX {
 		case ANGRYEND:
 			borderYSize -= 0.0210f;
 			bigPupileYSize -= 0.010;
-			
-			border.setScaleY(1 - borderYSize);
-			bigPupile.setScaleY(1 - bigPupileYSize);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				border.setScaleY(1 - borderYSize);
+				bigPupile.setScaleY(1 - bigPupileYSize);
+			}
 			break;
 
 		case SURPRISED:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize -= 0.0158;
 			border.setScaleY(1 - borderYSize);
 			break;
 
 		case SURPRISEDEND:
 			borderYSize += 0.0158;
-			border.setScaleY(1 - borderYSize);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				border.setScaleY(1 - borderYSize);
+			}
 			break;
 
 		case HAPPY:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize += 0.0105;
 			borderXSize += 0.0052;
 			border.setScaleY(1 - borderYSize);
@@ -293,39 +320,52 @@ public class RightEyeFX extends BodyPartFX {
 		case HAPPYEND:
 			borderYSize -= 0.0105;
 			borderXSize -= 0.0052;
-			border.setScaleY(1 - borderYSize);
-			border.setScaleX(1 + borderXSize);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				border.setScaleY(1 - borderYSize);
+				border.setScaleX(1 + borderXSize);
+			}
 			break;
 
 		case DISGUSTED:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize += 0.0105;
-			
+
 			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
 			quadCurve_1.setY(quadCurve_1.getY() + 0.105);
 			border.getElements().set(1, quadCurve_1);
-			
+
 			border.setScaleY(1 - borderYSize);
 			break;
 
 		case DISGUSTEDEND:
 			borderYSize -= 0.0105;
-			
-			quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
-			quadCurve_1.setY(quadCurve_1.getY() - 0.105);
-			border.getElements().set(1, quadCurve_1);
-			
-			border.setScaleY(1 - borderYSize);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				quadCurve_1 = (QuadCurveTo) border.getElements().get(1);
+				quadCurve_1.setY(quadCurve_1.getY() - 0.105);
+				border.getElements().set(1, quadCurve_1);
+
+				border.setScaleY(1 - borderYSize);
+			}
 			break;
 
 		case CONTEMPT:
-			//NOTHING
+			// NOTHING
 			break;
 
 		case CONTEMPTEND:
-			//NOTHING
+			// NOTHING
 			break;
 
 		case EXCITED:
+			if(step == 20)
+				createDefaultEye();
 			borderYSize -= 0.0105;
 			borderXSize -= 0.0052;
 			border.setScaleY(1 - borderYSize);
@@ -335,24 +375,35 @@ public class RightEyeFX extends BodyPartFX {
 		case EXCITEDEND:
 			borderYSize += 0.0105;
 			borderXSize += 0.0052;
-			border.setScaleY(1 - borderYSize);
-			border.setScaleX(1 + borderXSize);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				border.setScaleY(1 - borderYSize);
+				border.setScaleX(1 + borderXSize);
+			}
 			break;
 
 		case EMBARRASSED:
-			xMovement =  0.100f;
+			if(step == 20)
+				createDefaultEye();
+			xMovement = 0.100f;
 			yMovement = 0.184f;
-			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);		//LOOKDOWN
+
+			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement); // LOOKDOWN
 			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
 			break;
 
 		case EMBARRASSEDEND:
-			xMovement =  -0.100f;
+			xMovement = -0.100f;
 			yMovement = -0.184f;
-			
-			bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
-			smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+
+			if (step == 2) {
+				createDefaultEye();
+			} else {
+				bigPupile.setTranslateY(bigPupile.getTranslateY() + xMovement);
+				smallPupile.setTranslateY(smallPupile.getTranslateY() + yMovement);
+			}
 			break;
 		}
 	}

@@ -33,7 +33,8 @@ public class SurprisedEnd extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "SURPRISEDEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "SURPRISEDEND"));
         playAnimationPart(mDuration);
-
+        
+        Animation3D.isSurprisedInAction = false;
         pauseAnimation(10);
     }
 }

@@ -37,6 +37,10 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
 	public Object mParameter = "";
 	public enum ANIMTYPE { ON, OFF}
 	public ANIMTYPE mAnimType = null;
+        
+        public static boolean isSmileInAction = false;
+        public static boolean isHeadTiltInAction = false;
+        public static boolean isSurprisedInAction = false;
 
 	public Animation3D()
         {
