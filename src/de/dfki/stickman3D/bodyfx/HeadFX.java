@@ -145,7 +145,7 @@ public class HeadFX extends BodyPartFX {
         Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
 
         mHead.getTransforms().clear();
-        mHead.getTransforms().addAll(rx, ry, rz);
+        mHead.getTransforms().addAll(rz, ry, rx);
 
         switch (mShape) {
             case FADEIN:
