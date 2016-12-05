@@ -41,7 +41,7 @@ public class StickmansOnStageFX extends StickmansOnStage {
             if(onlyFace){
                 scale = 9.0f;
             }
-            Stickman stickman = new StickmanFX(name, gender, scale);
+            Stickman stickman = new StickmanFX(name, gender, scale, onlyFace);
             putFullStickmanOnStage(name, stickman);
         }
     }

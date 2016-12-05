@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="Fix error from radiobutton nullpointer">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/NoseFX.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/dfki/util/observers/AnimationObserver.java" />
+    <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="Changes for single face and getting stageimage">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/common/StickmansOnStage.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/StickmansOnStage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/HeadFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/HeadFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,18 +37,18 @@
       <file leaf-file-name="StickmanStageFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="215" column="5" selection-start-line="215" selection-start-column="5" selection-end-line="215" selection-end-column="5" />
+            <state relative-caret-position="3860">
+              <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testStickmanFX.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testStickmanFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+            <state relative-caret-position="240">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,18 +57,9 @@
       <file leaf-file-name="AnimatorFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#809#829#0" expanded="true" />
-                <element signature="e#8916#8917#0" expanded="true" />
-                <element signature="e#8957#8958#0" expanded="true" />
-                <element signature="e#9015#9016#0" expanded="true" />
-                <element signature="e#9049#9050#0" expanded="true" />
-                <element signature="e#9109#9110#0" expanded="true" />
-                <element signature="e#9146#9147#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="123">
+              <caret line="226" column="26" selection-start-line="226" selection-start-column="26" selection-end-line="226" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Blink.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Blink.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+            <state relative-caret-position="216">
+              <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -101,8 +87,8 @@
       <file leaf-file-name="Stickman.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+            <state relative-caret-position="420">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,12 +99,9 @@
       <file leaf-file-name="HeadFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/HeadFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-              <folding>
-                <element signature="e#1563#1564#0" expanded="true" />
-                <element signature="e#1629#1630#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="840">
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,8 +119,8 @@
       <file leaf-file-name="StickmanFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="461" column="46" selection-start-line="461" selection-start-column="46" selection-end-line="461" selection-end-column="46" />
+            <state relative-caret-position="-1688">
+              <caret line="463" column="7" selection-start-line="463" selection-start-column="7" selection-end-line="463" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4129#4148#0" expanded="true" />
@@ -165,8 +148,8 @@
       <file leaf-file-name="StickmansOnStageFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+            <state relative-caret-position="720">
+              <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -236,15 +219,15 @@
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/animationlogic/Animator3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/animation/environmentfx/ComeBackFromSmall.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/HeadFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/NoseFX.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java" />
       </list>
     </option>
   </component>
@@ -310,9 +293,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -461,6 +442,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -505,195 +488,6 @@
       <recent name="de.dfki.common" />
       <recent name="de.dfki.stickmanfx.stagecontroller.decorators" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/nbproject/project.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/common/StickmansOnStage.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/common/commonFX3D/StageRoomImpl.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/DownBody.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/FemaleHairFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/HeadFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/LeftFinger2.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/LeftFinger3.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/LeftFinger4.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/LeftForeArmFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/LeftUpperArmFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/LeftWrist.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/MaleHairFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/MouthFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/NoseFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/RightFinger2.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/RightFinger3.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/RightFinger4.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/RightForeArmFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/RightUpperArmFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/bodyfx/UpperBody.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthFIVE.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthFOUR.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthONE.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthSEVEN.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthTREE.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/mimic/util/MouthTWO.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageView.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanFX/utils/XmlStickmanLoader.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/StickmanDataFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanFX/xmlsettings/StickmanDataListWrappeFX.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickmanSwing/stage/StickmansOnStageSwing.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/lib/nblibraries.properties</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/DownFemaleBody.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/DownMaleBody.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/FemaleForeLeg.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/FemaleUpperLeg.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/Finger1.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/Finger2_3_4.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/ForeArm.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/Head.stl</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/Laptop.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/LeftWrist.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/MaleForeLeg.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/MaleUpperLeg.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/RightWrist.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/StarBig.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/StarMiddle.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/StarSmall.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/UpperArm.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/UpperFemaleBody.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/UpperMaleBody.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/chair.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/femaleHair.stl</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/foot.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/maleHair.stl</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/neck.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/nose.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/BodyParts/table.dae</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bg1.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bg2.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bg3.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bg4.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bg5.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bg6.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/bgDefault.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/difuseMap.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/difuseMap1.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/res/Images/difuseMap2.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/animation/posturefx/TurnLeftEnd.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/animation/posturefx/TurnLeftStart.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/animation/posturefx/TurnRightStart.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/stickman3D/animation/posturefx/TurnRightStartEnd.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/de/dfki/util/HandleColor.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.testStickmanFX">
     <configuration default="false" name="StickmanStageFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -1235,7 +1029,9 @@
       <workItem from="1480591887060" duration="28000" />
       <workItem from="1480591969588" duration="184000" />
       <workItem from="1480592424670" duration="724000" />
-      <workItem from="1480667561935" duration="2929000" />
+      <workItem from="1480667561935" duration="3556000" />
+      <workItem from="1480787812430" duration="21000" />
+      <workItem from="1480935278397" duration="386000" />
     </task>
     <task id="LOCAL-00001" summary="Refactoring removing static">
       <created>1473845928949</created>
@@ -1482,11 +1278,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480592453910</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Changes for single face and getting stageimage">
+      <created>1480670518944</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1480670518945</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266125000" />
+    <option name="totallyTimeSpent" value="267159000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1508,19 +1311,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3227223" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19871795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19871795" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16613248" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39956093" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1592,7 +1395,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor for stickman Stage" />
     <MESSAGE value="Fixing sending AnimationEnd message" />
     <MESSAGE value="Only stickman face" />
     <MESSAGE value="Face only" />
@@ -1617,26 +1419,27 @@
     <MESSAGE value="Allowing opening 2D FX and 3D at the same time" />
     <MESSAGE value="Change gender to a single place" />
     <MESSAGE value="Fix error from radiobutton nullpointer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix error from radiobutton nullpointer" />
+    <MESSAGE value="Changes for single face and getting stageimage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes for single face and getting stageimage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomNetworkDecorator.java</url>
-          <line>50</line>
+          <line>51</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/common/decorators/StageRoomNetworkDecorator.java</url>
-          <line>42</line>
+          <line>43</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanStageController.java</url>
-          <line>791</line>
+          <line>787</line>
           <properties />
           <option name="timeStamp" value="105" />
         </line-breakpoint>
@@ -1654,37 +1457,37 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java</url>
-          <line>867</line>
+          <line>844</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java</url>
-          <line>263</line>
+          <line>250</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java</url>
-          <line>43</line>
+          <line>38</line>
           <properties />
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimationFX.java</url>
-          <line>177</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="204" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java</url>
-          <line>77</line>
+          <line>78</line>
           <properties />
           <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/de/dfki/common/StickmansOnStage.java</url>
-          <line>69</line>
+          <line>68</line>
           <properties />
           <option name="timeStamp" value="217" />
         </line-breakpoint>
@@ -1890,7 +1693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3140">
           <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1950,7 +1752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="26" column="21" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1958,7 +1759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1966,7 +1766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1180">
           <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1974,11 +1773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1820">
           <caret line="98" column="60" selection-start-line="98" selection-start-column="60" selection-end-line="98" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#14793#14794#0" expanded="false" />
-            <element signature="e#14834#14835#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1986,7 +1780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
           <caret line="17" column="13438" selection-start-line="17" selection-start-column="13433" selection-end-line="17" selection-end-column="13438" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1994,7 +1787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2010,7 +1802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2022,35 +1813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#809#829#0" expanded="true" />
-            <element signature="e#8916#8917#0" expanded="true" />
-            <element signature="e#8957#8958#0" expanded="true" />
-            <element signature="e#9015#9016#0" expanded="true" />
-            <element signature="e#9049#9050#0" expanded="true" />
-            <element signature="e#9109#9110#0" expanded="true" />
-            <element signature="e#9146#9147#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/common/interfaces/Stickman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        <state relative-caret-position="420">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2059,12 +1825,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/HeadFX.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="e#1563#1564#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="840">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2076,10 +1839,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3860">
+          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/StickmanFX.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="461" column="46" selection-start-line="461" selection-start-column="46" selection-end-line="461" selection-end-column="46" />
+        <state relative-caret-position="-1688">
+          <caret line="463" column="7" selection-start-line="463" selection-start-column="7" selection-end-line="463" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4129#4148#0" expanded="true" />
@@ -2103,26 +1882,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmansOnStageFX.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animationlogic/AnimatorFX.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/stage/StickmanStageFX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="215" column="5" selection-start-line="215" selection-start-column="5" selection-end-line="215" selection-end-column="5" />
+        <state relative-caret-position="123">
+          <caret line="226" column="26" selection-start-line="226" selection-start-column="26" selection-end-line="226" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+        <state relative-caret-position="240">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/animation/headfx/Blink.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
           <folding />
         </state>
       </provider>

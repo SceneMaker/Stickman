@@ -53,9 +53,8 @@ public abstract class StickmansOnStage {
         Gender.TYPE gender = null;
         if (Names.sFemaleNames.contains(name.toLowerCase())) {
             gender = Gender.TYPE.FEMALE;
-        }
-        if (Names.sMaleNames.contains(name.toLowerCase())) {
-            gender = (gender == null) ? Gender.TYPE.MALE : gender;
+        }else{
+            gender = Gender.TYPE.MALE ;
         }
         return gender;
     }

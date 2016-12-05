@@ -27,7 +27,8 @@ public class Blink extends AnimationFX {
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
-        Platform.runLater(() -> playAnimationPart(20));
+        //Platform.runLater(() -> playAnimationPart(20));
+        playAnimationPart(20);
 
         pauseAnimation(300);
 
@@ -35,6 +36,7 @@ public class Blink extends AnimationFX {
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
-        Platform.runLater(() -> playAnimationPart(20));
+        //Platform.runLater(() -> playAnimationPart(20));
+        playAnimationPart(20);
     }
 }

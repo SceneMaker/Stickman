@@ -452,6 +452,8 @@ public class StickmanFX extends Pane implements Stickman {
 	mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
 	mGeneralYTranslation = (float) (mSize.height / 5);
 	// mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
+		if(this.faceOnly)
+			mGeneralYTranslation = -250;
 	af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 	af.appendScale(mScale, mScale);
 	// Added by Robbie, GoDown
