@@ -1,138 +1,105 @@
 package de.dfki.stickman3D.animation.environmentfx;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
 import de.dfki.stickman3D.Stickman3D;
+import static java.lang.Thread.sleep;
+import javafx.animation.KeyFrame;
+import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 
 /**
  *
- * @author Patrick Gebhard
+ * @author Beka Aptsiauri
  *
  */
 public class UnconsciouslyAction extends Thread {
+	private Stickman3D mStickmanFX;
+	private Timeline blinkTimeline;
+	private Timeline breathTimeline;
 
-    private Stickman3D mStickmanFX;
-    private SimplexNoise mSimplexNoise;  // generate perlin noise Array 2d
-    private int count1 = 1;    			// index of perlin noise Array
-    private int count2 = 1;    			// index of perlin noise Array
-    private int countCoverMouth = 0;
-    private int countTouchHead = 0;
-    private int countBlink = 0;
-    private int countTileHead = 0;
-    private int NoiseNumber;
-    private int mSleepTime = 0;
+	// Behavior Default Array
+	private String[] behaviorArray = { "HeadTilt", "CoverMouth", "Nod", "TouchHead", "HeadLeft", "HeadRight", "Itching",
+			"HeadDown", "HeadDown1" };
+	//
+	private ArrayList<String> currentBehaviorList;
 
-    public UnconsciouslyAction(Stickman3D s, SimplexNoise noise) {
-        mStickmanFX = s;
-        mSimplexNoise = noise;
-        mSleepTime = 60;
-    }
+	Random random;
 
-    private void coverMouth() {
-        if (NoiseNumber == 1) {
-            countCoverMouth++;
-            if (countCoverMouth == 20) {
-                countCoverMouth = 0;
-                countTouchHead = 0;
-                countTileHead = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) // to ignore to many actions put in mAnimationQueue
-                {
-                    mStickmanFX.doAnimation("CoverMouth", 500, true);
-                }
-            } else {
-                try {
-                    sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
-                    mStickmanFX.mLogger.severe(ex.getMessage());
-                }
-            }
-        }
-    }
+	public UnconsciouslyAction(Stickman3D s) {
+		this.mStickmanFX = s;
+		this.currentBehaviorList = new ArrayList<>();
+		ArrayList<String> tmpList;
+		this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
 
-    private void touchHead() {
-        if (NoiseNumber == 2) {
-            countTouchHead++;
-            if (countTouchHead == 20) {
-                countCoverMouth = 0;
-                countTouchHead = 0;
-                countTileHead = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
-                    mStickmanFX.doAnimation("TouchHead", 500, true);
-                }
-            } else {
-                try {
-                    sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
-                    mStickmanFX.mLogger.severe(ex.getMessage());
-                }
-            }
-        }
-    }
+		this.random = new Random();
+		startBlinkAktion();
+		startBreathing();
+	}
 
-    private void blink() {
-        if (NoiseNumber == 3) {
-            countBlink++;
-            if (countBlink == 8) {
-                countBlink = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
-                    mStickmanFX.doAnimation("Blink", 500, true);
-                }
-            } else {
-                try {
-                    sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
-                    mStickmanFX.mLogger.severe(ex.getMessage());
-                }
-            }
-        }
-    }
+	@Override
+	public void run() {
+//		while (mStickmanFX.mIdleRun) {
+//			if (this.currentBehaviorList.isEmpty()) {
+//				this.currentBehaviorList.addAll(Arrays.asList(behaviorArray));
+//			}
+//			if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
+//				int index = random.nextInt(currentBehaviorList.size());
+//				String action = currentBehaviorList.get(index);
+//				currentBehaviorList.remove(index);
+//				mStickmanFX.doAnimation(action, 500, true);
+//			}
+//			try {
+//				sleep(10000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+	}
 
-    private void tileHead() {
-        if (NoiseNumber == 4) {
-            countTileHead++;
-            if (countTileHead == 25) {
-                countCoverMouth = 0;
-                countTouchHead = 0;
-                countTileHead = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
-                    mStickmanFX.doAnimation("HeadTilt", 500, true);
-                }
-            } else {
-                try {
-                    sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
-                    mStickmanFX.mLogger.severe(ex.getMessage());
-                }
-            }
-        }
-    }
+	public void startBlinkAktion() {
+		blinkTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				mStickmanFX.doAnimation("Blink", 500, true);
+			}
+		}));
+		blinkTimeline.setCycleCount(Timeline.INDEFINITE);
+		blinkTimeline.play();
+	}
 
-    @Override
-    public void run() {
-        while (mStickmanFX.mIdleRun) {
-            count1++;
-            if (count1 == 200) {
-                count1 = 0;
-                count2++;
-            }
+	public void stopBlinkAktion() {
+		if (blinkTimeline != null)
+			blinkTimeline.stop();
+	}
 
-            if (count2 == 200) {
-                count2 = 1;
-            }
+	// AtmenAktion
+	public void startBreathing() {
+		breathTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
 
-            NoiseNumber = (int) (mSimplexNoise.getNoise(count2, count1) * 100);
+				ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(2000),
+						mStickmanFX.mUpperBody.mUpperBodyGroup);
+				scaleTransition.setToX(1.05f);
+				scaleTransition.setToZ(1.05f);
+				scaleTransition.setToY(1.01f);
+				scaleTransition.setCycleCount(2);
+				scaleTransition.setAutoReverse(true);
+				scaleTransition.play();
+			}
+		}));
+		breathTimeline.setCycleCount(Timeline.INDEFINITE);
+		breathTimeline.play();
+	}
 
-            if ((NoiseNumber != 1) && (NoiseNumber != 2) && (NoiseNumber != 3) && (NoiseNumber != 4)) {
-                try {
-                    sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
-                    mStickmanFX.mLogger.severe(ex.getMessage());
-                }
-            } else {
-                coverMouth();
-                touchHead();
-                blink();
-                tileHead();
-            }
-
-        }
-    }
+	public void stopBreathAktion() {
+		if (breathTimeline != null)
+			breathTimeline.stop();
+	}
 }

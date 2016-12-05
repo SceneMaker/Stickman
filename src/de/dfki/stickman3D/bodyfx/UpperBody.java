@@ -42,7 +42,7 @@ public class UpperBody extends BodyPartFX {
     int mHalfSizeY = mSize.height / 2;
     int mDrawOffset = 20;
 
-    Group mUpperBodyGroup;
+    public Group mUpperBodyGroup;
 
     URL url;
     ColModelImporter imorter;

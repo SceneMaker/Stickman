@@ -4,6 +4,7 @@ import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
+import de.dfki.stickman3D.animation.environmentfx.IdleBehavior;
 import de.dfki.stickman3D.animationlogic.*;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -79,7 +80,7 @@ public class Stickman3D extends Pane implements Stickman {
     public double mWobble = 0;
     public Boolean mIdleRun = false; // the shared variable to decide the while
     // loop in IdleBehavior break or not
-//	public IdleBehavior mIdleBehavior;
+	public IdleBehavior mIdleBehavior;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
     // amimation stuff
