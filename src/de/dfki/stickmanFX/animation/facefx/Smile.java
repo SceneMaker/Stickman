@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class Smile extends AnimationFX {
 
-	public Smile() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
+    public Smile() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
     public Smile(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

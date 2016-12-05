@@ -16,10 +16,9 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class EmbarrassedEnd extends Animation3D
-{
-    public EmbarrassedEnd(Stickman3D sm, int duration, boolean block)
-    {
+public class EmbarrassedEnd extends Animation3D {
+
+    public EmbarrassedEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

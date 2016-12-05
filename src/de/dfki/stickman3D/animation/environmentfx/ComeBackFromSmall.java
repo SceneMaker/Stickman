@@ -19,71 +19,70 @@ import java.util.ArrayList;
  *
  */
 public class ComeBackFromSmall extends Animation3D {
-	
-	public ComeBackFromSmall() {
-		mAnimType = ANIMTYPE.ON;
-	}
 
-	public ComeBackFromSmall(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-		mStickmanFX = sm;
-	}
+    public ComeBackFromSmall() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		int rotationUnit = 5;
-		
-		float recordOriginScale = mStickmanFX.mScale;
-		
-		for (int j = 0; j < 19; j++) {
-			mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
-		}
+    public ComeBackFromSmall(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+        mStickmanFX = sm;
+    }
 
-		// bring upper arm and fore arm in position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
-		playAnimationPart(20);
-		
-		pauseAnimation(20);
+    @Override
+    public void playAnimation() {
 
-		for (int i = 0; i < 2; i++) {
-			// wave right
-			for (int j = 0; j < 9; j++) {
-				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", -rotationUnit));
+        int rotationUnit = 5;
 
-				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
-				if (mStickmanFX.mScale >= recordOriginScale) {
-					mStickmanFX.mScale = recordOriginScale;
-				}
-				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
-				mStickmanFX.showAllParts();
-			}
+        float recordOriginScale = mStickmanFX.mScale;
 
-			// wave left
-			for (int j = 0; j < 9; j++) {
-				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", rotationUnit));
+        for (int j = 0; j < 19; j++) {
+            mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
+        }
 
-				mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
-				if (mStickmanFX.mScale >= recordOriginScale) {
-					mStickmanFX.mScale = recordOriginScale;
-				}
-				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
-				mStickmanFX.showAllParts();
-			}
-		}
+        // bring upper arm and fore arm in position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
+        playAnimationPart(20);
 
-		// go back in the default position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
-		playAnimationPart(20);
+        pauseAnimation(20);
 
+        for (int i = 0; i < 2; i++) {
+            // wave right
+            for (int j = 0; j < 9; j++) {
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", -rotationUnit));
 
-	}
+                mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
+                if (mStickmanFX.mScale >= recordOriginScale) {
+                    mStickmanFX.mScale = recordOriginScale;
+                }
+                playAnimationPart(20);
+                Platform.runLater(() -> mStickmanFX.update());
+                mStickmanFX.showAllParts();
+            }
+
+            // wave left
+            for (int j = 0; j < 9; j++) {
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", rotationUnit));
+
+                mStickmanFX.mScale = mStickmanFX.mScale * 1.05f;
+                if (mStickmanFX.mScale >= recordOriginScale) {
+                    mStickmanFX.mScale = recordOriginScale;
+                }
+                playAnimationPart(20);
+                Platform.runLater(() -> mStickmanFX.update());
+                mStickmanFX.showAllParts();
+            }
+        }
+
+        // go back in the default position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
+        playAnimationPart(20);
+
+    }
 }

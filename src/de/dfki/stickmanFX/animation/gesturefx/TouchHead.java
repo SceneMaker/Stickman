@@ -18,52 +18,52 @@ import de.dfki.stickmanFX.animationlogic.AnimationFX;
  */
 public class TouchHead extends AnimationFX {
 
-	public TouchHead() {
-		mAnimType = ANIMTYPE.Gesture;
-	}
-	
-	public TouchHead(StickmanFX sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public TouchHead() {
+        mAnimType = ANIMTYPE.Gesture;
+    }
 
-	@Override
-	public void playAnimation() {
-		int rotationUnit = 10;
-		
-		// bring Shoulder, upper arm and fore arm in position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightShoulderFX, "rotate", rotationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", rotationUnit* 8));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -rotationUnit*14));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate",-rotationUnit*2 ));
-		playAnimationPart(200);
+    public TouchHead(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(200);
+    @Override
+    public void playAnimation() {
+        int rotationUnit = 10;
 
-		// wave hands
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", rotationUnit * 4));
-		playAnimationPart(100);
+        // bring Shoulder, upper arm and fore arm in position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightShoulderFX, "rotate", rotationUnit));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", rotationUnit * 8));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", -rotationUnit * 14));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", -rotationUnit * 2));
+        playAnimationPart(200);
 
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", -rotationUnit * 4));
-		playAnimationPart(100);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", rotationUnit * 4));
-		playAnimationPart(100);
+        pauseAnimation(200);
 
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", -rotationUnit * 4));
-		playAnimationPart(100);
-		pauseAnimation(200);
+        // wave hands
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", rotationUnit * 4));
+        playAnimationPart(100);
 
-		// go back in the default position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightShoulderFX, "rotate", -rotationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -rotationUnit* 8));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", rotationUnit*14)); //14
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", rotationUnit*2 ));
-		playAnimationPart(200);
-	}
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", -rotationUnit * 4));
+        playAnimationPart(100);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", rotationUnit * 4));
+        playAnimationPart(100);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", -rotationUnit * 4));
+        playAnimationPart(100);
+        pauseAnimation(200);
+
+        // go back in the default position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightShoulderFX, "rotate", -rotationUnit));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "rotate", -rotationUnit * 8));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "rotate", rotationUnit * 14)); //14
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "rotate", rotationUnit * 2));
+        playAnimationPart(200);
+    }
 }

@@ -32,498 +32,490 @@ import java.util.logging.Logger;
  *
  * @author Beka Aptsiauri
  *
- *         This work is inspired by the stickmans drawn by Sarah Johnson
- *         (www.sarah-johnson.com) in the Valentine music video from Kina
- *         Grannis shot by Ross Ching in 2012
+ * This work is inspired by the stickmans drawn by Sarah Johnson
+ * (www.sarah-johnson.com) in the Valentine music video from Kina Grannis shot
+ * by Ross Ching in 2012
  *
  */
 public class Stickman3D extends Pane implements Stickman {
-	// general stuff
-	public static enum ORIENTATION {
-		FRONT, LEFT, RIGHT
-	};
+    // general stuff
 
+    public static enum ORIENTATION {
+        FRONT, LEFT, RIGHT
+    };
 
+    static public final Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
+    public Gender.TYPE mType = Gender.TYPE.FEMALE;
+    public String mName = "StickmanSwing";
+    public ORIENTATION mOrientation = ORIENTATION.FRONT;
+    public float mScale = 1.0f;
+    public boolean mShowBackground = true;
+    public boolean mShowStage = true;
+    public boolean mShowName = true;
+    public float mGeneralXTranslation = 0;
+    public float mGeneralYTranslation = 0;
+    Text nameText = new Text();
 
-	static public final Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
-	public Gender.TYPE mType = Gender.TYPE.FEMALE;
-	public String mName = "StickmanSwing";
-	public ORIENTATION mOrientation = ORIENTATION.FRONT;
-	public float mScale = 1.0f;
-	public boolean mShowBackground = true;
-	public boolean mShowStage = true;
-	public boolean mShowName = true;
-	public float mGeneralXTranslation = 0;
-	public float mGeneralYTranslation = 0;
-	Text nameText = new Text();
+    // public static Dimension mDefaultSize = new Dimension(400, 400); // 400
+    public static Dimension mDefaultSize = new Dimension(300, 800); // 400
+    public static Dimension mSize = new Dimension(mDefaultSize);
+    FontMetrics mFontMetrics;
+    Font mFont;
 
-	// public static Dimension mDefaultSize = new Dimension(400, 400); // 400
-	public static Dimension mDefaultSize = new Dimension(300, 800); // 400
-	public static Dimension mSize = new Dimension(mDefaultSize);
-	FontMetrics mFontMetrics;
-	Font mFont;
-
-	//steuert leaveSpeed von GoDown und ComeUp und StickmanSwing Position auf Y Achse
-	public double leaveSpeedAndStickmanYPosition = 0; // Added by Robbie, to control the speed of
-									// leaving
-	public boolean starShowControler = false; // Added by Robbie, to control the
-												// star appear or not
-	public boolean starShowC = false; // Added by Robbie, star with character
-										// appear at the same time or not
-	public boolean fadeControler = false; // Added by Robbie, to control the
-											// character to fade out or fade in.
-											// true: Fade out
-	public boolean setCharacterInvisible = false; // Added by Robbie, to control
-													// the character to fade
-													// out.
-	// True: visible False:invisible
-	public double mWobble = 0;
-	public Boolean mIdleRun = false; // the shared variable to decide the while
-										// loop in IdleBehavior break or not
+    //steuert leaveSpeed von GoDown und ComeUp und StickmanSwing Position auf Y Achse
+    public double leaveSpeedAndStickmanYPosition = 0; // Added by Robbie, to control the speed of
+    // leaving
+    public boolean starShowControler = false; // Added by Robbie, to control the
+    // star appear or not
+    public boolean starShowC = false; // Added by Robbie, star with character
+    // appear at the same time or not
+    public boolean fadeControler = false; // Added by Robbie, to control the
+    // character to fade out or fade in.
+    // true: Fade out
+    public boolean setCharacterInvisible = false; // Added by Robbie, to control
+    // the character to fade
+    // out.
+    // True: visible False:invisible
+    public double mWobble = 0;
+    public Boolean mIdleRun = false; // the shared variable to decide the while
+    // loop in IdleBehavior break or not
 //	public IdleBehavior mIdleBehavior;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
-	// amimation stuff
-	public Semaphore mAnimationLaunchControl = new Semaphore(1);
-	public AnimationScheduler3D mAnimationSchedulerFX;
-	private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
+    // amimation stuff
+    public Semaphore mAnimationLaunchControl = new Semaphore(1);
+    public AnimationScheduler3D mAnimationSchedulerFX;
+    private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
 
-	// body parts
-	public HeadFX mHeadFX;
-	public NoseFX mNoseFX;
-	public MaleHairFX mMaleHairFX;
-	public FemaleHairFX mFemaleHairFX;
-	public LeftEyebrowFX mLeftEyebrowFX;
-	public LeftEyeFX mLeftEyeFX;
-	public RightEyebrowFX mRightEyebrowFX;
-	public RightEyeFX mRightEyeFX;
-	public MouthFX mMouthFX;
-	public NeckFX mNeckFX;
-	public FaceWrinkleFX mFaceWrinkleFX; // added by Robbie FaceWrinkle
-	public UpperBody mUpperBody;
-	public DownBody mDownBody;
-	public LeftUpperArmFX mLeftUpperArmFX;
-	public LeftForeArmFX mLeftForeArmFX;
-	public LeftWrist mLeftWrist;
-	public LeftFinger1 mLeftFinger1;
-	public LeftFinger2 mLeftFinger2;
-	public LeftFinger3 mLeftFinger3;
-	public LeftFinger4 mLeftFinger4;
-	
-	public RightUpperArmFX mRightUpperArmFX;
-	public RightForeArmFX mRightForeArmFX;
-	public RightWrist mRightWrist;
-	public RightFinger1 mRightFinger1;
-	public RightFinger2 mRightFinger2;
-	public RightFinger3 mRightFinger3;
-	public RightFinger4 mRightFinger4;
-	
-	// public LeftLegFX mLeftLegFX;
-	public LeftUpperLegFX mLeftUpperLegFX;
-	public LeftForeLegFX mLeftForeLegFX;
-	public LeftFootFX mLeftFootFX;
-	public StarsFX mStarsFX; // added by Robbie Create Say bye or hi
-	// public RightLegFX mRightLegFX;
-	public RightUpperLegFX mRightUpperLegFX;
-	public RightForeLegFX mRightForeLegFX;
-	public RightFootFX mRightFootFX;
-	public ThinkFX mThinkFX;
-	public BombeFX mBombeFX;
-	// environment
-	public SpeechBubbleFX mSpeechBubbleFX;
-	private StageRoom stageController;
+    // body parts
+    public HeadFX mHeadFX;
+    public NoseFX mNoseFX;
+    public MaleHairFX mMaleHairFX;
+    public FemaleHairFX mFemaleHairFX;
+    public LeftEyebrowFX mLeftEyebrowFX;
+    public LeftEyeFX mLeftEyeFX;
+    public RightEyebrowFX mRightEyebrowFX;
+    public RightEyeFX mRightEyeFX;
+    public MouthFX mMouthFX;
+    public NeckFX mNeckFX;
+    public FaceWrinkleFX mFaceWrinkleFX; // added by Robbie FaceWrinkle
+    public UpperBody mUpperBody;
+    public DownBody mDownBody;
+    public LeftUpperArmFX mLeftUpperArmFX;
+    public LeftForeArmFX mLeftForeArmFX;
+    public LeftWrist mLeftWrist;
+    public LeftFinger1 mLeftFinger1;
+    public LeftFinger2 mLeftFinger2;
+    public LeftFinger3 mLeftFinger3;
+    public LeftFinger4 mLeftFinger4;
 
-	// logging
-	public final Logger mLogger = Logger.getAnonymousLogger();
-	// id
-	private long mID = 0;
+    public RightUpperArmFX mRightUpperArmFX;
+    public RightForeArmFX mRightForeArmFX;
+    public RightWrist mRightWrist;
+    public RightFinger1 mRightFinger1;
+    public RightFinger2 mRightFinger2;
+    public RightFinger3 mRightFinger3;
+    public RightFinger4 mRightFinger4;
 
-	public Stickman3D(String name, Gender.TYPE gender, float scale, Dimension size) {
-		mSize = size;
-		mScale = scale;
+    // public LeftLegFX mLeftLegFX;
+    public LeftUpperLegFX mLeftUpperLegFX;
+    public LeftForeLegFX mLeftForeLegFX;
+    public LeftFootFX mLeftFootFX;
+    public StarsFX mStarsFX; // added by Robbie Create Say bye or hi
+    // public RightLegFX mRightLegFX;
+    public RightUpperLegFX mRightUpperLegFX;
+    public RightForeLegFX mRightForeLegFX;
+    public RightFootFX mRightFootFX;
+    public ThinkFX mThinkFX;
+    public BombeFX mBombeFX;
+    // environment
+    public SpeechBubbleFX mSpeechBubbleFX;
+    private StageRoom stageController;
 
-		//Test
-		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -100;
-				
-		mName = name;
-		mType = gender;
+    // logging
+    public final Logger mLogger = Logger.getAnonymousLogger();
+    // id
+    private long mID = 0;
 
-		mHeadFX = new HeadFX(this);
-		mMaleHairFX = new MaleHairFX(this);
-		mFemaleHairFX = new FemaleHairFX(this);
-		mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
-		mLeftEyeFX = new LeftEyeFX(mHeadFX);
-		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
-		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mNoseFX = new NoseFX(mHeadFX);
-		mMouthFX = new MouthFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
-		mNeckFX = new NeckFX(mHeadFX);
-		mUpperBody = new UpperBody(mNeckFX);
-		mDownBody = new DownBody(mUpperBody);
-		mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
-		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
-		mLeftWrist = new LeftWrist(mLeftForeArmFX);
-		mLeftFinger1 = new LeftFinger1(mLeftWrist);
-		mLeftFinger2 = new LeftFinger2(mLeftWrist);
-		mLeftFinger3 = new LeftFinger3(mLeftWrist);
-		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		
-		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
-		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
-		mRightWrist = new RightWrist(mRightForeArmFX);
-		mRightFinger1 = new RightFinger1(mRightWrist);
-		mRightFinger2 = new RightFinger2(mRightWrist);
-		mRightFinger3 = new RightFinger3(mRightWrist);
-		mRightFinger4 = new RightFinger4(mRightWrist);
-		
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
-		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
-		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
-		mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-		mStarsFX = new StarsFX(mUpperBody); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
-		mRightUpperLegFX = new RightUpperLegFX(mDownBody);
-		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
-		mRightFootFX = new RightFootFX(mRightForeLegFX);
-		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
+    public Stickman3D(String name, Gender.TYPE gender, float scale, Dimension size) {
+        mSize = size;
+        mScale = scale;
 
-		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-		init();
-		this.addAllParts();
-		update();
-	}
+        //Test
+        leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -100;
 
-	public Stickman3D(String name, Gender.TYPE gender, float scale) {
-		mScale = scale;
+        mName = name;
+        mType = gender;
 
-		mName = name;
-		mType = gender;
+        mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
+        mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
+        mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
+        mRightEyeFX = new RightEyeFX(mHeadFX);
+        mNoseFX = new NoseFX(mHeadFX);
+        mMouthFX = new MouthFX(mHeadFX);
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
+        mNeckFX = new NeckFX(mHeadFX);
+        mUpperBody = new UpperBody(mNeckFX);
+        mDownBody = new DownBody(mUpperBody);
+        mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
+        mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
+        mLeftWrist = new LeftWrist(mLeftForeArmFX);
+        mLeftFinger1 = new LeftFinger1(mLeftWrist);
+        mLeftFinger2 = new LeftFinger2(mLeftWrist);
+        mLeftFinger3 = new LeftFinger3(mLeftWrist);
+        mLeftFinger4 = new LeftFinger4(mLeftWrist);
 
-		mHeadFX = new HeadFX(this);
-		mMaleHairFX = new MaleHairFX(this);
-		mFemaleHairFX = new FemaleHairFX(this);
-		mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
-		mLeftEyeFX = new LeftEyeFX(mHeadFX);
-		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
-		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mNoseFX = new NoseFX(mHeadFX);
-		mMouthFX = new MouthFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
-		mNeckFX = new NeckFX(mHeadFX);
-		mUpperBody = new UpperBody(mNeckFX);
-		mDownBody = new DownBody(mUpperBody);
-		mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
-		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
-		mLeftWrist = new LeftWrist(mLeftForeArmFX);
-		mLeftFinger1 = new LeftFinger1(mLeftWrist);
-		mLeftFinger2 = new LeftFinger2(mLeftWrist);
-		mLeftFinger3 = new LeftFinger3(mLeftWrist);
-		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		
-		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
-		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
-		mRightWrist = new RightWrist(mRightForeArmFX);
-		mRightFinger1 = new RightFinger1(mRightWrist);
-		mRightFinger2 = new RightFinger2(mRightWrist);
-		mRightFinger3 = new RightFinger3(mRightWrist);
-		mRightFinger4 = new RightFinger4(mRightWrist);
-		
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
-		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
-		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
-		mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-		mStarsFX = new StarsFX(mUpperBody); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
-		mRightUpperLegFX = new RightUpperLegFX(mDownBody);
-		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
-		mRightFootFX = new RightFootFX(mRightForeLegFX);
-		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
+        mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightWrist = new RightWrist(mRightForeArmFX);
+        mRightFinger1 = new RightFinger1(mRightWrist);
+        mRightFinger2 = new RightFinger2(mRightWrist);
+        mRightFinger3 = new RightFinger3(mRightWrist);
+        mRightFinger4 = new RightFinger4(mRightWrist);
 
-		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-		init();
-		this.addAllParts();
-		update();
-	}
+        // mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
+        mStarsFX = new StarsFX(mUpperBody); /// added by Robbie
+        // mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mDownBody);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mThinkFX = new ThinkFX(mHeadFX);
+        mBombeFX = new BombeFX(mHeadFX);
 
-	public Stickman3D(String name, Gender.TYPE gender) {
-		mName = name;
-		mType = gender;
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        this.addAllParts();
+        update();
+    }
 
-		mHeadFX = new HeadFX(this);
-		mMaleHairFX = new MaleHairFX(this);
-		mFemaleHairFX = new FemaleHairFX(this);
-		mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
-		mLeftEyeFX = new LeftEyeFX(mHeadFX);
-		mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
-		mRightEyeFX = new RightEyeFX(mHeadFX);
-		mNoseFX = new NoseFX(mHeadFX);
-		mMouthFX = new MouthFX(mHeadFX);
-		mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
-		mNeckFX = new NeckFX(mHeadFX);
-		mUpperBody = new UpperBody(mNeckFX);
-		mDownBody = new DownBody(mUpperBody);
-		mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
-		mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
-		mLeftWrist = new LeftWrist(mLeftForeArmFX);
-		mLeftFinger1 = new LeftFinger1(mLeftWrist);
-		mLeftFinger2 = new LeftFinger2(mLeftWrist);
-		mLeftFinger3 = new LeftFinger3(mLeftWrist);
-		mLeftFinger4 = new LeftFinger4(mLeftWrist);
-		
-		mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
-		mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
-		mRightWrist = new RightWrist(mRightForeArmFX);
-		mRightFinger1 = new RightFinger1(mRightWrist);
-		mRightFinger2 = new RightFinger2(mRightWrist);
-		mRightFinger3 = new RightFinger3(mRightWrist);
-		mRightFinger4 = new RightFinger4(mRightWrist);
-		
-		// mLeftLegFX = new LeftLegFX(mBodyFX);
-		mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
-		mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
-		mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-		mStarsFX = new StarsFX(mUpperBody); /// added by Robbie
-		// mRightLegFX = new RightLegFX(mBodyFX);
-		mRightUpperLegFX = new RightUpperLegFX(mDownBody);
-		mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
-		mRightFootFX = new RightFootFX(mRightForeLegFX);
-		mThinkFX = new ThinkFX(mHeadFX);
-		mBombeFX = new BombeFX(mHeadFX);
+    public Stickman3D(String name, Gender.TYPE gender, float scale) {
+        mScale = scale;
 
-		mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-		init();
-		this.addAllParts();
-		update();
-	}
+        mName = name;
+        mType = gender;
 
-	private void init() {
-		this.setPrefHeight(mSize.height);
-		this.setPrefWidth(mSize.width);
-		this.setMinHeight(mSize.height);
-		this.setMinWidth(mSize.width);
+        mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
+        mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
+        mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
+        mRightEyeFX = new RightEyeFX(mHeadFX);
+        mNoseFX = new NoseFX(mHeadFX);
+        mMouthFX = new MouthFX(mHeadFX);
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
+        mNeckFX = new NeckFX(mHeadFX);
+        mUpperBody = new UpperBody(mNeckFX);
+        mDownBody = new DownBody(mUpperBody);
+        mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
+        mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
+        mLeftWrist = new LeftWrist(mLeftForeArmFX);
+        mLeftFinger1 = new LeftFinger1(mLeftWrist);
+        mLeftFinger2 = new LeftFinger2(mLeftWrist);
+        mLeftFinger3 = new LeftFinger3(mLeftWrist);
+        mLeftFinger4 = new LeftFinger4(mLeftWrist);
+
+        mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightWrist = new RightWrist(mRightForeArmFX);
+        mRightFinger1 = new RightFinger1(mRightWrist);
+        mRightFinger2 = new RightFinger2(mRightWrist);
+        mRightFinger3 = new RightFinger3(mRightWrist);
+        mRightFinger4 = new RightFinger4(mRightWrist);
+
+        // mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
+        mStarsFX = new StarsFX(mUpperBody); /// added by Robbie
+        // mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mDownBody);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mThinkFX = new ThinkFX(mHeadFX);
+        mBombeFX = new BombeFX(mHeadFX);
+
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        this.addAllParts();
+        update();
+    }
+
+    public Stickman3D(String name, Gender.TYPE gender) {
+        mName = name;
+        mType = gender;
+
+        mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
+        mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
+        mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
+        mRightEyeFX = new RightEyeFX(mHeadFX);
+        mNoseFX = new NoseFX(mHeadFX);
+        mMouthFX = new MouthFX(mHeadFX);
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
+        mNeckFX = new NeckFX(mHeadFX);
+        mUpperBody = new UpperBody(mNeckFX);
+        mDownBody = new DownBody(mUpperBody);
+        mLeftUpperArmFX = new LeftUpperArmFX(mUpperBody);
+        mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
+        mLeftWrist = new LeftWrist(mLeftForeArmFX);
+        mLeftFinger1 = new LeftFinger1(mLeftWrist);
+        mLeftFinger2 = new LeftFinger2(mLeftWrist);
+        mLeftFinger3 = new LeftFinger3(mLeftWrist);
+        mLeftFinger4 = new LeftFinger4(mLeftWrist);
+
+        mRightUpperArmFX = new RightUpperArmFX(mUpperBody);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightWrist = new RightWrist(mRightForeArmFX);
+        mRightFinger1 = new RightFinger1(mRightWrist);
+        mRightFinger2 = new RightFinger2(mRightWrist);
+        mRightFinger3 = new RightFinger3(mRightWrist);
+        mRightFinger4 = new RightFinger4(mRightWrist);
+
+        // mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mDownBody);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
+        mStarsFX = new StarsFX(mUpperBody); /// added by Robbie
+        // mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mDownBody);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mThinkFX = new ThinkFX(mHeadFX);
+        mBombeFX = new BombeFX(mHeadFX);
+
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        this.addAllParts();
+        update();
+    }
+
+    private void init() {
+        this.setPrefHeight(mSize.height);
+        this.setPrefWidth(mSize.width);
+        this.setMinHeight(mSize.height);
+        this.setMinWidth(mSize.width);
 //                if(Toolkit.getDefaultToolkit().getScreenSize().getHeight() <= 768)
 //			this.setTranslateY(11);
 //		else
 //			this.setTranslateY(250);
-                
-		// this.setStyle("-fx-border-color: black");
 
-		InnerShadow is = new InnerShadow();
-		is.setOffsetX(4.0f);
-		is.setOffsetY(4.0f);
-		
-		nameText.setEffect(is);
-		nameText.setX(20);
-		nameText.setY(100);
-		nameText.setText(mName);
-		nameText.setFill(Color.YELLOW);
-		nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
+        // this.setStyle("-fx-border-color: black");
+        InnerShadow is = new InnerShadow();
+        is.setOffsetX(4.0f);
+        is.setOffsetY(4.0f);
 
-		if(this.mType == Gender.TYPE.MALE)
-		{
-			nameText.setTranslateX(15);
-			nameText.setTranslateY(-120);
-		}
-		else
-		{
-			nameText.setTranslateX(10);
-			nameText.setTranslateY(-135);
-		}
-		nameText.setTranslateZ(-120);
-		
-		ConsoleHandler ch = new ConsoleHandler();
-		ch.setFormatter(new StickmanLogFormatter());
+        nameText.setEffect(is);
+        nameText.setX(20);
+        nameText.setY(100);
+        nameText.setText(mName);
+        nameText.setFill(Color.YELLOW);
+        nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
 
-		mLogger.addHandler(ch);
-		mLogger.setUseParentHandlers(false);
+        if (this.mType == Gender.TYPE.MALE) {
+            nameText.setTranslateX(15);
+            nameText.setTranslateY(-120);
+        } else {
+            nameText.setTranslateX(10);
+            nameText.setTranslateY(-135);
+        }
+        nameText.setTranslateZ(-120);
 
-		mAnimationSchedulerFX = new AnimationScheduler3D(this);
-		mAnimationSchedulerFX.start();
+        ConsoleHandler ch = new ConsoleHandler();
+        ch.setFormatter(new StickmanLogFormatter());
+
+        mLogger.addHandler(ch);
+        mLogger.setUseParentHandlers(false);
+
+        mAnimationSchedulerFX = new AnimationScheduler3D(this);
+        mAnimationSchedulerFX.start();
 
 //		simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
 //		mIdleBehavior = new IdleBehavior(this, simplexNoise);
-		
-	}
+    }
 
-	public void addListener(AnimationListener al) {
-		mAnimationListeners.add(al);
-	}
+    public void addListener(AnimationListener al) {
+        mAnimationListeners.add(al);
+    }
 
-	public void removeListener(AnimationListener al) {
-		synchronized (mAnimationListeners) {
-			if (mAnimationListeners.contains(al)) {
-				mAnimationListeners.remove(al);
-			}
-		}
-	}
+    public void removeListener(AnimationListener al) {
+        synchronized (mAnimationListeners) {
+            if (mAnimationListeners.contains(al)) {
+                mAnimationListeners.remove(al);
+            }
+        }
+    }
 
-	public void notifyListeners(String animationId) {
-		synchronized (mAnimationListeners) {
-			mAnimationListeners.stream().forEach((al) -> {
-				al.update(animationId);
-			});
-		}
-	}
+    public void notifyListeners(String animationId) {
+        synchronized (mAnimationListeners) {
+            mAnimationListeners.stream().forEach((al) -> {
+                al.update(animationId);
+            });
+        }
+    }
 
-	public String getID() {
-		return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
-	}
+    public String getID() {
+        return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
+    }
 
-	// @Override
-	// public String getName() {
-	// return mName;
-	// }
+    // @Override
+    // public String getName() {
+    // return mName;
+    // }
+    // Sets the orientation of the character, allowed values are: LEFT, RIGHT,
+    // FRONT
+    public void setOrientation(String orientation) {
+        if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
+            mOrientation = ORIENTATION.LEFT;
+        } else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
+            mOrientation = ORIENTATION.RIGHT;
+        } else {
+            mOrientation = ORIENTATION.FRONT;
+        }
+    }
 
-	// Sets the orientation of the character, allowed values are: LEFT, RIGHT,
-	// FRONT
-	public void setOrientation(String orientation) {
-		if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
-			mOrientation = ORIENTATION.LEFT;
-		} else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
-			mOrientation = ORIENTATION.RIGHT;
-		} else {
-			mOrientation = ORIENTATION.FRONT;
-		}
-	}
+    public Animation3D doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+        EventAnimation3D a = AnimationLoader3D.getInstance().loadEventAnimation(this, name, duration, block);
 
-	public Animation3D doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
-		EventAnimation3D a = AnimationLoader3D.getInstance().loadEventAnimation(this, name, duration, block);
+        a.setParameter(wts);
 
-		a.setParameter(wts);
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
 
-		try {
-			mAnimationLaunchControl.acquire();
-			a.start();
-		} catch (InterruptedException ex) {
-			mLogger.severe(ex.getMessage());
-		}
+        return a;
+    }
 
-		return a;
-	}
+    @Override
+    public StageRoom getStickmanStageController() {
+        return stageController;
+    }
 
-	@Override
-	public StageRoom getStickmanStageController() {
-		return stageController;
-	}
+    @Override
+    public void setStickmanStageController(StageRoom s) {
+        stageController = s;
+    }
 
-	@Override
-	public void setStickmanStageController(StageRoom s) {
-		stageController = s;
-	}
+    @Override
+    public void setShowName(boolean show) {
 
-	@Override
-	public void setShowName(boolean show) {
+    }
 
-	}
+    @Override
+    public boolean isShowName() {
+        return false;
+    }
 
-	@Override
-	public boolean isShowName() {
-		return false;
-	}
+    @Override
+    public void endAnimationScheduler() {
 
-	@Override
-	public void endAnimationScheduler() {
+    }
 
-	}
+    @Override
+    public Gender.TYPE getType() {
+        return null;
+    }
 
-	@Override
-	public Gender.TYPE getType() {
-		return null;
-	}
+    public Animation3D doAnimation(String name, int duration, boolean block) {
+        return doAnimation(name, duration, "", block);
+    }
 
-	public Animation3D doAnimation(String name, int duration, boolean block) {
-		return doAnimation(name, duration, "", block);
-	}
+    public Animation3D doAnimation(String name, Object param, boolean block) {
+        return doAnimation(name, -1, param, block);
+    }
 
-	public Animation3D doAnimation(String name, Object param, boolean block) {
-		return doAnimation(name, -1, param, block);
-	}
+    public Animation3D doAnimation(String name, boolean block) {
+        return doAnimation(name, -1, "", block);
+    }
 
-	public Animation3D doAnimation(String name, boolean block) {
-		return doAnimation(name, -1, "", block);
-	}
+    public Animation3D doAnimation(String name, int duration, Object param, boolean block) {
+        Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, duration, block);
 
-	public Animation3D doAnimation(String name, int duration, Object param, boolean block) {
-		Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, duration, block);
+        a.setParameter(param); // this is for now only used by the Speech Bubble
 
-		a.setParameter(param); // this is for now only used by the Speech Bubble
+        try {
+            mAnimationLaunchControl.acquire();
+            // Platform.runLater(() ->
+            // a.start());/////////////////////////////////////////////////
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
 
-		try {
-			mAnimationLaunchControl.acquire();
-			// Platform.runLater(() ->
-			// a.start());/////////////////////////////////////////////////
-			a.start();
-		} catch (InterruptedException ex) {
-			mLogger.severe(ex.getMessage());
-		}
+        return a;
+    }
 
-		return a;
-	}
+    public void playAnimation(Animation3D a) {
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+    }
 
-	public void playAnimation(Animation3D a) {
-		try {
-			mAnimationLaunchControl.acquire();
-			a.start();
-		} catch (InterruptedException ex) {
-			mLogger.severe(ex.getMessage());
-		}
-	}
+    // Control IdleBehavior start(mStart == true) or not(mStart == false).
+    private static boolean isAnimationTimerStartet = false;
 
-	// Control IdleBehavior start(mStart == true) or not(mStart == false).
+    public void update() {
+        Color currColor = sFOREGROUND;
+        int width = new Float(mSize.width).intValue();
+        int height = new Float(mSize.height).intValue();
 
-	private static boolean isAnimationTimerStartet = false;
+        // draw everthing in the middle and scaled
+        Affine af = new Affine();
+        mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
+        mGeneralYTranslation = (float) (mSize.height / 5);
 
-	public void update() {
-		Color currColor = sFOREGROUND;
-		int width = new Float(mSize.width).intValue();
-		int height = new Float(mSize.height).intValue();
+        af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
+        af.appendScale(mScale, mScale);
+        af.appendTranslation(0, leaveSpeedAndStickmanYPosition); // Added by Robbie, GoDown
+        this.getTransforms().clear();
+        this.getTransforms().add(af);
 
-		// draw everthing in the middle and scaled
-		Affine af = new Affine();
-		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-                mGeneralYTranslation = (float) (mSize.height / 5);
-
-		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-		af.appendScale(mScale, mScale);
-		af.appendTranslation(0, leaveSpeedAndStickmanYPosition); // Added by Robbie, GoDown
-		this.getTransforms().clear();
-		this.getTransforms().add(af);
-
-		// Out put perlin noise
+        // Out put perlin noise
 //		implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,
 //				mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
+        updateAll();
+    }
 
-		updateAll();
-	}
+    private static class StickmanLogFormatter extends Formatter {
 
-	private static class StickmanLogFormatter extends Formatter {
+        @Override
+        public String format(LogRecord record) {
+            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
+                    .append("\n")).toString();
+        }
+    }
 
-		@Override
-		public String format(LogRecord record) {
-			return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
-					.append("\n")).toString();
-		}
-	}
+    private void addAllParts() {
 
-	private void addAllParts() {
-	
-		this.getChildren().addAll(mNeckFX, mHeadFX,
-				mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
-				mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-				mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX ,nameText);
-		
-	}
+        this.getChildren().addAll(mNeckFX, mHeadFX,
+                mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
+                mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
+                mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameText);
 
-	private void updateAll() {
-		// draw body parts
-		if (starShowControler == true) {
-			mStarsFX.update(); // Added by Robbie, to show stars or words here.
-		} else {
-			if (starShowC == true)
-				mStarsFX.update();
+    }
+
+    private void updateAll() {
+        // draw body parts
+        if (starShowControler == true) {
+            mStarsFX.update(); // Added by Robbie, to show stars or words here.
+        } else {
+            if (starShowC == true) {
+                mStarsFX.update();
+            }
 //			mHeadFX.update();
 
 //			if (this.mType == Gender.TYPE.MALE)
@@ -537,7 +529,7 @@ public class Stickman3D extends Pane implements Stickman {
 //			mRightEyeFX.update();
 //			mMouthFX.update();
 //			mNeckFX.update();
-			// BodyFX is not BodyPartFX Classe
+            // BodyFX is not BodyPartFX Classe
 //			mBodyFX.update();
 //			mLeftShoulderFX.update();
 //			mLeftUpperArmFX.update();
@@ -547,25 +539,23 @@ public class Stickman3D extends Pane implements Stickman {
 //			mRightUpperArmFX.update();
 //			mRightForeArmFX.update();
 //			mRightHandFX.update();
-			// mLeftLegFX.update();
+            // mLeftLegFX.update();
 //			mLeftUpperLegFX.update();
 //			mLeftForeLegFX.update();
 //			mLeftFootFX.update();
-			// mRightLegFX.update();
+            // mRightLegFX.update();
 //			mRightUpperLegFX.update();
 //			mRightForeLegFX.update();
 //			mRightFootFX.update();
+            // mSpeechBubbleFX.update();
+            if (starShowC == true) {
+                mStarsFX.update(); // Added by Robbie, to show stars or words
+            }									// here.
+        }
 
-			// mSpeechBubbleFX.update();
-
-			if (starShowC == true)
-				mStarsFX.update(); // Added by Robbie, to show stars or words
-									// here.
-		}
-
-		// draw environment
-		// mSpeechBubble.update(g);
-	}
+        // draw environment
+        // mSpeechBubble.update(g);
+    }
 
 //	private void implimentPerlinNoise(double mWobble, int x, int y) {
 //		if (starShowControler == true) {
@@ -611,23 +601,19 @@ public class Stickman3D extends Pane implements Stickman {
 //															// words here.
 //		}
 //	}
-	
-	public void hideAllPartsWithout(Pane p)
-	{
-		this.getChildren().forEach(child -> 
-		{
-			if(! child.equals(p))
-			{
-				child.setVisible(false);
-			}
-		});
-	}
-	
-	public void showAllParts()
-	{
-		this.getChildren().forEach(child -> 
-		{
-			child.setVisible(true);
-		});
-	}
+    public void hideAllPartsWithout(Pane p) {
+        this.getChildren().forEach(child
+                -> {
+            if (!child.equals(p)) {
+                child.setVisible(false);
+            }
+        });
+    }
+
+    public void showAllParts() {
+        this.getChildren().forEach(child
+                -> {
+            child.setVisible(true);
+        });
+    }
 }

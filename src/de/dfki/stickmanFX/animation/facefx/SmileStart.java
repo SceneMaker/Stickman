@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  */
 public class SmileStart extends AnimationFX {
-	
-	public SmileStart() {
+
+    public SmileStart() {
         super();
     }
 

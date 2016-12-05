@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Contempt extends Animation3D
-{
-	public Contempt() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+public class Contempt extends Animation3D {
+
+    public Contempt() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public Contempt(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
@@ -44,7 +44,6 @@ public class Contempt extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

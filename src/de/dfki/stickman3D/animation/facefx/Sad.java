@@ -19,10 +19,10 @@ import java.util.ArrayList;
  */
 public class Sad extends Animation3D {
 
-	public Sad() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+    public Sad() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public Sad(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
@@ -44,7 +44,6 @@ public class Sad extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "SADEND"));  // add by Robbie
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "SADEND")); // add by Robbie
         playAnimationPart(mDuration);
-        
 
     }
 }

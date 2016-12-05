@@ -12,14 +12,15 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 
 public class StagePaneHandlerFX {
+
     private HBox root;
     private ScrollPane stickmanScrollPane;
     private SplitPane mSplitPane;
     private HBox sStickmanPane;
     private StickmanStageController mStickmanStageController;
 
-    public StagePaneHandlerFX(){
-        if(ApplicationLauncherImpl.isRunning()) {
+    public StagePaneHandlerFX() {
+        if (ApplicationLauncherImpl.isRunning()) {
             try {
                 invoke();
             } catch (IOException e) {
@@ -30,7 +31,7 @@ public class StagePaneHandlerFX {
 
     public HBox getConfigRoot() throws IOException {
         invoke();
-        if(!root.getChildren().contains(mSplitPane)){
+        if (!root.getChildren().contains(mSplitPane)) {
             root.getChildren().remove(stickmanScrollPane);
             root.getChildren().add(mSplitPane);
             root.getChildren().add(stickmanScrollPane);
@@ -41,7 +42,7 @@ public class StagePaneHandlerFX {
 
     public HBox getStageRoot() throws IOException {
         invoke();
-        if(root.getChildren().contains(mSplitPane)){
+        if (root.getChildren().contains(mSplitPane)) {
             root.getChildren().remove(mSplitPane);
         }
         sStickmanPane.setAlignment(Pos.CENTER); //CENTER_LEFT
@@ -68,9 +69,8 @@ public class StagePaneHandlerFX {
         return mStickmanStageController;
     }
 
-    public void setStickmansOnStage(StickmansOnStage stickmans){
+    public void setStickmansOnStage(StickmansOnStage stickmans) {
         mStickmanStageController.setStickamnOnStage(stickmans);
     }
-
 
 }

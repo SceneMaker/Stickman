@@ -20,62 +20,65 @@ import javafx.scene.shape.Path;
  */
 public class NeckFX extends BodyPartFX {
 
-	HeadFX mHeadFX;
-	Path mPath;
+    HeadFX mHeadFX;
+    Path mPath;
 
-	public NeckFX(HeadFX head) {
-		mHeadFX = head;
-		mLength = 8;
-		mSize = new Dimension(4, mLength);
-		mColor = Color.rgb(80, 80, 80);
-		mPath = new Path();
-		this.getChildren().add(mPath);
-		
-		init();
-	}
+    public NeckFX(HeadFX head) {
+        mHeadFX = head;
+        mLength = 8;
+        mSize = new Dimension(4, mLength);
+        mColor = Color.rgb(80, 80, 80);
+        mPath = new Path();
+        this.getChildren().add(mPath);
 
-	public Point getBodyStartPosition() {
-		return new Point(mEnd.x, mEnd.y);
-	}
+        init();
+    }
 
-	@Override
-	public void createShape() {
-		mStart = mHeadFX.getNeckStartPosition();
-		mEnd = new Point(mStart.x, mStart.y + mLength);
+    public Point getBodyStartPosition() {
+        return new Point(mEnd.x, mEnd.y);
+    }
 
-		clearDrawObjects();
-		clearChildren(this);
-		mPath = new Path();
+    @Override
+    public void createShape() {
+        mStart = mHeadFX.getNeckStartPosition();
+        mEnd = new Point(mStart.x, mStart.y + mLength);
+
+        clearDrawObjects();
+        clearChildren(this);
+        mPath = new Path();
 //		if(mHeadFX.mStickmanFX.setCharacterInvisible == false)
 //			mColorRecorder = mColor;
-		if(mHeadFX.mStickmanFX.setCharacterInvisible == true)
-		{
-			if(mHeadFX.mStickmanFX.fadeControler==true)             //Added by Robbie
-			{
-				int fadeFactor = mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-				//mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-			}
-			else
-			{
-				int fadeFactor = (20-mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) mColor = mColorRecorder;
-				else
-					mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-				//mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-			}
-		}
-		
-		mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
-		mPath.getElements().add(new LineTo(mEnd.x, mEnd.y));
-		
-		this.getChildren().add(mPath);
-		addToDrawObjects(mPath);
-		this.update();
-	}
-	protected void recordColor(){
-		if(mHeadFX.mStickmanFX.setCharacterInvisible == false)
-			mColorRecorder = mColor;
+        if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+            if (mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
+            {
+                int fadeFactor = mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
+                if (fadeFactor <= 24) {
+                    fadeFactor = 0;
+                }
+                mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+            } else {
+                int fadeFactor = (20 - mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
+                if (fadeFactor >= 216) {
+                    mColor = mColorRecorder;
+                } else {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                }
+                //mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
+            }
+        }
+
+        mPath.getElements().add(new MoveTo(mStart.x, mStart.y));
+        mPath.getElements().add(new LineTo(mEnd.x, mEnd.y));
+
+        this.getChildren().add(mPath);
+        addToDrawObjects(mPath);
+        this.update();
+    }
+
+    protected void recordColor() {
+        if (mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+            mColorRecorder = mColor;
+        }
     }
 }

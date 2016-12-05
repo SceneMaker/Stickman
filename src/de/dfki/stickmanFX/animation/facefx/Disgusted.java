@@ -15,14 +15,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Disgusted extends AnimationFX 
-{
-	public Disgusted() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
-    public Disgusted(StickmanFX sm, int duration, boolean block) 
-    {
+public class Disgusted extends AnimationFX {
+
+    public Disgusted() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
+    public Disgusted(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

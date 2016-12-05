@@ -14,29 +14,28 @@ import java.util.ArrayList;
  */
 public class LookDown extends Animation3D {
 
-	public LookDown() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-	public LookDown(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public LookDown() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
-		playAnimationPart(100);
+    public LookDown(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(100);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
-		playAnimationPart(100);
-		
+    @Override
+    public void playAnimation() {
 
-	}
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
+        playAnimationPart(100);
+
+        pauseAnimation(100);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
+        playAnimationPart(100);
+
+    }
 }

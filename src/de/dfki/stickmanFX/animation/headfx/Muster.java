@@ -15,29 +15,24 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Muster extends AnimationFX 
-{
+public class Muster extends AnimationFX {
 
-   
-	public Muster(StickmanFX sm, int duration, boolean block) 
-        {
-		super(sm, duration, block);
-	}
+    public Muster(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-            int rotationUnit = 10;
-            for(int i = 0; i<8; i++)
-            {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 40));
-                playAnimationPart(200);
-                
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", -40));
-                playAnimationPart(100);
-            }
-                 
+    @Override
+    public void playAnimation() {
+        int rotationUnit = 10;
+        for (int i = 0; i < 8; i++) {
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", 40));
+            playAnimationPart(200);
 
-	}
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "rotate", -40));
+            playAnimationPart(100);
+        }
+
+    }
 }

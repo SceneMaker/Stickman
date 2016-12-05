@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class Mouth_SEVEN extends AnimationFX {
-	
-	public Mouth_SEVEN() {
+
+    public Mouth_SEVEN() {
         super();
     }
 

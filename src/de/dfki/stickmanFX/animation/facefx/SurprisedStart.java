@@ -16,9 +16,9 @@ import java.util.ArrayList;
  *
  */
 public class SurprisedStart extends AnimationFX {
-	
-	public SurprisedStart() {
-		super();
+
+    public SurprisedStart() {
+        super();
     }
 
     public SurprisedStart(StickmanFX sm, int duration, boolean block) {

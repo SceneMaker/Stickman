@@ -28,10 +28,9 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
     public static final float HEIGHT_ADJUSTMENT = 2 / 3.0f;
     public static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
 
-
     private final HashMap<String, StickmanSwing> sStickmansOnStage = new HashMap<>();
     static float sScale = 1.0f;
-    protected  boolean sFullScreen = false;
+    protected boolean sFullScreen = false;
     private JPanel sStickmanPanel;
 
     // logging
@@ -48,9 +47,9 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
         ch.setFormatter(new StickmanStageLogFormatter());
     }
 
-    public void setFullScreenSize(){
+    public void setFullScreenSize() {
         Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();;
-/*        setUndecorated(true);*/
+        /*        setUndecorated(true);*/
 
         setBackground(new Color(128, 0, 5, 255));
         setMinimumSize(size);
@@ -59,11 +58,10 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
         sStickmanPanel.repaint();
     }
 
-    public void addStickmanToPanel(StickmanSwing s){
+    public void addStickmanToPanel(StickmanSwing s) {
         sStickmanPanel.add(s);
         sStickmanPanel.revalidate();
     }
-
 
     public StickmanSwing getStickman(String name) {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {
@@ -73,7 +71,7 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
         }
     }
 
-    public  void showStickmanName(boolean show) {
+    public void showStickmanName(boolean show) {
         for (StickmanSwing s : sStickmansOnStage.values()) {
             s.mShowName = show;
         }
@@ -124,7 +122,7 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
         return null;
     }
 
-    public void clearStage(){
+    public void clearStage() {
         dispose();
     }
 
@@ -138,20 +136,18 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
     }
 
     private static class StickmanStageLogFormatter extends Formatter {
+
         @Override
         public String format(LogRecord record) {
             return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage()).append("\n")).toString();
         }
     }
 
+    @Override
+    public void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception {
+        // TODO Auto-generated method stub
 
-
-	@Override
-	public void addStickmanToStage(String mStageIdentifier, StickmanFX mStickmanFX) throws Exception
-	{
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
     @Override
     public void lauchStickman() {

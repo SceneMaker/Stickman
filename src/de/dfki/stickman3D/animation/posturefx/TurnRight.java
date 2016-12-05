@@ -19,8 +19,7 @@ import java.util.ArrayList;
  *
  * @author Beka Aptsiauri
  */
-public class TurnRight extends Animation3D
-{
+public class TurnRight extends Animation3D {
 
     /**
      *
@@ -30,13 +29,11 @@ public class TurnRight extends Animation3D
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-	
-	public TurnRight() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-    public TurnRight(Stickman3D sm, int duration, boolean block)
-    {
+    public TurnRight() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public TurnRight(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -44,48 +41,40 @@ public class TurnRight extends Animation3D
      * This method creates the angry facial movement.
      */
     @Override
-    public void playAnimation() 
-    {
-    	mAnimationPartFX = new ArrayList<>();
+    public void playAnimation() {
+        mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 20));
         playAnimationPart(100);
-        
-        if(mStickmanFX.mType == Gender.TYPE.MALE)
-        {
-        	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 40));
+
+        if (mStickmanFX.mType == Gender.TYPE.MALE) {
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 40));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 60));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 20));
+            playAnimationPart(500);
+        } else {
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 70));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 60));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 20));
             playAnimationPart(500);
         }
-        else
-        {
-        	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 70));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 60));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 20));
-            playAnimationPart(500);
-        }
-        
+
         pauseAnimation(1000);
-        
-        if(mStickmanFX.mType == Gender.TYPE.MALE)
-        {
-        	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -40));
+
+        if (mStickmanFX.mType == Gender.TYPE.MALE) {
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -40));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -40));
+            playAnimationPart(500);
+        } else {
+            mAnimationPartFX = new ArrayList<>();
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -70));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -40));
             playAnimationPart(500);
         }
-        else
-        {
-        	mAnimationPartFX = new ArrayList<>();
-        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -70));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -40));
-            playAnimationPart(500);
-        }
-        
 
     }
 }

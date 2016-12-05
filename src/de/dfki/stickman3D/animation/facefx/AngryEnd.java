@@ -19,8 +19,8 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class AngryEnd extends Animation3D
-{
+public class AngryEnd extends Animation3D {
+
     /**
      * @param sm StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
@@ -28,8 +28,7 @@ public class AngryEnd extends Animation3D
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-    public AngryEnd(Stickman3D sm, int duration, boolean block)
-    {
+    public AngryEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

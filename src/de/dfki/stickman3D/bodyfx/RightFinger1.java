@@ -21,27 +21,27 @@ import java.net.URL;
  * @author Beka
  *
  */
-public class RightFinger1 extends BodyPartFX 
-{
-	public static enum SHAPE {
-		DEFAULT, FADEIN, FADEOUT
-	};
-	
-	public RightFinger1.SHAPE mShape = RightFinger1.SHAPE.DEFAULT;
+public class RightFinger1 extends BodyPartFX {
+
+    public static enum SHAPE {
+        DEFAULT, FADEIN, FADEOUT
+    };
+
+    public RightFinger1.SHAPE mShape = RightFinger1.SHAPE.DEFAULT;
 
     RightWrist mRightWrist;
     int mArmLength = 80;
     Dimension mSize = new Dimension(mArmLength, mArmLength);
 
     URL url;
-	ColModelImporter imorter;
-	MeshView mRightFinger1;
+    ColModelImporter imorter;
+    MeshView mRightFinger1;
     PhongMaterial material;
 
     public RightFinger1(RightWrist rightWrist) {
-    	mRightWrist = rightWrist;
+        mRightWrist = rightWrist;
 
-    	imorter = new ColModelImporter();
+        imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
 
         url = getClass().getClassLoader().getResource("BodyParts/Finger1.dae");
@@ -54,85 +54,74 @@ public class RightFinger1 extends BodyPartFX
         mRightFinger1 = (MeshView) imorter.getImport()[0];
 
         material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
-		mRightFinger1.setMaterial(material);
+        material.setDiffuseColor(mColor);
+        mRightFinger1.setMaterial(material);
 
-		mRightWrist.rightWristGroup.getChildren().add(mRightFinger1);
+        mRightWrist.rightWristGroup.getChildren().add(mRightFinger1);
 
         init();
     }
 
     @Override
-	public void setShape(String s) {
-		SHAPE shape = SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-	}
+    public void setShape(String s) {
+        SHAPE shape = SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+    }
 
-	@Override
-	public void resetShape() {
-		mShape = RightFinger1.SHAPE.DEFAULT;
-	}
-	
     @Override
-    public void calculate(int step) 
-    {
-		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
-		
-		if(mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-		{
-			mRightFinger1.setTranslateX(mStart.x + 9);
-			mRightFinger1.setTranslateY(mStart.y + 7);
-			mRightFinger1.setTranslateZ(0);
-		}
-		else
-		{
-			mRightFinger1.setTranslateX(mStart.x + 9);
-			mRightFinger1.setTranslateY(mStart.y + 7);
-			mRightFinger1.setTranslateZ(0);
-		}
-		
-		mRightFinger1.getTransforms().clear();
-		mRightFinger1.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
-		case FADEIN:
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				update();
-				mRightFinger1.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-				update();
-			}
-			break;
-			
-		case FADEOUT:
-			mRightFinger1.setVisible(true);
-			
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-				update();
-			}
-			break;
-		}
+    public void resetShape() {
+        mShape = RightFinger1.SHAPE.DEFAULT;
+    }
+
+    @Override
+    public void calculate(int step) {
+        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+        if (mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+            mRightFinger1.setTranslateX(mStart.x + 9);
+            mRightFinger1.setTranslateY(mStart.y + 7);
+            mRightFinger1.setTranslateZ(0);
+        } else {
+            mRightFinger1.setTranslateX(mStart.x + 9);
+            mRightFinger1.setTranslateY(mStart.y + 7);
+            mRightFinger1.setTranslateZ(0);
+        }
+
+        mRightFinger1.getTransforms().clear();
+        mRightFinger1.getTransforms().addAll(rx, ry, rz);
+
+        switch (mShape) {
+            case FADEIN:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+                    update();
+                    mRightFinger1.setVisible(false);
+                } else if (mColor.getOpacity() != 0.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+                    update();
+                }
+                break;
+
+            case FADEOUT:
+                mRightFinger1.setVisible(true);
+
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+                    update();
+                } else if (mColor.getOpacity() != 1.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+                    update();
+                }
+                break;
+        }
     }
 
     @Override
     public void update() {
-    	material.setDiffuseColor(mColor);
-    	mRightFinger1.setMaterial(material);
+        material.setDiffuseColor(mColor);
+        mRightFinger1.setMaterial(material);
     }
 
 }

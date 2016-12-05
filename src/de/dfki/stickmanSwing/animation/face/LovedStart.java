@@ -18,19 +18,19 @@ import java.util.ArrayList;
  */
 public class LovedStart extends AnimationSwing {
 
-	public LovedStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public LovedStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// loved start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOVED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOVED"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // loved start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOVED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOVED"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

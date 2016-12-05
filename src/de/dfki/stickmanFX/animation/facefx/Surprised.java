@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class Surprised extends AnimationFX {
 
-	public Surprised() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
+    public Surprised() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
     public Surprised(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

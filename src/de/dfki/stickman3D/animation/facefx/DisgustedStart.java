@@ -16,11 +16,9 @@ import java.util.ArrayList;
  * @author beka Aptsiauri
  *
  */
-public class DisgustedStart extends Animation3D
-{
+public class DisgustedStart extends Animation3D {
 
-    public DisgustedStart(Stickman3D sm, int duration, boolean block)
-    {
+    public DisgustedStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

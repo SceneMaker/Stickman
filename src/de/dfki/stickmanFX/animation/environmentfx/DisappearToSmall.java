@@ -17,83 +17,79 @@ import javafx.application.Platform;
  * @author Beka
  *
  */
-public class DisappearToSmall extends AnimationFX 
-{
-	private StickmanFX mStickmanFX;
-	public DisappearToSmall(StickmanFX sm, int duration, boolean block) 
-	{
-		super(sm, duration, block);
-		mStickmanFX = sm;
-	}
+public class DisappearToSmall extends AnimationFX {
 
-	// WaveLeft
-	@Override
-	public void playAnimation() 
-	{
-		mStickmanFX.mScaleOriginal = mStickmanFX.mScale;
-		mStickmanFX.starShowControler = false;
-		int rotationUnit = 5;
+    private StickmanFX mStickmanFX;
 
-		// bring upper arm and fore arm in position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
-		playAnimationPart(200);
-		pauseAnimation(100);
+    public DisappearToSmall(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+        mStickmanFX = sm;
+    }
 
-		// wave right
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 8));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 8));
-		playAnimationPart(180);
+    // WaveLeft
+    @Override
+    public void playAnimation() {
+        mStickmanFX.mScaleOriginal = mStickmanFX.mScale;
+        mStickmanFX.starShowControler = false;
+        int rotationUnit = 5;
 
-		// wave left
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 8));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 8));
-		playAnimationPart(180);
+        // bring upper arm and fore arm in position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", rotationUnit * 2));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 32));
+        playAnimationPart(200);
+        pauseAnimation(100);
 
-		for (int i = 0; i < 1; i++) 
-		{
-			// wave right
-			for (int j = 0; j < 9; j++) 
-			{
-				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
+        // wave right
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 8));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 8));
+        playAnimationPart(180);
 
-				mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
-				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update()); 
-			}
+        // wave left
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 8));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit * 8));
+        playAnimationPart(180);
 
-			// wave left
-			for (int j = 0; j < 9; j++) 
-			{
-				mAnimationPartFX = new ArrayList<>();
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
-				mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
+        for (int i = 0; i < 1; i++) {
+            // wave right
+            for (int j = 0; j < 9; j++) {
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit));
 
-				mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
-				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
-			}
-		}
+                mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
+                playAnimationPart(20);
+                Platform.runLater(() -> mStickmanFX.update());
+            }
 
-		// go back in the default position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 32));
-		playAnimationPart(20);
+            // wave left
+            for (int j = 0; j < 9; j++) {
+                mAnimationPartFX = new ArrayList<>();
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit));
+                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", rotationUnit));
 
-		// show stars
-		mStickmanFX.starShowControler = true;
-		mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX);
-		mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
-		playAnimationPart(1000);
-	}
+                mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
+                playAnimationPart(20);
+                Platform.runLater(() -> mStickmanFX.update());
+            }
+        }
+
+        // go back in the default position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "rotate", -rotationUnit * 2));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "rotate", -rotationUnit * 32));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 32));
+        playAnimationPart(20);
+
+        // show stars
+        mStickmanFX.starShowControler = true;
+        mStickmanFX.hideAllPartsWithout(mStickmanFX.mStarsFX);
+        mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
+        playAnimationPart(1000);
+    }
 }

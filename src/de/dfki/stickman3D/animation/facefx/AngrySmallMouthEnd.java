@@ -16,11 +16,9 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class AngrySmallMouthEnd extends Animation3D
-{
+public class AngrySmallMouthEnd extends Animation3D {
 
-    public AngrySmallMouthEnd(Stickman3D sm, int duration, boolean block)
-    {
+    public AngrySmallMouthEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

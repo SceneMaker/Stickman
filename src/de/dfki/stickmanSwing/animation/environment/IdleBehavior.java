@@ -17,7 +17,7 @@ public class IdleBehavior extends Thread {
     private UnconsciouslyAction mUnconsciouslyAction;
 
     public IdleBehavior(StickmanSwing s, SimplexNoise noise) {
-    	mSleepTime = 100;
+        mSleepTime = 100;
         mStickman = s;
         mSimplexNoise = noise;
         mUnconsciouslyAction = new UnconsciouslyAction(mStickman, mSimplexNoise);

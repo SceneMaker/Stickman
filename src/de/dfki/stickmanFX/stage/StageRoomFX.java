@@ -11,33 +11,31 @@ import java.io.IOException;
  */
 public class StageRoomFX extends StageRoomImpl {
 
-    public StageRoomFX(){
+    public StageRoomFX() {
         getStickmanStageInstance();
-        createNewStickmanStage(0,0, true);
+        createNewStickmanStage(0, 0, true);
     }
 
-    public StageRoomFX(int x, int y){
+    public StageRoomFX(int x, int y) {
         getStickmanStageInstance();
         createNewStickmanStage(x, y, true);
     }
 
-    public StageRoomFX(int x, int y, boolean decoration){
+    public StageRoomFX(int x, int y, boolean decoration) {
         getStickmanStageInstance();
         createNewStickmanStage(x, y, decoration);
     }
 
-
     @Override
     protected void getStickmanStageInstance() {
         applicationFXLauncher = new ApplicationLauncherFX();
-        if(ApplicationLauncherImpl.isRunning()){
+        if (ApplicationLauncherImpl.isRunning()) {
             stickmanStageFX = StickmanStageFX.getInstance();
 
-        }else{
+        } else {
             applicationFXLauncher.launchStickmanAndWait();
         }
     }
-
 
     @Override
     protected void createNewStickmanStage(int x, int y, boolean decoration) {

@@ -37,22 +37,22 @@ public class MoveLR extends AnimationFX {
         }
 
         //move down slowly
-        double speedUnit =  (hdistance - mStickmanFX.hoffset) / 10;
-        
-        if (speedUnit >= 0) {
-                for (int i = 0; i < 10; i++) {
-                    mStickmanFX.hoffset = mStickmanFX.hoffset + speedUnit;
-                    if (mStickmanFX.hoffset >= hdistance) {
-                        mStickmanFX.hoffset = hdistance;
-                    }
-                    Platform.runLater(() -> mStickmanFX.update());
-                    pauseAnimation(40);
-                }
+        double speedUnit = (hdistance - mStickmanFX.hoffset) / 10;
 
-                if (mStickmanFX.hoffset < hdistance) {
+        if (speedUnit >= 0) {
+            for (int i = 0; i < 10; i++) {
+                mStickmanFX.hoffset = mStickmanFX.hoffset + speedUnit;
+                if (mStickmanFX.hoffset >= hdistance) {
                     mStickmanFX.hoffset = hdistance;
-                    Platform.runLater(() -> mStickmanFX.update());
                 }
+                Platform.runLater(() -> mStickmanFX.update());
+                pauseAnimation(40);
+            }
+
+            if (mStickmanFX.hoffset < hdistance) {
+                mStickmanFX.hoffset = hdistance;
+                Platform.runLater(() -> mStickmanFX.update());
+            }
         }
 
         if (speedUnit < 0) {

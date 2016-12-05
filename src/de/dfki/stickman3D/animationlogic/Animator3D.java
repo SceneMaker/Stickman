@@ -1,6 +1,5 @@
 package de.dfki.stickman3D.animationlogic;
 
-
 import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman3D.Stickman3D;
@@ -15,8 +14,8 @@ import java.util.concurrent.Semaphore;
  * @author Beka Aptsiauri
  *
  */
-public class Animator3D
-{
+public class Animator3D {
+
     public static int sMAX_ANIM_STEPS = 20;
     public int mCurrentStep = sMAX_ANIM_STEPS;
     private final Stickman3D mStickmanFX;
@@ -30,8 +29,7 @@ public class Animator3D
     public static String sCurrentAction;
 
     //private long mPreparationTime = 0;
-    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps)
-    {
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps) {
         mStickmanFX = sm;
         mAnimationFX = a;
         mAnimationComponents = animComps;
@@ -41,8 +39,7 @@ public class Animator3D
         render();
     }
 
-    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, int duration)
-    {
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, int duration) {
         mStickmanFX = sm;
         mAnimationFX = a;
         mAnimationComponents = animComps;
@@ -55,8 +52,7 @@ public class Animator3D
         render();
     }
 
-    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, int duration, int step)
-    {
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, int duration, int step) {
         mStickmanFX = sm;
         mAnimationFX = a;
         mAnimationComponents = animComps;
@@ -67,8 +63,7 @@ public class Animator3D
         render(step);
     }
 
-    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, WordTimeMarkSequence wts)
-    {
+    public Animator3D(Stickman3D sm, Animation3D a, ArrayList<AnimationContent3D> animComps, WordTimeMarkSequence wts) {
         mStickmanFX = sm;
         mAnimationFX = a;
         mAnimationComponents = animComps;
@@ -78,16 +73,12 @@ public class Animator3D
         renderEventAnimation();
     }
 
-    private void renderEventAnimation()
-    {
-        for (ArrayList<Entry> cluster : mWTS.getClusters())
-        {
-            if (WordTimeMarkSequence.getClusterType(cluster) == Entry.TYPE.WORD)
-            {
+    private void renderEventAnimation() {
+        for (ArrayList<Entry> cluster : mWTS.getClusters()) {
+            if (WordTimeMarkSequence.getClusterType(cluster) == Entry.TYPE.WORD) {
                 String text = "";
 
-                for (Entry e : cluster)
-                {
+                for (Entry e : cluster) {
                     text += e.mContent + " ";
                 }
                 text = text.trim();
@@ -110,12 +101,10 @@ public class Animator3D
                 render();
             }
 
-            if (WordTimeMarkSequence.getClusterType(cluster) == Entry.TYPE.TIMEMARK)
-            {
+            if (WordTimeMarkSequence.getClusterType(cluster) == Entry.TYPE.TIMEMARK) {
                 // here we have to spread the word that a specific timemark has been reached
                 // the interface is the runActionAtTimemark method in the EventActionPlayer
-                for (Entry e : cluster)
-                {
+                for (Entry e : cluster) {
                     // we have 2 options!
                     // 1) API Call
                     // 2) send to Player
@@ -126,91 +115,71 @@ public class Animator3D
         }
     }
 
-    private void render()
-    {
+    private void render() {
         mCurrentStep = sMAX_ANIM_STEPS;
-        while (mCurrentStep > 0)
-        {
-            if (mCurrentStep == sMAX_ANIM_STEPS)
-            {
+        while (mCurrentStep > 0) {
+            if (mCurrentStep == sMAX_ANIM_STEPS) {
                 // renderEventAnimatione animation components
-                mAnimationComponents.stream().forEach((comp) ->
-                {
+                mAnimationComponents.stream().forEach((comp)
+                        -> {
                     BodyPartFX bodypartFX = comp.mBodyPartFX;
                     String action = comp.mAction;
                     sCurrentAction = action;
                     int param = comp.mParam;
                     String paramString = comp.mParamString;
-                    if (action.equalsIgnoreCase("rotate"))
-                    {
+                    if (action.equalsIgnoreCase("rotate")) {
                         bodypartFX.set_X_Rotation(param);
                     }
-                    if(action.equalsIgnoreCase("yRotate"))
-                    {
-                    	bodypartFX.set_Y_Rotation(param);
+                    if (action.equalsIgnoreCase("yRotate")) {
+                        bodypartFX.set_Y_Rotation(param);
                     }
-                    if(action.equalsIgnoreCase("zRotate"))
-                    {
-                    	bodypartFX.set_Z_Rotation(param);
+                    if (action.equalsIgnoreCase("zRotate")) {
+                        bodypartFX.set_Z_Rotation(param);
                     }
-                    if (action.equalsIgnoreCase("tilt"))
-                    {
+                    if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.setTilt(param);
                     }
-                    if (action.equalsIgnoreCase("translate"))
-                    {
+                    if (action.equalsIgnoreCase("translate")) {
                         bodypartFX.setTranslation(param);
                     }
-                    if (action.equalsIgnoreCase("shape"))
-                    {
+                    if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.setShape(paramString);
                     }
                 });
             }
 
-            if (mCurrentStep > 1)
-            {
-                for (AnimationContent3D ba : mAnimationComponents)
-                {
+            if (mCurrentStep > 1) {
+                for (AnimationContent3D ba : mAnimationComponents) {
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
                     String action = ba.mAction;
 
-                    if (action.equalsIgnoreCase("rotate"))
-                    {
+                    if (action.equalsIgnoreCase("rotate")) {
                         bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
-                    if (action.equalsIgnoreCase("yrotate"))
-                    {
+                    if (action.equalsIgnoreCase("yrotate")) {
                         bodypartFX.calculate_Y_Rotation(mCurrentStep);
                     }
-                    if (action.equalsIgnoreCase("zrotate"))
-                    {
+                    if (action.equalsIgnoreCase("zrotate")) {
                         bodypartFX.calculate_Z_Rotation(mCurrentStep);
                     }
-                    if (action.equalsIgnoreCase("tilt"))
-                    {
+                    if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
 
-                    if (action.equalsIgnoreCase("translate"))
-                    {
+                    if (action.equalsIgnoreCase("translate")) {
                         bodypartFX.calculateTranslation(mCurrentStep);
                     }
 
-                    if (action.equalsIgnoreCase("shape"))
-                    {
+                    if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.calculateShape(mCurrentStep);
                     }
                 }
 
                 new WaitThread(mRenderPauseDuration).start();
                 // block this until WaitThread will unblock
-                try
-                {
+                try {
                     mRenderingPause.acquire(1);
-                }
-                catch (InterruptedException ex)
-                {
+                } catch (InterruptedException ex) {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
@@ -220,37 +189,29 @@ public class Animator3D
                     String action = ba.mAction;
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
 
-                    if (action.equalsIgnoreCase("rotate"))
-                    {
+                    if (action.equalsIgnoreCase("rotate")) {
                         bodypartFX.resetRotation();
                     }
-                    if (action.equalsIgnoreCase("yrotate"))
-                    {
+                    if (action.equalsIgnoreCase("yrotate")) {
                         bodypartFX.resetRotation();
                     }
-                    if (action.equalsIgnoreCase("zrotate"))
-                    {
+                    if (action.equalsIgnoreCase("zrotate")) {
                         bodypartFX.resetRotation();
                     }
-                    if (action.equalsIgnoreCase("tilt"))
-                    {
+                    if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.resetRotation();
                     }
 
-                    if (action.equalsIgnoreCase("translate"))
-                    {
+                    if (action.equalsIgnoreCase("translate")) {
                         bodypartFX.resetTranslation();
                     }
                 }
 
                 new WaitThread(mRenderPauseDuration).start();
                 // block this until WaitThread will unblock
-                try
-                {
+                try {
                     mRenderingPause.acquire(1);
-                }
-                catch (InterruptedException ex)
-                {
+                } catch (InterruptedException ex) {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
                 mAnimationFX.mAnimationPartStart.release();
@@ -261,91 +222,71 @@ public class Animator3D
         }
     }
 
-    private void render(int step)
-    {
+    private void render(int step) {
         mCurrentStep = step;
-        while (mCurrentStep > 0)
-        {
-            if (mCurrentStep == step)
-            {
+        while (mCurrentStep > 0) {
+            if (mCurrentStep == step) {
                 // renderEventAnimatione animation components
-                mAnimationComponents.stream().forEach((comp) ->
-                {
+                mAnimationComponents.stream().forEach((comp)
+                        -> {
                     BodyPartFX bodypartFX = comp.mBodyPartFX;
                     String action = comp.mAction;
                     sCurrentAction = action;
                     int param = comp.mParam;
                     String paramString = comp.mParamString;
-                    if (action.equalsIgnoreCase("rotate"))
-                    {
+                    if (action.equalsIgnoreCase("rotate")) {
                         bodypartFX.set_X_Rotation(param);
                     }
-                    if(action.equalsIgnoreCase("yRotate"))
-                    {
-                    	bodypartFX.set_Y_Rotation(param);
+                    if (action.equalsIgnoreCase("yRotate")) {
+                        bodypartFX.set_Y_Rotation(param);
                     }
-                    if(action.equalsIgnoreCase("zRotate"))
-                    {
-                    	bodypartFX.set_Z_Rotation(param);
+                    if (action.equalsIgnoreCase("zRotate")) {
+                        bodypartFX.set_Z_Rotation(param);
                     }
-                    if (action.equalsIgnoreCase("tilt"))
-                    {
+                    if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.setTilt(param);
                     }
-                    if (action.equalsIgnoreCase("translate"))
-                    {
+                    if (action.equalsIgnoreCase("translate")) {
                         bodypartFX.setTranslation(param);
                     }
-                    if (action.equalsIgnoreCase("shape"))
-                    {
+                    if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.setShape(paramString);
                     }
                 });
             }
 
-            if (mCurrentStep > 1)
-            {
-                for (AnimationContent3D ba : mAnimationComponents)
-                {
+            if (mCurrentStep > 1) {
+                for (AnimationContent3D ba : mAnimationComponents) {
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
                     String action = ba.mAction;
 
-                    if (action.equalsIgnoreCase("rotate"))
-                    {
+                    if (action.equalsIgnoreCase("rotate")) {
                         bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
-                    if (action.equalsIgnoreCase("yrotate"))
-                    {
+                    if (action.equalsIgnoreCase("yrotate")) {
                         bodypartFX.calculate_Y_Rotation(mCurrentStep);
                     }
-                    if (action.equalsIgnoreCase("zrotate"))
-                    {
+                    if (action.equalsIgnoreCase("zrotate")) {
                         bodypartFX.calculate_Z_Rotation(mCurrentStep);
                     }
-                    if (action.equalsIgnoreCase("tilt"))
-                    {
+                    if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.calculate_X_Rotation(mCurrentStep);
                     }
 
-                    if (action.equalsIgnoreCase("translate"))
-                    {
+                    if (action.equalsIgnoreCase("translate")) {
                         bodypartFX.calculateTranslation(mCurrentStep);
                     }
 
-                    if (action.equalsIgnoreCase("shape"))
-                    {
+                    if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.calculateShape(mCurrentStep);
                     }
                 }
 
                 new WaitThread(mRenderPauseDuration).start();
                 // block this until WaitThread will unblock
-                try
-                {
+                try {
                     mRenderingPause.acquire(1);
-                }
-                catch (InterruptedException ex)
-                {
+                } catch (InterruptedException ex) {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
@@ -355,37 +296,29 @@ public class Animator3D
                     String action = ba.mAction;
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
 
-                    if (action.equalsIgnoreCase("rotate"))
-                    {
+                    if (action.equalsIgnoreCase("rotate")) {
                         bodypartFX.resetRotation();
                     }
-                    if (action.equalsIgnoreCase("yrotate"))
-                    {
+                    if (action.equalsIgnoreCase("yrotate")) {
                         bodypartFX.resetRotation();
                     }
-                    if (action.equalsIgnoreCase("zrotate"))
-                    {
+                    if (action.equalsIgnoreCase("zrotate")) {
                         bodypartFX.resetRotation();
                     }
-                    if (action.equalsIgnoreCase("tilt"))
-                    {
+                    if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.resetRotation();
                     }
 
-                    if (action.equalsIgnoreCase("translate"))
-                    {
+                    if (action.equalsIgnoreCase("translate")) {
                         bodypartFX.resetTranslation();
                     }
                 }
 
                 new WaitThread(mRenderPauseDuration).start();
                 // block this until WaitThread will unblock 
-                try
-                {
+                try {
                     mRenderingPause.acquire(1);
-                }
-                catch (InterruptedException ex)
-                {
+                } catch (InterruptedException ex) {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
                 mAnimationFX.mAnimationPartStart.release();
@@ -396,25 +329,20 @@ public class Animator3D
         }
     }
 
-    private class WaitThread extends Thread
-    {
+    private class WaitThread extends Thread {
+
         int mSleepTime = 0;
 
-        public WaitThread(int time)
-        {
+        public WaitThread(int time) {
             mSleepTime = time;
         }
 
         @Override
-        public void run()
-        {
+        public void run() {
             // directly go to sleep
-            try
-            {
+            try {
                 sleep(mSleepTime, 0);
-            }
-            catch (InterruptedException ex)
-            {
+            } catch (InterruptedException ex) {
                 mStickmanFX.mLogger.severe(ex.getMessage());
             }
             // release sempahore

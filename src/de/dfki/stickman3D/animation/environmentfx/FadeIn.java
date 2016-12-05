@@ -19,10 +19,10 @@ import java.util.ArrayList;
  */
 public class FadeIn extends Animation3D {
 
-	public FadeIn() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+    public FadeIn() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public FadeIn(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
         mStickmanFX = sm;
@@ -30,14 +30,14 @@ public class FadeIn extends Animation3D {
 
     @Override
     public void playAnimation() {
-    	
-    	mAnimationPartFX = new ArrayList<>();
+
+        mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mStarsFX, "shape", "STARSFADEIN"));
         playAnimationPart(500);
-        
+
         pauseAnimation(500);
-        
-    	mAnimationPartFX = new ArrayList<>();
+
+        mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "FADEIN"));
@@ -52,9 +52,9 @@ public class FadeIn extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "shape", "FADEIN"));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mStarsFX, "shape", "STARSFADEOUT"));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftFinger1, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftFinger2, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftFinger3, "shape", "FADEIN"));

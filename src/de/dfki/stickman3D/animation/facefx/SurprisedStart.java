@@ -26,6 +26,7 @@ public class SurprisedStart extends Animation3D {
     public void playAnimation() {
 
         // surprised
+        Animation3D.isSurprisedInAction = true;
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "SURPRISED"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "SURPRISED"));

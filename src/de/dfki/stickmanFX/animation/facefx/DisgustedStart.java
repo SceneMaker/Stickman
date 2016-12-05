@@ -15,15 +15,13 @@ import java.util.ArrayList;
  * @author beka Aptsiauri
  *
  */
-public class DisgustedStart extends AnimationFX 
-{
-	public DisgustedStart() 
-    {
+public class DisgustedStart extends AnimationFX {
+
+    public DisgustedStart() {
         super();
     }
 
-    public DisgustedStart(StickmanFX sm, int duration, boolean block) 
-    {
+    public DisgustedStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author Beka Aptsiauri
  */
-public class TurnRightStartEnd extends Animation3D {
+public class TurnRightEnd extends Animation3D {
 
     /**
      *
@@ -29,11 +29,11 @@ public class TurnRightStartEnd extends Animation3D {
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-    public TurnRightStartEnd() {
+    public TurnRightEnd() {
         mAnimType = ANIMTYPE.ON;
     }
 
-    public TurnRightStartEnd(Stickman3D sm, int duration, boolean block) {
+    public TurnRightEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

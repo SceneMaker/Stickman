@@ -20,6 +20,7 @@ public class SmileStart extends Animation3D {
     @Override
     public void playAnimation() {
         // smile start
+        Animation3D.isSmileInAction = true;
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "SMILE"));
         playAnimationPart(mDuration);

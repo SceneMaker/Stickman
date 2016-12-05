@@ -11,28 +11,28 @@ import java.util.ArrayList;
  *
  */
 public class Smile extends AnimationSwing {
-	
-	public Smile() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Smile(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Smile() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		// smile
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
+    public Smile(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
+
+    @Override
+    public void playAnimation() {
+        // smile
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
 //		playAnimationPart(20);
-		playAnimationPart(mDuration);
-		pauseAnimation(1200);
-		
-		// no smile
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILEEND"));
-		
-		playAnimationPart(20);
-	}
+        playAnimationPart(mDuration);
+        pauseAnimation(1200);
+
+        // no smile
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILEEND"));
+
+        playAnimationPart(20);
+    }
 }

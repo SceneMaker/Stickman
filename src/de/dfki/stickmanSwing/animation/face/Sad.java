@@ -17,31 +17,31 @@ import java.util.ArrayList;
  *
  */
 public class Sad extends AnimationSwing {
-	
-	public Sad() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Sad(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Sad() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		// sad
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SAD"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
-		playAnimationPart(mDuration);
+    public Sad(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(1200);
+    @Override
+    public void playAnimation() {
+        // sad
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SAD"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));  // add by Robbie
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED")); // add by Robbie
+        playAnimationPart(mDuration);
 
-		// no sad
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SADEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));  // add by Robbie
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add by Robbie
-		playAnimationPart(20);
-	}
+        pauseAnimation(1200);
+
+        // no sad
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SADEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));  // add by Robbie
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND")); // add by Robbie
+        playAnimationPart(20);
+    }
 }

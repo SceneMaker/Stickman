@@ -18,51 +18,51 @@ import java.util.ArrayList;
  */
 public class WaveLeft extends AnimationSwing {
 
-	public WaveLeft(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public WaveLeft(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
+    @Override
+    public void playAnimation() {
 //		mStickman.stopIdleBehavior();
 //		mStickman.startIdleBehavior("TouchHead");
-		int rotationUnit = 10;
+        int rotationUnit = 10;
 
-		// 50 is the sum of all animation parts
-		float timeFactor = (mDuration > 0) ? mDuration / 50 : 1;
+        // 50 is the sum of all animation parts
+        float timeFactor = (mDuration > 0) ? mDuration / 50 : 1;
 
-		// bring upper arm and fore arm in position
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", rotationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 16));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 16));
-		
-		playAnimationPart(200);
+        // bring upper arm and fore arm in position
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 16));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 16));
 
-		pauseAnimation(200);
+        playAnimationPart(200);
 
-		// wave right
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 4));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 4));
-		playAnimationPart(100);
+        pauseAnimation(200);
 
-		// wave left
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 4));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 4));
-		playAnimationPart(100);
+        // wave right
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 4));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 4));
+        playAnimationPart(100);
 
-		pauseAnimation(200);
+        // wave left
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", rotationUnit * 4));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", rotationUnit * 4));
+        playAnimationPart(100);
 
-		// go back in the default position
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", -rotationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 16));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 16));
-		playAnimationPart(200);
-		
+        pauseAnimation(200);
+
+        // go back in the default position
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftUpperArm, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftForeArm, "rotate", -rotationUnit * 16));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftHand, "rotate", -rotationUnit * 16));
+        playAnimationPart(200);
+
 //		mStickman.stopIdleBehavior();
 //		mStickman.startIdleBehavior("TouchHead");
-	}
+    }
 }

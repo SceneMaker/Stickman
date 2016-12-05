@@ -3,93 +3,69 @@ package de.dfki.stickman3D.mimic.util;
 import javafx.scene.shape.Polygon;
 
 public class MouthHAPPY {
-	
-	public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
-	{
-		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
-			sig = 1;
-		else
-			sig = -1;
-		
-		float yMovement16;
-		float yMovement17;
-		float yMovement18;
-		float yMovement19;
-		
-		yMovement16 = sig * (20 - step) * 0.0105f;
-		yMovement17 = sig * (20 - step) * 0.0105f;
-		yMovement18 = sig * (20 - step) * 0.0079f;
-		yMovement19 = sig * (20 - step) * 0.0026f;
-		
-		currentUpperLipMesh.getPoints().set(11, currentUpperLipMesh.getPoints().get(11) - yMovement16);
-		currentUpperLipMesh.getPoints().set(31, currentUpperLipMesh.getPoints().get(31) - yMovement17);
-		currentUpperLipMesh.getPoints().set(33, currentUpperLipMesh.getPoints().get(33) - yMovement18);
-		currentUpperLipMesh.getPoints().set(29, currentUpperLipMesh.getPoints().get(29) - yMovement18);
-		currentUpperLipMesh.getPoints().set(35, currentUpperLipMesh.getPoints().get(35) - yMovement19);
-		currentUpperLipMesh.getPoints().set(27, currentUpperLipMesh.getPoints().get(27) - yMovement19);
-		
-		return currentUpperLipMesh;
-	}
-	
-	public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
-	{
-		int sig;
-		
-		if(sign.equalsIgnoreCase("PLUS"))
-			sig = 1;
-		else
-			sig = -1;
-		
-		float yMovement5;
-		float yMovement2;
-		float yMovement3;
-		float yMovement4;
-		float yMovement6;
-		float yMovement7;
-		float yMovement8;
-		float yMovement9;
-		float yMovement10;
-		float yMovement11;
-		float yMovement12;
-		float yMovement13;
-		float yMovement14;
-		float yMovement15;
-		
-		yMovement2 = sig * (20 - step) * 0.0053f;
-		yMovement3 = sig * (20 - step) * 0.0105f;
-		yMovement4 = sig * (20 - step) * 0.0210f;
-		yMovement5 = sig * (20 - step) * 0.0368f;
-		yMovement6 = sig * (20 - step) * 0.0210f;
-		yMovement7 = sig * (20 - step) * 0.0105f;
-		yMovement8 = sig * (20 - step) * 0.0053f;
-		
-		yMovement9 = sig * (20 - step) * 0.0105f;
-		yMovement10 = sig * (20 - step) * 0.0210f;
-		yMovement11 = sig * (20 - step) * 0.0315f;
-		yMovement12 = sig * (20 - step) * 0.0368f;
-		yMovement13 = sig * (20 - step) * 0.0315f;
-		yMovement14 = sig * (20 - step) * 0.0210f;
-		yMovement15 = sig * (20 - step) * 0.0105f;
-		
-		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) + yMovement2);
-		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + yMovement3);
-		currentDownLipMesh.getPoints().set(9, currentDownLipMesh.getPoints().get(9) + yMovement4);
-		currentDownLipMesh.getPoints().set(11, currentDownLipMesh.getPoints().get(11) + yMovement5);
-		currentDownLipMesh.getPoints().set(13, currentDownLipMesh.getPoints().get(13) + yMovement6);
-		currentDownLipMesh.getPoints().set(15, currentDownLipMesh.getPoints().get(15) + yMovement7);
-		currentDownLipMesh.getPoints().set(17, currentDownLipMesh.getPoints().get(17) + yMovement8);
-		
-		currentDownLipMesh.getPoints().set(37, currentDownLipMesh.getPoints().get(37) + yMovement9);
-		currentDownLipMesh.getPoints().set(35, currentDownLipMesh.getPoints().get(35) + yMovement10);
-		currentDownLipMesh.getPoints().set(33, currentDownLipMesh.getPoints().get(33) + yMovement11);
-		currentDownLipMesh.getPoints().set(31, currentDownLipMesh.getPoints().get(31) + yMovement12);
-		currentDownLipMesh.getPoints().set(29, currentDownLipMesh.getPoints().get(29) + yMovement13);
-		currentDownLipMesh.getPoints().set(27, currentDownLipMesh.getPoints().get(27) + yMovement14);
-		currentDownLipMesh.getPoints().set(25, currentDownLipMesh.getPoints().get(25) + yMovement15);
-		
-		return currentDownLipMesh;
-	}
+
+    public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step, String sign) {
+        int sig;
+
+        if (sign.equalsIgnoreCase("PLUS")) {
+            sig = 1;
+        } else {
+            sig = -1;
+        }
+
+        double x0;
+        double y0;
+        double y1;
+        double y2;
+
+        x0 = sig * (20 - step) * 0.01578947368421053;
+        y0 = sig * (20 - step) * 0.03157894736842105;
+        y1 = sig * (20 - step) * 0.00526315789473684;
+        y2 = sig * (20 - step) * 0.01052631578947368;
+
+        currentUpperLipPolygon.getPoints().set(0, currentUpperLipPolygon.getPoints().get(0) - x0);
+        currentUpperLipPolygon.getPoints().set(1, currentUpperLipPolygon.getPoints().get(1) - y0);
+        currentUpperLipPolygon.getPoints().set(3, currentUpperLipPolygon.getPoints().get(3) - y1);
+        currentUpperLipPolygon.getPoints().set(5, currentUpperLipPolygon.getPoints().get(5) + y2);
+        currentUpperLipPolygon.getPoints().set(9, currentUpperLipPolygon.getPoints().get(9) + y2);
+        currentUpperLipPolygon.getPoints().set(11, currentUpperLipPolygon.getPoints().get(11) - y1);
+        currentUpperLipPolygon.getPoints().set(12, currentUpperLipPolygon.getPoints().get(12) + x0);
+        currentUpperLipPolygon.getPoints().set(13, currentUpperLipPolygon.getPoints().get(13) - y0);
+        currentUpperLipPolygon.getPoints().set(15, currentUpperLipPolygon.getPoints().get(15) - y1);
+        currentUpperLipPolygon.getPoints().set(23, currentUpperLipPolygon.getPoints().get(23) - y1);
+
+        return currentUpperLipPolygon;
+    }
+
+    public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step, String sign) {
+        int sig;
+
+        if (sign.equalsIgnoreCase("PLUS")) {
+            sig = 1;
+        } else {
+            sig = -1;
+        }
+
+        double x0;
+        double y0;
+        double y3;
+
+        x0 = sig * (20 - step) * 0.01578947368421053;
+        y0 = sig * (20 - step) * 0.03157894736842105;
+        y3 = sig * (20 - step) * 0.01052631578947368;
+
+        currentDownLipPolygon.getPoints().set(0, currentDownLipPolygon.getPoints().get(0) - x0);
+        currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) - y0);
+        currentDownLipPolygon.getPoints().set(12, currentDownLipPolygon.getPoints().get(12) + x0);
+        currentDownLipPolygon.getPoints().set(13, currentDownLipPolygon.getPoints().get(13) - y0);
+
+        currentDownLipPolygon.getPoints().set(7, currentDownLipPolygon.getPoints().get(7) + y3);
+        currentDownLipPolygon.getPoints().set(17, currentDownLipPolygon.getPoints().get(17) + y3);
+        currentDownLipPolygon.getPoints().set(19, currentDownLipPolygon.getPoints().get(19) + y3);
+        currentDownLipPolygon.getPoints().set(21, currentDownLipPolygon.getPoints().get(21) + y3);
+
+        return currentDownLipPolygon;
+
+    }
 
 }

@@ -24,7 +24,7 @@ public class FearEnd extends Animation3D {
 
     @Override
     public void playAnimation() {
-       // no fear
+        // no fear
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "FEAREND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "SURPRISEDEND"));

@@ -17,31 +17,31 @@ import java.util.ArrayList;
  *
  */
 public class Loved extends AnimationSwing {
-	
-	public Loved() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Loved(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Loved() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		// loved
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOVED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOVED"));
-		playAnimationPart(mDuration);
+    public Loved(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(1200);
+    @Override
+    public void playAnimation() {
+        // loved
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOVED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOVED"));
+        playAnimationPart(mDuration);
 
-		// no loved
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILEEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOVEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOVEDEND"));
-		playAnimationPart(20);
-	}
+        pauseAnimation(1200);
+
+        // no loved
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILEEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOVEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOVEDEND"));
+        playAnimationPart(20);
+    }
 }

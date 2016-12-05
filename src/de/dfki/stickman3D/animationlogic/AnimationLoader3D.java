@@ -20,8 +20,8 @@ import java.util.Set;
  * @author Beka Aptsiauri
  *
  */
-public class AnimationLoader3D
-{
+public class AnimationLoader3D {
+
     private final static String sANIMATIONPATH = "de.dfki.stickman3D";
     private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("headfx", "facefx", "gesturefx", "environmentfx", "posturefx"));
     private static AnimationLoader3D sInstance = null;
@@ -30,18 +30,15 @@ public class AnimationLoader3D
     private AnimationLoader3D() {
     }
 
-    public static AnimationLoader3D getInstance()
-    {
-        if (sInstance == null) 
-        {
+    public static AnimationLoader3D getInstance() {
+        if (sInstance == null) {
             sInstance = new AnimationLoader3D();
         }
 
         return sInstance;
     }
 
-    public String getNextID() 
-    {
+    public String getNextID() {
         sID++;
         return "a" + sID;
     }
@@ -49,59 +46,46 @@ public class AnimationLoader3D
     private String getAnimationClasspath(Gender.TYPE stickmantype, String name) {
         String classPath = "";
 
-        for (String s : sAnimationSubPackages) 
-        {
-            classPath = sANIMATIONPATH  + ".animation." + s + "." + name;
+        for (String s : sAnimationSubPackages) {
+            classPath = sANIMATIONPATH + ".animation." + s + "." + name;
 
-            try 
-            {
+            try {
                 Class.forName(classPath);
                 break;
-            } 
-            catch (ClassNotFoundException ex) 
-            {
+            } catch (ClassNotFoundException ex) {
                 //ex.printStackTrace();
             }
         }
         return classPath;
     }
 
-    private String getEventAnimationClasspath(Gender.TYPE stickmantype, String name)
-    {
+    private String getEventAnimationClasspath(Gender.TYPE stickmantype, String name) {
         String classPath = "";
 
-        for (String s : sAnimationSubPackages) 
-        {
+        for (String s : sAnimationSubPackages) {
             classPath = sANIMATIONPATH + ".animation." + s + ".event." + name;
 
-            try 
-            {
+            try {
                 Class.forName(classPath);
                 break;
-            } 
-            catch (ClassNotFoundException ex) 
-            {
+            } catch (ClassNotFoundException ex) {
                 //ex.printStackTrace();
             }
         }
         return classPath;
     }
 
-    public Animation3D loadAnimation(Stickman sm, String name, int duration, boolean block)
-    {
+    public Animation3D loadAnimation(Stickman sm, String name, int duration, boolean block) {
         Animation3D a = null;
 
-        String cp = getAnimationClasspath(((Stickman3D)sm).mType, name);
-        try 
-        {
+        String cp = getAnimationClasspath(((Stickman3D) sm).mType, name);
+        try {
             Class c = Class.forName(cp);
             Constructor[] constructors = c.getConstructors();
-            for (Constructor con : constructors) 
-            {
+            for (Constructor con : constructors) {
                 Class[] params = con.getParameterTypes();
 
-                if (params.length == 3) 
-                {
+                if (params.length == 3) {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
@@ -110,36 +94,29 @@ public class AnimationLoader3D
                 }
 
             }
-        } 
-        catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
-        {
-            ((Stickman3D)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            ((Stickman3D) sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
-        if (a != null) 
-        {
+        if (a != null) {
             a.mID = getNextID();
         }
         return a;
     }
 
-    public EventAnimation3D loadEventAnimation(Stickman sm, String name, int duration, boolean block)
-    {
+    public EventAnimation3D loadEventAnimation(Stickman sm, String name, int duration, boolean block) {
         EventAnimation3D a = null;
 
-        String cp = getEventAnimationClasspath(((Stickman3D)sm).mType, name);
+        String cp = getEventAnimationClasspath(((Stickman3D) sm).mType, name);
 
-        try 
-        {
+        try {
             Class c = Class.forName(cp);
 
             Constructor[] constructors = c.getConstructors();
-            for (Constructor con : constructors) 
-            {
+            for (Constructor con : constructors) {
                 Class[] params = con.getParameterTypes();
 
-                if (params.length == 3) 
-                {
+                if (params.length == 3) {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
@@ -147,10 +124,8 @@ public class AnimationLoader3D
                     }
                 }
             }
-        } 
-        catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
-        {
-            ((Stickman3D)sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            ((Stickman3D) sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
         }
 
         a.mID = getNextID();

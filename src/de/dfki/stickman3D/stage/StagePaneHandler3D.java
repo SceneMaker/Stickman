@@ -15,14 +15,15 @@ import java.io.IOException;
  * Created by alvaro on 11/10/16.
  */
 public class StagePaneHandler3D {
+
     private HBox root;
     private ScrollPane stickmanScrollPane;
     private SplitPane mSplitPane;
     private HBox sStickmanPane;
     private ViewController mStickmanStageController;
 
-    public StagePaneHandler3D(){
-        if(ApplicationLauncherImpl.isRunning()) {
+    public StagePaneHandler3D() {
+        if (ApplicationLauncherImpl.isRunning()) {
             try {
                 invoke();
             } catch (IOException e) {
@@ -40,7 +41,7 @@ public class StagePaneHandler3D {
     public HBox getStageRoot() throws IOException {
         invoke();
         AnchorPane controlPanel = (AnchorPane) root.lookup("#controlPanel");
-        if(controlPanel != null){
+        if (controlPanel != null) {
             root.getChildren().remove(controlPanel);
         }
         return root;
@@ -53,7 +54,7 @@ public class StagePaneHandler3D {
         root = loader.load();
         mStickmanStageController = loader.getController();
         //mStickmanStageController.setlePerlinNoiseOn();
-        return  this;
+        return this;
 
     }
 
@@ -61,7 +62,7 @@ public class StagePaneHandler3D {
         return mStickmanStageController;
     }
 
-    public void setStickmansOnStage(StickmansOnStage stickmans){
+    public void setStickmansOnStage(StickmansOnStage stickmans) {
         mStickmanStageController.setStickamnOnStage(stickmans);
     }
 

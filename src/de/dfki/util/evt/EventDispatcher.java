@@ -21,7 +21,7 @@ public class EventDispatcher {
     private final LOGDefaultLogger mLogger = LOGDefaultLogger.getInstance();
 
     // The Listener List
-    private final List<EventListener> mListenerList =  new CopyOnWriteArrayList<EventListener>();
+    private final List<EventListener> mListenerList = new CopyOnWriteArrayList<EventListener>();
 
     // The Timer Thread
     private final Timer mTimer = new Timer("EventCasterTimer");
@@ -45,14 +45,14 @@ public class EventDispatcher {
     }
 
     // Add An Event Listener
-    public final /*synchronized*/ void register(final EventListener listener) {       
-            //mLogger.message("Registering '" + listener + "'");
-            mListenerList.add(listener);
+    public final /*synchronized*/ void register(final EventListener listener) {
+        //mLogger.message("Registering '" + listener + "'");
+        mListenerList.add(listener);
     }
 
-    public final /*synchronized*/ void remove(final EventListener listener) {  
-            //mLogger.message("Remove '" + listener + "'");
-            mListenerList.remove(listener);
+    public final /*synchronized*/ void remove(final EventListener listener) {
+        //mLogger.message("Remove '" + listener + "'");
+        mListenerList.remove(listener);
     }
 
     public final /*synchronized*/ void convey(final EventObject event) {

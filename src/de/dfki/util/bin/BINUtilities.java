@@ -1,11 +1,9 @@
 package de.dfki.util.bin;
 
 //~--- non-JDK imports --------------------------------------------------------
-
 import de.dfki.util.log.LOGDefaultLogger;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import javax.xml.bind.DatatypeConverter;
 
 /**

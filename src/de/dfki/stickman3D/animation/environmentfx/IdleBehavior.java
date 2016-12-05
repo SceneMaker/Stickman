@@ -18,8 +18,8 @@ public class IdleBehavior extends Thread {
     private UnconsciouslyAction mUnconsciouslyAction;
 
     public IdleBehavior(Stickman3D s, SimplexNoise noise) {
-    	mSleepTime = 100;
-    	mStickmanFX = s;
+        mSleepTime = 100;
+        mStickmanFX = s;
         mSimplexNoise = noise;
         mUnconsciouslyAction = new UnconsciouslyAction(mStickmanFX, mSimplexNoise);
         mUnconsciouslyAction.start();
@@ -45,35 +45,35 @@ public class IdleBehavior extends Thread {
 
             // 40 segments to achieve the wobble: come and back
             for (int i = 0; i < 19; i++) {
-            	mStickmanFX.mWobble = mStickmanFX.mWobble + mAdjust;
-            	Platform.runLater(() -> 
-                {
-                	mStickmanFX.update();
+                mStickmanFX.mWobble = mStickmanFX.mWobble + mAdjust;
+                Platform.runLater(()
+                        -> {
+                    mStickmanFX.update();
                 }
                 );
-            	
+
                 try {
                     sleep(mSleepTime, 0);
                 } catch (InterruptedException ex) {
-                	mStickmanFX.mLogger.severe(ex.getMessage());
+                    mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
 
             for (int i = 0; i < 19; i++) {
-            	mStickmanFX.mWobble = mStickmanFX.mWobble - mAdjust;
+                mStickmanFX.mWobble = mStickmanFX.mWobble - mAdjust;
                 if (i == 18) {
-                	mStickmanFX.mWobble = 0;
+                    mStickmanFX.mWobble = 0;
                 }
-                Platform.runLater(() -> 
-                {
-                	mStickmanFX.update();
+                Platform.runLater(()
+                        -> {
+                    mStickmanFX.update();
                 }
                 );
 
                 try {
                     sleep(mSleepTime, 0);
                 } catch (InterruptedException ex) {
-                	mStickmanFX.mLogger.severe(ex.getMessage());
+                    mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
         }

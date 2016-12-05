@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class SadEnd extends AnimationFX {
-	
-	public SadEnd() {
+
+    public SadEnd() {
         super();
     }
 

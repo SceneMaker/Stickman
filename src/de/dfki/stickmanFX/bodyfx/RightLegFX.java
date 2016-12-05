@@ -22,8 +22,7 @@ public class RightLegFX extends BodyPartFX {
 
     BodyFX mBodyFX;
 
-    public RightLegFX(BodyFX body) 
-    {
+    public RightLegFX(BodyFX body) {
         mBodyFX = body;
         mLength = 150;
         mSize = new Dimension(10, mLength);
@@ -33,8 +32,7 @@ public class RightLegFX extends BodyPartFX {
     }
 
     @Override
-    public void createShape() 
-    {
+    public void createShape() {
         mStart = mBodyFX.getRightLegStartPostion();
         mEnd = new Point(mStart.x, mStart.y + mLength);
 
@@ -42,26 +40,21 @@ public class RightLegFX extends BodyPartFX {
         clearChildren(this);
 //        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
 //        	mColorRecorder = mColor;
-        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
-        {
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
             {
                 int fadeFactor = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) 
-                {
+                if (fadeFactor <= 24) {
                     fadeFactor = 0;
                 }
-                mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
-            } 
-            else 
-            {
+                mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
+            } else {
                 int fadeFactor = (20 - mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) 
-                {
-                	mColor = mColorRecorder;
+                if (fadeFactor >= 216) {
+                    mColor = mColorRecorder;
+                } else {
+                    mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 }
-                else
-                	mColor = Color.rgb(80, 80, 80, (fadeFactor*100/255)/100f);
             }
         }
 
@@ -78,8 +71,10 @@ public class RightLegFX extends BodyPartFX {
         addToDrawObjects(gp);
         this.update();
     }
-    protected void recordColor(){
-    	if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
-        	mColorRecorder = mColor;
+
+    protected void recordColor() {
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+            mColorRecorder = mColor;
+        }
     }
 }

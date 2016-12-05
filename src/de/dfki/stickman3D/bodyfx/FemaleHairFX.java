@@ -18,124 +18,118 @@ import java.net.URL;
  *
  */
 public class FemaleHairFX extends BodyPartFX {
-	
-	public static enum SHAPE {
-		DEFAULT, FADEIN, FADEOUT
-	};
-	
-	public FemaleHairFX.SHAPE mShape = FemaleHairFX.SHAPE.DEFAULT;
 
-	public Dimension mSize = new Dimension(120, 100);
-	public Stickman3D mStickmanFX;
+    public static enum SHAPE {
+        DEFAULT, FADEIN, FADEOUT
+    };
 
-	int mHalfHeight = mSize.height / 2;
-	int mHalfWidth = mSize.width / 2;
-	int mEarWidth = 10;
+    public FemaleHairFX.SHAPE mShape = FemaleHairFX.SHAPE.DEFAULT;
 
-	int mDrawOffset = 10;
-	int mXCenterOffset = mEarWidth / 2;
-	int mYCenterOffset = mEarWidth / 2;
+    public Dimension mSize = new Dimension(120, 100);
+    public Stickman3D mStickmanFX;
 
-	int mPivotOffset = 55;
-	int mZTranslate = 16;
+    int mHalfHeight = mSize.height / 2;
+    int mHalfWidth = mSize.width / 2;
+    int mEarWidth = 10;
 
-	URL url;
-	StlMeshImporter importer;
-	TriangleMesh femaleHairTriangleMesh;
-	MeshView femaleHairMeshView;
-	PhongMaterial material;
+    int mDrawOffset = 10;
+    int mXCenterOffset = mEarWidth / 2;
+    int mYCenterOffset = mEarWidth / 2;
 
-	public FemaleHairFX(Stickman3D sm) {
-		mStickmanFX = sm;
-		mColor = Color.rgb(240, 212, 0, 1);
+    int mPivotOffset = 55;
+    int mZTranslate = 16;
 
-		if (mStickmanFX.mHeadFX != null)
-			mYRotation = mStickmanFX.mHeadFX.mYRotation;
+    URL url;
+    StlMeshImporter importer;
+    TriangleMesh femaleHairTriangleMesh;
+    MeshView femaleHairMeshView;
+    PhongMaterial material;
 
-		url = getClass().getClassLoader().getResource("BodyParts/femaleHair.stl");
-		importer = new StlMeshImporter();
-		importer.read(url);
-		femaleHairTriangleMesh = importer.getImport();
-		femaleHairMeshView = new MeshView(femaleHairTriangleMesh);
-		femaleHairMeshView.setId("FemaleHair");
-		material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
-		femaleHairMeshView.setMaterial(material);
-		femaleHairMeshView.setRotationAxis(Rotate.X_AXIS);
-		femaleHairMeshView.setRotate(-90);
+    public FemaleHairFX(Stickman3D sm) {
+        mStickmanFX = sm;
+        mColor = Color.rgb(240, 212, 0, 1);
 
-		if(mStickmanFX.mType == Gender.TYPE.FEMALE)
-			mStickmanFX.mHeadFX.mHead.getChildren().add(femaleHairMeshView);
+        if (mStickmanFX.mHeadFX != null) {
+            mYRotation = mStickmanFX.mHeadFX.mYRotation;
+        }
 
-		init();
+        url = getClass().getClassLoader().getResource("BodyParts/femaleHair.stl");
+        importer = new StlMeshImporter();
+        importer.read(url);
+        femaleHairTriangleMesh = importer.getImport();
+        femaleHairMeshView = new MeshView(femaleHairTriangleMesh);
+        femaleHairMeshView.setId("FemaleHair");
+        material = new PhongMaterial();
+        material.setDiffuseColor(mColor);
+        femaleHairMeshView.setMaterial(material);
+        femaleHairMeshView.setRotationAxis(Rotate.X_AXIS);
+        femaleHairMeshView.setRotate(-90);
 
-		calculate(0);
-	}
+        if (mStickmanFX.mType == Gender.TYPE.FEMALE) {
+            mStickmanFX.mHeadFX.mHead.getChildren().add(femaleHairMeshView);
+        }
 
-	@Override
-	public void init()
-	{
-		super.init();
-		femaleHairMeshView.setTranslateX(mHalfWidth-60);
-		femaleHairMeshView.setTranslateY(mHalfHeight-57);
-		femaleHairMeshView.setTranslateZ(mZTranslate);
-	}
+        init();
 
-	@Override
-	public void setShape(String s) {
-		SHAPE shape = SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-	}
+        calculate(0);
+    }
 
-	@Override
-	public void resetShape() {
-		mShape = FemaleHairFX.SHAPE.DEFAULT;
-	}
-	
-	public void calculate(int step) {
+    @Override
+    public void init() {
+        super.init();
+        femaleHairMeshView.setTranslateX(mHalfWidth - 60);
+        femaleHairMeshView.setTranslateY(mHalfHeight - 57);
+        femaleHairMeshView.setTranslateZ(mZTranslate);
+    }
 
-		Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+    @Override
+    public void setShape(String s) {
+        SHAPE shape = SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+    }
 
-		femaleHairMeshView.getTransforms().clear();
-		femaleHairMeshView.getTransforms().addAll(rx, ry, rz);
+    @Override
+    public void resetShape() {
+        mShape = FemaleHairFX.SHAPE.DEFAULT;
+    }
 
-		switch(mShape)
-		{
-		case FADEIN:
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				update();
-				femaleHairMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-				update();
-			}
-			break;
-			
-		case FADEOUT:
-			femaleHairMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-				update();
-			}
-			break;
-		}
-	}
+    public void calculate(int step) {
 
-	public void update() {
-		material.setDiffuseColor(mColor);
-		femaleHairMeshView.setMaterial(material);
-	}
+        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+        femaleHairMeshView.getTransforms().clear();
+        femaleHairMeshView.getTransforms().addAll(rx, ry, rz);
+
+        switch (mShape) {
+            case FADEIN:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+                    update();
+                    femaleHairMeshView.setVisible(false);
+                } else if (mColor.getOpacity() != 0.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+                    update();
+                }
+                break;
+
+            case FADEOUT:
+                femaleHairMeshView.setVisible(true);
+
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+                    update();
+                } else if (mColor.getOpacity() != 1.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+                    update();
+                }
+                break;
+        }
+    }
+
+    public void update() {
+        material.setDiffuseColor(mColor);
+        femaleHairMeshView.setMaterial(material);
+    }
 }

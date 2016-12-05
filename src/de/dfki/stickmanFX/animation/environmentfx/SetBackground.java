@@ -37,7 +37,6 @@ public class SetBackground extends AnimationFX {
             mStickmanPane = mStickmanFX.getStickmanStageController().getStickmanStage()
                     .getStickmanPane(mStageIdentifier);
 
-
             //Upload the picture
             if (list.contains(sParameter)) {
                 mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanFX/image/" + sParameter + ".jpg');"

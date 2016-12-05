@@ -18,37 +18,37 @@ import java.util.ArrayList;
  */
 public class HeadTilt extends AnimationSwing {
 
-	public HeadTilt(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public HeadTilt(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		int translationUnit = 8;
+    @Override
+    public void playAnimation() {
+        int translationUnit = 8;
 
-		// head down
-		mAnimationPart = new ArrayList<>();
-		// which bodyparts are involved - check dependencies
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "tilt", translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "tilt", translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "tilt", translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "tilt", translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "tilt", translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "tilt", translationUnit));
+        // head down
+        mAnimationPart = new ArrayList<>();
+        // which bodyparts are involved - check dependencies
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "tilt", translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "tilt", translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "tilt", translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "tilt", translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "tilt", translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "tilt", translationUnit));
 
-		playAnimationPart(150);
-		
-		pauseAnimation(200);
-		
-		mAnimationPart = new ArrayList<>();
-		// which bodyparts are involved - check dependencies
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "tilt", -translationUnit));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "tilt", -translationUnit));
+        playAnimationPart(150);
 
-		playAnimationPart(150);
-	}
+        pauseAnimation(200);
+
+        mAnimationPart = new ArrayList<>();
+        // which bodyparts are involved - check dependencies
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "tilt", -translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "tilt", -translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "tilt", -translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "tilt", -translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mHead, "tilt", -translationUnit));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "tilt", -translationUnit));
+
+        playAnimationPart(150);
+    }
 }

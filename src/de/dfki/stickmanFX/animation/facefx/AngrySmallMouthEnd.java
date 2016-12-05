@@ -15,15 +15,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class AngrySmallMouthEnd extends AnimationFX 
-{
-	public AngrySmallMouthEnd() 
-    {
+public class AngrySmallMouthEnd extends AnimationFX {
+
+    public AngrySmallMouthEnd() {
         super();
     }
 
-    public AngrySmallMouthEnd(StickmanFX sm, int duration, boolean block) 
-    {
+    public AngrySmallMouthEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

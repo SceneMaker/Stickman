@@ -21,8 +21,7 @@ import javafx.scene.transform.Affine;
  * @author Beka
  *
  */
-public class LeftForeArmFX extends BodyPartFX 
-{
+public class LeftForeArmFX extends BodyPartFX {
 
     LeftUpperArmFX mUpperArmFX;
     int mArmLength = 80;
@@ -46,25 +45,24 @@ public class LeftForeArmFX extends BodyPartFX
         calculate(0);
     }
 
-    public Point getHandStartPosition() 
-    {
-    	if(mRotation >= 0 && mRotation <= 90)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-    	else if(mRotation>90 && mRotation<= 180)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()-6), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    	else if(mRotation < 0 && mRotation >= -90)
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()-7), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-    	else 
-    		return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()-7), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-    			
+    public Point getHandStartPosition() {
+        if (mRotation >= 0 && mRotation <= 90) {
+            return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+        } else if (mRotation > 90 && mRotation <= 180) {
+            return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX() - 6), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+        } else if (mRotation < 0 && mRotation >= -90) {
+            return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX() - 7), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
+        } else {
+            return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX() - 7), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
+        }
+
     }
 
     @Override
-    public void calculate(int step) 
-    {
+    public void calculate(int step) {
 
-    	clearChildren(this);
-    	mArm = new Path();
+        clearChildren(this);
+        mArm = new Path();
         mStart = mUpperArmFX.getLeftUpperArmEndPosition();
         mEnd = new Point(mStart.x, mStart.y + mArmLength);
         mArm.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
@@ -75,7 +73,6 @@ public class LeftForeArmFX extends BodyPartFX
         mArm.getTransforms().clear();
         mArm.getTransforms().add(af);
 
-
         this.getChildren().add(mArm);
         update();
     }
@@ -84,9 +81,9 @@ public class LeftForeArmFX extends BodyPartFX
     public void update() {
 //        Color currentColor = Color.rgb(80, 80, 80);
         // draw outlines
-    	if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
-    		mColorRecorder = mColor;
-    	}
+        if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+            mColorRecorder = mColor;
+        }
         if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
             {
@@ -100,10 +97,10 @@ public class LeftForeArmFX extends BodyPartFX
             } else {
                 int fadeFactor = (20 - mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
-                	mColor = mColorRecorder;
+                    mColor = mColorRecorder;
+                } else {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 }
-                else
-                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));
             }

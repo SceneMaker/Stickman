@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class Excited extends Animation3D {
 
-	public Excited() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+    public Excited() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public Excited(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
@@ -43,7 +43,6 @@ public class Excited extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITEDEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "EXCITEDEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

@@ -19,10 +19,10 @@ import java.util.ArrayList;
  */
 public class Surprised extends Animation3D {
 
-	public Surprised() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+    public Surprised() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public Surprised(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
@@ -48,8 +48,6 @@ public class Surprised extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "SURPRISEDEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "SURPRISEDEND"));
         playAnimationPart(mDuration);
-        
-        
 
     }
 }

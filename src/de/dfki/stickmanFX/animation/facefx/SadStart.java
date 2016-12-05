@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class SadStart extends AnimationFX {
-	
-	public SadStart() {
+
+    public SadStart() {
         super();
     }
 

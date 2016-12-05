@@ -18,19 +18,19 @@ import java.util.ArrayList;
  */
 public class ContemptStart extends AnimationSwing {
 
-	public ContemptStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public ContemptStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// Contempt start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPT"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // Contempt start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPT"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPT"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPT"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

@@ -5,7 +5,6 @@ package de.dfki.stickman3D.animation.facefx;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;

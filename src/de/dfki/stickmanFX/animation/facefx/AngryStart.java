@@ -15,14 +15,12 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  */
 public class AngryStart extends AnimationFX {
-	
-	public AngryStart() 
-    {
+
+    public AngryStart() {
         super();
     }
 
-    public AngryStart(StickmanFX sm, int duration, boolean block) 
-    {
+    public AngryStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

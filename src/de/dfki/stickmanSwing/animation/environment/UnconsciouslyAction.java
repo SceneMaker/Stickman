@@ -18,7 +18,7 @@ public class UnconsciouslyAction extends Thread {
     private int countBlink = 0;
     private int countTileHead = 0;
     private int NoiseNumber;
-    private int mSleepTime=0;
+    private int mSleepTime = 0;
 
     public UnconsciouslyAction(StickmanSwing s, SimplexNoise noise) {
         mStickman = s;
@@ -30,11 +30,13 @@ public class UnconsciouslyAction extends Thread {
         if (NoiseNumber == 1) {
             countCoverMouth++;
             if (countCoverMouth == 20) {
-            	countCoverMouth = 0;
-            	countTouchHead = 0;
-            	countTileHead = 0;
-            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())   // to ignore to many actions put in mAnimationQueue
-            		mStickman.doAnimation("CoverMouth", 500, true);               
+                countCoverMouth = 0;
+                countTouchHead = 0;
+                countTileHead = 0;
+                if (mStickman.mAnimationScheduler.mAnimationQueue.isEmpty()) // to ignore to many actions put in mAnimationQueue
+                {
+                    mStickman.doAnimation("CoverMouth", 500, true);
+                }
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -49,11 +51,12 @@ public class UnconsciouslyAction extends Thread {
         if (NoiseNumber == 2) {
             countTouchHead++;
             if (countTouchHead == 20) {
-            	countCoverMouth = 0;
-            	countTouchHead = 0;
-            	countTileHead = 0;
-            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())
-            		mStickman.doAnimation("TouchHead", 500, true);             
+                countCoverMouth = 0;
+                countTouchHead = 0;
+                countTileHead = 0;
+                if (mStickman.mAnimationScheduler.mAnimationQueue.isEmpty()) {
+                    mStickman.doAnimation("TouchHead", 500, true);
+                }
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -68,9 +71,10 @@ public class UnconsciouslyAction extends Thread {
         if (NoiseNumber == 3) {
             countBlink++;
             if (countBlink == 8) {
-            	countBlink = 0;
-            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())
-            		mStickman.doAnimation("Blink", 500, true);
+                countBlink = 0;
+                if (mStickman.mAnimationScheduler.mAnimationQueue.isEmpty()) {
+                    mStickman.doAnimation("Blink", 500, true);
+                }
             } else {
                 try {
                     sleep(mSleepTime, 0);
@@ -84,12 +88,13 @@ public class UnconsciouslyAction extends Thread {
     private void tileHead() {
         if (NoiseNumber == 4) {
             countTileHead++;
-            if (countTileHead == 25) {           	
-            	countCoverMouth = 0;
-            	countTouchHead = 0;
-            	countTileHead = 0;
-            	if(mStickman.mAnimationScheduler.mAnimationQueue.isEmpty())
-            		mStickman.doAnimation("HeadTilt", 500, true);              
+            if (countTileHead == 25) {
+                countCoverMouth = 0;
+                countTouchHead = 0;
+                countTileHead = 0;
+                if (mStickman.mAnimationScheduler.mAnimationQueue.isEmpty()) {
+                    mStickman.doAnimation("HeadTilt", 500, true);
+                }
             } else {
                 try {
                     sleep(mSleepTime, 0);

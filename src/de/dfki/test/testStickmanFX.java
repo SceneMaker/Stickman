@@ -10,25 +10,23 @@ import de.dfki.stickmanSwing.stage.StageRoomSwing;
  * Created by alvaro on 9/13/16.
  */
 public class testStickmanFX {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
 
 //        StageRoom stickmanStage = new StageRoomSwing();
 //        stickmanStage.addStickman("Patrick");
 //        //stickmanStage.addStickman("Bob");
 //        stickmanStage.launchStickmanStage(true);
 //        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
+        StageRoom stickmanStage3D1 = new StageRoom3D(500, 0, true);
+        StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
+        stickmanStage3DFull.addStickman("Anna");
+        stickmanStage3DFull.launchStickmanStage(true);
+        stickmanStage3DFull.getStickman("Anna").doAnimation("Speaking", 2000, "Hello World", true);
 
-        StageRoom stickmanStage3D1 = new StageRoom3D(500,0, true);
-        //StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
-        stickmanStage3D1.addStickman("Anna");
-        stickmanStage3D1.launchStickmanStage(true);
-        stickmanStage3D1.getStickman("Anna").doAnimation("Speaking", 2000, "Hello World", true);
-
-
-        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
-       stickmanStage2.addStickman("Sarah");
-        stickmanStage2.launchStickmanStage(true);
+//        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
+//        stickmanStage2.addStickman("Sarah");
+//        stickmanStage2.launchStickmanStage(true);
         //stickmanStage2.launchStickmanStage(true);
 
         /*StageRoom stickmanStageFx = new StageRoomFX(0,500, true);
@@ -36,10 +34,7 @@ public class testStickmanFX {
         stickmanStageFx.addStickman("Anna");
         //stickmanStage.addStickman("Bob");
         stickmanStageFx.launchStickmanStage(true);*/
-
-
-
-/*
+ /*
         StageRoom stickmanStage2 = new StageRoomFX(1921, 0, true);
         StageRoom stickmanStageFull2 = new StageRoomFullScreenDecorator(stickmanStage2);
         stickmanStageFull2.addStickman("Martin");
@@ -55,20 +50,18 @@ public class testStickmanFX {
         //stickmanStage3D.launchStickmanStage(true);
         stickmanStage3D.launchStickmanStage(true);*/
 
-        /*StageRoom stickmanStage3D1 = new StageRoom3D(0,0, true);
+ /*StageRoom stickmanStage3D1 = new StageRoom3D(0,0, true);
         stickmanStage3D1.addStickman("Robbie");
         //stickmanStage3D.launchStickmanStage(true)
         stickmanStage3D1.launchStickmanConfiguration();*/
 
-       /* StageRoom stickmanStage = new StageRoomFX(0,0, true);
+ /* StageRoom stickmanStage = new StageRoomFX(0,0, true);
         StageRoom stickmanStageFull = new StageRoomFullScreenDecorator(stickmanStage);
         stickmanStage.addStickman("Patrick");
         //stickmanStage.addStickman("Bob");
         stickmanStage.launchStickmanConfiguration();*/
-
-
-        /*StageRoom oldStage = new StageRoomSwing();
+ /*StageRoom oldStage = new StageRoomSwing();
         oldStage.addStickman("Anna");
-*/
+         */
     }
 }

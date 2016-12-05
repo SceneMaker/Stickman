@@ -18,8 +18,7 @@ import java.util.ArrayList;
  *
  * @author Beka Aptsiauri
  */
-public class OneTwoThree extends Animation3D
-{
+public class OneTwoThree extends Animation3D {
 
     /**
      *
@@ -29,13 +28,11 @@ public class OneTwoThree extends Animation3D
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-	
-	public OneTwoThree() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-    public OneTwoThree(Stickman3D sm, int duration, boolean block)
-    {
+    public OneTwoThree() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public OneTwoThree(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -43,28 +40,27 @@ public class OneTwoThree extends Animation3D
      * This method creates the angry facial movement.
      */
     @Override
-    public void playAnimation() 
-    {
-        
-    	mAnimationPartFX = new ArrayList<>();
-    	//LeftHand Up
+    public void playAnimation() {
+
+        mAnimationPartFX = new ArrayList<>();
+        //LeftHand Up
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", -30));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", 25));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -160));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger4, "rotate", 130));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger3, "rotate", 130));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger1, "zrotate", 20));
-        
+
         //RightHand Up
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -60));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -5));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 60));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -10));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 25));
         playAnimationPart(500);
-        
+
         //One
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -3));
@@ -76,15 +72,15 @@ public class OneTwoThree extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 3));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", -30));
         playAnimationPart(500);
-        
+
         pauseAnimation(200);
-        
+
         //Two
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -7));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", 30));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftFinger3, "rotate", 130));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKUP"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUP"));
         playAnimationPart(500);
@@ -93,9 +89,9 @@ public class OneTwoThree extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 7));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", -30));
         playAnimationPart(500);
-        
+
         pauseAnimation(200);
-        
+
         //Three
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -10));
@@ -106,13 +102,13 @@ public class OneTwoThree extends Animation3D
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 10));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", -30));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKUPEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUPEND"));
         playAnimationPart(500);
-        
+
         pauseAnimation(500);
-        
+
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftFinger4, "rotate", -130));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftFinger3, "rotate", -130));
@@ -121,7 +117,7 @@ public class OneTwoThree extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", 30));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", -25));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", 160));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger4, "rotate", -130));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger3, "rotate", -130));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger1, "zrotate", -20));
@@ -130,10 +126,9 @@ public class OneTwoThree extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 5));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -60));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", 10));
-        
+
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -25));
         playAnimationPart(500);
-        
 
     }
 }

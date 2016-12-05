@@ -19,170 +19,163 @@ import java.net.URL;
  *
  */
 public class HeadFX extends BodyPartFX {
-	
-	public static enum SHAPE {
-		DEFAULT, FADEIN, FADEOUT
-	};
-	
-	public Dimension mSize = new Dimension(120, 100);
-	public Stickman3D mStickmanFX;
-	TriangleMesh mHeadTriangleMesh;
-	MeshView mHeadMeshView;
-	PhongMaterial material;
 
-	int mHalfHeight = mSize.height / 2;
-	int mHalfWidth = mSize.width / 2;
-	int mPivotOffset = 55;
-	int mZTranslate = -105;
+    public static enum SHAPE {
+        DEFAULT, FADEIN, FADEOUT
+    };
 
-	int mEarWidth = 10;
+    public Dimension mSize = new Dimension(120, 100);
+    public Stickman3D mStickmanFX;
+    TriangleMesh mHeadTriangleMesh;
+    MeshView mHeadMeshView;
+    PhongMaterial material;
 
-	int mDrawOffset = 10;
-	int mXCenterOffset = mEarWidth / 2;
-	int mYCenterOffset = mEarWidth / 2;
+    int mHalfHeight = mSize.height / 2;
+    int mHalfWidth = mSize.width / 2;
+    int mPivotOffset = 55;
+    int mZTranslate = -105;
 
-	URL url;
-	ColModelImporter imorter;
-	StlMeshImporter im;
-	Group mHead;
+    int mEarWidth = 10;
 
-	int mHeadRadius = 60;
-	int mHeadHeight = 30;
+    int mDrawOffset = 10;
+    int mXCenterOffset = mEarWidth / 2;
+    int mYCenterOffset = mEarWidth / 2;
 
-	public HeadFX.SHAPE mShape = HeadFX.SHAPE.DEFAULT;
+    URL url;
+    ColModelImporter imorter;
+    StlMeshImporter im;
+    Group mHead;
 
-	public HeadFX(Stickman3D sm) {
-		mStickmanFX = sm;
-		mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
-		mColor = Color.rgb(242, 227, 217, 1);
+    int mHeadRadius = 60;
+    int mHeadHeight = 30;
 
-		url = getClass().getClassLoader().getResource("BodyParts/Head.stl");
-		im = new StlMeshImporter();
-		im.read(url);
-		mHead = new Group();
-		mHeadTriangleMesh = im.getImport();
+    public HeadFX.SHAPE mShape = HeadFX.SHAPE.DEFAULT;
 
-		mHeadMeshView = new MeshView(mHeadTriangleMesh);
-		mHeadMeshView.setId("MaleHead");
-		material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
-		mHeadMeshView.setMaterial(material);
-		mHeadMeshView.setRotationAxis(Rotate.X_AXIS);
-		mHeadMeshView.setRotate(90);
-		mHead.getChildren().add(mHeadMeshView);
+    public HeadFX(Stickman3D sm) {
+        mStickmanFX = sm;
+        mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
+        mColor = Color.rgb(242, 227, 217, 1);
 
-		init();
-		this.getChildren().add(mHead);
-		calculate(0);
-	}
+        url = getClass().getClassLoader().getResource("BodyParts/Head.stl");
+        im = new StlMeshImporter();
+        im.read(url);
+        mHead = new Group();
+        mHeadTriangleMesh = im.getImport();
 
-	@Override
-	public void init()
-	{
-		super.init();
-		mHead.setTranslateX(mHalfWidth+4);
-		mHead.setTranslateY(mHalfHeight - 3);
-		mHead.setTranslateZ(mZTranslate);
-	}
-	@Override
-	public void setShape(String s) {
-		SHAPE shape = SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-	}
+        mHeadMeshView = new MeshView(mHeadTriangleMesh);
+        mHeadMeshView.setId("MaleHead");
+        material = new PhongMaterial();
+        material.setDiffuseColor(mColor);
+        mHeadMeshView.setMaterial(material);
+        mHeadMeshView.setRotationAxis(Rotate.X_AXIS);
+        mHeadMeshView.setRotate(90);
+        mHead.getChildren().add(mHeadMeshView);
 
-	@Override
-	public void resetShape() {
-		mShape = HeadFX.SHAPE.DEFAULT;
-	}
+        init();
+        this.getChildren().add(mHead);
+        calculate(0);
+    }
 
-	public Point getLeftEyebrowPostion() {
-		return new Point(mHalfWidth - 60, mHalfHeight - 152);
-	}
+    @Override
+    public void init() {
+        super.init();
+        mHead.setTranslateX(mHalfWidth + 4);
+        mHead.setTranslateY(mHalfHeight - 3);
+        mHead.setTranslateZ(mZTranslate);
+    }
 
-	public Point getRightEyebrowPostion() {
-		return new Point(mHalfWidth - 60, mHalfHeight - 105);
-	}
+    @Override
+    public void setShape(String s) {
+        SHAPE shape = SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+    }
 
-	public Point getLeftEyePostion() {
-		return new Point(13, -12);
-	}
+    @Override
+    public void resetShape() {
+        mShape = HeadFX.SHAPE.DEFAULT;
+    }
 
-	public Point getRightEyePostion() {
-		return new Point(-13, -12);
-	}
+    public Point getLeftEyebrowPostion() {
+        return new Point(mHalfWidth - 60, mHalfHeight - 152);
+    }
 
-	public Point getMouthPostion() {
-		return new Point(mHalfWidth-60, mHalfHeight-110 );
-	}
+    public Point getRightEyebrowPostion() {
+        return new Point(mHalfWidth - 60, mHalfHeight - 105);
+    }
 
-	public Point getSpeechBubbleStartPosition() {
-		return new Point(mHalfWidth + 20, mHalfHeight + 30);
-	}
+    public Point getLeftEyePostion() {
+        return new Point(13, -12);
+    }
 
-	public Point getThinkhBubbleStartPosition() {
-		return new Point(mHalfWidth, mHalfHeight);
-	}
+    public Point getRightEyePostion() {
+        return new Point(-13, -12);
+    }
 
-	public Point getBombeStartPosition() {
-		return new Point(mHalfWidth + 100, mHalfHeight - 50);
-	}
+    public Point getMouthPostion() {
+        return new Point(mHalfWidth - 60, mHalfHeight - 110);
+    }
 
-	public Point getBombeEndPosition() {
-		return new Point(0, 0);
-		// return new Point(mHalfWidth + 100,
-		// mStickmanFX.mRightForeLegFX.getLegStartPosition().y - 50);
-	}
+    public Point getSpeechBubbleStartPosition() {
+        return new Point(mHalfWidth + 20, mHalfHeight + 30);
+    }
 
-	public Point getNeckStartPosition() {
-		return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset + 4);
-	}
+    public Point getThinkhBubbleStartPosition() {
+        return new Point(mHalfWidth, mHalfHeight);
+    }
 
-	@Override
-	public void calculate(int step) {
+    public Point getBombeStartPosition() {
+        return new Point(mHalfWidth + 100, mHalfHeight - 50);
+    }
 
-		Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
+    public Point getBombeEndPosition() {
+        return new Point(0, 0);
+        // return new Point(mHalfWidth + 100,
+        // mStickmanFX.mRightForeLegFX.getLegStartPosition().y - 50);
+    }
 
-		mHead.getTransforms().clear();
-		mHead.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
-		case FADEIN:
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				update();
-				mHeadMeshView.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-				update();
-			}
-			break;
-			
-		case FADEOUT:
-			mHeadMeshView.setVisible(true);
-			
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-				update();
-			}
-			break;
-		}
-	}
+    public Point getNeckStartPosition() {
+        return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset + 4);
+    }
 
-	@Override
-	public void update() {
-		material.setDiffuseColor(mColor);
-		mHeadMeshView.setMaterial(material);
-	}
+    @Override
+    public void calculate(int step) {
+
+        Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
+
+        mHead.getTransforms().clear();
+        mHead.getTransforms().addAll(rx, ry, rz);
+
+        switch (mShape) {
+            case FADEIN:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+                    update();
+                    mHeadMeshView.setVisible(false);
+                } else if (mColor.getOpacity() != 0.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+                    update();
+                }
+                break;
+
+            case FADEOUT:
+                mHeadMeshView.setVisible(true);
+
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+                    update();
+                } else if (mColor.getOpacity() != 1.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+                    update();
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void update() {
+        material.setDiffuseColor(mColor);
+        mHeadMeshView.setMaterial(material);
+    }
 }

@@ -21,7 +21,6 @@ public class Loved extends Animation3D {
 //	public Loved() {
 //		mAnimType = ANIMTYPE.ON;
 //	}
-	
     public Loved(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }

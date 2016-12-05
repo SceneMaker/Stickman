@@ -17,14 +17,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Disgusted extends Animation3D
-{
-	public Disgusted() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-    public Disgusted(Stickman3D sm, int duration, boolean block)
-    {
+public class Disgusted extends Animation3D {
+
+    public Disgusted() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public Disgusted(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -49,7 +48,6 @@ public class Disgusted extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "DISGUSTEDEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTEDEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

@@ -17,8 +17,8 @@ import java.util.ArrayList;
  *
  */
 public class LovedEnd extends AnimationFX {
-	
-	public LovedEnd() {
+
+    public LovedEnd() {
         super();
     }
 

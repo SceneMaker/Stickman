@@ -21,116 +21,117 @@ import java.net.UnknownHostException;
  */
 public class ClientConnectionHandler extends Thread implements CommonClientConnectionHandler {
 
-	private Socket mSocket;
-	private String mHost = "127.0.0.1";
-	private int mPort = 7777;
-	private PrintWriter mOut;
-	private BufferedReader mIn;
-	private static String sIDENTIFIER = "StickmanStageSwing";
+    private Socket mSocket;
+    private String mHost = "127.0.0.1";
+    private int mPort = 7777;
+    private PrintWriter mOut;
+    private BufferedReader mIn;
+    private static String sIDENTIFIER = "StickmanStageSwing";
 
-	private boolean mRunning = true;
-	public boolean mConnected = false;
-	private StickmanStageSwing mStickmanStage;
-	private XMLCommandParser stickmanParser;
+    private boolean mRunning = true;
+    public boolean mConnected = false;
+    private StickmanStageSwing mStickmanStage;
+    private XMLCommandParser stickmanParser;
 
-	public ClientConnectionHandler() {
-		super.setName("StickmanStageSwing Socket Connection Handler");
-	}
-	public ClientConnectionHandler(StickmanStageSwing stage) {
+    public ClientConnectionHandler() {
+        super.setName("StickmanStageSwing Socket Connection Handler");
+    }
 
-		super.setName("StickmanStageSwing Socket Connection Handler");
-		mStickmanStage = stage;
-	}
+    public ClientConnectionHandler(StickmanStageSwing stage) {
 
-	public ClientConnectionHandler(XMLCommandParser parser) {
-		super.setName("StickmanStageSwing Socket Connection Handler");
-		stickmanParser = parser;
-	}
+        super.setName("StickmanStageSwing Socket Connection Handler");
+        mStickmanStage = stage;
+    }
 
-	public void end() {
-		try {
-			mSocket.shutdownInput();
-			mSocket.shutdownOutput();
-			mSocket.close();
-			mRunning = false;
-			mConnected = false;
-		} catch (IOException ex) {
-			StickmanStageSwing.mLogger.severe("Error closing socket to " + mHost + ", " + mPort);
-		}
-	}
+    public ClientConnectionHandler(XMLCommandParser parser) {
+        super.setName("StickmanStageSwing Socket Connection Handler");
+        stickmanParser = parser;
+    }
 
-	public void sendToServer(String message) {
-		//StickmanStageSwing.mLogger.info("Sending " + message);
+    public void end() {
+        try {
+            mSocket.shutdownInput();
+            mSocket.shutdownOutput();
+            mSocket.close();
+            mRunning = false;
+            mConnected = false;
+        } catch (IOException ex) {
+            StickmanStageSwing.mLogger.severe("Error closing socket to " + mHost + ", " + mPort);
+        }
+    }
 
-		if (mSocket.isConnected()) {
-			mOut.println(message);
-			mOut.flush();
-		}
-	}
+    public void sendToServer(String message) {
+        //StickmanStageSwing.mLogger.info("Sending " + message);
 
-	public void connect(String host, int port) {
-		mHost = host;
-		mPort = port;
-		connect();
-	}
+        if (mSocket.isConnected()) {
+            mOut.println(message);
+            mOut.flush();
+        }
+    }
 
-	public void connect() {
-		StickmanStageSwing.mLogger.info("StickmanStageSwing tries to connect with control application ...");
-		try {
-			InetAddress inteAddress = InetAddress.getByName(mHost);
-			SocketAddress socketAddress = new InetSocketAddress(inteAddress, mPort);
+    public void connect(String host, int port) {
+        mHost = host;
+        mPort = port;
+        connect();
+    }
 
-			mSocket = new Socket();
-			mSocket.connect(socketAddress, 2000); // wait max. 2000ms
+    public void connect() {
+        StickmanStageSwing.mLogger.info("StickmanStageSwing tries to connect with control application ...");
+        try {
+            InetAddress inteAddress = InetAddress.getByName(mHost);
+            SocketAddress socketAddress = new InetSocketAddress(inteAddress, mPort);
 
-			mOut = new PrintWriter(mSocket.getOutputStream(), true);
-			mIn = new BufferedReader(new InputStreamReader(mSocket.getInputStream(), "UTF-8"));
-		} catch (UnknownHostException e) {
-			StickmanStageSwing.mLogger.severe(mHost + " is unknown - aborting!");
-		} catch (IOException e) {
-			StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
-		}
-		mConnected = true;
-		StickmanStageSwing.mLogger.info("StickmanStageSwing connected to control application at " + mSocket.toString());
-		// register at server
-		sendToServer("CLIENTID#" + sIDENTIFIER);
-		start();
-	}
+            mSocket = new Socket();
+            mSocket.connect(socketAddress, 2000); // wait max. 2000ms
 
-	@Override
-	public void tryToConnect(String host, int port) {
-		mHost = host;
-		mPort = port;
-		connect(mHost, mPort);
-		while (!ismConnected()) {
-			try {
-				System.out.println("Waiting for connection to control application ...");
-				Thread.sleep(250);
-			} catch (InterruptedException ex) {
-				System.out.println(ex.getMessage());
-			}
-		}
-	}
+            mOut = new PrintWriter(mSocket.getOutputStream(), true);
+            mIn = new BufferedReader(new InputStreamReader(mSocket.getInputStream(), "UTF-8"));
+        } catch (UnknownHostException e) {
+            StickmanStageSwing.mLogger.severe(mHost + " is unknown - aborting!");
+        } catch (IOException e) {
+            StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
+        }
+        mConnected = true;
+        StickmanStageSwing.mLogger.info("StickmanStageSwing connected to control application at " + mSocket.toString());
+        // register at server
+        sendToServer("CLIENTID#" + sIDENTIFIER);
+        start();
+    }
 
-	@Override
-	public void run() {
-		String inputLine = "";
+    @Override
+    public void tryToConnect(String host, int port) {
+        mHost = host;
+        mPort = port;
+        connect(mHost, mPort);
+        while (!ismConnected()) {
+            try {
+                System.out.println("Waiting for connection to control application ...");
+                Thread.sleep(250);
+            } catch (InterruptedException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
 
-		while (mRunning) {
-			try {
-				inputLine = mIn.readLine();
+    @Override
+    public void run() {
+        String inputLine = "";
 
-				if (inputLine != null) {
-					stickmanParser.parseStickmanXMLCmd(inputLine);
-				}
-			} catch (IOException ex) {
-				StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
-			}
-		}
-	}
+        while (mRunning) {
+            try {
+                inputLine = mIn.readLine();
 
-	@Override
-	public boolean ismConnected() {
-		return mConnected;
-	}
+                if (inputLine != null) {
+                    stickmanParser.parseStickmanXMLCmd(inputLine);
+                }
+            } catch (IOException ex) {
+                StickmanStageSwing.mLogger.severe(mHost + " i/o exception - aborting!");
+            }
+        }
+    }
+
+    @Override
+    public boolean ismConnected() {
+        return mConnected;
+    }
 }

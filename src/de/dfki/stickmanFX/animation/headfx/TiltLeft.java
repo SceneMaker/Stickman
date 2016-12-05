@@ -20,30 +20,31 @@ import de.dfki.stickmanFX.animationlogic.AnimationFX;
  */
 public class TiltLeft extends AnimationFX {
 
-	public TiltLeft(StickmanFX sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public TiltLeft(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		int translationUnit = 8;
+    @Override
+    public void playAnimation() {
+        int translationUnit = 8;
 
-		// head down
-		mAnimationPartFX = new ArrayList<>();
-		// which bodyparts are involved - check dependencies
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "tilt", translationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "tilt", translationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "tilt", translationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", translationUnit));
-		
-		if(mStickmanFX.mType == Gender.TYPE.MALE)
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
-		else
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
-		
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "tilt", translationUnit));
+        // head down
+        mAnimationPartFX = new ArrayList<>();
+        // which bodyparts are involved - check dependencies
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "tilt", translationUnit));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "tilt", translationUnit));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "tilt", translationUnit));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "tilt", translationUnit));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "tilt", translationUnit));
 
-		playAnimationPart(200);
-	}
+        if (mStickmanFX.mType == Gender.TYPE.MALE) {
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "tilt", translationUnit));
+        } else {
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "tilt", translationUnit));
+        }
+
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "tilt", translationUnit));
+
+        playAnimationPart(200);
+    }
 }

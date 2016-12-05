@@ -14,6 +14,7 @@ import java.nio.charset.Charset;
  * Created by alvaro on 11/19/16.
  */
 public class XMLCommandParser3D extends XMLCommandParser {
+
     public XMLCommandParser3D(StickmansOnStage stage) {
         super(stage);
     }
@@ -31,7 +32,7 @@ public class XMLCommandParser3D extends XMLCommandParser {
         int duration = a.mDuration;
         boolean blocking = a.mBlocking;
         Object parameter = a.mParameter;
-        if(stickmanname != null){
+        if (stickmanname != null) {
             a = (a instanceof EventAnimation3D)
                     ? AnimationLoader3D.getInstance().loadEventAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking)
                     : AnimationLoader3D.getInstance().loadAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking);

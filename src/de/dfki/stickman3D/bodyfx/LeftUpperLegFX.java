@@ -23,131 +23,118 @@ import java.net.URL;
  *
  */
 public class LeftUpperLegFX extends BodyPartFX {
-	
-	public static enum SHAPE {
-		DEFAULT, FADEIN, FADEOUT
-	};
-	
-	public LeftUpperLegFX.SHAPE mShape = LeftUpperLegFX.SHAPE.DEFAULT;
 
-	DownBody mDownBody;
+    public static enum SHAPE {
+        DEFAULT, FADEIN, FADEOUT
+    };
 
-	URL url;
-	ColModelImporter imorter;
-	MeshView mLeftUpperLegMesh;
-	PhongMaterial material;
+    public LeftUpperLegFX.SHAPE mShape = LeftUpperLegFX.SHAPE.DEFAULT;
 
-	Group leftUpperLegGroup;
+    DownBody mDownBody;
 
-	public LeftUpperLegFX(DownBody downBody) {
-		mDownBody = downBody;
-		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-		{
-			mLength = 60;
-			url = getClass().getClassLoader().getResource("BodyParts/MaleUpperLeg.dae");
-		}
-		else
-		{
-			mLength = 50;
-			url = getClass().getClassLoader().getResource("BodyParts/FemaleUpperLeg.dae");
-		}
+    URL url;
+    ColModelImporter imorter;
+    MeshView mLeftUpperLegMesh;
+    PhongMaterial material;
 
-		imorter = new ColModelImporter();
-		mSize = new Dimension(10, mLength);
-		mColor = Color.rgb(242, 227, 217, 1);
+    Group leftUpperLegGroup;
 
-		mDefaultRotation = 0;
-		mXRotation = mDefaultRotation;
-		mToDegreeX = mDefaultRotation;
-		mXRotationStep = 0.0f;
+    public LeftUpperLegFX(DownBody downBody) {
+        mDownBody = downBody;
+        if (mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+            mLength = 60;
+            url = getClass().getClassLoader().getResource("BodyParts/MaleUpperLeg.dae");
+        } else {
+            mLength = 50;
+            url = getClass().getClassLoader().getResource("BodyParts/FemaleUpperLeg.dae");
+        }
 
-		imorter.read(url);
-		mLeftUpperLegMesh = (MeshView) imorter.getImport()[0];
+        imorter = new ColModelImporter();
+        mSize = new Dimension(10, mLength);
+        mColor = Color.rgb(242, 227, 217, 1);
 
-		material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
-		mLeftUpperLegMesh.setMaterial(material);
+        mDefaultRotation = 0;
+        mXRotation = mDefaultRotation;
+        mToDegreeX = mDefaultRotation;
+        mXRotationStep = 0.0f;
 
-		leftUpperLegGroup = new Group();
-		leftUpperLegGroup.setId("leftUpperLegGroup");
-		leftUpperLegGroup.getChildren().add(mLeftUpperLegMesh);
+        imorter.read(url);
+        mLeftUpperLegMesh = (MeshView) imorter.getImport()[0];
 
-		mDownBody.mDownBodyGroup.getChildren().add(leftUpperLegGroup);
+        material = new PhongMaterial();
+        material.setDiffuseColor(mColor);
+        mLeftUpperLegMesh.setMaterial(material);
 
-		init();
-	}
+        leftUpperLegGroup = new Group();
+        leftUpperLegGroup.setId("leftUpperLegGroup");
+        leftUpperLegGroup.getChildren().add(mLeftUpperLegMesh);
 
-	@Override
-	public void setShape(String s) {
-		SHAPE shape = SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-	}
+        mDownBody.mDownBodyGroup.getChildren().add(leftUpperLegGroup);
 
-	@Override
-	public void resetShape() {
-		mShape = LeftUpperLegFX.SHAPE.DEFAULT;
-	}
-	
-	@Override
-	public void calculate(int step) {
-		mStart = mDownBody.mUpperBody.getLeftLegStartPostion();
-		
-		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
-		
-		if(mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-		{
-			leftUpperLegGroup.setTranslateX(mStart.x - 58);
-			leftUpperLegGroup.setTranslateY(mStart.y - 256);
-			leftUpperLegGroup.setTranslateZ(0);
-		}
-		else
-		{
-			leftUpperLegGroup.setTranslateX(mStart.x-60);
-			leftUpperLegGroup.setTranslateY(mStart.y - 243);
-			leftUpperLegGroup.setTranslateZ(0);
-		}
-		leftUpperLegGroup.getTransforms().clear();
-		leftUpperLegGroup.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
-		case FADEIN:
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				update();
-				mLeftUpperLegMesh.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-				update();
-			}
-			break;
-			
-		case FADEOUT:
-			mLeftUpperLegMesh.setVisible(true);
-			
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-				update();
-			}
-			break;
-		}
-		
-	}
+        init();
+    }
 
-	@Override
-	public void update() {
-		material.setDiffuseColor(mColor);
-		mLeftUpperLegMesh.setMaterial(material);
-	}
+    @Override
+    public void setShape(String s) {
+        SHAPE shape = SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+    }
+
+    @Override
+    public void resetShape() {
+        mShape = LeftUpperLegFX.SHAPE.DEFAULT;
+    }
+
+    @Override
+    public void calculate(int step) {
+        mStart = mDownBody.mUpperBody.getLeftLegStartPostion();
+
+        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+        if (mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+            leftUpperLegGroup.setTranslateX(mStart.x - 58);
+            leftUpperLegGroup.setTranslateY(mStart.y - 256);
+            leftUpperLegGroup.setTranslateZ(0);
+        } else {
+            leftUpperLegGroup.setTranslateX(mStart.x - 60);
+            leftUpperLegGroup.setTranslateY(mStart.y - 243);
+            leftUpperLegGroup.setTranslateZ(0);
+        }
+        leftUpperLegGroup.getTransforms().clear();
+        leftUpperLegGroup.getTransforms().addAll(rx, ry, rz);
+
+        switch (mShape) {
+            case FADEIN:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+                    update();
+                    mLeftUpperLegMesh.setVisible(false);
+                } else if (mColor.getOpacity() != 0.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+                    update();
+                }
+                break;
+
+            case FADEOUT:
+                mLeftUpperLegMesh.setVisible(true);
+
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+                    update();
+                } else if (mColor.getOpacity() != 1.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+                    update();
+                }
+                break;
+        }
+
+    }
+
+    @Override
+    public void update() {
+        material.setDiffuseColor(mColor);
+        mLeftUpperLegMesh.setMaterial(material);
+    }
 }

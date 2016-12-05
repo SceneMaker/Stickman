@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class Happy extends Animation3D {
 
-	public Happy() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+    public Happy() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public Happy(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
@@ -43,7 +43,6 @@ public class Happy extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "HAPPYEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "HAPPYEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

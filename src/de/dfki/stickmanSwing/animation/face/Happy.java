@@ -12,32 +12,32 @@ import java.util.ArrayList;
  *
  */
 public class Happy extends AnimationSwing {
-	
-	public Happy() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Happy(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Happy() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		// happy
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPY"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPY"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPY"));
-		playAnimationPart(mDuration);
+    public Happy(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(1200);
-		
-		// no happy
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPYEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPYEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPYEND"));
-		
-		playAnimationPart(20);
-	}
+    @Override
+    public void playAnimation() {
+        // happy
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPY"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPY"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPY"));
+        playAnimationPart(mDuration);
+
+        pauseAnimation(1200);
+
+        // no happy
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPYEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPYEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPYEND"));
+
+        playAnimationPart(20);
+    }
 }

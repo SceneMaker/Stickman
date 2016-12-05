@@ -4,7 +4,9 @@ import de.dfki.common.interfaces.ApplicationLauncher;
 import de.dfki.common.interfaces.StickmanStage;
 
 public abstract class ApplicationLauncherImpl implements ApplicationLauncher {
+
     private static boolean isRunning = false;
+
     @Override
     public void waitForApplicationToStart() {
         while (!isRunning) { //New class for running
@@ -30,7 +32,7 @@ public abstract class ApplicationLauncherImpl implements ApplicationLauncher {
         return isRunning;
     }
 
-    public static synchronized void setIsRunning(){
+    public static synchronized void setIsRunning() {
         isRunning = true;
     }
 }

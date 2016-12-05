@@ -17,36 +17,36 @@ import java.util.ArrayList;
  *
  */
 public class Surprised extends AnimationSwing {
-	
-	public Surprised() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Surprised(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Surprised() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		// surprised
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SURPRISED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "SURPRISED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "SURPRISED"));
+    public Surprised(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
+
+    @Override
+    public void playAnimation() {
+
+        // surprised
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "SURPRISED"));
 //		playAnimationPart(20);mDuration
-		playAnimationPart(mDuration);
-		pauseAnimation(1200);
+        playAnimationPart(mDuration);
+        pauseAnimation(1200);
 
-		// no surprised
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "SURPRISEDEND"));
-		playAnimationPart(20);
-	}
+        // no surprised
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "SURPRISEDEND"));
+        playAnimationPart(20);
+    }
 }

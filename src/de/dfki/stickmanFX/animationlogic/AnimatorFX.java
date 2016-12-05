@@ -6,11 +6,7 @@ import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickmanSwing.util.TimingInfo;
 import de.dfki.stickmanFX.StickmanFX;
 import de.dfki.stickmanFX.bodyfx.BodyPartFX;
-import de.dfki.util.observers.AnimationObserver;
-
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 import static java.lang.Thread.sleep;
 
@@ -254,7 +250,7 @@ public class AnimatorFX
     }
 
 
-    private class WaitThread extends Thread 
+    private class WaitThread extends Thread
     {
         int mSleepTime = 0;
 

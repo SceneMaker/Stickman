@@ -16,28 +16,25 @@ import javafx.application.Platform;
  * @author Beka Aptsiauri
  *
  */
-public class Blink extends AnimationFX 
-{
+public class Blink extends AnimationFX {
 
-   
-	public Blink(StickmanFX sm, int duration, boolean block) 
-        {
-		super(sm, duration, block);
-	}
+    public Blink(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
-		playAnimationPart(20);
-		
-		 pauseAnimation(300);
+    @Override
+    public void playAnimation() {
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
+        Platform.runLater(() -> playAnimationPart(20));
 
-		 //blink up
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
-		playAnimationPart(20);
-	}
+        pauseAnimation(300);
+
+        //blink up
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
+        Platform.runLater(() -> playAnimationPart(20));
+    }
 }

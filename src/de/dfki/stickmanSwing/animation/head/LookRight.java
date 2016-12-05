@@ -13,24 +13,24 @@ import java.util.ArrayList;
  */
 public class LookRight extends AnimationSwing {
 
-	public LookRight(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public LookRight(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		int translationUnit = 3;
+    @Override
+    public void playAnimation() {
+        int translationUnit = 3;
 
-		// look left
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOOKRIGHT"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOOKRIGHT"));
-		playAnimationPart(20);
+        // look left
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "LOOKRIGHT"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "LOOKRIGHT"));
+        playAnimationPart(20);
 
 //		// blink up
 //		mAnimationPart = new ArrayList<>();
 //		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DEFAULT"));
 //		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DEFAULT"));
 //		playAnimationPart(2);
-	}
+    }
 }

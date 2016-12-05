@@ -14,29 +14,28 @@ import java.util.ArrayList;
  */
 public class LookRight extends Animation3D {
 
-	public LookRight() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-	public LookRight(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public LookRight() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKRIGHT"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKRIGHT"));
-		playAnimationPart(100);
+    public LookRight(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(100);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKRIGHTEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKRIGHTEND"));
-		playAnimationPart(100);
-		
+    @Override
+    public void playAnimation() {
 
-	}
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKRIGHT"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKRIGHT"));
+        playAnimationPart(100);
+
+        pauseAnimation(100);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKRIGHTEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKRIGHTEND"));
+        playAnimationPart(100);
+
+    }
 }

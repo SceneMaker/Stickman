@@ -16,23 +16,21 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class ContemptEnd extends Animation3D
-{
+public class ContemptEnd extends Animation3D {
 
-	public ContemptEnd(Stickman3D sm, int duration, boolean block)
-        {
-		super(sm, duration, block);
-	}
+    public ContemptEnd(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// Contempt end
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // Contempt end
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

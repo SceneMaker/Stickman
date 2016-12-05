@@ -20,14 +20,13 @@ import javafx.scene.transform.Affine;
  * @author Beka
  *
  */
-public class LeftHandFX extends BodyPartFX 
-{
+public class LeftHandFX extends BodyPartFX {
 
     LeftForeArmFX mLeftForeArmFX;
     Path mHand;
     Affine af;
-    public LeftHandFX(LeftForeArmFX lfa) 
-    {
+
+    public LeftHandFX(LeftForeArmFX lfa) {
         mLeftForeArmFX = lfa;
         mLength = 10;
         mSize = new Dimension(mLength, mLength);
@@ -43,8 +42,7 @@ public class LeftHandFX extends BodyPartFX
     }
 
     @Override
-    public void createShape() 
-    {
+    public void createShape() {
         mStart = mLeftForeArmFX.getHandStartPosition();
         mEnd = new Point(mStart.x, mStart.y + mLength);
 
@@ -66,16 +64,14 @@ public class LeftHandFX extends BodyPartFX
             } else {
                 int fadeFactor = (20 - mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
                 if (fadeFactor >= 216) {
-                	mColor = mColorRecorder;
+                    mColor = mColorRecorder;
+                } else {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 }
-                else
-                	mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
             }
         }
 
-        
-            
         mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
         mHand.getElements().add(new LineTo(mStart.x - 5, mStart.y));
         mHand.getElements().add(new MoveTo(mStart.x, mStart.y));
@@ -84,7 +80,7 @@ public class LeftHandFX extends BodyPartFX
         mHand.getElements().add(new LineTo(mEnd.x - 3, mEnd.y - 2f));
         mHand.getElements().add(new MoveTo(mStart.x + 1, mStart.y));
         mHand.getElements().add(new LineTo(mEnd.x + 4, mEnd.y - 2f));
-        
+
         this.getChildren().add(mHand);
         addToDrawObjects(mHand);
         this.update();
@@ -96,24 +92,22 @@ public class LeftHandFX extends BodyPartFX
 
         Affine af = new Affine();
         // flip hand when rotation is more than 60 degrees
-        if (mRotation > 60) 
-        {
+        if (mRotation > 60) {
             af.appendScale(-1.1, 1.0);
             af.appendTranslation(-mStart.x * 2, 0);
         }
 
         af.appendRotation(mRotation, mStart.x, mStart.y);
-        for (Path g : mGraphicPaths) 
-        {
+        for (Path g : mGraphicPaths) {
             g.getTransforms().clear();
             g.getTransforms().add(af);
         }
     }
-    
-    protected void recordColor(){
-    	if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
-        	mColorRecorder = mColor;
+
+    protected void recordColor() {
+        if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+            mColorRecorder = mColor;
         }
     }
-    
+
 }

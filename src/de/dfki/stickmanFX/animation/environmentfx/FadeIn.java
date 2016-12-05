@@ -41,37 +41,38 @@ public class FadeIn extends AnimationFX {
         mStickmanFX.starShowControler = false;
         mStickmanFX.setCharacterInvisible = true;
         mStickmanFX.fadeControler = false;
-        
+
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "shape", "DEFAULT"));
-		
-		if(mStickmanFX.mType == Gender.TYPE.MALE)
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "shape", "DEFAULT"));
-		else
-			mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "shape", "DEFAULT"));
-		
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mNeckFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightShoulderFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftShoulderFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "shape", "DEFAULT"));
-		//mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFootFX, "shape", "DEFAULT"));
-		//mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "shape", "DEFAULT"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFootFX, "shape", "DEFAULT"));
+
+        if (mStickmanFX.mType == Gender.TYPE.MALE) {
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "shape", "DEFAULT"));
+        } else {
+            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "shape", "DEFAULT"));
+        }
+
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mNeckFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightShoulderFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftShoulderFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperArmFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperArmFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeArmFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeArmFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightHandFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "shape", "DEFAULT"));
+        //mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightLegFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightUpperLegFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightForeLegFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightFootFX, "shape", "DEFAULT"));
+        //mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftLegFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftUpperLegFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftForeLegFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftFootFX, "shape", "DEFAULT"));
         playAnimationPart(1000);
         mStickmanFX.setCharacterInvisible = false;
 

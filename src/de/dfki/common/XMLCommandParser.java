@@ -6,8 +6,10 @@ package de.dfki.common;
 public abstract class XMLCommandParser {
 
     protected StickmansOnStage onStage;
-    public XMLCommandParser(StickmansOnStage stage){
+
+    public XMLCommandParser(StickmansOnStage stage) {
         onStage = stage;
     }
-    public  abstract void parseStickmanXMLCmd(String cmd);
+
+    public abstract void parseStickmanXMLCmd(String cmd);
 }

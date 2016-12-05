@@ -11,14 +11,14 @@ import javafx.application.Platform;
 
 /**
  *
- * @author Robbie
- * This is used when ZoomIn is used to only show a head of the stickmanSwing
+ * @author Robbie This is used when ZoomIn is used to only show a head of the
+ * stickmanSwing
  *
  */
 public class MoveUD extends AnimationFX {
 
     private StickmanFX mStickmanFX;
-    private double vdistance=0;
+    private double vdistance = 0;
 
     public MoveUD(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
@@ -33,7 +33,7 @@ public class MoveUD extends AnimationFX {
 //                Platform.runLater(() -> mStickmanFX.update());
 //                pauseAnimation(40);
 //        }
-        
+
         String sParameter = (String) mParameter;
         sParameter = sParameter.trim();
 
@@ -44,22 +44,22 @@ public class MoveUD extends AnimationFX {
         }
 
         //move down slowly
-        double speedUnit =  (vdistance - mStickmanFX.voffset) / 10;
-        
-        if (speedUnit >= 0) {
-                for (int i = 0; i < 10; i++) {
-                    mStickmanFX.voffset = mStickmanFX.voffset + speedUnit;
-                    if (mStickmanFX.voffset >= vdistance) {
-                        mStickmanFX.voffset = vdistance;
-                    }
-                    Platform.runLater(() -> mStickmanFX.update());
-                    pauseAnimation(40);
-                }
+        double speedUnit = (vdistance - mStickmanFX.voffset) / 10;
 
-                if (mStickmanFX.voffset < vdistance) {
+        if (speedUnit >= 0) {
+            for (int i = 0; i < 10; i++) {
+                mStickmanFX.voffset = mStickmanFX.voffset + speedUnit;
+                if (mStickmanFX.voffset >= vdistance) {
                     mStickmanFX.voffset = vdistance;
-                    Platform.runLater(() -> mStickmanFX.update());
                 }
+                Platform.runLater(() -> mStickmanFX.update());
+                pauseAnimation(40);
+            }
+
+            if (mStickmanFX.voffset < vdistance) {
+                mStickmanFX.voffset = vdistance;
+                Platform.runLater(() -> mStickmanFX.update());
+            }
         }
 
         if (speedUnit < 0) {

@@ -19,7 +19,7 @@ public class HappyEnd extends Animation3D {
 
     @Override
     public void playAnimation() {
-         // no happy
+        // no happy
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "HAPPYEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "HAPPYEND"));
