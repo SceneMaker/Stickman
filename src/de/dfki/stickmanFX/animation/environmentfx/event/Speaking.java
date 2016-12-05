@@ -19,28 +19,28 @@ import java.util.ArrayList;
  *
  */
 public class Speaking extends EventAnimationFX {
-	
-	public Speaking() {
-		super();
-	}
 
-	public Speaking(StickmanFX sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Speaking() {
+        super();
+    }
 
-	@Override
-	public void playAnimation() {
-		if (mParameter instanceof WordTimeMarkSequence) {
-			mWTS = (WordTimeMarkSequence) mParameter;
-		}
+    public Speaking(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
+    @Override
+    public void playAnimation() {
+        if (mParameter instanceof WordTimeMarkSequence) {
+            mWTS = (WordTimeMarkSequence) mParameter;
+        }
 
-		playEventAnimationPart();
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
 
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
-		playAnimationPart(20);
+        playEventAnimationPart();
 
-	}
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+        playAnimationPart(20);
+
+    }
 }

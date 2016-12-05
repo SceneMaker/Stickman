@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class FearStart extends AnimationFX {
-	
-	public FearStart() {
+
+    public FearStart() {
         super();
     }
 

@@ -5,7 +5,6 @@
  */
 package de.dfki.stickmanFX.animation.facefx;
 
-
 import de.dfki.stickmanFX.StickmanFX;
 import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
 import de.dfki.stickmanFX.animationlogic.AnimationFX;
@@ -17,14 +16,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class AngrySmallMouth extends AnimationFX 
-{
-	public AngrySmallMouth() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
-    public AngrySmallMouth(StickmanFX sm, int duration, boolean block) 
-    {
+public class AngrySmallMouth extends AnimationFX {
+
+    public AngrySmallMouth() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
+    public AngrySmallMouth(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

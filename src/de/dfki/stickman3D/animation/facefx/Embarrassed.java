@@ -17,14 +17,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Embarrassed extends Animation3D
-{
-	public Embarrassed() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-    public Embarrassed(Stickman3D sm, int duration, boolean block)
-    {
+public class Embarrassed extends Animation3D {
+
+    public Embarrassed() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public Embarrassed(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -52,7 +51,6 @@ public class Embarrassed extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "EMBARRASSEDEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "EMBARRASSEDEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

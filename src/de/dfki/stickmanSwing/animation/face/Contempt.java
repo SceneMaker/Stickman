@@ -17,31 +17,31 @@ import java.util.ArrayList;
  *
  */
 public class Contempt extends AnimationSwing {
-	
-	public Contempt() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Contempt(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Contempt() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		// Contempt
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPT"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPT"));
-		playAnimationPart(mDuration);
+    public Contempt(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(1200);
+    @Override
+    public void playAnimation() {
+        // Contempt
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPT"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPT"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPT"));
+        playAnimationPart(mDuration);
 
-		// no Contempt
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPTEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPTEND"));
-		playAnimationPart(20);
-	}
+        pauseAnimation(1200);
+
+        // no Contempt
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "CONTEMPTEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "CONTEMPTEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "CONTEMPTEND"));
+        playAnimationPart(20);
+    }
 }

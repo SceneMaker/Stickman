@@ -17,19 +17,19 @@ import java.util.ArrayList;
  */
 public class SadStart extends AnimationSwing {
 
-	public SadStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public SadStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// sad start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SAD"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // sad start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SAD"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

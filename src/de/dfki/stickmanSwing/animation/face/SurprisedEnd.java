@@ -18,22 +18,22 @@ import java.util.ArrayList;
  */
 public class SurprisedEnd extends AnimationSwing {
 
-	public SurprisedEnd(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public SurprisedEnd(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		// surprised end
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "SURPRISEDEND"));
-		playAnimationPart(mDuration);
-		
-		pauseAnimation(10);
-	}
+    @Override
+    public void playAnimation() {
+
+        // surprised end
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "SURPRISEDEND"));
+        playAnimationPart(mDuration);
+
+        pauseAnimation(10);
+    }
 }

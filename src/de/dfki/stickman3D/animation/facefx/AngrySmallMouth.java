@@ -5,7 +5,6 @@
  */
 package de.dfki.stickman3D.animation.facefx;
 
-
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
@@ -18,14 +17,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class AngrySmallMouth extends Animation3D
-{
-	public AngrySmallMouth() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-    public AngrySmallMouth(Stickman3D sm, int duration, boolean block)
-    {
+public class AngrySmallMouth extends Animation3D {
+
+    public AngrySmallMouth() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public AngrySmallMouth(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -52,7 +50,6 @@ public class AngrySmallMouth extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

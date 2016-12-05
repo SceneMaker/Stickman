@@ -10,14 +10,13 @@ import de.dfki.stickmanFX.animationlogic.AnimationFX;
  */
 public class StopIdle extends AnimationFX {
 
-	public StopIdle(StickmanFX sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public StopIdle(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-
-	@Override
-	public void playAnimation() {
-		mStickmanFX.mIdleRun = false;
-		while (mStickmanFX.mIdleBehavior.isAlive());
-	}
+    @Override
+    public void playAnimation() {
+        mStickmanFX.mIdleRun = false;
+        while (mStickmanFX.mIdleBehavior.isAlive());
+    }
 }

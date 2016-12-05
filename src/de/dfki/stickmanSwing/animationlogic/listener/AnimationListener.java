@@ -11,7 +11,7 @@ package de.dfki.stickmanSwing.animationlogic.listener;
  *
  */
 public interface AnimationListener {
-	
-	public void update(String animationId);
+
+    public void update(String animationId);
 
 }

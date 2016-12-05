@@ -18,8 +18,7 @@ import java.util.ArrayList;
  *
  * @author Beka Aptsiauri
  */
-public class Angry extends Animation3D
-{
+public class Angry extends Animation3D {
 
     /**
      *
@@ -29,13 +28,11 @@ public class Angry extends Animation3D
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-	
-	public Angry() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-    public Angry(Stickman3D sm, int duration, boolean block)
-    {
+    public Angry() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public Angry(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -43,10 +40,9 @@ public class Angry extends Animation3D
      * This method creates the angry facial movement.
      */
     @Override
-    public void playAnimation() 
-    {
+    public void playAnimation() {
         // angry
-    	mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "ANGRY"));
@@ -54,9 +50,9 @@ public class Angry extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "ANGRY"));
         playAnimationPart(mDuration);
-        
+
         pauseAnimation(1000);
-        
+
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRYEND"));
@@ -65,8 +61,6 @@ public class Angry extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "ANGRYEND"));
         playAnimationPart(mDuration);
-        
-       
 
     }
 }

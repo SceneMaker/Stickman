@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class SurprisedEnd extends AnimationFX {
-	
-	public SurprisedEnd() {
+
+    public SurprisedEnd() {
         super();
     }
 

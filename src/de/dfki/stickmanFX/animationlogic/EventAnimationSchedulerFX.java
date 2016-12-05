@@ -11,64 +11,52 @@ import java.util.logging.Logger;
  * @author Beka Aptsiauri
  *
  */
-public class EventAnimationSchedulerFX extends Thread 
-{
+public class EventAnimationSchedulerFX extends Thread {
+
     StickmanFX mStickmanFX;
     boolean mRunning = true;
     public LinkedBlockingQueue<AnimationFX> mAnimationQueue = new LinkedBlockingQueue<>();
     public Semaphore mTheBlockOfHell = new Semaphore(1);
 
-    public EventAnimationSchedulerFX(StickmanFX s) 
-    {
+    public EventAnimationSchedulerFX(StickmanFX s) {
         setName(s.mName + "'s Event AnimationScheduler");
         mStickmanFX = s;
     }
 
-    public void introduce(AnimationFX a) 
-    {
-        try 
-        {
+    public void introduce(AnimationFX a) {
+        try {
             mStickmanFX.mLogger.info("AnimationSwing " + a + " added to event animation scheduler");
 
             mAnimationQueue.put(a);
-        } 
-        catch (InterruptedException ex) 
-        {
+        } catch (InterruptedException ex) {
             mStickmanFX.mLogger.severe(ex.getMessage());
         }
     }
 
-    public void proceed(AnimationFX a) 
-    {
+    public void proceed(AnimationFX a) {
         removeAnimation(a);
         mTheBlockOfHell.release();
     }
 
-    public void removeAnimation(AnimationFX a) 
-    {
+    public void removeAnimation(AnimationFX a) {
         mAnimationQueue.remove(a);
     }
 
-    public synchronized void end() 
-    {
+    public synchronized void end() {
         mRunning = false;
 
         // throw in a last animationFX that unblocks the scheduler letting him end
-        try 
-        {
-            mAnimationQueue.put(new AnimationFX(mStickmanFX, 1, false) {});
-        } 
-        catch (InterruptedException ex) 
-        {
+        try {
+            mAnimationQueue.put(new AnimationFX(mStickmanFX, 1, false) {
+            });
+        } catch (InterruptedException ex) {
             Logger.getLogger(EventAnimationSchedulerFX.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
-    public void run() 
-    {
-        while (mRunning) 
-        {
+    public void run() {
+        while (mRunning) {
             try {
                 // serialize all animations here ...
                 mTheBlockOfHell.acquire(1);
@@ -80,14 +68,11 @@ public class EventAnimationSchedulerFX extends Thread
                 animationFX.mAnimationStart.release();
 
                 // unblock the scheduler if animationFX is not blocking
-                if (!animationFX.mBlocking) 
-                {
+                if (!animationFX.mBlocking) {
                     mTheBlockOfHell.release();
                     removeAnimation(animationFX);
                 }
-            } 
-            catch (InterruptedException ex) 
-            {
+            } catch (InterruptedException ex) {
                 mStickmanFX.mLogger.severe(ex.getMessage());
             }
         }

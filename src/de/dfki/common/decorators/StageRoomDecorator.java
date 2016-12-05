@@ -11,38 +11,39 @@ import java.awt.image.BufferedImage;
  * Created by alvaro on 9/17/16.
  */
 public abstract class StageRoomDecorator implements StageRoom {
+
     protected StageRoom controllerFX;
 
-    public StageRoomDecorator(StageRoom wrappedController){
+    public StageRoomDecorator(StageRoom wrappedController) {
         controllerFX = wrappedController;
     }
 
     @Override
-    public boolean ismNetwork(){
+    public boolean ismNetwork() {
         return controllerFX.ismNetwork();
     }
 
     @Override
-    public void clearStage(){
+    public void clearStage() {
         controllerFX.clearStage();
     }
 
     @Override
-    public  void sendTimeMarkInformation(String timemark) {
+    public void sendTimeMarkInformation(String timemark) {
         controllerFX.sendTimeMarkInformation(timemark);
     }
 
     @Override
-    public  void sendAnimationUpdate(String state, String id) {
+    public void sendAnimationUpdate(String state, String id) {
         controllerFX.sendAnimationUpdate(state, id);
     }
 
     @Override
-    public void launchStickmanStage(boolean show){
-       controllerFX.launchStickmanStage(show);
+    public void launchStickmanStage(boolean show) {
+        controllerFX.launchStickmanStage(show);
     }
 
-    public void addStickman(String name){
+    public void addStickman(String name) {
         controllerFX.addStickman(name);
     }
 
@@ -60,30 +61,33 @@ public abstract class StageRoomDecorator implements StageRoom {
         return controllerFX.getStickman(name);
     }
 
-    public StickmansOnStage getCommonStickmansOnStage(){
+    public StickmansOnStage getCommonStickmansOnStage() {
         return controllerFX.getCommonStickmansOnStage();
     }
 
-    public StickmanStage getStickmanStage(){
+    public StickmanStage getStickmanStage() {
         return controllerFX.getStickmanStage();
     }
 
-    public String getStageIdentifier(){
+    public String getStageIdentifier() {
         return controllerFX.getStageIdentifier();
     }
-    public void setFullScreen(boolean fullScreen){
+
+    public void setFullScreen(boolean fullScreen) {
         controllerFX.setFullScreen(fullScreen);
     }
+
     @Override
     public BufferedImage getStageAsImage() throws Exception {
         return controllerFX.getStageAsImage();
     }
-    
+
     @Override
-    public void launchStickmanConfiguration() {	
+    public void launchStickmanConfiguration() {
     }
+
     @Override
-    public void launchStickmanConfiguration(String filepath){
+    public void launchStickmanConfiguration(String filepath) {
 
     }
 

@@ -15,21 +15,19 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class DisgustedEnd extends AnimationFX 
-{
-	public DisgustedEnd() 
-    {
+public class DisgustedEnd extends AnimationFX {
+
+    public DisgustedEnd() {
         super();
     }
 
-    public DisgustedEnd(StickmanFX sm, int duration, boolean block) 
-    {
+    public DisgustedEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
     @Override
     public void playAnimation() {
-         // no disgusted
+        // no disgusted
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "DISGUSTEDEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DISGUSTEDEND"));

@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public abstract class StageRoomImpl implements StageRoom {
 
     public static final String CONFIG_STAGE = "configStage";
-    protected ApplicationLauncher applicationFXLauncher ;
+    protected ApplicationLauncher applicationFXLauncher;
     protected StickmanStage stickmanStageFX;
     protected StickmansOnStage commonStickmansOnStage;
     protected String stageIdentifier;
@@ -24,17 +24,19 @@ public abstract class StageRoomImpl implements StageRoom {
     private int y;
 
     public abstract void init(String stageIdentifier);
+
     protected abstract void getStickmanStageInstance();
-    protected abstract  void createNewStickmanStage(int x, int y, boolean decoration);
+
+    protected abstract void createNewStickmanStage(int x, int y, boolean decoration);
 
     @Override
-    public  void clearStage() {
+    public void clearStage() {
         getCommonStickmansOnStage().clearStage();
         stickmanStageFX.clearStage(stageIdentifier);
     }
 
     @Override
-    public  void animate(String stickmanname, String name, int duration, String text, boolean block) {
+    public void animate(String stickmanname, String name, int duration, String text, boolean block) {
         Stickman sm = getCommonStickmansOnStage().getStickman(stickmanname);
         sm.doAnimation(name, duration, text, block);
     }
@@ -45,7 +47,7 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void launchStickmanConfiguration(){
+    public void launchStickmanConfiguration() {
         try {
             getStickmanStage().addStickmanToStage(CONFIG_STAGE);
             getStickmanStage().showStage(CONFIG_STAGE);
@@ -55,11 +57,11 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void launchStickmanStage(boolean show){
+    public void launchStickmanStage(boolean show) {
         try {
             getStickmanStage().addStickmanToStage(getStageIdentifier());
-            if(show){
-                 getStickmanStage().showStage(getStageIdentifier());
+            if (show) {
+                getStickmanStage().showStage(getStageIdentifier());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,15 +69,15 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void launchStickmanConfiguration(String filepath){
+    public void launchStickmanConfiguration(String filepath) {
         commonStickmansOnStage.setmFilePath(filepath);
-        XmlStickmanLoader loader = new XmlStickmanLoader( commonStickmansOnStage);
+        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
         loader.initialStickmanWithXml();
         launchStickmanConfiguration();
 //        loader.initialStickmanWithXml();
     }
 
-    public void launchStickmanStage(boolean show, String filepath){
+    public void launchStickmanStage(boolean show, String filepath) {
         commonStickmansOnStage.setmFilePath(filepath);
         XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
         loader.initialStickmanWithXml();
@@ -84,22 +86,22 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void addStickman(String name){
+    public void addStickman(String name) {
         getCommonStickmansOnStage().addStickman(name, fullScreen);
     }
 
     @Override
-    public void addStickman(String name, boolean onlyFace){
+    public void addStickman(String name, boolean onlyFace) {
         getCommonStickmansOnStage().addStickman(name, fullScreen, onlyFace);
     }
 
     @Override
     public BufferedImage getStageAsImage() throws Exception {
-        return  getStickmanStage().getStageAsImage(stageIdentifier);
+        return getStickmanStage().getStageAsImage(stageIdentifier);
     }
 
     @Override
-    public Stickman getStickman(String name){
+    public Stickman getStickman(String name) {
         return getCommonStickmansOnStage().getStickman(name);
     }
 
@@ -122,7 +124,5 @@ public abstract class StageRoomImpl implements StageRoom {
     public void setFullScreen(boolean fullScreen) {
         this.fullScreen = fullScreen;
     }
-
-
 
 }

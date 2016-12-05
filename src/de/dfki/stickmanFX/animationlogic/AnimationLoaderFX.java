@@ -20,8 +20,8 @@ import java.util.Set;
  * @author Beka Aptsiauri
  *
  */
-public class AnimationLoaderFX 
-{
+public class AnimationLoaderFX {
+
     private final static String sANIMATIONPATH = "de.dfki.stickmanFX";
     private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("headfx", "facefx", "gesturefx", "environmentfx"));
     private static AnimationLoaderFX sInstance = null;
@@ -30,18 +30,15 @@ public class AnimationLoaderFX
     private AnimationLoaderFX() {
     }
 
-    public static AnimationLoaderFX getInstance() 
-    {
-        if (sInstance == null) 
-        {
+    public static AnimationLoaderFX getInstance() {
+        if (sInstance == null) {
             sInstance = new AnimationLoaderFX();
         }
 
         return sInstance;
     }
 
-    public String getNextID() 
-    {
+    public String getNextID() {
         sID++;
         return "a" + sID;
     }
@@ -49,59 +46,46 @@ public class AnimationLoaderFX
     private String getAnimationClasspath(Gender.TYPE stickmantype, String name) {
         String classPath = "";
 
-        for (String s : sAnimationSubPackages) 
-        {
-            classPath = sANIMATIONPATH  + ".animation." + s + "." + name;
+        for (String s : sAnimationSubPackages) {
+            classPath = sANIMATIONPATH + ".animation." + s + "." + name;
 
-            try 
-            {
+            try {
                 Class.forName(classPath);
                 break;
-            } 
-            catch (ClassNotFoundException ex) 
-            {
+            } catch (ClassNotFoundException ex) {
                 //ex.printStackTrace();
             }
         }
         return classPath;
     }
 
-    private String getEventAnimationClasspath(Gender.TYPE stickmantype, String name)
-    {
+    private String getEventAnimationClasspath(Gender.TYPE stickmantype, String name) {
         String classPath = "";
 
-        for (String s : sAnimationSubPackages) 
-        {
+        for (String s : sAnimationSubPackages) {
             classPath = sANIMATIONPATH + ".animation." + s + ".event." + name;
 
-            try 
-            {
+            try {
                 Class.forName(classPath);
                 break;
-            } 
-            catch (ClassNotFoundException ex) 
-            {
+            } catch (ClassNotFoundException ex) {
                 //ex.printStackTrace();
             }
         }
         return classPath;
     }
 
-    public AnimationFX loadAnimation(Stickman sm, String name, int duration, boolean block)
-    {
+    public AnimationFX loadAnimation(Stickman sm, String name, int duration, boolean block) {
         AnimationFX a = null;
 
         String cp = getAnimationClasspath(sm.getType(), name);
-        try 
-        {
+        try {
             Class c = Class.forName(cp);
             Constructor[] constructors = c.getConstructors();
-            for (Constructor con : constructors) 
-            {
+            for (Constructor con : constructors) {
                 Class[] params = con.getParameterTypes();
 
-                if (params.length == 3) 
-                {
+                if (params.length == 3) {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickmanFX")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
@@ -110,36 +94,29 @@ public class AnimationLoaderFX
                 }
 
             }
-        } 
-        catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
-        {
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             StickmanSwing.mLogger.severe("AnimationSwing \"" + name + "\" cannot be found in " + cp);
         }
 
-        if (a != null) 
-        {
+        if (a != null) {
             a.mID = getNextID();
         }
         return a;
     }
 
-    public EventAnimationFX loadEventAnimation(Stickman sm, String name, int duration, boolean block)
-    {
+    public EventAnimationFX loadEventAnimation(Stickman sm, String name, int duration, boolean block) {
         EventAnimationFX a = null;
 
         String cp = getEventAnimationClasspath(sm.getType(), name);
 
-        try 
-        {
+        try {
             Class c = Class.forName(cp);
 
             Constructor[] constructors = c.getConstructors();
-            for (Constructor con : constructors) 
-            {
+            for (Constructor con : constructors) {
                 Class[] params = con.getParameterTypes();
 
-                if (params.length == 3) 
-                {
+                if (params.length == 3) {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickmanFX")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
@@ -147,9 +124,7 @@ public class AnimationLoaderFX
                     }
                 }
             }
-        } 
-        catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
-        {
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
             StickmanSwing.mLogger.severe("AnimationSwing \"" + name + "\" cannot be found in " + cp);
         }
 

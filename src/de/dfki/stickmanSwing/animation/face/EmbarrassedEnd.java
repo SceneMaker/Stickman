@@ -17,23 +17,23 @@ import java.util.ArrayList;
  */
 public class EmbarrassedEnd extends AnimationSwing {
 
-	public EmbarrassedEnd(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public EmbarrassedEnd(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		// embarrassed end
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mFaceWrinkle, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EMBARRASSEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EMBARRASSEDEND"));
-		playAnimationPart(mDuration);
-		
-		pauseAnimation(10);
-	}
+    @Override
+    public void playAnimation() {
+
+        // embarrassed end
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mFaceWrinkle, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EMBARRASSEDEND"));
+        playAnimationPart(mDuration);
+
+        pauseAnimation(10);
+    }
 }

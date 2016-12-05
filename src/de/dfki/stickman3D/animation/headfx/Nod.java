@@ -18,26 +18,25 @@ import java.util.ArrayList;
  *
  */
 public class Nod extends Animation3D {
-	
-	public Nod() {
-		mAnimType = ANIMTYPE.ON;
-	}
 
-	public Nod(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Nod() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 10));
-		playAnimationPart(200);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -10));
-		playAnimationPart(200);
-		
+    public Nod(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	}
+    @Override
+    public void playAnimation() {
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 10));
+        playAnimationPart(200);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -10));
+        playAnimationPart(200);
+
+    }
 }

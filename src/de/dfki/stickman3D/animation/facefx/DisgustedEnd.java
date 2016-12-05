@@ -16,17 +16,15 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class DisgustedEnd extends Animation3D
-{
+public class DisgustedEnd extends Animation3D {
 
-    public DisgustedEnd(Stickman3D sm, int duration, boolean block)
-    {
+    public DisgustedEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
     @Override
     public void playAnimation() {
-         // no disgusted
+        // no disgusted
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "DISGUSTEDEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "DISGUSTEDEND"));

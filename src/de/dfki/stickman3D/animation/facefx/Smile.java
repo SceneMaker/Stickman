@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class Smile extends Animation3D {
 
-	public Smile() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
+    public Smile() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public Smile(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
@@ -34,7 +34,6 @@ public class Smile extends Animation3D {
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "SMILEEND"));
         playAnimationPart(mDuration);
-        
 
     }
 }

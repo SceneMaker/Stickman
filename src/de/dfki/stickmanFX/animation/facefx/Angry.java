@@ -16,8 +16,7 @@ import java.util.ArrayList;
  *
  * @author Beka Aptsiauri
  */
-public class Angry extends AnimationFX 
-{
+public class Angry extends AnimationFX {
 
     /**
      *
@@ -27,13 +26,11 @@ public class Angry extends AnimationFX
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-	
-	public Angry() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
-    public Angry(StickmanFX sm, int duration, boolean block) 
-    {
+    public Angry() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
+    public Angry(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -41,8 +38,7 @@ public class Angry extends AnimationFX
      * This method creates the angry facial movement.
      */
     @Override
-    public void playAnimation() 
-    {
+    public void playAnimation() {
         // angry
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "ANGRY"));
@@ -51,7 +47,7 @@ public class Angry extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRY"));   ///Add by Robbie
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "ANGRY"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "ANGRY"));
-         playAnimationPart(mDuration);
+        playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 

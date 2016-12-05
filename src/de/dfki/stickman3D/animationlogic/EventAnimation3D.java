@@ -20,50 +20,40 @@ import java.util.List;
  * @author Beka Aptsiauri
  *
  */
-public class EventAnimation3D extends Animation3D
-{
+public class EventAnimation3D extends Animation3D {
+
     public List<Long> mTimepoints;
     public WordTimeMarkSequence mWTS;
 
-    public EventAnimation3D()
-    {
+    public EventAnimation3D() {
         super();
     }
 
-    public EventAnimation3D(Stickman3D sm, int duration, boolean block)
-    {
+    public EventAnimation3D(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
         mName = getClass().getSimpleName();
         setName(sm.mName + "'s Event AnimationSwing " + mName);
     }
 
-    public void playEventAnimationPart() 
-    {
+    public void playEventAnimationPart() {
         mAnimatorFX = new Animator3D(mStickmanFX, this, mAnimationPartFX, mWTS);
 
-        try 
-        {
+        try {
             mAnimationPartStart.acquire();
-        } 
-        catch (InterruptedException ex) 
-        {
+        } catch (InterruptedException ex) {
             mStickmanFX.mLogger.severe(ex.getMessage());
         }
     }
 
     @Override
-    public void writeXML(IOSIndentWriter out) throws XMLWriteError
-    {
+    public void writeXML(IOSIndentWriter out) throws XMLWriteError {
         out.println("<StickmanEventAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
-        if (mParameter != null) 
-        {
-            if (mParameter instanceof WordTimeMarkSequence)
-            {
+        if (mParameter != null) {
+            if (mParameter instanceof WordTimeMarkSequence) {
                 ((WordTimeMarkSequence) mParameter).writeXML(out);
             }
 
-            if (mParameter instanceof String) 
-            {
+            if (mParameter instanceof String) {
                 out.println((String) mParameter);
             }
         }
@@ -71,8 +61,7 @@ public class EventAnimation3D extends Animation3D
     }
 
     @Override
-    public void parseXML(final Element element) throws XMLParseError
-    {
+    public void parseXML(final Element element) throws XMLParseError {
         mStickmanName = element.getAttribute("stickmanname");
         mName = element.getAttribute("name");
         mID = element.getAttribute("id");
@@ -80,22 +69,17 @@ public class EventAnimation3D extends Animation3D
         mBlocking = Boolean.parseBoolean(element.getAttribute("blocking"));
 
         // Process The Child Nodes
-        XMLParseAction.processChildNodes(element, new XMLParseAction()
-        {
+        XMLParseAction.processChildNodes(element, new XMLParseAction() {
             @Override
-            public void run(final Element element) throws XMLParseError
-            {
+            public void run(final Element element) throws XMLParseError {
                 // Get The Child Tag Name
                 final String name = element.getTagName();
 
-                if (name.equalsIgnoreCase("WordTimeMarkSequence")) 
-                {
+                if (name.equalsIgnoreCase("WordTimeMarkSequence")) {
                     mParameter = new WordTimeMarkSequence();
 
                     ((WordTimeMarkSequence) mParameter).parseXML(element);
-                } 
-                else 
-                {
+                } else {
                     mParameter = (String) element.getTextContent();
                 }
             }

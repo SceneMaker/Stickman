@@ -47,9 +47,9 @@ public class BodyFX extends Pane {
 
     public Color mColor = mFemaleColor;
     public Color currentColor = null;
-    
+
     private Color mFemaleColorRecorder = mFemaleColor;
-	private Color mMaleColorRecorder = mMaleColor;
+    private Color mMaleColorRecorder = mMaleColor;
 
     Path mFemaleBodyFront, mFemaleBodyLeft, mFemaleBodyRight;
     Path mMaleBodyFront, mMaleBodyLeft, mMaleBodyRight;
@@ -64,21 +64,19 @@ public class BodyFX extends Pane {
         mMaleBodyFront = new Path();
         mMaleBodyLeft = new Path();
         mMaleBodyRight = new Path();
-        
+
         init();
     }
 
-    private void init() 
-    {
+    private void init() {
         this.setPrefHeight(mSize.height);
         this.setPrefWidth(mSize.width);
     }
 
-    public void calculate() 
-    {
+    public void calculate() {
         mStart = mNeckFX.getBodyStartPosition();
         this.getChildren().clear();
-        
+
         this.mLefShoulderPosition = mNeckFX.mHeadFX.mStickmanFX.mLeftShoulderFX.getLeftShoulderEndPosition();       //Added by Beka
         this.mRightShoulderPosition = mNeckFX.mHeadFX.mStickmanFX.mRightShoulderFX.getRightShoulderEndPosition();
 
@@ -104,8 +102,8 @@ public class BodyFX extends Pane {
         mMaleBodyFront = new Path();
         mMaleBodyFront.getElements().add(new MoveTo(mStart.x, mStart.y));
         mMaleBodyFront.getElements().add(new LineTo(mLefShoulderPosition.x + 1, mLefShoulderPosition.y + 1));
-        mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset-10, mSize.height));
-        mMaleBodyFront.getElements().add(new LineTo(mStart.x - mHalfSizeX + mDrawOffset+10, mSize.height));
+        mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x + mHalfSizeX - mDrawOffset - 10, mSize.height));
+        mMaleBodyFront.getElements().add(new LineTo(mStart.x - mHalfSizeX + mDrawOffset + 10, mSize.height));
         mMaleBodyFront.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mRightShoulderPosition.x, mRightShoulderPosition.y));
 
         mMaleBodyLeft = new Path();
@@ -119,70 +117,54 @@ public class BodyFX extends Pane {
         mMaleBodyRight.getElements().add(new QuadCurveTo(mStart.x - mDrawOffset, mSize.height / 3 * 2, mStart.x, mSize.height));
         mMaleBodyRight.getElements().add(new LineTo(mStart.x + mHalfSizeX - mDrawOffset, mSize.height));
         mMaleBodyRight.getElements().add(new QuadCurveTo(mStart.x, mHalfSizeY + mDrawOffset, mStart.x, mStart.y));
-        
+
         update();
     }
 
-    public Point getLeftArmStartPostion() 
-    {
+    public Point getLeftArmStartPostion() {
         return new Point(mStart.x + 1, mStart.y);
     }
 
-    public Point getRightArmStartPostion() 
-    {
+    public Point getRightArmStartPostion() {
         return new Point(mStart.x - 1, mStart.y);
     }
 
-    public Point getLeftLegStartPostion() 
-    {
-        if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT) 
-        {
+    public Point getLeftLegStartPostion() {
+        if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT) {
             return new Point(mStart.x + mHalfSizeX - mDrawOffset, mSize.height);
-        } 
-        else 
-        {
+        } else {
             return new Point(mStart.x + mHalfSizeX - mDrawOffset - 20,
                     (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
         }
     }
 
-    public Point getRightLegStartPostion() 
-    {
+    public Point getRightLegStartPostion() {
         if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.RIGHT) {
             return new Point(mStart.x, mSize.height);
-        } 
-        else 
-        {
+        } else {
             return new Point(mStart.x - mHalfSizeX + mDrawOffset + 20,
                     (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
         }
     }
 
-    private void paintLeftOrientation(Color c) 
-    {
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
-        	this.getChildren().remove(mFemaleBodyLeft);
+    private void paintLeftOrientation(Color c) {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
+            this.getChildren().remove(mFemaleBodyLeft);
             mFemaleBodyLeft.setFill(c);
             this.getChildren().add(mFemaleBodyLeft);
-        } 
-        else 
-        {
-        	this.getChildren().remove(mMaleBodyLeft);
+        } else {
+            this.getChildren().remove(mMaleBodyLeft);
             mMaleBodyLeft.setFill(c);
             this.getChildren().add(mMaleBodyLeft);
         }
 
         // draw outlines
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
             mFemaleBodyLeft.setStroke(c.darker());
             mFemaleBodyLeft.setStrokeLineCap(StrokeLineCap.ROUND);
             mFemaleBodyLeft.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mFemaleBodyLeft.setStrokeWidth(2);
-        } 
-        else 
-        {
+        } else {
             mMaleBodyLeft.setStroke(c.darker());
             mMaleBodyLeft.setStrokeLineCap(StrokeLineCap.ROUND);
             mMaleBodyLeft.setStrokeLineJoin(StrokeLineJoin.ROUND);
@@ -190,31 +172,24 @@ public class BodyFX extends Pane {
         }
     }
 
-    private void paintRightOrientation(Color c) 
-    {
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
-        	this.getChildren().remove(mFemaleBodyRight);
+    private void paintRightOrientation(Color c) {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
+            this.getChildren().remove(mFemaleBodyRight);
             mFemaleBodyRight.setFill(c);
             this.getChildren().add(mFemaleBodyRight);
-        } 
-        else 
-        {
-        	this.getChildren().remove(mMaleBodyRight);
+        } else {
+            this.getChildren().remove(mMaleBodyRight);
             mMaleBodyRight.setFill(c);
             this.getChildren().add(mMaleBodyRight);
         }
 
         // draw outlines
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
             mFemaleBodyRight.setStroke(c.darker());
             mFemaleBodyRight.setStrokeLineCap(StrokeLineCap.ROUND);
             mFemaleBodyRight.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mFemaleBodyRight.setStrokeWidth(2);
-        } 
-        else 
-        {
+        } else {
             mMaleBodyRight.setStroke(c.darker());
             mMaleBodyRight.setStrokeLineCap(StrokeLineCap.ROUND);
             mMaleBodyRight.setStrokeLineJoin(StrokeLineJoin.ROUND);
@@ -222,31 +197,24 @@ public class BodyFX extends Pane {
         }
     }
 
-    public void paintFrontOrientation(Color c) 
-    {
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
-        	this.getChildren().clear();
+    public void paintFrontOrientation(Color c) {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
+            this.getChildren().clear();
             mFemaleBodyFront.setFill(c);
             this.getChildren().add(mFemaleBodyFront);
-        } 
-        else 
-        {
-        	this.getChildren().clear();
+        } else {
+            this.getChildren().clear();
             mMaleBodyFront.setFill(c);
             this.getChildren().add(mMaleBodyFront);
         }
 
         // draw outlines
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
             mFemaleBodyFront.setStroke(c.darker());
             mFemaleBodyFront.setStrokeLineCap(StrokeLineCap.ROUND);
             mFemaleBodyFront.setStrokeLineJoin(StrokeLineJoin.ROUND);
             mFemaleBodyFront.setStrokeWidth(2);
-        } 
-        else 
-        {
+        } else {
             mMaleBodyFront.setStroke(c.darker());
             mMaleBodyFront.setStrokeLineCap(StrokeLineCap.ROUND);
             mMaleBodyFront.setStrokeLineJoin(StrokeLineJoin.ROUND);
@@ -256,73 +224,59 @@ public class BodyFX extends Pane {
 
     public void update() {
 
-    	if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false){
-    		mFemaleColorRecorder = mFemaleColor;
-    		mMaleColorRecorder = mMaleColor;
-    	}
-    	
+        if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+            mFemaleColorRecorder = mFemaleColor;
+            mMaleColorRecorder = mMaleColor;
+        }
+
         //calculate();
-        if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) 
-        {
+        if (mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
             {
                 int fadeFactor = mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) 
-                {
+                if (fadeFactor <= 24) {
                     fadeFactor = 0;
                 }
                 mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
 //                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
 //                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
-            } 
-            else 
-            {
+            } else {
                 int fadeFactor = (20 - mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 9;
-                if (fadeFactor >= 160) 
-                {
-                	mFemaleColor = mFemaleColorRecorder;
-                	mMaleColor = mMaleColorRecorder;
-                }
-                else{
-                	mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
-                	mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                if (fadeFactor >= 160) {
+                    mFemaleColor = mFemaleColorRecorder;
+                    mMaleColor = mMaleColorRecorder;
+                } else {
+                    mFemaleColor = new Color(mFemaleColor.getRed(), mFemaleColor.getGreen(), mFemaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
+                    mMaleColor = new Color(mMaleColor.getRed(), mMaleColor.getGreen(), mMaleColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 }
 //                mFemaleColor = Color.rgb(154, 83, 198, (fadeFactor * 100 / 255) / 100f);
 //                mMaleColor = Color.rgb(14, 134, 122, (fadeFactor * 100 / 255) / 100f);
             }
         }
 
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE)
-        {
+        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
             currentColor = mFemaleColor;
-        } 
-        else 
-        {
+        } else {
             currentColor = mMaleColor;
         }
 
-        if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT) 
-        {
+        if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.LEFT) {
             paintLeftOrientation(currentColor);
-        } 
-        else if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.RIGHT) 
-        {
+        } else if (mNeckFX.mHeadFX.mStickmanFX.mOrientation == StickmanFX.ORIENTATION.RIGHT) {
             paintRightOrientation(currentColor);
-        } 
-        else 
-        {
+        } else {
             paintFrontOrientation(currentColor);
         }
     }
-    
-    public void rotatePerlinNoise(double mWobble, int x, int y){
-    	Affine af = new Affine();
-    	//Out put perlin noise
-        af.appendRotation(Math.toRadians(mWobble), x,y);
+
+    public void rotatePerlinNoise(double mWobble, int x, int y) {
+        Affine af = new Affine();
+        //Out put perlin noise
+        af.appendRotation(Math.toRadians(mWobble), x, y);
         this.getTransforms().clear();
         this.getTransforms().add(af);
-    	
+
     }
 
 }

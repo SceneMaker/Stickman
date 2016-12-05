@@ -19,20 +19,19 @@ import java.util.ArrayList;
  */
 public class TiltLeftBack extends Animation3D {
 
-	public TiltLeftBack() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-	public TiltLeftBack(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public TiltLeftBack() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", -10));
-		playAnimationPart(200);
+    public TiltLeftBack(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
+    @Override
+    public void playAnimation() {
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", -10));
+        playAnimationPart(200);
 
-	}
+    }
 }

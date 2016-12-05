@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  */
 public class HappyStart extends AnimationFX {
-	
-	public HappyStart() {
+
+    public HappyStart() {
         super();
     }
 

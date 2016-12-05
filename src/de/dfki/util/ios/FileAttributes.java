@@ -1,7 +1,6 @@
 package de.dfki.util.ios;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +9,7 @@ import java.io.IOException;
  * @author Not me
  */
 public class FileAttributes {
+
     public static String relPath(String relPath) {
         String userDir = System.getProperty("user.dir").trim();
 
@@ -61,7 +61,7 @@ public class FileAttributes {
 
     public static String getExtension(File fileName) {
         String str = fileName.getName();
-        int    pos = str.lastIndexOf('.');
+        int pos = str.lastIndexOf('.');
 
         if (pos > -1) {
             return str.substring(pos + 1);

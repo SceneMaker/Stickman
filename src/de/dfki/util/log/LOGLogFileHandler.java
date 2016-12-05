@@ -1,7 +1,6 @@
 package de.dfki.util.log;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import java.io.IOException;
 
 import java.util.logging.FileHandler;
@@ -24,6 +23,6 @@ public class LOGLogFileHandler extends FileHandler {
 
         // Log The Messages From All Levels
         setLevel(Level.ALL);
-    
+
     }
 }

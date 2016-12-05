@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class EmbarrassedStart extends AnimationFX {
-	
-	public EmbarrassedStart() {
+
+    public EmbarrassedStart() {
         super();
     }
 

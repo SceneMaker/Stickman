@@ -19,28 +19,29 @@ import org.w3c.dom.Element;
  */
 public class Word extends Entry implements XMLParseable, XMLWriteable {
 
-	public Word() {
-		mType = TYPE.WORD;
-	}
+    public Word() {
+        mType = TYPE.WORD;
+    }
 
-	public Word(String content) {
-		mType = TYPE.WORD;
-		mContent = content;
-	}
+    public Word(String content) {
+        mType = TYPE.WORD;
+        mContent = content;
+    }
 
-	@Override
-	public void writeXML(IOSIndentWriter out) throws XMLWriteError {
-		out.println("<WordEntry>").push();out.println(mContent);
-		out.pop().println("</WordEntry>");
-	}
+    @Override
+    public void writeXML(IOSIndentWriter out) throws XMLWriteError {
+        out.println("<WordEntry>").push();
+        out.println(mContent);
+        out.pop().println("</WordEntry>");
+    }
 
-	@Override
-	public final void parseXML(final Element element) throws XMLParseError {
-		mContent = element.getTextContent().trim();
-	}
+    @Override
+    public final void parseXML(final Element element) throws XMLParseError {
+        mContent = element.getTextContent().trim();
+    }
 
-	@Override
-	public String toString() {
-		return mContent;
-	}
+    @Override
+    public String toString() {
+        return mContent;
+    }
 }

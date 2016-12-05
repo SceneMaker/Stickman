@@ -17,48 +17,49 @@ import java.awt.geom.GeneralPath;
  */
 public class RightLeg extends BodyPart {
 
-	Body mBody;
+    Body mBody;
 
-	public RightLeg(Body body) {
-		mBody = body;
-		mLength = 150;
-		mSize = new Dimension(10, mLength);
-		mColor = new Color(80, 80, 80);
+    public RightLeg(Body body) {
+        mBody = body;
+        mLength = 150;
+        mSize = new Dimension(10, mLength);
+        mColor = new Color(80, 80, 80);
 
-		init();
-	}
+        init();
+    }
 
-	@Override
-	public void createShape() {
-		mStart = mBody.getRightLegStartPostion();
-		mEnd = new Point(mStart.x, mStart.y + mLength);
+    @Override
+    public void createShape() {
+        mStart = mBody.getRightLegStartPostion();
+        mEnd = new Point(mStart.x, mStart.y + mLength);
 
-		clearDrawObjects();
-		
-		if(mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
-			{
-				int fadeFactor = mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				mColor = new Color(80, 80, 80, fadeFactor);
-			}
-			else
-			{
-				int fadeFactor = (20-mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
-				mColor = new Color(80, 80, 80, fadeFactor);
-			}
-		}
+        clearDrawObjects();
 
-		GeneralPath gp = new GeneralPath();
-		gp.moveTo(mStart.x, mStart.y + 2);
-		gp.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
-		addToDrawObjects(gp);
+        if (mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+            if (mBody.mNeck.mHead.mStickman.fadeControler == true) //Added by Robbie
+            {
+                int fadeFactor = mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep * 12;
+                if (fadeFactor <= 24) {
+                    fadeFactor = 0;
+                }
+                mColor = new Color(80, 80, 80, fadeFactor);
+            } else {
+                int fadeFactor = (20 - mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep) * 12;
+                if (fadeFactor >= 216) {
+                    fadeFactor = 255;
+                }
+                mColor = new Color(80, 80, 80, fadeFactor);
+            }
+        }
 
-		gp = new GeneralPath();
-		gp.moveTo(mEnd.x - 5, mEnd.y + 4);
-		gp.quadTo(mEnd.x, mEnd.y + 2, mEnd.x + 5, mEnd.y + 4);
-		addToDrawObjects(gp);
-	}
+        GeneralPath gp = new GeneralPath();
+        gp.moveTo(mStart.x, mStart.y + 2);
+        gp.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
+        addToDrawObjects(gp);
+
+        gp = new GeneralPath();
+        gp.moveTo(mEnd.x - 5, mEnd.y + 4);
+        gp.quadTo(mEnd.x, mEnd.y + 2, mEnd.x + 5, mEnd.y + 4);
+        addToDrawObjects(gp);
+    }
 }

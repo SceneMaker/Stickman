@@ -18,8 +18,8 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class AngryEnd extends AnimationFX 
-{
+public class AngryEnd extends AnimationFX {
+
     /**
      * @param sm StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
@@ -27,14 +27,11 @@ public class AngryEnd extends AnimationFX
      * @param block block or not the others movements, when one movement is not
      * finished.
      */
-	
-	public AngryEnd() 
-    {
+    public AngryEnd() {
         super();
     }
-	
-    public AngryEnd(StickmanFX sm, int duration, boolean block) 
-    {
+
+    public AngryEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

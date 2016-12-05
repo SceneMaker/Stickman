@@ -13,37 +13,33 @@ import java.util.ArrayList;
  *
  */
 public class CoverMouth extends Animation3D {
-   
-	
-	public CoverMouth() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-	public CoverMouth(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
 
-	@Override
-	public void playAnimation() {
-		int rotationUnit = 16;
+    public CoverMouth() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-		
-		// bring upper arm and fore arm in position
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -30));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -155));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 180));
-		playAnimationPart(500);
+    public CoverMouth(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(1200);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 30));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 155));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -180));
-		playAnimationPart(500);
-		
+    @Override
+    public void playAnimation() {
+        int rotationUnit = 16;
 
+        // bring upper arm and fore arm in position
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -30));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -155));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 180));
+        playAnimationPart(500);
 
-	}
+        pauseAnimation(1200);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 30));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 155));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -180));
+        playAnimationPart(500);
+
+    }
 }

@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class Happy extends AnimationFX {
 
-	public Happy() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
+    public Happy() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
     public Happy(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

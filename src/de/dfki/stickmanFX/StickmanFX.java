@@ -66,21 +66,22 @@ import javafx.scene.transform.Affine;
  *
  * @author Beka Aptsiauri
  *
- *         This work is inspired by the stickmans drawn by Sarah Johnson
- *         (www.sarah-johnson.com) in the Valentine music video from Kina
- *         Grannis shot by Ross Ching in 2012
+ * This work is inspired by the stickmans drawn by Sarah Johnson
+ * (www.sarah-johnson.com) in the Valentine music video from Kina Grannis shot
+ * by Ross Ching in 2012
  *
  */
 public class StickmanFX extends Pane implements Stickman {
+
     // general stuff
     public static enum ORIENTATION {
-	FRONT, LEFT, RIGHT
+        FRONT, LEFT, RIGHT
     };
 
     public final static Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
     //Used to change the backgroundRecord(pic) of the stickmanSwing
     public final static ObservableList<String> backgroundList = FXCollections.observableArrayList("office",
-	    "grassland");
+            "grassland");
     // record the backgroundRecord(pic or color) of the stickmanSwing
     public String backgroundRecord = null;
     public Gender.TYPE mType = Gender.TYPE.FEMALE;
@@ -170,438 +171,445 @@ public class StickmanFX extends Pane implements Stickman {
     private long mID = 0;
 
     public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size) {
-	mSize = size;
-	mScale = scale;
-	mScaleOriginal = scale;
+        mSize = size;
+        mScale = scale;
+        mScaleOriginal = scale;
 
-	mName = name;
-	mType = gender;
+        mName = name;
+        mType = gender;
 
-	initBodyParts();
+        initBodyParts();
 
-	mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-	init();
-	this.addAllParts();
-	update();
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        this.addAllParts();
+        update();
     }
 
     public StickmanFX(String name, Gender.TYPE gender, float scale) {
-	mScale = scale;
-	mScaleOriginal = scale;
+        mScale = scale;
+        mScaleOriginal = scale;
 
-	mName = name;
-	mType = gender;
+        mName = name;
+        mType = gender;
 
-	initBodyParts();
+        initBodyParts();
 
-	mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-	init();
-	this.addAllParts();
-	update();
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        this.addAllParts();
+        update();
     }
 
     public StickmanFX(String name, Gender.TYPE gender, float scale, boolean faceOnly) {
-	mScale = scale;
-	mScaleOriginal = scale;
+        mScale = scale;
+        mScaleOriginal = scale;
 
-	mName = name;
-	mType = gender;
+        mName = name;
+        mType = gender;
 
-	initBodyParts();
+        initBodyParts();
 
-	mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-	init();
-	if (faceOnly) {
-	    this.addOnlyHeadParts();
-	} else {
-	    this.addAllParts();
-	}
-	update();
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        if (faceOnly) {
+            this.addOnlyHeadParts();
+        } else {
+            this.addAllParts();
+        }
+        update();
     }
 
     public StickmanFX(String name, Gender.TYPE gender) {
-	mName = name;
-	mType = gender;
+        mName = name;
+        mType = gender;
 
-	initBodyParts();
+        initBodyParts();
 
-	mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-	init();
-	this.addAllParts();
-	update();
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        this.addAllParts();
+        update();
     }
 
     public void initBodyParts() {
-	mHeadFX = new HeadFX(this);
-	mMaleHairFX = new MaleHairFX(this);
-	mFemaleHairFX = new FemaleHairFX(this);
-	mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
-	mLeftEyeFX = new LeftEyeFX(mHeadFX);
-	mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
-	mRightEyeFX = new RightEyeFX(mHeadFX);
-	mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
-	mMouthFX = new MouthFX(mHeadFX);
-	mNeckFX = new NeckFX(mHeadFX);
-	mBodyFX = new BodyFX(mNeckFX);
-	mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
-	mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
-	mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
-	mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
-	mRightShoulderFX = new RightShoulderFX(mBodyFX);
-	mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
-	mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
-	mRightHandFX = new RightHandFX(mRightForeArmFX);
-	// mLeftLegFX = new LeftLegFX(mBodyFX);
-	mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
-	mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
-	mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-	// added by Robbie
-	mStarsFX = new StarsFX(mBodyFX);
-	// mRightLegFX = new RightLegFX(mBodyFX);
-	mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
-	mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
-	mRightFootFX = new RightFootFX(mRightForeLegFX);
-	mThinkFX = new ThinkFX(mHeadFX);
-	mBombeFX = new BombeFX(mHeadFX);
+        mHeadFX = new HeadFX(this);
+        mMaleHairFX = new MaleHairFX(this);
+        mFemaleHairFX = new FemaleHairFX(this);
+        mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
+        mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
+        mRightEyeFX = new RightEyeFX(mHeadFX);
+        mFaceWrinkleFX = new FaceWrinkleFX(mHeadFX); /// added by Robbie
+        mMouthFX = new MouthFX(mHeadFX);
+        mNeckFX = new NeckFX(mHeadFX);
+        mBodyFX = new BodyFX(mNeckFX);
+        mLeftShoulderFX = new LeftShoulderFX(mBodyFX);
+        mLeftUpperArmFX = new LeftUpperArmFX(mLeftShoulderFX);
+        mLeftForeArmFX = new LeftForeArmFX(mLeftUpperArmFX);
+        mLeftHandFX = new LeftHandFX(mLeftForeArmFX);
+        mRightShoulderFX = new RightShoulderFX(mBodyFX);
+        mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
+        mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
+        mRightHandFX = new RightHandFX(mRightForeArmFX);
+        // mLeftLegFX = new LeftLegFX(mBodyFX);
+        mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
+        mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
+        mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
+        // added by Robbie
+        mStarsFX = new StarsFX(mBodyFX);
+        // mRightLegFX = new RightLegFX(mBodyFX);
+        mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
+        mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
+        mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mThinkFX = new ThinkFX(mHeadFX);
+        mBombeFX = new BombeFX(mHeadFX);
     }
 
     public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size, boolean faceOnly) {
-	mSize = size;
-	mScale = scale;
-	mScaleOriginal = scale;
-	mName = name;
-	mType = gender;
-	initBodyParts();
-	mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-	init();
-	if (faceOnly) {
-	    this.addOnlyHeadParts();
-	} else {
-	    this.addAllParts();
-	}
-	update();
+        mSize = size;
+        mScale = scale;
+        mScaleOriginal = scale;
+        mName = name;
+        mType = gender;
+        initBodyParts();
+        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        init();
+        if (faceOnly) {
+            this.addOnlyHeadParts();
+        } else {
+            this.addAllParts();
+        }
+        update();
     }
 
     private void init() {
-	nameLabel = new Label();
-	this.setPrefHeight(mSize.height);
-	this.setPrefWidth(mSize.width);
-	this.setMinHeight(mSize.height);
-	this.setMinWidth(mSize.width);
-	// this.setStyle("-fx-border-color: black");
+        nameLabel = new Label();
+        this.setPrefHeight(mSize.height);
+        this.setPrefWidth(mSize.width);
+        this.setMinHeight(mSize.height);
+        this.setMinWidth(mSize.width);
+        // this.setStyle("-fx-border-color: black");
 
-	// font stuff
-	Map<TextAttribute, Object> map = new HashMap<>();
-	map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
-	map.put(TextAttribute.FAMILY, Font.SANS_SERIF);
-	// map.put(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
-	map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
-	map.put(TextAttribute.SIZE, 14);
+        // font stuff
+        Map<TextAttribute, Object> map = new HashMap<>();
+        map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
+        map.put(TextAttribute.FAMILY, Font.SANS_SERIF);
+        // map.put(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
+        map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
+        map.put(TextAttribute.SIZE, 14);
 
-	ConsoleHandler ch = new ConsoleHandler();
-	ch.setFormatter(new StickmanLogFormatter());
+        ConsoleHandler ch = new ConsoleHandler();
+        ch.setFormatter(new StickmanLogFormatter());
 
-	mLogger.addHandler(ch);
-	mLogger.setUseParentHandlers(false);
+        mLogger.addHandler(ch);
+        mLogger.setUseParentHandlers(false);
 
-	mAnimationSchedulerFX = new AnimationSchedulerFX(this);
-	mAnimationSchedulerFX.start();
+        mAnimationSchedulerFX = new AnimationSchedulerFX(this);
+        mAnimationSchedulerFX.start();
 
-	simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
-	mIdleBehavior = new IdleBehavior(this, simplexNoise);
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
+        mIdleBehavior = new IdleBehavior(this, simplexNoise);
 
     }
 
     @Override
     public StageRoom getStickmanStageController() {
-	return stageController;
+        return stageController;
     }
 
     @Override
     public void setStickmanStageController(StageRoom s) {
-	stageController = s;
+        stageController = s;
     }
 
     @Override
     public void setShowName(boolean show) {
-	mShowName = show;
+        mShowName = show;
     }
 
     @Override
     public boolean isShowName() {
-	return mShowName;
+        return mShowName;
     }
 
     @Override
     public void endAnimationScheduler() {
-	mAnimationSchedulerFX.end();
+        mAnimationSchedulerFX.end();
     }
 
     @Override
     public Gender.TYPE getType() {
-	return mType;
+        return mType;
     }
 
     public void addListener(AnimationListener al) {
-	mAnimationListeners.add(al);
+        mAnimationListeners.add(al);
     }
 
     public void removeListener(AnimationListener al) {
-	synchronized (mAnimationListeners) {
-	    if (mAnimationListeners.contains(al)) {
-		mAnimationListeners.remove(al);
-	    }
-	}
+        synchronized (mAnimationListeners) {
+            if (mAnimationListeners.contains(al)) {
+                mAnimationListeners.remove(al);
+            }
+        }
     }
 
     public void notifyListeners(String animationId) {
-	synchronized (mAnimationListeners) {
-	    mAnimationListeners.stream().forEach((al) -> {
-		al.update(animationId);
-	    });
-	}
+        synchronized (mAnimationListeners) {
+            mAnimationListeners.stream().forEach((al) -> {
+                al.update(animationId);
+            });
+        }
     }
 
     public String getID() {
-	return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
+        return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
     }
 
     // Sets the orientation of the character, allowed values are: LEFT, RIGHT,
     // FRONT
     public void setOrientation(String orientation) {
-	if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
-	    mOrientation = ORIENTATION.LEFT;
-	} else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
-	    mOrientation = ORIENTATION.RIGHT;
-	} else {
-	    mOrientation = ORIENTATION.FRONT;
-	}
+        if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
+            mOrientation = ORIENTATION.LEFT;
+        } else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
+            mOrientation = ORIENTATION.RIGHT;
+        } else {
+            mOrientation = ORIENTATION.FRONT;
+        }
     }
 
     public AnimationFX doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
-	EventAnimationFX a = AnimationLoaderFX.getInstance().loadEventAnimation(this, name, duration, block);
+        EventAnimationFX a = AnimationLoaderFX.getInstance().loadEventAnimation(this, name, duration, block);
 
-	a.setParameter(wts);
+        a.setParameter(wts);
 
-	try {
-	    mAnimationLaunchControl.acquire();
-	    a.start();
-	} catch (InterruptedException ex) {
-	    mLogger.severe(ex.getMessage());
-	}
-	return a;
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+        return a;
     }
 
     public AnimationFX doAnimation(String name, int duration, boolean block) {
-	return doAnimation(name, duration, "", block);
+        return doAnimation(name, duration, "", block);
     }
 
     public AnimationFX doAnimation(String name, Object param, boolean block) {
-	return doAnimation(name, -1, param, block);
+        return doAnimation(name, -1, param, block);
     }
 
     public AnimationFX doAnimation(String name, boolean block) {
-	return doAnimation(name, -1, "", block);
+        return doAnimation(name, -1, "", block);
     }
 
     public AnimationFX doAnimation(String name, int duration, Object param, boolean block) {
-	AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
+        AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
 
-	// this is for now only used by the Speech Bubble
-	a.setParameter(param);
+        // this is for now only used by the Speech Bubble
+        a.setParameter(param);
 
-	try {
-	    mAnimationLaunchControl.acquire();
-	    a.start();
-	} catch (InterruptedException ex) {
-	    mLogger.severe(ex.getMessage());
-	}
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
 
-	return a;
+        return a;
     }
 
     public void playAnimation(AnimationFX a) {
-	try {
-	    mAnimationLaunchControl.acquire();
-	    a.start();
-	} catch (InterruptedException ex) {
-	    mLogger.severe(ex.getMessage());
-	}
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
     }
 
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
     private static boolean isAnimationTimerStartet = false;
 
     public void update() {
-	Color currColor = sFOREGROUND;
-	int width = new Float(mSize.width).intValue();
-	int height = new Float(mSize.height).intValue();
+        Color currColor = sFOREGROUND;
+        int width = new Float(mSize.width).intValue();
+        int height = new Float(mSize.height).intValue();
 
-	// draw everthing in the middle and scaled
-	Affine af = new Affine();
-	mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-	mGeneralYTranslation = (float) (mSize.height / 5);
-	// mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
-	af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-	af.appendScale(mScale, mScale);
-	// Added by Robbie, GoDown
-	af.appendTranslation(hoffset, voffset);
-	this.getTransforms().clear();
-	this.getTransforms().add(af);
+        // draw everthing in the middle and scaled
+        Affine af = new Affine();
+        mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
+        mGeneralYTranslation = (float) (mSize.height / 5);
+        // mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
+        af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
+        af.appendScale(mScale, mScale);
+        // Added by Robbie, GoDown
+        af.appendTranslation(hoffset, voffset);
+        this.getTransforms().clear();
+        this.getTransforms().add(af);
 
-	// Out put perlin noise
-	implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,
-		mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
+        // Out put perlin noise
+        implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,
+                mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
 
-	if (mShowName) {
-	    nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY() * 21 / 20);
-	    nameLabel.setText(mName);
-	} else {
-	    nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY() * 21 / 20);
-	    nameLabel.setText("");
-	}
+        if (mShowName) {
+            nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY() * 21 / 20);
+            nameLabel.setText(mName);
+        } else {
+            nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY() * 21 / 20);
+            nameLabel.setText("");
+        }
 
-	updateAll();
+        updateAll();
     }
 
     private static class StickmanLogFormatter extends Formatter {
 
-	@Override
-	public String format(LogRecord record) {
-	    return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
-		    .append("\n")).toString();
-	}
+        @Override
+        public String format(LogRecord record) {
+            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
+                    .append("\n")).toString();
+        }
     }
 
     private void addOnlyHeadParts() {
-	this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
-		mFaceWrinkleFX, mSpeechBubbleFX);
-	if (this.mType == Gender.TYPE.MALE)
-	    this.getChildren().add(mMaleHairFX);
-	else
-	    this.getChildren().add(mFemaleHairFX);
+        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
+                mFaceWrinkleFX, mSpeechBubbleFX);
+        if (this.mType == Gender.TYPE.MALE) {
+            this.getChildren().add(mMaleHairFX);
+        } else {
+            this.getChildren().add(mFemaleHairFX);
+        }
     }
 
     private void addAllParts() {
-	this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX, mNeckFX,
-		mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX, mRightShoulderFX,
-		mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
-		mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-		mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameLabel);
-	if (this.mType == Gender.TYPE.MALE)
-	    this.getChildren().add(mMaleHairFX);
-	else
-	    this.getChildren().add(mFemaleHairFX);
+        this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX, mNeckFX,
+                mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX, mRightShoulderFX,
+                mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
+                mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
+                mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameLabel);
+        if (this.mType == Gender.TYPE.MALE) {
+            this.getChildren().add(mMaleHairFX);
+        } else {
+            this.getChildren().add(mFemaleHairFX);
+        }
     }
 
     private void updateAll() {
-	// draw body parts
-	if (starShowControler == true) {
-	    // Added by Robbie, to show stars or words here.
-	    mStarsFX.update();
-	} else {
-	    if (starShowC == true)
-		mStarsFX.update();
-	    mHeadFX.update();
+        // draw body parts
+        if (starShowControler == true) {
+            // Added by Robbie, to show stars or words here.
+            mStarsFX.update();
+        } else {
+            if (starShowC == true) {
+                mStarsFX.update();
+            }
+            mHeadFX.update();
 
-	    if (this.mType == Gender.TYPE.MALE)
-		mMaleHairFX.update();
-	    else
-		mFemaleHairFX.update();
-	    mLeftEyebrowFX.update();
-	    mLeftEyeFX.update();
-	    mRightEyebrowFX.update();
-	    // added by Robbie
-	    mFaceWrinkleFX.update();
-	    mRightEyeFX.update();
-	    mMouthFX.update();
-	    mNeckFX.update();
-	    // BodyFX is not BodyPartFX Classe
-	    mBodyFX.calculate();
-	    mLeftShoulderFX.update();
-	    mLeftUpperArmFX.update();
-	    mLeftForeArmFX.update();
-	    mLeftHandFX.update();
-	    mRightShoulderFX.update();
-	    mRightUpperArmFX.update();
-	    mRightForeArmFX.update();
-	    mRightHandFX.update();
-	    // mLeftLegFX.update();
-	    mLeftUpperLegFX.update();
-	    mLeftForeLegFX.update();
-	    mLeftFootFX.update();
-	    // mRightLegFX.update();
-	    mRightUpperLegFX.update();
-	    mRightForeLegFX.update();
-	    mRightFootFX.update();
+            if (this.mType == Gender.TYPE.MALE) {
+                mMaleHairFX.update();
+            } else {
+                mFemaleHairFX.update();
+            }
+            mLeftEyebrowFX.update();
+            mLeftEyeFX.update();
+            mRightEyebrowFX.update();
+            // added by Robbie
+            mFaceWrinkleFX.update();
+            mRightEyeFX.update();
+            mMouthFX.update();
+            mNeckFX.update();
+            // BodyFX is not BodyPartFX Classe
+            mBodyFX.calculate();
+            mLeftShoulderFX.update();
+            mLeftUpperArmFX.update();
+            mLeftForeArmFX.update();
+            mLeftHandFX.update();
+            mRightShoulderFX.update();
+            mRightUpperArmFX.update();
+            mRightForeArmFX.update();
+            mRightHandFX.update();
+            // mLeftLegFX.update();
+            mLeftUpperLegFX.update();
+            mLeftForeLegFX.update();
+            mLeftFootFX.update();
+            // mRightLegFX.update();
+            mRightUpperLegFX.update();
+            mRightForeLegFX.update();
+            mRightFootFX.update();
 
-	    // mSpeechBubbleFX.update();
+            // mSpeechBubbleFX.update();
+            if (starShowC == true) // Added by Robbie, to show stars or words here.
+            {
+                mStarsFX.update();
+            }
+        }
 
-	    if (starShowC == true)
-		// Added by Robbie, to show stars or words here.
-		mStarsFX.update();
-	}
-
-	// draw environment
-	// mSpeechBubble.update(g);
+        // draw environment
+        // mSpeechBubble.update(g);
     }
 
     private void implimentPerlinNoise(double mWobble, int x, int y) {
-	if (starShowControler == true) {
-	    // Added by Robbie, to show stars or words here
-	    mStarsFX.rotatePerlinNoise(mWobble, x, y);
-	} else {
-	    if (starShowC == true)
-		mStarsFX.rotatePerlinNoise(mWobble, x, y);
-	    mHeadFX.rotatePerlinNoise(mWobble, x, y);
+        if (starShowControler == true) {
+            // Added by Robbie, to show stars or words here
+            mStarsFX.rotatePerlinNoise(mWobble, x, y);
+        } else {
+            if (starShowC == true) {
+                mStarsFX.rotatePerlinNoise(mWobble, x, y);
+            }
+            mHeadFX.rotatePerlinNoise(mWobble, x, y);
 
-	    if (this.mType == Gender.TYPE.MALE)
-		mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
-	    else
-		mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
-	    mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
-	    mMouthFX.rotatePerlinNoise(mWobble, x, y);
-	    mNeckFX.rotatePerlinNoise(mWobble, x, y);
-	    // BodyFX is not BodyPartFX Classe
-	    mBodyFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftHandFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightShoulderFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightHandFX.rotatePerlinNoise(mWobble, x, y);
-	    // mLeftLegFX.update();
-	    mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
-	    mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
-	    // mRightLegFX.update();
-	    mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
-	    mRightFootFX.rotatePerlinNoise(mWobble, x, y);
+            if (this.mType == Gender.TYPE.MALE) {
+                mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
+            } else {
+                mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
+            }
+            mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftEyeFX.rotatePerlinNoise(mWobble, x, y);
+            mRightEyebrowFX.rotatePerlinNoise(mWobble, x, y);
+            mFaceWrinkleFX.rotatePerlinNoise(mWobble, x, y);
+            mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
+            mMouthFX.rotatePerlinNoise(mWobble, x, y);
+            mNeckFX.rotatePerlinNoise(mWobble, x, y);
+            // BodyFX is not BodyPartFX Classe
+            mBodyFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftForeArmFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftHandFX.rotatePerlinNoise(mWobble, x, y);
+            mRightShoulderFX.rotatePerlinNoise(mWobble, x, y);
+            mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
+            mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
+            mRightHandFX.rotatePerlinNoise(mWobble, x, y);
+            // mLeftLegFX.update();
+            mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
+            mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
+            // mRightLegFX.update();
+            mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
+            mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
+            mRightFootFX.rotatePerlinNoise(mWobble, x, y);
 
-	    if (starShowC == true)
-		// Added by Robbie, to show stars or words here.
-		mStarsFX.rotatePerlinNoise(mWobble, x, y);
-	}
+            if (starShowC == true) // Added by Robbie, to show stars or words here.
+            {
+                mStarsFX.rotatePerlinNoise(mWobble, x, y);
+            }
+        }
     }
 
     public void hideAllPartsWithout(Pane p) {
-	this.getChildren().forEach(child -> {
-	    if (!child.equals(p)) {
-		child.setVisible(false);
-	    }
-	});
+        this.getChildren().forEach(child -> {
+            if (!child.equals(p)) {
+                child.setVisible(false);
+            }
+        });
     }
 
     public void showAllParts() {
-	this.getChildren().forEach(child -> {
-	    child.setVisible(true);
-	});
+        this.getChildren().forEach(child -> {
+            child.setVisible(true);
+        });
     }
 }

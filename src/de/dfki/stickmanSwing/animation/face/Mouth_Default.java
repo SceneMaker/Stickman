@@ -17,15 +17,15 @@ import java.util.ArrayList;
  */
 public class Mouth_Default extends AnimationSwing {
 
-	public Mouth_Default(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Mouth_Default(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// smile
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DEFAULT"));
-		playAnimationPart(20);
-	}
+    @Override
+    public void playAnimation() {
+        // smile
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DEFAULT"));
+        playAnimationPart(20);
+    }
 }

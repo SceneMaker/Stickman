@@ -13,21 +13,21 @@ import java.util.ArrayList;
  */
 public class ExcitedStart extends AnimationSwing {
 
-	public ExcitedStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public ExcitedStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// excited start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EXCITED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EXCITED"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // excited start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "EXCITED"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

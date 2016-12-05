@@ -12,10 +12,12 @@ import de.dfki.stickmanFX.xmlsettings.XmlTransform;
  * Created by alvaro on 9/19/16.
  */
 public class StickmansOnStageFX extends StickmansOnStage {
+
     public StickmansOnStageFX(StickmanStage stickmanStage) {
         super(stickmanStage);
     }
-    private  XmlTransform mXmlTransform = new XmlTransform();
+    private XmlTransform mXmlTransform = new XmlTransform();
+
     public StickmansOnStageFX(StickmanStage stickmanStageFX, StageRoom controllerFX) {
         super(stickmanStageFX, controllerFX);
     }
@@ -25,7 +27,7 @@ public class StickmansOnStageFX extends StickmansOnStage {
         if (fullScreen) {
             Stickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
-        }else{
+        } else {
             Stickman stickman = new StickmanFX(name, gender, DEFAULT_SCALE);
             putFullStickmanOnStage(name, stickman);
         }
@@ -36,9 +38,9 @@ public class StickmansOnStageFX extends StickmansOnStage {
         if (fullScreen) {
             Stickman stickman = new StickmanFX(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
             putFullStickmanOnStage(name, stickman);
-        }else{
+        } else {
             float scale = DEFAULT_SCALE;
-            if(onlyFace){
+            if (onlyFace) {
                 scale = 1.0f;
             }
             Stickman stickman = new StickmanFX(name, gender, scale);
@@ -46,7 +48,7 @@ public class StickmansOnStageFX extends StickmansOnStage {
         }
     }
 
-    public XmlTransform getmXmlTransform(){
+    public XmlTransform getmXmlTransform() {
         return this.mXmlTransform;
     }
 }

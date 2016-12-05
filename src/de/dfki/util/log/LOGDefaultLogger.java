@@ -1,6 +1,5 @@
 package de.dfki.util.log;
 
-
 //~--- JDK imports ------------------------------------------------------------
 import java.util.logging.Handler;
 import java.util.logging.Level;

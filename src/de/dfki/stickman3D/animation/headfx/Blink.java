@@ -17,33 +17,30 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Blink extends Animation3D
-{
+public class Blink extends Animation3D {
 
-	public Blink() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-	public Blink(Stickman3D sm, int duration, boolean block)
-        {
-		super(sm, duration, block);
-	}
+    public Blink() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
-		playAnimationPart(20);
-		
-		 pauseAnimation(300);
+    public Blink(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		 //blink up
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "BLINKEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
-		playAnimationPart(20);
-		
+    @Override
+    public void playAnimation() {
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
+        playAnimationPart(20);
 
-	}
+        pauseAnimation(300);
+
+        //blink up
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "BLINKEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
+        playAnimationPart(20);
+
+    }
 }

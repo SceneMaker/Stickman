@@ -1,7 +1,6 @@
 package de.dfki.util.log;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.Level;
@@ -40,18 +39,18 @@ public class LOGConsoleFormat extends Formatter {
             message += "\033[1;33m";
         } else if (record.getLevel() == Level.INFO) {
             message += "\033[1;36m";
-        }  else if (record.getLevel() == Level.ALL) {
+        } else if (record.getLevel() == Level.ALL) {
             message += "\033[1;32m";
         } else {
             message += "\033[1;37m";
         }
         // Create The String For Logging
         message += record.getLevel() + " to " + "STDERR" + " on " + date + " by " + name + " in " + thread
-                         + " at " + method;
+                + " at " + method;
 
         // Append The User Message
-        message += System.getProperty("line.separator") + record.getMessage()    // The Message
-                   + System.getProperty("line.separator") + System.getProperty("line.separator") + "\033[0m";;
+        message += System.getProperty("line.separator") + record.getMessage() // The Message
+                + System.getProperty("line.separator") + System.getProperty("line.separator") + "\033[0m";;
 
         // return The Final Log Message
         return message;

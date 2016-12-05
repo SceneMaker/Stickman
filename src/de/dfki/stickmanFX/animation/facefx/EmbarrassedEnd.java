@@ -15,16 +15,13 @@ import java.util.ArrayList;
  * @author Patrick Gebhard
  *
  */
-public class EmbarrassedEnd extends AnimationFX
-{
-	
-	public EmbarrassedEnd() 
-    {
+public class EmbarrassedEnd extends AnimationFX {
+
+    public EmbarrassedEnd() {
         super();
     }
-	
-    public EmbarrassedEnd(StickmanFX sm, int duration, boolean block) 
-    {
+
+    public EmbarrassedEnd(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

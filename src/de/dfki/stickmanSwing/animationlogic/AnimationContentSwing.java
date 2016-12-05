@@ -15,31 +15,31 @@ import de.dfki.stickmanSwing.body.BodyPart;
  */
 public class AnimationContentSwing {
 
-	public BodyPart mBodyPart;
-	public String mAction;
-	public int mParam;
-	public String mParamString;
-	public WordTimeMarkSequence mWTS;
+    public BodyPart mBodyPart;
+    public String mAction;
+    public int mParam;
+    public String mParamString;
+    public WordTimeMarkSequence mWTS;
 
-	public AnimationContentSwing(BodyPart bp, String a, int p) {
-		mBodyPart = bp;
-		mAction = a;
-		mParam = p;
-		mParamString = "";
-	}
+    public AnimationContentSwing(BodyPart bp, String a, int p) {
+        mBodyPart = bp;
+        mAction = a;
+        mParam = p;
+        mParamString = "";
+    }
 
-	public AnimationContentSwing(BodyPart bp, String a, String p) {
-		mBodyPart = bp;
-		mAction = a;
-		mParam = 0;
-		mParamString = p;
-	}
+    public AnimationContentSwing(BodyPart bp, String a, String p) {
+        mBodyPart = bp;
+        mAction = a;
+        mParam = 0;
+        mParamString = p;
+    }
 
-	public AnimationContentSwing(BodyPart bp, String a, String p, WordTimeMarkSequence wts) {
-		mBodyPart = bp;
-		mAction = a;
-		mParam = 0;
-		mParamString = p;
-		mWTS = wts;
-	}
+    public AnimationContentSwing(BodyPart bp, String a, String p, WordTimeMarkSequence wts) {
+        mBodyPart = bp;
+        mAction = a;
+        mParam = 0;
+        mParamString = p;
+        mWTS = wts;
+    }
 }

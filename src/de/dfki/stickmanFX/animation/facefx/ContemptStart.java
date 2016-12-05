@@ -15,15 +15,13 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class ContemptStart extends AnimationFX 
-{
-	public ContemptStart() 
-    {
+public class ContemptStart extends AnimationFX {
+
+    public ContemptStart() {
         super();
     }
-	
-    public ContemptStart(StickmanFX sm, int duration, boolean block) 
-    {
+
+    public ContemptStart(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -34,7 +32,7 @@ public class ContemptStart extends AnimationFX
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
-       playAnimationPart(mDuration);
+        playAnimationPart(mDuration);
 
         pauseAnimation(10);
     }

@@ -12,18 +12,18 @@ import java.util.ArrayList;
  */
 public class SmileStart extends AnimationSwing {
 
-	public SmileStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public SmileStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// smile start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
+    @Override
+    public void playAnimation() {
+        // smile start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "SMILE"));
 //		playAnimationPart(20);
-		playAnimationPart(mDuration);
-		pauseAnimation(10);
+        playAnimationPart(mDuration);
+        pauseAnimation(10);
 
-	}
+    }
 }

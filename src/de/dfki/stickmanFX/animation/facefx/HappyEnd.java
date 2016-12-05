@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  */
 public class HappyEnd extends AnimationFX {
-	
-	public HappyEnd() {
+
+    public HappyEnd() {
         super();
     }
 
@@ -22,7 +22,7 @@ public class HappyEnd extends AnimationFX {
 
     @Override
     public void playAnimation() {
-         // no happy
+        // no happy
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "HAPPYEND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "HAPPYEND"));

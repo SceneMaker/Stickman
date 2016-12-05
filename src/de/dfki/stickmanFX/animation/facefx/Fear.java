@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class Fear extends AnimationFX {
 
-	public Fear() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
+    public Fear() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
     public Fear(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

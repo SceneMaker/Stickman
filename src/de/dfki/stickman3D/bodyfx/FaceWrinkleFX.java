@@ -12,108 +12,100 @@ import java.awt.*;
  * @author Beka
  *
  */
-public class FaceWrinkleFX extends BodyPartFX
-{
+public class FaceWrinkleFX extends BodyPartFX {
 
-	public static enum SHAPE 
-	{
+    public static enum SHAPE {
 
-		DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
-	};
+        DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
+    };
 
-	HeadFX mHeadFX;
-	
-	Polygon currentLeftPolygon;
-	Polygon currentRightPolygon;
-	
-	public FaceWrinkleFX.SHAPE mShape = FaceWrinkleFX.SHAPE.DEFAULT;
+    HeadFX mHeadFX;
 
-	public FaceWrinkleFX(HeadFX head)
-	{
-		mHeadFX = head;
-		mColor = Color.rgb(80, 80, 80, 0);
-		mSize = new Dimension(mLength, 5);
-		mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
+    Polygon currentLeftPolygon;
+    Polygon currentRightPolygon;
 
-		currentLeftPolygon = new Polygon();
-		currentRightPolygon = new Polygon();
+    public FaceWrinkleFX.SHAPE mShape = FaceWrinkleFX.SHAPE.DEFAULT;
 
-		mHeadFX.mHead.getChildren().addAll(currentLeftPolygon, currentRightPolygon);
+    public FaceWrinkleFX(HeadFX head) {
+        mHeadFX = head;
+        mColor = Color.rgb(80, 80, 80, 0);
+        mSize = new Dimension(mLength, 5);
+        mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
 
-		init();
-	}
+        currentLeftPolygon = new Polygon();
+        currentRightPolygon = new Polygon();
 
-	@Override
-	public void init()
-	{
-		super.init();
+        mHeadFX.mHead.getChildren().addAll(currentLeftPolygon, currentRightPolygon);
 
-		currentLeftPolygon.setTranslateX(3);
-		currentLeftPolygon.setTranslateY(-10);
-		currentRightPolygon.setTranslateX(-3);
-		currentRightPolygon.setTranslateY(-10);
-		currentLeftPolygon.setTranslateZ(-18);
-		currentRightPolygon.setTranslateZ(-18);
-	}
+        init();
+    }
 
-	@Override
-	public void setShape(String s)
-	{
-		FaceWrinkleFX.SHAPE shape = FaceWrinkleFX.SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : FaceWrinkleFX.SHAPE.DEFAULT;
-	}
+    @Override
+    public void init() {
+        super.init();
 
-	@Override
-	public void resetShape()
-	{
-		mShape = FaceWrinkleFX.SHAPE.DEFAULT;
-	}
+        currentLeftPolygon.setTranslateX(3);
+        currentLeftPolygon.setTranslateY(-10);
+        currentRightPolygon.setTranslateX(-3);
+        currentRightPolygon.setTranslateY(-10);
+        currentLeftPolygon.setTranslateZ(-18);
+        currentRightPolygon.setTranslateZ(-18);
+    }
 
-	@Override
-	public void calculate(int step) 
-	{
-		mStart = mHeadFX.getRightEyebrowPostion();
+    @Override
+    public void setShape(String s) {
+        FaceWrinkleFX.SHAPE shape = FaceWrinkleFX.SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : FaceWrinkleFX.SHAPE.DEFAULT;
+    }
 
-		double colorOpacity = 0;
-		
-		switch (mShape) 
-		{
-			case DEFAULT:
-				break;
+    @Override
+    public void resetShape() {
+        mShape = FaceWrinkleFX.SHAPE.DEFAULT;
+    }
 
-		case ANGRY:
-			currentLeftPolygon = FaceWrinkleANGRY.getLeftANGRY(currentLeftPolygon, step);
-			currentRightPolygon = FaceWrinkleANGRY.getRightANGRY(currentRightPolygon, step);
-			
-			colorOpacity = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			mColor = Color.rgb(80, 80, 80, colorOpacity/19);
-			currentLeftPolygon.setFill(mColor);
-			currentRightPolygon.setFill(mColor);
-			
-			break;
-			
-		case ANGRYEND:
-			colorOpacity = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
-			
-			mColor = Color.rgb(80, 80, 80, 1 - colorOpacity/19);
-			currentLeftPolygon.setFill(mColor);
-			currentRightPolygon.setFill(mColor);
-			break;
+    @Override
+    public void calculate(int step) {
+        mStart = mHeadFX.getRightEyebrowPostion();
 
-		case DISGUSTED:
-			break;
+        double colorOpacity = 0;
 
-		case SURPRISED:
-			break;
+        switch (mShape) {
+            case DEFAULT:
+                break;
 
-		case EXCITED:
-			break;
+            case ANGRY:
+                currentLeftPolygon = FaceWrinkleANGRY.getLeftANGRY(currentLeftPolygon, step);
+                currentRightPolygon = FaceWrinkleANGRY.getRightANGRY(currentRightPolygon, step);
 
-		case EMBARRASSED:
-			break;
+                colorOpacity = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
+                mColor = Color.rgb(80, 80, 80, colorOpacity / 19);
+                currentLeftPolygon.setFill(mColor);
+                currentRightPolygon.setFill(mColor);
 
-		case EMBARRASSEDEND:
-			break;
-		}
-	}
+                break;
+
+            case ANGRYEND:
+                colorOpacity = Animator3D.sMAX_ANIM_STEPS - mShapeAnimationStep;
+
+                mColor = Color.rgb(80, 80, 80, 1 - colorOpacity / 19);
+                currentLeftPolygon.setFill(mColor);
+                currentRightPolygon.setFill(mColor);
+                break;
+
+            case DISGUSTED:
+                break;
+
+            case SURPRISED:
+                break;
+
+            case EXCITED:
+                break;
+
+            case EMBARRASSED:
+                break;
+
+            case EMBARRASSEDEND:
+                break;
+        }
+    }
 }

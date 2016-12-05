@@ -65,8 +65,6 @@ import de.dfki.stickmanSwing.stage.StickmanStageSwing;
  */
 public class StickmanSwing extends JComponent implements Stickman {
 
-
-
     // general stuff
     public static enum ORIENTATION {
 
@@ -92,19 +90,18 @@ public class StickmanSwing extends JComponent implements Stickman {
     public static Dimension mSize = new Dimension(mDefaultSize);
     FontMetrics mFontMetrics;
     Font mFont;
-    
-    public double 	leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
-    public boolean  starShowControler = false;     //Added by Robbie,  to control the star appear or not
-    public boolean  starShowC = false; 				//Added by Robbie,  star with character appear at the same time or not
-    public boolean  fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
-    public boolean  setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
-    												//True: visible False:invisible
-    public double mWobble=0;
+
+    public double leaveSpeed = 0;                  //Added by Robbie, to control the speed of leaving
+    public boolean starShowControler = false;     //Added by Robbie,  to control the star appear or not
+    public boolean starShowC = false; 				//Added by Robbie,  star with character appear at the same time or not
+    public boolean fadeControler = false;         //Added by Robbie,  to control the character to fade out or fade in. true: Fade out
+    public boolean setCharacterInvisible = false; //Added by Robbie, to control the character to fade out. 
+    //True: visible False:invisible
+    public double mWobble = 0;
     public Boolean mIdleRun = false;                        // the shared variable to decide the while loop in IdleBehavior break or not
     public IdleBehavior mIdleBehavior;
     public SimplexNoise simplexNoise;             // Perlin noise
-    
-    
+
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
     public AnimationScheduler mAnimationScheduler;
@@ -174,9 +171,9 @@ public class StickmanSwing extends JComponent implements Stickman {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
-        
-        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
-        mIdleBehavior = new IdleBehavior(this,simplexNoise);
+
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
+        mIdleBehavior = new IdleBehavior(this, simplexNoise);
     }
 
     public StickmanSwing(String name, Gender.TYPE gender, float scale) {
@@ -209,7 +206,7 @@ public class StickmanSwing extends JComponent implements Stickman {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
-        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
     public StickmanSwing(String name, Gender.TYPE gender) {
@@ -240,7 +237,7 @@ public class StickmanSwing extends JComponent implements Stickman {
         mSpeechBubble = new SpeechBubble(mHead);
 
         init();
-        simplexNoise = new SimplexNoise(8,0.1,(int)(Math.random()*100));
+        simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
     }
 
     private void init() {
@@ -248,7 +245,7 @@ public class StickmanSwing extends JComponent implements Stickman {
         setPreferredSize(mSize);
         setMinimumSize(mSize);
         setSize(mSize);
-    
+
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
         map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
@@ -270,8 +267,6 @@ public class StickmanSwing extends JComponent implements Stickman {
         mAnimationScheduler = new AnimationScheduler(this);
         mAnimationScheduler.start();
     }
-
-
 
     @Override
     public StageRoom getStickmanStageController() {
@@ -303,10 +298,11 @@ public class StickmanSwing extends JComponent implements Stickman {
         return mType;
     }
 
-    public StickmanStageSwing getStage(){
+    public StickmanStageSwing getStage() {
         return stage;
     }
-    public void setStage(StickmanStageSwing s){
+
+    public void setStage(StickmanStageSwing s) {
         stage = s;
     }
 
@@ -403,9 +399,8 @@ public class StickmanSwing extends JComponent implements Stickman {
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
     // Control IdleBehavior start(mStart == true) or not(mStart == false).
-    
     @Override
     protected void paintComponent(Graphics g) {
         //super.paintComponent(g);
@@ -440,45 +435,47 @@ public class StickmanSwing extends JComponent implements Stickman {
 
         // draw everthing in the middle and scaled
         AffineTransform at = g2.getTransform();
-        mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;        		
-        mGeneralYTranslation = getBounds().height - 477 * mScale;      
+        mGeneralXTranslation = mSize.width / 2 - mHead.mSize.width * mScale;
+        mGeneralYTranslation = getBounds().height - 477 * mScale;
         at.translate(mGeneralXTranslation, mGeneralYTranslation);
-        
-        at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x)/2, mBody.getRightLegStartPostion().y+mLeftLeg.mLength);
- 
-        at.scale(mScale, mScale);   
+
+        at.rotate(Math.toRadians(mWobble), (mBody.getRightLegStartPostion().x + mBody.getLeftLegStartPostion().x) / 2, mBody.getRightLegStartPostion().y + mLeftLeg.mLength);
+
+        at.scale(mScale, mScale);
         at.translate(0, leaveSpeed);   // Added by Robbie, GoDown
-        
+
         g2.setTransform(at);
 
         // draw body parts
-        if(starShowControler == true)
-        	mStars.update(g);     // Added by Robbie, to show stars or words here.
-        else{     	
-        	if(starShowC == true)
-            	mStars.update(g);   	
-	        mHead.update(g);
-	        mLeftEyebrow.update(g);
-	        mLeftEye.update(g);
-	        mRightEyebrow.update(g);
-	        mFaceWrinkle.update(g);      // added by Robbie
-	        mRightEye.update(g);
-	        mMouth.update(g);
-	        mNeck.update(g);
-	        mBody.update(g);
-	        mLeftShoulder.update(g);
-	        mLeftUpperArm.update(g);
-	        mLeftForeArm.update(g);
-	        mLeftHand.update(g);
-	        mRightShoulder.update(g);
-	        mRightUpperArm.update(g);
-	        mRightForeArm.update(g);
-	        mRightHand.update(g);
-	        mLeftLeg.update(g);
-	        mRightLeg.update(g);
-	        
-	        if(starShowC == true)
-            	mStars.update(g);     // Added by Robbie, to show stars or words here.
+        if (starShowControler == true) {
+            mStars.update(g);     // Added by Robbie, to show stars or words here.
+        } else {
+            if (starShowC == true) {
+                mStars.update(g);
+            }
+            mHead.update(g);
+            mLeftEyebrow.update(g);
+            mLeftEye.update(g);
+            mRightEyebrow.update(g);
+            mFaceWrinkle.update(g);      // added by Robbie
+            mRightEye.update(g);
+            mMouth.update(g);
+            mNeck.update(g);
+            mBody.update(g);
+            mLeftShoulder.update(g);
+            mLeftUpperArm.update(g);
+            mLeftForeArm.update(g);
+            mLeftHand.update(g);
+            mRightShoulder.update(g);
+            mRightUpperArm.update(g);
+            mRightForeArm.update(g);
+            mRightHand.update(g);
+            mLeftLeg.update(g);
+            mRightLeg.update(g);
+
+            if (starShowC == true) {
+                mStars.update(g);     // Added by Robbie, to show stars or words here.
+            }
         }
 
         // draw environment

@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  */
 public class ExcitedEnd extends AnimationFX {
-	
-	public ExcitedEnd() {
+
+    public ExcitedEnd() {
         super();
     }
 

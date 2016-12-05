@@ -16,8 +16,8 @@ import java.util.ArrayList;
  *
  */
 public class FearEnd extends AnimationFX {
-	
-	public FearEnd() {
+
+    public FearEnd() {
         super();
     }
 
@@ -27,7 +27,7 @@ public class FearEnd extends AnimationFX {
 
     @Override
     public void playAnimation() {
-       // no fear
+        // no fear
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "FEAREND"));
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "SURPRISEDEND"));

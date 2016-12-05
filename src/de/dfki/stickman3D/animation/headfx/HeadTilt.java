@@ -17,27 +17,26 @@ import java.util.ArrayList;
  * @author Beka
  *
  */
-public class HeadTilt extends Animation3D
-{
-	public HeadTilt() {
-		mAnimType = ANIMTYPE.ON;
-	}
+public class HeadTilt extends Animation3D {
 
-    public HeadTilt(Stickman3D sm, int duration, boolean block)
-    {
+    public HeadTilt() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public HeadTilt(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
     @Override
     public void playAnimation() {
-    	
-    	mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", -10));
-		playAnimationPart(200);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", 10));
-		playAnimationPart(200);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", -10));
+        playAnimationPart(200);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", 10));
+        playAnimationPart(200);
 
     }
 }

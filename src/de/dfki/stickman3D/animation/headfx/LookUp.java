@@ -14,29 +14,28 @@ import java.util.ArrayList;
  */
 public class LookUp extends Animation3D {
 
-	public LookUp() {
-		mAnimType = ANIMTYPE.ON;
-	}
-	
-	public LookUp(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public LookUp() {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	@Override
-	public void playAnimation() {
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKUP"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUP"));
-		playAnimationPart(100);
+    public LookUp(Stickman3D sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		pauseAnimation(100);
-		
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKUPEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUPEND"));
-		playAnimationPart(100);
-		
+    @Override
+    public void playAnimation() {
 
-	}
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKUP"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUP"));
+        playAnimationPart(100);
+
+        pauseAnimation(100);
+
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKUPEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKUPEND"));
+        playAnimationPart(100);
+
+    }
 }

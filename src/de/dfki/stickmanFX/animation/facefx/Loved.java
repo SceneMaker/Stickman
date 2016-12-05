@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class Loved extends AnimationFX {
 
-	public Loved() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
+    public Loved() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
     public Loved(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

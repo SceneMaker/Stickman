@@ -18,21 +18,21 @@ import java.util.ArrayList;
  */
 public class DisgustedStart extends AnimationSwing {
 
-	public DisgustedStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public DisgustedStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// disgusted start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // disgusted start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

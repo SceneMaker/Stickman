@@ -18,210 +18,212 @@ import java.awt.*;
  * @author Beka Aptsiauri
  *
  */
-public class LeftEyebrowFX extends BodyPartFX 
-{
-	public static enum SHAPE 
-	{
-		DEFAULT, FADEIN, FADEOUT, ANGRY, ANGRYEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, SAD, SADEND
-	};
+public class LeftEyebrowFX extends BodyPartFX {
 
-	HeadFX mHeadFX;
-	
-	Polygon currentPolygon;
-	
-	public LeftEyebrowFX.SHAPE mShape = LeftEyebrowFX.SHAPE.DEFAULT;
+    public static enum SHAPE {
+        DEFAULT, FADEIN, FADEOUT, ANGRY, ANGRYEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, SAD, SADEND
+    };
 
-	public LeftEyebrowFX(HeadFX head)
-	{
-		mHeadFX = head;
-		mSize = new Dimension(mLength, mLength);
+    HeadFX mHeadFX;
 
-		if(mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-			mColor = Color.rgb(88, 44, 13, 1);
-		else
-			mColor = Color.rgb(204, 163, 0, 1);
+    Polygon currentPolygon;
 
-		currentPolygon = new Polygon();
+    public LeftEyebrowFX.SHAPE mShape = LeftEyebrowFX.SHAPE.DEFAULT;
 
-		mStart = mHeadFX.getLeftEyebrowPostion();
+    public LeftEyebrowFX(HeadFX head) {
+        mHeadFX = head;
+        mSize = new Dimension(mLength, mLength);
 
-		init();
+        if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+            mColor = Color.rgb(88, 44, 13, 1);
+        } else {
+            mColor = Color.rgb(204, 163, 0, 1);
+        }
 
-		mHeadFX.mHead.getChildren().add(currentPolygon);
-	}
+        currentPolygon = new Polygon();
 
-	@Override
-	public void init()
-	{
-		super.init();
-		currentPolygon.setTranslateX(mStart.x + 9);
-		currentPolygon.setTranslateY(mStart.y + 85);
-		currentPolygon.setTranslateZ(-17);
-	}
-	@Override
-	public void setShape(String s) {
-		SHAPE shape = LeftEyebrowFX.SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : LeftEyebrowFX.SHAPE.DEFAULT;
-	}
+        mStart = mHeadFX.getLeftEyebrowPostion();
 
-	@Override
-	public void resetShape() {
-		mShape = LeftEyebrowFX.SHAPE.DEFAULT;
-	}
+        init();
 
-	@Override
-	public void calculate(int step) {
+        mHeadFX.mHead.getChildren().add(currentPolygon);
+    }
 
-		switch (mShape) {
-		case DEFAULT:
+    @Override
+    public void init() {
+        super.init();
+        currentPolygon.setTranslateX(mStart.x + 9);
+        currentPolygon.setTranslateY(mStart.y + 85);
+        currentPolygon.setTranslateZ(-17);
+    }
 
-			if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-				currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-			else
-				currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			currentPolygon.setFill(mColor);
-			break;
+    @Override
+    public void setShape(String s) {
+        SHAPE shape = LeftEyebrowFX.SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : LeftEyebrowFX.SHAPE.DEFAULT;
+    }
 
+    @Override
+    public void resetShape() {
+        mShape = LeftEyebrowFX.SHAPE.DEFAULT;
+    }
 
-		case FADEIN:
-			if (step == 2)
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-			else if (mColor.getOpacity() != 0.0)
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-			currentPolygon.setFill(mColor);
-			break;
+    @Override
+    public void calculate(int step) {
 
-		case FADEOUT:
-			if (step == 2)
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-			else if (mColor.getOpacity() != 1.0)
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-			currentPolygon.setFill(mColor);
-			break;
+        switch (mShape) {
+            case DEFAULT:
 
-		case ANGRY:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			
-			currentPolygon = LeftBrowANGRY.getANGRY(currentPolygon, step, "PLUS");
-			break;
-			
-		case ANGRYEND:
-			currentPolygon = LeftBrowANGRY.getANGRY(currentPolygon, step, "MINUS");
-			break;
+                if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                    currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                } else {
+                    currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                }
+                currentPolygon.setFill(mColor);
+                break;
 
-		case DISGUSTED:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			
-			currentPolygon = LeftBrowDISGUSTED.getANGRY(currentPolygon, step, "PLUS");
-			break;
+            case FADEIN:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+                } else if (mColor.getOpacity() != 0.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+                }
+                currentPolygon.setFill(mColor);
+                break;
 
-		case DISGUSTEDEND:
-			currentPolygon = LeftBrowDISGUSTED.getANGRY(currentPolygon, step, "MINUS");
-			break;
+            case FADEOUT:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+                } else if (mColor.getOpacity() != 1.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+                }
+                currentPolygon.setFill(mColor);
+                break;
 
-		case SURPRISED:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			currentPolygon = LeftBrowSURPRISED.getANGRY(currentPolygon, step, "PLUS");
-			break;
+            case ANGRY:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
 
-		case SURPRISEDEND:
-			currentPolygon = LeftBrowSURPRISED.getANGRY(currentPolygon, step, "MINUS");
-			break;
+                currentPolygon = LeftBrowANGRY.getANGRY(currentPolygon, step, "PLUS");
+                break;
 
-		case EXCITED:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			currentPolygon = LeftBrowEXCITED.getANGRY(currentPolygon, step, "PLUS");
-			break;
+            case ANGRYEND:
+                currentPolygon = LeftBrowANGRY.getANGRY(currentPolygon, step, "MINUS");
+                break;
 
-		case EXCITEDEND:
-			currentPolygon = LeftBrowEXCITED.getANGRY(currentPolygon, step, "MINUS");
-			break;
+            case DISGUSTED:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
 
-		case EMBARRASSED:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", true);
-			else
-				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", false);
-			break;
+                currentPolygon = LeftBrowDISGUSTED.getANGRY(currentPolygon, step, "PLUS");
+                break;
 
-		case EMBARRASSEDEND:
-			if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", true);
-			else
-				currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", false);
-			break;
+            case DISGUSTEDEND:
+                currentPolygon = LeftBrowDISGUSTED.getANGRY(currentPolygon, step, "MINUS");
+                break;
 
-		case HAPPY:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			currentPolygon = LeftBrowHAPPY.getANGRY(currentPolygon, step, "PLUS");
-			break;
+            case SURPRISED:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
+                currentPolygon = LeftBrowSURPRISED.getANGRY(currentPolygon, step, "PLUS");
+                break;
 
-		case HAPPYEND:
-			currentPolygon = LeftBrowHAPPY.getANGRY(currentPolygon, step, "MINUS");
-			break;
+            case SURPRISEDEND:
+                currentPolygon = LeftBrowSURPRISED.getANGRY(currentPolygon, step, "MINUS");
+                break;
 
-		case SAD:
-			if(step == 20)
-			{
-				if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-					currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
-				else
-					currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
-			}
-			currentPolygon = LeftBrowSAD.getANGRY(currentPolygon, step, "PLUS");
-			break;
+            case EXCITED:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
+                currentPolygon = LeftBrowEXCITED.getANGRY(currentPolygon, step, "PLUS");
+                break;
 
-		case SADEND:
-			currentPolygon = LeftBrowSAD.getANGRY(currentPolygon, step, "MINUS");
-			break;
-		}
-	}
-	
-	public void update()
-	{
-		currentPolygon.setFill(mColor);
-	}
+            case EXCITEDEND:
+                currentPolygon = LeftBrowEXCITED.getANGRY(currentPolygon, step, "MINUS");
+                break;
 
-	protected void recordColor() {
-		if (mHeadFX.mStickmanFX.setCharacterInvisible == false)
-			mColorRecorder = mColor;
-	}
+            case EMBARRASSED:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
+                if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                    currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", true);
+                } else {
+                    currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "PLUS", false);
+                }
+                break;
+
+            case EMBARRASSEDEND:
+                if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                    currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", true);
+                } else {
+                    currentPolygon = LeftBrowEMBARRASSED.getEMBARRASSED(currentPolygon, step, "minus", false);
+                }
+                break;
+
+            case HAPPY:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
+                currentPolygon = LeftBrowHAPPY.getANGRY(currentPolygon, step, "PLUS");
+                break;
+
+            case HAPPYEND:
+                currentPolygon = LeftBrowHAPPY.getANGRY(currentPolygon, step, "MINUS");
+                break;
+
+            case SAD:
+                if (step == 20) {
+                    if (mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+                        currentPolygon = LeftBrowDEFAULT.createMaleBrow(currentPolygon, step);
+                    } else {
+                        currentPolygon = LeftBrowDEFAULT.createFemaleBrow(currentPolygon, step);
+                    }
+                }
+                currentPolygon = LeftBrowSAD.getANGRY(currentPolygon, step, "PLUS");
+                break;
+
+            case SADEND:
+                currentPolygon = LeftBrowSAD.getANGRY(currentPolygon, step, "MINUS");
+                break;
+        }
+    }
+
+    public void update() {
+        currentPolygon.setFill(mColor);
+    }
+
+    protected void recordColor() {
+        if (mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+            mColorRecorder = mColor;
+        }
+    }
 }
-

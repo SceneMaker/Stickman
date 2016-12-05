@@ -30,12 +30,13 @@ import java.util.logging.ConsoleHandler;
  * @author Robbie. Refactored by: acepero13
  */
 public class StickmanStageFX extends Application implements StickmanStage {
+
     public static final float STICKMAN_SIZE_FACTOR = 0.8f;
     public static final float HEIGHT_ADJUSTMENT = 3 / 5.0f;
     public static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
     static private StickmanStageFX sInstance;
     Stage configStage;
-    private HashMap<String,StickmansOnStage> stickamnsOnStage = new HashMap<>();
+    private HashMap<String, StickmansOnStage> stickamnsOnStage = new HashMap<>();
     private float sScale = 1.0f;
     private Map<String, Stage> stickmanFXStages = new HashMap<>();
     private LinkedList<String> stickmanNames = new LinkedList<>();
@@ -50,7 +51,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
     }
 
     public static StickmanStageFX getInstance() {
-        if(sInstance == null){
+        if (sInstance == null) {
             sInstance = new StickmanStageFX();
         }
         return sInstance;
@@ -134,7 +135,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
     }
 
     public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier) {
-        this.stickamnsOnStage.put(identifier,stickamnsOnStage);
+        this.stickamnsOnStage.put(identifier, stickamnsOnStage);
         generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
     }
 
@@ -233,6 +234,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
 }
 
 class ImageContainer {
+
     private BufferedImage image;
 
     public BufferedImage getImage() {

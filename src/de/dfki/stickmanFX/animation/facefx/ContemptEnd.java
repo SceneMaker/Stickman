@@ -15,28 +15,25 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class ContemptEnd extends AnimationFX 
-{
-	public ContemptEnd() 
-    {
-		super();
-	}
+public class ContemptEnd extends AnimationFX {
 
+    public ContemptEnd() {
+        super();
+    }
 
-	public ContemptEnd(StickmanFX sm, int duration, boolean block) 
-        {
-		super(sm, duration, block);
-	}
+    public ContemptEnd(StickmanFX sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// Contempt end
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
-		mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // Contempt end
+        mAnimationPartFX = new ArrayList<>();
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "CONTEMPTEND"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPTEND"));
+        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "CONTEMPTEND"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

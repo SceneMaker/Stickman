@@ -16,10 +16,9 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class ContemptStart extends Animation3D
-{
-    public ContemptStart(Stickman3D sm, int duration, boolean block)
-    {
+public class ContemptStart extends Animation3D {
+
+    public ContemptStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 
@@ -30,7 +29,7 @@ public class ContemptStart extends Animation3D
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "CONTEMPT"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "CONTEMPT"));
-       playAnimationPart(mDuration);
+        playAnimationPart(mDuration);
 
         pauseAnimation(10);
     }

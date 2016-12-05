@@ -13,17 +13,17 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by alvaro on 9/12/16.
- * Manage StickmanSwing on the Stage
+ * Created by alvaro on 9/12/16. Manage StickmanSwing on the Stage
  */
 public abstract class StickmansOnStage {
+
     public static final float DEFAULT_SCALE = 0.8f;
     protected StickmanStage stickmanStage;
     private Map<String, Stickman> sStickmansOnStage = new HashMap<>();
     private StageRoom stageRoom;
     private String mFilePath;
 
-    public StickmansOnStage(StickmanStage stickmanStage){
+    public StickmansOnStage(StickmanStage stickmanStage) {
         this.stickmanStage = stickmanStage;
     }
 
@@ -31,16 +31,16 @@ public abstract class StickmansOnStage {
         stickmanStage = stickmanStageFX;
         stageRoom = controllerFX;
     }
-    
+
     public StickmanStage getStageStickman() {
         return stickmanStage;
     }
-    
+
     public StageRoom getStageRoom() {
         return stageRoom;
     }
 
-    public void setStageRoom(StageRoom controllerFX){
+    public void setStageRoom(StageRoom controllerFX) {
         stageRoom = controllerFX;
     }
 
@@ -60,20 +60,20 @@ public abstract class StickmansOnStage {
         return gender;
     }
 
-    public  void addStickman(String name, Gender.TYPE gender, boolean fullScreen) {
+    public void addStickman(String name, Gender.TYPE gender, boolean fullScreen) {
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender, false);
         }
     }
 
-    public  void addStickman(String name, boolean fullScreen, boolean onlyFace) {
+    public void addStickman(String name, boolean fullScreen, boolean onlyFace) {
         Gender.TYPE gender = getStickmanGender(name);
         if (!sStickmansOnStage.containsKey(name.toLowerCase())) {
             addStickmanToStage(name, fullScreen, gender, onlyFace);
         }
     }
 
-    public  void showStickmanNameFX(boolean show) {
+    public void showStickmanNameFX(boolean show) {
         for (Stickman s : sStickmansOnStage.values()) {
             s.setShowName(show);
         }
@@ -82,7 +82,7 @@ public abstract class StickmansOnStage {
     protected abstract void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender);
 
     protected abstract void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace);
-    
+
     public abstract XmlTransform getmXmlTransform();
 
     public Stickman getStickman(String name) {
@@ -93,7 +93,7 @@ public abstract class StickmansOnStage {
 
     }
 
-    public void clearStage(){
+    public void clearStage() {
         Set<String> deleteStickman = new HashSet<>();
         sStickmansOnStage.keySet().stream().map((s) -> {
             deleteStickman.add(s);
@@ -104,16 +104,16 @@ public abstract class StickmansOnStage {
     }
 
     protected void putFullStickmanOnStage(String name, Stickman stickman) {
-        sStickmansOnStage.put(name.toLowerCase(),stickman );
+        sStickmansOnStage.put(name.toLowerCase(), stickman);
         stickman.setStickmanStageController(stageRoom);
     }
 
-    public Set<String> getStickmanNames(){
+    public Set<String> getStickmanNames() {
         return sStickmansOnStage.keySet();
     }
 
-    public Stickman getStickmanByKey(String key){
-        return  sStickmansOnStage.get(key);
+    public Stickman getStickmanByKey(String key) {
+        return sStickmansOnStage.get(key);
     }
 
     public String getmFilePath() {
@@ -123,6 +123,5 @@ public abstract class StickmansOnStage {
     public void setmFilePath(String mFilePath) {
         this.mFilePath = mFilePath;
     }
-
 
 }

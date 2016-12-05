@@ -4,6 +4,7 @@ package de.dfki.stickmanFX.client;
  * Created by alvaro on 9/19/16.
  */
 public interface CommonClientConnectionHandler {
+
     void end();
 
     void sendToServer(String message);

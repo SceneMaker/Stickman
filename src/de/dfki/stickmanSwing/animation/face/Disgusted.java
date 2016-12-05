@@ -17,36 +17,36 @@ import java.util.ArrayList;
  *
  */
 public class Disgusted extends AnimationSwing {
-	
-	public Disgusted() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
 
-	public Disgusted(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Disgusted() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
 
-	@Override
-	public void playAnimation() {
-		// disgusted
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DISGUSTED"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
+    public Disgusted(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
+
+    @Override
+    public void playAnimation() {
+        // disgusted
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DISGUSTED"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTED"));
 //		playAnimationPart(20);
-		playAnimationPart(mDuration);
+        playAnimationPart(mDuration);
 
-		pauseAnimation(1200);
+        pauseAnimation(1200);
 
-		// no disgusted
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DISGUSTEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DISGUSTEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DISGUSTEDEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND"));
-		playAnimationPart(20);
-	}
+        // no disgusted
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEyebrow, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEyebrow, "shape", "DISGUSTEDEND"));
+        playAnimationPart(20);
+    }
 }

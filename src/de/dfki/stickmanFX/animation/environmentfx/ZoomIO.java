@@ -23,7 +23,7 @@ public class ZoomIO extends AnimationFX {
 //        mStickmanFX.mScale = 4f;
         String sParameter = (String) mParameter;
         sParameter = sParameter.trim();
-        
+
         try {
             mStickmanFX.mScale = Float.parseFloat(sParameter);
         } catch (NumberFormatException nfe) {

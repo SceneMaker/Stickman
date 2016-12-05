@@ -13,19 +13,19 @@ import java.util.ArrayList;
  */
 public class HappyStart extends AnimationSwing {
 
-	public HappyStart(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public HappyStart(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// happy start
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPY"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPY"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPY"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // happy start
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPY"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPY"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPY"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

@@ -22,125 +22,112 @@ import java.net.URL;
  * @author Beka
  *
  */
-public class RightForeArmFX extends BodyPartFX
-{
+public class RightForeArmFX extends BodyPartFX {
 
-	public static enum SHAPE {
-		DEFAULT, FADEIN, FADEOUT
-	};
-	
-	public RightForeArmFX.SHAPE mShape = RightForeArmFX.SHAPE.DEFAULT;
+    public static enum SHAPE {
+        DEFAULT, FADEIN, FADEOUT
+    };
 
-	RightUpperArmFX mUpperArmFX;
-	int mArmLength = 80;
-	Dimension mSize = new Dimension(mArmLength, mArmLength);
+    public RightForeArmFX.SHAPE mShape = RightForeArmFX.SHAPE.DEFAULT;
 
-	URL url;
-	ColModelImporter imorter;
-	MeshView mRightForeArmMesh;
-	PhongMaterial material;
+    RightUpperArmFX mUpperArmFX;
+    int mArmLength = 80;
+    Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	Group rightForeArmGroup;
+    URL url;
+    ColModelImporter imorter;
+    MeshView mRightForeArmMesh;
+    PhongMaterial material;
 
-	public RightForeArmFX(RightUpperArmFX arm)
-	{
-		mUpperArmFX = arm;
+    Group rightForeArmGroup;
 
-		imorter = new ColModelImporter();
-		mColor = Color.rgb(242, 227, 217, 1);
+    public RightForeArmFX(RightUpperArmFX arm) {
+        mUpperArmFX = arm;
 
-		url = getClass().getClassLoader().getResource("BodyParts/ForeArm.dae");
+        imorter = new ColModelImporter();
+        mColor = Color.rgb(242, 227, 217, 1);
 
-		mXRotation = -15;
-		mZRotation = -10;
-		mToDegreeX = mDefaultRotation;
+        url = getClass().getClassLoader().getResource("BodyParts/ForeArm.dae");
 
-		imorter.read(url);
-		mRightForeArmMesh = (MeshView) imorter.getImport()[0];
+        mXRotation = -15;
+        mZRotation = -10;
+        mToDegreeX = mDefaultRotation;
 
-		material = new PhongMaterial();
-		material.setDiffuseColor(mColor);
-		mRightForeArmMesh.setMaterial(material);
+        imorter.read(url);
+        mRightForeArmMesh = (MeshView) imorter.getImport()[0];
 
-		rightForeArmGroup = new Group();
-		rightForeArmGroup.setId("rightForeArmGroup");
-		rightForeArmGroup.getChildren().add(mRightForeArmMesh);
+        material = new PhongMaterial();
+        material.setDiffuseColor(mColor);
+        mRightForeArmMesh.setMaterial(material);
 
-		mUpperArmFX.rightUpperArmGroup.getChildren().add(rightForeArmGroup);
+        rightForeArmGroup = new Group();
+        rightForeArmGroup.setId("rightForeArmGroup");
+        rightForeArmGroup.getChildren().add(mRightForeArmMesh);
+
+        mUpperArmFX.rightUpperArmGroup.getChildren().add(rightForeArmGroup);
 
         init();
-	}
+    }
 
-	@Override
-	public void setShape(String s) {
-		SHAPE shape = SHAPE.valueOf(s);
-		mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-	}
+    @Override
+    public void setShape(String s) {
+        SHAPE shape = SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+    }
 
-	@Override
-	public void resetShape() {
-		mShape = RightForeArmFX.SHAPE.DEFAULT;
-	}
-	
-	@Override
-	public void calculate(int step) 
-	{
-		Rotate rx = new Rotate(mXRotation,  Rotate.X_AXIS);
-		Rotate ry = new Rotate(mYRotation,  Rotate.Y_AXIS);
-		Rotate rz = new Rotate(mZRotation,  Rotate.Z_AXIS);
-		
-		if(mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
-		{
-			rightForeArmGroup.setTranslateX(mStart.x);
-			rightForeArmGroup.setTranslateY(mStart.y+60);
-			rightForeArmGroup.setTranslateZ(0);
-		}
-		else
-		{
-			rightForeArmGroup.setTranslateX(mStart.x);
-			rightForeArmGroup.setTranslateY(mStart.y + 60);
-			rightForeArmGroup.setTranslateZ(0);
-		}
-		
-		rightForeArmGroup.getTransforms().clear();
-		rightForeArmGroup.getTransforms().addAll(rx, ry, rz);
-		
-		switch(mShape)
-		{
-		case FADEIN:
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-				update();
-				mRightForeArmMesh.setVisible(false);
-			}
-			else if(mColor.getOpacity() != 0.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-				update();
-			}
-			break;
-			
-		case FADEOUT:
-			mRightForeArmMesh.setVisible(true);
-			
-			if(step == 2)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-				update();
-			}
-			else if(mColor.getOpacity() != 1.0)
-			{
-				mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-				update();
-			}
-			break;
-		}
-	}
+    @Override
+    public void resetShape() {
+        mShape = RightForeArmFX.SHAPE.DEFAULT;
+    }
 
-	@Override
-	public void update() {
-		material.setDiffuseColor(mColor);
-		mRightForeArmMesh.setMaterial(material);
-	}
+    @Override
+    public void calculate(int step) {
+        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+
+        if (mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+            rightForeArmGroup.setTranslateX(mStart.x);
+            rightForeArmGroup.setTranslateY(mStart.y + 60);
+            rightForeArmGroup.setTranslateZ(0);
+        } else {
+            rightForeArmGroup.setTranslateX(mStart.x);
+            rightForeArmGroup.setTranslateY(mStart.y + 60);
+            rightForeArmGroup.setTranslateZ(0);
+        }
+
+        rightForeArmGroup.getTransforms().clear();
+        rightForeArmGroup.getTransforms().addAll(rx, ry, rz);
+
+        switch (mShape) {
+            case FADEIN:
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
+                    update();
+                    mRightForeArmMesh.setVisible(false);
+                } else if (mColor.getOpacity() != 0.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
+                    update();
+                }
+                break;
+
+            case FADEOUT:
+                mRightForeArmMesh.setVisible(true);
+
+                if (step == 2) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
+                    update();
+                } else if (mColor.getOpacity() != 1.0) {
+                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
+                    update();
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void update() {
+        material.setDiffuseColor(mColor);
+        mRightForeArmMesh.setMaterial(material);
+    }
 }

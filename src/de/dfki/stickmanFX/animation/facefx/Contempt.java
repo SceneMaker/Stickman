@@ -15,12 +15,12 @@ import java.util.ArrayList;
  * @author Beka Aptsiauri
  *
  */
-public class Contempt extends AnimationFX 
-{
-	public Contempt() {
-		mAnimType = ANIMTYPE.EmotionExpression;
-	}
-	
+public class Contempt extends AnimationFX {
+
+    public Contempt() {
+        mAnimType = ANIMTYPE.EmotionExpression;
+    }
+
     public Contempt(StickmanFX sm, int duration, boolean block) {
         super(sm, duration, block);
     }

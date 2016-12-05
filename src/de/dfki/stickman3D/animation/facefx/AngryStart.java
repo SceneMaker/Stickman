@@ -17,8 +17,7 @@ import java.util.ArrayList;
  */
 public class AngryStart extends Animation3D {
 
-    public AngryStart(Stickman3D sm, int duration, boolean block)
-    {
+    public AngryStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
 

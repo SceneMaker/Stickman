@@ -13,19 +13,19 @@ import java.util.ArrayList;
  */
 public class HappyEnd extends AnimationSwing {
 
-	public HappyEnd(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public HappyEnd(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
-		// happy end
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPYEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPYEND"));
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPYEND"));
-		playAnimationPart(mDuration);
+    @Override
+    public void playAnimation() {
+        // happy end
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mMouth, "shape", "HAPPYEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mLeftEye, "shape", "HAPPYEND"));
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mRightEye, "shape", "HAPPYEND"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(10);
-	}
+        pauseAnimation(10);
+    }
 }

@@ -21,70 +21,70 @@ import org.w3c.dom.Element;
  */
 public class EventAnimationSwing extends AnimationSwing {
 
-	public List<Long> mTimepoints;
-	public WordTimeMarkSequence mWTS;
-	
-	public EventAnimationSwing() {
-		super();
-	}
+    public List<Long> mTimepoints;
+    public WordTimeMarkSequence mWTS;
 
-	public EventAnimationSwing(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-		mName = getClass().getSimpleName();
-		setName(sm.mName + "'s Event AnimationSwing " + mName);
-	}
+    public EventAnimationSwing() {
+        super();
+    }
 
-	public void playEventAnimationPart() {
-		mAnimator = new AnimatorSwing(mStickman, this, mAnimationPart, mWTS);
+    public EventAnimationSwing(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+        mName = getClass().getSimpleName();
+        setName(sm.mName + "'s Event AnimationSwing " + mName);
+    }
 
-		try {
-			mAnimationPartStart.acquire();
-		} catch (InterruptedException ex) {
-			mStickman.mLogger.severe(ex.getMessage());
-		}
-	}
-	
-	@Override
-	public void writeXML(IOSIndentWriter out) throws XMLWriteError {
-		out.println("<StickmanEventAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
-		if (mParameter != null) {
+    public void playEventAnimationPart() {
+        mAnimator = new AnimatorSwing(mStickman, this, mAnimationPart, mWTS);
 
-			if (mParameter instanceof WordTimeMarkSequence) {
-				((WordTimeMarkSequence) mParameter).writeXML(out);
-			}
+        try {
+            mAnimationPartStart.acquire();
+        } catch (InterruptedException ex) {
+            mStickman.mLogger.severe(ex.getMessage());
+        }
+    }
 
-			if (mParameter instanceof String) {
-				out.println((String) mParameter);
-			}
-		}
-		out.pop().println("</StickmanEventAnimation>");
-	}
+    @Override
+    public void writeXML(IOSIndentWriter out) throws XMLWriteError {
+        out.println("<StickmanEventAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
+        if (mParameter != null) {
 
-	@Override
-	public void parseXML(final Element element) throws XMLParseError {
+            if (mParameter instanceof WordTimeMarkSequence) {
+                ((WordTimeMarkSequence) mParameter).writeXML(out);
+            }
 
-		mStickmanName = element.getAttribute("stickmanname");
-		mName = element.getAttribute("name");
-		mID = element.getAttribute("id");
-		mDuration = Integer.parseInt(element.getAttribute("duration"));
-		mBlocking = Boolean.parseBoolean(element.getAttribute("blocking"));
+            if (mParameter instanceof String) {
+                out.println((String) mParameter);
+            }
+        }
+        out.pop().println("</StickmanEventAnimation>");
+    }
 
-		// Process The Child Nodes
-		XMLParseAction.processChildNodes(element, new XMLParseAction() {
-			@Override
-			public void run(final Element element) throws XMLParseError {
+    @Override
+    public void parseXML(final Element element) throws XMLParseError {
 
-				// Get The Child Tag Name
-				final String name = element.getTagName();
+        mStickmanName = element.getAttribute("stickmanname");
+        mName = element.getAttribute("name");
+        mID = element.getAttribute("id");
+        mDuration = Integer.parseInt(element.getAttribute("duration"));
+        mBlocking = Boolean.parseBoolean(element.getAttribute("blocking"));
 
-				if (name.equalsIgnoreCase("WordTimeMarkSequence")) {
-					mParameter = new WordTimeMarkSequence();
+        // Process The Child Nodes
+        XMLParseAction.processChildNodes(element, new XMLParseAction() {
+            @Override
+            public void run(final Element element) throws XMLParseError {
 
-					((WordTimeMarkSequence) mParameter).parseXML(element);
-				} else {
-					mParameter = (String) element.getTextContent();
-				}
-			}
-		});
-	}
+                // Get The Child Tag Name
+                final String name = element.getTagName();
+
+                if (name.equalsIgnoreCase("WordTimeMarkSequence")) {
+                    mParameter = new WordTimeMarkSequence();
+
+                    ((WordTimeMarkSequence) mParameter).parseXML(element);
+                } else {
+                    mParameter = (String) element.getTextContent();
+                }
+            }
+        });
+    }
 }

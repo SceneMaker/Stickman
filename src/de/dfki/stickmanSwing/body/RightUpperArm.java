@@ -22,73 +22,74 @@ import java.awt.geom.GeneralPath;
  */
 public class RightUpperArm extends BodyPart {
 
-	RightShoulder mRightShoulder;
-	int mArmLength = 70;
-	Dimension mSize = new Dimension(mArmLength, mArmLength);
+    RightShoulder mRightShoulder;
+    int mArmLength = 70;
+    Dimension mSize = new Dimension(mArmLength, mArmLength);
 
-	Point mStart;
-	Point mEnd;
+    Point mStart;
+    Point mEnd;
 
-	GeneralPath mArm;
+    GeneralPath mArm;
 
-	public RightUpperArm(RightShoulder shoulder) {
-		mRightShoulder = shoulder;
+    public RightUpperArm(RightShoulder shoulder) {
+        mRightShoulder = shoulder;
 
-		mDefaultRotation = 35;
-		mRotation = mDefaultRotation;
-		mToDegree = mDefaultRotation;
-		mRotationStep = 0.0f;
+        mDefaultRotation = 35;
+        mRotation = mDefaultRotation;
+        mToDegree = mDefaultRotation;
+        mRotationStep = 0.0f;
 
-		init();
+        init();
 
-		calculate(0);
-	}
+        calculate(0);
+    }
 
-	public Point getRightUpperArmEndPosition() {
-		return (mArm != null) ? new Point((int) mArm.getCurrentPoint().getX(), (int) mArm.getCurrentPoint().getY()) : new Point(0, 0);
-	}
+    public Point getRightUpperArmEndPosition() {
+        return (mArm != null) ? new Point((int) mArm.getCurrentPoint().getX(), (int) mArm.getCurrentPoint().getY()) : new Point(0, 0);
+    }
 
-	@Override
-	public void calculate(int step) {  
-		mStart = mRightShoulder.getRightShoulderEndPosition();
-		mEnd = new Point(mStart.x, mStart.y + mArmLength);
+    @Override
+    public void calculate(int step) {
+        mStart = mRightShoulder.getRightShoulderEndPosition();
+        mEnd = new Point(mStart.x, mStart.y + mArmLength);
 
-		mArm = new GeneralPath();
-		mArm.moveTo(mStart.x, mStart.y + 2);
-		mArm.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
+        mArm = new GeneralPath();
+        mArm.moveTo(mStart.x, mStart.y + 2);
+        mArm.quadTo(mStart.x - 5, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y);
 
-		AffineTransform t = new AffineTransform();
-		t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
-		mArm.transform(t);
-	}
+        AffineTransform t = new AffineTransform();
+        t.rotate(Math.toRadians(mRotation), mStart.x, mStart.y);
+        mArm.transform(t);
+    }
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		// draw outlines
-		g2.setColor(new Color(80, 80, 80));
-		
-		if(mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true)
-		{
-			if(mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler==true)             //Added by Robbie
-			{
-				int fadeFactor = mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep*12;
-				if(fadeFactor<=24) fadeFactor=0;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
-			}
-			else
-			{
-				int fadeFactor = (20-mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep)*12;
-				if(fadeFactor >= 216) fadeFactor=255;
-				g2.setColor(new Color(80, 80, 80,fadeFactor));
-			}
-		}
-		
-		g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        // draw outlines
+        g2.setColor(new Color(80, 80, 80));
 
-		g2.draw(mArm);
-	}
+        if (mRightShoulder.mBody.mNeck.mHead.mStickman.setCharacterInvisible == true) {
+            if (mRightShoulder.mBody.mNeck.mHead.mStickman.fadeControler == true) //Added by Robbie
+            {
+                int fadeFactor = mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep * 12;
+                if (fadeFactor <= 24) {
+                    fadeFactor = 0;
+                }
+                g2.setColor(new Color(80, 80, 80, fadeFactor));
+            } else {
+                int fadeFactor = (20 - mRightShoulder.mBody.mNeck.mHead.mStickman.mMouth.mShapeAnimationStep) * 12;
+                if (fadeFactor >= 216) {
+                    fadeFactor = 255;
+                }
+                g2.setColor(new Color(80, 80, 80, fadeFactor));
+            }
+        }
+
+        g2.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+        g2.draw(mArm);
+    }
 }

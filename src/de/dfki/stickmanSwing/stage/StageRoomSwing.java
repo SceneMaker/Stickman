@@ -12,11 +12,12 @@ import java.awt.image.BufferedImage;
  * Created by alvaro on 9/19/16.
  */
 public class StageRoomSwing implements StageRoom {
+
     private StickmansOnStage commonStickmansOnStage;
     private StickmanStage stickmanStage;
     private boolean fullScreen = false;
 
-    public StageRoomSwing(){
+    public StageRoomSwing() {
         stickmanStage = new StickmanStageSwing();
         commonStickmansOnStage = new StickmansOnStageSwing(stickmanStage, this);
         //stickmanStage.setStickamnsOnStage(commonStickmansOnStage);
@@ -25,7 +26,7 @@ public class StageRoomSwing implements StageRoom {
     @Override
     public void clearStage() {
         commonStickmansOnStage.clearStage();
-        ((StickmanStageSwing)stickmanStage).clearStage();
+        ((StickmanStageSwing) stickmanStage).clearStage();
     }
 
     @Override
@@ -40,17 +41,19 @@ public class StageRoomSwing implements StageRoom {
     }
 
     @Override
-    public void sendTimeMarkInformation(String timemark) {}
+    public void sendTimeMarkInformation(String timemark) {
+    }
 
     @Override
-    public void sendAnimationUpdate(String state, String id) {}
+    public void sendAnimationUpdate(String state, String id) {
+    }
 
     @Override
     public void addStickman(String name) {
         commonStickmansOnStage.addStickman(name, fullScreen);
-        ((StickmanStageSwing)stickmanStage).addStickmanToPanel((StickmanSwing) commonStickmansOnStage.getStickman(name));
-        ((StickmanStageSwing)stickmanStage).pack();
-        ((StickmanStageSwing)stickmanStage).setVisible(true);
+        ((StickmanStageSwing) stickmanStage).addStickmanToPanel((StickmanSwing) commonStickmansOnStage.getStickman(name));
+        ((StickmanStageSwing) stickmanStage).pack();
+        ((StickmanStageSwing) stickmanStage).setVisible(true);
     }
 
     @Override
@@ -59,7 +62,8 @@ public class StageRoomSwing implements StageRoom {
     }
 
     @Override
-    public void launchStickmanStage(boolean show) {}
+    public void launchStickmanStage(boolean show) {
+    }
 
     @Override
     public StickmanStage getStickmanStage() {
@@ -78,7 +82,7 @@ public class StageRoomSwing implements StageRoom {
     @Override
     public void setFullScreen(boolean fullS) {
         fullScreen = fullS;
-        ((StickmanStageSwing)stickmanStage).setFullScreenSize();
+        ((StickmanStageSwing) stickmanStage).setFullScreenSize();
     }
 
     @Override
@@ -93,7 +97,7 @@ public class StageRoomSwing implements StageRoom {
 
     @Override
     public void launchStickmanConfiguration() {
-	
+
     }
 
     @Override

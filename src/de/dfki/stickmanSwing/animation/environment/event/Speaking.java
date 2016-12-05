@@ -18,28 +18,28 @@ import java.util.ArrayList;
  *
  */
 public class Speaking extends EventAnimationSwing {
-	
-	public Speaking() {
-		super();
-	}
 
-	public Speaking(StickmanSwing sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public Speaking() {
+        super();
+    }
 
-	@Override
-	public void playAnimation() {
-		if (mParameter instanceof WordTimeMarkSequence) {
-			mWTS = (WordTimeMarkSequence) mParameter;
-		}
+    public Speaking(StickmanSwing sm, int duration, boolean block) {
+        super(sm, duration, block);
+    }
 
-		mAnimationPart = new ArrayList<>();
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
+    @Override
+    public void playAnimation() {
+        if (mParameter instanceof WordTimeMarkSequence) {
+            mWTS = (WordTimeMarkSequence) mParameter;
+        }
 
-		playEventAnimationPart();
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.SPEAK.name(), mWTS));
 
-		mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.DEFAULT.name()));
-		playAnimationPart(20);
+        playEventAnimationPart();
 
-	}
+        mAnimationPart.add(new AnimationContentSwing(mStickman.mSpeechBubble, "shape", SpeechBubble.SHAPE.DEFAULT.name()));
+        playAnimationPart(20);
+
+    }
 }
