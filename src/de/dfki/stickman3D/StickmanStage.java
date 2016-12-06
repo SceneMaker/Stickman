@@ -338,21 +338,17 @@ public class StickmanStage extends Application {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		sCamera = new PerspectiveCamera(true);
 		
-		if(dim.getHeight() <= 768)
-		{
-			sCamera.setTranslateZ(-1400);
-			sCamera.setTranslateX(width - 450);
-		}
-		else
-		{
-			sCamera.setTranslateZ(-2500);
-			sCamera.setTranslateX(width - 700);
-		}
+		int cameraZPosition = (int) dim.getWidth();
+		if(cameraZPosition < 1400)
+			cameraZPosition = 1400;
+		sCamera.setTranslateZ(-cameraZPosition);
+		sCamera.setTranslateX(width / 2);
 		sCamera.setTranslateY(height / 2 + 50);
 		
 		recordCameraXPosition = sCamera.getTranslateX();
 		recordCameraYPosition = sCamera.getTranslateY();
 		recordCameraZPosition = sCamera.getTranslateZ();
+		
 		sCamera.setNearClip(0.8);
 		sCamera.setFarClip(3000.0);
 		sCamera.setFieldOfView(30);

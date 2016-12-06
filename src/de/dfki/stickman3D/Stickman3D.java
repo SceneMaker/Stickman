@@ -427,7 +427,7 @@ public class Stickman3D extends Pane {
 								this.mLeftFootFX.mLeftFootMeshView.getBoundsInParent().getHeight();
 		
 		Affine af = new Affine();
-		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
+		//mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
 		mGeneralYTranslation = (float) StickmanHeight;
 		
 		int shiftFactor = (int) (StickmanHeight - (StickmanHeight * mScale));

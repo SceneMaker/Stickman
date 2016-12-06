@@ -48,7 +48,7 @@ public class Head extends BodyPart {
 	URL url;
 	ColModelImporter imorter;
 	StlMeshImporter im;
-	Group mHead;
+	public Group mHead;
 
 	int mHeadRadius = 60;
 	int mHeadHeight = 30;
