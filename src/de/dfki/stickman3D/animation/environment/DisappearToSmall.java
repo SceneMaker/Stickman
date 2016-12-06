@@ -61,7 +61,7 @@ public class DisappearToSmall extends Animation {
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
 				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
+				Platform.runLater(() -> mStickmanFX.updateStickmanPosition());
 			}
 
 			// wave left
@@ -71,7 +71,7 @@ public class DisappearToSmall extends Animation {
 
 				mStickmanFX.mScale = mStickmanFX.mScale * 0.95f;
 				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
+				Platform.runLater(() -> mStickmanFX.updateStickmanPosition());
 			}
 		}
 

@@ -59,7 +59,7 @@ public class ComeBackFromSmall extends Animation {
 					mStickmanFX.mScale = recordOriginScale;
 				}
 				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
+				Platform.runLater(() -> mStickmanFX.updateStickmanPosition());
 				mStickmanFX.showAllParts();
 			}
 
@@ -73,7 +73,7 @@ public class ComeBackFromSmall extends Animation {
 					mStickmanFX.mScale = recordOriginScale;
 				}
 				playAnimationPart(20);
-				Platform.runLater(() -> mStickmanFX.update());
+				Platform.runLater(() -> mStickmanFX.updateStickmanPosition());
 				mStickmanFX.showAllParts();
 			}
 		}

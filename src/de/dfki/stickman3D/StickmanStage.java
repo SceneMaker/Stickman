@@ -77,7 +77,6 @@ public class StickmanStage extends Application {
 	public StickmanStage() {
 		sStickmanHBox = new HBox();
 		sStickmanHBox.setAlignment(Pos.CENTER);
-		sStickmanHBox.setPadding(new Insets(580, 0, 150, 0));
 
 		if (sFullScreen) {
 			mLogger.info("Full Screen Mode ...");
@@ -279,7 +278,6 @@ public class StickmanStage extends Application {
 
 		sSubscene = createSubSceneAndCamera(sStickmanHBox, mWidth - controlPanel.getPrefWidth(), mHeight);
 		moveStickmanPane(scene);
-
 		root.getChildren().add(sSubscene);
 
 		// Add Stickmans into stickmanHBox
@@ -288,7 +286,6 @@ public class StickmanStage extends Application {
 			mStickmanComboList.add(key.substring(0, 1).toUpperCase() + key.substring(1));
 			mLogger.info("Add Stickman " + sStickmanHashMap.get(key).mName + " into Stage: Done");
 		}
-
 		StickmanStageController mStickmanStageController = loader.getController();
 		mStickmanStageController.getStickmanStageFX(this);
 		// mStickmanStageController.setlePerlinNoiseOn();

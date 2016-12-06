@@ -55,7 +55,7 @@ public class IdleBehavior extends Thread {
 			for (int i = 0; i < 19; i++) {
 				mStickmanFX.mWobble = mStickmanFX.mWobble + mAdjust;
 				Platform.runLater(() -> {
-					mStickmanFX.update();
+					mStickmanFX.updateStickmanPosition();
 				});
 
 				try {
@@ -71,7 +71,7 @@ public class IdleBehavior extends Thread {
 					mStickmanFX.mWobble = 0;
 				}
 				Platform.runLater(() -> {
-					mStickmanFX.update();
+					mStickmanFX.updateStickmanPosition();
 				});
 
 				try {

@@ -96,7 +96,7 @@ public class Stickman3D extends Pane {
 
 	// steuert leaveSpeed von GoDown und ComeUp und Stickman Position auf Y
 	// Achse
-	public double leaveSpeedAndStickmanYPosition = 0;
+	public double leaveSpeed = 0;
 	// leaving
 	public boolean starShowControler = false;
 	public boolean starShowC = false;
@@ -161,8 +161,6 @@ public class Stickman3D extends Pane {
 		mSize = size;
 		mScale = scale;
 
-		leaveSpeedAndStickmanYPosition = (mScale - 1.0) * -100;
-
 		mName = name;
 		mType = gender;
 
@@ -206,7 +204,7 @@ public class Stickman3D extends Pane {
 		mSpeechBubbleFX = new SpeechBubble(mHeadFX);
 		init();
 		this.addAllParts();
-		update();
+		updateStickmanPosition();
 	}
 
 	public Stickman3D(String name, TYPE gender, float scale) {
@@ -255,7 +253,7 @@ public class Stickman3D extends Pane {
 		mSpeechBubbleFX = new SpeechBubble(mHeadFX);
 		init();
 		this.addAllParts();
-		update();
+		updateStickmanPosition();
 	}
 
 	public Stickman3D(String name, TYPE gender) {
@@ -302,7 +300,7 @@ public class Stickman3D extends Pane {
 		mSpeechBubbleFX = new SpeechBubble(mHeadFX);
 		init();
 		this.addAllParts();
-		update();
+		updateStickmanPosition();
 	}
 
 	private void init() {
@@ -310,10 +308,6 @@ public class Stickman3D extends Pane {
 		this.setPrefWidth(mSize.width);
 		this.setMinHeight(mSize.height);
 		this.setMinWidth(mSize.width);
-		if(Toolkit.getDefaultToolkit().getScreenSize().getHeight() <= 768)
-			this.setTranslateY(11);
-		else
-			this.setTranslateY(155);
 
 		InnerShadow is = new InnerShadow();
 		is.setOffsetX(4.0f);
@@ -421,17 +415,31 @@ public class Stickman3D extends Pane {
 		}
 	}
 
-	public void update() {
-		// draw everthing in the middle and scaled
+	public void updateStickmanPosition() {
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		double StickmanHeight = this.mHeadFX.mHeadMeshView.getBoundsInParent().getHeight() +
+								this.mNeckFX.neckMeshView.getBoundsInParent().getHeight() +
+								this.mUpperBody.mBodyMeshView.getBoundsInParent().getHeight() +
+								this.mDownBody.mBodyMeshView.getBoundsInParent().getHeight() +
+								this.mLeftUpperLegFX.mLeftUpperLegMesh.getBoundsInParent().getHeight() +
+								this.mLeftForeLegFX.mLeftForeLegMesh.getBoundsInParent().getHeight() +
+								this.mLeftFootFX.mLeftFootMeshView.getBoundsInParent().getHeight();
+		
 		Affine af = new Affine();
 		mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-		mGeneralYTranslation = mSize.height - 700 * mScale;
-
+		mGeneralYTranslation = (float) StickmanHeight;
+		
+		int shiftFactor = (int) (StickmanHeight - (StickmanHeight * mScale));
+		
+		int mGeneralYTranslation = (int) ( (dim.getHeight() - StickmanHeight) + shiftFactor + 40);
+		
 		af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
 		af.appendScale(mScale, mScale);
-		af.appendTranslation(0, leaveSpeedAndStickmanYPosition);
+		af.appendTranslation(0, leaveSpeed);
 		this.getTransforms().clear();
 		this.getTransforms().add(af);
+		
 	}
 
 	private static class StickmanLogFormatter extends Formatter {
