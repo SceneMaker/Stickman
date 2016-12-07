@@ -21,6 +21,8 @@ public interface Stickman {
     Gender.TYPE getType();
 
     Animation doAnimation(String name, int duration, boolean block);
+    
+    Animation doAnimation(String name, int frequent, int actionDuration, boolean block);
 
     Animation doAnimation(String name, Object param, boolean block);
 

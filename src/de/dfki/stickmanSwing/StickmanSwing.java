@@ -2,6 +2,7 @@ package de.dfki.stickmanSwing;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
+import de.dfki.common.interfaces.Animation;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.stickmanSwing.animationlogic.*;
@@ -64,6 +65,11 @@ import de.dfki.stickmanSwing.stage.StickmanStageSwing;
  *
  */
 public class StickmanSwing extends JComponent implements Stickman {
+
+    @Override
+    public Animation doAnimation(String name, int frequent, int actionDuration, boolean block) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     // general stuff
     public static enum ORIENTATION {

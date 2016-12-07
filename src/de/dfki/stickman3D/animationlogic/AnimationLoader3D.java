@@ -103,6 +103,36 @@ public class AnimationLoader3D {
         }
         return a;
     }
+    
+    public Animation3D loadAnimation(Stickman sm, String name, int frequent, int actionDuration, boolean block) {
+        Animation3D a = null;
+
+        String cp = getAnimationClasspath(((Stickman3D) sm).mType, name);
+        try {
+            Class c = Class.forName(cp);
+            Constructor[] constructors = c.getConstructors();
+            for (Constructor con : constructors) {
+                Class[] params = con.getParameterTypes();
+
+                if (params.length == 4) {
+                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
+                            && params[1].getSimpleName().equalsIgnoreCase("int")
+                            && params[2].getSimpleName().equalsIgnoreCase("int")
+                            && params[3].getSimpleName().equalsIgnoreCase("boolean")) {
+                        a = (Animation3D) c.getDeclaredConstructor(params).newInstance(sm, frequent, actionDuration, block);
+                    }
+                }
+
+            }
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            ((Stickman3D) sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+        }
+
+        if (a != null) {
+            a.mID = getNextID();
+        }
+        return a;
+    }
 
     public EventAnimation3D loadEventAnimation(Stickman sm, String name, int duration, boolean block) {
         EventAnimation3D a = null;

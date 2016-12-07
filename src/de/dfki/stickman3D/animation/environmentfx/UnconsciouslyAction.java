@@ -94,7 +94,7 @@ public class UnconsciouslyAction extends Thread {
             @Override
             public void handle(ActionEvent event) {
 
-                ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(500),
+                ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(800),
                         mStickmanFX.mUpperBody.mUpperBodyGroup);
                 scaleTransition.setToX(1.05f);
                 scaleTransition.setToZ(1.05f);

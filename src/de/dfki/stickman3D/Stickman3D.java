@@ -2,8 +2,10 @@ package de.dfki.stickman3D;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
+import de.dfki.common.interfaces.Animation;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
+import de.dfki.stickman3D.animation.environmentfx.Breathing;
 import de.dfki.stickman3D.animation.environmentfx.IdleBehavior;
 import de.dfki.stickman3D.animationlogic.*;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
@@ -81,6 +83,7 @@ public class Stickman3D extends Pane implements Stickman {
     public Boolean mIdleRun = false; // the shared variable to decide the while
     // loop in IdleBehavior break or not
     public IdleBehavior mIdleBehavior;
+    public Breathing mBreathing;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
     // amimation stuff
@@ -390,6 +393,19 @@ public class Stickman3D extends Pane implements Stickman {
         return doAnimation(name, duration, "", block);
     }
 
+    public Animation3D doAnimation(String name, int frequent, int actionDuration, boolean block) {
+        Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, frequent, actionDuration, block);
+        
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+
+        return a;
+    }
+    
     public Animation3D doAnimation(String name, Object param, boolean block) {
         return doAnimation(name, -1, param, block);
     }
@@ -398,6 +414,7 @@ public class Stickman3D extends Pane implements Stickman {
         return doAnimation(name, -1, "", block);
     }
 
+    
     public Animation3D doAnimation(String name, int duration, Object param, boolean block) {
         Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, duration, block);
 

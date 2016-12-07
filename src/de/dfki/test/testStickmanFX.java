@@ -25,12 +25,12 @@ public class testStickmanFX {
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
         stickmanStage3D1.addStickman("Anna");
         stickmanStage3D1.launchStickmanStage(true);
-        stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 2000, true);
+        stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 4000, 2000, true);
         Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(5000),
+                Duration.millis(10000),
                 ae -> {
-                    stickmanStage3D1.getStickman("Anna").doAnimation("StopIdle", 200, true);
-                    stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 600, true);
+                    stickmanStage3D1.getStickman("Anna").doAnimation("StopBreathing", 200, true);
+                    stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
                     System.out.println("de.dfki.test.testStickmanFX.main()");
                 }
         ));
