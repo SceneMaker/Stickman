@@ -341,6 +341,7 @@ public class StickmanStage extends Application {
 		int cameraZPosition = (int) dim.getWidth();
 		if(cameraZPosition < 1400)
 			cameraZPosition = 1400;
+		
 		sCamera.setTranslateZ(-cameraZPosition);
 		sCamera.setTranslateX(width / 2);
 		sCamera.setTranslateY(height / 2 + 50);

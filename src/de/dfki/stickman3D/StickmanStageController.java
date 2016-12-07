@@ -20,6 +20,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -162,6 +163,42 @@ public class StickmanStageController {
 	private Slider cameraYSlider;
 	@FXML
 	private Slider cameraZSlider;
+	@FXML
+	private Button cameraXPlusTranslationButton;
+	@FXML
+	private Button cameraXMinusTranslationButton;
+	@FXML
+	private TextField cameraXTranslationField;
+	@FXML
+	private Button cameraYPlusTranslationButton;
+	@FXML
+	private Button cameraYMinusTranslationButton;
+	@FXML
+	private TextField cameraYTranslationField;
+	@FXML
+	private Button cameraZPlusTranslationButton;
+	@FXML
+	private Button cameraZMinusTranslationButton;
+	@FXML
+	private TextField cameraZTranslationField;
+	@FXML
+	private Button nearClipMinusButton;
+	@FXML
+	private Button nearClipPlusButton;
+	@FXML
+	private TextField nearClipField;
+	@FXML
+	private Button farClipMinusButton;
+	@FXML
+	private Button farClipPlusButton;
+	@FXML
+	private TextField farClipField;
+	@FXML
+	private Button fieldOfViewMinusButton;
+	@FXML
+	private Button fieldOfViewPlusButton;
+	@FXML
+	private TextField fieldOfViewField;
 	@FXML
 	private Slider headOpacitySlider;
 	@FXML
@@ -360,8 +397,147 @@ public class StickmanStageController {
 		cameraXSlider.setValue(0);
 		cameraYSlider.setValue(0);
 		cameraZSlider.setValue(0);
+		cameraXTranslationField.setText("0.0");
+		cameraYTranslationField.setText("0.0");
+		cameraZTranslationField.setText("0.0");
+		StickmanStage.sCamera.setNearClip(0.8);
+		StickmanStage.sCamera.setFarClip(3000);
+		StickmanStage.sCamera.setFieldOfView(30);
+		nearClipField.setText("0.8");
+		farClipField.setText("3000");
+		fieldOfViewField.setText("30");
 		StickmanStage.sCamera.getTransforms().clear();
 
+	}
+	
+	@FXML 
+	public void handleCameraXTranslation(MouseEvent event)
+	{
+		if(event.getSource().equals(cameraXPlusTranslationButton))
+		{
+			double currentValue = Double.parseDouble(cameraXTranslationField.getText());
+			currentValue+=50;
+			StickmanStage.sCamera.setTranslateX(StickmanStage.sCamera.getTranslateX() + 50);
+			cameraXTranslationField.setText(Double.toString(currentValue));
+		}
+		else if(event.getSource().equals(cameraXMinusTranslationButton))
+		{
+			double currentValue = Double.parseDouble(cameraXTranslationField.getText());
+			currentValue-=50;
+			StickmanStage.sCamera.setTranslateX(StickmanStage.sCamera.getTranslateX() - 50);
+			cameraXTranslationField.setText(Double.toString(currentValue));
+		}
+	}
+	
+	@FXML 
+	public void handleCameraYTranslation(MouseEvent event)
+	{
+		if(event.getSource().equals(cameraYPlusTranslationButton))
+		{
+			double currentValue = Double.parseDouble(cameraYTranslationField.getText());
+			currentValue+=50;
+			StickmanStage.sCamera.setTranslateY(StickmanStage.sCamera.getTranslateY() + 50);
+			cameraYTranslationField.setText(Double.toString(currentValue));
+		}
+		else if(event.getSource().equals(cameraYMinusTranslationButton))
+		{
+			double currentValue = Double.parseDouble(cameraYTranslationField.getText());
+			currentValue-=50;
+			StickmanStage.sCamera.setTranslateY(StickmanStage.sCamera.getTranslateY() - 50);
+			cameraYTranslationField.setText(Double.toString(currentValue));
+		}
+	}
+	
+	@FXML 
+	public void handleCameraZTranslation(MouseEvent event)
+	{
+		if(event.getSource().equals(cameraZPlusTranslationButton))
+		{
+			double currentValue = Double.parseDouble(cameraZTranslationField.getText());
+			currentValue+=10;
+			StickmanStage.sCamera.setTranslateZ(StickmanStage.sCamera.getTranslateZ() + 10);
+			cameraZTranslationField.setText(Double.toString(currentValue));
+		}
+		else if(event.getSource().equals(cameraZMinusTranslationButton))
+		{
+			double currentValue = Double.parseDouble(cameraZTranslationField.getText());
+			currentValue-=10;
+			StickmanStage.sCamera.setTranslateZ(StickmanStage.sCamera.getTranslateZ() - 10);
+			cameraZTranslationField.setText(Double.toString(currentValue));
+		}
+	}
+	
+	@FXML
+	public void handleNearClip(MouseEvent event)
+	{
+		if(event.getSource().equals(nearClipPlusButton))
+		{
+			double currentValue = Double.parseDouble(nearClipField.getText());
+			if(currentValue>=1.0)
+				currentValue = 1.0;
+			else
+			{
+				currentValue += 0.1;
+				currentValue = Math.round(currentValue * 100.0) / 100.0;
+			}
+			StickmanStage.sCamera.setNearClip(currentValue);
+			nearClipField.setText(Double.toString(currentValue));
+		}
+		else if(event.getSource().equals(nearClipMinusButton))
+		{
+			double currentValue = Double.parseDouble(nearClipField.getText());
+			if(currentValue<=0.0)
+				currentValue = 0.0;
+			else
+			{
+				currentValue -= 0.1;
+				currentValue = Math.round(currentValue * 100.0) / 100.0;
+			}
+			StickmanStage.sCamera.setNearClip(currentValue);
+			nearClipField.setText(Double.toString(currentValue));
+		}
+	}
+	
+	@FXML
+	public void handleFarClip(MouseEvent event)
+	{
+		if(event.getSource().equals(farClipPlusButton))
+		{
+			double currentValue = Double.parseDouble(farClipField.getText());
+			currentValue += 50;
+			
+			StickmanStage.sCamera.setFarClip(currentValue);
+			farClipField.setText(Double.toString(currentValue));
+		}
+		else if(event.getSource().equals(farClipMinusButton))
+		{
+			double currentValue = Double.parseDouble(farClipField.getText());
+			currentValue -= 50;
+			
+			StickmanStage.sCamera.setFarClip(currentValue);
+			farClipField.setText(Double.toString(currentValue));
+		}
+	}
+	
+	@FXML
+	public void handleFieldOfView(MouseEvent event)
+	{
+		if(event.getSource().equals(fieldOfViewPlusButton))
+		{
+			double currentValue = Double.parseDouble(fieldOfViewField.getText());
+			currentValue += 1;
+			
+			StickmanStage.sCamera.setFieldOfView(currentValue);
+			fieldOfViewField.setText(Double.toString(currentValue));
+		}
+		else if(event.getSource().equals(fieldOfViewMinusButton))
+		{
+			double currentValue = Double.parseDouble(fieldOfViewField.getText());
+			currentValue -= 1;
+			
+			StickmanStage.sCamera.setFieldOfView(currentValue);
+			fieldOfViewField.setText(Double.toString(currentValue));
+		}
 	}
 
 	@FXML
