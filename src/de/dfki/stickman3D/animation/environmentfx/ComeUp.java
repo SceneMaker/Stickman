@@ -28,7 +28,7 @@ public class ComeUp extends Animation3D {
     public ComeUp(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
         mStickmanFX = sm;
-        recordOriginLeaveSpeed = mStickmanFX.leaveSpeedAndStickmanYPosition;
+        recordOriginLeaveSpeed = mStickmanFX.leaveSpeed;
     }
 
     // WaveLeft
@@ -37,7 +37,7 @@ public class ComeUp extends Animation3D {
         int rotationUnit = 5;
         int speed = 4;
 
-        mStickmanFX.leaveSpeedAndStickmanYPosition = 480;
+        mStickmanFX.leaveSpeed = 480;
 
         // bring upper arm and fore arm in position
         mAnimationPartFX = new ArrayList<>();
@@ -71,10 +71,10 @@ public class ComeUp extends Animation3D {
     }
 
     private void playComeSpeed(int Speed) {
-        if (mStickmanFX.leaveSpeedAndStickmanYPosition > recordOriginLeaveSpeed) {
-            mStickmanFX.leaveSpeedAndStickmanYPosition = mStickmanFX.leaveSpeedAndStickmanYPosition - Speed;
+        if (mStickmanFX.leaveSpeed > recordOriginLeaveSpeed) {
+            mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed - Speed;
         } else {
-            mStickmanFX.leaveSpeedAndStickmanYPosition = recordOriginLeaveSpeed;
+            mStickmanFX.leaveSpeed = recordOriginLeaveSpeed;
         }
         Platform.runLater(() -> mStickmanFX.update());
     }

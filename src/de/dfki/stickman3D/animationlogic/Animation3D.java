@@ -44,6 +44,7 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
     public static boolean isSmileInAction = false;
     public static boolean isHeadTiltInAction = false;
     public static boolean isSurprisedInAction = false;
+    public static boolean isAngryInAction = false;
 
     public Animation3D() {
     }

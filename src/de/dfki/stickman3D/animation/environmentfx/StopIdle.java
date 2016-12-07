@@ -16,7 +16,11 @@ public class StopIdle extends Animation3D {
 
     @Override
     public void playAnimation() {
-//		mStickmanFX.mIdleRun = false;
-//		while (mStickmanFX.mIdleBehavior.isAlive());
+        //		mStickmanFX.mIdleRun = false;
+        //		while (mStickmanFX.mIdleBehavior.isAlive())
+        ;
+        //mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBlinkAktion();
+        mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBreathAktion();
+        mStickmanFX.mIdleBehavior = null;
     }
 }

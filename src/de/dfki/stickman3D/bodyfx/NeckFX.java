@@ -29,7 +29,7 @@ public class NeckFX extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView neckMeshView;
+    public MeshView neckMeshView;
 
     PhongMaterial material;
 

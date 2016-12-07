@@ -241,7 +241,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
 
         if (stickmanFXStages.containsKey(stageIdentifier)) {
             sStickmanPane = (HBox) stickmanFXStages.get(stageIdentifier).getScene().getRoot();
-            sStickmanPane.setAlignment(Pos.BASELINE_CENTER);
+            sStickmanPane.setAlignment(Pos.CENTER);
             sStickmanPane.setStyle("-fx-background-color: white");
             sStickmanPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
@@ -353,6 +353,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
         final HBox root = getStageRoot();
         Platform.runLater(() -> {
             root.setAlignment(Pos.BASELINE_CENTER);
+            root.getHeight();
             Scene stageScene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
             Stage stage = new Stage();
             stage.setScene(stageScene);

@@ -46,7 +46,7 @@ public class DownBody extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mBodyMeshView;
+    public MeshView mBodyMeshView;
     PhongMaterial material;
 
     public DownBody(UpperBody upperBody) {

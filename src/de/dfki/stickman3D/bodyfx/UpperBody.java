@@ -46,7 +46,7 @@ public class UpperBody extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mBodyMeshView;
+    public MeshView mBodyMeshView;
     PhongMaterial material;
 
     public UpperBody(NeckFX neck) {

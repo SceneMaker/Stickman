@@ -54,9 +54,9 @@ public class HeadFX extends BodyPartFX {
     public Point getLeftEyebrowPostion() {
         return new Point(mHalfWidth + 23, mHalfHeight - 16);
     }
-    public Point getNosePostion()
-    {
-        return new Point(mHalfWidth + 5 , mHalfHeight - 5);
+
+    public Point getNosePostion() {
+        return new Point(mHalfWidth + 5, mHalfHeight - 5);
     }
 
     public Point getRightEyebrowPostion() {

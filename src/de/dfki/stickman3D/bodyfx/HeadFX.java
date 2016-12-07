@@ -27,7 +27,7 @@ public class HeadFX extends BodyPartFX {
     public Dimension mSize = new Dimension(120, 100);
     public Stickman3D mStickmanFX;
     TriangleMesh mHeadTriangleMesh;
-    MeshView mHeadMeshView;
+    public MeshView mHeadMeshView;
     PhongMaterial material;
 
     int mHalfHeight = mSize.height / 2;

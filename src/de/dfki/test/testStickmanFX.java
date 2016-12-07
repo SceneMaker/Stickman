@@ -5,6 +5,9 @@ import de.dfki.common.interfaces.StageRoom;
 import de.dfki.stickman3D.stage.StageRoom3D;
 import de.dfki.stickmanFX.stage.StageRoomFX;
 import de.dfki.stickmanSwing.stage.StageRoomSwing;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 /**
  * Created by alvaro on 9/13/16.
@@ -20,9 +23,19 @@ public class testStickmanFX {
 //        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
         StageRoom stickmanStage3D1 = new StageRoom3D(500, 0, true);
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
-        stickmanStage3DFull.addStickman("Anna");
-        stickmanStage3DFull.launchStickmanStage(true);
-        stickmanStage3DFull.getStickman("Anna").doAnimation("StartIdle", 1000, true);
+        stickmanStage3D1.addStickman("Anna");
+        stickmanStage3D1.launchStickmanStage(true);
+        stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 2000, true);
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(5000),
+                ae -> {
+                    stickmanStage3D1.getStickman("Anna").doAnimation("StopIdle", 200, true);
+                    stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 600, true);
+                    System.out.println("de.dfki.test.testStickmanFX.main()");
+                }
+        ));
+        timeline.play();
+//       
 
 //        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
 //        stickmanStage2.addStickman("Sarah");

@@ -25,5 +25,6 @@ public interface Stickman {
     Animation doAnimation(String name, Object param, boolean block);
 
     Animation doAnimation(String name, int duration, Object param, boolean block);
+
     Animation doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block);
 }
