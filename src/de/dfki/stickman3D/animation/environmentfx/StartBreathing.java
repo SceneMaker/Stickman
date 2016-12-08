@@ -26,6 +26,13 @@ public class StartBreathing extends Animation3D {
         this.actionDuration = actionDuration;
     }
 
+    public StartBreathing(Stickman3D sm, int frequent, boolean block) {
+        super(sm, frequent, block);
+        mStickmanFX = sm;
+        this.frequent = frequent;
+        this.actionDuration = 500;
+    }
+    
     @Override
     public void playAnimation() {
         mStickmanFX.mBreathing = new Breathing(mStickmanFX, frequent, actionDuration);

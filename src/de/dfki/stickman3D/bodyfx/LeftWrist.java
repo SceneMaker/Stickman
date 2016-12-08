@@ -51,6 +51,7 @@ public class LeftWrist extends BodyPartFX {
 
         mToDegreeX = mDefaultRotation;
         mZRotation = 0;
+        mYRotation = -50;
 
         imorter.read(url);
         mLeftWristMesh = (MeshView) imorter.getImport()[0];
