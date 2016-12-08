@@ -26,15 +26,16 @@ public class testStickmanFX {
         stickmanStage3D1.addStickman("Anna");
         stickmanStage3D1.launchStickmanStage(true);
         stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 4000, 2000, true);
+        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, 20, true);
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10000),
                 ae -> {
                     stickmanStage3D1.getStickman("Anna").doAnimation("StopBreathing", 200, true);
                     stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
-                    System.out.println("de.dfki.test.testStickmanFX.main()");
                 }
         ));
         timeline.play();
+        
 //       
 
 //        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);

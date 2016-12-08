@@ -5,6 +5,7 @@ import de.dfki.common.Gender;
 import de.dfki.common.interfaces.Animation;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
+import de.dfki.stickman3D.animation.environmentfx.Blinking;
 import de.dfki.stickman3D.animation.environmentfx.Breathing;
 import de.dfki.stickman3D.animation.environmentfx.IdleBehavior;
 import de.dfki.stickman3D.animationlogic.*;
@@ -84,6 +85,7 @@ public class Stickman3D extends Pane implements Stickman {
     // loop in IdleBehavior break or not
     public IdleBehavior mIdleBehavior;
     public Breathing mBreathing;
+    public Blinking mBlinking;
 //	public SimplexNoise simplexNoise; // Perlin noise
 
     // amimation stuff
