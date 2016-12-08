@@ -1,11 +1,11 @@
 package de.dfki.stickman3D.animation.gesturefx;
 
+import java.util.ArrayList;
+
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 import de.dfki.stickman3D.animationlogic.Animation3D;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -14,32 +14,34 @@ import java.util.ArrayList;
  */
 public class CoverMouth extends Animation3D {
 
-    public CoverMouth() {
-        mAnimType = ANIMTYPE.ON;
-    }
+	public CoverMouth() {
+		mAnimType = ANIMTYPE.ON;
+	}
 
-    public CoverMouth(Stickman3D sm, int duration, boolean block) {
-        super(sm, duration, block);
-    }
+	public CoverMouth(Stickman3D sm, int duration, boolean block) {
+		super(sm, duration, block);
+	}
 
-    @Override
-    public void playAnimation() {
-        int rotationUnit = 16;
+	@Override
+	public void playAnimation() {
 
-        // bring upper arm and fore arm in position
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -30));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -155));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 180));
-        playAnimationPart(500);
+		// bring upper arm and fore arm in position
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -30));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -150));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 140));
+		playAnimationPart(500);
 
-        pauseAnimation(1200);
+		pauseAnimation(1200);
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 30));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 155));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -180));
-        playAnimationPart(500);
+		mAnimationPartFX = new ArrayList<>();
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 30));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 150));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -140));
+		playAnimationPart(500);
 
-    }
+		if (StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
+
+	}
 }
