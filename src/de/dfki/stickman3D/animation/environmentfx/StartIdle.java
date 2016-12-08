@@ -31,10 +31,9 @@ public class StartIdle extends Animation3D {
     @Override
     public void playAnimation() {
         System.out.println(frequent);
-//		if (mStickmanFX.mIdleBehavior == null) {
-//			mStickmanFX.mIdleRun = true;
-        mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX, frequent);
-//			mStickmanFX.mIdleBehavior.start();
-//		}
+        if (mStickmanFX.mIdleBehavior == null) {
+            mStickmanFX.mIdleRun = true;
+            mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX);
+        }
     }
 }

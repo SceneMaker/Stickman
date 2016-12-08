@@ -16,11 +16,8 @@ public class StopIdle extends Animation3D {
 
     @Override
     public void playAnimation() {
-        //		mStickmanFX.mIdleRun = false;
-        //		while (mStickmanFX.mIdleBehavior.isAlive())
-        ;
-        //mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBlinkAktion();
-        mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBreathAktion();
+        mStickmanFX.mIdleRun = false;
         mStickmanFX.mIdleBehavior = null;
+        System.out.println("de.dfki.stickman3D.animation.environmentfx.StopIdle.playAnimation()");
     }
 }
