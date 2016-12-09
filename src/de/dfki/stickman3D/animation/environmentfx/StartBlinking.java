@@ -25,6 +25,13 @@ public class StartBlinking extends Animation3D {
         this.frequent = frequent;
         this.actionDuration = actionDuration;
     }
+    
+    public StartBlinking(Stickman3D sm, int frequent, boolean block) {
+        super(sm, frequent, block);
+        mStickmanFX = sm;
+        this.frequent = frequent;
+        this.actionDuration = 20;
+    }
 
     @Override
     public void playAnimation() {

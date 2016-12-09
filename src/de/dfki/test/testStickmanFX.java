@@ -25,16 +25,18 @@ public class testStickmanFX {
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
         stickmanStage3D1.addStickman("Anna");
         stickmanStage3D1.launchStickmanStage(true);
-        //stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 4000, true);
+//        stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, 20, true);
+        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, true);      
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 500, true);
+//        stickmanStage3D1.getStickman("Anna").doAnimation("HeadDown1", 500, true);   
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
                 ae -> {
 //                    stickmanStage3D1.getStickman("Anna").doAnimation("StopBreathing", 200, true);
 //                    stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
                     //stickmanStage3D1.getStickman("Anna").doAnimation("StopIdle", 500, true);
-                    stickmanStage3D1.getStickman("Anna").doAnimation("WaveLeft", 500, true);
+                    //stickmanStage3D1.getStickman("Anna").doAnimation("WaveLeft", 500, true);
                 }
         ));
 //        timeline.setCycleCount(Timeline.INDEFINITE);
