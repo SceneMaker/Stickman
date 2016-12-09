@@ -31,12 +31,10 @@ public class Muster extends Animation {
 	public void playAnimation() {
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRY"));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRY"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mHeadFX, "rotate", -10));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyeFX, "shape", "ANGRY"));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyebrowFX, "shape", "ANGRY"));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyeFX, "shape", "ANGRY"));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "ANGRY"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "ANGRYSMALLMOUTH"));
 
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftUpperArmFX, "rotate", -45));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftUpperArmFX, "zrotate", -10));
@@ -60,38 +58,13 @@ public class Muster extends Animation {
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", 50));
 		playAnimationPart(500);
 
-		// foot
-		for (int i = 0; i < 8; i++) {
-			mAnimationPartFX = new ArrayList<>();
-			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFootFX, "rotate", 40));
-			playAnimationPart(200);
-
-			mAnimationPartFX = new ArrayList<>();
-			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFootFX, "rotate", -40));
-			playAnimationPart(200);
-		}
-
-		// Head
-		for (int i = 0; i < 7; i++) {
-			mAnimationPartFX = new ArrayList<>();
-			if (i == 0 || i == 6)
-				mAnimationPartFX.add(new AnimationContent(mStickmanFX.mHeadFX, "yrotate", -10));
-			else if (i % 2 == 1)
-				mAnimationPartFX.add(new AnimationContent(mStickmanFX.mHeadFX, "yrotate", 20));
-			else if (i % 2 == 0)
-				mAnimationPartFX.add(new AnimationContent(mStickmanFX.mHeadFX, "yrotate", -20));
-			playAnimationPart(200);
-		}
-
 		pauseAnimation(1000);
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRYEND"));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRYEND"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mHeadFX, "rotate", 10));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyeFX, "shape", "ANGRYEND"));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightEyeFX, "shape", "ANGRYEND"));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "ANGRYEND"));
+		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mMouthFX, "shape", "ANGRYSMALLMOUTHEND"));
 
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftUpperArmFX, "rotate", 45));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftUpperArmFX, "zrotate", 10));
