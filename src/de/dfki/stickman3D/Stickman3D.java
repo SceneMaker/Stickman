@@ -12,6 +12,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.stickman3D.animation.environment.Breathing;
 import de.dfki.stickman3D.animation.environment.IdleBehavior;
 import de.dfki.stickman3D.animationlogic.Animation;
 import de.dfki.stickman3D.animationlogic.AnimationLoader;
@@ -108,6 +109,7 @@ public class Stickman3D extends Pane {
 	public Boolean mIdleRun = false;
 	// BehaviorThred. Es wird in StartIdle-Klasse initializiert
 	public IdleBehavior mIdleBehavior;
+	public Breathing mBreathing;
 
 	// amimation stuff
 	public Semaphore mAnimationLaunchControl = new Semaphore(1);
@@ -381,7 +383,20 @@ public class Stickman3D extends Pane {
 	public Animation doAnimation(String name, int duration, boolean block) {
 		return doAnimation(name, duration, "", block);
 	}
+	
+	public Animation doAnimation(String name, int frequent, int actionDuration, boolean block) {
+        Animation a = AnimationLoader.getInstance().loadAnimation(this, name, frequent, actionDuration, block);
+        
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
 
+        return a;
+	}
+	
 	public Animation doAnimation(String name, Object param, boolean block) {
 		return doAnimation(name, -1, param, block);
 	}

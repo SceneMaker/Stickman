@@ -35,6 +35,7 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 	public String mStickmanName;
 	public boolean mBlocking = false;
 	public int mDuration = -1;
+	public int actionDuration = -1;
 	public String mID;
 	public Object mParameter = "";
 
@@ -56,6 +57,17 @@ public class Animation extends Thread implements XMLParseable, XMLWriteable {
 		mBlocking = block;
 		mDuration = duration;
 	}
+	
+	public Animation(Stickman3D sm, int frequent, int actionDuration, boolean block) {
+        mName = getClass().getSimpleName();
+        mStickmanFX = sm;
+        mStickmanName = mStickmanFX.mName;
+        setName(mStickmanName + "'s AnimationSwing " + mName);
+        mID = mStickmanFX.getID(); // default ID;
+        mBlocking = block;
+        mDuration = frequent;
+        this.actionDuration = actionDuration;
+    }
 
 	public void setParameter(Object p) {
 		mParameter = p;
