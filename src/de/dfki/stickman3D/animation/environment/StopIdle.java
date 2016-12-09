@@ -5,7 +5,7 @@ import de.dfki.stickman3D.animationlogic.Animation;
 
 /**
  *
- * @author Robbie
+ * @author Beka
  *
  */
 public class StopIdle extends Animation {
@@ -17,10 +17,6 @@ public class StopIdle extends Animation {
 	@Override
 	public void playAnimation() {
 		mStickmanFX.mIdleRun = false;
-		while (mStickmanFX.mIdleBehavior.isAlive())
-			;
-		mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBlinkAktion();
-		mStickmanFX.mIdleBehavior.mUnconsciouslyAction.stopBreathAktion();
 		mStickmanFX.mIdleBehavior = null;
 
 	}

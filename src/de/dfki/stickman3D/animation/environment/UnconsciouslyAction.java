@@ -26,7 +26,7 @@ public class UnconsciouslyAction extends Thread {
 	// Behavior Default Array
 	private String[] behaviorArray = { "HeadTilt", "CoverMouth", "Nod", "TouchHead", "HeadLeft", "HeadRight", "Itching",
 			"HeadDown", "HeadDown1" };
-	//
+	
 	private ArrayList<String> currentBehaviorList;
 
 	Random random;
@@ -47,8 +47,6 @@ public class UnconsciouslyAction extends Thread {
 		}
 
 		this.random = new Random();
-		startBlinkAktion();
-		startBreathing();
 	}
 
 	@Override
@@ -69,46 +67,5 @@ public class UnconsciouslyAction extends Thread {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	public void startBlinkAktion() {
-		blinkTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				mStickmanFX.doAnimation("Blink", 500, true);
-			}
-		}));
-		blinkTimeline.setCycleCount(Timeline.INDEFINITE);
-		blinkTimeline.play();
-	}
-
-	public void stopBlinkAktion() {
-		if (blinkTimeline != null)
-			blinkTimeline.stop();
-	}
-
-	// AtmenAktion
-	public void startBreathing() {
-		breathTimeline = new Timeline(new KeyFrame(Duration.seconds(5), new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-
-				ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(2000),
-						mStickmanFX.mUpperBody.mUpperBodyGroup);
-				scaleTransition.setToX(1.05f);
-				scaleTransition.setToZ(1.05f);
-				scaleTransition.setToY(1.01f);
-				scaleTransition.setCycleCount(2);
-				scaleTransition.setAutoReverse(true);
-				scaleTransition.play();
-			}
-		}));
-		breathTimeline.setCycleCount(Timeline.INDEFINITE);
-		breathTimeline.play();
-	}
-
-	public void stopBreathAktion() {
-		if (breathTimeline != null)
-			breathTimeline.stop();
 	}
 }

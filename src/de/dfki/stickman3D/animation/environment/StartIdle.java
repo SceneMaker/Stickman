@@ -5,7 +5,7 @@ import de.dfki.stickman3D.animationlogic.Animation;
 
 /**
  *
- * @author Robbie
+ * @author Beka
  *
  */
 
