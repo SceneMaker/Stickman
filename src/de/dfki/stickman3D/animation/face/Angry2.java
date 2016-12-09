@@ -84,6 +84,7 @@ public class Angry2 extends Animation {
 			playAnimationPart(200);
 		}
 
+		//Head
 		for (int i = 0; i < 7; i++) {
 			mAnimationPartFX = new ArrayList<>();
 			if (i == 0 || i == 6)

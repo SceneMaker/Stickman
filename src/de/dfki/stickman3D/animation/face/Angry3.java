@@ -1,35 +1,53 @@
 /*
-100 * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dfki.stickman3D.animation.head;
+package de.dfki.stickman3D.animation.face;
 
 import java.util.ArrayList;
 
 import de.dfki.stickman3D.Stickman3D;
+import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContent;
 import de.dfki.stickman3D.animationlogic.Animation;
-import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.scene.Group;
-import javafx.scene.transform.Rotate;
-import javafx.util.Duration;
 
 /**
+ * An angry facial movement is created in this class. The face moves from the
+ * default state to the angry state, and then comes back to the default state.
  *
  * @author Beka Aptsiauri
- *
  */
-public class Muster extends Animation {
+public class Angry3 extends Animation {
 
-	public Muster(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
+	Stickman3D mStickmanFX;
+	int rotationUnit;
+
+	public Angry3() {
+		mAnimType = ANIMTYPE.ON;
 	}
 
+	/**
+	 *
+	 * @param sm
+	 *            Stickman
+	 * @param duration
+	 *            Control the speed of the movement from one emotion state to
+	 *            another emotion state.
+	 * @param block
+	 *            block or not the others movements, when one movement is not
+	 *            finished.
+	 */
+	public Angry3(Stickman3D sm, int duration, boolean block) {
+		super(sm, duration, block);
+		mStickmanFX = sm;
+	}
+
+	/**
+	 * This method creates the angry facial movement.
+	 */
 	@Override
 	public void playAnimation() {
-
 		mAnimationPartFX = new ArrayList<>();
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mFaceWrinkleFX, "shape", "ANGRY"));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRY"));
@@ -43,10 +61,23 @@ public class Muster extends Animation {
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftForeArmFX, "rotate", -20));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftForeArmFX, "yrotate", -25));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftForeArmFX, "zrotate", 110));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger1, "zrotate", -20));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger2, "rotate", 70));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger3, "rotate", 70));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger4, "rotate", 70));
+		
+		if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftWrist, "rotate", 20));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger1, "zrotate", -20));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger2, "rotate", 90));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger3, "rotate", 90));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger4, "rotate", 90));
+		}
+		else
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger1, "zrotate", -20));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger2, "rotate", 70));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger3, "rotate", 70));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger4, "rotate", 70));
+
+		}
 
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightUpperArmFX, "rotate", -40));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightUpperArmFX, "zrotate", 10));
@@ -55,9 +86,20 @@ public class Muster extends Animation {
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightWrist, "rotate", -60));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightWrist, "yrotate", -30));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightWrist, "zrotate", 20));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger2, "rotate", 50));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger3, "rotate", 50));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", 50));
+		
+		if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger2, "rotate", 120));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger3, "rotate", 120));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", 120));
+		}
+		else
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger2, "rotate", 50));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger3, "rotate", 50));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", 50));
+		}
+		
 		playAnimationPart(500);
 
 		// foot
@@ -98,10 +140,22 @@ public class Muster extends Animation {
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftForeArmFX, "rotate", 20));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftForeArmFX, "yrotate", 25));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftForeArmFX, "zrotate", -110));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger1, "zrotate", 20));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger2, "rotate", -70));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger3, "rotate", -70));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger4, "rotate", -70));
+		
+		if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftWrist, "rotate", -20));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger1, "zrotate", 20));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger2, "rotate", -90));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger3, "rotate", -90));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger4, "rotate", -90));
+		}
+		else
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger1, "zrotate", 20));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger2, "rotate", -70));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger3, "rotate", -70));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mLeftFinger4, "rotate", -70));
+		}
 
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightUpperArmFX, "rotate", 40));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightUpperArmFX, "zrotate", -10));
@@ -110,10 +164,22 @@ public class Muster extends Animation {
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightWrist, "rotate", 60));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightWrist, "yrotate", 30));
 		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightWrist, "zrotate", -20));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger2, "rotate", -50));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger3, "rotate", -50));
-		mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", -50));
+		
+		if(mStickmanFX.mType == Stickman3D.TYPE.FEMALE)
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger2, "rotate", -120));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger3, "rotate", -120));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", -120));
+		}
+		else
+		{
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger2, "rotate", -50));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger3, "rotate", -50));
+			mAnimationPartFX.add(new AnimationContent(mStickmanFX.mRightFinger4, "rotate", -50));
+		}
 		playAnimationPart(500);
 
+		if (StickmanStageController.currentRadioButton != null)
+			StickmanStageController.currentRadioButton.setSelected(false);
 	}
 }
