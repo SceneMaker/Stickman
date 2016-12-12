@@ -46,7 +46,7 @@ public class MouthANGRYSMALLMOUTH {
 		
 		y0 = sig * (20 - step) * 0.02105263157894737;
 		y2 = sig * (20 - step) * 0.01578947368421053;
-		y3 = sig * (20 - step) * 0.00526315789473684;
+		y3 = sig * (20 - step) * 0.01052631578947368;
 
 		currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) + y0);
 		currentDownLipPolygon.getPoints().set(5, currentDownLipPolygon.getPoints().get(5) - y2);

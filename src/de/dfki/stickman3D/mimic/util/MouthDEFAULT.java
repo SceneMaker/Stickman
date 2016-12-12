@@ -34,7 +34,7 @@ public class MouthDEFAULT {
 					0.0, 	0.0, 	// Point 0
 					4.5, 	3.0, 	// Point 1
 					13.0, 	5.0, 	// Point 2
-					16.0, 	3.0, 	// Point 3
+					16.0, 	4.0, 	// Point 3
 					19.0, 	5.0, 	// Point 4
 					27.5, 	3.0, 	// Point 5
 					32.0, 	0.0, 	// Point 6

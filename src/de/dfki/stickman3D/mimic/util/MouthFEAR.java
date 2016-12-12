@@ -51,11 +51,10 @@ public class MouthFEAR {
 		double y2;
 
 		y1 = sig * (20 - step) * 0.00526315789473684;
-		y2 = sig * (20 - step) * 0.01052631578947368;
 
 		currentDownLipMesh.getPoints().set(3, currentDownLipMesh.getPoints().get(3) - y1);
-		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) - y2);
-		currentDownLipMesh.getPoints().set(9, currentDownLipMesh.getPoints().get(9) - y2);
+		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) - y1);
+		currentDownLipMesh.getPoints().set(9, currentDownLipMesh.getPoints().get(9) - y1);
 		currentDownLipMesh.getPoints().set(11, currentDownLipMesh.getPoints().get(11) - y1);
 
 		return currentDownLipMesh;

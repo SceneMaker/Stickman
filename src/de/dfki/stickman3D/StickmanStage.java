@@ -405,7 +405,7 @@ public class StickmanStage extends Application {
 
 			if (mouseEvent.getButton() == MouseButton.PRIMARY) {
 				// getStickmanFX("Anna").doAnimation("Muster", 1000, true);
-				getStickmanFX("Bob").doAnimation("StartBlinking", 600, 20, true);
+				getStickmanFX("Bob").doAnimation("Muster", 600, true);
 			}
 			// getStickmanFX("Bob").doAnimation("Speaking",3000, "Stell Dir vor,
 			// Du kommst nach Hause, und ein Pferd steht in der Küche.",

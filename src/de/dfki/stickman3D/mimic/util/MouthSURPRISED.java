@@ -50,7 +50,7 @@ public class MouthSURPRISED {
 
 		y1 = sig * (20 - step) * 0.01052631578947368;
 		y2 = sig * (20 - step) * 0.02105263157894737;
-		y3 = sig * (20 - step) * 0.03684210526315789;
+		y3 = sig * (20 - step) * 0.03157894736842105;
 		y8 = sig * (20 - step) * 0.03157894736842105;
 
 		currentDownLipPolygon.getPoints().set(3, currentDownLipPolygon.getPoints().get(3) + y1);

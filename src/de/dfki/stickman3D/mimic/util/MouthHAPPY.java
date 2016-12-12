@@ -47,17 +47,19 @@ public class MouthHAPPY {
 		double x0;
 		double y0;
 		double y3;
+		double y3_3;
 
 		x0 = sig * (20 - step) * 0.01578947368421053;
 		y0 = sig * (20 - step) * 0.03157894736842105;
 		y3 = sig * (20 - step) * 0.01052631578947368;
+		y3_3 = sig * (20 - step) * 0.00526315789473684;
 
 		currentDownLipPolygon.getPoints().set(0, currentDownLipPolygon.getPoints().get(0) - x0);
 		currentDownLipPolygon.getPoints().set(1, currentDownLipPolygon.getPoints().get(1) - y0);
 		currentDownLipPolygon.getPoints().set(12, currentDownLipPolygon.getPoints().get(12) + x0);
 		currentDownLipPolygon.getPoints().set(13, currentDownLipPolygon.getPoints().get(13) - y0);
 		
-		currentDownLipPolygon.getPoints().set(7, currentDownLipPolygon.getPoints().get(7) + y3);
+		currentDownLipPolygon.getPoints().set(7, currentDownLipPolygon.getPoints().get(7) + y3_3);
 		currentDownLipPolygon.getPoints().set(17, currentDownLipPolygon.getPoints().get(17) + y3);
 		currentDownLipPolygon.getPoints().set(19, currentDownLipPolygon.getPoints().get(19) + y3);
 		currentDownLipPolygon.getPoints().set(21, currentDownLipPolygon.getPoints().get(21) + y3);

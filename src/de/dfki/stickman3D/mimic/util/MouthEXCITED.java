@@ -36,14 +36,13 @@ public class MouthEXCITED {
 		double y8;
 
 		y2 = sig * (20 - step) * 0.02105263157894737;
-		y3 = sig * (20 - step) * 0.03684210526315789;
 		y8 = sig * (20 - step) * 0.03157894736842105;
 
 		currentDownLipMesh.getPoints().set(5, currentDownLipMesh.getPoints().get(5) + y2);
-		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + y3);
+		currentDownLipMesh.getPoints().set(7, currentDownLipMesh.getPoints().get(7) + y8);
 		currentDownLipMesh.getPoints().set(9, currentDownLipMesh.getPoints().get(9) + y2);
 		currentDownLipMesh.getPoints().set(17, currentDownLipMesh.getPoints().get(17) + y8);
-		currentDownLipMesh.getPoints().set(19, currentDownLipMesh.getPoints().get(19) + y3);
+		currentDownLipMesh.getPoints().set(19, currentDownLipMesh.getPoints().get(19) + y8);
 		currentDownLipMesh.getPoints().set(21, currentDownLipMesh.getPoints().get(21) + y8);
 
 		return currentDownLipMesh;
