@@ -27,7 +27,7 @@ public class testStickmanFX {
         stickmanStage3D1.launchStickmanStage(true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, 20, true);
-        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, true);      
+        stickmanStage3D1.getStickman("Anna").doAnimation("Arrogant", 3000, true);      
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 500, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("HeadDown1", 500, true);   
         Timeline timeline = new Timeline(new KeyFrame(
