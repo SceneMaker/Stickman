@@ -37,7 +37,7 @@ public class LeftEar extends BodyPart {
 	URL imageUrl;
 	Image im;
 
-	double initOpacity = 0.85;
+	double initOpacity = 1.0;
 
 	public LeftEar.SHAPE mShape = LeftEar.SHAPE.DEFAULT;
 
@@ -72,8 +72,8 @@ public class LeftEar extends BodyPart {
 	@Override
 	public void init() {
 		super.init();
-		mLeftEarMesh.setTranslateX(mStart.x+58);
-		mLeftEarMesh.setTranslateY(mStart.y + 100);
+		mLeftEarMesh.setTranslateX(mStart.x+53);
+		mLeftEarMesh.setTranslateY(mStart.y + 102);
 		mLeftEarMesh.setTranslateZ(-2);
 	}
 
