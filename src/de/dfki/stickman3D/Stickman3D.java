@@ -2,7 +2,6 @@ package de.dfki.stickman3D;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
-import de.dfki.common.interfaces.Animation;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.stickman3D.animation.environmentfx.Blinking;
@@ -28,10 +27,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
-import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import javafx.scene.layout.HBox;
 
 /**
  *
@@ -100,6 +97,8 @@ public class Stickman3D extends Pane implements Stickman {
     public FemaleHairFX mFemaleHairFX;
     public LeftEyebrowFX mLeftEyebrowFX;
     public LeftEyeFX mLeftEyeFX;
+    public LeftEar mLeftEar;
+    public RightEar mRightEar;
     public RightEyebrowFX mRightEyebrowFX;
     public RightEyeFX mRightEyeFX;
     public MouthFX mMouthFX;
@@ -150,6 +149,8 @@ public class Stickman3D extends Pane implements Stickman {
         mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mLeftEar = new LeftEar(mHeadFX);
+        mRightEar = new RightEar(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
         mRightEyeFX = new RightEyeFX(mHeadFX);
         mNoseFX = new NoseFX(mHeadFX);
@@ -200,6 +201,8 @@ public class Stickman3D extends Pane implements Stickman {
         mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mLeftEar = new LeftEar(mHeadFX);
+        mRightEar = new RightEar(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
         mRightEyeFX = new RightEyeFX(mHeadFX);
         mNoseFX = new NoseFX(mHeadFX);
@@ -248,6 +251,8 @@ public class Stickman3D extends Pane implements Stickman {
         mFemaleHairFX = new FemaleHairFX(this);
         mLeftEyebrowFX = new LeftEyebrowFX(mHeadFX);
         mLeftEyeFX = new LeftEyeFX(mHeadFX);
+        mLeftEar = new LeftEar(mHeadFX);
+        mRightEar = new RightEar(mHeadFX);
         mRightEyebrowFX = new RightEyebrowFX(mHeadFX);
         mRightEyeFX = new RightEyeFX(mHeadFX);
         mNoseFX = new NoseFX(mHeadFX);
@@ -484,7 +489,7 @@ public class Stickman3D extends Pane implements Stickman {
         this.getChildren().addAll(mNeckFX, mHeadFX,
                 mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
                 mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-                mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameText);
+                mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameText, mLeftEar, mRightEar);
 
     }
 
