@@ -304,11 +304,11 @@ public class Stickman3D extends Pane implements Stickman {
         nameText.setFont(Font.font(null, FontWeight.BOLD, 30));
 
         if (this.mType == Gender.TYPE.MALE) {
-            nameText.setTranslateX(15);
-            nameText.setTranslateY(-120);
+            nameText.setTranslateX(-80);
+            nameText.setTranslateY(350);
         } else {
-            nameText.setTranslateX(10);
-            nameText.setTranslateY(-135);
+            nameText.setTranslateX(-90);
+            nameText.setTranslateY(350);
         }
         nameText.setTranslateZ(-120);
 
@@ -397,7 +397,7 @@ public class Stickman3D extends Pane implements Stickman {
 
     public Animation3D doAnimation(String name, int frequent, int actionDuration, boolean block) {
         Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, frequent, actionDuration, block);
-        
+
         try {
             mAnimationLaunchControl.acquire();
             a.start();
@@ -407,7 +407,7 @@ public class Stickman3D extends Pane implements Stickman {
 
         return a;
     }
-    
+
     public Animation3D doAnimation(String name, Object param, boolean block) {
         return doAnimation(name, -1, param, block);
     }
@@ -416,7 +416,6 @@ public class Stickman3D extends Pane implements Stickman {
         return doAnimation(name, -1, "", block);
     }
 
-    
     public Animation3D doAnimation(String name, int duration, Object param, boolean block) {
         Animation3D a = AnimationLoader3D.getInstance().loadAnimation(this, name, duration, block);
 
