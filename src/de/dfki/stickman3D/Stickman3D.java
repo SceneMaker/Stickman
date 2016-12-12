@@ -24,6 +24,7 @@ import de.dfki.stickman3D.body.DownBody;
 import de.dfki.stickman3D.body.FaceWrinkle;
 import de.dfki.stickman3D.body.FemaleHair;
 import de.dfki.stickman3D.body.Head;
+import de.dfki.stickman3D.body.LeftEar;
 import de.dfki.stickman3D.body.LeftEye;
 import de.dfki.stickman3D.body.LeftEyebrow;
 import de.dfki.stickman3D.body.LeftFinger1;
@@ -40,6 +41,7 @@ import de.dfki.stickman3D.body.MaleHair;
 import de.dfki.stickman3D.body.Mouth;
 import de.dfki.stickman3D.body.Neck;
 import de.dfki.stickman3D.body.Nose;
+import de.dfki.stickman3D.body.RightEar;
 import de.dfki.stickman3D.body.RightEye;
 import de.dfki.stickman3D.body.RightEyebrow;
 import de.dfki.stickman3D.body.RightFinger1;
@@ -121,6 +123,8 @@ public class Stickman3D extends Pane {
 	// body parts
 	public Head mHeadFX;
 	public Nose mNoseFX;
+	public RightEar mRightEar;
+	public LeftEar mLeftEar;
 	public MaleHair mMaleHairFX;
 	public FemaleHair mFemaleHairFX;
 	public LeftEyebrow mLeftEyebrowFX;
@@ -176,6 +180,8 @@ public class Stickman3D extends Pane {
 		mRightEyebrowFX = new RightEyebrow(mHeadFX);
 		mRightEyeFX = new RightEye(mHeadFX);
 		mNoseFX = new Nose(mHeadFX);
+		mRightEar = new RightEar(mHeadFX);
+		mLeftEar = new LeftEar(mHeadFX);
 		mMouthFX = new Mouth(mHeadFX);
 		mFaceWrinkleFX = new FaceWrinkle(mHeadFX);
 		mNeckFX = new Neck(mHeadFX);
@@ -225,6 +231,8 @@ public class Stickman3D extends Pane {
 		mRightEyebrowFX = new RightEyebrow(mHeadFX);
 		mRightEyeFX = new RightEye(mHeadFX);
 		mNoseFX = new Nose(mHeadFX);
+		mRightEar = new RightEar(mHeadFX);
+		mLeftEar = new LeftEar(mHeadFX);
 		mMouthFX = new Mouth(mHeadFX);
 		mFaceWrinkleFX = new FaceWrinkle(mHeadFX);
 		mNeckFX = new Neck(mHeadFX);
@@ -272,6 +280,8 @@ public class Stickman3D extends Pane {
 		mRightEyebrowFX = new RightEyebrow(mHeadFX);
 		mRightEyeFX = new RightEye(mHeadFX);
 		mNoseFX = new Nose(mHeadFX);
+		mRightEar = new RightEar(mHeadFX);
+		mLeftEar = new LeftEar(mHeadFX);
 		mMouthFX = new Mouth(mHeadFX);
 		mFaceWrinkleFX = new FaceWrinkle(mHeadFX);
 		mNeckFX = new Neck(mHeadFX);
@@ -471,7 +481,7 @@ public class Stickman3D extends Pane {
 
 		this.getChildren().addAll(mNeckFX, mHeadFX, mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX,
 				mLeftForeLegFX, mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX, mStarsFX,
-				mSpeechBubbleFX, nameText, mUpperBodyAndHand);
+				mSpeechBubbleFX, nameText, mUpperBodyAndHand, mRightEar, mLeftEar);
 
 	}
 
