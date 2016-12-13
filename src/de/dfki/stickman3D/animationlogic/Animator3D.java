@@ -4,7 +4,7 @@ import de.dfki.action.sequence.Entry;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickmanSwing.util.TimingInfo;
-import de.dfki.stickman3D.bodyfx.BodyPartFX;
+import de.dfki.stickman3D.body.BodyPartFX;
 
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;

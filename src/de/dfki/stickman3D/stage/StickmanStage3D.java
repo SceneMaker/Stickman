@@ -96,9 +96,9 @@ public class StickmanStage3D extends Application implements StickmanStage {
     public void start(Stage stage) throws Exception {
 
         HBox sStickmanHBox = new HBox();
-        sStickmanHBox.setId("StickmanStageSwing");//TODO: Chage for 3D
+        sStickmanHBox.setId("StickmanStage3D");
         sStickmanHBox.setAlignment(Pos.CENTER);
-        sStickmanHBox.setPadding(new javafx.geometry.Insets(580, 0, 150, 0));
+//        sStickmanHBox.setPadding(new javafx.geometry.Insets(580, 0, 150, 0));
 
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);

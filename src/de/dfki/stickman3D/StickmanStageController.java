@@ -35,11 +35,11 @@ import java.util.stream.Collectors;
  */
 public class StickmanStageController implements ViewController {
 
-    private static String packEmotionExpression = "de.dfki.stickman3D.animation.facefx";
-    private static String packGesture = "de.dfki.stickman3D.animation.gesturefx";
-    private static String packHead = "de.dfki.stickman3D.animation.headfx";
-    private static String packEnvironment = "de.dfki.stickman3D.animation.environmentfx";
-    private static String packPosture = "de.dfki.stickman3D.animation.posturefx";
+    private static String packEmotionExpression = "de.dfki.stickman3D.animation.face";
+    private static String packGesture = "de.dfki.stickman3D.animation.gesture";
+    private static String packHead = "de.dfki.stickman3D.animation.head";
+    private static String packEnvironment = "de.dfki.stickman3D.animation.environment";
+    private static String packPosture = "de.dfki.stickman3D.animation.posture";
 
     private ArrayList<String> mStickmanComboList = new ArrayList<>();
 

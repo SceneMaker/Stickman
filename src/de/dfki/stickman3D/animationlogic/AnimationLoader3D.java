@@ -23,7 +23,7 @@ import java.util.Set;
 public class AnimationLoader3D {
 
     private final static String sANIMATIONPATH = "de.dfki.stickman3D";
-    private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("headfx", "facefx", "gesturefx", "environmentfx", "posturefx"));
+    private static final Set<String> sAnimationSubPackages = new HashSet<>(Arrays.asList("head", "face", "gesture", "environment", "posture"));
     private static AnimationLoader3D sInstance = null;
     private static long sID = 0;
 

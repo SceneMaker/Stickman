@@ -6,7 +6,7 @@
 package de.dfki.stickman3D.animationlogic;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.stickman3D.bodyfx.BodyPartFX;
+import de.dfki.stickman3D.body.BodyPartFX;
 
 /**
  *
