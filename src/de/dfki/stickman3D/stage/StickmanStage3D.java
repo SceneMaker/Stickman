@@ -42,7 +42,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
     public static final float STICKMAN_SIZE_FACTOR = 0.8f;
     public static final float HEIGHT_ADJUSTMENT = 3 / 5.0f;
     public static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
-    public static final String STICKMAN_STAGE = "StickmanStageSwing";
+    public static final String STICKMAN_STAGE = "StickmanStage3D";
 
     // grahics
     protected int mHeight = 0;
@@ -61,6 +61,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
     // Camera
     public SubScene sSubscene;
     public PerspectiveCamera sCamera;
+    HBox sStickmanHBox;
 
     public StickmanStage3D() {
         Platform.setImplicitExit(false);
@@ -91,11 +92,14 @@ public class StickmanStage3D extends Application implements StickmanStage {
         }
         sInstance = null;
     }
-
+    
     @Override
     public void start(Stage stage) throws Exception {
 
-        HBox sStickmanHBox = new HBox();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = dim.width;
+        int height = dim.height;
+        sStickmanHBox = new HBox();
         sStickmanHBox.setId("StickmanStage3D");
         sStickmanHBox.setAlignment(Pos.CENTER);
 //        sStickmanHBox.setPadding(new javafx.geometry.Insets(580, 0, 150, 0));
@@ -106,7 +110,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
         configStage = stage;
         AnchorPane controlPanel = (AnchorPane) scene.lookup("#controlPanel");
 
-        sSubscene = createSubSceneAndCamera(sStickmanHBox, 1940, 1080);
+        sSubscene = createSubSceneAndCamera(sStickmanHBox, width - controlPanel.getPrefWidth(), height);
         moveStickmanPane(scene, sStickmanHBox);
         root.getChildren().add(sSubscene);
 
@@ -243,25 +247,19 @@ public class StickmanStage3D extends Application implements StickmanStage {
             sStickmanPane = (HBox) stickmanFXStages.get(stageIdentifier).getScene().getRoot();
             sStickmanPane.setAlignment(Pos.CENTER);
             sStickmanPane.setStyle("-fx-background-color: white");
-            sStickmanPane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    System.out.println(".handle()");
-                }
-
-            });
+           
 
             stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
                     if (event.getCode() == KeyCode.RIGHT) {
-                        sStickmanPane.setTranslateX(sStickmanPane.getTranslateX() + 20);
+                        sStickmanHBox.setTranslateX(sStickmanHBox.getTranslateX() + 20);
                     } else if (event.getCode() == KeyCode.LEFT) {
-                        sStickmanPane.setTranslateX(sStickmanPane.getTranslateX() - 20);
+                        sStickmanHBox.setTranslateX(sStickmanHBox.getTranslateX() - 20);
                     } else if (event.getCode() == KeyCode.UP) {
-                        sStickmanPane.setTranslateY(sStickmanPane.getTranslateY() - 20);
+                        sStickmanHBox.setTranslateY(sStickmanHBox.getTranslateY() - 20);
                     } else if (event.getCode() == KeyCode.DOWN) {
-                        sStickmanPane.setTranslateY(sStickmanPane.getTranslateY() + 20);
+                        sStickmanHBox.setTranslateY(sStickmanHBox.getTranslateY() + 20);
                     }
                 }
             });
@@ -271,13 +269,13 @@ public class StickmanStage3D extends Application implements StickmanStage {
                 @Override
                 public void handle(ScrollEvent event) {
                     if (event.getDeltaY() < 0) {
-                        sStickmanPane.setScaleX(sStickmanPane.getScaleX() - 0.05);
-                        sStickmanPane.setScaleY(sStickmanPane.getScaleY() - 0.05);
-                        sStickmanPane.setScaleZ(sStickmanPane.getScaleZ() - 0.05);
+                        sStickmanHBox.setScaleX(sStickmanHBox.getScaleX() - 0.05);
+                        sStickmanHBox.setScaleY(sStickmanHBox.getScaleY() - 0.05);
+                        sStickmanHBox.setScaleZ(sStickmanHBox.getScaleZ() - 0.05);
                     } else {
-                        sStickmanPane.setScaleX(sStickmanPane.getScaleX() + 0.05);
-                        sStickmanPane.setScaleY(sStickmanPane.getScaleY() + 0.05);
-                        sStickmanPane.setScaleZ(sStickmanPane.getScaleZ() + 0.05);
+                        sStickmanHBox.setScaleX(sStickmanHBox.getScaleX() + 0.05);
+                        sStickmanHBox.setScaleY(sStickmanHBox.getScaleY() + 0.05);
+                        sStickmanHBox.setScaleZ(sStickmanHBox.getScaleZ() + 0.05);
                     }
                 }
             });
@@ -316,6 +314,10 @@ public class StickmanStage3D extends Application implements StickmanStage {
     }
 
     public void showStage(String stageIdentifier) {
+        if(stageIdentifier.equals(StageRoom3D.CONFIG_STAGE))
+        {
+            Platform.runLater(() -> stickmanFXStages.get(stageIdentifier).setFullScreen(true));
+        }
         if (stickmanFXStages.containsKey(stageIdentifier)) {
             Platform.runLater(() -> stickmanFXStages.get(stageIdentifier).show());
         }
