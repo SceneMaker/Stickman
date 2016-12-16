@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author Robbie
+ * @author Beka
  */
 public class StickmanStageController implements ViewController {
 
@@ -252,54 +252,42 @@ public class StickmanStageController implements ViewController {
         cameraXSlider.setMin(-180);
         cameraXSlider.setMax(180);
         cameraXSlider.setValue(0);
-        cameraXSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
-                if (isCameraStarted) {
-                    double newValue = new_val.doubleValue();
-                    double oldValue = old_val.doubleValue();
-                    xRotateFactor = newValue - oldValue;
-                    Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
-                    Rotate rx = new Rotate(xRotateFactor, pivot.x, pivot.y, 1505, Rotate.X_AXIS);
-                    stage3D.getCamera().getTransforms().addAll(rx);
-                }
+        cameraXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            if (isCameraStarted) {
+                double newValue = new_val.doubleValue();
+                double oldValue = old_val.doubleValue();
+                xRotateFactor = newValue - oldValue;
+                Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
+                Rotate rx = new Rotate(xRotateFactor, pivot.x, pivot.y, 1505, Rotate.X_AXIS);
+                stage3D.getCamera().getTransforms().addAll(rx);
             }
         });
 
         cameraYSlider.setMin(-180);
         cameraYSlider.setMax(180);
         cameraYSlider.setValue(0);
-        cameraYSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
-                if (isCameraStarted) {
-                    double newValue = new_val.doubleValue();
-                    double oldValue = old_val.doubleValue();
-                    yRotateFactor = newValue - oldValue;
-                    Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
-                    Rotate ry = new Rotate(yRotateFactor, pivot.x, pivot.y, 1505, Rotate.Y_AXIS);
-                    stage3D.getCamera().getTransforms().addAll(ry);
-                }
+        cameraYSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            if (isCameraStarted) {
+                double newValue = new_val.doubleValue();
+                double oldValue = old_val.doubleValue();
+                yRotateFactor = newValue - oldValue;
+                Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
+                Rotate ry = new Rotate(yRotateFactor, pivot.x, pivot.y, 1505, Rotate.Y_AXIS);
+                stage3D.getCamera().getTransforms().addAll(ry);
             }
         });
 
         cameraZSlider.setMin(-180);
         cameraZSlider.setMax(180);
         cameraZSlider.setValue(0);
-        cameraZSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) {
-                if (isCameraStarted) {
-                    double newValue = new_val.doubleValue();
-                    double oldValue = old_val.doubleValue();
-                    zRotateFactor = newValue - oldValue;
-                    Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
-                    Rotate rz = new Rotate(zRotateFactor, pivot.x, pivot.y, 1505, Rotate.Z_AXIS);
-                    stage3D.getCamera().getTransforms().addAll(rz);
-                }
+        cameraZSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            if (isCameraStarted) {
+                double newValue = new_val.doubleValue();
+                double oldValue = old_val.doubleValue();
+                zRotateFactor = newValue - oldValue;
+                Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
+                Rotate rz = new Rotate(zRotateFactor, pivot.x, pivot.y, 1505, Rotate.Z_AXIS);
+                stage3D.getCamera().getTransforms().addAll(rz);
             }
         });
 
@@ -313,13 +301,10 @@ public class StickmanStageController implements ViewController {
         OpacityHelper.browOpacityChanger(this, browOpacitySlider);
         OpacityHelper.noseOpacityChanger(this, noseOpacitySlider);
 
-        ExitButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Stage stage = (Stage) ExitButton.getScene().getWindow();
-                stage.close();
-                System.exit(0);
-            }
+        ExitButton.setOnAction((ActionEvent event) -> {
+            Stage stage = (Stage) ExitButton.getScene().getWindow();
+            stage.close();
+            System.exit(0);
         });
     }
 
@@ -327,6 +312,11 @@ public class StickmanStageController implements ViewController {
         return (Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox);
     }
 
+    /**
+     *
+     * @param commonStickmansOnStage
+     */
+    @Override
     public void setStickamnOnStage(StickmansOnStage commonStickmansOnStage) {
         this.mStickmanOnstage = commonStickmansOnStage;
         fillComboForStickman();
@@ -335,36 +325,36 @@ public class StickmanStageController implements ViewController {
 
     @FXML
     private void handleBG1() {
-        String bg1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg1 + "'); "
+        String background1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background1 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG2() {
-        String bg2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg2 + "'); "
+        String background2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background2 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG3() {
-        String bg3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg3 + "'); "
+        String background3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background3 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG4() {
-        String bg4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg4 + "'); "
+        String background4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background4 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG5() {
-        String bg5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg5 + "'); "
+        String background5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background5 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
@@ -677,7 +667,7 @@ public class StickmanStageController implements ViewController {
 
             button.setOnAction((event) -> {
                 currentRadioButton = (RadioButton) event.getSource();
-                currentStickman.doAnimation(button.getText(), 500, false);
+                currentStickman.doAnimation(button.getText(), 500, true);
             });
             if (i % 3 == 2) {
                 gridPane.add(button, startIndex, endIndex);
