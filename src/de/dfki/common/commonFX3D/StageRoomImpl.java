@@ -5,6 +5,7 @@ import de.dfki.common.interfaces.ApplicationLauncher;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.common.interfaces.StageRoom;
+import de.dfki.stickman3D.stage.StickmanStage3D;
 import de.dfki.stickmanFX.utils.XmlStickmanLoader;
 
 import java.awt.image.BufferedImage;
@@ -48,9 +49,12 @@ public abstract class StageRoomImpl implements StageRoom {
 
     @Override
     public void launchStickmanConfiguration() {
+        StickmanStage3D ss3D;
         try {
-            getStickmanStage().addStickmanToStage(CONFIG_STAGE);
-            getStickmanStage().showStage(CONFIG_STAGE);
+            ss3D = (StickmanStage3D) getStickmanStage();
+            ss3D.showControlPanel = true;
+            ss3D.addStickmanToStage(CONFIG_STAGE);
+            ss3D.showStage(CONFIG_STAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -28,7 +28,7 @@ public class NoseFX extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mNose;
+    public MeshView mNose;
     PhongMaterial material;
 
     public NoseFX.SHAPE mShape = NoseFX.SHAPE.DEFAULT;

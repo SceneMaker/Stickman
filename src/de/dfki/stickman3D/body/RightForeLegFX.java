@@ -36,7 +36,7 @@ public class RightForeLegFX extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mRightForeLegMesh;
+    public MeshView mRightForeLegMesh;
     PhongMaterial material;
 
     Group rightForeLegGroup;

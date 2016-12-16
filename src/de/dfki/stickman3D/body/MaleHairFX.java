@@ -35,7 +35,7 @@ public class MaleHairFX extends BodyPartFX {
     URL url;
     StlMeshImporter importer;
     TriangleMesh maleHairTriangleMesh;
-    MeshView maleHairMeshView;
+    public MeshView maleHairMeshView;
     PhongMaterial material;
 
     public MaleHairFX.SHAPE mShape = MaleHairFX.SHAPE.DEFAULT;

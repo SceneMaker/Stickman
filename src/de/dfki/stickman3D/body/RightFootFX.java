@@ -30,7 +30,7 @@ public class RightFootFX extends BodyPartFX {
 
     RightForeLegFX mRightForeLegFX;
 
-    MeshView mRightFootMeshView;
+    public MeshView mRightFootMeshView;
     PhongMaterial material;
 
     URL url;

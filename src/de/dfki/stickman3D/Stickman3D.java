@@ -494,22 +494,22 @@ public class Stickman3D extends Pane implements Stickman {
                 + this.mLeftFootFX.mLeftFootMeshView.getBoundsInParent().getHeight();
 
         Affine af = new Affine();
-        //mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
-
         int shiftFactor = (int) (StickmanHeight - (StickmanHeight * mScale));
-
         if (isFullScreen) {
             mGeneralYTranslation = (int) ((dim.getHeight() - StickmanHeight) + shiftFactor + 40);
         } else {
             mGeneralYTranslation = (int) ((this.stageHeight - StickmanHeight) + shiftFactor + 110);
         }
-        System.out.println("de.dfki.stickman3D.Stickman3D.update() " + this.stageHeight);
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
         af.appendScale(mScale, mScale);
         af.appendTranslation(0, leaveSpeed); // Added by Robbie, GoDown
         this.getTransforms().clear();
         this.getTransforms().add(af);
-
+    }
+    
+    public void setScale(float scale)
+    {
+        mScale =  scale;
     }
 
     private static class StickmanLogFormatter extends Formatter {

@@ -37,7 +37,7 @@ public class RightUpperArmFX extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mRightpperArmMesh;
+    public MeshView mRightpperArmMesh;
     PhongMaterial material;
 
     Group rightUpperArmGroup;

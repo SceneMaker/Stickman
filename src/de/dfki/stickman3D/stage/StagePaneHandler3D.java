@@ -25,7 +25,8 @@ public class StagePaneHandler3D {
     public StagePaneHandler3D() {
         if (ApplicationLauncherImpl.isRunning()) {
             try {
-                invoke();
+                if(mStickmanStageController == null)
+                    invoke();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -33,13 +34,15 @@ public class StagePaneHandler3D {
     }
 
     public HBox getConfigRoot() throws IOException {
-        invoke();
+        if(mStickmanStageController == null)
+            invoke();
 
         return root;
     }
 
     public HBox getStageRoot() throws IOException {
-        invoke();
+        if(mStickmanStageController == null)
+            invoke();
         AnchorPane controlPanel = (AnchorPane) root.lookup("#controlPanel");
         if (controlPanel != null) {
             root.getChildren().remove(controlPanel);

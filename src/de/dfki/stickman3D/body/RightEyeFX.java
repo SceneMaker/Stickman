@@ -24,9 +24,9 @@ public class RightEyeFX extends BodyPartFX {
     HeadFX mHeadFX;
     Group rightEyeGroup;
 
-    Path border;
-    Path bigPupile;
-    Path smallPupile;
+    public Path border;
+    public Path bigPupile;
+    public Path smallPupile;
 
     double borderXSize = 0;
     float borderYSize = 0;

@@ -36,7 +36,7 @@ public class RightWrist extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mRightWristMesh;
+    public MeshView mRightWristMesh;
     PhongMaterial material;
 
     Group rightWristGroup;

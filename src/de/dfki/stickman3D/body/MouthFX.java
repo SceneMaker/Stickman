@@ -19,8 +19,8 @@ public class MouthFX extends BodyPartFX {
 
     HeadFX mHeadFX;
 
-    Polygon currentDownLipPolygon;
-    Polygon currentUpperLipPolygon;
+    public Polygon currentDownLipPolygon;
+    public Polygon currentUpperLipPolygon;
 
     public MouthFX.SHAPE mShape = MouthFX.SHAPE.DEFAULT;
 

@@ -20,9 +20,9 @@ public class LeftEyeFX extends BodyPartFX {
     HeadFX mHeadFX;
     Group leftEyeGroup;
 
-    Path border;
-    Path bigPupile;
-    Path smallPupile;
+    public Path border;
+    public Path bigPupile;
+    public Path smallPupile;
 
     double borderXSize = 0;
     double borderYSize = 0;

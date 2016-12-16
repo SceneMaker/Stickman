@@ -35,7 +35,7 @@ public class LeftFinger4 extends BodyPartFX {
 
     URL url;
     ColModelImporter imorter;
-    MeshView mLeftFinger4;
+    public MeshView mLeftFinger4;
     PhongMaterial material;
 
     public LeftFinger4(LeftWrist leftWrist) {
