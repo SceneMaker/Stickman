@@ -1,11 +1,9 @@
 package de.dfki.stickman3D;
 
-import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickman3D.controllerhelper.ColorHelper;
 import de.dfki.stickman3D.controllerhelper.OpacityHelper;
-import de.dfki.stickman3D.kinect.Kinect;
 import de.dfki.stickman3D.stage.StickmanStage3D;
 import java.awt.Point;
 import javafx.beans.value.ChangeListener;
@@ -22,8 +20,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -340,42 +336,42 @@ public class StickmanStageController implements ViewController {
     @FXML
     private void handleBG1() {
         String bg1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
-        stage3D.sStickmanHBox.setStyle("-fx-background-image: url('" + bg1 + "'); "
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg1 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG2() {
         String bg2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
-        stage3D.sStickmanHBox.setStyle("-fx-background-image: url('" + bg2 + "'); "
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg2 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG3() {
         String bg3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
-        stage3D.sStickmanHBox.setStyle("-fx-background-image: url('" + bg3 + "'); "
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg3 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG4() {
         String bg4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
-        stage3D.sStickmanHBox.setStyle("-fx-background-image: url('" + bg4 + "'); "
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg4 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG5() {
         String bg5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
-        stage3D.sStickmanHBox.setStyle("-fx-background-image: url('" + bg5 + "'); "
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bg5 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
     private void handleBG6() {
         String bgDefault = getClass().getClassLoader().getResource("Images/bgDefault.png").toExternalForm();
-        stage3D.sStickmanHBox.setStyle("-fx-background-image: url('" + bgDefault + "'); "
+        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bgDefault + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
@@ -398,9 +394,9 @@ public class StickmanStageController implements ViewController {
     @FXML
     public void handleResetCamera() {
 
-        stage3D.getCamera().setTranslateX(stage3D.recordCameraXPosition);
-        stage3D.getCamera().setTranslateY(stage3D.recordCameraYPosition);
-        stage3D.getCamera().setTranslateZ(stage3D.recordCameraZPosition);
+        stage3D.getCamera().setTranslateX(stage3D.getRecordCameraXPosition());
+        stage3D.getCamera().setTranslateY(stage3D.getRecordCameraYPosition());
+        stage3D.getCamera().setTranslateZ(stage3D.getRecordCameraZPosition());
 
         cameraXSlider.setValue(0);
         cameraYSlider.setValue(0);

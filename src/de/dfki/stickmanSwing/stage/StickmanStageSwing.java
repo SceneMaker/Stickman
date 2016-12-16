@@ -118,7 +118,7 @@ public class StickmanStageSwing extends JFrame implements StickmanStage {
     }
 
     @Override
-    public HBox getStickmanPane(String stageIdentifier) throws Exception {
+    public HBox getStickmanBox(String stageIdentifier) throws Exception {
         return null;
     }
 

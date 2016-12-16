@@ -35,7 +35,7 @@ public class SetBackground extends AnimationFX {
         HBox mStickmanPane;
         try {
             mStickmanPane = mStickmanFX.getStickmanStageController().getStickmanStage()
-                    .getStickmanPane(mStageIdentifier);
+                    .getStickmanBox(mStageIdentifier);
 
             //Upload the picture
             if (list.contains(sParameter)) {

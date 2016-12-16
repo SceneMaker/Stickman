@@ -33,7 +33,7 @@ public class ZoomIO extends AnimationFX {
         HBox mStickmanPane;
         try {
             mStickmanPane = mStickmanFX.getStickmanStageController().getStickmanStage()
-                    .getStickmanPane(mStageIdentifier);
+                    .getStickmanBox(mStageIdentifier);
             Platform.runLater(() -> mStickmanPane.getChildren().clear());
             Platform.runLater(() -> {
                 try {

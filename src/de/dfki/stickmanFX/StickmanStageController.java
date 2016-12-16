@@ -323,7 +323,7 @@ public class StickmanStageController implements ViewController {
                     Platform.runLater(() -> {
                         try {
                             HBox mStickmanPane = ((StickmanStageFX) mStickmanOnstage.getStageStickman())
-                                    .getStickmanPane((((StageRoomFX) mStickmanOnstage
+                                    .getStickmanBox((((StageRoomFX) mStickmanOnstage
                                             .getStageRoom()).CONFIG_STAGE));
                             mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanFX/image/" + pic
                                     + ".jpg');"
@@ -344,7 +344,7 @@ public class StickmanStageController implements ViewController {
             Platform.runLater(() -> {
                 try {
                     HBox mStickmanPane = ((StickmanStageFX) mStickmanOnstage.getStageStickman())
-                            .getStickmanPane((((StageRoomFX) mStickmanOnstage
+                            .getStickmanBox((((StageRoomFX) mStickmanOnstage
                                     .getStageRoom()).CONFIG_STAGE));
                     String hex = toHexCode(backgroundColor);
                     mStickmanPane.setStyle("-fx-background-color: " + hex + ";");
@@ -556,7 +556,7 @@ public class StickmanStageController implements ViewController {
             HBox mStickmanPane;
             try {
                 mStickmanPane = ((StickmanStageFX) mStickmanOnstage.getStageStickman())
-                        .getStickmanPane((((StageRoomFX) mStickmanOnstage
+                        .getStickmanBox((((StageRoomFX) mStickmanOnstage
                                 .getStageRoom()).CONFIG_STAGE));
                 // Upload the picture
                 if (StickmanFX.backgroundList.contains(this.backgroundRecord)) {

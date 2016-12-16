@@ -62,7 +62,7 @@ public class StickmansOnStage3D extends StickmansOnStage {
     private void createNonFullStickman(String name, Gender.TYPE gender, float scale) {
         if (!identifier.equals("")) {
             try {
-                HBox h = stickmanStage.getStickmanPane(identifier);
+                HBox h = stickmanStage.getStickmanBox(identifier);
 
                 Stickman stickman = new Stickman3D(name, gender, scale, h.getPrefHeight());
                 putFullStickmanOnStage(name, stickman);

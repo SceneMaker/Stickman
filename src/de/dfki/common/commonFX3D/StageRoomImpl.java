@@ -52,7 +52,7 @@ public abstract class StageRoomImpl implements StageRoom {
         StickmanStage3D ss3D;
         try {
             ss3D = (StickmanStage3D) getStickmanStage();
-            ss3D.showControlPanel = true;
+            ss3D.setShowControlPanel(true);
             ss3D.addStickmanToStage(CONFIG_STAGE);
             ss3D.showStage(CONFIG_STAGE);
         } catch (Exception e) {

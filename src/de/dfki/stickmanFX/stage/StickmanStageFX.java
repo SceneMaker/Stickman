@@ -141,7 +141,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
 
     public void addStickmanToStage(String stageIdentifier) throws Exception {
         HBox sStickmanPane;
-        sStickmanPane = getStickmanPane(stageIdentifier);
+        sStickmanPane = getStickmanBox(stageIdentifier);
         sStickmanPane.getChildren().clear();
         for (String key : stickamnsOnStage.get(stageIdentifier).getStickmanNames()) {
             sStickmanPane.getChildren().add((Node) stickamnsOnStage.get(stageIdentifier).getStickmanByKey(key));
@@ -151,12 +151,12 @@ public class StickmanStageFX extends Application implements StickmanStage {
 
     public void addStickmanToStage(String stageIdentifier, StickmanFX sman) throws Exception {
         HBox sStickmanPane;
-        sStickmanPane = getStickmanPane(stageIdentifier);
+        sStickmanPane = getStickmanBox(stageIdentifier);
         sStickmanPane.getChildren().clear();
         sStickmanPane.getChildren().add(sman);
     }
 
-    public HBox getStickmanPane(String stageIdentifier) throws Exception {
+    public HBox getStickmanBox(String stageIdentifier) throws Exception {
         HBox sStickmanPane;
         if (stickmanFXStages.containsKey(stageIdentifier)) {
             sStickmanPane = (HBox) ((ScrollPane) stickmanFXStages.get(stageIdentifier).getScene().getRoot()
@@ -218,7 +218,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
 
     public void clearStage(String stageIdentifier) {
         try {
-            HBox pane = getStickmanPane(stageIdentifier);
+            HBox pane = getStickmanBox(stageIdentifier);
             Platform.runLater(() -> {
                 pane.getChildren().clear();
                 Stage stage = stickmanFXStages.get(stageIdentifier);

@@ -25,7 +25,7 @@ public interface StickmanStage {
 
     void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier);
 
-    HBox getStickmanPane(String stageIdentifier) throws Exception;
+    HBox getStickmanBox(String stageIdentifier) throws Exception;
 
     BufferedImage getStageAsImage(String stageIdentifier) throws Exception;
 
