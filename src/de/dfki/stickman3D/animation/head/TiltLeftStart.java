@@ -19,10 +19,6 @@ import java.util.ArrayList;
  */
 public class TiltLeftStart extends Animation3D {
 
-    public TiltLeftStart() {
-        mAnimType = ANIMTYPE.ON;
-    }
-
     public TiltLeftStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }

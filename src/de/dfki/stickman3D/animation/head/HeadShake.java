@@ -52,6 +52,10 @@ public class HeadShake extends Animation3D {
             }
         }
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
+
     }
 
 }

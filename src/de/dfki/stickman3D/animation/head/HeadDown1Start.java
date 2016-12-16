@@ -19,10 +19,6 @@ import de.dfki.stickman3D.animationlogic.Animation3D;
  */
 public class HeadDown1Start extends Animation3D {
 
-    public HeadDown1Start() {
-        mAnimType = ANIMTYPE.ON;
-    }
-
     public HeadDown1Start(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
