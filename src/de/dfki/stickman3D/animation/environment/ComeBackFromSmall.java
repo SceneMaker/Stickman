@@ -84,5 +84,9 @@ public class ComeBackFromSmall extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", rotationUnit * 32));
         playAnimationPart(20);
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
+
     }
 }

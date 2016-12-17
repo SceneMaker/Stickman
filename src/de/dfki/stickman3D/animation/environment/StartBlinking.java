@@ -1,6 +1,7 @@
 package de.dfki.stickman3D.animation.environment;
 
 import de.dfki.stickman3D.Stickman3D;
+import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 
 /**
@@ -16,6 +17,10 @@ import de.dfki.stickman3D.animationlogic.Animation3D;
  */
 public class StartBlinking extends Animation3D {
 
+    public StartBlinking() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     int frequent;
     int actionDuration;
 
@@ -25,16 +30,20 @@ public class StartBlinking extends Animation3D {
         this.frequent = frequent;
         this.actionDuration = actionDuration;
     }
-    
+
     public StartBlinking(Stickman3D sm, int frequent, boolean block) {
         super(sm, frequent, block);
         mStickmanFX = sm;
-        this.frequent = frequent;
-        this.actionDuration = 20;
+        this.frequent = 5000;
+        this.actionDuration = 50;
     }
 
     @Override
     public void playAnimation() {
         mStickmanFX.mBlinking = new Blinking(mStickmanFX, frequent, actionDuration);
+
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

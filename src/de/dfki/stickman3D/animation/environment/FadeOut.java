@@ -43,6 +43,8 @@ public class FadeOut extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "FADEOUT"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "FADEOUT"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mNoseFX, "shape", "FADEOUT"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEar, "shape", "FADEIN"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEar, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "FADEOUT"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "FADEOUT"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "shape", "FADEOUT"));
@@ -76,5 +78,8 @@ public class FadeOut extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFootFX, "shape", "FADEOUT"));
         playAnimationPart(500);
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

@@ -45,6 +45,8 @@ public class FadeIn extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mNoseFX, "shape", "FADEIN"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEar, "shape", "FADEIN"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEar, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMaleHairFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mNeckFX, "shape", "FADEIN"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "shape", "FADEIN"));
@@ -75,5 +77,8 @@ public class FadeIn extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFootFX, "shape", "FADEIN"));
         playAnimationPart(500);
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package de.dfki.stickman3D.animation.environment;
 
 import de.dfki.stickman3D.Stickman3D;
+import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 
 /**
@@ -16,6 +17,10 @@ import de.dfki.stickman3D.animationlogic.Animation3D;
  */
 public class StartBreathing extends Animation3D {
 
+    public StartBreathing() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     int frequent;
     int actionDuration;
 
@@ -29,12 +34,16 @@ public class StartBreathing extends Animation3D {
     public StartBreathing(Stickman3D sm, int frequent, boolean block) {
         super(sm, frequent, block);
         mStickmanFX = sm;
-        this.frequent = frequent;
-        this.actionDuration = 500;
+        this.frequent = 4000;
+        this.actionDuration = 2000;
     }
-    
+
     @Override
     public void playAnimation() {
         mStickmanFX.mBreathing = new Breathing(mStickmanFX, frequent, actionDuration);
+
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

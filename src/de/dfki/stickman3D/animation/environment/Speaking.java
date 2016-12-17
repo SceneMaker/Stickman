@@ -41,5 +41,9 @@ public class Speaking extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
         playAnimationPart(20);
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
+
     }
 }

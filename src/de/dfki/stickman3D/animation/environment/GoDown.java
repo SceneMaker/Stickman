@@ -72,6 +72,9 @@ public class GoDown extends Animation3D {
         playAnimationPart(20);
         mStickmanFX.leaveSpeed = recordOriginLeaveSpeed;
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 
 }
