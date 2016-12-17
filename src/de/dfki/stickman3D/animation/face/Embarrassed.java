@@ -52,5 +52,8 @@ public class Embarrassed extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "EMBARRASSEDEND"));
         playAnimationPart(mDuration);
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

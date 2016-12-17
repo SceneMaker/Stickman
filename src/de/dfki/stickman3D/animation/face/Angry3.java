@@ -165,5 +165,9 @@ public class Angry3 extends Animation3D {
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger4, "rotate", -50));
         }
         playAnimationPart(500);
+
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

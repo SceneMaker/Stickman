@@ -44,5 +44,8 @@ public class Happy extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "HAPPYEND"));
         playAnimationPart(mDuration);
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }
