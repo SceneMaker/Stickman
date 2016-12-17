@@ -13,22 +13,8 @@ import de.dfki.stickman3D.animationlogic.Animation3D;
 
 import java.util.ArrayList;
 
-/**
- * An angry facial movement is created in this class. The face moves from the
- * default state to the angry state, and then comes back to the default state.
- *
- * @author Beka Aptsiauri
- */
 public class TurnRight extends Animation3D {
 
-    /**
-     *
-     * @param sm StickmanSwing
-     * @param duration Control the speed of the movement from one emotion state
-     * to another emotion state.
-     * @param block block or not the others movements, when one movement is not
-     * finished.
-     */
     public TurnRight() {
         mAnimType = ANIMTYPE.ON;
     }
@@ -37,9 +23,6 @@ public class TurnRight extends Animation3D {
         super(sm, duration, block);
     }
 
-    /**
-     * This method creates the angry facial movement.
-     */
     @Override
     public void playAnimation() {
         mAnimationPartFX = new ArrayList<>();
@@ -76,5 +59,8 @@ public class TurnRight extends Animation3D {
             playAnimationPart(500);
         }
 
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

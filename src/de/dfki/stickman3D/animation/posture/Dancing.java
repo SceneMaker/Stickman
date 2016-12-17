@@ -21,14 +21,6 @@ import java.util.ArrayList;
  */
 public class Dancing extends Animation3D {
 
-    /**
-     *
-     * @param sm StickmanSwing
-     * @param duration Control the speed of the movement from one emotion state
-     * to another emotion state.
-     * @param block block or not the others movements, when one movement is not
-     * finished.
-     */
     public Dancing() {
         mAnimType = ANIMTYPE.ON;
     }
@@ -37,15 +29,9 @@ public class Dancing extends Animation3D {
         super(sm, duration, block);
     }
 
-    /**
-     * This method creates the angry facial movement.
-     */
     @Override
     public void playAnimation() {
 
-//    	mAnimationPartFX = new ArrayList<>();
-//    	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -90));
-//    	playAnimationPart(500);
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -40));
         if (mStickmanFX.mType == Gender.TYPE.MALE) {
@@ -177,8 +163,8 @@ public class Dancing extends Animation3D {
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger2, "zrotate", 10));
         playAnimationPart(500);
 
-//            mAnimationPartFX = new ArrayList<>();
-//        	mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", 90));
-//        	playAnimationPart(500);
+        if (StickmanStageController.currentRadioButton != null) {
+            StickmanStageController.currentRadioButton.setSelected(false);
+        }
     }
 }

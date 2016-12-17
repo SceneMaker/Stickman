@@ -21,18 +21,6 @@ import java.util.ArrayList;
  */
 public class TurnRightStart extends Animation3D {
 
-    /**
-     *
-     * @param sm StickmanSwing
-     * @param duration Control the speed of the movement from one emotion state
-     * to another emotion state.
-     * @param block block or not the others movements, when one movement is not
-     * finished.
-     */
-    public TurnRightStart() {
-        mAnimType = ANIMTYPE.ON;
-    }
-
     public TurnRightStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }
