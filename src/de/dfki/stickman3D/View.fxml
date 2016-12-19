@@ -319,9 +319,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="headXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="headYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="headZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="headXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="headYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="headZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -363,9 +363,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="upperBodyXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="upperBodyYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="upperBodyZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="upperBodyXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="upperBodyYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="upperBodyZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -407,9 +407,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftUpperArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftUpperArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftUpperArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -451,9 +451,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftForeArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftForeArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftForeArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -495,9 +495,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftWristXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftWristYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftWristZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftWristXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftWristYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftWristZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -539,9 +539,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftFinger1XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger1YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger1ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger1XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger1YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger1ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -583,9 +583,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftFinger2XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger2YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger2ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger2XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger2YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger2ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -627,9 +627,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftFinger3XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger3YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger3ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger3XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger3YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger3ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -671,9 +671,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftFinger4XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger4YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftFinger4ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger4XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger4YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger4ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -715,9 +715,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightUpperArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightUpperArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightUpperArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -759,9 +759,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightForeArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightForeArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightForeArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -803,9 +803,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightWristXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightWristYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightWristZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightWristXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightWristYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightWristZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -847,9 +847,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightFinger1XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger1YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger1ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger1XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger1YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger1ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -891,9 +891,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightFinger2XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger2YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger2ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger2XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger2YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger2ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -935,9 +935,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightFinger3XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger3YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger3ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger3XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger3YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger3ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -979,9 +979,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightFinger4XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger4YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightFinger4ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger4XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger4YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger4ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -1011,9 +1011,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="downBodyXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="downBodyYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="downBodyZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="downBodyXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="downBodyYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="downBodyZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -1055,9 +1055,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightUpperLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightUpperLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightUpperLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -1099,9 +1099,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="rightForeLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightForeLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="rightForeLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -1143,9 +1143,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftUpperLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftUpperLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftUpperLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -1187,9 +1187,9 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <TextField fx:id="leftForeLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftForeLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                <TextField fx:id="leftForeLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                 <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
@@ -1276,7 +1276,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="cameraXTranslationField" layoutX="61.0" layoutY="308.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                  <TextField fx:id="cameraXTranslationField" editable="false" layoutX="61.0" layoutY="308.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                   <Label layoutX="85.0" layoutY="285.0" text="X" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -1297,7 +1297,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="cameraYTranslationField" layoutX="206.0" layoutY="308.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                  <TextField fx:id="cameraYTranslationField" editable="false" layoutX="206.0" layoutY="308.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                   <Button fx:id="cameraZMinusTranslationButton" layoutX="312.0" layoutY="302.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#handleCameraZTranslation" prefHeight="40.0" prefWidth="40.0" text="-">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -1313,7 +1313,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="cameraZTranslationField" layoutX="352.0" layoutY="308.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                  <TextField fx:id="cameraZTranslationField" editable="false" layoutX="352.0" layoutY="308.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                   <Label layoutX="182.0" layoutY="369.0" text="Camera Focus" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -1329,7 +1329,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="nearClipField" layoutX="61.0" layoutY="440.0" prefHeight="28.0" prefWidth="61.0" text="0.8" />
+                  <TextField fx:id="nearClipField" layoutX="61.0" editable="false" layoutY="440.0" prefHeight="28.0" prefWidth="61.0" text="0.8" />
                   <Label layoutX="53.0" layoutY="406.0" text="NearClip" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -1350,7 +1350,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="farClipField" layoutX="206.0" layoutY="440.0" prefHeight="28.0" prefWidth="61.0" text="3000" />
+                  <TextField fx:id="farClipField" layoutX="206.0" editable="false" layoutY="440.0" prefHeight="28.0" prefWidth="61.0" text="3000" />
                   <Button fx:id="fieldOfViewMinusButton" layoutX="312.0" layoutY="434.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#handleFieldOfView" prefHeight="40.0" prefWidth="40.0" text="-">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -1366,7 +1366,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="fieldOfViewField" layoutX="352.0" layoutY="440.0" prefHeight="28.0" prefWidth="61.0" text="30" />
+                  <TextField fx:id="fieldOfViewField" layoutX="352.0" editable="false" layoutY="440.0" prefHeight="28.0" prefWidth="61.0" text="30" />
                </children>
             </AnchorPane>
          </children>
