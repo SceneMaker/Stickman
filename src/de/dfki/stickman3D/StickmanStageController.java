@@ -4,6 +4,7 @@ import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.stickman3D.controllerhelper.ColorHelper;
 import de.dfki.stickman3D.controllerhelper.OpacityHelper;
+import de.dfki.stickman3D.controllerhelper.SliderHelper;
 import de.dfki.stickman3D.stage.StickmanStage3D;
 import java.awt.Point;
 import javafx.beans.value.ChangeListener;
@@ -182,7 +183,98 @@ public class StickmanStageController implements ViewController {
     @FXML
     private TextField fieldOfViewField;
     @FXML
+    private Slider headXSlider;
+    @FXML
+    private Slider headYSlider;
+    @FXML
+    private Slider headZSlider;
+    @FXML
+    private Slider upperBodyXSlider;
+    @FXML
+    private Slider upperBodyYSlider;
+    @FXML
+    private Slider upperBodyZSlider;
+    @FXML
     private Slider headOpacitySlider;
+    @FXML
+    private Slider leftUpperArmXSlider;
+    @FXML
+    private Slider leftUpperArmYSlider;
+    @FXML
+    private Slider leftUpperArmZSlider;
+    @FXML
+    private Slider rightUpperArmXSlider;
+    @FXML
+    private Slider rightUpperArmYSlider;
+    @FXML
+    private Slider rightUpperArmZSlider;
+    @FXML
+    private Slider leftForeArmXSlider;
+    @FXML
+    private Slider leftForeArmYSlider;
+    @FXML
+    private Slider leftForeArmZSlider;
+    @FXML
+    private Slider leftWristXSlider;
+    @FXML
+    private Slider leftWristYSlider;
+    @FXML
+    private Slider leftWristZSlider;
+    @FXML
+    private Slider leftFinger1XSlider;
+    @FXML
+    private Slider leftFinger1YSlider;
+    @FXML
+    private Slider leftFinger1ZSlider;
+    @FXML
+    private Slider leftFinger2XSlider;
+    @FXML
+    private Slider leftFinger2YSlider;
+    @FXML
+    private Slider leftFinger2ZSlider;
+    @FXML
+    private Slider leftFinger3XSlider;
+    @FXML
+    private Slider leftFinger3YSlider;
+    @FXML
+    private Slider leftFinger3ZSlider;
+    @FXML
+    private Slider leftFinger4XSlider;
+    @FXML
+    private Slider leftFinger4YSlider;
+    @FXML
+    private Slider leftFinger4ZSlider;
+    @FXML
+    private Slider rightWristXSlider;
+    @FXML
+    private Slider rightWristYSlider;
+    @FXML
+    private Slider rightWristZSlider;
+    @FXML
+    private Slider rightFinger1XSlider;
+    @FXML
+    private Slider rightFinger1YSlider;
+    @FXML
+    private Slider rightFinger1ZSlider;
+    @FXML
+    private Slider rightFinger2XSlider;
+    @FXML
+    private Slider rightFinger2YSlider;
+    @FXML
+    private Slider rightFinger2ZSlider;
+    @FXML
+    private Slider rightFinger3XSlider;
+    @FXML
+    private Slider rightFinger3YSlider;
+    @FXML
+    private Slider rightFinger3ZSlider;
+    @FXML
+    private Slider rightFinger4XSlider;
+    @FXML
+    private Slider rightFinger4YSlider;
+    @FXML
+    private Slider rightFinger4ZSlider;
+    
     @FXML
     private Slider hairOpacitySlider;
     @FXML
@@ -199,6 +291,38 @@ public class StickmanStageController implements ViewController {
     private Slider browOpacitySlider;
     @FXML
     private Slider noseOpacitySlider;
+    @FXML
+    private Slider rightForeArmXSlider;
+    @FXML
+    private Slider rightForeArmYSlider;
+    @FXML
+    private Slider rightForeArmZSlider;
+    @FXML
+    private Slider downBodyYSlider;
+    @FXML
+    private Slider rightUpperLegXSlider;
+    @FXML
+    private Slider rightUpperLegYSlider;
+    @FXML
+    private Slider rightUpperLegZSlider;
+    @FXML
+    private Slider rightForeLegXSlider;
+    @FXML
+    private Slider rightForeLegYSlider;
+    @FXML
+    private Slider rightForeLegZSlider;
+    @FXML
+    private Slider leftUpperLegXSlider;
+    @FXML
+    private Slider leftUpperLegYSlider;
+    @FXML
+    private Slider leftUpperLegZSlider;
+    @FXML
+    private Slider leftForeLegXSlider;
+    @FXML
+    private Slider leftForeLegYSlider;
+    @FXML
+    private Slider leftForeLegZSlider;
 
     @FXML
     private ImageView bg1;
@@ -249,48 +373,72 @@ public class StickmanStageController implements ViewController {
         WithoutPerlinNoise.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
         WithPerlinNoise.getStylesheets().add(this.getClass().getResource("RadioButtonCSS.css").toExternalForm());
 
-        cameraXSlider.setMin(-180);
-        cameraXSlider.setMax(180);
-        cameraXSlider.setValue(0);
-        cameraXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            if (isCameraStarted) {
-                double newValue = new_val.doubleValue();
-                double oldValue = old_val.doubleValue();
-                xRotateFactor = newValue - oldValue;
-                Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
-                Rotate rx = new Rotate(xRotateFactor, pivot.x, pivot.y, 1505, Rotate.X_AXIS);
-                stage3D.getCamera().getTransforms().addAll(rx);
-            }
-        });
-
-        cameraYSlider.setMin(-180);
-        cameraYSlider.setMax(180);
-        cameraYSlider.setValue(0);
-        cameraYSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            if (isCameraStarted) {
-                double newValue = new_val.doubleValue();
-                double oldValue = old_val.doubleValue();
-                yRotateFactor = newValue - oldValue;
-                Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
-                Rotate ry = new Rotate(yRotateFactor, pivot.x, pivot.y, 1505, Rotate.Y_AXIS);
-                stage3D.getCamera().getTransforms().addAll(ry);
-            }
-        });
-
-        cameraZSlider.setMin(-180);
-        cameraZSlider.setMax(180);
-        cameraZSlider.setValue(0);
-        cameraZSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            if (isCameraStarted) {
-                double newValue = new_val.doubleValue();
-                double oldValue = old_val.doubleValue();
-                zRotateFactor = newValue - oldValue;
-                Point pivot = currentStickman.mUpperBody.getUpperBodyPosition();
-                Rotate rz = new Rotate(zRotateFactor, pivot.x, pivot.y, 1505, Rotate.Z_AXIS);
-                stage3D.getCamera().getTransforms().addAll(rz);
-            }
-        });
-
+        SliderHelper.handleCameraSlider(this, cameraXSlider, "X");
+        SliderHelper.handleCameraSlider(this, cameraYSlider, "Y");
+        SliderHelper.handleCameraSlider(this, cameraZSlider, "Z");
+        
+        SliderHelper.handleHeadSlider(this, headXSlider, "X");
+        SliderHelper.handleHeadSlider(this, headYSlider, "Y");
+        SliderHelper.handleHeadSlider(this, headZSlider, "Z");
+        SliderHelper.handleUpperBodySlider(this, upperBodyXSlider, "X");
+        SliderHelper.handleUpperBodySlider(this, upperBodyYSlider, "Y");
+        SliderHelper.handleUpperBodySlider(this, upperBodyZSlider, "Z");
+        SliderHelper.handleUpperArmSlider(this, leftUpperArmXSlider, "X", "L");
+        SliderHelper.handleUpperArmSlider(this, leftUpperArmYSlider, "Y", "L");
+        SliderHelper.handleUpperArmSlider(this, leftUpperArmZSlider, "Z", "L");
+        SliderHelper.handleUpperArmSlider(this, rightUpperArmXSlider, "X", "R");
+        SliderHelper.handleUpperArmSlider(this, rightUpperArmYSlider, "Y", "R");
+        SliderHelper.handleUpperArmSlider(this, rightUpperArmZSlider, "Z", "R");
+        SliderHelper.handleForeArmSlider(this, leftForeArmXSlider, "X", "L");
+        SliderHelper.handleForeArmSlider(this, leftForeArmYSlider, "Y", "L");
+        SliderHelper.handleForeArmSlider(this, leftForeArmZSlider, "Z", "L");
+        SliderHelper.handleForeArmSlider(this, rightForeArmXSlider, "X", "R");
+        SliderHelper.handleForeArmSlider(this, rightForeArmYSlider, "Y", "R");
+        SliderHelper.handleForeArmSlider(this, rightForeArmZSlider, "Z", "R");
+        SliderHelper.handleWristSlider(this, leftWristXSlider, "X", "L");
+        SliderHelper.handleWristSlider(this, leftWristYSlider, "Y", "L");
+        SliderHelper.handleWristSlider(this, leftWristZSlider, "Z", "L");
+        SliderHelper.handleWristSlider(this, rightWristXSlider, "X", "R");
+        SliderHelper.handleWristSlider(this, rightWristYSlider, "Y", "R");
+        SliderHelper.handleWristSlider(this, rightWristZSlider, "Z", "R");
+        SliderHelper.handleFinger1Slider(this, leftFinger1XSlider, "X", "L");
+        SliderHelper.handleFinger1Slider(this, leftFinger1YSlider, "Y", "L");
+        SliderHelper.handleFinger1Slider(this, leftFinger1ZSlider, "Z", "L");
+        SliderHelper.handleFinger1Slider(this, rightFinger1XSlider, "X", "R");
+        SliderHelper.handleFinger1Slider(this, rightFinger1YSlider, "Y", "R");
+        SliderHelper.handleFinger1Slider(this, rightFinger1ZSlider, "Z", "R");
+        SliderHelper.handleFinger2Slider(this, leftFinger2XSlider, "X", "L");
+        SliderHelper.handleFinger2Slider(this, leftFinger2YSlider, "Y", "L");
+        SliderHelper.handleFinger2Slider(this, leftFinger2ZSlider, "Z", "L");
+        SliderHelper.handleFinger2Slider(this, rightFinger2XSlider, "X", "R");
+        SliderHelper.handleFinger2Slider(this, rightFinger2YSlider, "Y", "R");
+        SliderHelper.handleFinger2Slider(this, rightFinger2ZSlider, "Z", "R");
+        SliderHelper.handleFinger3Slider(this, leftFinger3XSlider, "X", "L");
+        SliderHelper.handleFinger3Slider(this, leftFinger3YSlider, "Y", "L");
+        SliderHelper.handleFinger3Slider(this, leftFinger3ZSlider, "Z", "L");
+        SliderHelper.handleFinger3Slider(this, rightFinger3XSlider, "X", "R");
+        SliderHelper.handleFinger3Slider(this, rightFinger3YSlider, "Y", "R");
+        SliderHelper.handleFinger3Slider(this, rightFinger3ZSlider, "Z", "R");
+        SliderHelper.handleFinger4Slider(this, leftFinger4XSlider, "X", "L");
+        SliderHelper.handleFinger4Slider(this, leftFinger4YSlider, "Y", "L");
+        SliderHelper.handleFinger4Slider(this, leftFinger4ZSlider, "Z", "L");
+        SliderHelper.handleFinger4Slider(this, rightFinger4XSlider, "X", "R");
+        SliderHelper.handleFinger4Slider(this, rightFinger4YSlider, "Y", "R");
+        SliderHelper.handleFinger4Slider(this, rightFinger4ZSlider, "Z", "R");
+        SliderHelper.handleDownBodySlider(this, downBodyYSlider, "Y");
+        SliderHelper.handleUpperLegSlider(this, rightUpperLegXSlider, "X", "R");
+        SliderHelper.handleUpperLegSlider(this, rightUpperLegYSlider, "Y", "R");
+        SliderHelper.handleUpperLegSlider(this, rightUpperLegZSlider, "Z", "R");
+        SliderHelper.handleUpperLegSlider(this, leftUpperLegXSlider, "X", "L");
+        SliderHelper.handleUpperLegSlider(this, leftUpperLegYSlider, "Y", "L");
+        SliderHelper.handleUpperLegSlider(this, leftUpperLegZSlider, "Z", "L");
+        SliderHelper.handleForeLegSlider(this, rightForeLegXSlider, "X", "R");
+        SliderHelper.handleForeLegSlider(this, rightForeLegYSlider, "Y", "R");
+        SliderHelper.handleForeLegSlider(this, rightForeLegZSlider, "Z", "R");
+        SliderHelper.handleForeLegSlider(this, leftForeLegXSlider, "X", "L");
+        SliderHelper.handleForeLegSlider(this, leftForeLegYSlider, "Y", "L");
+        SliderHelper.handleForeLegSlider(this, leftForeLegZSlider, "Z", "L");
+        
         OpacityHelper.headOpacityChanger(this, headOpacitySlider);
         OpacityHelper.hairOpacityChanger(this, hairOpacitySlider);
         OpacityHelper.bodyOpacityChanger(this, bodyOpacitySlider);

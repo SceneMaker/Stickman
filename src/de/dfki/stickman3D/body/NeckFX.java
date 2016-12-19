@@ -13,6 +13,7 @@ import javafx.scene.transform.Rotate;
 
 import java.awt.*;
 import java.net.URL;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -82,9 +83,11 @@ public class NeckFX extends BodyPartFX {
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+        
+        Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
         neckMeshView.getTransforms().clear();
-        neckMeshView.getTransforms().addAll(rx, ry, rz);
+        neckMeshView.getTransforms().addAll(rx, ry, rz, translation);
 
         switch (mShape) {
             case FADEIN:

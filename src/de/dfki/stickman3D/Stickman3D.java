@@ -47,6 +47,7 @@ import de.dfki.stickman3D.animationlogic.*;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.EventAnimation3D;
+import de.dfki.stickman3D.body.UpperBodyAndHead;
 import de.dfki.stickman3D.environment.SpeechBubbleFX;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
@@ -162,6 +163,7 @@ public class Stickman3D extends Pane implements Stickman {
     public RightUpperLegFX mRightUpperLegFX;
     public RightForeLegFX mRightForeLegFX;
     public RightFootFX mRightFootFX;
+    public UpperBodyAndHead mUpperBodyAndHead;
     // environment
     public SpeechBubbleFX mSpeechBubbleFX;
     private StageRoom stageController;
@@ -213,6 +215,7 @@ public class Stickman3D extends Pane implements Stickman {
         mRightUpperLegFX = new RightUpperLegFX(mDownBody);
         mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
         mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mUpperBodyAndHead = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
         mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
@@ -263,6 +266,7 @@ public class Stickman3D extends Pane implements Stickman {
         mRightUpperLegFX = new RightUpperLegFX(mDownBody);
         mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
         mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mUpperBodyAndHead = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
         mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
@@ -311,6 +315,7 @@ public class Stickman3D extends Pane implements Stickman {
         mRightUpperLegFX = new RightUpperLegFX(mDownBody);
         mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
         mRightFootFX = new RightFootFX(mRightForeLegFX);
+        mUpperBodyAndHead = new UpperBodyAndHead(mHeadFX, mUpperBody, mNeckFX);
 
         mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
@@ -516,7 +521,7 @@ public class Stickman3D extends Pane implements Stickman {
         this.getChildren().addAll(mNeckFX, mHeadFX,
                 mUpperBody, mDownBody, mRightUpperArmFX, mLeftUpperLegFX, mLeftForeLegFX,
                 mLeftFootFX, mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-                mStarsFX, mSpeechBubbleFX, nameText, mLeftEar, mRightEar);
+                mStarsFX, mSpeechBubbleFX, nameText, mLeftEar, mRightEar, mUpperBodyAndHead);
 
     }
 

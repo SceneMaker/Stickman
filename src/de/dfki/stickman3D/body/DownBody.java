@@ -17,6 +17,7 @@ import javafx.scene.transform.Rotate;
 
 import java.awt.*;
 import java.net.URL;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -110,9 +111,11 @@ public class DownBody extends BodyPartFX {
         }
 
         rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+        
+        Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
         mDownBodyGroup.getTransforms().clear();
-        mDownBodyGroup.getTransforms().addAll(rx, ry, rz);
+        mDownBodyGroup.getTransforms().addAll(rx, ry, rz, translation);
 
         switch (mShape) {
             case FADEIN:

@@ -12,6 +12,7 @@ import javafx.scene.transform.Rotate;
 
 import java.awt.*;
 import java.net.URL;
+import javafx.scene.transform.Translate;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -107,17 +108,15 @@ public class UpperBody extends BodyPartFX {
     @Override
     public void calculate(int step) {
 
-//		rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
-            rx = new Rotate(mXRotation, 0, 10, 0, Rotate.X_AXIS);
-        } else {
-            rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        }
-        ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-        rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
+// Setze PivotElement entsprechend der Y-Translation
+        rx = new Rotate(mXRotation, 0, mYTranslation, 0, Rotate.X_AXIS);
+        ry = new Rotate(mYRotation, 0, mYTranslation, 0, Rotate.Y_AXIS);
+        rz = new Rotate(mZRotation, 0, mYTranslation, 0, Rotate.Z_AXIS);
+        
+        Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
+        
         mUpperBodyGroup.getTransforms().clear();
-        mUpperBodyGroup.getTransforms().addAll(rx, ry, rz);
+        mUpperBodyGroup.getTransforms().addAll(rx, ry, rz, translation);
 
         switch (mShape) {
             case FADEIN:

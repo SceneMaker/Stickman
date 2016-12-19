@@ -12,6 +12,7 @@ import javafx.scene.transform.Rotate;
 
 import java.awt.*;
 import java.net.URL;
+import javafx.scene.transform.Translate;
 
 /**
  *
@@ -44,7 +45,7 @@ public class HeadFX extends BodyPartFX {
     URL url;
     ColModelImporter imorter;
     StlMeshImporter im;
-    Group mHead;
+    public Group mHead;
 
     int mHeadRadius = 60;
     int mHeadHeight = 30;
@@ -143,9 +144,11 @@ public class HeadFX extends BodyPartFX {
         Rotate rx = new Rotate(mXRotation, 0, 60, 0, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, 0, 60, 0, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, 0, 60, 0, Rotate.Z_AXIS);
+        
+        Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
         mHead.getTransforms().clear();
-        mHead.getTransforms().addAll(rz, ry, rx);
+        mHead.getTransforms().addAll(rz, ry, rx, translation);
 
         switch (mShape) {
             case FADEIN:

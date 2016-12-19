@@ -120,8 +120,7 @@ public class Animator3D {
         while (mCurrentStep > 0) {
             if (mCurrentStep == sMAX_ANIM_STEPS) {
                 // renderEventAnimatione animation components
-                mAnimationComponents.stream().forEach((comp)
-                        -> {
+                mAnimationComponents.stream().forEach((comp) -> {
                     BodyPartFX bodypartFX = comp.mBodyPartFX;
                     String action = comp.mAction;
                     sCurrentAction = action;
@@ -140,7 +139,13 @@ public class Animator3D {
                         bodypartFX.setTilt(param);
                     }
                     if (action.equalsIgnoreCase("translate")) {
-                        bodypartFX.setTranslation(param);
+                        bodypartFX.set_X_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ytranslate")) {
+                        bodypartFX.set_Y_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) {
+                        bodypartFX.set_Z_Translation(param);
                     }
                     if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.setShape(paramString);
@@ -167,9 +172,14 @@ public class Animator3D {
                     }
 
                     if (action.equalsIgnoreCase("translate")) {
-                        bodypartFX.calculateTranslation(mCurrentStep);
+                        bodypartFX.calculate_X_Translation(mCurrentStep);
                     }
-
+                    if (action.equalsIgnoreCase("ytranslate")) {
+                        bodypartFX.calculate_Y_Translation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) {
+                        bodypartFX.calculate_Z_Translation(mCurrentStep);
+                    }
                     if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.calculateShape(mCurrentStep);
                     }
@@ -227,8 +237,7 @@ public class Animator3D {
         while (mCurrentStep > 0) {
             if (mCurrentStep == step) {
                 // renderEventAnimatione animation components
-                mAnimationComponents.stream().forEach((comp)
-                        -> {
+                mAnimationComponents.stream().forEach((comp) -> {
                     BodyPartFX bodypartFX = comp.mBodyPartFX;
                     String action = comp.mAction;
                     sCurrentAction = action;
@@ -247,7 +256,13 @@ public class Animator3D {
                         bodypartFX.setTilt(param);
                     }
                     if (action.equalsIgnoreCase("translate")) {
-                        bodypartFX.setTranslation(param);
+                        bodypartFX.set_X_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ytranslate")) {
+                        bodypartFX.set_Y_Translation(param);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) {
+                        bodypartFX.set_Z_Translation(param);
                     }
                     if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.setShape(paramString);
@@ -274,9 +289,14 @@ public class Animator3D {
                     }
 
                     if (action.equalsIgnoreCase("translate")) {
-                        bodypartFX.calculateTranslation(mCurrentStep);
+                        bodypartFX.calculate_X_Translation(mCurrentStep);
                     }
-
+                    if (action.equalsIgnoreCase("ytranslate")) {
+                        bodypartFX.calculate_Y_Translation(mCurrentStep);
+                    }
+                    if (action.equalsIgnoreCase("ztranslate")) {
+                        bodypartFX.calculate_Z_Translation(mCurrentStep);
+                    }
                     if (action.equalsIgnoreCase("shape")) {
                         bodypartFX.calculateShape(mCurrentStep);
                     }
@@ -315,7 +335,7 @@ public class Animator3D {
                 }
 
                 new WaitThread(mRenderPauseDuration).start();
-                // block this until WaitThread will unblock 
+                // block this until WaitThread will unblock
                 try {
                     mRenderingPause.acquire(1);
                 } catch (InterruptedException ex) {
