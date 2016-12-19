@@ -34,8 +34,8 @@
                </font>
             </Label>
             <ComboBox fx:id="StickmanComboBox" layoutX="270.0" layoutY="73.0" prefHeight="27.0" prefWidth="166.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="41.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-            <TabPane layoutX="14.0" layoutY="164.0" prefHeight="248.0" prefWidth="470.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="41.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
+            <TabPane layoutX="15.0" layoutY="136.0" prefHeight="302.0" prefWidth="470.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab closable="false" text="Color">
                   <content>
@@ -295,7 +295,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TabPane prefHeight="209.0" prefWidth="470.0" tabClosingPolicy="UNAVAILABLE">
+                              <TabPane prefHeight="266.0" prefWidth="470.0" tabClosingPolicy="UNAVAILABLE">
                                  <tabs>
                                     <Tab closable="false" text="Head">
                                        <content>
@@ -317,6 +317,24 @@
                                                 <Label layoutX="24.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="headXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="headYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="headZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -345,6 +363,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="upperBodyXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="upperBodyYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="upperBodyZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -369,6 +405,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="leftUpperArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -397,6 +451,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="leftForeArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -421,6 +493,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="leftWristXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftWristYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftWristZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -449,6 +539,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="leftFinger1XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger1YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger1ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -473,6 +581,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="leftFinger2XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger2YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger2ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -501,6 +627,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="leftFinger3XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger3YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger3ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -525,6 +669,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="leftFinger4XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger4YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftFinger4ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -553,6 +715,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="rightUpperArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -577,6 +757,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="rightForeArmXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeArmYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeArmZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -605,6 +803,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="rightWristXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightWristYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightWristZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -629,6 +845,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="rightFinger1XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger1YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger1ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -657,6 +891,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="rightFinger2XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger2YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger2ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -681,6 +933,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="rightFinger3XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger3YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger3ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -709,6 +979,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="rightFinger4XRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger4YRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightFinger4ZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -721,6 +1009,24 @@
                                                 <Label layoutX="20.0" layoutY="27.0" text="Y" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="downBodyXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="downBodyYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="downBodyZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -749,6 +1055,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="rightUpperLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightUpperLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -773,6 +1097,24 @@
                                                 <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
                                                    <font>
                                                       <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="rightForeLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="rightForeLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
                                              </children>
@@ -801,6 +1143,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <TextField fx:id="leftUpperLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftUpperLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -827,60 +1187,24 @@
                                                       <Font name="System Bold" size="15.0" />
                                                    </font>
                                                 </Label>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                    <Tab closable="false" text="Eye">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <ColorPicker fx:id="eyeColorPicker1" layoutX="14.0" layoutY="14.0" onAction="#handleEyeColor" />
-                                                <Button fx:id="eyeColorDarker1" layoutX="182.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="eyeColorBrighter1" layoutX="268.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="eyeColorReset1" layoutX="356.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleEyeColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
-                                                <Slider fx:id="eyeOpacitySlider1" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
-                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                <TextField fx:id="leftForeLegXRotationField" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeLegYRotationField" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <TextField fx:id="leftForeLegZRotationField" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
                                                    <font>
-                                                      <Font size="20.0" />
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Text>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                    <Tab closable="false" text="Brow">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <ColorPicker fx:id="browColorPicker1" layoutX="14.0" layoutY="14.0" onAction="#handleBrowColor" />
-                                                <Button fx:id="browColorDarker1" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="browColorBrighter1" layoutX="270.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="browColorReset1" layoutX="357.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleBrowColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
-                                                <Slider fx:id="browOpacitySlider1" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
-                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                </Label>
+                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
                                                    <font>
-                                                      <Font size="20.0" />
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Text>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                    <Tab closable="false" text="Nose">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <ColorPicker fx:id="noseColorPicker1" layoutX="14.0" layoutY="14.0" onAction="#handleNoseColor" />
-                                                <Button fx:id="noseColorDarker1" layoutX="183.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleNoseColorButtons" prefHeight="30.0" prefWidth="80.0" text="Darker" />
-                                                <Button fx:id="noseColorBrighter1" layoutX="270.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleNoseColorButtons" prefHeight="30.0" prefWidth="80.0" text="Brighter" />
-                                                <Button fx:id="noseColorReset1" layoutX="357.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#handleNoseColorButtons" prefHeight="30.0" prefWidth="80.0" text="Reset" />
-                                                <Slider fx:id="noseOpacitySlider1" layoutX="21.0" layoutY="118.0" majorTickUnit="0.1" max="1.0" prefHeight="17.0" prefWidth="429.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" value="1.0" />
-                                                <Text fill="WHITE" layoutX="202.0" layoutY="107.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Opacity">
+                                                </Label>
+                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
                                                    <font>
-                                                      <Font size="20.0" />
+                                                      <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Text>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </content>

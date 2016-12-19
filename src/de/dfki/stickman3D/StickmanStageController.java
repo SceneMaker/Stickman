@@ -6,13 +6,9 @@ import de.dfki.stickman3D.controllerhelper.ColorHelper;
 import de.dfki.stickman3D.controllerhelper.OpacityHelper;
 import de.dfki.stickman3D.controllerhelper.SliderHelper;
 import de.dfki.stickman3D.stage.StickmanStage3D;
-import java.awt.Point;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -22,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -274,6 +269,132 @@ public class StickmanStageController implements ViewController {
     private Slider rightFinger4YSlider;
     @FXML
     private Slider rightFinger4ZSlider;
+    @FXML
+    public TextField headXRotationField;
+    @FXML
+    public TextField headYRotationField;
+    @FXML
+    public TextField headZRotationField;
+    @FXML
+    public TextField upperBodyXRotationField;
+    @FXML
+    public TextField upperBodyYRotationField;
+    @FXML
+    public TextField upperBodyZRotationField;
+    @FXML
+    public TextField leftUpperArmXRotationField;
+    @FXML
+    public TextField leftUpperArmYRotationField;
+    @FXML
+    public TextField leftUpperArmZRotationField;
+    @FXML
+    public TextField rightUpperArmXRotationField;
+    @FXML
+    public TextField rightUpperArmYRotationField;
+    @FXML
+    public TextField rightUpperArmZRotationField;
+    @FXML
+    public TextField leftForeArmXRotationField;
+    @FXML
+    public TextField leftForeArmYRotationField;
+    @FXML
+    public TextField leftForeArmZRotationField;
+    @FXML
+    public TextField rightForeArmXRotationField;
+    @FXML
+    public TextField rightForeArmYRotationField;
+    @FXML
+    public TextField rightForeArmZRotationField;
+    @FXML
+    public TextField leftWristXRotationField;
+    @FXML
+    public TextField leftWristYRotationField;
+    @FXML
+    public TextField leftWristZRotationField;
+    @FXML
+    public TextField rightWristXRotationField;
+    @FXML
+    public TextField rightWristYRotationField;
+    @FXML
+    public TextField rightWristZRotationField;
+    @FXML
+    public TextField leftFinger1XRotationField;
+    @FXML
+    public TextField leftFinger1YRotationField;
+    @FXML
+    public TextField leftFinger1ZRotationField;
+    @FXML
+    public TextField rightFinger1XRotationField;
+    @FXML
+    public TextField rightFinger1YRotationField;
+    @FXML
+    public TextField rightFinger1ZRotationField;
+    @FXML
+    public TextField leftFinger2XRotationField;
+    @FXML
+    public TextField leftFinger2YRotationField;
+    @FXML
+    public TextField leftFinger2ZRotationField;
+    @FXML
+    public TextField rightFinger2XRotationField;
+    @FXML
+    public TextField rightFinger2YRotationField;
+    @FXML
+    public TextField rightFinger2ZRotationField;
+    @FXML
+    public TextField leftFinger3XRotationField;
+    @FXML
+    public TextField leftFinger3YRotationField;
+    @FXML
+    public TextField leftFinger3ZRotationField;
+    @FXML
+    public TextField rightFinger3XRotationField;
+    @FXML
+    public TextField rightFinger3YRotationField;
+    @FXML
+    public TextField rightFinger3ZRotationField;
+    @FXML
+    public TextField leftFinger4XRotationField;
+    @FXML
+    public TextField leftFinger4YRotationField;
+    @FXML
+    public TextField leftFinger4ZRotationField;
+    @FXML
+    public TextField rightFinger4XRotationField;
+    @FXML
+    public TextField rightFinger4YRotationField;
+    @FXML
+    public TextField rightFinger4ZRotationField;
+    @FXML
+    public TextField downBodyXRotationField;
+    @FXML
+    public TextField downBodyYRotationField;
+    @FXML
+    public TextField downBodyZRotationField;
+    @FXML
+    public TextField leftUpperLegXRotationField;
+    @FXML
+    public TextField leftUpperLegYRotationField;
+    @FXML
+    public TextField leftUpperLegZRotationField;
+    @FXML
+    public TextField rightUpperLegXRotationField;
+    @FXML
+    public TextField rightUpperLegYRotationField;
+    @FXML
+    public TextField rightUpperLegZRotationField;
+    @FXML
+    public TextField leftForeLegXRotationField;
+    @FXML
+    public TextField leftForeLegYRotationField;
+    @FXML
+    public TextField leftForeLegZRotationField;
+    @FXML
+    public TextField rightForeLegXRotationField;
+    @FXML
+    public TextField rightForeLegYRotationField;
+    @FXML
+    public TextField rightForeLegZRotationField;
     
     @FXML
     private Slider hairOpacitySlider;
@@ -323,6 +444,7 @@ public class StickmanStageController implements ViewController {
     private Slider leftForeLegYSlider;
     @FXML
     private Slider leftForeLegZSlider;
+    
 
     @FXML
     private ImageView bg1;
