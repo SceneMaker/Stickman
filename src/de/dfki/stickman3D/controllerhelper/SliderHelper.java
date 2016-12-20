@@ -82,10 +82,15 @@ public class SliderHelper {
         });
     }
 
-    public static void handleUpperArmSlider(StickmanStageController controller, Slider slider, String achse, String arm) {
+    public static void handleUpperArmSlider(StickmanStageController controller, Slider slider, String achse, String arm, int startDegree) {
         slider.setMin(-180);
         slider.setMax(180);
-        slider.setValue(0);
+        slider.setValue(startDegree);
+        if(arm.equalsIgnoreCase("L") && achse.equalsIgnoreCase("Z"))
+            controller.leftUpperArmZRotationField.setText(""+startDegree);
+        else if(arm.equalsIgnoreCase("R") && achse.equalsIgnoreCase("Z"))
+            controller.rightUpperArmZRotationField.setText(""+startDegree);
+        
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
@@ -122,10 +127,19 @@ public class SliderHelper {
         });
     }
 
-    public static void handleForeArmSlider(StickmanStageController controller, Slider slider, String achse, String arm) {
+    public static void handleForeArmSlider(StickmanStageController controller, Slider slider, String achse, String arm, int startDegree) {
         slider.setMin(-180);
         slider.setMax(180);
-        slider.setValue(0);
+        slider.setValue(startDegree);
+        if(arm.equalsIgnoreCase("L") && achse.equalsIgnoreCase("X"))
+            controller.leftForeArmXRotationField.setText(""+startDegree);
+        else if(arm.equalsIgnoreCase("L") && achse.equalsIgnoreCase("Z"))
+            controller.leftForeArmZRotationField.setText(""+startDegree);
+        else if(arm.equalsIgnoreCase("R") && achse.equalsIgnoreCase("X"))
+            controller.rightForeArmXRotationField.setText(""+startDegree);
+        else if(arm.equalsIgnoreCase("R") && achse.equalsIgnoreCase("Z"))
+            controller.rightForeArmZRotationField.setText(""+startDegree);
+        
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
@@ -161,10 +175,16 @@ public class SliderHelper {
         });
     }
 
-    public static void handleWristSlider(StickmanStageController controller, Slider slider, String achse, String arm) {
+    public static void handleWristSlider(StickmanStageController controller, Slider slider, String achse, String arm, int startDegree) {
         slider.setMin(-180);
         slider.setMax(180);
-        slider.setValue(0);
+        slider.setValue(startDegree);
+        slider.setValue(startDegree);
+        if(arm.equalsIgnoreCase("L") && achse.equalsIgnoreCase("Y"))
+            controller.leftWristYRotationField.setText(""+startDegree);
+        else if(arm.equalsIgnoreCase("R") && achse.equalsIgnoreCase("Y"))
+            controller.rightWristYRotationField.setText(""+startDegree);
+        
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
@@ -200,10 +220,15 @@ public class SliderHelper {
         });
     }
 
-    public static void handleFinger1Slider(StickmanStageController controller, Slider slider, String achse, String arm) {
+    public static void handleFinger1Slider(StickmanStageController controller, Slider slider, String achse, String arm, int startDegree) {
         slider.setMin(-180);
         slider.setMax(180);
-        slider.setValue(0);
+        slider.setValue(startDegree);
+        if(arm.equalsIgnoreCase("L") && achse.equalsIgnoreCase("Z"))
+            controller.leftFinger1ZRotationField.setText(""+startDegree);
+        else if(arm.equalsIgnoreCase("R") && achse.equalsIgnoreCase("Z"))
+            controller.rightFinger1ZRotationField.setText(""+(startDegree));
+        
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
