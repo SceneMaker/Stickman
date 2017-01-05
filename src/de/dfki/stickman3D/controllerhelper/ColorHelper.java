@@ -416,4 +416,74 @@ public class ColorHelper {
             }
         }
     }
+    
+    public static void resetAll(Stickman3D currentStickman)
+    {
+        currentStickman.mHeadFX.mColor = currentStickman.mHeadFX.mColorRecorder;
+        currentStickman.mHeadFX.update();
+        
+        if (currentStickman.mType == Gender.TYPE.MALE) {
+            currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColorRecorder;
+            currentStickman.mMaleHairFX.update();
+        } else {
+            currentStickman.mFemaleHairFX.mColor = currentStickman.mFemaleHairFX.mColorRecorder;
+            currentStickman.mFemaleHairFX.update();
+                }
+        currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColorRecorder;
+        currentStickman.mUpperBody.update();
+        currentStickman.mNeckFX.mColor = currentStickman.mNeckFX.mColorRecorder;
+        currentStickman.mLeftUpperArmFX.mColor = currentStickman.mLeftUpperArmFX.mColorRecorder;
+        currentStickman.mLeftForeArmFX.mColor = currentStickman.mLeftForeArmFX.mColorRecorder;
+        currentStickman.mLeftWrist.mColor = currentStickman.mLeftWrist.mColorRecorder;
+        currentStickman.mLeftFinger1.mColor = currentStickman.mLeftFinger1.mColorRecorder;
+        currentStickman.mLeftFinger2.mColor = currentStickman.mLeftFinger2.mColorRecorder;
+        currentStickman.mLeftFinger3.mColor = currentStickman.mLeftFinger3.mColorRecorder;
+        currentStickman.mLeftFinger4.mColor = currentStickman.mLeftFinger4.mColorRecorder;
+        currentStickman.mLeftUpperLegFX.mColor = currentStickman.mLeftUpperLegFX.mColorRecorder;
+        currentStickman.mLeftForeLegFX.mColor = currentStickman.mLeftForeLegFX.mColorRecorder;
+        currentStickman.mRightUpperArmFX.mColor = currentStickman.mRightUpperArmFX.mColorRecorder;
+        currentStickman.mRightForeArmFX.mColor = currentStickman.mRightForeArmFX.mColorRecorder;
+        currentStickman.mRightWrist.mColor = currentStickman.mRightWrist.mColorRecorder;
+        currentStickman.mRightFinger1.mColor = currentStickman.mRightFinger1.mColorRecorder;
+        currentStickman.mRightFinger2.mColor = currentStickman.mRightFinger2.mColorRecorder;
+        currentStickman.mRightFinger3.mColor = currentStickman.mRightFinger3.mColorRecorder;
+        currentStickman.mRightFinger4.mColor = currentStickman.mRightFinger4.mColorRecorder;
+        currentStickman.mRightUpperLegFX.mColor = currentStickman.mRightUpperLegFX.mColorRecorder;
+        currentStickman.mRightForeLegFX.mColor = currentStickman.mRightForeLegFX.mColorRecorder;
+        currentStickman.mNeckFX.update();
+        currentStickman.mLeftUpperArmFX.update();
+        currentStickman.mLeftForeArmFX.update();
+        currentStickman.mLeftWrist.update();
+        currentStickman.mLeftFinger1.update();
+        currentStickman.mLeftFinger2.update();
+        currentStickman.mLeftFinger3.update();
+        currentStickman.mLeftFinger4.update();
+        currentStickman.mLeftUpperLegFX.update();
+        currentStickman.mLeftForeLegFX.update();
+        currentStickman.mRightUpperArmFX.update();
+        currentStickman.mRightForeArmFX.update();
+        currentStickman.mRightWrist.update();
+        currentStickman.mRightFinger1.update();
+        currentStickman.mRightFinger2.update();
+        currentStickman.mRightFinger3.update();
+        currentStickman.mRightFinger4.update();
+        currentStickman.mRightUpperLegFX.update();
+        currentStickman.mRightForeLegFX.update();
+        currentStickman.mLeftFootFX.mColor = currentStickman.mLeftFootFX.mColorRecorder;
+        currentStickman.mRightFootFX.mColor = currentStickman.mRightFootFX.mColorRecorder;
+        currentStickman.mLeftFootFX.update();
+        currentStickman.mRightFootFX.update();
+        currentStickman.mMouthFX.mColor = currentStickman.mMouthFX.mColorRecorder;
+        currentStickman.mMouthFX.update();
+        currentStickman.mLeftEyeFX.mColor = currentStickman.mLeftEyeFX.mColorRecorder;
+        currentStickman.mRightEyeFX.mColor = currentStickman.mRightEyeFX.mColorRecorder;
+        currentStickman.mLeftEyeFX.update();
+        currentStickman.mRightEyeFX.update();
+        currentStickman.mLeftEyebrowFX.mColor = currentStickman.mLeftEyebrowFX.mColorRecorder;
+        currentStickman.mRightEyebrowFX.mColor = currentStickman.mRightEyebrowFX.mColorRecorder;
+        currentStickman.mLeftEyebrowFX.update();
+        currentStickman.mRightEyebrowFX.update();
+        currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColorRecorder;
+        currentStickman.mNoseFX.update();
+    }
 }

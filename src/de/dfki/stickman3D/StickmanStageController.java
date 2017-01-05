@@ -1,5 +1,6 @@
 package de.dfki.stickman3D;
 
+import de.dfki.CommandReceiver.CommandReceiver;
 import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
@@ -573,9 +574,11 @@ public class StickmanStageController implements ViewController {
         OpacityHelper.noseOpacityChanger(this, noseOpacitySlider);
 
         ExitButton.setOnAction((ActionEvent event) -> {
-            Stage stage = (Stage) ExitButton.getScene().getWindow();
-            stage.close();
-            System.exit(0);
+//            Stage stage = (Stage) ExitButton.getScene().getWindow();
+//            stage.close();
+//            System.exit(0);
+            CommandReceiver cr = new CommandReceiver(currentStickman);
+            cr.start();
         });
     }
 
