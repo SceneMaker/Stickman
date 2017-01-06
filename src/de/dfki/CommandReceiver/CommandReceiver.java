@@ -10,6 +10,8 @@ import de.dfki.stickman3D.controllerhelper.ColorHelper;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -22,10 +24,12 @@ import javafx.scene.paint.PhongMaterial;
 /**
  *
  * @author EmpaT
- */
+ *//////////////////////////////////////////////
 public class CommandReceiver extends Thread {
 
-    private ServerSocket serverSocket;
+    private DatagramSocket serverSocket;
+    DatagramPacket receivePacket;
+    
     private Stickman3D mStickman3D;
 
     byte[] receiveData = new byte[1024];
@@ -35,7 +39,8 @@ public class CommandReceiver extends Thread {
     public CommandReceiver(Stickman3D stickman3D) {
         this.mStickman3D = stickman3D;
         try {
-            serverSocket = new ServerSocket(64000);
+            serverSocket = new DatagramSocket(64000);
+            receivePacket = new DatagramPacket(receiveData, receiveData.length);
         } catch (IOException ex) {
             Logger.getLogger(CommandReceiver.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -46,9 +51,9 @@ public class CommandReceiver extends Thread {
         while (go) {
             try {
                 System.out.println("shemovida");
-                Socket connectionSocket = serverSocket.accept();
-                BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-                action = inFromClient.readLine();
+                serverSocket.receive(receivePacket);
+                
+                action = new String(receiveData, 0, receivePacket.getLength());
                 if(!action.isEmpty()){
                     String[] prefix = action.split("-");
                     switchPrefixAndRun(prefix[0], prefix[1]);
@@ -135,6 +140,9 @@ public class CommandReceiver extends Thread {
                     mStickman3D.doAnimation("AngrySmallMouth", 500, true);
                 else
                     mStickman3D.doAnimation(tail, 500, true);
+                break;
+            case "Gesture":
+                 mStickman3D.doAnimation(tail, 500, true);
                 break;
         }
     }
