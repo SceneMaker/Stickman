@@ -6,6 +6,7 @@
 package de.dfki.CommandReceiver;
 
 import de.dfki.stickman3D.Stickman3D;
+import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.controllerhelper.ColorHelper;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,13 +31,15 @@ public class CommandReceiver extends Thread {
     private DatagramSocket serverSocket;
     DatagramPacket receivePacket;
     
+    StickmanStageController controller;
     private Stickman3D mStickman3D;
 
     byte[] receiveData = new byte[1024];
     public static boolean go = true;
     String action = "";
 
-    public CommandReceiver(Stickman3D stickman3D) {
+    public CommandReceiver(Stickman3D stickman3D, StickmanStageController controller) {
+        this.controller = controller;
         this.mStickman3D = stickman3D;
         try {
             serverSocket = new DatagramSocket(64000);
@@ -50,7 +53,6 @@ public class CommandReceiver extends Thread {
     public void run() {
         while (go) {
             try {
-                System.out.println("shemovida");
                 serverSocket.receive(receivePacket);
                 
                 action = new String(receiveData, 0, receivePacket.getLength());
@@ -143,6 +145,31 @@ public class CommandReceiver extends Thread {
                 break;
             case "Gesture":
                  mStickman3D.doAnimation(tail, 500, true);
+                break;
+            case "Head":
+                if(tail.equalsIgnoreCase("Blink"))
+                {
+                    mStickman3D.doAnimation(tail, 20, true);
+                }
+                else
+                 mStickman3D.doAnimation(tail, 500, true);
+                break;
+            case "Environment":
+                 mStickman3D.doAnimation(tail, 500, true);
+                break;
+            case "Background":
+                 if(tail.equals("0"))
+                     controller.handleBG1();
+                 else if(tail.equals("1"))
+                     controller.handleBG2();
+                 else if(tail.equals("2"))
+                     controller.handleBG3();
+                 else if(tail.equals("3"))
+                     controller.handleBG4();
+                 else if(tail.equals("4"))
+                     controller.handleBG5();
+                 else if(tail.equals("5"))
+                     controller.handleBG6();
                 break;
         }
     }

@@ -577,7 +577,7 @@ public class StickmanStageController implements ViewController {
 //            Stage stage = (Stage) ExitButton.getScene().getWindow();
 //            stage.close();
 //            System.exit(0);
-            CommandReceiver cr = new CommandReceiver(currentStickman);
+            CommandReceiver cr = new CommandReceiver(currentStickman, this);
             cr.start();
         });
     }
@@ -598,42 +598,42 @@ public class StickmanStageController implements ViewController {
     }
 
     @FXML
-    private void handleBG1() {
+    public void handleBG1() {
         String background1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background1 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
-    private void handleBG2() {
+    public void handleBG2() {
         String background2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background2 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
-    private void handleBG3() {
+    public void handleBG3() {
         String background3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background3 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
-    private void handleBG4() {
+    public void handleBG4() {
         String background4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background4 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
-    private void handleBG5() {
+    public void handleBG5() {
         String background5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background5 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
     }
 
     @FXML
-    private void handleBG6() {
+    public void handleBG6() {
         String bgDefault = getClass().getClassLoader().getResource("Images/bgDefault.png").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bgDefault + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
