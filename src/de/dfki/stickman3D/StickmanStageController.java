@@ -574,11 +574,11 @@ public class StickmanStageController implements ViewController {
         OpacityHelper.noseOpacityChanger(this, noseOpacitySlider);
 
         ExitButton.setOnAction((ActionEvent event) -> {
-//            Stage stage = (Stage) ExitButton.getScene().getWindow();
-//            stage.close();
-//            System.exit(0);
-            CommandReceiver cr = new CommandReceiver(currentStickman, this);
-            cr.start();
+            Stage stage = (Stage) ExitButton.getScene().getWindow();
+            stage.close();
+            System.exit(0);
+//            CommandReceiver cr = new CommandReceiver(currentStickman, this);
+//            cr.start();
         });
     }
 
