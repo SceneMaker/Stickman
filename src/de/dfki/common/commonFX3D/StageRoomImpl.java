@@ -48,17 +48,7 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void launchStickmanConfiguration() {
-        StickmanStage3D ss3D;
-        try {
-            ss3D = (StickmanStage3D) getStickmanStage();
-            ss3D.setShowControlPanel(true);
-            ss3D.addStickmanToStage(CONFIG_STAGE);
-            ss3D.showStage(CONFIG_STAGE);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    public void launchStickmanConfiguration() {}
 
     @Override
     public void launchStickmanStage(boolean show) {

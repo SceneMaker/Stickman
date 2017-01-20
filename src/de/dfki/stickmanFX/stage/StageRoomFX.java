@@ -65,4 +65,14 @@ public class StageRoomFX extends StageRoomImpl {
     public void sendAnimationUpdate(String state, String id) {
 
     }
+
+    @Override
+    public void launchStickmanConfiguration() {
+        try {
+            getStickmanStage().addStickmanToStage(CONFIG_STAGE);
+            getStickmanStage().showStage(CONFIG_STAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

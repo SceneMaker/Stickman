@@ -21,7 +21,7 @@ public class testStickmanFX {
 //        //stickmanStage.addStickman("Bob");
 //        stickmanStage.launchStickmanStage(true);
 //        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
-        StageRoom stickmanStage3D1 = new StageRoom3D(500, 0, true);
+        /*StageRoom stickmanStage3D1 = new StageRoom3D(500, 0, true);
 //        StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
         stickmanStage3D1.addStickman("Bob");
 //        stickmanStage3D1.launchStickmanStage(true);
@@ -39,9 +39,9 @@ public class testStickmanFX {
                     //stickmanStage3D1.getStickman("Anna").doAnimation("StopIdle", 500, true);
                     //stickmanStage3D1.getStickman("Anna").doAnimation("WaveLeft", 500, true);
                 }
-        ));
+        ));*/
 //        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        //timeline.play();
         
 //       
 
@@ -84,5 +84,11 @@ public class testStickmanFX {
  /*StageRoom oldStage = new StageRoomSwing();
         oldStage.addStickman("Anna");
          */
+
+        StageRoom stickmanStageFx = new StageRoomFX(0,500, true);
+        //StageRoom stickmanStageFull = new StageRoomFullScreenDecorator(stickmanStageFx);
+        stickmanStageFx.addStickman("Anna");
+        //stickmanStage.addStickman("Bob");
+        stickmanStageFx.launchStickmanConfiguration();
     }
 }
