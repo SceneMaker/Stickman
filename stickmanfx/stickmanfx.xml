@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Stickman>
+    <StickmanFX>
+        <name>anna</name>
+        <bodyColor>#9A53C6</bodyColor>
+        <bodyColorOpacity>0.94</bodyColorOpacity>
+        <hairColor>#F0D400</hairColor>
+        <hairColorOpacity>1.0</hairColorOpacity>
+        <headColor>#F2E3D9</headColor>
+        <headColorOpacity>1.0</headColorOpacity>
+        <limbsColor>#505050</limbsColor>
+        <limbsColorOpacity>1.0</limbsColorOpacity>
+    </StickmanFX>
+</Stickman>

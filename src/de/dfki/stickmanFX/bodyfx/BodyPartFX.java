@@ -65,6 +65,10 @@ public abstract class BodyPartFX extends Pane {
 
     public Color mColor = Color.rgb(0, 0, 0);
     public float mColoropacity = 1.0f;
+    
+    // used by RestButton.
+    public Color mColorRest = Color.rgb(0, 0, 0);
+    public float mColoropacityRest = 1.0f;
 
     protected Color mColorRecorder = mColor;
 
