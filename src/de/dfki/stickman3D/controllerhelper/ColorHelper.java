@@ -122,297 +122,304 @@ public class ColorHelper {
         }
     }
 
-    public static void handleHeadColorButtons(Stickman3D currentStickman, MouseEvent ev, Button headColorBrighter,
-            Button headColorDarker, Button headColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(headColorBrighter)) {
-                currentStickman.mHeadFX.mColor = currentStickman.mHeadFX.mColor.brighter();
-                currentStickman.mHeadFX.update();
-            } else if (ev.getSource().equals(headColorDarker)) {
-                currentStickman.mHeadFX.mColor = currentStickman.mHeadFX.mColor.darker();
-                currentStickman.mHeadFX.update();
-            } else if (ev.getSource().equals(headColorReset)) {
-                currentStickman.mHeadFX.mColor = currentStickman.mHeadFX.mColorRecorder;
-                currentStickman.mHeadFX.update();
+    public static void handleHeadColorButtons(StickmanStageController sSC,
+            MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.headColorBrighter)) {
+                sSC.currentStickman.mHeadFX.mColor = sSC.currentStickman.mHeadFX.mColor.brighter();
+                sSC.currentStickman.mHeadFX.update();
+            } else if (ev.getSource().equals(sSC.headColorDarker)) {
+                sSC.currentStickman.mHeadFX.mColor = sSC.currentStickman.mHeadFX.mColor.darker();
+                sSC.currentStickman.mHeadFX.update();
+            } else if (ev.getSource().equals(sSC.headColorReset)) {
+                sSC.currentStickman.mHeadFX.mColor = sSC.currentStickman.mHeadFX.mColorRecorder;
+                sSC.headOpacitySlider.setValue(1);
+                sSC.currentStickman.mHeadFX.update();
             }
         }
     }
 
-    public static void handleHairColorButtons(Stickman3D currentStickman, MouseEvent ev, Button hairColorBrighter,
-            Button hairColorDarker, Button hairColorReset) {
+    public static void handleHairColorButtons(StickmanStageController sSC, 
+            MouseEvent ev) {
 
-        if (currentStickman != null) {
-            if (ev.getSource().equals(hairColorBrighter)) {
-                if (currentStickman.mType == Gender.TYPE.MALE) {
-                    currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColor.brighter();
-                    currentStickman.mMaleHairFX.update();
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.hairColorBrighter)) {
+                if (sSC.currentStickman.mType == Gender.TYPE.MALE) {
+                    sSC.currentStickman.mMaleHairFX.mColor = sSC.currentStickman.mMaleHairFX.mColor.brighter();
+                    sSC.currentStickman.mMaleHairFX.update();
                 } else {
-                    currentStickman.mFemaleHairFX.mColor = currentStickman.mFemaleHairFX.mColor.brighter();
-                    currentStickman.mFemaleHairFX.update();
+                    sSC.currentStickman.mFemaleHairFX.mColor = sSC.currentStickman.mFemaleHairFX.mColor.brighter();
+                    sSC.currentStickman.mFemaleHairFX.update();
                 }
-            } else if (ev.getSource().equals(hairColorDarker)) {
-                if (currentStickman.mType == Gender.TYPE.MALE) {
-                    currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColor.darker();
-                    currentStickman.mMaleHairFX.update();
+            } else if (ev.getSource().equals(sSC.hairColorDarker)) {
+                if (sSC.currentStickman.mType == Gender.TYPE.MALE) {
+                    sSC.currentStickman.mMaleHairFX.mColor = sSC.currentStickman.mMaleHairFX.mColor.darker();
+                    sSC.currentStickman.mMaleHairFX.update();
                 } else {
-                    currentStickman.mFemaleHairFX.mColor = currentStickman.mFemaleHairFX.mColor.darker();
-                    currentStickman.mFemaleHairFX.update();
+                    sSC.currentStickman.mFemaleHairFX.mColor = sSC.currentStickman.mFemaleHairFX.mColor.darker();
+                    sSC.currentStickman.mFemaleHairFX.update();
                 }
-            } else if (ev.getSource().equals(hairColorReset)) {
-                if (currentStickman.mType == Gender.TYPE.MALE) {
-                    currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColorRecorder;
-                    currentStickman.mMaleHairFX.update();
+            } else if (ev.getSource().equals(sSC.hairColorReset)) {
+                if (sSC.currentStickman.mType == Gender.TYPE.MALE) {
+                    sSC.currentStickman.mMaleHairFX.mColor = sSC.currentStickman.mMaleHairFX.mColorRecorder;
+                    sSC.currentStickman.mMaleHairFX.update();
                 } else {
-                    currentStickman.mFemaleHairFX.mColor = currentStickman.mFemaleHairFX.mColorRecorder;
-                    currentStickman.mFemaleHairFX.update();
+                    sSC.currentStickman.mFemaleHairFX.mColor = sSC.currentStickman.mFemaleHairFX.mColorRecorder;
+                    sSC.currentStickman.mFemaleHairFX.update();
                 }
+                sSC.hairOpacitySlider.setValue(1);
             }
         }
     }
 
-    public static void handleBodyColorButtons(Stickman3D currentStickman, MouseEvent ev, Button bodyColorBrighter,
-            Button bodyColorDarker, Button bodyColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(bodyColorBrighter)) {
-                currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColor.brighter();
-                currentStickman.mUpperBody.update();
-            } else if (ev.getSource().equals(bodyColorDarker)) {
-                currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColor.darker();
-                currentStickman.mUpperBody.update();
-            } else if (ev.getSource().equals(bodyColorReset)) {
-                currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColorRecorder;
-                currentStickman.mUpperBody.update();
+    public static void handleBodyColorButtons(StickmanStageController sSC, 
+            MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.bodyColorBrighter)) {
+                sSC.currentStickman.mUpperBody.mColor = sSC.currentStickman.mUpperBody.mColor.brighter();
+                sSC.currentStickman.mUpperBody.update();
+            } else if (ev.getSource().equals(sSC.bodyColorDarker)) {
+                sSC.currentStickman.mUpperBody.mColor = sSC.currentStickman.mUpperBody.mColor.darker();
+                sSC.currentStickman.mUpperBody.update();
+            } else if (ev.getSource().equals(sSC.bodyColorReset)) {
+                sSC.currentStickman.mUpperBody.mColor = sSC.currentStickman.mUpperBody.mColorRecorder;
+                sSC.bodyOpacitySlider.setValue(1);
+                sSC.currentStickman.mUpperBody.update();
             }
         }
     }
 
-    public static void handlelimbsColorButtons(Stickman3D currentStickman, MouseEvent ev, Button limbsColorBrighter,
-            Button limbsColorDarker, Button limbsColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(limbsColorBrighter)) {
-                currentStickman.mNeckFX.mColor = currentStickman.mNeckFX.mColor.brighter();
-                currentStickman.mLeftUpperArmFX.mColor = currentStickman.mLeftUpperArmFX.mColor.brighter();
-                currentStickman.mLeftForeArmFX.mColor = currentStickman.mLeftForeArmFX.mColor.brighter();
-                currentStickman.mLeftWrist.mColor = currentStickman.mLeftWrist.mColor.brighter();
-                currentStickman.mLeftFinger1.mColor = currentStickman.mLeftFinger1.mColor.brighter();
-                currentStickman.mLeftFinger2.mColor = currentStickman.mLeftFinger2.mColor.brighter();
-                currentStickman.mLeftFinger3.mColor = currentStickman.mLeftFinger3.mColor.brighter();
-                currentStickman.mLeftFinger4.mColor = currentStickman.mLeftFinger4.mColor.brighter();
-                currentStickman.mLeftUpperLegFX.mColor = currentStickman.mLeftUpperLegFX.mColor.brighter();
-                currentStickman.mLeftForeLegFX.mColor = currentStickman.mLeftForeLegFX.mColor.brighter();
+    public static void handlelimbsColorButtons(StickmanStageController sSC, 
+            MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.limbsColorBrighter)) {
+                sSC.currentStickman.mNeckFX.mColor = sSC.currentStickman.mNeckFX.mColor.brighter();
+                sSC.currentStickman.mLeftUpperArmFX.mColor = sSC.currentStickman.mLeftUpperArmFX.mColor.brighter();
+                sSC.currentStickman.mLeftForeArmFX.mColor = sSC.currentStickman.mLeftForeArmFX.mColor.brighter();
+                sSC.currentStickman.mLeftWrist.mColor = sSC.currentStickman.mLeftWrist.mColor.brighter();
+                sSC.currentStickman.mLeftFinger1.mColor = sSC.currentStickman.mLeftFinger1.mColor.brighter();
+                sSC.currentStickman.mLeftFinger2.mColor = sSC.currentStickman.mLeftFinger2.mColor.brighter();
+                sSC.currentStickman.mLeftFinger3.mColor = sSC.currentStickman.mLeftFinger3.mColor.brighter();
+                sSC.currentStickman.mLeftFinger4.mColor = sSC.currentStickman.mLeftFinger4.mColor.brighter();
+                sSC.currentStickman.mLeftUpperLegFX.mColor = sSC.currentStickman.mLeftUpperLegFX.mColor.brighter();
+                sSC.currentStickman.mLeftForeLegFX.mColor = sSC.currentStickman.mLeftForeLegFX.mColor.brighter();
 
-                currentStickman.mRightUpperArmFX.mColor = currentStickman.mRightUpperArmFX.mColor.brighter();
-                currentStickman.mRightForeArmFX.mColor = currentStickman.mRightForeArmFX.mColor.brighter();
-                currentStickman.mRightWrist.mColor = currentStickman.mRightWrist.mColor.brighter();
-                currentStickman.mRightFinger1.mColor = currentStickman.mRightFinger1.mColor.brighter();
-                currentStickman.mRightFinger2.mColor = currentStickman.mRightFinger2.mColor.brighter();
-                currentStickman.mRightFinger3.mColor = currentStickman.mRightFinger3.mColor.brighter();
-                currentStickman.mRightFinger4.mColor = currentStickman.mRightFinger4.mColor.brighter();
-                currentStickman.mRightUpperLegFX.mColor = currentStickman.mRightUpperLegFX.mColor.brighter();
-                currentStickman.mRightForeLegFX.mColor = currentStickman.mRightForeLegFX.mColor.brighter();
+                sSC.currentStickman.mRightUpperArmFX.mColor = sSC.currentStickman.mRightUpperArmFX.mColor.brighter();
+                sSC.currentStickman.mRightForeArmFX.mColor = sSC.currentStickman.mRightForeArmFX.mColor.brighter();
+                sSC.currentStickman.mRightWrist.mColor = sSC.currentStickman.mRightWrist.mColor.brighter();
+                sSC.currentStickman.mRightFinger1.mColor = sSC.currentStickman.mRightFinger1.mColor.brighter();
+                sSC.currentStickman.mRightFinger2.mColor = sSC.currentStickman.mRightFinger2.mColor.brighter();
+                sSC.currentStickman.mRightFinger3.mColor = sSC.currentStickman.mRightFinger3.mColor.brighter();
+                sSC.currentStickman.mRightFinger4.mColor = sSC.currentStickman.mRightFinger4.mColor.brighter();
+                sSC.currentStickman.mRightUpperLegFX.mColor = sSC.currentStickman.mRightUpperLegFX.mColor.brighter();
+                sSC.currentStickman.mRightForeLegFX.mColor = sSC.currentStickman.mRightForeLegFX.mColor.brighter();
 
-                currentStickman.mNeckFX.update();
-                currentStickman.mLeftUpperArmFX.update();
-                currentStickman.mLeftForeArmFX.update();
-                currentStickman.mLeftWrist.update();
-                currentStickman.mLeftFinger1.update();
-                currentStickman.mLeftFinger2.update();
-                currentStickman.mLeftFinger3.update();
-                currentStickman.mLeftFinger4.update();
-                currentStickman.mLeftUpperLegFX.update();
-                currentStickman.mLeftForeLegFX.update();
+                sSC.currentStickman.mNeckFX.update();
+                sSC.currentStickman.mLeftUpperArmFX.update();
+                sSC.currentStickman.mLeftForeArmFX.update();
+                sSC.currentStickman.mLeftWrist.update();
+                sSC.currentStickman.mLeftFinger1.update();
+                sSC.currentStickman.mLeftFinger2.update();
+                sSC.currentStickman.mLeftFinger3.update();
+                sSC.currentStickman.mLeftFinger4.update();
+                sSC.currentStickman.mLeftUpperLegFX.update();
+                sSC.currentStickman.mLeftForeLegFX.update();
 
-                currentStickman.mRightUpperArmFX.update();
-                currentStickman.mRightForeArmFX.update();
-                currentStickman.mRightWrist.update();
-                currentStickman.mRightFinger1.update();
-                currentStickman.mRightFinger2.update();
-                currentStickman.mRightFinger3.update();
-                currentStickman.mRightFinger4.update();
-                currentStickman.mRightUpperLegFX.update();
-                currentStickman.mRightForeLegFX.update();
-            } else if (ev.getSource().equals(limbsColorDarker)) {
-                currentStickman.mNeckFX.mColor = currentStickman.mNeckFX.mColor.darker();
-                currentStickman.mLeftUpperArmFX.mColor = currentStickman.mLeftUpperArmFX.mColor.darker();
-                currentStickman.mLeftForeArmFX.mColor = currentStickman.mLeftForeArmFX.mColor.darker();
-                currentStickman.mLeftWrist.mColor = currentStickman.mLeftWrist.mColor.darker();
-                currentStickman.mLeftFinger1.mColor = currentStickman.mLeftFinger1.mColor.darker();
-                currentStickman.mLeftFinger2.mColor = currentStickman.mLeftFinger2.mColor.darker();
-                currentStickman.mLeftFinger3.mColor = currentStickman.mLeftFinger3.mColor.darker();
-                currentStickman.mLeftFinger4.mColor = currentStickman.mLeftFinger4.mColor.darker();
-                currentStickman.mLeftUpperLegFX.mColor = currentStickman.mLeftUpperLegFX.mColor.darker();
-                currentStickman.mLeftForeLegFX.mColor = currentStickman.mLeftForeLegFX.mColor.darker();
+                sSC.currentStickman.mRightUpperArmFX.update();
+                sSC.currentStickman.mRightForeArmFX.update();
+                sSC.currentStickman.mRightWrist.update();
+                sSC.currentStickman.mRightFinger1.update();
+                sSC.currentStickman.mRightFinger2.update();
+                sSC.currentStickman.mRightFinger3.update();
+                sSC.currentStickman.mRightFinger4.update();
+                sSC.currentStickman.mRightUpperLegFX.update();
+                sSC.currentStickman.mRightForeLegFX.update();
+            } else if (ev.getSource().equals(sSC.limbsColorDarker)) {
+                sSC.currentStickman.mNeckFX.mColor = sSC.currentStickman.mNeckFX.mColor.darker();
+                sSC.currentStickman.mLeftUpperArmFX.mColor = sSC.currentStickman.mLeftUpperArmFX.mColor.darker();
+                sSC.currentStickman.mLeftForeArmFX.mColor = sSC.currentStickman.mLeftForeArmFX.mColor.darker();
+                sSC.currentStickman.mLeftWrist.mColor = sSC.currentStickman.mLeftWrist.mColor.darker();
+                sSC.currentStickman.mLeftFinger1.mColor = sSC.currentStickman.mLeftFinger1.mColor.darker();
+                sSC.currentStickman.mLeftFinger2.mColor = sSC.currentStickman.mLeftFinger2.mColor.darker();
+                sSC.currentStickman.mLeftFinger3.mColor = sSC.currentStickman.mLeftFinger3.mColor.darker();
+                sSC.currentStickman.mLeftFinger4.mColor = sSC.currentStickman.mLeftFinger4.mColor.darker();
+                sSC.currentStickman.mLeftUpperLegFX.mColor = sSC.currentStickman.mLeftUpperLegFX.mColor.darker();
+                sSC.currentStickman.mLeftForeLegFX.mColor = sSC.currentStickman.mLeftForeLegFX.mColor.darker();
 
-                currentStickman.mRightUpperArmFX.mColor = currentStickman.mRightUpperArmFX.mColor.darker();
-                currentStickman.mRightForeArmFX.mColor = currentStickman.mRightForeArmFX.mColor.darker();
-                currentStickman.mRightWrist.mColor = currentStickman.mRightWrist.mColor.darker();
-                currentStickman.mRightFinger1.mColor = currentStickman.mRightFinger1.mColor.darker();
-                currentStickman.mRightFinger2.mColor = currentStickman.mRightFinger2.mColor.darker();
-                currentStickman.mRightFinger3.mColor = currentStickman.mRightFinger3.mColor.darker();
-                currentStickman.mRightFinger4.mColor = currentStickman.mRightFinger4.mColor.darker();
-                currentStickman.mRightUpperLegFX.mColor = currentStickman.mRightUpperLegFX.mColor.darker();
-                currentStickman.mRightForeLegFX.mColor = currentStickman.mRightForeLegFX.mColor.darker();
+                sSC.currentStickman.mRightUpperArmFX.mColor = sSC.currentStickman.mRightUpperArmFX.mColor.darker();
+                sSC.currentStickman.mRightForeArmFX.mColor = sSC.currentStickman.mRightForeArmFX.mColor.darker();
+                sSC.currentStickman.mRightWrist.mColor = sSC.currentStickman.mRightWrist.mColor.darker();
+                sSC.currentStickman.mRightFinger1.mColor = sSC.currentStickman.mRightFinger1.mColor.darker();
+                sSC.currentStickman.mRightFinger2.mColor = sSC.currentStickman.mRightFinger2.mColor.darker();
+                sSC.currentStickman.mRightFinger3.mColor = sSC.currentStickman.mRightFinger3.mColor.darker();
+                sSC.currentStickman.mRightFinger4.mColor = sSC.currentStickman.mRightFinger4.mColor.darker();
+                sSC.currentStickman.mRightUpperLegFX.mColor = sSC.currentStickman.mRightUpperLegFX.mColor.darker();
+                sSC.currentStickman.mRightForeLegFX.mColor = sSC.currentStickman.mRightForeLegFX.mColor.darker();
 
-                currentStickman.mNeckFX.update();
-                currentStickman.mLeftUpperArmFX.update();
-                currentStickman.mLeftForeArmFX.update();
-                currentStickman.mLeftWrist.update();
-                currentStickman.mLeftFinger1.update();
-                currentStickman.mLeftFinger2.update();
-                currentStickman.mLeftFinger3.update();
-                currentStickman.mLeftFinger4.update();
-                currentStickman.mLeftUpperLegFX.update();
-                currentStickman.mLeftForeLegFX.update();
+                sSC.currentStickman.mNeckFX.update();
+                sSC.currentStickman.mLeftUpperArmFX.update();
+                sSC.currentStickman.mLeftForeArmFX.update();
+                sSC.currentStickman.mLeftWrist.update();
+                sSC.currentStickman.mLeftFinger1.update();
+                sSC.currentStickman.mLeftFinger2.update();
+                sSC.currentStickman.mLeftFinger3.update();
+                sSC.currentStickman.mLeftFinger4.update();
+                sSC.currentStickman.mLeftUpperLegFX.update();
+                sSC.currentStickman.mLeftForeLegFX.update();
 
-                currentStickman.mRightUpperArmFX.update();
-                currentStickman.mRightForeArmFX.update();
-                currentStickman.mRightWrist.update();
-                currentStickman.mRightFinger1.update();
-                currentStickman.mRightFinger2.update();
-                currentStickman.mRightFinger3.update();
-                currentStickman.mRightFinger4.update();
-                currentStickman.mRightUpperLegFX.update();
-                currentStickman.mRightForeLegFX.update();
-            } else if (ev.getSource().equals(limbsColorReset)) {
-                currentStickman.mNeckFX.mColor = currentStickman.mNeckFX.mColorRecorder;
-                currentStickman.mLeftUpperArmFX.mColor = currentStickman.mLeftUpperArmFX.mColorRecorder;
-                currentStickman.mLeftForeArmFX.mColor = currentStickman.mLeftForeArmFX.mColorRecorder;
-                currentStickman.mLeftWrist.mColor = currentStickman.mLeftWrist.mColorRecorder;
-                currentStickman.mLeftFinger1.mColor = currentStickman.mLeftFinger1.mColorRecorder;
-                currentStickman.mLeftFinger2.mColor = currentStickman.mLeftFinger2.mColorRecorder;
-                currentStickman.mLeftFinger3.mColor = currentStickman.mLeftFinger3.mColorRecorder;
-                currentStickman.mLeftFinger4.mColor = currentStickman.mLeftFinger4.mColorRecorder;
-                currentStickman.mLeftUpperLegFX.mColor = currentStickman.mLeftUpperLegFX.mColorRecorder;
-                currentStickman.mLeftForeLegFX.mColor = currentStickman.mLeftForeLegFX.mColorRecorder;
+                sSC.currentStickman.mRightUpperArmFX.update();
+                sSC.currentStickman.mRightForeArmFX.update();
+                sSC.currentStickman.mRightWrist.update();
+                sSC.currentStickman.mRightFinger1.update();
+                sSC.currentStickman.mRightFinger2.update();
+                sSC.currentStickman.mRightFinger3.update();
+                sSC.currentStickman.mRightFinger4.update();
+                sSC.currentStickman.mRightUpperLegFX.update();
+                sSC.currentStickman.mRightForeLegFX.update();
+            } else if (ev.getSource().equals(sSC.limbsColorReset)) {
+                sSC.currentStickman.mNeckFX.mColor = sSC.currentStickman.mNeckFX.mColorRecorder;
+                sSC.currentStickman.mLeftUpperArmFX.mColor = sSC.currentStickman.mLeftUpperArmFX.mColorRecorder;
+                sSC.currentStickman.mLeftForeArmFX.mColor = sSC.currentStickman.mLeftForeArmFX.mColorRecorder;
+                sSC.currentStickman.mLeftWrist.mColor = sSC.currentStickman.mLeftWrist.mColorRecorder;
+                sSC.currentStickman.mLeftFinger1.mColor = sSC.currentStickman.mLeftFinger1.mColorRecorder;
+                sSC.currentStickman.mLeftFinger2.mColor = sSC.currentStickman.mLeftFinger2.mColorRecorder;
+                sSC.currentStickman.mLeftFinger3.mColor = sSC.currentStickman.mLeftFinger3.mColorRecorder;
+                sSC.currentStickman.mLeftFinger4.mColor = sSC.currentStickman.mLeftFinger4.mColorRecorder;
+                sSC.currentStickman.mLeftUpperLegFX.mColor = sSC.currentStickman.mLeftUpperLegFX.mColorRecorder;
+                sSC.currentStickman.mLeftForeLegFX.mColor = sSC.currentStickman.mLeftForeLegFX.mColorRecorder;
 
-                currentStickman.mRightUpperArmFX.mColor = currentStickman.mRightUpperArmFX.mColorRecorder;
-                currentStickman.mRightForeArmFX.mColor = currentStickman.mRightForeArmFX.mColorRecorder;
-                currentStickman.mRightWrist.mColor = currentStickman.mRightWrist.mColorRecorder;
-                currentStickman.mRightFinger1.mColor = currentStickman.mRightFinger1.mColorRecorder;
-                currentStickman.mRightFinger2.mColor = currentStickman.mRightFinger2.mColorRecorder;
-                currentStickman.mRightFinger3.mColor = currentStickman.mRightFinger3.mColorRecorder;
-                currentStickman.mRightFinger4.mColor = currentStickman.mRightFinger4.mColorRecorder;
-                currentStickman.mRightUpperLegFX.mColor = currentStickman.mRightUpperLegFX.mColorRecorder;
-                currentStickman.mRightForeLegFX.mColor = currentStickman.mRightForeLegFX.mColorRecorder;
+                sSC.currentStickman.mRightUpperArmFX.mColor = sSC.currentStickman.mRightUpperArmFX.mColorRecorder;
+                sSC.currentStickman.mRightForeArmFX.mColor = sSC.currentStickman.mRightForeArmFX.mColorRecorder;
+                sSC.currentStickman.mRightWrist.mColor = sSC.currentStickman.mRightWrist.mColorRecorder;
+                sSC.currentStickman.mRightFinger1.mColor = sSC.currentStickman.mRightFinger1.mColorRecorder;
+                sSC.currentStickman.mRightFinger2.mColor = sSC.currentStickman.mRightFinger2.mColorRecorder;
+                sSC.currentStickman.mRightFinger3.mColor = sSC.currentStickman.mRightFinger3.mColorRecorder;
+                sSC.currentStickman.mRightFinger4.mColor = sSC.currentStickman.mRightFinger4.mColorRecorder;
+                sSC.currentStickman.mRightUpperLegFX.mColor = sSC.currentStickman.mRightUpperLegFX.mColorRecorder;
+                sSC.currentStickman.mRightForeLegFX.mColor = sSC.currentStickman.mRightForeLegFX.mColorRecorder;
+                
+                sSC.limbsOpacitySlider.setValue(1);
 
-                currentStickman.mNeckFX.update();
-                currentStickman.mLeftUpperArmFX.update();
-                currentStickman.mLeftForeArmFX.update();
-                currentStickman.mLeftWrist.update();
-                currentStickman.mLeftFinger1.update();
-                currentStickman.mLeftFinger2.update();
-                currentStickman.mLeftFinger3.update();
-                currentStickman.mLeftFinger4.update();
-                currentStickman.mLeftUpperLegFX.update();
-                currentStickman.mLeftForeLegFX.update();
+                sSC.currentStickman.mNeckFX.update();
+                sSC.currentStickman.mLeftUpperArmFX.update();
+                sSC.currentStickman.mLeftForeArmFX.update();
+                sSC.currentStickman.mLeftWrist.update();
+                sSC.currentStickman.mLeftFinger1.update();
+                sSC.currentStickman.mLeftFinger2.update();
+                sSC.currentStickman.mLeftFinger3.update();
+                sSC.currentStickman.mLeftFinger4.update();
+                sSC.currentStickman.mLeftUpperLegFX.update();
+                sSC.currentStickman.mLeftForeLegFX.update();
 
-                currentStickman.mRightUpperArmFX.update();
-                currentStickman.mRightForeArmFX.update();
-                currentStickman.mRightWrist.update();
-                currentStickman.mRightFinger1.update();
-                currentStickman.mRightFinger2.update();
-                currentStickman.mRightFinger3.update();
-                currentStickman.mRightFinger4.update();
-                currentStickman.mRightUpperLegFX.update();
-                currentStickman.mRightForeLegFX.update();
+                sSC.currentStickman.mRightUpperArmFX.update();
+                sSC.currentStickman.mRightForeArmFX.update();
+                sSC.currentStickman.mRightWrist.update();
+                sSC.currentStickman.mRightFinger1.update();
+                sSC.currentStickman.mRightFinger2.update();
+                sSC.currentStickman.mRightFinger3.update();
+                sSC.currentStickman.mRightFinger4.update();
+                sSC.currentStickman.mRightUpperLegFX.update();
+                sSC.currentStickman.mRightForeLegFX.update();
             }
         }
     }
 
-    public static void handleShoesColorButtons(Stickman3D currentStickman, MouseEvent ev, Button shoesColorBrighter,
-            Button shoesColorDarker, Button shoesColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(shoesColorBrighter)) {
-                currentStickman.mLeftFootFX.mColor = currentStickman.mLeftFootFX.mColor.brighter();
-                currentStickman.mRightFootFX.mColor = currentStickman.mRightFootFX.mColor.brighter();
-                currentStickman.mLeftFootFX.update();
-                currentStickman.mRightFootFX.update();
-            } else if (ev.getSource().equals(shoesColorDarker)) {
-                currentStickman.mLeftFootFX.mColor = currentStickman.mLeftFootFX.mColor.darker();
-                currentStickman.mRightFootFX.mColor = currentStickman.mRightFootFX.mColor.darker();
-                currentStickman.mLeftFootFX.update();
-                currentStickman.mRightFootFX.update();
-            } else if (ev.getSource().equals(shoesColorReset)) {
-                currentStickman.mLeftFootFX.mColor = currentStickman.mLeftFootFX.mColorRecorder;
-                currentStickman.mRightFootFX.mColor = currentStickman.mRightFootFX.mColorRecorder;
-                currentStickman.mLeftFootFX.update();
-                currentStickman.mRightFootFX.update();
+    public static void handleShoesColorButtons(StickmanStageController sSC, 
+            MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.shoesColorBrighter)) {
+                sSC.currentStickman.mLeftFootFX.mColor = sSC.currentStickman.mLeftFootFX.mColor.brighter();
+                sSC.currentStickman.mRightFootFX.mColor = sSC.currentStickman.mRightFootFX.mColor.brighter();
+                sSC.currentStickman.mLeftFootFX.update();
+                sSC.currentStickman.mRightFootFX.update();
+            } else if (ev.getSource().equals(sSC.shoesColorDarker)) {
+                sSC.currentStickman.mLeftFootFX.mColor = sSC.currentStickman.mLeftFootFX.mColor.darker();
+                sSC.currentStickman.mRightFootFX.mColor = sSC.currentStickman.mRightFootFX.mColor.darker();
+                sSC.currentStickman.mLeftFootFX.update();
+                sSC.currentStickman.mRightFootFX.update();
+            } else if (ev.getSource().equals(sSC.shoesColorReset)) {
+                sSC.currentStickman.mLeftFootFX.mColor = sSC.currentStickman.mLeftFootFX.mColorRecorder;
+                sSC.currentStickman.mRightFootFX.mColor = sSC.currentStickman.mRightFootFX.mColorRecorder;
+                sSC.shoesOpacitySlider.setValue(1);
+                sSC.currentStickman.mLeftFootFX.update();
+                sSC.currentStickman.mRightFootFX.update();
             }
         }
     }
 
-    public static void handleLipsColorButtons(Stickman3D currentStickman, MouseEvent ev, Button lipsColorBrighter,
-            Button lipsColorDarker, Button lipsColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(lipsColorBrighter)) {
-                currentStickman.mMouthFX.mColor = currentStickman.mMouthFX.mColor.brighter();
-                currentStickman.mMouthFX.update();
-            } else if (ev.getSource().equals(lipsColorDarker)) {
-                currentStickman.mMouthFX.mColor = currentStickman.mMouthFX.mColor.darker();
-                currentStickman.mMouthFX.update();
-            } else if (ev.getSource().equals(lipsColorReset)) {
-                currentStickman.mMouthFX.mColor = currentStickman.mMouthFX.mColorRecorder;
-                currentStickman.mMouthFX.update();
+    public static void handleLipsColorButtons(StickmanStageController sSC, MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.lipsColorBrighter)) {
+                sSC.currentStickman.mMouthFX.mColor = sSC.currentStickman.mMouthFX.mColor.brighter();
+                sSC.currentStickman.mMouthFX.update();
+            } else if (ev.getSource().equals(sSC.lipsColorDarker)) {
+                sSC.currentStickman.mMouthFX.mColor = sSC.currentStickman.mMouthFX.mColor.darker();
+                sSC.currentStickman.mMouthFX.update();
+            } else if (ev.getSource().equals(sSC.lipsColorReset)) {
+                sSC.currentStickman.mMouthFX.mColor = sSC.currentStickman.mMouthFX.mColorRecorder;
+                sSC.lipsOpacitySlider.setValue(1);
+                sSC.currentStickman.mMouthFX.update();
             }
         }
     }
 
-    public static void handleEyeColorButtons(Stickman3D currentStickman, MouseEvent ev, Button eyeColorBrighter,
-            Button eyeColorDarker, Button eyeColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(eyeColorBrighter)) {
-                currentStickman.mLeftEyeFX.mColor = currentStickman.mLeftEyeFX.mColor.brighter();
-                currentStickman.mRightEyeFX.mColor = currentStickman.mRightEyeFX.mColor.brighter();
-                currentStickman.mLeftEyeFX.update();
-                currentStickman.mRightEyeFX.update();
-            } else if (ev.getSource().equals(eyeColorDarker)) {
-                currentStickman.mLeftEyeFX.mColor = currentStickman.mLeftEyeFX.mColor.darker();
-                currentStickman.mRightEyeFX.mColor = currentStickman.mRightEyeFX.mColor.darker();
-                currentStickman.mLeftEyeFX.update();
-                currentStickman.mRightEyeFX.update();
-            } else if (ev.getSource().equals(eyeColorReset)) {
-                currentStickman.mLeftEyeFX.mColor = currentStickman.mLeftEyeFX.mColorRecorder;
-                currentStickman.mRightEyeFX.mColor = currentStickman.mRightEyeFX.mColorRecorder;
-                currentStickman.mLeftEyeFX.update();
-                currentStickman.mRightEyeFX.update();
+    public static void handleEyeColorButtons(StickmanStageController sSC,  
+            MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.eyeColorBrighter)) {
+                sSC.currentStickman.mLeftEyeFX.mColor = sSC.currentStickman.mLeftEyeFX.mColor.brighter();
+                sSC.currentStickman.mRightEyeFX.mColor = sSC.currentStickman.mRightEyeFX.mColor.brighter();
+                sSC.currentStickman.mLeftEyeFX.update();
+                sSC.currentStickman.mRightEyeFX.update();
+            } else if (ev.getSource().equals(sSC.eyeColorDarker)) {
+                sSC.currentStickman.mLeftEyeFX.mColor = sSC.currentStickman.mLeftEyeFX.mColor.darker();
+                sSC.currentStickman.mRightEyeFX.mColor = sSC.currentStickman.mRightEyeFX.mColor.darker();
+                sSC.currentStickman.mLeftEyeFX.update();
+                sSC.currentStickman.mRightEyeFX.update();
+            } else if (ev.getSource().equals(sSC.eyeColorReset)) {
+                sSC.currentStickman.mLeftEyeFX.mColor = sSC.currentStickman.mLeftEyeFX.mColorRecorder;
+                sSC.currentStickman.mRightEyeFX.mColor = sSC.currentStickman.mRightEyeFX.mColorRecorder;
+                sSC.eyeOpacitySlider.setValue(1);
+                sSC.currentStickman.mLeftEyeFX.update();
+                sSC.currentStickman.mRightEyeFX.update();
             }
         }
     }
 
-    public static void handleBrowColorButtons(Stickman3D currentStickman, MouseEvent ev, Button browColorBrighter,
-            Button browColorDarker, Button browColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(browColorBrighter)) {
-                currentStickman.mLeftEyebrowFX.mColor = currentStickman.mLeftEyebrowFX.mColor.brighter();
-                currentStickman.mRightEyebrowFX.mColor = currentStickman.mRightEyebrowFX.mColor.brighter();
-                currentStickman.mLeftEyebrowFX.update();
-                currentStickman.mRightEyebrowFX.update();
-            } else if (ev.getSource().equals(browColorDarker)) {
-                currentStickman.mLeftEyebrowFX.mColor = currentStickman.mLeftEyebrowFX.mColor.darker();
-                currentStickman.mRightEyebrowFX.mColor = currentStickman.mRightEyebrowFX.mColor.darker();
-                currentStickman.mLeftEyebrowFX.update();
-                currentStickman.mRightEyebrowFX.update();
-            } else if (ev.getSource().equals(browColorReset)) {
-                currentStickman.mLeftEyebrowFX.mColor = currentStickman.mLeftEyebrowFX.mColorRecorder;
-                currentStickman.mRightEyebrowFX.mColor = currentStickman.mRightEyebrowFX.mColorRecorder;
-                currentStickman.mLeftEyebrowFX.update();
-                currentStickman.mRightEyebrowFX.update();
+    public static void handleBrowColorButtons(StickmanStageController sSC, MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.browColorBrighter)) {
+                sSC.currentStickman.mLeftEyebrowFX.mColor = sSC.currentStickman.mLeftEyebrowFX.mColor.brighter();
+                sSC.currentStickman.mRightEyebrowFX.mColor = sSC.currentStickman.mRightEyebrowFX.mColor.brighter();
+                sSC.currentStickman.mLeftEyebrowFX.update();
+                sSC.currentStickman.mRightEyebrowFX.update();
+            } else if (ev.getSource().equals(sSC.browColorDarker)) {
+                sSC.currentStickman.mLeftEyebrowFX.mColor = sSC.currentStickman.mLeftEyebrowFX.mColor.darker();
+                sSC.currentStickman.mRightEyebrowFX.mColor = sSC.currentStickman.mRightEyebrowFX.mColor.darker();
+                sSC.currentStickman.mLeftEyebrowFX.update();
+                sSC.currentStickman.mRightEyebrowFX.update();
+            } else if (ev.getSource().equals(sSC.browColorReset)) {
+                sSC.currentStickman.mLeftEyebrowFX.mColor = sSC.currentStickman.mLeftEyebrowFX.mColorRecorder;
+                sSC.currentStickman.mRightEyebrowFX.mColor = sSC.currentStickman.mRightEyebrowFX.mColorRecorder;
+                sSC.browOpacitySlider.setValue(1);
+                sSC.currentStickman.mLeftEyebrowFX.update();
+                sSC.currentStickman.mRightEyebrowFX.update();
             }
         }
     }
 
-    public static void handleNoseColorButtons(Stickman3D currentStickman, MouseEvent ev, Button noseColorBrighter,
-            Button noseColorDarker, Button noseColorReset) {
-        if (currentStickman != null) {
-            if (ev.getSource().equals(noseColorBrighter)) {
-                currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColor.brighter();
-                currentStickman.mNoseFX.update();
-            } else if (ev.getSource().equals(noseColorDarker)) {
-                currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColor.darker();
-                currentStickman.mNoseFX.update();
-            } else if (ev.getSource().equals(noseColorReset)) {
-                currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColorRecorder;
-                currentStickman.mNoseFX.update();
+    public static void handleNoseColorButtons(StickmanStageController sSC, MouseEvent ev) {
+        if (sSC.currentStickman != null) {
+            if (ev.getSource().equals(sSC.noseColorBrighter)) {
+                sSC.currentStickman.mNoseFX.mColor = sSC.currentStickman.mNoseFX.mColor.brighter();
+                sSC.currentStickman.mNoseFX.update();
+            } else if (ev.getSource().equals(sSC.noseColorDarker)) {
+                sSC.currentStickman.mNoseFX.mColor = sSC.currentStickman.mNoseFX.mColor.darker();
+                sSC.currentStickman.mNoseFX.update();
+            } else if (ev.getSource().equals(sSC.noseColorReset)) {
+                sSC.currentStickman.mNoseFX.mColor = sSC.currentStickman.mNoseFX.mColorRecorder;
+                sSC.noseOpacitySlider.setValue(1);
+                sSC.currentStickman.mNoseFX.update();
             }
         }
     }
