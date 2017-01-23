@@ -85,59 +85,59 @@ public class StickmanStageController implements ViewController {
     @FXML
     ScrollPane postureScrollPane;
     @FXML
-    private Button headColorReset;
+    public Button headColorReset;
     @FXML
-    private Button headColorBrighter;
+    public Button headColorBrighter;
     @FXML
-    private Button headColorDarker;
+    public Button headColorDarker;
     @FXML
-    private Button hairColorReset;
+    public Button hairColorReset;
     @FXML
-    private Button hairColorBrighter;
+    public Button hairColorBrighter;
     @FXML
-    private Button hairColorDarker;
+    public Button hairColorDarker;
     @FXML
-    private Button bodyColorReset;
+    public Button bodyColorReset;
     @FXML
-    private Button bodyColorBrighter;
+    public Button bodyColorBrighter;
     @FXML
-    private Button bodyColorDarker;
+    public Button bodyColorDarker;
     @FXML
-    private Button limbsColorReset;
+    public Button limbsColorReset;
     @FXML
-    private Button limbsColorBrighter;
+    public Button limbsColorBrighter;
     @FXML
-    private Button limbsColorDarker;
+    public Button limbsColorDarker;
     @FXML
-    private Button shoesColorReset;
+    public Button shoesColorReset;
     @FXML
-    private Button shoesColorBrighter;
+    public Button shoesColorBrighter;
     @FXML
-    private Button shoesColorDarker;
+    public Button shoesColorDarker;
     @FXML
-    private Button lipsColorReset;
+    public Button lipsColorReset;
     @FXML
-    private Button lipsColorBrighter;
+    public Button lipsColorBrighter;
     @FXML
-    private Button lipsColorDarker;
+    public Button lipsColorDarker;
     @FXML
-    private Button eyeColorReset;
+    public Button eyeColorReset;
     @FXML
-    private Button eyeColorBrighter;
+    public Button eyeColorBrighter;
     @FXML
-    private Button eyeColorDarker;
+    public Button eyeColorDarker;
     @FXML
-    private Button browColorReset;
+    public Button browColorReset;
     @FXML
-    private Button browColorBrighter;
+    public Button browColorBrighter;
     @FXML
-    private Button browColorDarker;
+    public Button browColorDarker;
     @FXML
-    private Button noseColorReset;
+    public Button noseColorReset;
     @FXML
-    private Button noseColorBrighter;
+    public Button noseColorBrighter;
     @FXML
-    private Button noseColorDarker;
+    public Button noseColorDarker;
     @FXML
     private Slider cameraXSlider;
     @FXML
@@ -193,7 +193,7 @@ public class StickmanStageController implements ViewController {
     @FXML
     private Slider upperBodyZSlider;
     @FXML
-    private Slider headOpacitySlider;
+    public Slider headOpacitySlider;
     @FXML
     private Slider leftUpperArmXSlider;
     @FXML
@@ -400,21 +400,21 @@ public class StickmanStageController implements ViewController {
     public TextField rightForeLegZRotationField;
     
     @FXML
-    private Slider hairOpacitySlider;
+    public Slider hairOpacitySlider;
     @FXML
-    private Slider bodyOpacitySlider;
+    public Slider bodyOpacitySlider;
     @FXML
-    private Slider limbsOpacitySlider;
+    public Slider limbsOpacitySlider;
     @FXML
-    private Slider shoesOpacitySlider;
+    public Slider shoesOpacitySlider;
     @FXML
-    private Slider lipsOpacitySlider;
+    public Slider lipsOpacitySlider;
     @FXML
-    private Slider eyeOpacitySlider;
+    public Slider eyeOpacitySlider;
     @FXML
-    private Slider browOpacitySlider;
+    public Slider browOpacitySlider;
     @FXML
-    private Slider noseOpacitySlider;
+    public Slider noseOpacitySlider;
     @FXML
     private Slider rightForeArmXSlider;
     @FXML
@@ -853,47 +853,47 @@ public class StickmanStageController implements ViewController {
 
     @FXML
     public void handleHeadColorButtons(MouseEvent ev) {
-        ColorHelper.handleHeadColorButtons(currentStickman, ev, headColorBrighter, headColorDarker, headColorReset);
+        ColorHelper.handleHeadColorButtons(this, ev);
     }
 
     @FXML
     public void handleHairColorButtons(MouseEvent ev) {
-        ColorHelper.handleHairColorButtons(currentStickman, ev, hairColorBrighter, hairColorDarker, hairColorReset);
+        ColorHelper.handleHairColorButtons(this, ev);
     }
 
     @FXML
     public void handleBodyColorButtons(MouseEvent ev) {
-        ColorHelper.handleBodyColorButtons(currentStickman, ev, bodyColorBrighter, bodyColorDarker, bodyColorReset);
+        ColorHelper.handleBodyColorButtons(this, ev);
     }
 
     @FXML
     public void handleLimbsColorButtons(MouseEvent ev) {
-        ColorHelper.handlelimbsColorButtons(currentStickman, ev, limbsColorBrighter, limbsColorDarker, limbsColorReset);
+        ColorHelper.handlelimbsColorButtons(this,  ev);
     }
 
     @FXML
     public void handleShoesColorButtons(MouseEvent ev) {
-        ColorHelper.handleShoesColorButtons(currentStickman, ev, shoesColorBrighter, shoesColorDarker, shoesColorReset);
+        ColorHelper.handleShoesColorButtons(this, ev);
     }
 
     @FXML
     public void handleLipsColorButtons(MouseEvent ev) {
-        ColorHelper.handleLipsColorButtons(currentStickman, ev, lipsColorBrighter, lipsColorDarker, lipsColorReset);
+        ColorHelper.handleLipsColorButtons(this, ev);
     }
 
     @FXML
     public void handleEyeColorButtons(MouseEvent ev) {
-        ColorHelper.handleEyeColorButtons(currentStickman, ev, eyeColorBrighter, eyeColorDarker, eyeColorReset);
+        ColorHelper.handleEyeColorButtons(this, ev);
     }
 
     @FXML
     public void handleBrowColorButtons(MouseEvent ev) {
-        ColorHelper.handleBrowColorButtons(currentStickman, ev, browColorBrighter, browColorDarker, browColorReset);
+        ColorHelper.handleBrowColorButtons(this, ev);
     }
 
     @FXML
     public void handleNoseColorButtons(MouseEvent ev) {
-        ColorHelper.handleNoseColorButtons(currentStickman, ev, noseColorBrighter, noseColorDarker, noseColorReset);
+        ColorHelper.handleNoseColorButtons(this, ev);
     }
 
     private void fillEmotionScrollPane() {
