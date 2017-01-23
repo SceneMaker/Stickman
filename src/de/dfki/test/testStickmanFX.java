@@ -89,7 +89,7 @@ public class testStickmanFX {
         //StageRoom stickmanStageFull = new StageRoomFullScreenDecorator(stickmanStageFx);
         stickmanStage3D.addStickman("Anna");
 //        stickmanStage3D.addStickman("Bob");
-        stickmanStage3D.launchStickmanConfiguration();
+        stickmanStage3D.launchStickmanConfiguration("/Users/Robbie/Documents/stickmans");
 //        "/Users/Robbie/Documents/stickmans"
     }
 }

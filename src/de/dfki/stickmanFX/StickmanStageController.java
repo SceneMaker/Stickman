@@ -451,20 +451,20 @@ public class StickmanStageController implements ViewController {
 			HeadColorSlider.setValue(mStick.mHeadFX.mColoropacityRest);
 
 			mStick.mLeftUpperLegFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
-			mStick.mLeftForeLegFX.mColor = mStick.mLeftForeLegFX.mColorRest;
-			mStick.mLeftFootFX.mColor = mStick.mLeftFootFX.mColorRest;
-			mStick.mRightUpperLegFX.mColor = mStick.mRightUpperLegFX.mColorRest;
-			mStick.mRightForeLegFX.mColor = mStick.mRightForeLegFX.mColorRest;
-			mStick.mRightFootFX.mColor = mStick.mRightFootFX.mColorRest;
-			mStick.mLeftHandFX.mColor = mStick.mLeftHandFX.mColorRest;
-			mStick.mRightHandFX.mColor = mStick.mRightHandFX.mColorRest;
-			mStick.mLeftShoulderFX.mColor = mStick.mLeftShoulderFX.mColorRest;
-			mStick.mRightShoulderFX.mColor = mStick.mRightShoulderFX.mColorRest;
-			mStick.mLeftUpperArmFX.mColor = mStick.mLeftUpperArmFX.mColorRest;
-			mStick.mLeftForeArmFX.mColor = mStick.mLeftForeArmFX.mColorRest;
-			mStick.mRightUpperArmFX.mColor = mStick.mRightUpperArmFX.mColorRest;
-			mStick.mRightForeArmFX.mColor = mStick.mRightForeArmFX.mColorRest;
-			mStick.mNeckFX.mColor = mStick.mNeckFX.mColorRest;
+			mStick.mLeftForeLegFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mLeftFootFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightUpperLegFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightForeLegFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightFootFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mLeftHandFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightHandFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mLeftShoulderFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightShoulderFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mLeftUpperArmFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mLeftForeArmFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightUpperArmFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mRightForeArmFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
+			mStick.mNeckFX.mColor = mStick.mLeftUpperLegFX.mColorRest;
 			
 			LimbsColorPicker.setValue(colorWithoutOpacity(mStick.mLeftUpperLegFX.mColorRest));
 			LimbsColorSlider.setValue(mStick.mLeftUpperLegFX.mColoropacityRest);

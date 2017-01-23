@@ -1,6 +1,7 @@
 package de.dfki.stickman3D.stage;
 
 import de.dfki.common.commonFX3D.StageRoomImpl;
+import de.dfki.stickman3D.utils.XmlStickmanLoader;
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.stickman3D.ApplicationLauncher3D;
 
@@ -72,5 +73,23 @@ public class StageRoom3D extends StageRoomImpl {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    @Override
+    public void launchStickmanConfiguration(String filepath) {
+        commonStickmansOnStage.setmFilePath(filepath);
+        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
+        loader.initialStickmanWithXml();
+        launchStickmanConfiguration();
+//        loader.initialStickmanWithXml();
+    }
+    
+    @Override
+    public void launchStickmanStage(boolean show, String filepath) {
+        commonStickmansOnStage.setmFilePath(filepath);
+        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
+        loader.initialStickmanWithXml();
+        launchStickmanStage(show);
+//        loader.initialStickmanWithXml();
     }
 }

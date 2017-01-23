@@ -2,7 +2,6 @@ package de.dfki.stickman3D.utils;
 
 import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
-import de.dfki.stickmanFX.xmlsettings.StickmanDataFX;
 
 import de.dfki.stickman3D.xmlsettings.StickmanData3D;
 import de.dfki.stickman3D.stage.StickmanStage3D;
@@ -11,9 +10,9 @@ import de.dfki.stickman3D.Stickman3D;
 
 import javafx.scene.paint.Color;
 
-import de.dfki.stickmanFX.stage.StickmanStageFX;
-import de.dfki.stickmanFX.stage.StickmansOnStageFX;
-import de.dfki.stickmanFX.StickmanFX;
+//import de.dfki.stickmanFX.stage.StickmanStageFX;
+//import de.dfki.stickmanFX.stage.StickmansOnStageFX;
+//import de.dfki.stickmanFX.StickmanFX;
 
 import java.io.File;
 import java.util.List;
@@ -43,14 +42,14 @@ public class XmlStickmanLoader {
     }
 
     public void initialStickmanWithXml() {
-//        readXML();
-//        List<StickmanDataFX> mStickmanDataFX = ((StickmansOnStageFX) sStickmansOnStage).getmXmlTransform()
-//                .getStickmanDataFXList();
-//        if (!(mStickmanDataFX.isEmpty())) {
-//            for (StickmanDataFX mStick : mStickmanDataFX) {
-//                String name = mStick.getName();
-//                if (sStickmansOnStage.getStickmanNames().contains(name.toLowerCase())) {
-//                    String bodycolor = mStick.getbodyColor();
+        readXML();
+        List<StickmanData3D> mStickmanData3D = ((StickmansOnStage3D) sStickmansOnStage).getmXmlTransform()
+                .getStickmanData3DList();
+        if (!(mStickmanData3D.isEmpty())) {
+            for (StickmanData3D mStick : mStickmanData3D) {
+                String name = mStick.getName();
+                if (sStickmansOnStage.getStickmanNames().contains(name.toLowerCase())) {
+                    String bodycolor = mStick.getbodyColor();
 //                    float bodyColorOpacity = mStick.getbodyColorOpacity();
 //                    if (bodycolor != null) {
 //                        Runnable bodyRunnable = () -> {
@@ -174,9 +173,9 @@ public class XmlStickmanLoader {
 //                        };
 //                        StickmanStageFX.getInstance().runLater(limbsColor);
 //                    }
-//                }
-//            }
-//        }
+                }
+            }
+        }
     }
 }
 

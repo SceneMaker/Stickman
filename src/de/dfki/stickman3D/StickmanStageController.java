@@ -8,6 +8,12 @@ import de.dfki.stickman3D.controllerhelper.ColorHelper;
 import de.dfki.stickman3D.controllerhelper.OpacityHelper;
 import de.dfki.stickman3D.controllerhelper.SliderHelper;
 import de.dfki.stickman3D.stage.StickmanStage3D;
+import de.dfki.stickman3D.stage.StickmansOnStage3D;
+import de.dfki.stickman3D.xmlsettings.StickmanData3D;
+import de.dfki.stickmanFX.StickmanFX;
+import de.dfki.stickmanFX.stage.StickmansOnStageFX;
+import de.dfki.stickmanFX.xmlsettings.StickmanDataFX;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +28,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 
@@ -463,6 +472,7 @@ public class StickmanStageController implements ViewController {
     private ImageView bg6;
 
     private final ArrayList<String> mStickmanComboList = new ArrayList<>();
+    private List<StickmanData3D> mStickmanData3D = new ArrayList<StickmanData3D>();
 
     public boolean isCameraStarted = false;
     private String mStickmancombobox = null;
@@ -607,11 +617,58 @@ public class StickmanStageController implements ViewController {
         });
         
         SaveButton.setOnAction((ActionEvent event) -> {
-            
+//		if (((null != mStickmanComboList) && (!mStickmanComboList.isEmpty()))) {
+		    Platform.runLater(() -> {
+			//mStickmanData3D.clear();
+			//for (String key : mStickmanComboList) {
+			    String key = "Anna";
+			    String name = key;
+			    String bodyColor = "1";
+			    String hairColor= "1";
+			    String headColor= "1";
+			    String limbsColor= "1";
+			    String shoesColor= "1";    
+			    String lipsColor= "1";   
+			    String eyesColor= "1";
+			    String browsColor= "1";
+			    String nosesColor= "1";
+			    String backgroundRecord= "1";
+			    Stickman3D mStick = getStickmanAs3D(key);
+//			    if (mStick.mType == Gender.TYPE.MALE) {
+//				bodyColor = toHexCode(mStick.mBodyFX.mMaleColor);
+//			    } else {
+//				bodyColor = toHexCode(mStick.mBodyFX.mFemaleColor);
+//			    }
+//			    bodyColorOpacity = mStick.mBodyFX.mColoropacity;
+//
+//			    if (mStick.mType == Gender.TYPE.MALE) {
+//				hairColor = toHexCode(mStick.mMaleHairFX.mColor);
+//				hairColorOpacity = mStick.mMaleHairFX.mColoropacity;
+//			    } else {
+//				hairColor = toHexCode(mStick.mFemaleHairFX.mColor);
+//				hairColorOpacity = mStick.mFemaleHairFX.mColoropacity;
+//			    }
+//
+//			    headColor = toHexCode(mStick.mHeadFX.mColor);
+//			    headColorOpacity = mStick.mHeadFX.mColoropacity;
+//
+//			    limbsColor = toHexCode(mStick.mLeftUpperLegFX.mColor);
+//			    limbsColorOpacity = mStick.mLeftUpperLegFX.mColoropacity;
+
+			    mStickmanData3D.add(new StickmanData3D(name, hairColor, headColor, bodyColor, limbsColor,
+				    shoesColor,lipsColor,eyesColor,browsColor,nosesColor,
+				    backgroundRecord));
+			//}
+			((StickmansOnStage3D) mStickmanOnstage).getmXmlTransform()
+				.loadStickmanData3DList(mStickmanData3D);
+			// StickmanOnstage.getmXmlTransform().loadStickmanDataFXList(mStickmanDataFX);
+			handleSave();
+		    });
+//		}
         });
     }
 
-    public Stickman3D getStickmanAsFx(String mStickmancombobox) {
+    public Stickman3D getStickmanAs3D(String mStickmancombobox) {
         return (Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox);
     }
 
@@ -1015,5 +1072,30 @@ public class StickmanStageController implements ViewController {
 
     public void setStage3D(StickmanStage3D stage3D) {
         this.stage3D = stage3D;
+    }
+    
+    private void handleSave() {
+	File filexml = null;
+	if (mStickmanOnstage.getmFilePath() != null) {
+	    filexml = new File(mStickmanOnstage.getmFilePath() + File.separator + "stickman3d" + File.separator
+		    + "stickmanfx.xml");
+	} else {
+	    try {
+		filexml = new File(new File(".").getCanonicalPath() + File.separator + "stickman3d" + File.separator
+			+ "stickman3d.xml");
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	}
+
+	if (!filexml.exists()) {
+	    filexml.getParentFile().mkdir();
+	}
+
+	// Make sure it has the correct extension
+	if (!filexml.getPath().endsWith(".xml")) {
+	    filexml = new File(filexml.getPath() + ".xml");
+	}
+	((StickmansOnStage3D) mStickmanOnstage).getmXmlTransform().saveStickmanDataToFile(filexml);
     }
 }

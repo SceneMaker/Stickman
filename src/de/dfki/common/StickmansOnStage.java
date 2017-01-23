@@ -3,8 +3,6 @@ package de.dfki.common;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StickmanStage;
-import de.dfki.stickmanFX.xmlsettings.XmlTransform;
-import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanSwing.util.Names;
 
 import java.util.HashMap;

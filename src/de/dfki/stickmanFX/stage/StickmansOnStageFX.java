@@ -6,7 +6,7 @@ import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.stickmanSwing.StickmanSwing;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.xmlsettings.XmlTransform;
+import de.dfki.stickmanFX.xmlsettings.XmlTransformFX;
 
 /**
  * Created by alvaro on 9/19/16.
@@ -16,7 +16,7 @@ public class StickmansOnStageFX extends StickmansOnStage {
     public StickmansOnStageFX(StickmanStage stickmanStage) {
         super(stickmanStage);
     }
-    private XmlTransform mXmlTransform = new XmlTransform();
+    private XmlTransformFX mXmlTransform = new XmlTransformFX();
 
     public StickmansOnStageFX(StickmanStage stickmanStageFX, StageRoom controllerFX) {
         super(stickmanStageFX, controllerFX);
@@ -48,7 +48,7 @@ public class StickmansOnStageFX extends StickmansOnStage {
         }
     }
 
-    public XmlTransform getmXmlTransform() {
+    public XmlTransformFX getmXmlTransform() {
         return this.mXmlTransform;
     }
 }

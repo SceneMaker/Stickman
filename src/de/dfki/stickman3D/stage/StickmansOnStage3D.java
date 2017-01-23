@@ -7,10 +7,11 @@ import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanFX.xmlsettings.XmlTransform;
+import de.dfki.stickman3D.xmlsettings.XmlTransform3D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.layout.HBox;
+import de.dfki.stickman3D.xmlsettings.XmlTransform3D;;
 
 /**
  * Created by alvaro on 9/19/16.
@@ -22,7 +23,7 @@ public class StickmansOnStage3D extends StickmansOnStage {
     public StickmansOnStage3D(StickmanStage stickmanStage) {
         super(stickmanStage);
     }
-    private XmlTransform mXmlTransform = new XmlTransform();
+    private XmlTransform3D mXmlTransform = new XmlTransform3D();
 
     public StickmansOnStage3D(StickmanStage stickmanStageFX, StageRoom controllerFX) {
         super(stickmanStageFX, controllerFX);
@@ -72,7 +73,7 @@ public class StickmansOnStage3D extends StickmansOnStage {
         }
     }
 
-    public XmlTransform getmXmlTransform() {
+    public XmlTransform3D getmXmlTransform() {
         return this.mXmlTransform;
     }
 }

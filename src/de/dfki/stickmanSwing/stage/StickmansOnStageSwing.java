@@ -4,7 +4,7 @@ import de.dfki.common.Gender;
 import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StickmanStage;
-import de.dfki.stickmanFX.xmlsettings.XmlTransform;
+import de.dfki.stickmanFX.xmlsettings.XmlTransformFX;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.stickmanSwing.StickmanSwing;
 
@@ -37,7 +37,7 @@ public class StickmansOnStageSwing extends StickmansOnStage {
         addStickmanToStage(name, fullScreen, gender);
     }
 
-    public XmlTransform getmXmlTransform() {
+    public XmlTransformFX getmXmlTransform() {
         return null;
     }
 }

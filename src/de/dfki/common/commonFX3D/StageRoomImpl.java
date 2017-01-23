@@ -6,7 +6,7 @@ import de.dfki.common.interfaces.Stickman;
 import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.stickman3D.stage.StickmanStage3D;
-import de.dfki.stickmanFX.utils.XmlStickmanLoader;
+//import de.dfki.stickmanFX.utils.XmlStickmanLoader;
 
 import java.awt.image.BufferedImage;
 
@@ -64,18 +64,18 @@ public abstract class StageRoomImpl implements StageRoom {
 
     @Override
     public void launchStickmanConfiguration(String filepath) {
-        commonStickmansOnStage.setmFilePath(filepath);
-        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
-        loader.initialStickmanWithXml();
-        launchStickmanConfiguration();
+//        commonStickmansOnStage.setmFilePath(filepath);
+//        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
+//        loader.initialStickmanWithXml();
+//        launchStickmanConfiguration();
 //        loader.initialStickmanWithXml();
     }
 
     public void launchStickmanStage(boolean show, String filepath) {
-        commonStickmansOnStage.setmFilePath(filepath);
-        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
-        loader.initialStickmanWithXml();
-        launchStickmanStage(show);
+//        commonStickmansOnStage.setmFilePath(filepath);
+//        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
+//        loader.initialStickmanWithXml();
+//        launchStickmanStage(show);
 //        loader.initialStickmanWithXml();
     }
 
