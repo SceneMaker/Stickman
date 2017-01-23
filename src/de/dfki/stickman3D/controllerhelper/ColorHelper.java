@@ -9,116 +9,126 @@ import javafx.scene.input.MouseEvent;
 
 public class ColorHelper {
 
-    public static void headColorChanger(Stickman3D currentStickman, ColorPicker headColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mHeadFX.mColor = headColorPicker.getValue();
-            currentStickman.mHeadFX.update();
+    public static void headColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mHeadFX.mColor = controller.headColorPicker.getValue();
+            controller.currentStickman.mHeadFX.update();
+            controller.headOpacitySlider.setValue(1);
         }
     }
 
-    public static void hairColorChanger(Stickman3D currentStickman, ColorPicker hairColorPicker) {
-        if (currentStickman != null) {
-            if (currentStickman.mType == Gender.TYPE.MALE) {
-                currentStickman.mMaleHairFX.mColor = hairColorPicker.getValue();
-                currentStickman.mMaleHairFX.update();
+    public static void hairColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            if (controller.currentStickman.mType == Gender.TYPE.MALE) {
+                controller.currentStickman.mMaleHairFX.mColor = controller.hairColorPicker.getValue();
+                controller.currentStickman.mMaleHairFX.update();
             } else {
-                currentStickman.mFemaleHairFX.mColor = hairColorPicker.getValue();
-                currentStickman.mFemaleHairFX.update();
+                controller.currentStickman.mFemaleHairFX.mColor = controller.hairColorPicker.getValue();
+                controller.currentStickman.mFemaleHairFX.update();
             }
+            controller.hairOpacitySlider.setValue(1);
         }
     }
 
-    public static void bodyColorChanger(Stickman3D currentStickman, ColorPicker bodyColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mUpperBody.mColor = bodyColorPicker.getValue();
-            currentStickman.mUpperBody.update();
+    public static void bodyColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mUpperBody.mColor = controller.bodyColorPicker.getValue();
+            controller.currentStickman.mUpperBody.update();
+            //controller.bodyOpacitySlider.setValue(1);
         }
     }
 
-    public static void limbsColorChanger(Stickman3D currentStickman, ColorPicker limbsColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mNeckFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftUpperArmFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftForeArmFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftWrist.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftFinger1.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftFinger2.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftFinger3.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftFinger4.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftUpperLegFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mLeftForeLegFX.mColor = limbsColorPicker.getValue();
+    public static void limbsColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mNeckFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftUpperArmFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftForeArmFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftWrist.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftFinger1.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftFinger2.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftFinger3.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftFinger4.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftUpperLegFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mLeftForeLegFX.mColor = controller.limbsColorPicker.getValue();
 
-            currentStickman.mRightUpperArmFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightForeArmFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightWrist.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightFinger1.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightFinger2.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightFinger3.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightFinger4.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightUpperLegFX.mColor = limbsColorPicker.getValue();
-            currentStickman.mRightForeLegFX.mColor = limbsColorPicker.getValue();
+            controller.currentStickman.mRightUpperArmFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightForeArmFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightWrist.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightFinger1.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightFinger2.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightFinger3.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightFinger4.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightUpperLegFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mRightForeLegFX.mColor = controller.limbsColorPicker.getValue();
+            
 
-            currentStickman.mNeckFX.update();
-            currentStickman.mLeftUpperArmFX.update();
-            currentStickman.mLeftForeArmFX.update();
-            currentStickman.mLeftWrist.update();
-            currentStickman.mLeftFinger1.update();
-            currentStickman.mLeftFinger2.update();
-            currentStickman.mLeftFinger3.update();
-            currentStickman.mLeftFinger4.update();
-            currentStickman.mLeftUpperLegFX.update();
-            currentStickman.mLeftForeLegFX.update();
+            controller.currentStickman.mNeckFX.update();
+            controller.currentStickman.mLeftUpperArmFX.update();
+            controller.currentStickman.mLeftForeArmFX.update();
+            controller.currentStickman.mLeftWrist.update();
+            controller.currentStickman.mLeftFinger1.update();
+            controller.currentStickman.mLeftFinger2.update();
+            controller.currentStickman.mLeftFinger3.update();
+            controller.currentStickman.mLeftFinger4.update();
+            controller.currentStickman.mLeftUpperLegFX.update();
+            controller.currentStickman.mLeftForeLegFX.update();
 
-            currentStickman.mRightUpperArmFX.update();
-            currentStickman.mRightForeArmFX.update();
-            currentStickman.mRightWrist.update();
-            currentStickman.mRightFinger1.update();
-            currentStickman.mRightFinger2.update();
-            currentStickman.mRightFinger3.update();
-            currentStickman.mRightFinger4.update();
-            currentStickman.mRightUpperLegFX.update();
-            currentStickman.mRightForeLegFX.update();
+            controller.currentStickman.mRightUpperArmFX.update();
+            controller.currentStickman.mRightForeArmFX.update();
+            controller.currentStickman.mRightWrist.update();
+            controller.currentStickman.mRightFinger1.update();
+            controller.currentStickman.mRightFinger2.update();
+            controller.currentStickman.mRightFinger3.update();
+            controller.currentStickman.mRightFinger4.update();
+            controller.currentStickman.mRightUpperLegFX.update();
+            controller.currentStickman.mRightForeLegFX.update();
+            controller.limbsOpacitySlider.setValue(1);
         }
     }
 
-    public static void shoesColorChanger(Stickman3D currentStickman, ColorPicker shoesColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mLeftFootFX.mColor = shoesColorPicker.getValue();
-            currentStickman.mRightFootFX.mColor = shoesColorPicker.getValue();
-            currentStickman.mLeftFootFX.update();
-            currentStickman.mRightFootFX.update();
+    public static void shoesColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mLeftFootFX.mColor = controller.shoesColorPicker.getValue();
+            controller.currentStickman.mRightFootFX.mColor = controller.shoesColorPicker.getValue();
+            controller.currentStickman.mLeftFootFX.update();
+            controller.currentStickman.mRightFootFX.update();
+            controller.shoesOpacitySlider.setValue(1);
         }
     }
 
-    public static void lipsColorChanger(Stickman3D currentStickman, ColorPicker lipsColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mMouthFX.mColor = lipsColorPicker.getValue();
-            currentStickman.mMouthFX.update();
+    public static void lipsColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mMouthFX.mColor = controller.lipsColorPicker.getValue();
+            controller.currentStickman.mMouthFX.update();
+            controller.lipsOpacitySlider.setValue(1);
         }
     }
 
-    public static void eyeColorChanger(Stickman3D currentStickman, ColorPicker eyeColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mLeftEyeFX.mColor = eyeColorPicker.getValue();
-            currentStickman.mRightEyeFX.mColor = eyeColorPicker.getValue();
-            currentStickman.mLeftEyeFX.update();
-            currentStickman.mRightEyeFX.update();
+    public static void eyeColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mLeftEyeFX.mColor = controller.eyeColorPicker.getValue();
+            controller.currentStickman.mRightEyeFX.mColor = controller.eyeColorPicker.getValue();
+            controller.currentStickman.mLeftEyeFX.update();
+            controller.currentStickman.mRightEyeFX.update();
+            controller.eyeOpacitySlider.setValue(1);
         }
     }
 
-    public static void browColorChanger(Stickman3D currentStickman, ColorPicker browColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mLeftEyebrowFX.mColor = browColorPicker.getValue();
-            currentStickman.mRightEyebrowFX.mColor = browColorPicker.getValue();
-            currentStickman.mLeftEyebrowFX.update();
-            currentStickman.mRightEyebrowFX.update();
+    public static void browColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mLeftEyebrowFX.mColor = controller.browColorPicker.getValue();
+            controller.currentStickman.mRightEyebrowFX.mColor = controller.browColorPicker.getValue();
+            controller.currentStickman.mLeftEyebrowFX.update();
+            controller.currentStickman.mRightEyebrowFX.update();
+            controller.browOpacitySlider.setValue(1);
         }
     }
 
-    public static void noseColorChanger(Stickman3D currentStickman, ColorPicker noseColorPicker) {
-        if (currentStickman != null) {
-            currentStickman.mNoseFX.mColor = noseColorPicker.getValue();
-            currentStickman.mNoseFX.update();
+    public static void noseColorChanger(StickmanStageController controller) {
+        if (controller.currentStickman != null) {
+            controller.currentStickman.mNoseFX.mColor = controller.noseColorPicker.getValue();
+            controller.currentStickman.mNoseFX.update();
+            controller.noseOpacitySlider.setValue(1);
         }
     }
 

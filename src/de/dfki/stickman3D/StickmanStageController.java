@@ -57,23 +57,23 @@ public class StickmanStageController implements ViewController {
     @FXML
     Button resetCamera;
     @FXML
-    private ColorPicker headColorPicker;
+    public ColorPicker headColorPicker;
     @FXML
-    private ColorPicker hairColorPicker;
+    public ColorPicker hairColorPicker;
     @FXML
-    private ColorPicker bodyColorPicker;
+    public ColorPicker bodyColorPicker;
     @FXML
-    private ColorPicker limbsColorPicker;
+    public ColorPicker limbsColorPicker;
     @FXML
-    private ColorPicker shoesColorPicker;
+    public ColorPicker shoesColorPicker;
     @FXML
-    private ColorPicker lipsColorPicker;
+    public ColorPicker lipsColorPicker;
     @FXML
-    private ColorPicker eyeColorPicker;
+    public ColorPicker eyeColorPicker;
     @FXML
-    private ColorPicker browColorPicker;
+    public ColorPicker browColorPicker;
     @FXML
-    private ColorPicker noseColorPicker;
+    public ColorPicker noseColorPicker;
     @FXML
     ScrollPane emotionsScrollPane;
     @FXML
@@ -812,47 +812,47 @@ public class StickmanStageController implements ViewController {
 
     @FXML
     public void handleHeadColor() {
-        ColorHelper.headColorChanger(currentStickman, headColorPicker);
+        ColorHelper.headColorChanger(this);
     }
 
     @FXML
     public void handleHairColor() {
-        ColorHelper.hairColorChanger(currentStickman, hairColorPicker);
+        ColorHelper.hairColorChanger(this);
     }
 
     @FXML
     public void handleBodyColor() {
-        ColorHelper.bodyColorChanger(currentStickman, bodyColorPicker);
+        ColorHelper.bodyColorChanger(this);
     }
 
     @FXML
     public void handleLimbsColor() {
-        ColorHelper.limbsColorChanger(currentStickman, limbsColorPicker);
+        ColorHelper.limbsColorChanger(this);
     }
 
     @FXML
     public void handleShoesColor() {
-        ColorHelper.shoesColorChanger(currentStickman, shoesColorPicker);
+        ColorHelper.shoesColorChanger(this);
     }
 
     @FXML
     public void handleLipsColor() {
-        ColorHelper.lipsColorChanger(currentStickman, lipsColorPicker);
+        ColorHelper.lipsColorChanger(this);
     }
 
     @FXML
     public void handleEyeColor() {
-        ColorHelper.eyeColorChanger(currentStickman, eyeColorPicker);
+        ColorHelper.eyeColorChanger(this);
     }
 
     @FXML
     public void handleBrowColor() {
-        ColorHelper.browColorChanger(currentStickman, browColorPicker);
+        ColorHelper.browColorChanger(this);
     }
 
     @FXML
     public void handleNoseColor() {
-        ColorHelper.noseColorChanger(currentStickman, noseColorPicker);
+        ColorHelper.noseColorChanger(this);
     }
 
     @FXML

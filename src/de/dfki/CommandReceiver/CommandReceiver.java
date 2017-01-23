@@ -73,39 +73,39 @@ public class CommandReceiver extends Thread {
         {
             case "ColorHead":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.headColorChanger(mStickman3D, colorPicker);
+                ColorHelper.headColorChanger(controller);
                 break;
             case "ColorHair":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.hairColorChanger(mStickman3D, colorPicker);
+                ColorHelper.hairColorChanger(controller);
                 break; 
             case "ColorBody":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.bodyColorChanger(mStickman3D, colorPicker);
+                ColorHelper.bodyColorChanger(controller);
                 break;
             case "ColorLimbs":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.limbsColorChanger(mStickman3D, colorPicker);
+                ColorHelper.limbsColorChanger(controller);
                 break;
             case "ColorShoes":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.shoesColorChanger(mStickman3D, colorPicker);
+                ColorHelper.shoesColorChanger(controller);
                 break;
             case "ColorLips":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.lipsColorChanger(mStickman3D, colorPicker);
+                ColorHelper.lipsColorChanger(controller);
                 break;
             case "ColorEye":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.eyeColorChanger(mStickman3D, colorPicker);
+                ColorHelper.eyeColorChanger(controller);
                 break;
             case "ColorBrow":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.browColorChanger(mStickman3D, colorPicker);
+                ColorHelper.browColorChanger(controller);
                 break;
             case "ColorNose":
                 colorPicker = createColorPicker(tail.split(","));
-                ColorHelper.noseColorChanger(mStickman3D, colorPicker);
+                ColorHelper.noseColorChanger(controller);
                 break;
             case "Reset":
                 ColorHelper.resetAll(mStickman3D);
