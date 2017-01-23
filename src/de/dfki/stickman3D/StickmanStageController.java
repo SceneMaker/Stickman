@@ -25,6 +25,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -486,6 +487,7 @@ public class StickmanStageController implements ViewController {
     public Stickman3D currentStickman;
     public static RadioButton currentRadioButton;
     private StickmanStage3D stage3D;
+    private String backgroundRecord = null;
 
     @FXML
     public void initialize() {
@@ -617,54 +619,60 @@ public class StickmanStageController implements ViewController {
         });
         
         SaveButton.setOnAction((ActionEvent event) -> {
-//		if (((null != mStickmanComboList) && (!mStickmanComboList.isEmpty()))) {
+		if (((null != mStickmanComboList) && (!mStickmanComboList.isEmpty()))) {
 		    Platform.runLater(() -> {
-			//mStickmanData3D.clear();
-			//for (String key : mStickmanComboList) {
-			    String key = "Anna";
+			mStickmanData3D.clear();
+			for (String key : mStickmanComboList) {
 			    String name = key;
-			    String bodyColor = "1";
-			    String hairColor= "1";
-			    String headColor= "1";
-			    String limbsColor= "1";
-			    String shoesColor= "1";    
-			    String lipsColor= "1";   
-			    String eyesColor= "1";
-			    String browsColor= "1";
-			    String nosesColor= "1";
-			    String backgroundRecord= "1";
+			    String bodyColor;
+			    String hairColor;
+			    String headColor;
+			    String limbsColor;
+			    String shoesColor;    
+			    String lipsColor;   
+			    String eyesColor;
+			    String browsColor;
+			    String nosesColor;
 			    Stickman3D mStick = getStickmanAs3D(key);
 //			    if (mStick.mType == Gender.TYPE.MALE) {
-//				bodyColor = toHexCode(mStick.mBodyFX.mMaleColor);
+				bodyColor = toHexCode(mStick.mUpperBody.mColor);
 //			    } else {
 //				bodyColor = toHexCode(mStick.mBodyFX.mFemaleColor);
 //			    }
 //			    bodyColorOpacity = mStick.mBodyFX.mColoropacity;
 //
-//			    if (mStick.mType == Gender.TYPE.MALE) {
-//				hairColor = toHexCode(mStick.mMaleHairFX.mColor);
+			    if (mStick.mType == Gender.TYPE.MALE) {
+				hairColor = toHexCode(mStick.mMaleHairFX.mColor);
 //				hairColorOpacity = mStick.mMaleHairFX.mColoropacity;
-//			    } else {
-//				hairColor = toHexCode(mStick.mFemaleHairFX.mColor);
+			    } else {
+				hairColor = toHexCode(mStick.mFemaleHairFX.mColor);
 //				hairColorOpacity = mStick.mFemaleHairFX.mColoropacity;
-//			    }
+			    }
 //
-//			    headColor = toHexCode(mStick.mHeadFX.mColor);
+			    headColor = toHexCode(mStick.mHeadFX.mColor);
 //			    headColorOpacity = mStick.mHeadFX.mColoropacity;
+			    
+			    shoesColor = toHexCode(mStick.mLeftFootFX.mColor);
+			    
+			    lipsColor= toHexCode(mStick.mMouthFX.mColor);  
+			    
+			    eyesColor= toHexCode(mStick.mLeftEyeFX.mColor);
+			    browsColor= toHexCode(mStick.mLeftEyebrowFX.mColor);
+			    nosesColor= toHexCode(mStick.mNoseFX.mColor);
 //
-//			    limbsColor = toHexCode(mStick.mLeftUpperLegFX.mColor);
+			    limbsColor = toHexCode(mStick.mLeftUpperArmFX.mColor);
 //			    limbsColorOpacity = mStick.mLeftUpperLegFX.mColoropacity;
 
 			    mStickmanData3D.add(new StickmanData3D(name, hairColor, headColor, bodyColor, limbsColor,
 				    shoesColor,lipsColor,eyesColor,browsColor,nosesColor,
 				    backgroundRecord));
-			//}
+			}
 			((StickmansOnStage3D) mStickmanOnstage).getmXmlTransform()
 				.loadStickmanData3DList(mStickmanData3D);
 			// StickmanOnstage.getmXmlTransform().loadStickmanDataFXList(mStickmanDataFX);
 			handleSave();
 		    });
-//		}
+		}
         });
     }
 
@@ -688,6 +696,7 @@ public class StickmanStageController implements ViewController {
         String background1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background1 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
+        backgroundRecord= "Images/bg1.jpg";
     }
 
     @FXML
@@ -695,6 +704,7 @@ public class StickmanStageController implements ViewController {
         String background2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background2 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
+        backgroundRecord= "Images/bg2.jpg";
     }
 
     @FXML
@@ -702,6 +712,7 @@ public class StickmanStageController implements ViewController {
         String background3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background3 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
+        backgroundRecord= "Images/bg3.jpg";
     }
 
     @FXML
@@ -709,6 +720,7 @@ public class StickmanStageController implements ViewController {
         String background4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background4 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
+        backgroundRecord= "Images/bg4.jpg";
     }
 
     @FXML
@@ -716,6 +728,7 @@ public class StickmanStageController implements ViewController {
         String background5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background5 + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
+        backgroundRecord= "Images/bg5.jpg";
     }
 
     @FXML
@@ -723,6 +736,7 @@ public class StickmanStageController implements ViewController {
         String bgDefault = getClass().getClassLoader().getResource("Images/bgDefault.png").toExternalForm();
         stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bgDefault + "'); "
                 + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
+        backgroundRecord= "Images/bgDefault.png";
     }
 
     @FXML
@@ -1049,8 +1063,8 @@ public class StickmanStageController implements ViewController {
             StickmanComboBox.setValue(stickmanNames.get(0));
             currentStickman = (Stickman3D) mStickmanOnstage.getStickman(stickmanNames.get(0));
         }
-//        mStickmanComboList.clear();
-//        mStickmanComboList.addAll(stickmanNames);
+        mStickmanComboList.clear();
+        mStickmanComboList.addAll(stickmanNames);
     }
 
     @FXML
@@ -1097,5 +1111,15 @@ public class StickmanStageController implements ViewController {
 	    filexml = new File(filexml.getPath() + ".xml");
 	}
 	((StickmansOnStage3D) mStickmanOnstage).getmXmlTransform().saveStickmanDataToFile(filexml);
+    }
+    
+    // convert color to hex
+    private String toHexCode(Color color) {
+	return String.format("#%02X%02X%02X", (int) (color.getRed() * 255), (int) (color.getGreen() * 255),
+		(int) (color.getBlue() * 255));
+    }
+
+    private Color colorWithoutOpacity(Color color) {
+	return new Color(color.getRed(), color.getGreen(), color.getBlue(), 1);
     }
 }
