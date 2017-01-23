@@ -47,7 +47,7 @@ public class StickmanStageController implements ViewController {
     @FXML
     private ComboBox<String> EmotionExpressionComboBox;
     @FXML
-    private Button RestButton;
+    private Button SaveButton;
     @FXML
     private Button ExitButton;
     @FXML
@@ -604,6 +604,10 @@ public class StickmanStageController implements ViewController {
             System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentStickman, this);
 //            cr.start();
+        });
+        
+        SaveButton.setOnAction((ActionEvent event) -> {
+            
         });
     }
 
