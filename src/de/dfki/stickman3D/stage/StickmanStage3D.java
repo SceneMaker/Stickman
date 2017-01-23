@@ -106,6 +106,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
 
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
+        scene.getStylesheets().add("de/dfki/stickman3D/stage/Style.css");
 
         AnchorPane controlPanel = (AnchorPane) scene.lookup("#controlPanel");
 
