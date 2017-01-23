@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -572,6 +573,30 @@ public class StickmanStageController implements ViewController {
         OpacityHelper.eyeOpacityChanger(this, eyeOpacitySlider);
         OpacityHelper.browOpacityChanger(this, browOpacitySlider);
         OpacityHelper.noseOpacityChanger(this, noseOpacitySlider);
+        
+        String background1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
+        new Image(background1);
+        bg1.setImage(new Image(background1));
+        
+        String background2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
+        new Image(background2);
+        bg2.setImage(new Image(background2));
+        
+        String background3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
+        new Image(background3);
+        bg3.setImage(new Image(background3));
+        
+        String background4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
+        new Image(background4);
+        bg4.setImage(new Image(background4));
+        
+        String background5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
+        new Image(background5);
+        bg5.setImage(new Image(background5));
+        
+        String background6 = getClass().getClassLoader().getResource("Images/bg6.jpg").toExternalForm();
+        new Image(background6);
+        bg6.setImage(new Image(background6));
 
         ExitButton.setOnAction((ActionEvent event) -> {
             Stage stage = (Stage) ExitButton.getScene().getWindow();
