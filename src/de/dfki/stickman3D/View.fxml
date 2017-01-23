@@ -1389,7 +1389,7 @@
                         <TextField fx:id="fieldOfViewField" editable="false" layoutX="352.0" layoutY="380.0" prefHeight="28.0" prefWidth="61.0" text="30" />
                     </children>
                 </AnchorPane>
-            <Button layoutX="340.0" layoutY="944.0" mnemonicParsing="false" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="100.0" text="SAVE" />
+            <Button fx:id="SaveButton" layoutX="340.0" layoutY="944.0" mnemonicParsing="false" text="SAVE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="100.0" />
             
             </children>
         </AnchorPane>
