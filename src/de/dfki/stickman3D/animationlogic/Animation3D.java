@@ -11,8 +11,12 @@ import de.dfki.stickman3D.Stickman3D;
 import de.dfki.util.ios.IOSIndentWriter;
 import de.dfki.util.xml.*;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -36,6 +40,7 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
     public int actionDuration = -1;
     public String mID;
     public Object mParameter = "";
+    protected HashMap<String, String> extraParams = new HashMap<>();
 
     public enum ANIMTYPE {
         ON, OFF
@@ -70,6 +75,18 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
         mDuration = frequent;
         this.actionDuration = actionDuration;
     }
+
+    public Animation3D(Stickman3D sm, int frequent, int actionDuration, boolean block,HashMap<String, String> extraParams) {
+        mName = getClass().getSimpleName();
+        mStickmanFX = sm;
+        mStickmanName = mStickmanFX.mName;
+        setName(mStickmanName + "'s AnimationSwing " + mName);
+        mID = mStickmanFX.getID(); // default ID;
+        mBlocking = block;
+        mDuration = frequent;
+        this.actionDuration = actionDuration;
+        this.extraParams = extraParams;
+    }
     
     public void setParameter(Object p) {
         mParameter = p;
@@ -82,6 +99,14 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
 
     public void setID(String id) {
         mID = id;
+    }
+
+    public boolean hasExtraParams(){
+        return extraParams.size() > 0;
+    }
+
+    public HashMap<String, String> getExtraParams(){
+        return extraParams;
     }
 
     public void setStickmanName(String stickmanName) {
@@ -190,7 +215,18 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
                 out.println((String) mParameter);
             }
         }
+        addExtraParamsToXML(out);
         out.pop().println("</StickmanAnimation>");
+    }
+
+    private void addExtraParamsToXML(IOSIndentWriter out) {
+        if(extraParams.size() > 0){
+            out.println("<Params>").push();
+            for(Map.Entry<String, String> entry : extraParams.entrySet()) {
+                out.println("<Param key=\"" + entry.getKey() + "\">" + entry.getValue() + "</Param>").push();
+            }
+            out.pop().println("</Params>");
+        }
     }
 
     @Override
@@ -200,6 +236,7 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
         mID = element.getAttribute("id");
         mDuration = Integer.parseInt(element.getAttribute("duration"));
         mBlocking = Boolean.parseBoolean(element.getAttribute("blocking"));
+        extraParams = new HashMap<>();
 
         // Process The Child Nodes
         XMLParseAction.processChildNodes(element, new XMLParseAction() {
@@ -212,6 +249,17 @@ public class Animation3D extends Thread implements XMLParseable, XMLWriteable, A
                     mParameter = new WordTimeMarkSequence();
 
                     ((WordTimeMarkSequence) mParameter).parseXML(element);
+                } else if(name.equals("Params")){
+                    NodeList nodes = element.getChildNodes();
+                    for(int i = 0; i< nodes.getLength(); i++){
+                        Node node = nodes.item(i);
+                        if(!node.hasAttributes()){
+                            continue;
+                        }
+                        String key = node.getAttributes().getNamedItem("key").getNodeValue();
+                        String value = node.getTextContent();
+                        extraParams.put(key, value);
+                    }
                 } else {
                     mParameter = (String) element.getTextContent();
                 }

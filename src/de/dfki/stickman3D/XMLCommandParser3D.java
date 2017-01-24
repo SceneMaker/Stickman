@@ -33,9 +33,13 @@ public class XMLCommandParser3D extends XMLCommandParser {
         boolean blocking = a.mBlocking;
         Object parameter = a.mParameter;
         if (stickmanname != null) {
-            a = (a instanceof EventAnimation3D)
-                    ? AnimationLoader3D.getInstance().loadEventAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking)
-                    : AnimationLoader3D.getInstance().loadAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking);
+            if(a instanceof EventAnimation3D){
+              a = AnimationLoader3D.getInstance().loadEventAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking);
+            }else if(a.hasExtraParams()){
+                a = AnimationLoader3D.getInstance().loadAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking, a.getExtraParams());
+            }else{
+                a = AnimationLoader3D.getInstance().loadAnimation(onStage.getStickman(stickmanname), animationname, duration, blocking);
+            }
 
             a.setID(id); // give the animation the same id (TODO - This is bad design and caused that the animation has to be "reloaded"
             a.mParameter = parameter;

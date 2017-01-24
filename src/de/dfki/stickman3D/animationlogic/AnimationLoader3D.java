@@ -11,9 +11,7 @@ import de.dfki.stickman3D.Stickman3D;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  *
@@ -75,6 +73,42 @@ public class AnimationLoader3D {
         return classPath;
     }
 
+    public Animation3D loadAnimation(Stickman sm, String name, int duration, boolean block,  HashMap<String, String> extraParams){
+        Animation3D a = null;
+
+        String cp = getAnimationClasspath(((Stickman3D) sm).mType, name);
+        try {
+            Class c = Class.forName(cp);
+            Constructor[] constructors = c.getConstructors();
+            for (Constructor con : constructors) {
+                Class[] params = con.getParameterTypes();
+
+                if (params.length == 3 && extraParams.size() == 0) {
+                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
+                            && params[1].getSimpleName().equalsIgnoreCase("int")
+                            && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
+                        a = (Animation3D) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
+                    }
+                }else if(params.length == 4){
+                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
+                            && params[1].getSimpleName().equalsIgnoreCase("int")
+                            && params[2].getSimpleName().equalsIgnoreCase("boolean")
+                            && params[3].getSimpleName().equalsIgnoreCase("hashMap")) {
+                        a = (Animation3D) c.getDeclaredConstructor(params).newInstance(sm, duration, block, extraParams);
+                    }
+                }
+
+            }
+        } catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            ((Stickman3D) sm).mLogger.severe("Animation \"" + name + "\" cannot be found in " + cp);
+        }
+
+        if (a != null) {
+            a.mID = getNextID();
+        }
+        return a;
+    }
+
     public Animation3D loadAnimation(Stickman sm, String name, int duration, boolean block) {
         Animation3D a = null;
 
@@ -103,7 +137,7 @@ public class AnimationLoader3D {
         }
         return a;
     }
-    
+
     public Animation3D loadAnimation(Stickman sm, String name, int frequent, int actionDuration, boolean block) {
         Animation3D a = null;
 
