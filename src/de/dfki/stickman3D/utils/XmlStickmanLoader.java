@@ -181,6 +181,12 @@ public class XmlStickmanLoader {
                         };
                         StickmanStage3D.getInstance().runLater(limbsColor);
                     }
+                    if(mStick.getbackgroundRecord() != null){
+                	Stickman3D.mbackground = mStick.getbackgroundRecord();
+                    }else{
+                	Stickman3D.mbackground = null;
+                    }
+                    
                 }
             }
         }

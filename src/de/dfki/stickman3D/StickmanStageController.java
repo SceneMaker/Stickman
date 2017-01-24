@@ -487,7 +487,7 @@ public class StickmanStageController implements ViewController {
     public Stickman3D currentStickman;
     public static RadioButton currentRadioButton;
     private StickmanStage3D stage3D;
-    private String backgroundRecord = null;
+    public String backgroundRecord = null;
 
     @FXML
     public void initialize() {
@@ -634,34 +634,21 @@ public class StickmanStageController implements ViewController {
 			    String browsColor;
 			    String nosesColor;
 			    Stickman3D mStick = getStickmanAs3D(key);
-//			    if (mStick.mType == Gender.TYPE.MALE) {
-				bodyColor = toHexCode(mStick.mUpperBody.mColor);
-//			    } else {
-//				bodyColor = toHexCode(mStick.mBodyFX.mFemaleColor);
-//			    }
-//			    bodyColorOpacity = mStick.mBodyFX.mColoropacity;
-//
+			    bodyColor = toHexCode(mStick.mUpperBody.mColor);
+
 			    if (mStick.mType == Gender.TYPE.MALE) {
 				hairColor = toHexCode(mStick.mMaleHairFX.mColor);
-//				hairColorOpacity = mStick.mMaleHairFX.mColoropacity;
 			    } else {
 				hairColor = toHexCode(mStick.mFemaleHairFX.mColor);
-//				hairColorOpacity = mStick.mFemaleHairFX.mColoropacity;
 			    }
-//
-			    headColor = toHexCode(mStick.mHeadFX.mColor);
-//			    headColorOpacity = mStick.mHeadFX.mColoropacity;
-			    
-			    shoesColor = toHexCode(mStick.mLeftFootFX.mColor);
-			    
-			    lipsColor= toHexCode(mStick.mMouthFX.mColor);  
-			    
+
+			    headColor = toHexCode(mStick.mHeadFX.mColor);	    
+			    shoesColor = toHexCode(mStick.mLeftFootFX.mColor);			    
+			    lipsColor= toHexCode(mStick.mMouthFX.mColor);		    
 			    eyesColor= toHexCode(mStick.mLeftEyeFX.mColor);
 			    browsColor= toHexCode(mStick.mLeftEyebrowFX.mColor);
 			    nosesColor= toHexCode(mStick.mNoseFX.mColor);
-//
 			    limbsColor = toHexCode(mStick.mLeftUpperArmFX.mColor);
-//			    limbsColorOpacity = mStick.mLeftUpperLegFX.mColoropacity;
 
 			    mStickmanData3D.add(new StickmanData3D(name, hairColor, headColor, bodyColor, limbsColor,
 				    shoesColor,lipsColor,eyesColor,browsColor,nosesColor,

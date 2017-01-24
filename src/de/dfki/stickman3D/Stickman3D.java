@@ -95,6 +95,8 @@ public class Stickman3D extends Pane implements Stickman {
     Text nameText = new Text();
     public double stageHeight;
     public boolean isFullScreen = false;
+    
+    public static String mbackground = null;
 
     public static Dimension mDefaultSize = new Dimension(300, 800);
     public static Dimension mSize = new Dimension(mDefaultSize);
