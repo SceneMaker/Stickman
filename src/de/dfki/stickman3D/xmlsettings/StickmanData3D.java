@@ -120,11 +120,11 @@ public class StickmanData3D {
         this.browsColor = browsColor;
     }
     
-    public String getnosesColor() {
+    public String getnoseColor() {
         return nosesColor;
     }
 
-    public void setnosesColor(String nosesColor) {
+    public void setnoseColor(String nosesColor) {
         this.nosesColor = nosesColor;
     }
     

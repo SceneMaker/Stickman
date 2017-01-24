@@ -1092,7 +1092,7 @@ public class StickmanStageController implements ViewController {
 	File filexml = null;
 	if (mStickmanOnstage.getmFilePath() != null) {
 	    filexml = new File(mStickmanOnstage.getmFilePath() + File.separator + "stickman3d" + File.separator
-		    + "stickmanfx.xml");
+		    + "stickman3d.xml");
 	} else {
 	    try {
 		filexml = new File(new File(".").getCanonicalPath() + File.separator + "stickman3d" + File.separator
