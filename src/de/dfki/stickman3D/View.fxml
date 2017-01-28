@@ -34,7 +34,7 @@
                 </Label>
                 <ComboBox fx:id="StickmanComboBox" layoutX="270.0" layoutY="73.0" prefHeight="27.0" prefWidth="166.0" />
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="8.0" layoutX="41.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" width="422.0" />
-                <TabPane layoutX="15.0" layoutY="136.0" prefHeight="302.0" prefWidth="470.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
+                <TabPane layoutX="15.0" layoutY="136.0" prefHeight="333.0" prefWidth="470.0" style="-fx-background-color: #4169E1;" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                         <Tab closable="false" text="Color">
                             <content>
@@ -283,48 +283,52 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <TabPane prefHeight="266.0" prefWidth="470.0" tabClosingPolicy="UNAVAILABLE">
+                                        <TabPane prefHeight="298.0" prefWidth="470.0" tabClosingPolicy="UNAVAILABLE">
                                             <tabs>
                                                 <Tab closable="false" text="Head">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="451.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="headZSlider" layoutX="44.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="24.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="headZSlider" layoutX="18.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="headYSlider" layoutX="44.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="24.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="headYSlider" layoutX="18.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="headXSlider" layoutX="44.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="24.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="headXSlider" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="headXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="headYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="headZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="#f2f2f2">
+                                                                <TextField fx:id="headXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="headYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="headZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="#f2f2f2">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec0" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
+                                                
                                              
                                                             </children>
                                                         </AnchorPane>
@@ -332,868 +336,928 @@
                                                 </Tab>
                                                 <Tab closable="false" text="UpperBody">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="upperBodyZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="upperBodyZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="upperBodyYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="upperBodyYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="upperBodyXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="upperBodyXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="upperBodyXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="upperBodyYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="upperBodyZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="upperBodyXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="upperBodyYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="upperBodyZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec1" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftUpperArm">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftUpperArmZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftUpperArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperArmYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftUpperArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperArmXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftUpperArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftUpperArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftUpperArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftUpperArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftUpperArmXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftUpperArmYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftUpperArmZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec2" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftForeArm">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftForeArmZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftForeArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeArmYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftForeArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeArmXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftForeArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftForeArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftForeArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftForeArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftForeArmXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftForeArmYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftForeArmZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec3" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftWrist">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftWristZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftWristZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftWristYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftWristYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftWristXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftWristXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftWristXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftWristYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftWristZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftWristXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftWristYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftWristZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec4" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftFinger1">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger1ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger1ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger1YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger1YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger1XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger1XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftFinger1XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger1YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger1ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftFinger1XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger1YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger1ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec5" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftFinger2">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger2ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger2ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger2YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger2YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger2XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger2XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftFinger2XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger2YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger2ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftFinger2XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger2YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger2ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec6" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftFinger3">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger3ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger3ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger3YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger3YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger3XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger3XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftFinger3XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger3YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger3ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftFinger3XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger3YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger3ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec7" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftFinger4">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger4ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger4ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger4YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger4YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger4XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftFinger4XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftFinger4XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger4YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftFinger4ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftFinger4XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger4YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftFinger4ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec8" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightUpperArm">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightUpperArmZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightUpperArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperArmYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightUpperArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperArmXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightUpperArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightUpperArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightUpperArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightUpperArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightUpperArmXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightUpperArmYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightUpperArmZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec9" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightForerArm">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightForeArmZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightForeArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeArmYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightForeArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeArmXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightForeArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightForeArmXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightForeArmYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightForeArmZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightForeArmXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightForeArmYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightForeArmZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec10" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightWrist">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightWristZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightWristZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightWristYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightWristYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightWristXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightWristXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightWristXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightWristYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightWristZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightWristXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightWristYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightWristZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec11" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightFinger1">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger1ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger1ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger1YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger1YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger1XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger1XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightFinger1XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger1YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger1ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightFinger1XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger1YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger1ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec12" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightFinger2">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger2ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger2ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger2YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger2YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger2XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger2XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightFinger2XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger2YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger2ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightFinger2XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger2YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger2ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec13" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightFinger3">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger3ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger3ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger3YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger3YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger3XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger3XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightFinger3XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger3YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger3ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightFinger3XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger3YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger3ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec14" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightFinger4">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger4ZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger4ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger4YSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger4YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger4XSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightFinger4XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightFinger4XRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger4YRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightFinger4ZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightFinger4XRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger4YRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightFinger4ZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec15" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="DownBody">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
                                                                 <Slider fx:id="downBodyYSlider" layoutX="45.0" layoutY="14" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="Y" textFill="WHITE">
+                                                                <Label layoutX="4.0" layoutY="20.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="downBodyXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="downBodyYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="downBodyZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="downBodyXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="downBodyYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="downBodyZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec16" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightUpperLeg">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightUpperLegZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightUpperLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperLegYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightUpperLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperLegXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightUpperLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightUpperLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightUpperLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightUpperLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightUpperLegXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightUpperLegYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightUpperLegZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec17" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="RightForeLeg">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightForeLegZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="rightForeLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeLegYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="rightForeLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeLegXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="rightForeLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="rightForeLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightForeLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="rightForeLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="rightForeLegXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightForeLegYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="rightForeLegZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec18" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="LeftUpperLeg">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftUpperLegZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftUpperLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperLegYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftUpperLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperLegXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftUpperLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftUpperLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftUpperLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftUpperLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftUpperLegXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftUpperLegYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftUpperLegZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec19" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
                                                 </Tab>
                                                 <Tab closable="false" text="leftForeLeg">
                                                     <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftForeLegZSlider" layoutX="45.0" layoutY="117.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="27.0" text="X" textFill="WHITE">
+                                                                <Slider fx:id="leftForeLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeLegYSlider" layoutX="45.0" layoutY="64.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="77.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                                <Slider fx:id="leftForeLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeLegXSlider" layoutX="45.0" layoutY="14.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
-                                                                <Label layoutX="20.0" layoutY="130.0" text="Z" textFill="WHITE">
+                                                                <Slider fx:id="leftForeLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <TextField fx:id="leftForeLegXRotationField" editable="false" layoutX="44.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftForeLegYRotationField" editable="false" layoutX="141.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <TextField fx:id="leftForeLegZRotationField" editable="false" layoutX="243.0" layoutY="168.0" prefHeight="28.0" prefWidth="61.0" text="0" />
-                                                                <Label layoutX="17.0" layoutY="173.0" text="X:" textFill="WHITE">
+                                                                <TextField fx:id="leftForeLegXRotationField" editable="false" layoutX="24.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftForeLegYRotationField" editable="false" layoutX="109.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <TextField fx:id="leftForeLegZRotationField" editable="false" layoutX="197.0" layoutY="156.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                                <Label layoutX="8.0" layoutY="161.0" text="X:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="119.0" layoutY="173.0" text="Y:" textFill="WHITE">
+                                                                <Label layoutX="93.0" layoutY="161.0" text="Y:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Label layoutX="221.0" layoutY="173.0" text="Z:" textFill="WHITE">
+                                                                <Label layoutX="180.0" layoutY="161.0" text="Z:" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="14.0" />
                                                                     </font>
                                                                 </Label>
+                                                                <Button layoutX="149.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="30.0" prefWidth="80.0" text="Create" />
+                                                                <Button layoutX="235.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#handleTest" prefHeight="30.0" prefWidth="80.0" text="Test" />
+                                                                <Button fx:id="rec20" layoutX="285.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#handleRecord" prefWidth="60.0" text="Record" />
                                                             </children>
                                                         </AnchorPane>
                                                     </content>
@@ -1207,7 +1271,7 @@
                     </tabs>
                 </TabPane>
                 <Button fx:id="ExitButton" layoutX="424.0" layoutY="944.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="EXIT" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0" />
-                <AnchorPane layoutX="18.0" layoutY="444.0" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="470.0" style="-fx-background-color: #00010B;">
+                <AnchorPane layoutX="18.0" layoutY="469.0" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="470.0" style="-fx-background-color: #00010B;">
                     <children>
                         <Button fx:id="resetCamera1" layoutX="302.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleResetCamera" prefHeight="35.0" prefWidth="130.0" text="Reset Camera">
                             <font>
@@ -1356,7 +1420,7 @@
                         <TextField fx:id="fieldOfViewField" editable="false" layoutX="352.0" layoutY="380.0" prefHeight="28.0" prefWidth="61.0" text="30" />
                     </children>
                 </AnchorPane>
-            <Button fx:id="SaveButton" layoutX="340.0" layoutY="944.0" mnemonicParsing="false" text="SAVE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="100.0" />          
+                <Button fx:id="SaveButton" layoutX="340.0" layoutY="944.0" mnemonicParsing="false" text="SAVE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="100.0" />          
             </children>
         </AnchorPane>
     </children>

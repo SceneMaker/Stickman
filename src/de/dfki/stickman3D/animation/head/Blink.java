@@ -32,7 +32,7 @@ public class Blink extends Animation3D {
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "BLINK"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINK"));
-        playAnimationPart(mDuration);
+        playAnimationPart(50);
 
         pauseAnimation(300);
 
@@ -40,7 +40,7 @@ public class Blink extends Animation3D {
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "BLINKEND"));
         mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "BLINKEND"));
-        playAnimationPart(mDuration);
+        playAnimationPart(50);
 
         if (StickmanStageController.currentRadioButton != null) {
             StickmanStageController.currentRadioButton.setSelected(false);
