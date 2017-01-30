@@ -414,12 +414,31 @@ public class Helper {
     }
     
     public static void resetAllRotation(StickmanStageController controller)
-    {System.out.println("de.dfki.stickman3D.dynamic.classes.Helper.resetAllRotation()");
-        for(Node node : controller.currentStickman.getChildren())
-        {
-            if(!(node instanceof Text))
-                reset((BodyPartFX)node);
-        }
+    {
+        reset(controller.currentStickman.mHeadFX);
+        reset(controller.currentStickman.mUpperBody);
+        reset(controller.currentStickman.mDownBody);
+        reset(controller.currentStickman.mLeftUpperArmFX);
+        reset(controller.currentStickman.mLeftForeArmFX);
+        reset(controller.currentStickman.mLeftWrist);
+        reset(controller.currentStickman.mLeftFinger1);
+        reset(controller.currentStickman.mLeftFinger2);
+        reset(controller.currentStickman.mLeftFinger3);
+        reset(controller.currentStickman.mLeftFinger4);
+        reset(controller.currentStickman.mRightUpperArmFX);
+        reset(controller.currentStickman.mRightForeArmFX);
+        reset(controller.currentStickman.mRightWrist);
+        reset(controller.currentStickman.mRightFinger1);
+        reset(controller.currentStickman.mRightFinger2);
+        reset(controller.currentStickman.mRightFinger3);
+        reset(controller.currentStickman.mRightFinger4);
+        reset(controller.currentStickman.mLeftUpperLegFX);
+        reset(controller.currentStickman.mLeftForeLegFX);
+        reset(controller.currentStickman.mLeftFootFX);
+        reset(controller.currentStickman.mRightUpperLegFX);
+        reset(controller.currentStickman.mRightForeLegFX);
+        reset(controller.currentStickman.mRightFootFX);
+        reset(controller.currentStickman.mUpperBodyAndHead);
     }
     
     private static void reset(BodyPartFX bodyPartFX)

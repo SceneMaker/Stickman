@@ -289,19 +289,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="headZSlider" layoutX="18.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="headZSlider" layoutX="18.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="headYSlider" layoutX="18.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="headYSlider" layoutX="18.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="headXSlider" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="headXSlider" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -338,19 +338,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="upperBodyZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="upperBodyZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="upperBodyYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="upperBodyYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="upperBodyXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="upperBodyXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -385,19 +385,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftUpperArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftUpperArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftUpperArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftUpperArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -432,19 +432,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftForeArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftForeArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftForeArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftForeArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -479,19 +479,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftWristZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftWristZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftWristYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftWristYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftWristXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftWristXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -526,19 +526,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger1ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger1ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger1YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger1YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger1XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger1XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -573,19 +573,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger2ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger2ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger2YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger2YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger2XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger2XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -620,19 +620,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger3ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger3ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger3YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger3YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger3XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger3XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -667,19 +667,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftFinger4ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger4ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger4YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger4YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftFinger4XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftFinger4XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -714,19 +714,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightUpperArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightUpperArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightUpperArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightUpperArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -761,19 +761,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightForeArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightForeArmZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightForeArmYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightForeArmXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -808,19 +808,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightWristZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightWristZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightWristYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightWristYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightWristXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightWristXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -855,19 +855,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger1ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger1ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger1YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger1YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger1XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger1XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -902,19 +902,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger2ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger2ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger2YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger2YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger2XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger2XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -949,19 +949,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger3ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger3ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger3YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger3YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger3XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger3XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -996,19 +996,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightFinger4ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger4ZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger4YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger4YSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightFinger4XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightFinger4XSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -1043,7 +1043,7 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="downBodyYSlider" layoutX="45.0" layoutY="14" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="downBodyYSlider" layoutX="45.0" layoutY="14" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -1078,19 +1078,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightUpperLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightUpperLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightUpperLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightUpperLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightUpperLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -1125,19 +1125,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="rightForeLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightForeLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightForeLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="rightForeLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="rightForeLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -1172,19 +1172,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftUpperLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftUpperLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftUpperLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftUpperLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftUpperLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
@@ -1219,19 +1219,19 @@
                                                     <content>
                                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                             <children>
-                                                                <Slider fx:id="leftForeLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftForeLegZSlider" layoutX="24.0" layoutY="105.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftForeLegYSlider" layoutX="24.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />
                                                                     </font>
                                                                 </Label>
-                                                                <Slider fx:id="leftForeLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: white;" />
+                                                                <Slider fx:id="leftForeLegXSlider" layoutX="24.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0"  showTickMarks="true" style="-fx-background-color: white;" />
                                                                 <Label layoutX="4.0" layoutY="118.0" text="Z" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold" size="15.0" />

@@ -5,9 +5,9 @@
  */
 package de.dfki.stickman3D.controllerhelper;
 
+import de.dfki.stickman3D.dynamic.classes.Helper;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.dynamic.classes.Helper;
 import java.awt.Point;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
