@@ -401,11 +401,12 @@ public class StickmanStage3D extends Application implements StickmanStage {
         Platform.runLater(() -> {
             root.setAlignment(Pos.BASELINE_CENTER);
             root.getHeight();
-            Scene stageScene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
+            Scene stageScene = new Scene(root, 600, 600, true, SceneAntialiasing.BALANCED);
             Stage stage = new Stage();
             stage.setScene(stageScene);
             stage.setX(x);
             stage.setY(y);
+            stage.setResizable(false);
             if (!decoration) {
                 stage.initStyle(StageStyle.UNDECORATED);
             }

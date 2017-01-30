@@ -5,6 +5,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
 import java.awt.*;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.QuadCurveTo;
 
 /**
  *
@@ -66,6 +69,10 @@ public class MouthFX extends BodyPartFX {
     public void calculate(int step) {
 
         boolean isFadeIn = false;
+        Path upperLip;
+        Path downLip;
+        int x;
+        int y;
 
         switch (mShape) {
             case DEFAULT:
@@ -73,6 +80,12 @@ public class MouthFX extends BodyPartFX {
                 currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
                 currentUpperLipPolygon.setFill(mColor);
                 currentDownLipPolygon.setFill(mColor);
+                if(mHeadFX.mHead.getChildren().size() >= 10)
+                {
+                    mHeadFX.mHead.getChildren().set(9, currentUpperLipPolygon);
+                    mHeadFX.mHead.getChildren().set(10, currentDownLipPolygon);
+                }
+                
                 break;
 
             case FADEIN:
@@ -278,40 +291,166 @@ public class MouthFX extends BodyPartFX {
                 break;
 
             case ONE:
-                currentUpperLipPolygon = MouthONE.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthONE.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 11;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+12, y-5, x+24, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+24, y));
+                downLip.getElements().add(new QuadCurveTo(x+12, y+5, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+                //currentUpperLipPolygon = MouthONE.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthONE.modifyDownLip(currentDownLipPolygon, step);
             case SIX:
             case FOURTEEN:
             case NINETEEN:
                 break;
 
             case TWO:
-                currentUpperLipPolygon = MouthTWO.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthTWO.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 11;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+12, y-15, x+24, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+24, y));
+                downLip.getElements().add(new QuadCurveTo(x+12, y+15, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+//                currentUpperLipPolygon = MouthTWO.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthTWO.modifyDownLip(currentDownLipPolygon, step);
                 break;
 
             case THREE:
-                currentUpperLipPolygon = MouthTREE.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthTREE.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 8;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+9, y-12, x+18, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+18, y));
+                downLip.getElements().add(new QuadCurveTo(x+9, y+12, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+//                currentUpperLipPolygon = MouthTREE.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthTREE.modifyDownLip(currentDownLipPolygon, step);
             case TWENTY:
                 break;
 
             case FOUR:
-                currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 11;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+12, y-4, x+24, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+24, y));
+                downLip.getElements().add(new QuadCurveTo(x+12, y+10, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+//                currentUpperLipPolygon = MouthFOUR.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthFOUR.modifyDownLip(currentDownLipPolygon, step);
                 break;
 
             case FIVE:
-                currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 11;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+12, y-10, x+24, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+24, y));
+                downLip.getElements().add(new QuadCurveTo(x+12, y+10, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+//                currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, step);
             case EIGHT:
-                currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 11;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+12, y-10, x+24, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+24, y));
+                downLip.getElements().add(new QuadCurveTo(x+12, y+10, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+//                currentUpperLipPolygon = MouthFIVE.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthFIVE.modifyDownLip(currentDownLipPolygon, step);
                 break;
 
             case SEVEN:
-                currentUpperLipPolygon = MouthSEVEN.modifyUpperLip(currentUpperLipPolygon, step);
-                currentDownLipPolygon = MouthSEVEN.modifyDownLip(currentDownLipPolygon, step);
+                upperLip = new Path();
+                x = mStart.x - 8;
+                y = mStart.y + 95;
+                upperLip.setStrokeWidth(3);
+                upperLip.setStroke(mColor);
+                upperLip.getElements().add(new MoveTo(x, y));
+                upperLip.getElements().add(new QuadCurveTo(x+9, y-3, x+18, y));
+                upperLip.setTranslateZ(-18);
+                
+                downLip = new Path();
+                downLip.setStrokeWidth(3);
+                downLip.setStroke(mColor);
+                downLip.getElements().add(new MoveTo(x+18, y));
+                downLip.getElements().add(new QuadCurveTo(x+9, y+3, x, y));
+                downLip.setTranslateZ(-18);
+                
+                mHeadFX.mHead.getChildren().set(9, upperLip);
+                mHeadFX.mHead.getChildren().set(10, downLip);
+//                currentUpperLipPolygon = MouthSEVEN.modifyUpperLip(currentUpperLipPolygon, step);
+//                currentDownLipPolygon = MouthSEVEN.modifyDownLip(currentDownLipPolygon, step);
                 break;
 
             case NINE:

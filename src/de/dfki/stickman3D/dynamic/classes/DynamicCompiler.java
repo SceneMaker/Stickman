@@ -128,6 +128,7 @@ public class DynamicCompiler {
      * compile your files by JavaCompiler
      */
     public static void compile(Iterable<? extends JavaFileObject> files) {
+        //System.setProperty("java.home", "C:\\Program Files\\Java\\jdk1.8.0_111");
         //get system compiler:
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
