@@ -31,26 +31,19 @@ public class TouchHead extends Animation3D {
 	@Override
 	public void playAnimation() {
 
-		// mAnimationPartFX = new ArrayList<>();
-		// mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody,
-		// "yrotate", -90));
-		// mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX,
-		// "yrotate", -90));
-		// playAnimationPart(500);
-
 		if (mStickmanFX.mType == Gender.TYPE.MALE) {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -100));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", 100));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -88));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -82));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 130));
 			playAnimationPart(500);
 		} else {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -100));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", 65));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -88));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 190));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", 50));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -82));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 170));
 			playAnimationPart(500);
 		}
 
@@ -96,9 +89,9 @@ public class TouchHead extends Animation3D {
 		} else {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", 100));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", -65));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 88));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -190));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", -50));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 82));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -170));
 			playAnimationPart(500);
 		}
 

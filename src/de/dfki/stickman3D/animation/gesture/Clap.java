@@ -40,7 +40,7 @@ public class Clap extends Animation3D {
 
 		for (int i = 0; i < 10; i++) {
 			mAnimationPartFX = new ArrayList<>();
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", 15));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", 10));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", -15));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 17));
 			playAnimationPart(200);
@@ -48,7 +48,7 @@ public class Clap extends Animation3D {
 			pauseAnimation(100);
 
 			mAnimationPartFX = new ArrayList<>();
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", -15));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", -10));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", 15));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -17));
 			playAnimationPart(200);
