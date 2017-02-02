@@ -142,7 +142,6 @@ public class XmlStickmanLoader {
                     String nosecolor = mStick.getnoseColor().substring(0, 7);
                     String snosecolorOpacity = mStick.getnoseColor().substring(7, 9);
                     double dnosecolorOpacity = (double)(Integer.valueOf(snosecolorOpacity, 16))/100;
-                    System.out.println("Original NoseOpacity: " + dnosecolorOpacity);
                     if (nosecolor != null) {
                         Runnable noseColor = () -> {
                             ((Stickman3D) sStickmansOnStage.getStickman(name)).mNoseFX.mColor = Color.web(nosecolor, dnosecolorOpacity);

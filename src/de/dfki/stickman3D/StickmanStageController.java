@@ -53,6 +53,7 @@ public class StickmanStageController extends AStickmanStageController implements
                 -> {
             mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();
             currentStickman = (Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox);
+//            setComboboxValue((Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox));
         });
 
         fillEmotionScrollPane();
@@ -667,6 +668,7 @@ public class StickmanStageController extends AStickmanStageController implements
         if (!stickmanNames.isEmpty()) {
             StickmanComboBox.setValue(stickmanNames.get(0));
             currentStickman = (Stickman3D) mStickmanOnstage.getStickman(stickmanNames.get(0));
+            setComboboxValue((Stickman3D) mStickmanOnstage.getStickman(stickmanNames.get(0)));
         }
         mStickmanComboList.clear();
         mStickmanComboList.addAll(stickmanNames);
@@ -692,7 +694,6 @@ public class StickmanStageController extends AStickmanStageController implements
 
 	noseColorPicker.setValue(colorWithoutOpacity(mStick.mNoseFX.mColor));
 	noseOpacitySlider.setValue(mStick.mNoseFX.mColor.getOpacity());
-	System.out.println("NoseOpacity: " + mStick.mNoseFX.mColor.getOpacity());
 
 	browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyebrowFX.mColor));
 	browOpacitySlider.setValue(mStick.mLeftEyebrowFX.mColor.getOpacity());
