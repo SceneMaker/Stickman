@@ -20,9 +20,6 @@ public class SynchronizedConversationHandsStart extends AbstractConversationHand
 
     private  static   boolean movementStarted = false;
 
-    public SynchronizedConversationHandsStart() {
-        mAnimType = ANIMTYPE.ON;
-    }
 
     public SynchronizedConversationHandsStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);

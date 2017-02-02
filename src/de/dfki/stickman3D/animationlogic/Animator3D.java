@@ -200,13 +200,13 @@ public class Animator3D {
                     BodyPartFX bodypartFX = ba.mBodyPartFX;
 
                     if (action.equalsIgnoreCase("rotate")) {
-                        bodypartFX.resetRotation();
+                        bodypartFX.reset_X_Rotation();
                     }
                     if (action.equalsIgnoreCase("yrotate")) {
-                        bodypartFX.resetRotation();
+                        bodypartFX.reset_Y_Rotation();
                     }
                     if (action.equalsIgnoreCase("zrotate")) {
-                        bodypartFX.resetRotation();
+                        bodypartFX.reset_Z_Rotation();
                     }
                     if (action.equalsIgnoreCase("tilt")) {
                         bodypartFX.resetRotation();

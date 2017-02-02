@@ -18,10 +18,6 @@ import java.util.HashMap;
 public class SynchronizedConversationHandsEnd extends AbstractConversationHands {
 
 
-    public SynchronizedConversationHandsEnd() {
-        mAnimType = ANIMTYPE.ON;
-    }
-
     public SynchronizedConversationHandsEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
         intensity = 10;

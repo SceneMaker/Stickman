@@ -132,6 +132,16 @@ public class Helper {
             DynamicCompiler.create();
         });
     }
+    
+    private static int leftUpperArmZOffset = 10;
+    private static int leftForeArmXOffset = 15;
+    private static int leftForeArmZOffset = -10;
+    private static int leftWristYOffset = 50;
+    private static int rightUpperArmZOffset = -10;
+    private static int rightForeArmXOffset = 15;
+    private static int rightForeArmZOffset = 10;
+    private static int rightWristYOffset = -50;
+    
     public static void switchRecordID(String ID, StickmanStageController controller) {
         int[] XYZ;
         switch (ID) {
@@ -163,37 +173,41 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.leftUpperArmXRotationField,
                         controller.leftUpperArmYRotationField,
                         controller.leftUpperArmZRotationField);
-                appendMethodCommands("mLeftUpperArmFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mLeftUpperArmFX", XYZ[0], XYZ[1], XYZ[2] + leftUpperArmZOffset);
                 recordLeftUpperArmSliderXValue = (int) controller.leftUpperArmXSlider.getValue();
                 recordLeftUpperArmSliderYValue = (int) controller.leftUpperArmYSlider.getValue();
                 recordLeftUpperArmSliderZValue = (int) controller.leftUpperArmZSlider.getValue();
                 controller.leftUpperArmXRotationField.setText("0");
                 controller.leftUpperArmYRotationField.setText("0");
                 controller.leftUpperArmZRotationField.setText("0");
+                leftUpperArmZOffset = 0;
                 break;
             case "rec3":
                 XYZ = getXYZFromTextField(controller.leftForeArmXRotationField,
                         controller.leftForeArmYRotationField,
                         controller.leftForeArmZRotationField);
-                appendMethodCommands("mLeftForeArmFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mLeftForeArmFX", XYZ[0] + leftForeArmXOffset, XYZ[1], XYZ[2] + leftForeArmZOffset);
                 recordLeftForeArmSliderXValue = (int) controller.leftForeArmXSlider.getValue();
                 recordLeftForeArmSliderYValue = (int) controller.leftForeArmYSlider.getValue();
                 recordLeftForeArmSliderZValue = (int) controller.leftForeArmZSlider.getValue();
                 controller.leftForeArmXRotationField.setText("0");
                 controller.leftForeArmYRotationField.setText("0");
                 controller.leftForeArmZRotationField.setText("0");
+                leftForeArmXOffset = 0;
+                leftForeArmZOffset = 0;
                 break;
             case "rec4":
                 XYZ = getXYZFromTextField(controller.leftWristXRotationField,
                         controller.leftWristYRotationField,
                         controller.leftWristZRotationField);
-                appendMethodCommands("mLeftWrist", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mLeftWrist", XYZ[0], XYZ[1] + leftWristYOffset, XYZ[2]);
                 recordLeftWristSliderXValue = (int) controller.leftWristXSlider.getValue();
                 recordLeftWristSliderYValue = (int) controller.leftWristYSlider.getValue();
                 recordLeftWristSliderZValue = (int) controller.leftWristZSlider.getValue();
                 controller.leftWristXRotationField.setText("0");
                 controller.leftWristYRotationField.setText("0");
                 controller.leftWristZRotationField.setText("0");
+                leftWristYOffset = 0;
                 break;
             case "rec5":
                 XYZ = getXYZFromTextField(controller.leftFinger1XRotationField,
@@ -247,31 +261,34 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.rightUpperArmXRotationField,
                         controller.rightUpperArmYRotationField,
                         controller.rightUpperArmZRotationField);
-                appendMethodCommands("mRightUpperArmFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mRightUpperArmFX", XYZ[0], XYZ[1], XYZ[2] + rightUpperArmZOffset);
                 recordRightUpperArmSliderXValue = (int) controller.rightUpperArmXSlider.getValue();
                 recordRightUpperArmSliderYValue = (int) controller.rightUpperArmYSlider.getValue();
                 recordRightUpperArmSliderZValue = (int) controller.rightUpperArmZSlider.getValue();
                 controller.rightUpperArmXRotationField.setText("0");
                 controller.rightUpperArmYRotationField.setText("0");
                 controller.rightUpperArmZRotationField.setText("0");
+                rightUpperArmZOffset = 0;
                 break;
             case "rec10":
                 XYZ = getXYZFromTextField(controller.rightForeArmXRotationField,
                         controller.rightForeArmYRotationField,
                         controller.rightForeArmZRotationField);
-                appendMethodCommands("mRightForeArmFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mRightForeArmFX", XYZ[0]  + rightForeArmXOffset, XYZ[1], XYZ[2] + rightForeArmZOffset);
                 recordRightForeArmSliderXValue = (int) controller.rightForeArmXSlider.getValue();
                 recordRightForeArmSliderYValue = (int) controller.rightForeArmYSlider.getValue();
                 recordRightForeArmSliderZValue = (int) controller.rightForeArmZSlider.getValue();
                 controller.rightForeArmXRotationField.setText("0");
                 controller.rightForeArmYRotationField.setText("0");
                 controller.rightForeArmZRotationField.setText("0");
+                rightForeArmXOffset = 0;
+                rightForeArmZOffset = 0;
                 break;
             case "rec11":
                 XYZ = getXYZFromTextField(controller.rightWristXRotationField,
                         controller.rightWristYRotationField,
                         controller.rightWristZRotationField);
-                appendMethodCommands("mRightWrist", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mRightWrist", XYZ[0], XYZ[1] + rightWristYOffset, XYZ[2]);
                 recordRightWristSliderXValue = (int) controller.rightWristXSlider.getValue();
                 recordRightWristSliderYValue = (int) controller.rightWristYSlider.getValue();
                 recordRightWristSliderZValue = (int) controller.rightWristZSlider.getValue();

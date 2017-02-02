@@ -19,9 +19,6 @@ import java.util.ArrayList;
 public class UnsynchronizedConversationHandsEnd extends AbstractConversationHands {
 
 
-    public UnsynchronizedConversationHandsEnd() {
-        mAnimType = ANIMTYPE.ON;
-    }
 
     public UnsynchronizedConversationHandsEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);

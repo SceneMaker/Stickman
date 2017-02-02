@@ -174,15 +174,31 @@ public abstract class BodyPartFX extends Pane {
     public synchronized void calculate_Z_Rotation(int step) {
         mZRotation += mZRotationStep;
         mZRotation = (double) Math.round(mZRotation * 1000d) / 1000d;
-
+        
         Platform.runLater(() -> calculate(step));
 
     }
 
     public void resetRotation() {
-
 //        mTranslationStep = 0.0d;
-
+    }
+    
+    public void reset_X_Rotation() {
+        mXRotation += mXRotationStep;
+        Platform.runLater(() -> calculate(1));
+        mXRotationStep = 0;
+    }
+    
+    public void reset_Y_Rotation() {
+        mYRotation += mYRotationStep;
+        Platform.runLater(() -> calculate(1));
+        mYRotationStep = 0;
+    }
+    
+    public void reset_Z_Rotation() {
+        mZRotation += mZRotationStep;
+        Platform.runLater(() -> calculate(1));
+        mZRotationStep = 0;
     }
 
     public void setShape(String s) {

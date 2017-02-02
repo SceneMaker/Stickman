@@ -20,9 +20,6 @@ import java.util.HashMap;
 public class UnsynchronizedConversationHandsStart extends AbstractConversationHands {
 
     private  static   boolean movementStarted = false;
-    public UnsynchronizedConversationHandsStart() {
-        mAnimType = ANIMTYPE.ON;
-    }
 
     public UnsynchronizedConversationHandsStart(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);

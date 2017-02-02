@@ -295,19 +295,19 @@ public class OpacityHelper {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
                 Color col = controller.currentStickman.mLeftEyebrowFX.mColor;
-                Color col1 = controller.currentStickman.mNoseFX.mColor;
+//                Color col1 = controller.currentStickman.mNoseFX.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
-                col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
+//                col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
 
                 controller.currentStickman.mLeftEyebrowFX.mColor = col;
                 controller.currentStickman.mRightEyebrowFX.mColor = col;
 
-                controller.currentStickman.mNoseFX.mColor = col1;
+//                controller.currentStickman.mNoseFX.mColor = col1;
 
                 controller.currentStickman.mLeftEyebrowFX.update();
                 controller.currentStickman.mRightEyebrowFX.update();
 
-                controller.currentStickman.mNoseFX.update();
+//                controller.currentStickman.mNoseFX.update();
             }
         });
 

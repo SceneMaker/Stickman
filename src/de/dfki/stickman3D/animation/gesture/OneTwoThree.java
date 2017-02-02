@@ -49,8 +49,8 @@ public class OneTwoThree extends Animation3D {
 		mAnimationPartFX = new ArrayList<>();
 		// LeftHand Up
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", -30));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", 25));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -110));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", 23));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -105));
 
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger4, "rotate", 130));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger3, "rotate", 130));

@@ -89,7 +89,7 @@ public class LeftUpperArmFX extends BodyPartFX {
     @Override
     public void calculate(int step) {
         mStart = mBodyFX.getLeftArmStartPostion();
-
+        
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
