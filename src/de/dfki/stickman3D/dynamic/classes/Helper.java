@@ -463,7 +463,6 @@ public class Helper {
         bodyPartFX.mXRotation = bodyPartFX.mXRotatationRecorder;
         bodyPartFX.mYRotation = bodyPartFX.mYRotatationRecorder;
         bodyPartFX.mZRotation = bodyPartFX.mZRotatationRecorder;
-        System.out.println(bodyPartFX + " " + bodyPartFX.mZRotatationRecorder) ;
         bodyPartFX.calculate(0);
     }
 
