@@ -83,7 +83,7 @@ public class OpacityHelper {
                 col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
                 controller.currentStickman.mDownBody.mColor = col;
                 controller.currentStickman.mDownBody.update();
-                controller.currentStickman.mUpperBody.mColor = col;
+                controller.currentStickman.mUpperBody.mColor = col1;
                 controller.currentStickman.mUpperBody.update();
             }
         });

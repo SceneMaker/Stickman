@@ -53,7 +53,7 @@ public class StickmanStageController extends AStickmanStageController implements
                 -> {
             mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();
             currentStickman = (Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox);
-//            setComboboxValue((Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox));
+            setComboboxValue((Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox));
         });
 
         fillEmotionScrollPane();
