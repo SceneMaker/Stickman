@@ -144,6 +144,7 @@ public class Helper {
     
     public static void switchRecordID(String ID, StickmanStageController controller) {
         int[] XYZ;
+        int counter;
         switch (ID) {
             case "rec0":
                 XYZ = getXYZFromTextField(controller.headXRotationField,
@@ -156,6 +157,9 @@ public class Helper {
                 controller.headXRotationField.setText("0");
                 controller.headYRotationField.setText("0");
                 controller.headZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter0.getText());
+                counter++;
+                controller.recCounter0.setText(counter+"");
                 break;
             case "rec1":
                 XYZ = getXYZFromTextField(controller.upperBodyXRotationField,
@@ -168,6 +172,9 @@ public class Helper {
                 controller.upperBodyXRotationField.setText("0");
                 controller.upperBodyYRotationField.setText("0");
                 controller.upperBodyZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter1.getText());
+                counter++;
+                controller.recCounter1.setText(counter+"");
                 break;
             case "rec2":
                 XYZ = getXYZFromTextField(controller.leftUpperArmXRotationField,
@@ -181,6 +188,9 @@ public class Helper {
                 controller.leftUpperArmYRotationField.setText("0");
                 controller.leftUpperArmZRotationField.setText("0");
                 leftUpperArmZOffset = 0;
+                counter = Integer.parseInt(controller.recCounter2.getText());
+                counter++;
+                controller.recCounter2.setText(counter+"");
                 break;
             case "rec3":
                 XYZ = getXYZFromTextField(controller.leftForeArmXRotationField,
@@ -195,6 +205,9 @@ public class Helper {
                 controller.leftForeArmZRotationField.setText("0");
                 leftForeArmXOffset = 0;
                 leftForeArmZOffset = 0;
+                counter = Integer.parseInt(controller.recCounter3.getText());
+                counter++;
+                controller.recCounter3.setText(counter+"");
                 break;
             case "rec4":
                 XYZ = getXYZFromTextField(controller.leftWristXRotationField,
@@ -208,6 +221,9 @@ public class Helper {
                 controller.leftWristYRotationField.setText("0");
                 controller.leftWristZRotationField.setText("0");
                 leftWristYOffset = 0;
+                counter = Integer.parseInt(controller.recCounter4.getText());
+                counter++;
+                controller.recCounter4.setText(counter+"");
                 break;
             case "rec5":
                 XYZ = getXYZFromTextField(controller.leftFinger1XRotationField,
@@ -220,6 +236,9 @@ public class Helper {
                 controller.leftFinger1XRotationField.setText("0");
                 controller.leftFinger1YRotationField.setText("0");
                 controller.leftFinger1ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter5.getText());
+                counter++;
+                controller.recCounter5.setText(counter+"");
                 break;
             case "rec6":
                 XYZ = getXYZFromTextField(controller.leftFinger2XRotationField,
@@ -232,6 +251,9 @@ public class Helper {
                 controller.leftFinger2XRotationField.setText("0");
                 controller.leftFinger2YRotationField.setText("0");
                 controller.leftFinger2ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter6.getText());
+                counter++;
+                controller.recCounter6.setText(counter+"");
                 break;
             case "rec7":
                 XYZ = getXYZFromTextField(controller.leftFinger3XRotationField,
@@ -244,6 +266,9 @@ public class Helper {
                 controller.leftFinger3XRotationField.setText("0");
                 controller.leftFinger3YRotationField.setText("0");
                 controller.leftFinger3ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter7.getText());
+                counter++;
+                controller.recCounter7.setText(counter+"");
                 break;
             case "rec8":
                 XYZ = getXYZFromTextField(controller.leftFinger4XRotationField,
@@ -256,6 +281,9 @@ public class Helper {
                 controller.leftFinger4XRotationField.setText("0");
                 controller.leftFinger4YRotationField.setText("0");
                 controller.leftFinger4ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter8.getText());
+                counter++;
+                controller.recCounter8.setText(counter+"");
                 break;
             case "rec9":
                 XYZ = getXYZFromTextField(controller.rightUpperArmXRotationField,
@@ -269,6 +297,9 @@ public class Helper {
                 controller.rightUpperArmYRotationField.setText("0");
                 controller.rightUpperArmZRotationField.setText("0");
                 rightUpperArmZOffset = 0;
+                counter = Integer.parseInt(controller.recCounter9.getText());
+                counter++;
+                controller.recCounter9.setText(counter+"");
                 break;
             case "rec10":
                 XYZ = getXYZFromTextField(controller.rightForeArmXRotationField,
@@ -283,6 +314,9 @@ public class Helper {
                 controller.rightForeArmZRotationField.setText("0");
                 rightForeArmXOffset = 0;
                 rightForeArmZOffset = 0;
+                counter = Integer.parseInt(controller.recCounter10.getText());
+                counter++;
+                controller.recCounter10.setText(counter+"");
                 break;
             case "rec11":
                 XYZ = getXYZFromTextField(controller.rightWristXRotationField,
@@ -295,6 +329,9 @@ public class Helper {
                 controller.rightWristXRotationField.setText("0");
                 controller.rightWristYRotationField.setText("0");
                 controller.rightWristZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter11.getText());
+                counter++;
+                controller.recCounter11.setText(counter+"");
                 break;
             case "rec12":
                 XYZ = getXYZFromTextField(controller.rightFinger1XRotationField,
@@ -307,6 +344,9 @@ public class Helper {
                 controller.rightFinger1XRotationField.setText("0");
                 controller.rightFinger1YRotationField.setText("0");
                 controller.rightFinger1ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter12.getText());
+                counter++;
+                controller.recCounter12.setText(counter+"");
                 break;
             case "rec13":
                 XYZ = getXYZFromTextField(controller.rightFinger2XRotationField,
@@ -319,6 +359,9 @@ public class Helper {
                 controller.rightFinger2XRotationField.setText("0");
                 controller.rightFinger2YRotationField.setText("0");
                 controller.rightFinger2ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter13.getText());
+                counter++;
+                controller.recCounter13.setText(counter+"");
                 break;
             case "rec14":
                 XYZ = getXYZFromTextField(controller.rightFinger3XRotationField,
@@ -331,6 +374,9 @@ public class Helper {
                 controller.rightFinger3XRotationField.setText("0");
                 controller.rightFinger3YRotationField.setText("0");
                 controller.rightFinger3ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter14.getText());
+                counter++;
+                controller.recCounter14.setText(counter+"");
                 break;
             case "rec15":
                 XYZ = getXYZFromTextField(controller.rightFinger4XRotationField,
@@ -343,6 +389,9 @@ public class Helper {
                 controller.rightFinger4XRotationField.setText("0");
                 controller.rightFinger4YRotationField.setText("0");
                 controller.rightFinger4ZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter15.getText());
+                counter++;
+                controller.recCounter15.setText(counter+"");
                 break;
             case "rec16":
                 XYZ = getXYZFromTextField(controller.downBodyXRotationField,
@@ -353,6 +402,9 @@ public class Helper {
                 controller.downBodyXRotationField.setText("0");
                 controller.downBodyYRotationField.setText("0");
                 controller.downBodyZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter16.getText());
+                counter++;
+                controller.recCounter16.setText(counter+"");
                 break;
             case "rec17":
                 XYZ = getXYZFromTextField(controller.rightUpperLegXRotationField,
@@ -365,6 +417,9 @@ public class Helper {
                 controller.rightUpperLegXRotationField.setText("0");
                 controller.rightUpperLegYRotationField.setText("0");
                 controller.rightUpperLegZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter17.getText());
+                counter++;
+                controller.recCounter17.setText(counter+"");
                 break;
             case "rec18":
                 XYZ = getXYZFromTextField(controller.rightForeLegXRotationField,
@@ -377,6 +432,9 @@ public class Helper {
                 controller.rightForeLegXRotationField.setText("0");
                 controller.rightForeLegYRotationField.setText("0");
                 controller.rightForeLegZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter18.getText());
+                counter++;
+                controller.recCounter18.setText(counter+"");
                 break;
             case "rec19":
                 XYZ = getXYZFromTextField(controller.leftUpperLegXRotationField,
@@ -389,6 +447,9 @@ public class Helper {
                 controller.leftUpperLegXRotationField.setText("0");
                 controller.leftUpperLegYRotationField.setText("0");
                 controller.leftUpperLegZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter19.getText());
+                counter++;
+                controller.recCounter19.setText(counter+"");
                 break;
             case "rec20":
                 XYZ = getXYZFromTextField(controller.leftForeLegXRotationField,
@@ -401,6 +462,9 @@ public class Helper {
                 controller.leftForeLegXRotationField.setText("0");
                 controller.leftForeLegYRotationField.setText("0");
                 controller.leftForeLegZRotationField.setText("0");
+                counter = Integer.parseInt(controller.recCounter20.getText());
+                counter++;
+                controller.recCounter20.setText(counter+"");
                 break;
         }
     }

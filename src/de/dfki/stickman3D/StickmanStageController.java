@@ -245,6 +245,7 @@ public class StickmanStageController extends AStickmanStageController implements
             DynamicCompiler.setClassName(name);
             DynamicCompiler.create();
             DynamicCompiler.methodContent.setLength(0);
+            resetAllRecordCounter();
             stage.close();
         });
     }
@@ -765,5 +766,30 @@ public class StickmanStageController extends AStickmanStageController implements
 
     private Color colorWithoutOpacity(Color color) {
 	return new Color(color.getRed(), color.getGreen(), color.getBlue(), 1);
+    }
+    
+    private void resetAllRecordCounter()
+    {
+        recCounter0.setText("0");
+        recCounter1.setText("0");
+        recCounter2.setText("0");
+        recCounter3.setText("0");
+        recCounter4.setText("0");
+        recCounter5.setText("0");
+        recCounter6.setText("0");
+        recCounter7.setText("0");
+        recCounter8.setText("0");
+        recCounter9.setText("0");
+        recCounter10.setText("0");
+        recCounter11.setText("0");
+        recCounter12.setText("0");
+        recCounter13.setText("0");
+        recCounter14.setText("0");
+        recCounter15.setText("0");
+        recCounter16.setText("0");
+        recCounter17.setText("0");
+        recCounter18.setText("0");
+        recCounter19.setText("0");
+        recCounter20.setText("0");
     }
 }

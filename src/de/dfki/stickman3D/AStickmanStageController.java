@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
@@ -443,6 +444,48 @@ public abstract class AStickmanStageController {
     public Slider leftForeLegYSlider;
     @FXML
     public Slider leftForeLegZSlider;
+    @FXML
+    public Label recCounter0; 
+    @FXML
+    public Label recCounter1;
+    @FXML
+    public Label recCounter2;
+    @FXML
+    public Label recCounter3;
+    @FXML
+    public Label recCounter4;
+    @FXML
+    public Label recCounter5;
+    @FXML
+    public Label recCounter6;
+    @FXML
+    public Label recCounter7;
+    @FXML
+    public Label recCounter8;
+    @FXML
+    public Label recCounter9;
+    @FXML
+    public Label recCounter10;
+    @FXML
+    public Label recCounter11;
+    @FXML
+    public Label recCounter12;
+    @FXML
+    public Label recCounter13;
+    @FXML
+    public Label recCounter14;
+    @FXML
+    public Label recCounter15;
+    @FXML
+    public Label recCounter16;
+    @FXML
+    public Label recCounter17;
+    @FXML
+    public Label recCounter18;
+    @FXML
+    public Label recCounter19;
+    @FXML
+    public Label recCounter20;
     
 
     @FXML
