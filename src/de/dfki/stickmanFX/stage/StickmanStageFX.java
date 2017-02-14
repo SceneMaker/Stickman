@@ -145,8 +145,9 @@ public class StickmanStageFX extends Application implements StickmanStage {
         sStickmanPane.getChildren().clear();
         for (String key : stickamnsOnStage.get(stageIdentifier).getStickmanNames()) {
             sStickmanPane.getChildren().add((Node) stickamnsOnStage.get(stageIdentifier).getStickmanByKey(key));
-            addStickmanName(key);
+//            addStickmanName();
         }
+        addStickmanName();
     }
 
     public void addStickmanToStage(String stageIdentifier, StickmanFX sman) throws Exception {
@@ -167,7 +168,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
         return sStickmanPane;
     }
 
-    private void addStickmanName(String key) {
+    private void addStickmanName() {
         generalConfigStageRoot.getmStickmanStageController().fillComboForStickman();
     }
 
@@ -223,7 +224,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
                 pane.getChildren().clear();
                 Stage stage = stickmanFXStages.get(stageIdentifier);
                 stage.close();
-                stickmanFXStages.remove(stageIdentifier);
+//                stickmanFXStages.remove(stageIdentifier);
             });
 
         } catch (Exception e) {

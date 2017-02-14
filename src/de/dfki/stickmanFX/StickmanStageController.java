@@ -502,14 +502,16 @@ public class StickmanStageController implements ViewController {
 	ExitButton.setOnAction(new EventHandler<ActionEvent>() {
 	    @Override
 	    public void handle(ActionEvent event) {
+                saveToXml();
+                handlePerlinNoise();
 		mStickmanOnstage.clearStage();
 		((StickmanStageFX) mStickmanOnstage.getStageStickman())
 			.clearStage(((StageRoomFX) mStickmanOnstage.getStageRoom()).CONFIG_STAGE);
 	    }
 	});
 
-	saveToXml();
-	handlePerlinNoise();
+//	saveToXml();
+//	handlePerlinNoise();
     }
 
     private void initColorSlider() {
