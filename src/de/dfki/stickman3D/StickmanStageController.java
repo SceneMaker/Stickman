@@ -165,7 +165,7 @@ public class StickmanStageController extends AStickmanStageController implements
         ExitButton.setOnAction((ActionEvent event) -> {
             Stage stage = (Stage) ExitButton.getScene().getWindow();
             stage.close();
-            System.exit(0);
+//            System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentStickman, this);
 //            cr.start();
         });
