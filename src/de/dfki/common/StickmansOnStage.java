@@ -86,7 +86,7 @@ public abstract class StickmansOnStage {
         if (sStickmansOnStage.containsKey(name.toLowerCase())) {
             return sStickmansOnStage.get(name.toLowerCase());
         }
-        throw new NullPointerException("No stickmanSwing with name " + name);
+        throw new NullPointerException("No stickman with name " + name);
 
     }
 

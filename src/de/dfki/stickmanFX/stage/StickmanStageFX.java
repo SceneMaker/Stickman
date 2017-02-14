@@ -18,6 +18,7 @@ import javafx.stage.StageStyle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -76,8 +77,8 @@ public class StickmanStageFX extends Application implements StickmanStage {
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("de.dfki.stickmanFX.css.StickmanCSS.css");
-        scene.getStylesheets().add("de//dfki//stickmanFX//css//StickmanCSS.css");
-        stage.setTitle("Stickman3D");
+        scene.getStylesheets().add("de"+File.separator+"dfki"+File.separator+"stickmanFX"+File.separator+"css"+File.separator+"StickmanCSS.css");
+        stage.setTitle("StickmanFX");
         stage.setScene(scene);
         stickmanFXStages.put(StageRoomFX.CONFIG_STAGE, stage);
         ApplicationLauncherImpl.setIsRunning();
@@ -140,6 +141,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
     }
 
     public void addStickmanToStage(String stageIdentifier) throws Exception {
+        addStickmanName();
         HBox sStickmanPane;
         sStickmanPane = getStickmanBox(stageIdentifier);
         sStickmanPane.getChildren().clear();
@@ -147,7 +149,7 @@ public class StickmanStageFX extends Application implements StickmanStage {
             sStickmanPane.getChildren().add((Node) stickamnsOnStage.get(stageIdentifier).getStickmanByKey(key));
 //            addStickmanName();
         }
-        addStickmanName();
+//        addStickmanName();
     }
 
     public void addStickmanToStage(String stageIdentifier, StickmanFX sman) throws Exception {
