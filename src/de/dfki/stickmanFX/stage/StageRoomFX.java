@@ -13,22 +13,22 @@ import java.io.IOException;
 public class StageRoomFX extends StageRoomImpl {
 
     public StageRoomFX() {
-        getStickmanStageInstance();
-        createNewStickmanStage(0, 0, true);
+        getStageInstance();
+        createNewStage(0, 0, true);
     }
 
     public StageRoomFX(int x, int y) {
-        getStickmanStageInstance();
-        createNewStickmanStage(x, y, true);
+        getStageInstance();
+        createNewStage(x, y, true);
     }
 
     public StageRoomFX(int x, int y, boolean decoration) {
-        getStickmanStageInstance();
-        createNewStickmanStage(x, y, decoration);
+        getStageInstance();
+        createNewStage(x, y, decoration);
     }
 
     @Override
-    protected void getStickmanStageInstance() {
+    protected void getStageInstance() {
         applicationFXLauncher = new ApplicationLauncherFX();
         if (ApplicationLauncherImpl.isRunning()) {
             stickmanStageFX = StickmanStageFX.getInstance();
@@ -39,7 +39,7 @@ public class StageRoomFX extends StageRoomImpl {
     }
 
     @Override
-    protected void createNewStickmanStage(int x, int y, boolean decoration) {
+    protected void createNewStage(int x, int y, boolean decoration) {
         stickmanStageFX = StickmanStageFX.getInstance();
 
         try {
@@ -68,7 +68,7 @@ public class StageRoomFX extends StageRoomImpl {
     }
 
     @Override
-    public void launchStickmanConfiguration() {
+    public void launchConfiguration() {
         try {
             getStickmanStage().addStickmanToStage(CONFIG_STAGE);
             getStickmanStage().showStage(CONFIG_STAGE);
@@ -78,16 +78,16 @@ public class StageRoomFX extends StageRoomImpl {
     }
     
     @Override
-    public void launchStickmanConfiguration(String filepath) {
+    public void launchConfiguration(String filepath) {
         commonStickmansOnStage.setmFilePath(filepath);
         XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
         loader.initialStickmanWithXml();
-        launchStickmanConfiguration();
+        launchConfiguration();
 //        loader.initialStickmanWithXml();
     }
     
     @Override
-    public void launchStickmanStage(boolean show, String filepath) {
+    public void launchStage(boolean show, String filepath) {
         commonStickmansOnStage.setmFilePath(filepath);
         XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
         loader.initialStickmanWithXml();

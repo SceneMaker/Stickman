@@ -280,7 +280,7 @@ public class StickmanSwing extends JComponent implements Stickman {
     }
 
     @Override
-    public void setStickmanStageController(StageRoom s) {
+    public void setStageController(StageRoom s) {
         stageController = s;
     }
 

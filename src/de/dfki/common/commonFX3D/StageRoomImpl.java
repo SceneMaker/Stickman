@@ -26,9 +26,9 @@ public abstract class StageRoomImpl implements StageRoom {
 
     public abstract void init(String stageIdentifier);
 
-    protected abstract void getStickmanStageInstance();
+    protected abstract void getStageInstance();
 
-    protected abstract void createNewStickmanStage(int x, int y, boolean decoration);
+    protected abstract void createNewStage(int x, int y, boolean decoration);
 
     @Override
     public void clearStage() {
@@ -48,7 +48,7 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void launchStickmanConfiguration() {}
+    public void launchConfiguration() {}
 
     @Override
     public void launchStickmanStage(boolean show) {
@@ -63,19 +63,19 @@ public abstract class StageRoomImpl implements StageRoom {
     }
 
     @Override
-    public void launchStickmanConfiguration(String filepath) {
+    public void launchConfiguration(String filepath) {
 //        commonStickmansOnStage.setmFilePath(filepath);
 //        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
 //        loader.initialStickmanWithXml();
-//        launchStickmanConfiguration();
+//        launchConfiguration();
 //        loader.initialStickmanWithXml();
     }
 
-    public void launchStickmanStage(boolean show, String filepath) {
+    public void launchStage(boolean show, String filepath) {
 //        commonStickmansOnStage.setmFilePath(filepath);
 //        XmlStickmanLoader loader = new XmlStickmanLoader(commonStickmansOnStage);
 //        loader.initialStickmanWithXml();
-//        launchStickmanStage(show);
+//        launchStage(show);
 //        loader.initialStickmanWithXml();
     }
 

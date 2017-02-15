@@ -21,7 +21,7 @@ public class StageRoomNetworkSwingDecorator extends StageRoomNetworkDecorator {
     }
 
     @Override
-    public void launchStickmanConfiguration() {
+    public void launchConfiguration() {
     }
 
 }

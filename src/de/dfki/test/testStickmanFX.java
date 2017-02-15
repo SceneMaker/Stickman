@@ -2,6 +2,7 @@ package de.dfki.test;
 
 import de.dfki.common.decorators.StageRoomFullScreenDecorator;
 import de.dfki.common.interfaces.StageRoom;
+import de.dfki.reeti.stage.StageRoomReeti;
 import de.dfki.stickman3D.stage.StageRoom3D;
 import de.dfki.stickmanFX.stage.StageRoomFX;
 import de.dfki.stickmanSwing.stage.StageRoomSwing;
@@ -19,14 +20,14 @@ public class testStickmanFX {
 //        StageRoom stickmanStage = new StageRoomSwing();
 //        stickmanStage.addStickman("Patrick");
 //        //stickmanStage.addStickman("Bob");
-//        stickmanStage.launchStickmanStage(true);
+//        stickmanStage.launchStage(true);
 //        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
-        StageRoom stickmanStage3D1 = new StageRoom3D(500, 0, true);
+        StageRoom reeti = new StageRoomReeti(500, 0, true);
 //        StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
-        stickmanStage3D1.addStickman("Anne");
-        stickmanStage3D1.addStickman("Bob");
-//        stickmanStage3D1.launchStickmanStage(true);
-        stickmanStage3D1.launchStickmanConfiguration();
+        reeti.addStickman("Reeti");
+//        stickmanStage3D1.addStickman("Bob");
+//        stickmanStage3D1.launchStage(true);
+        reeti.launchConfiguration();
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, 20, true);
         //stickmanStage3D1.getStickman("Bob").doAnimation("TiltRightStart", 500, true);      
@@ -48,40 +49,40 @@ public class testStickmanFX {
 
 //        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);
 //        stickmanStage2.addStickman("Sarah");
-//        stickmanStage2.launchStickmanStage(true);
-        //stickmanStage2.launchStickmanStage(true);
+//        stickmanStage2.launchStage(true);
+        //stickmanStage2.launchStage(true);
 
         /*StageRoom stickmanStageFx = new StageRoomFX(0,500, true);
         //StageRoom stickmanStageFull = new StageRoomFullScreenDecorator(stickmanStageFx);
         stickmanStageFx.addStickman("Anna");
         //stickmanStage.addStickman("Bob");
-        stickmanStageFx.launchStickmanStage(true);*/
+        stickmanStageFx.launchStage(true);*/
  /*
         StageRoom stickmanStage2 = new StageRoomFX(1921, 0, true);
         StageRoom stickmanStageFull2 = new StageRoomFullScreenDecorator(stickmanStage2);
         stickmanStageFull2.addStickman("Martin");
         stickmanStageFull2.addStickman("Sarah");
-        stickmanStageFull2.launchStickmanStage(true);
-        //stickmanStage2.launchStickmanStage(true);
+        stickmanStageFull2.launchStage(true);
+        //stickmanStage2.launchStage(true);
         BufferedImage bufferedImage = null;
 
 
         StageRoom stickmanStage3D = new StageRoom3D(991,0, true);
         stickmanStage3D.addStickman("Martin");
         stickmanStage3D.addStickman("Bob");
-        //stickmanStage3D.launchStickmanStage(true);
-        stickmanStage3D.launchStickmanStage(true);*/
+        //stickmanStage3D.launchStage(true);
+        stickmanStage3D.launchStage(true);*/
 
  /*StageRoom stickmanStage3D1 = new StageRoom3D(0,0, true);
         stickmanStage3D1.addStickman("Robbie");
-        //stickmanStage3D.launchStickmanStage(true)
-        stickmanStage3D1.launchStickmanConfiguration();*/
+        //stickmanStage3D.launchStage(true)
+        stickmanStage3D1.launchConfiguration();*/
 
  /* StageRoom stickmanStage = new StageRoomFX(0,0, true);
         StageRoom stickmanStageFull = new StageRoomFullScreenDecorator(stickmanStage);
         stickmanStage.addStickman("Patrick");
         //stickmanStage.addStickman("Bob");
-        stickmanStage.launchStickmanConfiguration();*/
+        stickmanStage.launchConfiguration();*/
  /*StageRoom oldStage = new StageRoomSwing();
         oldStage.addStickman("Anna");
          */

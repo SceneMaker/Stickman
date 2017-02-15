@@ -96,17 +96,17 @@ public class StageRoomSwing implements StageRoom {
     }
 
     @Override
-    public void launchStickmanConfiguration() {
+    public void launchConfiguration() {
 
     }
 
     @Override
-    public void launchStickmanConfiguration(String filepath) {
+    public void launchConfiguration(String filepath) {
 
     }
 
     @Override
-    public void launchStickmanStage(boolean show, String filepath) {
+    public void launchStage(boolean show, String filepath) {
 
     }
 }

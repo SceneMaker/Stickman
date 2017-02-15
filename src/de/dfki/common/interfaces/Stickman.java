@@ -10,7 +10,7 @@ public interface Stickman {
 
     StageRoom getStickmanStageController();
 
-    void setStickmanStageController(StageRoom s);
+    void setStageController(StageRoom s);
 
     void setShowName(boolean show);
 

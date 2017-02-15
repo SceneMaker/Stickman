@@ -37,9 +37,9 @@ public interface StageRoom {
 
     BufferedImage getStageAsImage() throws Exception;
 
-    void launchStickmanConfiguration();
+    void launchConfiguration();
 
-    void launchStickmanConfiguration(String filepath);
+    void launchConfiguration(String filepath);
 
-    void launchStickmanStage(boolean show, String filepath);
+    void launchStage(boolean show, String filepath);
 }

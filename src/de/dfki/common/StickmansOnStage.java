@@ -102,7 +102,7 @@ public abstract class StickmansOnStage {
 
     protected void putFullStickmanOnStage(String name, Stickman stickman) {
         sStickmansOnStage.put(name.toLowerCase(), stickman);
-        stickman.setStickmanStageController(stageRoom);
+        stickman.setStageController(stageRoom);
     }
 
     public Set<String> getStickmanNames() {
