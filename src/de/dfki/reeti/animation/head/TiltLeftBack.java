@@ -30,7 +30,7 @@ public class TiltLeftBack extends AnimationReeti {
     @Override
     public void playAnimation() {
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", -10));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", -10));
         playAnimationPart(200);
 
         if (ReetiStageController.currentRadioButton != null) {

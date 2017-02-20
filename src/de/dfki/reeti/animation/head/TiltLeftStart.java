@@ -28,7 +28,7 @@ public class TiltLeftStart extends AnimationReeti {
 
         AnimationReeti.isHeadTiltInAction = true;
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 10));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 10));
         playAnimationPart(200);
 
     }

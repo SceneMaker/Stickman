@@ -19,24 +19,24 @@ public class test0 extends AnimationReeti {
     @Override
     public void playAnimation() {
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "rotate", 0));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "yrotate", 57));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "yrotate", 57));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 0));
         playAnimationPart(mDuration);
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "rotate", 0));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "yrotate", -104));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "yrotate", -104));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 0));
         playAnimationPart(mDuration);
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "rotate", 0));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "yrotate", 112));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "yrotate", 112));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 0));
         playAnimationPart(mDuration);
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "rotate", 0));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "yrotate", -119));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 0));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "yrotate", -119));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 0));
         playAnimationPart(mDuration);
     }
 }

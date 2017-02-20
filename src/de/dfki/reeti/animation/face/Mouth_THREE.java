@@ -26,7 +26,7 @@ public class Mouth_THREE extends AnimationReeti {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "ONE"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "ONE"));
         playAnimationPart(20);
     }
 }

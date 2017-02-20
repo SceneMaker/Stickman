@@ -40,11 +40,11 @@ public class RightEye extends BodyPartFX {
 
         imorter = new ColModelImporter();
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiEye1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/ReetiEye3.dae");
 
         imorter.read(url);
         mRightEarMesh = (Group) imorter.getImport()[0];
-        mXRotation = 10;
+        mXRotation = 5;
         
         mStart = mHeadFX.getLeftEyebrowPostion();
 
@@ -56,9 +56,9 @@ public class RightEye extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mRightEarMesh.setTranslateX(mStart.x - 40);
-        mRightEarMesh.setTranslateY(mStart.y + 23);
-        mRightEarMesh.setTranslateZ(-60);
+        mRightEarMesh.setTranslateX(mStart.x - 48);
+        mRightEarMesh.setTranslateY(mStart.y + 47);
+        mRightEarMesh.setTranslateZ(-62);
     }
 
     @Override

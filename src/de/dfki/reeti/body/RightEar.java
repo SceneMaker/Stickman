@@ -41,7 +41,7 @@ public class RightEar extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiRightEar1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/ReetiRightEar2.dae");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new Image(imageUrl.toExternalForm());
 
@@ -64,8 +64,8 @@ public class RightEar extends BodyPartFX {
     public void init() {
         super.init();
         mRightEarMesh.setTranslateX(mStart.x - 80);
-        mRightEarMesh.setTranslateY(mStart.y + 30);
-        mRightEarMesh.setTranslateZ(-30);
+        mRightEarMesh.setTranslateY(mStart.y + 57);
+        mRightEarMesh.setTranslateZ(0);
     }
 
     @Override

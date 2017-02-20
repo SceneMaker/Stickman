@@ -26,7 +26,7 @@ public class Mouth_Default extends AnimationReeti {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "DEFAULT"));
         playAnimationPart(mDuration);
     }
 }

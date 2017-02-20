@@ -16,14 +16,14 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mHeadFX.mHeadMeshView.setVisible(false);
+                    controller.currentStickman.mHead.mHeadMeshView.setVisible(false);
                 } else {
-                    controller.currentStickman.mHeadFX.mHeadMeshView.setVisible(true);
+                    controller.currentStickman.mHead.mHeadMeshView.setVisible(true);
                 }
-                Color col = controller.currentStickman.mHeadFX.mColor;
+                Color col = controller.currentStickman.mHead.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
-                controller.currentStickman.mHeadFX.mColor = col;
-                controller.currentStickman.mHeadFX.update();
+                controller.currentStickman.mHead.mColor = col;
+                controller.currentStickman.mHead.update();
             }
         });
     }
@@ -70,15 +70,15 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mUpperBody.mBodyMeshView.setVisible(false);
+                    controller.currentStickman.mBody.mBodyMeshView.setVisible(false);
                 } else {
-                    controller.currentStickman.mUpperBody.mBodyMeshView.setVisible(true);
+                    controller.currentStickman.mBody.mBodyMeshView.setVisible(true);
                 }
 
-                Color col1 = controller.currentStickman.mUpperBody.mColor;
+                Color col1 = controller.currentStickman.mBody.mColor;
                 col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
-                controller.currentStickman.mUpperBody.mColor = col1;
-                controller.currentStickman.mUpperBody.update();
+                controller.currentStickman.mBody.mColor = col1;
+                controller.currentStickman.mBody.update();
             }
         });
     }
@@ -89,19 +89,19 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mNeckFX.neckMeshView.setVisible(false);
+                    controller.currentStickman.mNeck.neckMeshView.setVisible(false);
 
                 } else {
-                    controller.currentStickman.mNeckFX.neckMeshView.setVisible(true);
+                    controller.currentStickman.mNeck.neckMeshView.setVisible(true);
 
                 }
 
-                Color col = controller.currentStickman.mNeckFX.mColor;
+                Color col = controller.currentStickman.mNeck.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
 
-                controller.currentStickman.mNeckFX.mColor = col;
+                controller.currentStickman.mNeck.mColor = col;
 
-                controller.currentStickman.mNeckFX.update();
+                controller.currentStickman.mNeck.update();
 
             }
         });
@@ -126,19 +126,19 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mMouthFX.currentDownLipPolygon.setVisible(false);
-                    controller.currentStickman.mMouthFX.currentUpperLipPolygon.setVisible(false);
+                    controller.currentStickman.mMouth.currentDownLipPolygon.setVisible(false);
+                    controller.currentStickman.mMouth.currentUpperLipPolygon.setVisible(false);
                 } else {
-                    controller.currentStickman.mMouthFX.currentDownLipPolygon.setVisible(true);
-                    controller.currentStickman.mMouthFX.currentUpperLipPolygon.setVisible(true);
+                    controller.currentStickman.mMouth.currentDownLipPolygon.setVisible(true);
+                    controller.currentStickman.mMouth.currentUpperLipPolygon.setVisible(true);
                 }
 
-                Color col = controller.currentStickman.mMouthFX.mColor;
+                Color col = controller.currentStickman.mMouth.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
 
-                controller.currentStickman.mMouthFX.mColor = col;
+                controller.currentStickman.mMouth.mColor = col;
 
-                controller.currentStickman.mMouthFX.update();
+                controller.currentStickman.mMouth.update();
             }
         });
     }
@@ -164,19 +164,19 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 
-                Color col = controller.currentStickman.mLeftEyebrowFX.mColor;
-//                Color col1 = controller.currentStickman.mNoseFX.mColor;
+                Color col = controller.currentStickman.mLeftEyelid.mColor;
+//                Color col1 = controller.currentStickman.mNose.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
 //                col1 = new Color(col1.getRed(), col1.getGreen(), col1.getBlue(), newValue.doubleValue());
 
-                controller.currentStickman.mLeftEyebrowFX.mColor = col;
-                controller.currentStickman.mRightEyebrowFX.mColor = col;
+                controller.currentStickman.mLeftEyelid.mColor = col;
+                controller.currentStickman.mRightEyelid.mColor = col;
 
-//                controller.currentStickman.mNoseFX.mColor = col1;
-                controller.currentStickman.mLeftEyebrowFX.update();
-                controller.currentStickman.mRightEyebrowFX.update();
+//                controller.currentStickman.mNose.mColor = col1;
+                controller.currentStickman.mLeftEyelid.update();
+                controller.currentStickman.mRightEyelid.update();
 
-//                controller.currentStickman.mNoseFX.update();
+//                controller.currentStickman.mNose.update();
             }
         });
 
@@ -188,15 +188,15 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mNoseFX.mNose.setVisible(false);
+                    controller.currentStickman.mNose.mNose.setVisible(false);
                 } else {
-                    controller.currentStickman.mNoseFX.mNose.setVisible(true);
+                    controller.currentStickman.mNose.mNose.setVisible(true);
                 }
-                Color col = controller.currentStickman.mNoseFX.mColor;
+                Color col = controller.currentStickman.mNose.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
 
-                controller.currentStickman.mNoseFX.mColor = col;
-                controller.currentStickman.mNoseFX.update();
+                controller.currentStickman.mNose.mColor = col;
+                controller.currentStickman.mNose.update();
             }
         });
 

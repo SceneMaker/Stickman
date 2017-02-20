@@ -5,6 +5,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
 import java.awt.*;
+import javafx.scene.effect.Light.Distant;
+import javafx.scene.effect.Lighting;
 import javafx.scene.shape.ClosePath;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -31,7 +33,7 @@ public class MouthFX extends BodyPartFX {
     public Point rightCorner;
     public Point up;
     public Point down;
-    private final int mouthLength = 25;
+    private final int mouthLength = 32;
     
     private double leftCornerRegulator = 0;
     private double rightCornerRegulator = 0;
@@ -58,10 +60,18 @@ public class MouthFX extends BodyPartFX {
         mLips.setId("upperLip");
         
         mStart = mHeadFX.getMouthPostion();
-        leftCorner = new Point(-12, 35);
+        leftCorner = new Point(-9, 35);
         rightCorner = new Point(leftCorner.x + mouthLength, leftCorner.y);
         up = new Point(leftCorner.x + mouthLength/2, leftCorner.y);
         down = new Point(up.x, up.y);
+        Distant light = new Distant();
+        light.setAzimuth(-135.0f);
+        
+        Lighting l = new Lighting();
+        l.setLight(light);
+        l.setSurfaceScale(5.0f);
+        
+        mLips.setEffect(l);
 
         init();
 
@@ -72,8 +82,8 @@ public class MouthFX extends BodyPartFX {
     public void init() {
         super.init();
         mLips.setTranslateX(mStart.x);
-        mLips.setTranslateY(mStart.y + 31);
-        mLips.setTranslateZ(-126.5);
+        mLips.setTranslateY(mStart.y + 40);
+        mLips.setTranslateZ(-140.5);
     }
 
     @Override
@@ -106,6 +116,7 @@ public class MouthFX extends BodyPartFX {
                 mLips.getElements().add(new QuadCurveTo(up.x, up.y, rightCorner.x, rightCorner.y));
                 mLips.getElements().add(new QuadCurveTo(down.x, down.y, leftCorner.x, leftCorner.y));
                 mLips.getElements().add(new ClosePath());
+                mLips.setStyle("-fx-color: red");
                 break;
 
             case MOUTHACTION:

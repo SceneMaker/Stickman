@@ -624,21 +624,21 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
     // set the setValue of combobox
     private void setComboboxValue(Reeti mStick) {
-        bodyColorPicker.setValue(colorWithoutOpacity(mStick.mUpperBody.mColor));
-        bodyOpacitySlider.setValue(mStick.mUpperBody.mColor.getOpacity());
+        bodyColorPicker.setValue(colorWithoutOpacity(mStick.mBody.mColor));
+        bodyOpacitySlider.setValue(mStick.mBody.mColor.getOpacity());
 
 
-        headColorPicker.setValue(colorWithoutOpacity(mStick.mHeadFX.mColor));
-        headOpacitySlider.setValue(mStick.mHeadFX.mColor.getOpacity());
+        headColorPicker.setValue(colorWithoutOpacity(mStick.mHead.mColor));
+        headOpacitySlider.setValue(mStick.mHead.mColor.getOpacity());
 
-        noseColorPicker.setValue(colorWithoutOpacity(mStick.mNoseFX.mColor));
-        noseOpacitySlider.setValue(mStick.mNoseFX.mColor.getOpacity());
+        noseColorPicker.setValue(colorWithoutOpacity(mStick.mNose.mColor));
+        noseOpacitySlider.setValue(mStick.mNose.mColor.getOpacity());
 
-        browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyebrowFX.mColor));
-        browOpacitySlider.setValue(mStick.mLeftEyebrowFX.mColor.getOpacity());
+        browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyelid.mColor));
+        browOpacitySlider.setValue(mStick.mLeftEyelid.mColor.getOpacity());
 
-        lipsColorPicker.setValue(colorWithoutOpacity(mStick.mMouthFX.mColor));
-        lipsOpacitySlider.setValue(mStick.mMouthFX.mColor.getOpacity());
+        lipsColorPicker.setValue(colorWithoutOpacity(mStick.mMouth.mColor));
+        lipsOpacitySlider.setValue(mStick.mMouth.mColor.getOpacity());
 
     }
 

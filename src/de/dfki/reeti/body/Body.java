@@ -52,7 +52,7 @@ public class Body extends BodyPartFX {
         mStart = mNeckFX.getBodyStartPosition();
         imorter = new ColModelImporter();
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiBody1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/ReetiBody3.dae");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new javafx.scene.image.Image(imageUrl.toExternalForm());
         mColor = Color.WHITE;
@@ -65,7 +65,7 @@ public class Body extends BodyPartFX {
         material.setDiffuseColor(mColor);
         material.setDiffuseMap(image);
         material.setSelfIlluminationMap(image);
-        mBodyMeshView.setMaterial(material);
+//        mBodyMeshView.setMaterial(material);
         mUpperBodyGroup.getChildren().add(mBodyMeshView);
 
         mStart = mNeckFX.getBodyStartPosition();

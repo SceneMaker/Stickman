@@ -26,7 +26,7 @@ public class Mouth_O extends AnimationReeti {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "O"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "O"));
         playAnimationPart(20);
     }
 }

@@ -26,13 +26,13 @@ public class Smile extends AnimationReeti {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "SMILE"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SMILE"));
         playAnimationPart(mDuration);
         pauseAnimation(1200);
 
         // no smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "SMILEEND"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SMILEEND"));
         playAnimationPart(mDuration);
 
         if (ReetiStageController.currentRadioButton != null) {

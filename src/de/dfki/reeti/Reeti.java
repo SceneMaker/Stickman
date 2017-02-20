@@ -19,7 +19,9 @@ import de.dfki.reeti.animation.environment.Blinking;
 import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
 import de.dfki.reeti.animationlogic.AnimationReeti;
 import de.dfki.reeti.animationlogic.EventAnimationReeti;
+import de.dfki.reeti.body.LeftCheek;
 import de.dfki.reeti.body.LeftEar;
+import de.dfki.reeti.body.RightCheek;
 import de.dfki.reeti.body.RightEar;
 import de.dfki.reeti.environment.SpeechBubbleFX;
 import java.awt.Dimension;
@@ -35,6 +37,13 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.transform.Scale;
 
 /**
  *
@@ -46,7 +55,7 @@ import java.util.logging.Logger;
  *
  */
 public class Reeti extends Pane implements Stickman {
-    
+
     public Gender.TYPE mType = Gender.TYPE.FEMALE;
     public String mName = "StickmanSwing";
     public float mScale = 1.0f;
@@ -60,7 +69,6 @@ public class Reeti extends Pane implements Stickman {
     public static Dimension mDefaultSize = new Dimension(300, 800);
     public static Dimension mSize = new Dimension(mDefaultSize);
 
-
     public Blinking mBlinking;
 
     // amimation stuff
@@ -69,19 +77,21 @@ public class Reeti extends Pane implements Stickman {
     private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
 
     // body parts
-    public HeadFX mHeadFX;
-    public NoseFX mNoseFX;
-    public LeftEyelid mLeftEyebrowFX;
+    public HeadFX mHead;
+    public NoseFX mNose;
+    public LeftEyelid mLeftEyelid;
     public LeftEye mLeftEye;
     public RightEye mRightEye;
     public LeftEar mLeftEar;
     public RightEar mRightEar;
-    public RightEyelid mRightEyebrowFX;
-    public MouthFX mMouthFX;
-    public NeckFX mNeckFX;
-    public Body mUpperBody;
+    public RightEyelid mRightEyelid;
+    public LeftCheek mLeftCheek;
+    public RightCheek mRightCheek;
+    public MouthFX mMouth;
+    public NeckFX mNeck;
+    public Body mBody;
     // environment
-    public SpeechBubbleFX mSpeechBubbleFX;
+    public SpeechBubbleFX mSpeechBubble;
     private StageRoom stageController;
     // logging
     public final Logger mLogger = Logger.getAnonymousLogger();
@@ -95,19 +105,21 @@ public class Reeti extends Pane implements Stickman {
         mName = name;
         mType = gender;
 
-        mHeadFX = new HeadFX(this);
-        mLeftEyebrowFX = new LeftEyelid(mHeadFX);
-        mLeftEye = new LeftEye(mHeadFX);
-        mRightEye = new RightEye(mHeadFX);
-        mLeftEar = new LeftEar(mHeadFX);
-        mRightEar = new RightEar(mHeadFX);
-        mRightEyebrowFX = new RightEyelid(mHeadFX);
-        mNoseFX = new NoseFX(mHeadFX);
-        mMouthFX = new MouthFX(mHeadFX);
-        mNeckFX = new NeckFX(mHeadFX);
-        mUpperBody = new Body(mNeckFX);
+        mHead = new HeadFX(this);
+        mLeftEyelid = new LeftEyelid(mHead);
+        mLeftEye = new LeftEye(mHead);
+        mRightEye = new RightEye(mHead);
+        mLeftEar = new LeftEar(mHead);
+        mRightEar = new RightEar(mHead);
+        mRightEyelid = new RightEyelid(mHead);
+        mLeftCheek = new LeftCheek(mHead);
+        mRightCheek = new RightCheek(mHead);
+        mNose = new NoseFX(mHead);
+        mMouth = new MouthFX(mHead);
+        mNeck = new NeckFX(mHead);
+        mBody = new Body(mNeck);
 
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        mSpeechBubble = new SpeechBubbleFX(mHead);
         init();
         this.addAllParts();
         update();
@@ -120,19 +132,21 @@ public class Reeti extends Pane implements Stickman {
         mName = name;
         mType = gender;
 
-        mHeadFX = new HeadFX(this);
-        mLeftEyebrowFX = new LeftEyelid(mHeadFX);
-        mLeftEye = new LeftEye(mHeadFX);
-        mRightEye = new RightEye(mHeadFX);
-        mLeftEar = new LeftEar(mHeadFX);
-        mRightEar = new RightEar(mHeadFX);
-        mRightEyebrowFX = new RightEyelid(mHeadFX);
-        mNoseFX = new NoseFX(mHeadFX);
-        mMouthFX = new MouthFX(mHeadFX);
-        mNeckFX = new NeckFX(mHeadFX);
-        mUpperBody = new Body(mNeckFX);
+        mHead = new HeadFX(this);
+        mLeftEyelid = new LeftEyelid(mHead);
+        mLeftEye = new LeftEye(mHead);
+        mRightEye = new RightEye(mHead);
+        mLeftEar = new LeftEar(mHead);
+        mRightEar = new RightEar(mHead);
+        mRightEyelid = new RightEyelid(mHead);
+        mLeftCheek = new LeftCheek(mHead);
+        mRightCheek = new RightCheek(mHead);
+        mNose = new NoseFX(mHead);
+        mMouth = new MouthFX(mHead);
+        mNeck = new NeckFX(mHead);
+        mBody = new Body(mNeck);
 
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        mSpeechBubble = new SpeechBubbleFX(mHead);
         init();
         this.addAllParts();
         update();
@@ -143,19 +157,21 @@ public class Reeti extends Pane implements Stickman {
         mType = gender;
 
         isFullScreen = true;
-        mHeadFX = new HeadFX(this);
-        mLeftEyebrowFX = new LeftEyelid(mHeadFX);
-        mLeftEye = new LeftEye(mHeadFX);
-        mRightEye = new RightEye(mHeadFX);
-        mLeftEar = new LeftEar(mHeadFX);
-        mRightEar = new RightEar(mHeadFX);
-        mRightEyebrowFX = new RightEyelid(mHeadFX);
-        mNoseFX = new NoseFX(mHeadFX);
-        mMouthFX = new MouthFX(mHeadFX);
-        mNeckFX = new NeckFX(mHeadFX);
-        mUpperBody = new Body(mNeckFX);
+        mHead = new HeadFX(this);
+        mLeftEyelid = new LeftEyelid(mHead);
+        mLeftEye = new LeftEye(mHead);
+        mRightEye = new RightEye(mHead);
+        mLeftEar = new LeftEar(mHead);
+        mRightEar = new RightEar(mHead);
+        mRightEyelid = new RightEyelid(mHead);
+        mLeftCheek = new LeftCheek(mHead);
+        mRightCheek = new RightCheek(mHead);
+        mNose = new NoseFX(mHead);
+        mMouth = new MouthFX(mHead);
+        mNeck = new NeckFX(mHead);
+        mBody = new Body(mNeck);
 
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
+        mSpeechBubble = new SpeechBubbleFX(mHead);
         init();
         this.addAllParts();
         update();
@@ -312,10 +328,12 @@ public class Reeti extends Pane implements Stickman {
             mGeneralYTranslation = (int) ((this.stageHeight - StickmanHeight) + shiftFactor - 350);
             mGeneralXTranslation = 100;
         }
+//        Scale s = new Scale(0.5, 0.5, 0.5, 50, 50, 50);
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
         af.appendScale(mScale, mScale);
         this.getTransforms().clear();
         this.getTransforms().add(af);
+//        this.getTransforms().add(af);
     }
 
     public void setScale(float scale) {
@@ -333,7 +351,61 @@ public class Reeti extends Pane implements Stickman {
 
     private void addAllParts() {
 
-        this.getChildren().addAll(mNeckFX, mHeadFX, mUpperBody, mSpeechBubbleFX);
+        this.getChildren().addAll(mNeck, mHead, mBody, mSpeechBubble);
 
+    }
+
+    public void ledON(Color color1, Color color2, Color color3,
+            float intensityForColor1,
+            float intensityForColor2,
+            float intensitiForColor3,
+            String cheek) {
+
+        int size = mLeftCheek.getSize();
+
+        InnerShadow ledOnShadow = new InnerShadow(BlurType.TWO_PASS_BOX, color3, 0.05 * size, intensityForColor1, 0, 0);
+        ledOnShadow.setInput(new DropShadow(BlurType.TWO_PASS_BOX, color2, 0.05 * size, intensityForColor2, 0, 0));
+
+        RadialGradient highlightGradient = new RadialGradient(0, 0,
+                0.3 * size, 0.3 * size,
+                0.29 * size,
+                false, CycleMethod.NO_CYCLE,
+                new Stop(intensitiForColor3, color1),
+                new Stop(1.0, Color.TRANSPARENT));
+        
+        if(cheek.equalsIgnoreCase("L"))
+        {
+            mLeftCheek.getLed().setEffect(ledOnShadow);
+            mLeftCheek.getLed().setFill(highlightGradient);
+            mLeftCheek.getLedGroup().setVisible(true);
+        }
+        else if(cheek.equalsIgnoreCase("R"))
+        {
+            mRightCheek.getLed().setEffect(ledOnShadow);
+            mRightCheek.getLed().setFill(highlightGradient);
+            mRightCheek.getLedGroup().setVisible(true);
+        }
+        else if(cheek.equalsIgnoreCase("B"))
+        {
+            mLeftCheek.getLed().setEffect(ledOnShadow);
+            mLeftCheek.getLed().setFill(highlightGradient);
+            mRightCheek.getLed().setEffect(ledOnShadow);
+            mRightCheek.getLed().setFill(highlightGradient);
+            mLeftCheek.getLedGroup().setVisible(true);
+            mRightCheek.getLedGroup().setVisible(true);
+        } 
+    }
+    
+    public void ledOFF(String cheek)
+    {
+        if(cheek.equalsIgnoreCase("R"))
+            mRightCheek.getLedGroup().setVisible(false);
+        else if(cheek.equalsIgnoreCase("L"))
+            mLeftCheek.getLedGroup().setVisible(false);
+        else if(cheek.equalsIgnoreCase("B"))
+        {
+            mRightCheek.getLedGroup().setVisible(false);
+            mLeftCheek.getLedGroup().setVisible(false);
+        }
     }
 }

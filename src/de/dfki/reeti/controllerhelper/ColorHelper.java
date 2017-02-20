@@ -11,8 +11,8 @@ public class ColorHelper {
 
     public static void headColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mHeadFX.mColor = controller.headColorPicker.getValue();
-            controller.currentStickman.mHeadFX.update();
+            controller.currentStickman.mHead.mColor = controller.headColorPicker.getValue();
+            controller.currentStickman.mHead.update();
             controller.headOpacitySlider.setValue(1);
         }
     }
@@ -32,17 +32,17 @@ public class ColorHelper {
 
     public static void bodyColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mUpperBody.mColor = controller.bodyColorPicker.getValue();
-            controller.currentStickman.mUpperBody.update();
+            controller.currentStickman.mBody.mColor = controller.bodyColorPicker.getValue();
+            controller.currentStickman.mBody.update();
             //controller.bodyOpacitySlider.setValue(1);
         }
     }
 
     public static void limbsColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mNeckFX.mColor = controller.limbsColorPicker.getValue();
+            controller.currentStickman.mNeck.mColor = controller.limbsColorPicker.getValue();
 
-            controller.currentStickman.mNeckFX.update();
+            controller.currentStickman.mNeck.update();
             controller.limbsOpacitySlider.setValue(1);
         }
     }
@@ -55,8 +55,8 @@ public class ColorHelper {
 
     public static void lipsColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mMouthFX.mColor = controller.lipsColorPicker.getValue();
-            controller.currentStickman.mMouthFX.update();
+            controller.currentStickman.mMouth.mColor = controller.lipsColorPicker.getValue();
+            controller.currentStickman.mMouth.update();
             controller.lipsOpacitySlider.setValue(1);
         }
     }
@@ -69,18 +69,18 @@ public class ColorHelper {
 
     public static void browColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mLeftEyebrowFX.mColor = controller.browColorPicker.getValue();
-            controller.currentStickman.mRightEyebrowFX.mColor = controller.browColorPicker.getValue();
-            controller.currentStickman.mLeftEyebrowFX.update();
-            controller.currentStickman.mRightEyebrowFX.update();
+            controller.currentStickman.mLeftEyelid.mColor = controller.browColorPicker.getValue();
+            controller.currentStickman.mRightEyelid.mColor = controller.browColorPicker.getValue();
+            controller.currentStickman.mLeftEyelid.update();
+            controller.currentStickman.mRightEyelid.update();
             controller.browOpacitySlider.setValue(1);
         }
     }
 
     public static void noseColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mNoseFX.mColor = controller.noseColorPicker.getValue();
-            controller.currentStickman.mNoseFX.update();
+            controller.currentStickman.mNose.mColor = controller.noseColorPicker.getValue();
+            controller.currentStickman.mNose.update();
             controller.noseOpacitySlider.setValue(1);
         }
     }
@@ -89,15 +89,15 @@ public class ColorHelper {
             MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.headColorBrighter)) {
-                sSC.currentStickman.mHeadFX.mColor = sSC.currentStickman.mHeadFX.mColor.brighter();
-                sSC.currentStickman.mHeadFX.update();
+                sSC.currentStickman.mHead.mColor = sSC.currentStickman.mHead.mColor.brighter();
+                sSC.currentStickman.mHead.update();
             } else if (ev.getSource().equals(sSC.headColorDarker)) {
-                sSC.currentStickman.mHeadFX.mColor = sSC.currentStickman.mHeadFX.mColor.darker();
-                sSC.currentStickman.mHeadFX.update();
+                sSC.currentStickman.mHead.mColor = sSC.currentStickman.mHead.mColor.darker();
+                sSC.currentStickman.mHead.update();
             } else if (ev.getSource().equals(sSC.headColorReset)) {
-                sSC.currentStickman.mHeadFX.mColor = sSC.currentStickman.mHeadFX.mColorRecorder;
+                sSC.currentStickman.mHead.mColor = sSC.currentStickman.mHead.mColorRecorder;
                 sSC.headOpacitySlider.setValue(1);
-                sSC.currentStickman.mHeadFX.update();
+                sSC.currentStickman.mHead.update();
             }
         }
     }
@@ -139,15 +139,15 @@ public class ColorHelper {
             MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.bodyColorBrighter)) {
-                sSC.currentStickman.mUpperBody.mColor = sSC.currentStickman.mUpperBody.mColor.brighter();
-                sSC.currentStickman.mUpperBody.update();
+                sSC.currentStickman.mBody.mColor = sSC.currentStickman.mBody.mColor.brighter();
+                sSC.currentStickman.mBody.update();
             } else if (ev.getSource().equals(sSC.bodyColorDarker)) {
-                sSC.currentStickman.mUpperBody.mColor = sSC.currentStickman.mUpperBody.mColor.darker();
-                sSC.currentStickman.mUpperBody.update();
+                sSC.currentStickman.mBody.mColor = sSC.currentStickman.mBody.mColor.darker();
+                sSC.currentStickman.mBody.update();
             } else if (ev.getSource().equals(sSC.bodyColorReset)) {
-                sSC.currentStickman.mUpperBody.mColor = sSC.currentStickman.mUpperBody.mColorRecorder;
+                sSC.currentStickman.mBody.mColor = sSC.currentStickman.mBody.mColorRecorder;
                 sSC.bodyOpacitySlider.setValue(1);
-                sSC.currentStickman.mUpperBody.update();
+                sSC.currentStickman.mBody.update();
             }
         }
     }
@@ -156,20 +156,20 @@ public class ColorHelper {
             MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.limbsColorBrighter)) {
-                sSC.currentStickman.mNeckFX.mColor = sSC.currentStickman.mNeckFX.mColor.brighter();
+                sSC.currentStickman.mNeck.mColor = sSC.currentStickman.mNeck.mColor.brighter();
 
-                sSC.currentStickman.mNeckFX.update();
+                sSC.currentStickman.mNeck.update();
 
             } else if (ev.getSource().equals(sSC.limbsColorDarker)) {
-                sSC.currentStickman.mNeckFX.mColor = sSC.currentStickman.mNeckFX.mColor.darker();
+                sSC.currentStickman.mNeck.mColor = sSC.currentStickman.mNeck.mColor.darker();
 
-                sSC.currentStickman.mNeckFX.update();
+                sSC.currentStickman.mNeck.update();
 
             } else if (ev.getSource().equals(sSC.limbsColorReset)) {
-                sSC.currentStickman.mNeckFX.mColor = sSC.currentStickman.mNeckFX.mColorRecorder;
+                sSC.currentStickman.mNeck.mColor = sSC.currentStickman.mNeck.mColorRecorder;
                 sSC.limbsOpacitySlider.setValue(1);
 
-                sSC.currentStickman.mNeckFX.update();
+                sSC.currentStickman.mNeck.update();
             }
         }
     }
@@ -188,15 +188,15 @@ public class ColorHelper {
     public static void handleLipsColorButtons(ReetiStageController sSC, MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.lipsColorBrighter)) {
-                sSC.currentStickman.mMouthFX.mColor = sSC.currentStickman.mMouthFX.mColor.brighter();
-                sSC.currentStickman.mMouthFX.update();
+                sSC.currentStickman.mMouth.mColor = sSC.currentStickman.mMouth.mColor.brighter();
+                sSC.currentStickman.mMouth.update();
             } else if (ev.getSource().equals(sSC.lipsColorDarker)) {
-                sSC.currentStickman.mMouthFX.mColor = sSC.currentStickman.mMouthFX.mColor.darker();
-                sSC.currentStickman.mMouthFX.update();
+                sSC.currentStickman.mMouth.mColor = sSC.currentStickman.mMouth.mColor.darker();
+                sSC.currentStickman.mMouth.update();
             } else if (ev.getSource().equals(sSC.lipsColorReset)) {
-                sSC.currentStickman.mMouthFX.mColor = sSC.currentStickman.mMouthFX.mColorRecorder;
+                sSC.currentStickman.mMouth.mColor = sSC.currentStickman.mMouth.mColorRecorder;
                 sSC.lipsOpacitySlider.setValue(1);
-                sSC.currentStickman.mMouthFX.update();
+                sSC.currentStickman.mMouth.update();
             }
         }
     }
@@ -215,21 +215,21 @@ public class ColorHelper {
     public static void handleBrowColorButtons(ReetiStageController sSC, MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.browColorBrighter)) {
-                sSC.currentStickman.mLeftEyebrowFX.mColor = sSC.currentStickman.mLeftEyebrowFX.mColor.brighter();
-                sSC.currentStickman.mRightEyebrowFX.mColor = sSC.currentStickman.mRightEyebrowFX.mColor.brighter();
-                sSC.currentStickman.mLeftEyebrowFX.update();
-                sSC.currentStickman.mRightEyebrowFX.update();
+                sSC.currentStickman.mLeftEyelid.mColor = sSC.currentStickman.mLeftEyelid.mColor.brighter();
+                sSC.currentStickman.mRightEyelid.mColor = sSC.currentStickman.mRightEyelid.mColor.brighter();
+                sSC.currentStickman.mLeftEyelid.update();
+                sSC.currentStickman.mRightEyelid.update();
             } else if (ev.getSource().equals(sSC.browColorDarker)) {
-                sSC.currentStickman.mLeftEyebrowFX.mColor = sSC.currentStickman.mLeftEyebrowFX.mColor.darker();
-                sSC.currentStickman.mRightEyebrowFX.mColor = sSC.currentStickman.mRightEyebrowFX.mColor.darker();
-                sSC.currentStickman.mLeftEyebrowFX.update();
-                sSC.currentStickman.mRightEyebrowFX.update();
+                sSC.currentStickman.mLeftEyelid.mColor = sSC.currentStickman.mLeftEyelid.mColor.darker();
+                sSC.currentStickman.mRightEyelid.mColor = sSC.currentStickman.mRightEyelid.mColor.darker();
+                sSC.currentStickman.mLeftEyelid.update();
+                sSC.currentStickman.mRightEyelid.update();
             } else if (ev.getSource().equals(sSC.browColorReset)) {
-                sSC.currentStickman.mLeftEyebrowFX.mColor = sSC.currentStickman.mLeftEyebrowFX.mColorRecorder;
-                sSC.currentStickman.mRightEyebrowFX.mColor = sSC.currentStickman.mRightEyebrowFX.mColorRecorder;
+                sSC.currentStickman.mLeftEyelid.mColor = sSC.currentStickman.mLeftEyelid.mColorRecorder;
+                sSC.currentStickman.mRightEyelid.mColor = sSC.currentStickman.mRightEyelid.mColorRecorder;
                 sSC.browOpacitySlider.setValue(1);
-                sSC.currentStickman.mLeftEyebrowFX.update();
-                sSC.currentStickman.mRightEyebrowFX.update();
+                sSC.currentStickman.mLeftEyelid.update();
+                sSC.currentStickman.mRightEyelid.update();
             }
         }
     }
@@ -237,22 +237,22 @@ public class ColorHelper {
     public static void handleNoseColorButtons(ReetiStageController sSC, MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.noseColorBrighter)) {
-                sSC.currentStickman.mNoseFX.mColor = sSC.currentStickman.mNoseFX.mColor.brighter();
-                sSC.currentStickman.mNoseFX.update();
+                sSC.currentStickman.mNose.mColor = sSC.currentStickman.mNose.mColor.brighter();
+                sSC.currentStickman.mNose.update();
             } else if (ev.getSource().equals(sSC.noseColorDarker)) {
-                sSC.currentStickman.mNoseFX.mColor = sSC.currentStickman.mNoseFX.mColor.darker();
-                sSC.currentStickman.mNoseFX.update();
+                sSC.currentStickman.mNose.mColor = sSC.currentStickman.mNose.mColor.darker();
+                sSC.currentStickman.mNose.update();
             } else if (ev.getSource().equals(sSC.noseColorReset)) {
-                sSC.currentStickman.mNoseFX.mColor = sSC.currentStickman.mNoseFX.mColorRecorder;
+                sSC.currentStickman.mNose.mColor = sSC.currentStickman.mNose.mColorRecorder;
                 sSC.noseOpacitySlider.setValue(1);
-                sSC.currentStickman.mNoseFX.update();
+                sSC.currentStickman.mNose.update();
             }
         }
     }
 
     public static void resetAll(Reeti currentStickman) {
-        currentStickman.mHeadFX.mColor = currentStickman.mHeadFX.mColorRecorder;
-        currentStickman.mHeadFX.update();
+        currentStickman.mHead.mColor = currentStickman.mHead.mColorRecorder;
+        currentStickman.mHead.update();
 
         if (currentStickman.mType == Gender.TYPE.MALE) {
 //            currentStickman.mMaleHairFX.mColor = currentStickman.mMaleHairFX.mColorRecorder;
@@ -261,17 +261,17 @@ public class ColorHelper {
 //            currentStickman.mFemaleHairFX.mColor = currentStickman.mFemaleHairFX.mColorRecorder;
 //            currentStickman.mFemaleHairFX.update();
         }
-        currentStickman.mUpperBody.mColor = currentStickman.mUpperBody.mColorRecorder;
-        currentStickman.mUpperBody.update();
-        currentStickman.mNeckFX.mColor = currentStickman.mNeckFX.mColorRecorder;
-        currentStickman.mNeckFX.update();
-        currentStickman.mMouthFX.mColor = currentStickman.mMouthFX.mColorRecorder;
-        currentStickman.mMouthFX.update();
-        currentStickman.mLeftEyebrowFX.mColor = currentStickman.mLeftEyebrowFX.mColorRecorder;
-        currentStickman.mRightEyebrowFX.mColor = currentStickman.mRightEyebrowFX.mColorRecorder;
-        currentStickman.mLeftEyebrowFX.update();
-        currentStickman.mRightEyebrowFX.update();
-        currentStickman.mNoseFX.mColor = currentStickman.mNoseFX.mColorRecorder;
-        currentStickman.mNoseFX.update();
+        currentStickman.mBody.mColor = currentStickman.mBody.mColorRecorder;
+        currentStickman.mBody.update();
+        currentStickman.mNeck.mColor = currentStickman.mNeck.mColorRecorder;
+        currentStickman.mNeck.update();
+        currentStickman.mMouth.mColor = currentStickman.mMouth.mColorRecorder;
+        currentStickman.mMouth.update();
+        currentStickman.mLeftEyelid.mColor = currentStickman.mLeftEyelid.mColorRecorder;
+        currentStickman.mRightEyelid.mColor = currentStickman.mRightEyelid.mColorRecorder;
+        currentStickman.mLeftEyelid.update();
+        currentStickman.mRightEyelid.update();
+        currentStickman.mNose.mColor = currentStickman.mNose.mColorRecorder;
+        currentStickman.mNose.update();
     }
 }

@@ -37,11 +37,12 @@ public class RightEyelid extends BodyPartFX {
         mSize = new Dimension(mLength, mLength);
 
         mZRotation = -30;
+        mYRotation = 15;
 
         imorter = new ColModelImporter();
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/leftEyelid1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/leftEyelid3.dae");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new javafx.scene.image.Image(imageUrl.toExternalForm());
 
@@ -64,9 +65,9 @@ public class RightEyelid extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mLeftEyeMesh.setTranslateX(mStart.x - 40);
-        mLeftEyeMesh.setTranslateY(mStart.y + 23);
-        mLeftEyeMesh.setTranslateZ(-60);
+        mLeftEyeMesh.setTranslateX(mStart.x - 50);
+        mLeftEyeMesh.setTranslateY(mStart.y + 45);
+        mLeftEyeMesh.setTranslateZ(-65);
     }
 
     @Override

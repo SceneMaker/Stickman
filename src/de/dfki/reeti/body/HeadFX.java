@@ -54,7 +54,7 @@ public class HeadFX extends BodyPartFX {
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiHead3.stl");
+        url = getClass().getClassLoader().getResource("BodyParts/ReetiHead12.stl");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new Image(imageUrl.toExternalForm());
         im = new StlMeshImporter();
@@ -74,7 +74,7 @@ public class HeadFX extends BodyPartFX {
         mHeadMeshView.setMaterial(material);
 
         mHeadMeshView.setRotationAxis(Rotate.X_AXIS);
-        mHeadMeshView.setRotate(-90);
+        mHeadMeshView.setRotate(-92);
 
         mHead.getChildren().add(mHeadMeshView);
 
@@ -86,9 +86,9 @@ public class HeadFX extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mHead.setTranslateX(mHalfWidth + 4);
+        mHead.setTranslateX(mHalfWidth + 6);
         mHead.setTranslateY(mHalfHeight - 200);
-        mHead.setTranslateZ(mZTranslate);
+        mHead.setTranslateZ(mZTranslate + 28);
     }
 
     public Point getLeftEyebrowPostion() {

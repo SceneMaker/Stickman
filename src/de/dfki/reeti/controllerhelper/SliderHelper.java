@@ -26,17 +26,17 @@ public class SliderHelper {
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
-                controller.currentStickman.mHeadFX.mXRotation = newValue;
+                controller.currentStickman.mHead.mXRotation = newValue;
                 controller.headXRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderXValue));
             } else if (achse.equalsIgnoreCase("Y")) {
-                controller.currentStickman.mHeadFX.mYRotation = newValue;
+                controller.currentStickman.mHead.mYRotation = newValue;
                 controller.headYRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderYValue));
             } else {
-                controller.currentStickman.mHeadFX.mZRotation = newValue;
+                controller.currentStickman.mHead.mZRotation = newValue;
                 controller.headZRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderZValue));
             }
 
-            controller.currentStickman.mHeadFX.calculate(0);
+            controller.currentStickman.mHead.calculate(0);
         });
     }
 
@@ -66,9 +66,9 @@ public class SliderHelper {
             if (achse.equalsIgnoreCase("X")) {
                 controller.upperBodyXRotationField.setText(Integer.toString((int) newValue - Helper.recordUpperBodySliderXValue));
             } else if (achse.equalsIgnoreCase("Y")) {
-                controller.currentStickman.mUpperBody.mYRotation = newValue;
+                controller.currentStickman.mBody.mYRotation = newValue;
                 controller.upperBodyYRotationField.setText(Integer.toString((int) newValue - Helper.recordUpperBodySliderYValue));
-                controller.currentStickman.mUpperBody.calculate(0);
+                controller.currentStickman.mBody.calculate(0);
             } else {
                 controller.upperBodyZRotationField.setText(Integer.toString((int) newValue - Helper.recordUpperBodySliderZValue));
             }
@@ -394,17 +394,17 @@ public class SliderHelper {
             double oldValue = old_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
                 double xRotateFactor = newValue - oldValue;
-                Point pivot = controller.currentStickman.mUpperBody.getUpperBodyPosition();
+                Point pivot = controller.currentStickman.mBody.getUpperBodyPosition();
                 Rotate rx = new Rotate(xRotateFactor, pivot.x, pivot.y, 1505, Rotate.X_AXIS);
                 controller.getStage3D().getCamera().getTransforms().addAll(rx);
             } else if (achse.equalsIgnoreCase("Y")) {
                 double yRotateFactor = newValue - oldValue;
-                Point pivot = controller.currentStickman.mUpperBody.getUpperBodyPosition();
+                Point pivot = controller.currentStickman.mBody.getUpperBodyPosition();
                 Rotate ry = new Rotate(yRotateFactor, pivot.x, pivot.y, 1505, Rotate.Y_AXIS);
                 controller.getStage3D().getCamera().getTransforms().addAll(ry);
             } else {
                 double zRotateFactor = newValue - oldValue;
-                Point pivot = controller.currentStickman.mUpperBody.getUpperBodyPosition();
+                Point pivot = controller.currentStickman.mBody.getUpperBodyPosition();
                 Rotate rz = new Rotate(zRotateFactor, pivot.x, pivot.y, 1505, Rotate.Z_AXIS);
                 controller.getStage3D().getCamera().getTransforms().addAll(rz);
             }

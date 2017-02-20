@@ -21,7 +21,7 @@ public class SmileEnd extends AnimationReeti {
     public void playAnimation() {
         // smile end
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "SMILEEND"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SMILEEND"));
         playAnimationPart(mDuration);
         AnimationReeti.isSmileInAction = false;
         pauseAnimation(10);

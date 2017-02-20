@@ -22,7 +22,7 @@ public class SmileStart extends AnimationReeti {
         // smile start
         AnimationReeti.isSmileInAction = true;
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "SMILE"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SMILE"));
         playAnimationPart(mDuration);
         pauseAnimation(10);
 

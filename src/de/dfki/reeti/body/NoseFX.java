@@ -57,7 +57,7 @@ public class NoseFX extends BodyPartFX {
 
         init();
 
-        mHeadFX.mHead.getChildren().add(mNose);
+//        mHeadFX.mHead.getChildren().add(mNose);
     }
 
     @Override

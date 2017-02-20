@@ -11,6 +11,7 @@ import de.dfki.reeti.animationlogic.AnimationContentReeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
 
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -29,23 +30,28 @@ public class Muster extends AnimationReeti {
 
     @Override
     public void playAnimation() {
-        mReeti.mMouthFX.setUpRegulator(-20);
-        mReeti.mMouthFX.setDownRegulator(-10);
-//        mReeti.mMouthFX.setLeftCornerRegulator(-20);
+        Color c1 = Color.rgb(255, 255, 255);
+        Color c2 = Color.rgb(255, 0, 255);
+        Color c3 = Color.rgb(0, 0, 255);
+        mReeti.ledON(c1, c2, c3, 0.7f, 0.9f, 0.4f, "B");
+        
+        mReeti.mMouth.setUpRegulator(-20);
+        mReeti.mMouth.setDownRegulator(-10);
+//        mReeti.mMouth.setLeftCornerRegulator(-20);
         
         mAnimationPartFX = new ArrayList<>();
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "rotate", 60));
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", 60));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "MOUTHACTION"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTION"));
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", 60));
         playAnimationPart(mDuration);
 
-        pauseAnimation(1000);
-
+        pauseAnimation(2000);
+        mReeti.ledOFF("B");
         mAnimationPartFX = new ArrayList<>();
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "rotate", -60));
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", -60));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "MOUTHACTIONEND"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
         playAnimationPart(mDuration);
 
         if (ReetiStageController.currentRadioButton != null) {

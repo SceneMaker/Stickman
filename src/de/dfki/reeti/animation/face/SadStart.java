@@ -26,9 +26,9 @@ public class SadStart extends AnimationReeti {
     public void playAnimation() {
         // sad
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthFX, "shape", "SAD"));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyebrowFX, "shape", "DISGUSTED"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyebrowFX, "shape", "DISGUSTED")); // add by Robbie
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SAD"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "shape", "DISGUSTED"));  // add by Robbie
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "shape", "DISGUSTED")); // add by Robbie
         playAnimationPart(mDuration);
 
         pauseAnimation(10);

@@ -31,14 +31,14 @@ public class Speaking extends AnimationReeti {
     @Override
     public void playAnimation() {
         if (mParameter instanceof String) {
-            mReeti.mSpeechBubbleFX.mText = (String) mParameter;
+            mReeti.mSpeechBubble.mText = (String) mParameter;
         }
 
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mSpeechBubble, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
         playAnimationPart(mDuration);
 
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mSpeechBubble, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
         playAnimationPart(20);
 
         if (ReetiStageController.currentRadioButton != null) {

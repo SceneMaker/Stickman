@@ -494,8 +494,8 @@ public class Helper {
     }
 
     public static void resetAllRotation(ReetiStageController controller) {
-        reset(controller.currentStickman.mHeadFX);
-        reset(controller.currentStickman.mUpperBody);
+        reset(controller.currentStickman.mHead);
+        reset(controller.currentStickman.mBody);
 
     }
 

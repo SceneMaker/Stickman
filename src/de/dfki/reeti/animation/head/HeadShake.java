@@ -35,19 +35,19 @@ public class HeadShake extends AnimationReeti {
         for (int i = 0; i < 6; i++) {
             if (i == 0) {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", -10));
+                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", -10));
                 playAnimationPart(200);
             } else if (i == 5) {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 10));
+                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 10));
                 playAnimationPart(200);
             } else if (i % 2 == 1) {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", 20));
+                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 20));
                 playAnimationPart(400);
             } else {
                 mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHeadFX, "zrotate", -20));
+                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", -20));
                 playAnimationPart(400);
             }
         }
