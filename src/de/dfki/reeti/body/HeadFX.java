@@ -54,7 +54,7 @@ public class HeadFX extends BodyPartFX {
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiHead12.stl");
+        url = getClass().getClassLoader().getResource("BodyParts/ReetiHead13.stl");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new Image(imageUrl.toExternalForm());
         im = new StlMeshImporter();

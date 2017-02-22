@@ -83,7 +83,7 @@ public class MouthFX extends BodyPartFX {
         super.init();
         mLips.setTranslateX(mStart.x);
         mLips.setTranslateY(mStart.y + 40);
-        mLips.setTranslateZ(-140.5);
+        mLips.setTranslateZ(-138.5);
     }
 
     @Override
