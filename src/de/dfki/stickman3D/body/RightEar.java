@@ -46,7 +46,7 @@ public class RightEar extends BodyPartFX {
 		imorter = new ColModelImporter();
 		mColor = Color.rgb(242, 227, 217, initOpacity);
 
-		url = getClass().getClassLoader().getResource("BodyParts/rightEar.dae");
+		url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/rightEar.dae");
 
 		imageUrl = getClass().getClassLoader().getResource("Images/difuseMap1.png");
 		im = new Image(imageUrl.toExternalForm());

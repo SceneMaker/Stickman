@@ -631,9 +631,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         headColorPicker.setValue(colorWithoutOpacity(mStick.mHead.mColor));
         headOpacitySlider.setValue(mStick.mHead.mColor.getOpacity());
 
-        noseColorPicker.setValue(colorWithoutOpacity(mStick.mNose.mColor));
-        noseOpacitySlider.setValue(mStick.mNose.mColor.getOpacity());
-
         browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyelid.mColor));
         browOpacitySlider.setValue(mStick.mLeftEyelid.mColor.getOpacity());
 

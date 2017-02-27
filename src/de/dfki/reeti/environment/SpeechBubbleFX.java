@@ -1,7 +1,7 @@
 package de.dfki.reeti.environment;
 
 import de.dfki.reeti.body.BodyPartFX;
-import de.dfki.reeti.body.HeadFX;
+import de.dfki.reeti.body.Head;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -20,7 +20,7 @@ public class SpeechBubbleFX extends BodyPartFX {
         DEFAULT, SPEAK, THINK
     };
 
-    HeadFX mHeadFX;
+    Head mHeadFX;
     public SpeechBubbleFX.SHAPE mShape = SpeechBubbleFX.SHAPE.DEFAULT;
     public String mText = "";
 
@@ -29,7 +29,7 @@ public class SpeechBubbleFX extends BodyPartFX {
 
     GeneralPath mBubble;
 
-    public SpeechBubbleFX(HeadFX head) {
+    public SpeechBubbleFX(Head head) {
         mHeadFX = head;
         mColor = Color.rgb(255, 255, 255, (192 * 100 / 255) / 100f);
     }

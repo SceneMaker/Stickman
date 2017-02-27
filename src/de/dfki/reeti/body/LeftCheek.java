@@ -18,14 +18,14 @@ import javafx.scene.transform.Rotate;
  */
 public class LeftCheek extends BodyPartFX {
 
-    HeadFX mHeadFX;
+    Head mHeadFX;
 
     private final Circle mLed;
     private final Group mLedGroup;
 
     private final int size;
 
-    public LeftCheek(HeadFX head) {
+    public LeftCheek(Head head) {
         size = 70;
         mLed = new Circle(size);
         mLedGroup = new Group();

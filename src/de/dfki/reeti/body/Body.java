@@ -26,7 +26,7 @@ import javafx.scene.image.Image;
  */
 public class Body extends BodyPartFX {
 
-    NeckFX mNeckFX;
+    Neck mNeckFX;
     Rotate rx;
     Rotate ry;
     Rotate rz;
@@ -47,7 +47,7 @@ public class Body extends BodyPartFX {
     URL imageUrl;
     Image image;
 
-    public Body(NeckFX neck) {
+    public Body(Neck neck) {
         mNeckFX = neck;
         mStart = mNeckFX.getBodyStartPosition();
         imorter = new ColModelImporter();

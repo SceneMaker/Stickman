@@ -57,7 +57,7 @@ public class HeadFX extends BodyPartFX {
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
         mColor = Color.rgb(242, 227, 217, 1);
 
-        url = getClass().getClassLoader().getResource("BodyParts/Head.stl");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/Head.stl");
         im = new StlMeshImporter();
         im.read(url);
         mHead = new Group();

@@ -53,7 +53,7 @@ public class FemaleHairFX extends BodyPartFX {
             mYRotation = mStickmanFX.mHeadFX.mYRotation;
         }
 
-        url = getClass().getClassLoader().getResource("BodyParts/femaleHair.stl");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/femaleHair.stl");
         importer = new StlMeshImporter();
         importer.read(url);
         femaleHairTriangleMesh = importer.getImport();

@@ -56,10 +56,10 @@ public class DownBody extends BodyPartFX {
         imorter = new ColModelImporter();
 
         if (mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
-            url = getClass().getClassLoader().getResource("BodyParts/DownFemaleBody.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/DownFemaleBody.dae");
             mColor = Color.rgb(154, 83, 198, 1);
         } else {
-            url = getClass().getClassLoader().getResource("BodyParts/DownMaleBody.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/DownMaleBody.dae");
             mColor = Color.rgb(14, 134, 122, 1);
         }
 

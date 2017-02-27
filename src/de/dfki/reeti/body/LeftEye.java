@@ -22,7 +22,7 @@ import javafx.scene.transform.Rotate;
  */
 public class LeftEye extends BodyPartFX {
 
-    HeadFX mHeadFX;
+    Head mHeadFX;
 
     URL url;
     ColModelImporter imorter;
@@ -30,7 +30,7 @@ public class LeftEye extends BodyPartFX {
 
     Image im;
 
-    public LeftEye(HeadFX head) {
+    public LeftEye(Head head) {
         mHeadFX = head;
         mSize = new Dimension(mLength, mLength);
 

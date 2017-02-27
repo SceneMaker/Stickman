@@ -47,7 +47,7 @@ public class RightWrist extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
 
-        url = getClass().getClassLoader().getResource("BodyParts/RightWrist.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/RightWrist.dae");
 
         mToDegreeX = mDefaultRotation;
         mZRotation = 0;

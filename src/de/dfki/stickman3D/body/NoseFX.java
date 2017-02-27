@@ -40,7 +40,7 @@ public class NoseFX extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
 
-        url = getClass().getClassLoader().getResource("BodyParts/nose.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/nose.dae");
 
         imorter.read(url);
         mNose = (MeshView) imorter.getImport()[0];

@@ -23,7 +23,7 @@ import javafx.scene.transform.Rotate;
  */
 public class LeftEyelid extends BodyPartFX {
 
-    HeadFX mHeadFX;
+    Head mHeadFX;
 
     URL url;
     URL imageUrl;
@@ -32,7 +32,7 @@ public class LeftEyelid extends BodyPartFX {
     public MeshView mLeftEyeMesh;
     PhongMaterial material;
 
-    public LeftEyelid(HeadFX head) {
+    public LeftEyelid(Head head) {
         mHeadFX = head;
         mSize = new Dimension(mLength, mLength);
 

@@ -48,7 +48,7 @@ public class LeftFootFX extends BodyPartFX {
         mYRotation = 50;
         mXRotation = 0;
 
-        url = getClass().getClassLoader().getResource("BodyParts/foot.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/foot.dae");
         im = new ColModelImporter();
         im.read(url);
         mLeftFootMeshView = (MeshView) im.getImport()[0];

@@ -3,13 +3,12 @@ package de.dfki.reeti;
 import de.dfki.reeti.animationlogic.AnimationLoaderReeti;
 import de.dfki.reeti.animationlogic.AnimationSchedulerReeti;
 import de.dfki.reeti.body.LeftEye;
-import de.dfki.reeti.body.HeadFX;
-import de.dfki.reeti.body.NoseFX;
-import de.dfki.reeti.body.MouthFX;
+import de.dfki.reeti.body.Head;
+import de.dfki.reeti.body.Mouth;
 import de.dfki.reeti.body.Body;
 import de.dfki.reeti.body.RightEyelid;
 import de.dfki.reeti.body.LeftEyelid;
-import de.dfki.reeti.body.NeckFX;
+import de.dfki.reeti.body.Neck;
 import de.dfki.reeti.body.RightEye;
 import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.common.Gender;
@@ -77,8 +76,7 @@ public class Reeti extends Pane implements Stickman {
     private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
 
     // body parts
-    public HeadFX mHead;
-    public NoseFX mNose;
+    public Head mHead;
     public LeftEyelid mLeftEyelid;
     public LeftEye mLeftEye;
     public RightEye mRightEye;
@@ -87,8 +85,8 @@ public class Reeti extends Pane implements Stickman {
     public RightEyelid mRightEyelid;
     public LeftCheek mLeftCheek;
     public RightCheek mRightCheek;
-    public MouthFX mMouth;
-    public NeckFX mNeck;
+    public Mouth mMouth;
+    public Neck mNeck;
     public Body mBody;
     // environment
     public SpeechBubbleFX mSpeechBubble;
@@ -105,7 +103,7 @@ public class Reeti extends Pane implements Stickman {
         mName = name;
         mType = gender;
 
-        mHead = new HeadFX(this);
+        mHead = new Head(this);
         mLeftEyelid = new LeftEyelid(mHead);
         mLeftEye = new LeftEye(mHead);
         mRightEye = new RightEye(mHead);
@@ -114,9 +112,8 @@ public class Reeti extends Pane implements Stickman {
         mRightEyelid = new RightEyelid(mHead);
         mLeftCheek = new LeftCheek(mHead);
         mRightCheek = new RightCheek(mHead);
-        mNose = new NoseFX(mHead);
-        mMouth = new MouthFX(mHead);
-        mNeck = new NeckFX(mHead);
+        mMouth = new Mouth(mHead);
+        mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
 
         mSpeechBubble = new SpeechBubbleFX(mHead);
@@ -132,7 +129,7 @@ public class Reeti extends Pane implements Stickman {
         mName = name;
         mType = gender;
 
-        mHead = new HeadFX(this);
+        mHead = new Head(this);
         mLeftEyelid = new LeftEyelid(mHead);
         mLeftEye = new LeftEye(mHead);
         mRightEye = new RightEye(mHead);
@@ -141,9 +138,8 @@ public class Reeti extends Pane implements Stickman {
         mRightEyelid = new RightEyelid(mHead);
         mLeftCheek = new LeftCheek(mHead);
         mRightCheek = new RightCheek(mHead);
-        mNose = new NoseFX(mHead);
-        mMouth = new MouthFX(mHead);
-        mNeck = new NeckFX(mHead);
+        mMouth = new Mouth(mHead);
+        mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
 
         mSpeechBubble = new SpeechBubbleFX(mHead);
@@ -157,7 +153,7 @@ public class Reeti extends Pane implements Stickman {
         mType = gender;
 
         isFullScreen = true;
-        mHead = new HeadFX(this);
+        mHead = new Head(this);
         mLeftEyelid = new LeftEyelid(mHead);
         mLeftEye = new LeftEye(mHead);
         mRightEye = new RightEye(mHead);
@@ -166,9 +162,8 @@ public class Reeti extends Pane implements Stickman {
         mRightEyelid = new RightEyelid(mHead);
         mLeftCheek = new LeftCheek(mHead);
         mRightCheek = new RightCheek(mHead);
-        mNose = new NoseFX(mHead);
-        mMouth = new MouthFX(mHead);
-        mNeck = new NeckFX(mHead);
+        mMouth = new Mouth(mHead);
+        mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
 
         mSpeechBubble = new SpeechBubbleFX(mHead);

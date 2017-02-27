@@ -56,10 +56,10 @@ public class UpperBody extends BodyPartFX {
         imorter = new ColModelImporter();
 
         if (mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.FEMALE) {
-            url = getClass().getClassLoader().getResource("BodyParts/UpperFemaleBody.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/UpperFemaleBody.dae");
             mColor = Color.rgb(154, 83, 198, 1);
         } else {
-            url = getClass().getClassLoader().getResource("BodyParts/UpperMaleBody.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/UpperMaleBody.dae");
             mColor = Color.rgb(14, 134, 122, 1);
         }
 

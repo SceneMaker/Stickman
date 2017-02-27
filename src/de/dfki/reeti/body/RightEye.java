@@ -28,13 +28,13 @@ public class RightEye extends BodyPartFX {
         DEFAULT, FADEIN, FADEOUT
     };
 
-    HeadFX mHeadFX;
+    Head mHeadFX;
 
     URL url;
     ColModelImporter imorter;
     public Group mRightEarMesh;
 
-    public RightEye(HeadFX head) {
+    public RightEye(Head head) {
         mHeadFX = head;
         mSize = new Dimension(mLength, mLength);
 

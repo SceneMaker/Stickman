@@ -235,7 +235,7 @@ public abstract class BodyPartFX extends Pane {
 
     }
 
-    public void showHearts(HeadFX mHeadFX, double xMovement, double yMovement1, double yMovement2) {
+    public void showHearts(Head mHeadFX, double xMovement, double yMovement1, double yMovement2) {
         int numHearts = 7;
 
         Ellipse path = new Ellipse(mHeadFX.mHalfWidth + 4, mHeadFX.mHalfHeight - 50, 60, 20);

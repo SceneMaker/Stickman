@@ -43,10 +43,10 @@ public class RightUpperLegFX extends BodyPartFX {
         mDownBody = downBody;
         if (mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
             mLength = 60;
-            url = getClass().getClassLoader().getResource("BodyParts/MaleUpperLeg.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/MaleUpperLeg.dae");
         } else {
             mLength = 50;
-            url = getClass().getClassLoader().getResource("BodyParts/FemaleUpperLeg.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/FemaleUpperLeg.dae");
         }
 
         imorter = new ColModelImporter();

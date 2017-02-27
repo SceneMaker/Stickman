@@ -79,8 +79,6 @@ public class ColorHelper {
 
     public static void noseColorChanger(ReetiStageController controller) {
         if (controller.currentStickman != null) {
-            controller.currentStickman.mNose.mColor = controller.noseColorPicker.getValue();
-            controller.currentStickman.mNose.update();
             controller.noseOpacitySlider.setValue(1);
         }
     }
@@ -237,15 +235,9 @@ public class ColorHelper {
     public static void handleNoseColorButtons(ReetiStageController sSC, MouseEvent ev) {
         if (sSC.currentStickman != null) {
             if (ev.getSource().equals(sSC.noseColorBrighter)) {
-                sSC.currentStickman.mNose.mColor = sSC.currentStickman.mNose.mColor.brighter();
-                sSC.currentStickman.mNose.update();
             } else if (ev.getSource().equals(sSC.noseColorDarker)) {
-                sSC.currentStickman.mNose.mColor = sSC.currentStickman.mNose.mColor.darker();
-                sSC.currentStickman.mNose.update();
             } else if (ev.getSource().equals(sSC.noseColorReset)) {
-                sSC.currentStickman.mNose.mColor = sSC.currentStickman.mNose.mColorRecorder;
                 sSC.noseOpacitySlider.setValue(1);
-                sSC.currentStickman.mNose.update();
             }
         }
     }
@@ -271,7 +263,5 @@ public class ColorHelper {
         currentStickman.mRightEyelid.mColor = currentStickman.mRightEyelid.mColorRecorder;
         currentStickman.mLeftEyelid.update();
         currentStickman.mRightEyelid.update();
-        currentStickman.mNose.mColor = currentStickman.mNose.mColorRecorder;
-        currentStickman.mNose.update();
     }
 }

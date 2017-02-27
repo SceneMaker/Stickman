@@ -47,7 +47,7 @@ public class RightForeArmFX extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
 
-        url = getClass().getClassLoader().getResource("BodyParts/ForeArm.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/ForeArm.dae");
 
         mXRotation = -15;
         mZRotation = -10;

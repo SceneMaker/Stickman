@@ -49,10 +49,10 @@ public class LeftForeLegFX extends BodyPartFX {
 
         if (mUpperLegFX.mDownBody.mUpperBody.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
             mLegLength = 90;
-            url = getClass().getClassLoader().getResource("BodyParts/MaleForeLeg.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/MaleForeLeg.dae");
         } else {
             mLegLength = 80;
-            url = getClass().getClassLoader().getResource("BodyParts/FemaleForeLeg.dae");
+            url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/FemaleForeLeg.dae");
         }
 
         mColor = Color.rgb(242, 227, 217, 1);

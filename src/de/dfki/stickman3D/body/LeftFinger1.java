@@ -44,7 +44,7 @@ public class LeftFinger1 extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.rgb(242, 227, 217, 1);
 
-        url = getClass().getClassLoader().getResource("BodyParts/Finger1.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/Finger1.dae");
 
         mDefaultRotation = -20;
         mZRotation = 20;

@@ -24,7 +24,7 @@ import javafx.scene.transform.Rotate;
  */
 public class RightEar extends BodyPartFX {
 
-    HeadFX mHeadFX;
+    Head mHeadFX;
 
     URL url;
     ColModelImporter imorter;
@@ -34,7 +34,7 @@ public class RightEar extends BodyPartFX {
     URL imageUrl;
     Image image;
 
-    public RightEar(HeadFX head) {
+    public RightEar(Head head) {
         mHeadFX = head;
         mSize = new Dimension(mLength, mLength);
 

@@ -188,15 +188,8 @@ public class OpacityHelper {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mNose.mNose.setVisible(false);
                 } else {
-                    controller.currentStickman.mNose.mNose.setVisible(true);
                 }
-                Color col = controller.currentStickman.mNose.mColor;
-                col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
-
-                controller.currentStickman.mNose.mColor = col;
-                controller.currentStickman.mNose.update();
             }
         });
 

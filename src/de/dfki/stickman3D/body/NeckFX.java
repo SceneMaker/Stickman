@@ -45,7 +45,7 @@ public class NeckFX extends BodyPartFX {
         material = new PhongMaterial();
         material.setDiffuseColor(mColor);
 
-        url = getClass().getClassLoader().getResource("BodyParts/neck.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/neck.dae");
         imorter = new ColModelImporter();
         imorter.read(url);
         neckMeshView = (MeshView) imorter.getImport()[0];
