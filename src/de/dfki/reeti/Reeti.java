@@ -403,4 +403,9 @@ public class Reeti extends Pane implements Stickman {
             mLeftCheek.getLedGroup().setVisible(false);
         }
     }
+    
+    public void  rightLC(int pos)
+    {
+        
+    }
 }

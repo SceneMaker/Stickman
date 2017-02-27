@@ -37,7 +37,7 @@ public class LeftEyelid extends BodyPartFX {
         mSize = new Dimension(mLength, mLength);
 
         mZRotation = 30;
-        mYRotation = -15;
+        mYRotation = -10;
 
         imorter = new ColModelImporter();
         mColor = Color.WHITE;
@@ -65,9 +65,9 @@ public class LeftEyelid extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mLeftEyeMesh.setTranslateX(mStart.x + 55);
+        mLeftEyeMesh.setTranslateX(mStart.x + 54);
         mLeftEyeMesh.setTranslateY(mStart.y + 45);
-        mLeftEyeMesh.setTranslateZ(-55);
+        mLeftEyeMesh.setTranslateZ(-65);
     }
 
     @Override

@@ -11,6 +11,7 @@ import de.dfki.reeti.animationlogic.AnimationReeti;
 import de.dfki.reeti.animationlogic.AnimationContentReeti;
 
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -30,20 +31,41 @@ public class Sad extends AnimationReeti {
     @Override
     public void playAnimation() {
         // sad
+        Color c1 = Color.rgb(102, 0, 154);
+        Color c2 = Color.rgb(102, 0, 154);
+        Color c3 = Color.rgb(102, 0, 154);
+        mReeti.ledON(c1, c2, c3, 0.3f, 0.9f, 0.1f, "B");
+        
+        mReeti.mMouth.setUpRegulator(-8);
+        mReeti.mMouth.setDownRegulator(-4);
+        mReeti.mRightEar.setRegulator(-50);
+        mReeti.mLeftEar.setRegulator(50);
+        
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SAD"));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "shape", "SAD"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "shape", "SAD")); // add by Robbie
-        playAnimationPart(mDuration);
-
-        pauseAnimation(1200);
-
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", 60));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", 60));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", 15));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEye, "rotate", 15));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "zrotate", mReeti.mRightEar.getRegulator()));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "zrotate", mReeti.mLeftEar.getRegulator()));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTION"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 10));
+        playAnimationPart(500);
+        
+        pauseAnimation(2000);
         // no sad
+        mReeti.ledOFF("B");
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SADEND"));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "shape", "SADEND"));  // add by Robbie
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "shape", "SADEND")); // add by Robbie
-        playAnimationPart(mDuration);
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", -60));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", -60));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", -15));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEye, "rotate", -15));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "zrotate", -mReeti.mRightEar.getRegulator()));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "zrotate", -mReeti.mLeftEar.getRegulator()));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", -10));
+        playAnimationPart(500);
+        
 
         if (ReetiStageController.currentRadioButton != null) {
             ReetiStageController.currentRadioButton.setSelected(false);

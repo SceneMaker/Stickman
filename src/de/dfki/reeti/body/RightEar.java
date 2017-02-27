@@ -23,7 +23,7 @@ import javafx.scene.transform.Rotate;
  *
  */
 public class RightEar extends BodyPartFX {
-
+    
     Head mHeadFX;
 
     URL url;
@@ -33,6 +33,8 @@ public class RightEar extends BodyPartFX {
 
     URL imageUrl;
     Image image;
+    
+    private int regulator;
 
     public RightEar(Head head) {
         mHeadFX = head;
@@ -67,15 +69,22 @@ public class RightEar extends BodyPartFX {
         mRightEarMesh.setTranslateY(mStart.y + 57);
         mRightEarMesh.setTranslateZ(0);
     }
-
+ 
     @Override
     public void calculate(int step) {
-
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
         mRightEarMesh.getTransforms().clear();
         mRightEarMesh.getTransforms().addAll(rz, ry, rx);
+    }
+    
+    public int getRegulator() {
+        return regulator;
+    }
+
+    public void setRegulator(int regulator) {
+        this.regulator = regulator;
     }
 }

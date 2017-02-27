@@ -33,7 +33,7 @@ public class LeftCheek extends BodyPartFX {
         mSize = new Dimension(mLength, mLength);
         mStart = mHeadFX.getLeftEyebrowPostion();
         
-        mYRotation = -35;
+        mYRotation = -25;
         mXRotation = -10;
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
@@ -50,9 +50,9 @@ public class LeftCheek extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mLed.setTranslateX(mStart.x - 35);
-        mLed.setTranslateY(mStart.y + 105);
-        mLed.setTranslateZ(-131.2);
+        mLed.setTranslateX(mStart.x - 28);
+        mLed.setTranslateY(mStart.y + 106.5);
+        mLed.setTranslateZ(-133.6);
     }
 
     public int getSize() {

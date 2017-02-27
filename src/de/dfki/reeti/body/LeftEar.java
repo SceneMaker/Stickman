@@ -35,6 +35,8 @@ public class LeftEar extends BodyPartFX {
 
     Image im;
 
+    private int regulator;
+    
     public LeftEar(Head head) {
         mHeadFX = head;
         mSize = new Dimension(mLength, mLength);
@@ -77,5 +79,13 @@ public class LeftEar extends BodyPartFX {
 
         mLeftEarMesh.getTransforms().clear();
         mLeftEarMesh.getTransforms().addAll(rz, ry, rx);
+    }
+
+    public int getRegulator() {
+        return regulator;
+    }
+
+    public void setRegulator(int regulator) {
+        this.regulator = regulator;
     }
 }
