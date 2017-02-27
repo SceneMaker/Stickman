@@ -42,7 +42,7 @@ public class LeftEyelid extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/leftEyelid3.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEyelid.dae");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new javafx.scene.image.Image(imageUrl.toExternalForm());
 

@@ -41,7 +41,7 @@ public class RightEar extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiRightEar2.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiRightEar.dae");
         imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
         image = new Image(imageUrl.toExternalForm());
 

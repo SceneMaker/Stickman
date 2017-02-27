@@ -40,7 +40,7 @@ public class RightEye extends BodyPartFX {
 
         imorter = new ColModelImporter();
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiEye3.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEye.dae");
 
         imorter.read(url);
         mRightEarMesh = (Group) imorter.getImport()[0];

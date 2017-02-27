@@ -37,7 +37,7 @@ public class LeftEye extends BodyPartFX {
         imorter = new ColModelImporter();
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/ReetiEye3.dae");
+        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEye.dae");
 
         imorter.read(url);
         mLeftEarMesh = (Group) imorter.getImport()[0];
