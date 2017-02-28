@@ -35,8 +35,8 @@ public class Mouth extends BodyPartFX {
     public Point down;
     private final int mouthLength = 32;
     
-    private double leftCornerRegulator = 0;
     private double rightCornerRegulator = 0;
+    private double leftCornerRegulator = 0;
     private double upRegulator = 0;
     private double downRegulator = 0;
     
@@ -83,7 +83,7 @@ public class Mouth extends BodyPartFX {
         super.init();
         mLips.setTranslateX(mStart.x-7);
         mLips.setTranslateY(mStart.y + 24);
-        mLips.setTranslateZ(-134.5);
+        mLips.setTranslateZ(-135.5);
     }
 
     @Override
@@ -124,30 +124,30 @@ public class Mouth extends BodyPartFX {
                 {
                     recordDownRegulator = downRegulator;
                     recordUpRegulator = upRegulator;
-                    recordLeftCornerRegulator = leftCornerRegulator;
-                    recordRightCornerRegulator = rightCornerRegulator;
+                    recordLeftCornerRegulator = rightCornerRegulator;
+                    recordRightCornerRegulator = leftCornerRegulator;
                     downRegulator = down.y;
                     upRegulator = up.y;
-                    leftCornerRegulator = leftCorner.y;
-                    rightCornerRegulator = rightCorner.y;
+                    rightCornerRegulator = leftCorner.y;
+                    leftCornerRegulator = rightCorner.y;
                 }
                    
                 downRegulator += recordDownRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
                 upRegulator += recordUpRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                leftCornerRegulator += recordLeftCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                rightCornerRegulator += recordRightCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
+                rightCornerRegulator += recordLeftCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
+                leftCornerRegulator += recordRightCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
                 mLips.getElements().clear();
-                mLips.getElements().add(new MoveTo(leftCorner.x, leftCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(up.x, upRegulator, rightCorner.x, rightCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(down.x, downRegulator, leftCorner.x, leftCornerRegulator));
+                mLips.getElements().add(new MoveTo(leftCorner.x, rightCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(up.x, upRegulator, rightCorner.x, leftCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(down.x, downRegulator, leftCorner.x, rightCornerRegulator));
                 mLips.getElements().add(new ClosePath());
                 
                 if(step == 2)
                 {
                     downRegulator = 0;
                     upRegulator = 0;
-                    leftCornerRegulator = 0;
                     rightCornerRegulator = 0;
+                    leftCornerRegulator = 0;
                 }
                 break;
                 
@@ -156,27 +156,27 @@ public class Mouth extends BodyPartFX {
                 {
                     downRegulator = recordDownRegulator + down.y;
                     upRegulator = recordUpRegulator + up.y;
-                    leftCornerRegulator = recordLeftCornerRegulator + leftCorner.y;
-                    rightCornerRegulator = recordRightCornerRegulator + rightCorner.y;
+                    rightCornerRegulator = recordLeftCornerRegulator + leftCorner.y;
+                    leftCornerRegulator = recordRightCornerRegulator + rightCorner.y;
                 }
                 
                 downRegulator -= recordDownRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
                 upRegulator -= recordUpRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                leftCornerRegulator -= recordLeftCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                rightCornerRegulator -= recordRightCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
+                rightCornerRegulator -= recordLeftCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
+                leftCornerRegulator -= recordRightCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
                 
                 mLips.getElements().clear();
-                mLips.getElements().add(new MoveTo(leftCorner.x, leftCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(up.x, upRegulator, rightCorner.x, rightCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(down.x, downRegulator, leftCorner.x, leftCornerRegulator));
+                mLips.getElements().add(new MoveTo(leftCorner.x, rightCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(up.x, upRegulator, rightCorner.x, leftCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(down.x, downRegulator, leftCorner.x, rightCornerRegulator));
                 mLips.getElements().add(new ClosePath());
                 
                 if(step == 2)
                 {
                     downRegulator = 0;
                     upRegulator = 0;
-                    leftCornerRegulator = 0;
                     rightCornerRegulator = 0;
+                    leftCornerRegulator = 0;
                 }
                 break;
                 
@@ -191,20 +191,20 @@ public class Mouth extends BodyPartFX {
         }
     }
 
-    public double getLeftCornerRegulator() {
-        return leftCornerRegulator;
-    }
-
-    public void setLeftCornerRegulator(int leftCornerRegler) {
-        this.leftCornerRegulator = leftCornerRegler;
-    }
-
     public double getRightCornerRegulator() {
         return rightCornerRegulator;
     }
 
-    public void setRightCornerRegulator(int rightCornerRegler) {
-        this.rightCornerRegulator = rightCornerRegler;
+    public void setRightCornerRegulator(int leftCornerRegler) {
+        this.rightCornerRegulator = leftCornerRegler;
+    }
+
+    public double getLeftCornerRegulator() {
+        return leftCornerRegulator;
+    }
+
+    public void setLeftCornerRegulator(int rightCornerRegler) {
+        this.leftCornerRegulator = rightCornerRegler;
     }
 
     public double getUpRegulator() {

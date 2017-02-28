@@ -82,7 +82,6 @@ public class AnimationLoaderReeti {
             Constructor[] constructors = c.getConstructors();
             for (Constructor con : constructors) {
                 Class[] params = con.getParameterTypes();
-
                 if (params.length == 3 && extraParams.size() == 0) {
                     if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
@@ -139,7 +138,7 @@ public class AnimationLoaderReeti {
         return a;
     }
 
-    public AnimationReeti loadAnimation(Stickman sm, String name, int frequent, int actionDuration, boolean block) {
+    public AnimationReeti loadAnimation(Stickman sm, String name, int frequent, int pos, boolean block) {
         AnimationReeti a = null;
 
         String cp = getAnimationClasspath(((Reeti) sm).mType, name);
@@ -150,11 +149,11 @@ public class AnimationLoaderReeti {
                 Class[] params = con.getParameterTypes();
 
                 if (params.length == 4) {
-                    if (params[0].getSimpleName().equalsIgnoreCase("reet")
+                    if (params[0].getSimpleName().equalsIgnoreCase("reeti")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("int")
                             && params[3].getSimpleName().equalsIgnoreCase("boolean")) {
-                        a = (AnimationReeti) c.getDeclaredConstructor(params).newInstance(sm, frequent, actionDuration, block);
+                        a = (AnimationReeti) c.getDeclaredConstructor(params).newInstance(sm, frequent, pos, block);
                     }
                 }
 

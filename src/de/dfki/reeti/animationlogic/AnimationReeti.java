@@ -65,14 +65,14 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
         mDuration = duration;
     }
 
-    public AnimationReeti(Reeti sm, int frequent, int actionDuration, boolean block) {
+    public AnimationReeti(Reeti sm, int duration, int pos, boolean block) {
         mName = getClass().getSimpleName();
         mReeti = sm;
         mStickmanName = mReeti.mName;
         setName(mStickmanName + "'s AnimationSwing " + mName);
         mID = mReeti.getID(); // default ID;
         mBlocking = block;
-        mDuration = frequent;
+        mDuration = duration;
         this.actionDuration = actionDuration;
     }
 

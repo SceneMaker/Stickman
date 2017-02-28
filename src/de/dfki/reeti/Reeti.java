@@ -404,8 +404,40 @@ public class Reeti extends Pane implements Stickman {
         }
     }
     
+    /**
+     *
+     * @param pos a int between 0 and 100
+     */
     public void  rightLC(int pos)
     {
+        if(pos > 100) pos = 100;
         
+        pos = (pos*12)/100;
+        this.mMouth.setRightCornerRegulator(pos);
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
+        
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+    
+    public void  leftLC(int pos)
+    {
+        if(pos > 100) pos = 100;
+        
+        pos = (pos*12)/100;
+        System.out.println("de.dfki.reeti.Reeti.rightLC() " + pos);
+        this.mMouth.setLeftCornerRegulator(pos);
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
+        
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
     }
 }

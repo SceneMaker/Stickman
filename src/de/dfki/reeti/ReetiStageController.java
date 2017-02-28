@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -594,7 +595,7 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
             button.setOnAction((event) -> {
                 currentRadioButton = (RadioButton) event.getSource();
-
+//                Platform.runLater(() -> currentStickman.leftLC(60));
                 currentStickman.doAnimation(button.getText(), 500, true);
             });
             if (i % 3 == 2) {
