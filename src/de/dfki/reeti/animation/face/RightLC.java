@@ -33,16 +33,9 @@ public class RightLC extends AnimationReeti {
         
         
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTION"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthRightCorner, "shape", "RIGHTCORNERACTION"));
         playAnimationPart(mDuration);
         
-        pauseAnimation(2000);
-        // no sad
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
-        playAnimationPart(mDuration);
-        
-
         if (ReetiStageController.currentRadioButton != null) {
             ReetiStageController.currentRadioButton.setSelected(false);
         }

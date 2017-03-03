@@ -18,30 +18,24 @@ import javafx.scene.paint.Color;
  * @author Beka
  *
  */
-public class LeftLC extends AnimationReeti {
+public class DownLip extends AnimationReeti {
 
-    public LeftLC() {
+    public DownLip() {
         mAnimType = ANIMTYPE.ON;
     }
 
-    public LeftLC(Reeti sm, int duration, int pos, boolean block) {
+    public DownLip(Reeti sm, int duration, int pos, boolean block) {
         super(sm, duration, pos, block);
     }
 
     @Override
     public void playAnimation() {
         
+        
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthLeftCorner, "shape", "LEFTCORNERACTION"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthDownLip, "shape", "DOWNLIPACTION"));
         playAnimationPart(mDuration);
         
-//        pauseAnimation(2000);
-        // no sad
-//        mAnimationPartFX = new ArrayList<>();
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
-//        playAnimationPart(mDuration);
-        
-
         if (ReetiStageController.currentRadioButton != null) {
             ReetiStageController.currentRadioButton.setSelected(false);
         }

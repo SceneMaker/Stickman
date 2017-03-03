@@ -158,11 +158,17 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         bg6.setImage(new Image(background6));
 
         ExitButton.setOnAction((ActionEvent event) -> {
-            Stage stage = (Stage) ExitButton.getScene().getWindow();
-            stage.close();
-            System.exit(0);
+//            Stage stage = (Stage) ExitButton.getScene().getWindow();
+//            stage.close();
+//            System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentStickman, this);
 //            cr.start();
+//              Platform.runLater(() -> currentStickman.rightLC(20));
+//            Platform.runLater(() -> currentStickman.leftLC(20));
+              Platform.runLater(() -> currentStickman.bottomLip(80));
+        });
+        SaveButton.setOnAction((event) -> {
+            Platform.runLater(() -> currentStickman.bottomLip(0));
         });
     }
 
@@ -595,7 +601,8 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
             button.setOnAction((event) -> {
                 currentRadioButton = (RadioButton) event.getSource();
-//                Platform.runLater(() -> currentStickman.leftLC(60));
+//                Platform.runLater(() -> currentStickman.rightLC(20));
+//                Platform.runLater(() -> currentStickman.leftLC(20));
                 currentStickman.doAnimation(button.getText(), 500, true);
             });
             if (i % 3 == 2) {

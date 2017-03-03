@@ -22,6 +22,7 @@ public class testStickmanFX {
         StageRoom reeti = new StageRoomReeti(500, 0, true);
 //        StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
         reeti.addStickman("Reeti");
+        
 //        stickmanStage3D1.addStickman("Bob");
 //        stickmanStage3D1.launchStage(true);
         reeti.launchConfiguration();

@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import javafx.scene.effect.Light.Distant;
 import javafx.scene.effect.Lighting;
 import javafx.scene.shape.ClosePath;
@@ -21,25 +22,26 @@ import javafx.scene.shape.StrokeLineJoin;
 public class Mouth extends BodyPartFX {
 
     public static enum SHAPE {
-        DEFAULT, MOUTHACTION, MOUTHACTIONEND, OPEN};
+        DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN
+    };
 
     Head mHeadFX;
 
     public Polygon currentDownLipPolygon;
     public Polygon currentUpperLipPolygon;
     Path mLips;
-    
-    public Point leftCorner;
-    public Point rightCorner;
-    public Point up;
-    public Point down;
+
+    public Point2D leftCorner;
+    public Point2D rightCorner;
+    public Point2D upperPoint;
+    public Point2D downPoint;
     private final int mouthLength = 32;
-    
+
     private double rightCornerRegulator = 0;
     private double leftCornerRegulator = 0;
     private double upRegulator = 0;
     private double downRegulator = 0;
-    
+
     private double recordLeftCornerRegulator;
     private double recordRightCornerRegulator;
     private double recordUpRegulator;
@@ -55,22 +57,22 @@ public class Mouth extends BodyPartFX {
 
         currentUpperLipPolygon = new Polygon();
         currentDownLipPolygon = new Polygon();
-        
+
         mLips = new Path();
         mLips.setId("upperLip");
-        
+
         mStart = mHeadFX.getMouthPostion();
-        leftCorner = new Point(-9, 35);
-        rightCorner = new Point(leftCorner.x + mouthLength, leftCorner.y);
-        up = new Point(leftCorner.x + mouthLength/2, leftCorner.y);
-        down = new Point(up.x, up.y);
+        rightCorner = new Point2D.Double(-9, 35);
+        leftCorner = new Point2D.Double(rightCorner.getX() + mouthLength, rightCorner.getY());
+        upperPoint = new Point2D.Double(rightCorner.getX() + mouthLength / 2, rightCorner.getY());
+        downPoint = new Point2D.Double(upperPoint.getX(), upperPoint.getY());
         Distant light = new Distant();
         light.setAzimuth(-135.0f);
-        
+
         Lighting l = new Lighting();
         l.setLight(light);
         l.setSurfaceScale(5.0f);
-        
+
         mLips.setEffect(l);
 
         init();
@@ -81,8 +83,8 @@ public class Mouth extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mLips.setTranslateX(mStart.x-7);
-        mLips.setTranslateY(mStart.y + 24);
+        mLips.setTranslateX(mStart.getX() - 7);
+        mLips.setTranslateY(mStart.getY() + 28);
         mLips.setTranslateZ(-135.5);
     }
 
@@ -102,92 +104,121 @@ public class Mouth extends BodyPartFX {
 
         int x;
         int y;
-        
+
         double movement;
 
         switch (mShape) {
             case DEFAULT:
-                
+
                 mLips.getElements().clear();
                 mLips.setStrokeLineJoin(StrokeLineJoin.ROUND);
                 mLips.setStrokeWidth(3);
                 mLips.setStroke(mColor);
-                mLips.getElements().add(new MoveTo(leftCorner.x, leftCorner.y));
-                mLips.getElements().add(new QuadCurveTo(up.x, up.y, rightCorner.x, rightCorner.y));
-                mLips.getElements().add(new QuadCurveTo(down.x, down.y, leftCorner.x, leftCorner.y));
+                mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCorner.getY()));
+                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY(), leftCorner.getX(), leftCorner.getY()));
+                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCorner.getY()));
                 mLips.getElements().add(new ClosePath());
                 mLips.setStyle("-fx-color: red");
                 break;
 
             case MOUTHACTION:
-                if(step == 20)
-                {
+                if (step == 20) {
                     recordDownRegulator = downRegulator;
                     recordUpRegulator = upRegulator;
-                    recordLeftCornerRegulator = rightCornerRegulator;
-                    recordRightCornerRegulator = leftCornerRegulator;
-                    downRegulator = down.y;
-                    upRegulator = up.y;
-                    rightCornerRegulator = leftCorner.y;
-                    leftCornerRegulator = rightCorner.y;
+                    recordLeftCornerRegulator = leftCornerRegulator;
+                    recordRightCornerRegulator = rightCornerRegulator;
+                    downRegulator = downPoint.getY();
+                    upRegulator = upperPoint.getY();
+                    rightCornerRegulator = rightCorner.getY();
+                    leftCornerRegulator = leftCorner.getY();
                 }
-                   
-                downRegulator += recordDownRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                upRegulator += recordUpRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                rightCornerRegulator += recordLeftCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                leftCornerRegulator += recordRightCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                mLips.getElements().clear();
-                mLips.getElements().add(new MoveTo(leftCorner.x, rightCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(up.x, upRegulator, rightCorner.x, leftCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(down.x, downRegulator, leftCorner.x, rightCornerRegulator));
-                mLips.getElements().add(new ClosePath());
                 
-                if(step == 2)
-                {
+                downRegulator += recordDownRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                upRegulator += recordUpRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                rightCornerRegulator += recordRightCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                leftCornerRegulator += recordLeftCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                mLips.getElements().clear();
+                mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upRegulator, leftCorner.getX(), leftCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downRegulator, rightCorner.getX(), rightCornerRegulator));
+                mLips.getElements().add(new ClosePath());
+                if (step == 2) {
                     downRegulator = 0;
                     upRegulator = 0;
                     rightCornerRegulator = 0;
                     leftCornerRegulator = 0;
                 }
-                break;
-                
-            case MOUTHACTIONEND:
-                if(step == 20)
-                {
-                    downRegulator = recordDownRegulator + down.y;
-                    upRegulator = recordUpRegulator + up.y;
-                    rightCornerRegulator = recordLeftCornerRegulator + leftCorner.y;
-                    leftCornerRegulator = recordRightCornerRegulator + rightCorner.y;
-                }
-                
-                downRegulator -= recordDownRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                upRegulator -= recordUpRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                rightCornerRegulator -= recordLeftCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                leftCornerRegulator -= recordRightCornerRegulator/AnimatorReeti.sMAX_ANIM_STEPS;
-                
-                mLips.getElements().clear();
-                mLips.getElements().add(new MoveTo(leftCorner.x, rightCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(up.x, upRegulator, rightCorner.x, leftCornerRegulator));
-                mLips.getElements().add(new QuadCurveTo(down.x, downRegulator, leftCorner.x, rightCornerRegulator));
-                mLips.getElements().add(new ClosePath());
-                
-                if(step == 2)
-                {
-                    downRegulator = 0;
-                    upRegulator = 0;
-                    rightCornerRegulator = 0;
-                    leftCornerRegulator = 0;
-                }
-                break;
-                
-            case OPEN:
-                mLips.getElements().clear();
-                mLips.getElements().add(new MoveTo(leftCorner.x, leftCorner.y));
-                mLips.getElements().add(new QuadCurveTo(up.x, up.y-10, rightCorner.x, rightCorner.y));
-                mLips.getElements().add(new QuadCurveTo(down.x, down.y+10, leftCorner.x, leftCorner.y));
-                mLips.getElements().add(new ClosePath());
                 break;
 
+            case MOUTHACTIONEND:
+                if (step == 20) {
+                    downRegulator = recordDownRegulator + downPoint.getY();
+                    upRegulator = recordUpRegulator + upperPoint.getY();
+                    rightCornerRegulator = recordRightCornerRegulator + leftCorner.getY();
+                    leftCornerRegulator = recordLeftCornerRegulator + rightCorner.getY();
+                }
+
+                downRegulator -= recordDownRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                upRegulator -= recordUpRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                rightCornerRegulator -= recordRightCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                leftCornerRegulator -= recordLeftCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+
+                mLips.getElements().clear();
+                mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upRegulator, leftCorner.getX(), leftCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downRegulator, rightCorner.getX(), rightCornerRegulator));
+                mLips.getElements().add(new ClosePath());
+
+                if (step == 2) {
+                    downRegulator = 0;
+                    upRegulator = 0;
+                    rightCornerRegulator = 0;
+                    leftCornerRegulator = 0;
+                }
+                break;
+
+            case LEFTCORNERACTION:
+                if (step == 20) {
+                    recordLeftCornerRegulator = leftCornerRegulator;
+                    leftCornerRegulator = leftCorner.getY();
+                }
+
+                leftCornerRegulator += recordLeftCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                mLips.getElements().clear();
+                mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCorner.getY()));
+                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY(), leftCorner.getX(), leftCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCorner.getY()));
+                mLips.getElements().add(new ClosePath());
+
+                if (step == 2) {
+                    leftCornerRegulator = 0;
+                }
+                break;
+
+            case RIGHTCORNERACTION:
+                if (step == 20) {
+                    recordRightCornerRegulator = rightCornerRegulator;
+                    rightCornerRegulator = rightCorner.getY();
+                }
+                rightCornerRegulator += recordRightCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                mLips.getElements().clear();
+                mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCornerRegulator));
+                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY(), leftCorner.getX(), leftCorner.getY()));
+                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCornerRegulator));
+                mLips.getElements().add(new ClosePath());
+
+                if (step == 2) {
+                    rightCornerRegulator = 0;
+                }
+                break;
+
+            case OPEN:
+                mLips.getElements().clear();
+                mLips.getElements().add(new MoveTo(leftCorner.getX(), leftCorner.getY()));
+                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY() - 10, rightCorner.getX(), rightCorner.getY()));
+                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY() + 10, leftCorner.getX(), leftCorner.getY()));
+                mLips.getElements().add(new ClosePath());
+                break;
         }
     }
 
@@ -222,6 +253,32 @@ public class Mouth extends BodyPartFX {
     public void setDownRegulator(int downRegler) {
         this.downRegulator = downRegler;
     }
-    
 
+    public Path getmLips() {
+        return mLips;
+    }
+
+    public Point2D getLeftCorner() {
+        return leftCorner;
+    }
+
+    public Point2D getRightCorner() {
+        return rightCorner;
+    }
+
+    public Point2D getUpperPoint() {
+        return upperPoint;
+    }
+
+    public Point2D getDownPoint() {
+        return downPoint;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

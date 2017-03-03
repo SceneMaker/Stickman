@@ -20,11 +20,16 @@ import de.dfki.reeti.animationlogic.AnimationReeti;
 import de.dfki.reeti.animationlogic.EventAnimationReeti;
 import de.dfki.reeti.body.LeftCheek;
 import de.dfki.reeti.body.LeftEar;
+import de.dfki.reeti.body.MouthDownLip;
+import de.dfki.reeti.body.MouthLeftCorner;
+import de.dfki.reeti.body.MouthRightCorner;
+import de.dfki.reeti.body.MouthUpperLip;
 import de.dfki.reeti.body.RightCheek;
 import de.dfki.reeti.body.RightEar;
 import de.dfki.reeti.environment.SpeechBubbleFX;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.geom.Point2D;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Affine;
@@ -86,6 +91,10 @@ public class Reeti extends Pane implements Stickman {
     public LeftCheek mLeftCheek;
     public RightCheek mRightCheek;
     public Mouth mMouth;
+    public MouthLeftCorner mMouthLeftCorner;
+    public MouthRightCorner mMouthRightCorner;
+    public MouthUpperLip mMouthUpperLip;
+    public MouthDownLip mMouthDownLip;
     public Neck mNeck;
     public Body mBody;
     // environment
@@ -95,6 +104,10 @@ public class Reeti extends Pane implements Stickman {
     public final Logger mLogger = Logger.getAnonymousLogger();
     // id
     private long mID = 0;
+    
+    //MouthMovement
+    double mUpperLipOldPos = 0;
+    double mDownLipOldPos = 20;
 
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size) {
         mSize = size;
@@ -113,6 +126,10 @@ public class Reeti extends Pane implements Stickman {
         mLeftCheek = new LeftCheek(mHead);
         mRightCheek = new RightCheek(mHead);
         mMouth = new Mouth(mHead);
+        mMouthLeftCorner = new MouthLeftCorner(mMouth);
+        mMouthRightCorner = new MouthRightCorner(mMouth);
+        mMouthUpperLip = new MouthUpperLip(mMouth);
+        mMouthDownLip = new MouthDownLip(mMouth);
         mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
 
@@ -139,6 +156,10 @@ public class Reeti extends Pane implements Stickman {
         mLeftCheek = new LeftCheek(mHead);
         mRightCheek = new RightCheek(mHead);
         mMouth = new Mouth(mHead);
+        mMouthLeftCorner = new MouthLeftCorner(mMouth);
+        mMouthRightCorner = new MouthRightCorner(mMouth);
+        mMouthUpperLip = new MouthUpperLip(mMouth);
+        mMouthDownLip = new MouthDownLip(mMouth);
         mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
 
@@ -163,6 +184,10 @@ public class Reeti extends Pane implements Stickman {
         mLeftCheek = new LeftCheek(mHead);
         mRightCheek = new RightCheek(mHead);
         mMouth = new Mouth(mHead);
+        mMouthLeftCorner = new MouthLeftCorner(mMouth);
+        mMouthRightCorner = new MouthRightCorner(mMouth);
+        mMouthUpperLip = new MouthUpperLip(mMouth);
+        mMouthDownLip = new MouthDownLip(mMouth);
         mNeck = new Neck(mHead);
         mBody = new Body(mNeck);
 
@@ -367,55 +392,105 @@ public class Reeti extends Pane implements Stickman {
                 false, CycleMethod.NO_CYCLE,
                 new Stop(intensitiForColor3, color1),
                 new Stop(1.0, Color.TRANSPARENT));
-        
-        if(cheek.equalsIgnoreCase("L"))
-        {
+
+        if (cheek.equalsIgnoreCase("L")) {
             mLeftCheek.getLed().setEffect(ledOnShadow);
             mLeftCheek.getLed().setFill(highlightGradient);
             mLeftCheek.getLedGroup().setVisible(true);
-        }
-        else if(cheek.equalsIgnoreCase("R"))
-        {
+        } else if (cheek.equalsIgnoreCase("R")) {
             mRightCheek.getLed().setEffect(ledOnShadow);
             mRightCheek.getLed().setFill(highlightGradient);
             mRightCheek.getLedGroup().setVisible(true);
-        }
-        else if(cheek.equalsIgnoreCase("B"))
-        {
+        } else if (cheek.equalsIgnoreCase("B")) {
             mLeftCheek.getLed().setEffect(ledOnShadow);
             mLeftCheek.getLed().setFill(highlightGradient);
             mRightCheek.getLed().setEffect(ledOnShadow);
             mRightCheek.getLed().setFill(highlightGradient);
             mLeftCheek.getLedGroup().setVisible(true);
             mRightCheek.getLedGroup().setVisible(true);
-        } 
+        }
     }
-    
-    public void ledOFF(String cheek)
-    {
-        if(cheek.equalsIgnoreCase("R"))
+
+    public void ledOFF(String cheek) {
+        if (cheek.equalsIgnoreCase("R")) {
             mRightCheek.getLedGroup().setVisible(false);
-        else if(cheek.equalsIgnoreCase("L"))
+        } else if (cheek.equalsIgnoreCase("L")) {
             mLeftCheek.getLedGroup().setVisible(false);
-        else if(cheek.equalsIgnoreCase("B"))
-        {
+        } else if (cheek.equalsIgnoreCase("B")) {
             mRightCheek.getLedGroup().setVisible(false);
             mLeftCheek.getLedGroup().setVisible(false);
         }
     }
-    
+
     /**
      *
      * @param pos a int between 0 and 100
      */
-    public void  rightLC(int pos)
-    {
-        if(pos > 100) pos = 100;
+    public void rightLC(int pos) {
+        if (pos > 100) {
+            pos = 100;
+        }
+        pos = (pos * 12) / 100;
+        if (pos > 6) {
+            this.mMouthRightCorner.setRightCornerRegulator(-pos);
+            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
+            try {
+                mAnimationLaunchControl.acquire();
+                a.start();
+            } catch (InterruptedException ex) {
+                mLogger.severe(ex.getMessage());
+            }
+        } else if (pos < 6) {
+            this.mMouthRightCorner.setRightCornerRegulator(12 - pos);
+            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
+            try {
+                mAnimationLaunchControl.acquire();
+                a.start();
+            } catch (InterruptedException ex) {
+                mLogger.severe(ex.getMessage());
+            }
+        }
+
+    }
+
+    public void leftLC(int pos) {
+        if (pos > 100) {
+            pos = 100;
+        }
+        pos = (pos * 12) / 100;
+        if (pos > 6) {
+            this.mMouthLeftCorner.setLeftCornerRegulator(-pos);
+            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
+            try {
+                mAnimationLaunchControl.acquire();
+                a.start();
+            } catch (InterruptedException ex) {
+                mLogger.severe(ex.getMessage());
+            }
+        } else if (pos < 6) {
+            this.mMouthLeftCorner.setLeftCornerRegulator(12 - pos);
+            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
+            try {
+                mAnimationLaunchControl.acquire();
+                a.start();
+            } catch (InterruptedException ex) {
+                mLogger.severe(ex.getMessage());
+            }
+        }
+    }
+    
+    public void topLip(int pos) {
+        if (pos > 100) {
+            pos = 100;
+        }
+
+        pos = (pos * 25) / 100;
+
+        double distance = mUpperLipOldPos - pos;
+        this.mMouthUpperLip.setUpperLipRegulator(distance);
+        mUpperLipOldPos = pos;
         
-        pos = (pos*12)/100;
-        this.mMouth.setRightCornerRegulator(pos);
-        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
-        
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "UpperLip", 500, pos, false);
         try {
             mAnimationLaunchControl.acquire();
             a.start();
@@ -424,15 +499,18 @@ public class Reeti extends Pane implements Stickman {
         }
     }
     
-    public void  leftLC(int pos)
-    {
-        if(pos > 100) pos = 100;
+    public void bottomLip(int pos) {
+        if (pos > 100) {
+            pos = 100;
+        }
+
+        pos = (pos * 20) / 100;
+
+        double distance = pos - mDownLipOldPos;
+        this.mMouthDownLip.setDownLipRegulator(-distance);
+        mDownLipOldPos = pos;
         
-        pos = (pos*12)/100;
-        System.out.println("de.dfki.reeti.Reeti.rightLC() " + pos);
-        this.mMouth.setLeftCornerRegulator(pos);
-        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
-        
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "DownLip", 500, pos, false);
         try {
             mAnimationLaunchControl.acquire();
             a.start();
