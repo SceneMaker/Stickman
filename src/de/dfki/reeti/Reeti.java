@@ -104,10 +104,12 @@ public class Reeti extends Pane implements Stickman {
     public final Logger mLogger = Logger.getAnonymousLogger();
     // id
     private long mID = 0;
-    
+
     //MouthMovement
     double mUpperLipOldPos = 0;
     double mDownLipOldPos = 20;
+    double mLeftCornerOldPos = 8;
+    double mRightCornerOldPos = 8;
 
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size) {
         mSize = size;
@@ -430,55 +432,36 @@ public class Reeti extends Pane implements Stickman {
         if (pos > 100) {
             pos = 100;
         }
-        pos = (pos * 12) / 100;
-        if (pos > 6) {
-            this.mMouthRightCorner.setRightCornerRegulator(-pos);
-            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
-            try {
-                mAnimationLaunchControl.acquire();
-                a.start();
-            } catch (InterruptedException ex) {
-                mLogger.severe(ex.getMessage());
-            }
-        } else if (pos < 6) {
-            this.mMouthRightCorner.setRightCornerRegulator(12 - pos);
-            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
-            try {
-                mAnimationLaunchControl.acquire();
-                a.start();
-            } catch (InterruptedException ex) {
-                mLogger.severe(ex.getMessage());
-            }
+        pos = (pos * 16) / 100;
+        double distance = mRightCornerOldPos - pos;
+        this.mMouthRightCorner.setRightCornerRegulator(distance);
+        mRightCornerOldPos = pos;
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
         }
-
     }
 
     public void leftLC(int pos) {
         if (pos > 100) {
             pos = 100;
         }
-        pos = (pos * 12) / 100;
-        if (pos > 6) {
-            this.mMouthLeftCorner.setLeftCornerRegulator(-pos);
-            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
-            try {
-                mAnimationLaunchControl.acquire();
-                a.start();
-            } catch (InterruptedException ex) {
-                mLogger.severe(ex.getMessage());
-            }
-        } else if (pos < 6) {
-            this.mMouthLeftCorner.setLeftCornerRegulator(12 - pos);
-            AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
-            try {
-                mAnimationLaunchControl.acquire();
-                a.start();
-            } catch (InterruptedException ex) {
-                mLogger.severe(ex.getMessage());
-            }
+        pos = (pos * 16) / 100;
+        double distance = mLeftCornerOldPos - pos;
+        this.mMouthLeftCorner.setLeftCornerRegulator(distance);
+        mLeftCornerOldPos = pos;
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
         }
     }
-    
+
     public void topLip(int pos) {
         if (pos > 100) {
             pos = 100;
@@ -489,7 +472,7 @@ public class Reeti extends Pane implements Stickman {
         double distance = mUpperLipOldPos - pos;
         this.mMouthUpperLip.setUpperLipRegulator(distance);
         mUpperLipOldPos = pos;
-        
+
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "UpperLip", 500, pos, false);
         try {
             mAnimationLaunchControl.acquire();
@@ -498,7 +481,7 @@ public class Reeti extends Pane implements Stickman {
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
     public void bottomLip(int pos) {
         if (pos > 100) {
             pos = 100;
@@ -509,7 +492,7 @@ public class Reeti extends Pane implements Stickman {
         double distance = pos - mDownLipOldPos;
         this.mMouthDownLip.setDownLipRegulator(-distance);
         mDownLipOldPos = pos;
-        
+
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "DownLip", 500, pos, false);
         try {
             mAnimationLaunchControl.acquire();

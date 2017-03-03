@@ -65,14 +65,15 @@ public class MouthLeftCorner extends BodyPartFX {
                 }
                 
                 leftCornerRegulator += recordLeftCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
+                leftCorner.setLocation(leftCorner.getX(), leftCornerRegulator);
                 QuadCurveTo leftQuadCurveTo = (QuadCurveTo) mLips.getElements().get(1);
                 
                 leftQuadCurveTo.setX(leftCorner.getX());
                 leftQuadCurveTo.setY(leftCornerRegulator);
                 mLips.getElements().set(1, leftQuadCurveTo);
-                if (step == 2) {
-                    leftCornerRegulator = 0;
-                }
+//                if (step == 2) {
+//                    leftCornerRegulator = 0;
+//                }
                 break;
         }
     }
@@ -81,7 +82,7 @@ public class MouthLeftCorner extends BodyPartFX {
         return leftCornerRegulator;
     }
 
-    public void setLeftCornerRegulator(int rightCornerRegler) {
+    public void setLeftCornerRegulator(double rightCornerRegler) {
         this.leftCornerRegulator = rightCornerRegler;
     }
 }
