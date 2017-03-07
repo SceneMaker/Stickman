@@ -110,6 +110,8 @@ public class Reeti extends Pane implements Stickman {
     double mDownLipOldPos = 20;
     double mLeftCornerOldPos = 8;
     double mRightCornerOldPos = 8;
+    double mLeftEyelidOldPos = 100;
+    double mRightEyelidOldPos = 100;
 
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size) {
         mSize = size;
@@ -494,6 +496,40 @@ public class Reeti extends Pane implements Stickman {
         mDownLipOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "DownLip", 500, pos, false);
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+    
+    public void leftEyeLid(int pos)
+    {
+        if (pos > 100) {
+            pos = 100;
+        }
+        double rot = mLeftEyelidOldPos - pos;
+        mLeftEyelidOldPos = pos;
+
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkLeftEyelid", 500, (int)rot, false);
+        try {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        } catch (InterruptedException ex) {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+    
+    public void rightEyeLid(int pos)
+    {
+        if (pos > 100) {
+            pos = 100;
+        }
+        double rot = mRightEyelidOldPos - pos;
+        mRightEyelidOldPos = pos;
+
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkRightEyelid", 500, (int)rot, false);
         try {
             mAnimationLaunchControl.acquire();
             a.start();

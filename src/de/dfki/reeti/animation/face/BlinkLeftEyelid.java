@@ -19,22 +19,24 @@ import javafx.scene.paint.Color;
  * @author Beka
  *
  */
-public class DownLip extends AnimationReeti {
+public class BlinkLeftEyelid extends AnimationReeti {
 
-    public DownLip() {
+    public BlinkLeftEyelid() {
         mAnimType = ANIMTYPE.ON;
     }
+    
+    int rot;
 
-    public DownLip(Reeti sm, int duration, int pos, boolean block) {
+    public BlinkLeftEyelid(Reeti sm, int duration, int pos, boolean block) {
         super(sm, duration, pos, block);
+        this.rot = pos;
     }
 
     @Override
     public void playAnimation() {
         
-        
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthDownLip, "shape", "DOWNLIPACTION"));
+        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", rot));
         playAnimationPart(mDuration);
         
         if (ReetiStageController.currentRadioButton != null) {
