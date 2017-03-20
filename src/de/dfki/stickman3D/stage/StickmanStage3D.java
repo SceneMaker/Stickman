@@ -89,6 +89,7 @@ public class StickmanStage3D extends Application implements StickmanStage {
                 Stage stage = stickmanStages.get(stageIdentifier);
                 stage.close();
                 stickmanStages.remove(stageIdentifier);
+//                stickamnsOnStage.clear();
             });
 
         } catch (Exception e) {
