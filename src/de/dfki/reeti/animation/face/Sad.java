@@ -34,7 +34,7 @@ public class Sad extends AnimationReeti {
         Color c1 = Color.rgb(102, 0, 154);
         Color c2 = Color.rgb(102, 0, 154);
         Color c3 = Color.rgb(102, 0, 154);
-        mReeti.ledON(c1, c2, c3, 0.3f, 0.9f, 0.1f, "B");
+        mReeti.setLedColor("violet");
         
         mReeti.mMouth.setUpRegulator(-8);
         mReeti.mMouth.setDownRegulator(-4);
@@ -54,7 +54,7 @@ public class Sad extends AnimationReeti {
         
         pauseAnimation(2000);
         // no sad
-        mReeti.ledOFF("B");
+        mReeti.setLedColor("stop");
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", -60));
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", -60));

@@ -58,7 +58,13 @@ import javafx.scene.transform.Scale;
  * by Ross Ching in 2012
  *
  */
-public class Reeti extends Pane implements Stickman {
+public class Reeti extends Pane implements Stickman
+{
+
+    public static enum LED
+    {
+        LEFTLED, RIGHTLED, BOTHLED
+    }
 
     public Gender.TYPE mType = Gender.TYPE.FEMALE;
     public String mName = "StickmanSwing";
@@ -113,7 +119,8 @@ public class Reeti extends Pane implements Stickman {
     double mLeftEyelidOldPos = 100;
     double mRightEyelidOldPos = 100;
 
-    public Reeti(String name, Gender.TYPE gender, float scale, Dimension size) {
+    public Reeti(String name, Gender.TYPE gender, float scale, Dimension size)
+    {
         mSize = size;
         mScale = scale;
         isFullScreen = true;
@@ -143,7 +150,8 @@ public class Reeti extends Pane implements Stickman {
         update();
     }
 
-    public Reeti(String name, Gender.TYPE gender, float scale, double height) {
+    public Reeti(String name, Gender.TYPE gender, float scale, double height)
+    {
         mScale = scale;
         isFullScreen = false;
         this.stageHeight = height;
@@ -173,7 +181,8 @@ public class Reeti extends Pane implements Stickman {
         update();
     }
 
-    public Reeti(String name, Gender.TYPE gender) {
+    public Reeti(String name, Gender.TYPE gender)
+    {
         mName = name;
         mType = gender;
 
@@ -201,7 +210,8 @@ public class Reeti extends Pane implements Stickman {
         update();
     }
 
-    private void init() {
+    private void init()
+    {
         this.setPrefHeight(mSize.height);
         this.setPrefWidth(mSize.width);
         this.setMinHeight(mSize.height);
@@ -221,39 +231,51 @@ public class Reeti extends Pane implements Stickman {
         mAnimationSchedulerFX.start();
     }
 
-    public void addListener(AnimationListener al) {
+    public void addListener(AnimationListener al)
+    {
         mAnimationListeners.add(al);
     }
 
-    public void removeListener(AnimationListener al) {
-        synchronized (mAnimationListeners) {
-            if (mAnimationListeners.contains(al)) {
+    public void removeListener(AnimationListener al)
+    {
+        synchronized (mAnimationListeners)
+        {
+            if (mAnimationListeners.contains(al))
+            {
                 mAnimationListeners.remove(al);
             }
         }
     }
 
-    public void notifyListeners(String animationId) {
-        synchronized (mAnimationListeners) {
-            mAnimationListeners.stream().forEach((al) -> {
+    public void notifyListeners(String animationId)
+    {
+        synchronized (mAnimationListeners)
+        {
+            mAnimationListeners.stream().forEach((al) ->
+            {
                 al.update(animationId);
             });
         }
     }
 
-    public String getID() {
+    public String getID()
+    {
         return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
     }
 
-    public AnimationReeti doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+    public AnimationReeti doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block)
+    {
         EventAnimationReeti a = AnimationLoaderReeti.getInstance().loadEventAnimation(this, name, duration, block);
 
         a.setParameter(wts);
 
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
 
@@ -261,94 +283,119 @@ public class Reeti extends Pane implements Stickman {
     }
 
     @Override
-    public StageRoom getStickmanStageController() {
+    public StageRoom getStickmanStageController()
+    {
         return stageController;
     }
 
     @Override
-    public void setStageController(StageRoom s) {
+    public void setStageController(StageRoom s)
+    {
         stageController = s;
     }
 
     @Override
-    public void setShowName(boolean show) {
+    public void setShowName(boolean show)
+    {
 
     }
 
     @Override
-    public boolean isShowName() {
+    public boolean isShowName()
+    {
         return false;
     }
 
     @Override
-    public void endAnimationScheduler() {
+    public void endAnimationScheduler()
+    {
 
     }
 
     @Override
-    public Gender.TYPE getType() {
+    public Gender.TYPE getType()
+    {
         return null;
     }
 
-    public AnimationReeti doAnimation(String name, int duration, boolean block) {
+    public AnimationReeti doAnimation(String name, int duration, boolean block)
+    {
         return doAnimation(name, duration, "", block);
     }
 
-    public AnimationReeti doAnimation(String name, int frequent, int actionDuration, boolean block) {
+    public AnimationReeti doAnimation(String name, int frequent, int actionDuration, boolean block)
+    {
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, name, frequent, actionDuration, block);
 
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
 
         return a;
     }
 
-    public AnimationReeti doAnimation(String name, Object param, boolean block) {
+    public AnimationReeti doAnimation(String name, Object param, boolean block)
+    {
         return doAnimation(name, -1, param, block);
     }
 
-    public AnimationReeti doAnimation(String name, boolean block) {
+    public AnimationReeti doAnimation(String name, boolean block)
+    {
         return doAnimation(name, -1, "", block);
     }
 
-    public AnimationReeti doAnimation(String name, int duration, Object param, boolean block) {
+    public AnimationReeti doAnimation(String name, int duration, Object param, boolean block)
+    {
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, name, duration, block);
 
         a.setParameter(param); // this is for now only used by the Speech Bubble
 
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
 
         return a;
     }
 
-    public void playAnimation(AnimationReeti a) {
-        try {
+    public void playAnimation(AnimationReeti a)
+    {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
     }
 
-    public void update() {
+    public void update()
+    {
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         double StickmanHeight = 500;
         Affine af = new Affine();
         int shiftFactor = (int) (StickmanHeight - (StickmanHeight * mScale));
-        if (isFullScreen) {
+        if (isFullScreen)
+        {
             mGeneralYTranslation = (int) ((dim.getHeight() - StickmanHeight) + shiftFactor + 100);
             mGeneralXTranslation = 0;
-        } else {
+        }
+        else
+        {
             mGeneralYTranslation = (int) ((this.stageHeight - StickmanHeight) + shiftFactor - 350);
             mGeneralXTranslation = 100;
         }
@@ -360,22 +407,75 @@ public class Reeti extends Pane implements Stickman {
 //        this.getTransforms().add(af);
     }
 
-    public void setScale(float scale) {
+    public void setScale(float scale)
+    {
         mScale = scale;
     }
 
-    private static class StickmanLogFormatter extends Formatter {
+    private static class StickmanLogFormatter extends Formatter
+    {
 
         @Override
-        public String format(LogRecord record) {
+        public String format(LogRecord record)
+        {
             return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
                     .append("\n")).toString();
         }
     }
 
-    private void addAllParts() {
+    private void addAllParts()
+    {
 
         this.getChildren().addAll(mNeck, mHead, mBody, mSpeechBubble);
+
+    }
+
+    public void setLedColor(String color)
+    {
+        Color ledColor = checkColor(color);
+        if (ledColor.equals(Color.BLACK))
+        {
+            ledOFF("B");
+        }
+        else
+        {
+            ledON(ledColor, ledColor, ledColor, 0.3f, 0.9f, 0.1f, "B");
+        }
+    }
+
+    public void setLedColor(String color, LED led)
+    {
+        Color ledColor = checkColor(color);
+        if (ledColor.equals(Color.BLACK))
+        {
+            switch (led)
+            {
+                case LEFTLED:
+                    ledOFF("L");
+                    break;
+                case RIGHTLED:
+                    ledOFF("R");
+                    break;
+                default:
+                    ledOFF("B");
+                    break;
+            }
+        }
+        else
+        {
+            switch (led)
+            {
+                case LEFTLED:
+                    ledON(ledColor, ledColor, ledColor, 0.3f, 0.9f, 0.1f, "L");
+                    break;
+                case RIGHTLED:
+                    ledON(ledColor, ledColor, ledColor, 0.3f, 0.9f, 0.1f, "R");
+                    break;
+                default:
+                    ledON(ledColor, ledColor, ledColor, 0.3f, 0.9f, 0.1f, "B");
+                    break;
+            }
+        }
 
     }
 
@@ -383,7 +483,8 @@ public class Reeti extends Pane implements Stickman {
             float intensityForColor1,
             float intensityForColor2,
             float intensitiForColor3,
-            String cheek) {
+            String cheek)
+    {
 
         int size = mLeftCheek.getSize();
 
@@ -397,15 +498,20 @@ public class Reeti extends Pane implements Stickman {
                 new Stop(intensitiForColor3, color1),
                 new Stop(1.0, Color.TRANSPARENT));
 
-        if (cheek.equalsIgnoreCase("L")) {
+        if (cheek.equalsIgnoreCase("L"))
+        {
             mLeftCheek.getLed().setEffect(ledOnShadow);
             mLeftCheek.getLed().setFill(highlightGradient);
             mLeftCheek.getLedGroup().setVisible(true);
-        } else if (cheek.equalsIgnoreCase("R")) {
+        }
+        else if (cheek.equalsIgnoreCase("R"))
+        {
             mRightCheek.getLed().setEffect(ledOnShadow);
             mRightCheek.getLed().setFill(highlightGradient);
             mRightCheek.getLedGroup().setVisible(true);
-        } else if (cheek.equalsIgnoreCase("B")) {
+        }
+        else if (cheek.equalsIgnoreCase("B"))
+        {
             mLeftCheek.getLed().setEffect(ledOnShadow);
             mLeftCheek.getLed().setFill(highlightGradient);
             mRightCheek.getLed().setEffect(ledOnShadow);
@@ -415,12 +521,18 @@ public class Reeti extends Pane implements Stickman {
         }
     }
 
-    public void ledOFF(String cheek) {
-        if (cheek.equalsIgnoreCase("R")) {
+    public void ledOFF(String cheek)
+    {
+        if (cheek.equalsIgnoreCase("R"))
+        {
             mRightCheek.getLedGroup().setVisible(false);
-        } else if (cheek.equalsIgnoreCase("L")) {
+        }
+        else if (cheek.equalsIgnoreCase("L"))
+        {
             mLeftCheek.getLedGroup().setVisible(false);
-        } else if (cheek.equalsIgnoreCase("B")) {
+        }
+        else if (cheek.equalsIgnoreCase("B"))
+        {
             mRightCheek.getLedGroup().setVisible(false);
             mLeftCheek.getLedGroup().setVisible(false);
         }
@@ -430,8 +542,10 @@ public class Reeti extends Pane implements Stickman {
      *
      * @param pos a int between 0 and 100
      */
-    public void rightLC(int pos) {
-        if (pos > 100) {
+    public void rightLC(int pos)
+    {
+        if (pos > 100)
+        {
             pos = 100;
         }
         pos = (pos * 16) / 100;
@@ -439,16 +553,21 @@ public class Reeti extends Pane implements Stickman {
         this.mMouthRightCorner.setRightCornerRegulator(distance);
         mRightCornerOldPos = pos;
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightLC", 500, pos, false);
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
     }
 
-    public void leftLC(int pos) {
-        if (pos > 100) {
+    public void leftLC(int pos)
+    {
+        if (pos > 100)
+        {
             pos = 100;
         }
         pos = (pos * 16) / 100;
@@ -456,16 +575,21 @@ public class Reeti extends Pane implements Stickman {
         this.mMouthLeftCorner.setLeftCornerRegulator(distance);
         mLeftCornerOldPos = pos;
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftLC", 500, pos, false);
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
     }
 
-    public void topLip(int pos) {
-        if (pos > 100) {
+    public void topLip(int pos)
+    {
+        if (pos > 100)
+        {
             pos = 100;
         }
 
@@ -476,16 +600,21 @@ public class Reeti extends Pane implements Stickman {
         mUpperLipOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "UpperLip", 500, pos, false);
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
     }
 
-    public void bottomLip(int pos) {
-        if (pos > 100) {
+    public void bottomLip(int pos)
+    {
+        if (pos > 100)
+        {
             pos = 100;
         }
 
@@ -496,45 +625,95 @@ public class Reeti extends Pane implements Stickman {
         mDownLipOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "DownLip", 500, pos, false);
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
     public void leftEyeLid(int pos)
     {
-        if (pos > 100) {
+        if (pos > 100)
+        {
             pos = 100;
         }
         double rot = mLeftEyelidOldPos - pos;
         mLeftEyelidOldPos = pos;
 
-        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkLeftEyelid", 500, (int)rot, false);
-        try {
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkLeftEyelid", 500, (int) rot, false);
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
     public void rightEyeLid(int pos)
     {
-        if (pos > 100) {
+        if (pos > 100)
+        {
             pos = 100;
         }
         double rot = mRightEyelidOldPos - pos;
         mRightEyelidOldPos = pos;
 
-        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkRightEyelid", 500, (int)rot, false);
-        try {
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkRightEyelid", 500, (int) rot, false);
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        }
+        catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
+    }
+
+    private Color checkColor(String color)
+    {
+        Color ledColor = null;
+        switch (color)
+        {
+            case "red":
+                ledColor = Color.RED;
+                break;
+            case "green":
+                ledColor = Color.GREEN;
+                break;
+            case "lightGreen":
+                ledColor = Color.LIGHTGREEN;
+                break;
+            case "blue":
+                ledColor = Color.BLUE;
+                break;
+            case "darkBlue":
+                ledColor = Color.DARKBLUE;
+                break;
+            case "turquoise":
+                ledColor = Color.TURQUOISE;
+                break;
+            case "yellow":
+                ledColor = Color.YELLOW;
+                break;
+            case "violet":
+                ledColor = Color.VIOLET;
+                break;
+            case "white":
+                ledColor = Color.WHITE;
+                break;
+            case "stop":
+                ledColor = Color.BLACK;
+                break;
+        }
+        return ledColor;
     }
 }
