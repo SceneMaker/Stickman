@@ -11,6 +11,8 @@ import java.io.IOException;
  * Created by alvaro on 9/12/16.
  */
 public class StageRoom3D extends StageRoomImpl {
+    
+    public static String OldIdentifier;
 
     public StageRoom3D() {
         getStageInstance();
@@ -50,6 +52,7 @@ public class StageRoom3D extends StageRoomImpl {
         stickmanStageFX = StickmanStage3D.getInstance();
         try {
             stageIdentifier = getStickmanStage().createNewStage(x, y, decoration);
+            OldIdentifier = stageIdentifier;
             init(stageIdentifier);
         } catch (IOException e) {
             e.printStackTrace();

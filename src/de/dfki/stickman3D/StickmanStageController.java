@@ -170,6 +170,7 @@ public class StickmanStageController extends AStickmanStageController implements
             ((StickmanStage3D) mStickmanOnstage.getStageStickman()).clearStage(((StageRoom3D) mStickmanOnstage.getStageRoom()).CONFIG_STAGE);           
             Stage stage = (Stage) ExitButton.getScene().getWindow();
             stage.close();
+//            System.gc();
             
 //            System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentStickman, this);
