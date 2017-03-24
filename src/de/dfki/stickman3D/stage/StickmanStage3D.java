@@ -82,20 +82,27 @@ public class StickmanStage3D extends Application implements StickmanStage {
      */
     @Override
     public void clearStage(String stageIdentifier) {
-        try {
-            HBox box = getStickmanBox(stageIdentifier);
+//        try {
+//            HBox box = getStickmanBox(stageIdentifier);
+//            Platform.runLater(() -> {
+//                box.getChildren().clear();
+//                Stage stage = stickmanStages.get(stageIdentifier);
+//                stage.close();
+//                stickmanStages.remove(stageIdentifier);
+////                stickamnsOnStage.clear();
+//            });
+ try {      
+        if (stickmanStages.containsKey(stageIdentifier)) {
             Platform.runLater(() -> {
-                box.getChildren().clear();
-                Stage stage = stickmanStages.get(stageIdentifier);
-                stage.close();
-                stickmanStages.remove(stageIdentifier);
-//                stickamnsOnStage.clear();
+                mStickmanHBox.getChildren().clear();
+//                stickmanStages.remove(stageIdentifier);
             });
+        }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sInstance = null;
+//        sInstance = null;
     }
 
     @Override

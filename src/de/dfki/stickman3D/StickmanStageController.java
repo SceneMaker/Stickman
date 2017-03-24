@@ -8,6 +8,7 @@ import de.dfki.stickman3D.controllerhelper.OpacityHelper;
 import de.dfki.stickman3D.controllerhelper.SliderHelper;
 import de.dfki.stickman3D.dynamic.classes.DynamicCompiler;
 import de.dfki.stickman3D.dynamic.classes.Helper;
+import de.dfki.stickman3D.stage.StageRoom3D;
 import de.dfki.stickman3D.stage.StickmanStage3D;
 import de.dfki.stickman3D.stage.StickmansOnStage3D;
 import de.dfki.stickman3D.xmlsettings.StickmanData3D;
@@ -36,6 +37,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 
 /**
@@ -52,8 +54,10 @@ public class StickmanStageController extends AStickmanStageController implements
         StickmanComboBox.setOnAction((event)
                 -> {
             mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();
+            if(mStickmancombobox != null){
             currentStickman = (Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox);
             setComboboxValue((Stickman3D) mStickmanOnstage.getStickman(mStickmancombobox));
+            }
         });
 
         fillEmotionScrollPane();
@@ -163,8 +167,10 @@ public class StickmanStageController extends AStickmanStageController implements
         bg6.setImage(new Image(background6));
 
         ExitButton.setOnAction((ActionEvent event) -> {
+            ((StickmanStage3D) mStickmanOnstage.getStageStickman()).clearStage(((StageRoom3D) mStickmanOnstage.getStageRoom()).CONFIG_STAGE);           
             Stage stage = (Stage) ExitButton.getScene().getWindow();
             stage.close();
+            
 //            System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentStickman, this);
 //            cr.start();
