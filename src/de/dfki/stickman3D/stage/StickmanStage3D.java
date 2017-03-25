@@ -5,6 +5,7 @@ import de.dfki.common.StickmansOnStage;
 import de.dfki.common.interfaces.StickmanStage;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
+import static de.dfki.stickman3D.stage.StageRoom3D.OldIdentifier;
 import de.dfki.stickmanFX.stage.StageRoomFX;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -82,20 +83,35 @@ public class StickmanStage3D extends Application implements StickmanStage {
      */
     @Override
     public void clearStage(String stageIdentifier) {
-        try {
-            HBox box = getStickmanBox(stageIdentifier);
+//        try {
+//            HBox box = getStickmanBox(stageIdentifier);
+//            Platform.runLater(() -> {
+//                box.getChildren().clear();
+//                Stage stage = stickmanStages.get(stageIdentifier);
+//                stage.close();
+//                stickmanStages.remove(stageIdentifier);
+////                stickamnsOnStage.clear();
+//            });
+ try {      
+        if (stickmanStages.containsKey(stageIdentifier)) {
             Platform.runLater(() -> {
-                box.getChildren().clear();
-                Stage stage = stickmanStages.get(stageIdentifier);
-                stage.close();
-                stickmanStages.remove(stageIdentifier);
-//                stickamnsOnStage.clear();
+                mStickmanHBox.getChildren().clear();
+                if(stickmanStages.containsKey(StageRoom3D.OldIdentifier)){
+                    stickmanStages.get(StageRoom3D.OldIdentifier).getScene().getMnemonics().clear();                  
+                    stickmanStages.get(StageRoom3D.OldIdentifier).close();
+                    stickmanStages.remove(StageRoom3D.OldIdentifier);
+                    for(String key : stickamnsOnStage.keySet()){
+                        stickamnsOnStage.get(key).clearStage();
+                    }
+                    stickamnsOnStage.clear();
+                }
             });
+        }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sInstance = null;
+//        sInstance = null;
     }
 
     @Override
