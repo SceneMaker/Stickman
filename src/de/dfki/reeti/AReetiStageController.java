@@ -8,7 +8,6 @@ package de.dfki.reeti;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.reeti.stage.ReetiStage;
 import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -19,7 +18,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -32,7 +30,6 @@ public abstract class AReetiStageController {
     public static final String PACKAGE_GESTURE = "de.dfki.reeti.animation.gesture";
     public static final String PACKAGE_HEAD = "de.dfki.reeti.animation.head";
     public static final String PACKAGE_ENVIRONMENT = "de.dfki.reeti.animation.environment";
-    public static final String PACKAGE_POSTURE = "de.dfki.stickman3D.animation.posture";
     public static final String PACKAGE_DYNAMIC_CLASSES = "de.dfki.stickman3D.dynamic.classes";
 
     @FXML
@@ -40,7 +37,7 @@ public abstract class AReetiStageController {
     @FXML
     public RadioButton WithoutPerlinNoise;
     @FXML
-    public ComboBox<String> StickmanComboBox;
+    public ComboBox<String> reetiComboBox;
     @FXML
     public ComboBox<String> EmotionExpressionComboBox;
     @FXML
@@ -54,23 +51,17 @@ public abstract class AReetiStageController {
     @FXML
     Button resetCamera;
     @FXML
-    public ColorPicker headColorPicker;
+    public ColorPicker leftLedColorPicker;
     @FXML
-    public ColorPicker hairColorPicker;
+    public ColorPicker rightLedColorPicker;
     @FXML
-    public ColorPicker bodyColorPicker;
+    public ColorPicker bothLedColorPicker;
     @FXML
-    public ColorPicker limbsColorPicker;
+    public Button leftLedOffButton;
     @FXML
-    public ColorPicker shoesColorPicker;
+    public Button rightLedOffButton;
     @FXML
-    public ColorPicker lipsColorPicker;
-    @FXML
-    public ColorPicker eyeColorPicker;
-    @FXML
-    public ColorPicker browColorPicker;
-    @FXML
-    public ColorPicker noseColorPicker;
+    public Button bothLedOffButton;
     @FXML
     ScrollPane emotionsScrollPane;
     @FXML
@@ -79,62 +70,6 @@ public abstract class AReetiStageController {
     ScrollPane headScrollPane;
     @FXML
     ScrollPane environmentScrollPane;
-    @FXML
-    ScrollPane postureScrollPane;
-    @FXML
-    public Button headColorReset;
-    @FXML
-    public Button headColorBrighter;
-    @FXML
-    public Button headColorDarker;
-    @FXML
-    public Button hairColorReset;
-    @FXML
-    public Button hairColorBrighter;
-    @FXML
-    public Button hairColorDarker;
-    @FXML
-    public Button bodyColorReset;
-    @FXML
-    public Button bodyColorBrighter;
-    @FXML
-    public Button bodyColorDarker;
-    @FXML
-    public Button limbsColorReset;
-    @FXML
-    public Button limbsColorBrighter;
-    @FXML
-    public Button limbsColorDarker;
-    @FXML
-    public Button shoesColorReset;
-    @FXML
-    public Button shoesColorBrighter;
-    @FXML
-    public Button shoesColorDarker;
-    @FXML
-    public Button lipsColorReset;
-    @FXML
-    public Button lipsColorBrighter;
-    @FXML
-    public Button lipsColorDarker;
-    @FXML
-    public Button eyeColorReset;
-    @FXML
-    public Button eyeColorBrighter;
-    @FXML
-    public Button eyeColorDarker;
-    @FXML
-    public Button browColorReset;
-    @FXML
-    public Button browColorBrighter;
-    @FXML
-    public Button browColorDarker;
-    @FXML
-    public Button noseColorReset;
-    @FXML
-    public Button noseColorBrighter;
-    @FXML
-    public Button noseColorDarker;
     @FXML
     public Slider cameraXSlider;
     @FXML
@@ -184,331 +119,22 @@ public abstract class AReetiStageController {
     @FXML
     public Slider headZSlider;
     @FXML
-    public Slider upperBodyXSlider;
-    @FXML
-    public Slider upperBodyYSlider;
-    @FXML
-    public Slider upperBodyZSlider;
-    @FXML
-    public Slider headOpacitySlider;
-    @FXML
-    public Slider leftUpperArmXSlider;
-    @FXML
-    public Slider leftUpperArmYSlider;
-    @FXML
-    public Slider leftUpperArmZSlider;
-    @FXML
-    public Slider rightUpperArmXSlider;
-    @FXML
-    public Slider rightUpperArmYSlider;
-    @FXML
-    public Slider rightUpperArmZSlider;
-    @FXML
-    public Slider leftForeArmXSlider;
-    @FXML
-    public Slider leftForeArmYSlider;
-    @FXML
-    public Slider leftForeArmZSlider;
-    @FXML
-    public Slider leftWristXSlider;
-    @FXML
-    public Slider leftWristYSlider;
-    @FXML
-    public Slider leftWristZSlider;
-    @FXML
-    public Slider leftFinger1XSlider;
-    @FXML
-    public Slider leftFinger1YSlider;
-    @FXML
-    public Slider leftFinger1ZSlider;
-    @FXML
-    public Slider leftFinger2XSlider;
-    @FXML
-    public Slider leftFinger2YSlider;
-    @FXML
-    public Slider leftFinger2ZSlider;
-    @FXML
-    public Slider leftFinger3XSlider;
-    @FXML
-    public Slider leftFinger3YSlider;
-    @FXML
-    public Slider leftFinger3ZSlider;
-    @FXML
-    public Slider leftFinger4XSlider;
-    @FXML
-    public Slider leftFinger4YSlider;
-    @FXML
-    public Slider leftFinger4ZSlider;
-    @FXML
-    public Slider rightWristXSlider;
-    @FXML
-    public Slider rightWristYSlider;
-    @FXML
-    public Slider rightWristZSlider;
-    @FXML
-    public Slider rightFinger1XSlider;
-    @FXML
-    public Slider rightFinger1YSlider;
-    @FXML
-    public Slider rightFinger1ZSlider;
-    @FXML
-    public Slider rightFinger2XSlider;
-    @FXML
-    public Slider rightFinger2YSlider;
-    @FXML
-    public Slider rightFinger2ZSlider;
-    @FXML
-    public Slider rightFinger3XSlider;
-    @FXML
-    public Slider rightFinger3YSlider;
-    @FXML
-    public Slider rightFinger3ZSlider;
-    @FXML
-    public Slider rightFinger4XSlider;
-    @FXML
-    public Slider rightFinger4YSlider;
-    @FXML
-    public Slider rightFinger4ZSlider;
-    @FXML
     public TextField headXRotationField;
     @FXML
     public TextField headYRotationField;
     @FXML
     public TextField headZRotationField;
     @FXML
-    public TextField upperBodyXRotationField;
-    @FXML
-    public TextField upperBodyYRotationField;
-    @FXML
-    public TextField upperBodyZRotationField;
-    @FXML
-    public TextField leftUpperArmXRotationField;
-    @FXML
-    public TextField leftUpperArmYRotationField;
-    @FXML
-    public TextField leftUpperArmZRotationField;
-    @FXML
-    public TextField rightUpperArmXRotationField;
-    @FXML
-    public TextField rightUpperArmYRotationField;
-    @FXML
-    public TextField rightUpperArmZRotationField;
-    @FXML
-    public TextField leftForeArmXRotationField;
-    @FXML
-    public TextField leftForeArmYRotationField;
-    @FXML
-    public TextField leftForeArmZRotationField;
-    @FXML
-    public TextField rightForeArmXRotationField;
-    @FXML
-    public TextField rightForeArmYRotationField;
-    @FXML
-    public TextField rightForeArmZRotationField;
-    @FXML
-    public TextField leftWristXRotationField;
-    @FXML
-    public TextField leftWristYRotationField;
-    @FXML
-    public TextField leftWristZRotationField;
-    @FXML
-    public TextField rightWristXRotationField;
-    @FXML
-    public TextField rightWristYRotationField;
-    @FXML
-    public TextField rightWristZRotationField;
-    @FXML
-    public TextField leftFinger1XRotationField;
-    @FXML
-    public TextField leftFinger1YRotationField;
-    @FXML
-    public TextField leftFinger1ZRotationField;
-    @FXML
-    public TextField rightFinger1XRotationField;
-    @FXML
-    public TextField rightFinger1YRotationField;
-    @FXML
-    public TextField rightFinger1ZRotationField;
-    @FXML
-    public TextField leftFinger2XRotationField;
-    @FXML
-    public TextField leftFinger2YRotationField;
-    @FXML
-    public TextField leftFinger2ZRotationField;
-    @FXML
-    public TextField rightFinger2XRotationField;
-    @FXML
-    public TextField rightFinger2YRotationField;
-    @FXML
-    public TextField rightFinger2ZRotationField;
-    @FXML
-    public TextField leftFinger3XRotationField;
-    @FXML
-    public TextField leftFinger3YRotationField;
-    @FXML
-    public TextField leftFinger3ZRotationField;
-    @FXML
-    public TextField rightFinger3XRotationField;
-    @FXML
-    public TextField rightFinger3YRotationField;
-    @FXML
-    public TextField rightFinger3ZRotationField;
-    @FXML
-    public TextField leftFinger4XRotationField;
-    @FXML
-    public TextField leftFinger4YRotationField;
-    @FXML
-    public TextField leftFinger4ZRotationField;
-    @FXML
-    public TextField rightFinger4XRotationField;
-    @FXML
-    public TextField rightFinger4YRotationField;
-    @FXML
-    public TextField rightFinger4ZRotationField;
-    @FXML
-    public TextField downBodyXRotationField;
-    @FXML
-    public TextField downBodyYRotationField;
-    @FXML
-    public TextField downBodyZRotationField;
-    @FXML
-    public TextField leftUpperLegXRotationField;
-    @FXML
-    public TextField leftUpperLegYRotationField;
-    @FXML
-    public TextField leftUpperLegZRotationField;
-    @FXML
-    public TextField rightUpperLegXRotationField;
-    @FXML
-    public TextField rightUpperLegYRotationField;
-    @FXML
-    public TextField rightUpperLegZRotationField;
-    @FXML
-    public TextField leftForeLegXRotationField;
-    @FXML
-    public TextField leftForeLegYRotationField;
-    @FXML
-    public TextField leftForeLegZRotationField;
-    @FXML
-    public TextField rightForeLegXRotationField;
-    @FXML
-    public TextField rightForeLegYRotationField;
-    @FXML
-    public TextField rightForeLegZRotationField;
-
-    @FXML
-    public Slider hairOpacitySlider;
-    @FXML
-    public Slider bodyOpacitySlider;
-    @FXML
-    public Slider limbsOpacitySlider;
-    @FXML
-    public Slider shoesOpacitySlider;
-    @FXML
-    public Slider lipsOpacitySlider;
-    @FXML
-    public Slider eyeOpacitySlider;
-    @FXML
-    public Slider browOpacitySlider;
-    @FXML
-    public Slider noseOpacitySlider;
-    @FXML
-    public Slider rightForeArmXSlider;
-    @FXML
-    public Slider rightForeArmYSlider;
-    @FXML
-    public Slider rightForeArmZSlider;
-    @FXML
-    public Slider downBodyYSlider;
-    @FXML
-    public Slider rightUpperLegXSlider;
-    @FXML
-    public Slider rightUpperLegYSlider;
-    @FXML
-    public Slider rightUpperLegZSlider;
-    @FXML
-    public Slider rightForeLegXSlider;
-    @FXML
-    public Slider rightForeLegYSlider;
-    @FXML
-    public Slider rightForeLegZSlider;
-    @FXML
-    public Slider leftUpperLegXSlider;
-    @FXML
-    public Slider leftUpperLegYSlider;
-    @FXML
-    public Slider leftUpperLegZSlider;
-    @FXML
-    public Slider leftForeLegXSlider;
-    @FXML
-    public Slider leftForeLegYSlider;
-    @FXML
-    public Slider leftForeLegZSlider;
-    @FXML
     public Label recCounter0;
-    @FXML
-    public Label recCounter1;
-    @FXML
-    public Label recCounter2;
-    @FXML
-    public Label recCounter3;
-    @FXML
-    public Label recCounter4;
-    @FXML
-    public Label recCounter5;
-    @FXML
-    public Label recCounter6;
-    @FXML
-    public Label recCounter7;
-    @FXML
-    public Label recCounter8;
-    @FXML
-    public Label recCounter9;
-    @FXML
-    public Label recCounter10;
-    @FXML
-    public Label recCounter11;
-    @FXML
-    public Label recCounter12;
-    @FXML
-    public Label recCounter13;
-    @FXML
-    public Label recCounter14;
-    @FXML
-    public Label recCounter15;
-    @FXML
-    public Label recCounter16;
-    @FXML
-    public Label recCounter17;
-    @FXML
-    public Label recCounter18;
-    @FXML
-    public Label recCounter19;
-    @FXML
-    public Label recCounter20;
-
-    @FXML
-    public ImageView bg1;
-    @FXML
-    public ImageView bg2;
-    @FXML
-    public ImageView bg3;
-    @FXML
-    public ImageView bg4;
-    @FXML
-    public ImageView bg5;
-    @FXML
-    public ImageView bg6;
-
     @FXML
     public Button headRotationTest;
     @FXML
     public Button headRotationCreate;
 
-    public final ArrayList<String> mStickmanComboList = new ArrayList<>();
+    public final ArrayList<String> mReetiComboList = new ArrayList<>();
 
     public boolean isCameraStarted = false;
-    public String mStickmancombobox = null;
+    public String mReetiComboBox = null;
     public ToggleGroup perlinNoiseGroup;
     public StickmansOnStage mStickmanOnstage;
 
@@ -516,7 +142,7 @@ public abstract class AReetiStageController {
     double yRotateFactor;
     double zRotateFactor;
 
-    public Reeti currentStickman;
+    public Reeti currentReeti;
     public static RadioButton currentRadioButton;
     public ReetiStage stage3D;
     public String backgroundRecord = null;

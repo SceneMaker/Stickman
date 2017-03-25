@@ -1,10 +1,8 @@
 package de.dfki.reeti;
 
-import de.dfki.common.Gender;
 import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.reeti.controllerhelper.ColorHelper;
-import de.dfki.reeti.controllerhelper.OpacityHelper;
 import de.dfki.reeti.controllerhelper.SliderHelper;
 import de.dfki.reeti.dynamic.classes.DynamicCompiler;
 import de.dfki.reeti.dynamic.classes.Helper;
@@ -23,16 +21,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 
 /**
@@ -44,18 +40,17 @@ public class ReetiStageController extends AReetiStageController implements ViewC
     @FXML
     public void initialize() {
         //Select a stickmanSwing
-        StickmanComboBox.setOnAction((event)
+        reetiComboBox.setOnAction((event)
                 -> {
-            mStickmancombobox = StickmanComboBox.getSelectionModel().getSelectedItem();
-            currentStickman = (Reeti) mStickmanOnstage.getStickman(mStickmancombobox);
-            setComboboxValue((Reeti) mStickmanOnstage.getStickman(mStickmancombobox));
+            mReetiComboBox = reetiComboBox.getSelectionModel().getSelectedItem();
+            currentReeti = (Reeti) mStickmanOnstage.getStickman(mReetiComboBox);
+            setComboboxValue((Reeti) mStickmanOnstage.getStickman(mReetiComboBox));
         });
 
         fillEmotionScrollPane();
         fillGestureScrollPane();
         fillHeadScrollPane();
         fillEnvironmentScrollPane();
-        fillPostureScrollPane();
 
         perlinNoiseGroup = new ToggleGroup();
         WithPerlinNoise.setToggleGroup(perlinNoiseGroup);
@@ -70,106 +65,36 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         SliderHelper.handleHeadSlider(this, headXSlider, "X");
         SliderHelper.handleHeadSlider(this, headYSlider, "Y");
         SliderHelper.handleHeadSlider(this, headZSlider, "Z");
-        SliderHelper.handleUpperBodySlider(this, upperBodyXSlider, "X");
-        SliderHelper.handleUpperBodySlider(this, upperBodyYSlider, "Y");
-        SliderHelper.handleUpperBodySlider(this, upperBodyZSlider, "Z");
-        SliderHelper.handleUpperArmSlider(this, leftUpperArmXSlider, "X", "L", 0);
-        SliderHelper.handleUpperArmSlider(this, leftUpperArmYSlider, "Y", "L", 0);
-        SliderHelper.handleUpperArmSlider(this, leftUpperArmZSlider, "Z", "L", -10);
-        SliderHelper.handleUpperArmSlider(this, rightUpperArmXSlider, "X", "R", 0);
-        SliderHelper.handleUpperArmSlider(this, rightUpperArmYSlider, "Y", "R", 0);
-        SliderHelper.handleUpperArmSlider(this, rightUpperArmZSlider, "Z", "R", 10);
-        SliderHelper.handleForeArmSlider(this, leftForeArmXSlider, "X", "L", -15);
-        SliderHelper.handleForeArmSlider(this, leftForeArmYSlider, "Y", "L", 0);
-        SliderHelper.handleForeArmSlider(this, leftForeArmZSlider, "Z", "L", 10);
-        SliderHelper.handleForeArmSlider(this, rightForeArmXSlider, "X", "R", -15);
-        SliderHelper.handleForeArmSlider(this, rightForeArmYSlider, "Y", "R", 0);
-        SliderHelper.handleForeArmSlider(this, rightForeArmZSlider, "Z", "R", -10);
-        SliderHelper.handleWristSlider(this, leftWristXSlider, "X", "L", 0);
-        SliderHelper.handleWristSlider(this, leftWristYSlider, "Y", "L", -50);
-        SliderHelper.handleWristSlider(this, leftWristZSlider, "Z", "L", 0);
-        SliderHelper.handleWristSlider(this, rightWristXSlider, "X", "R", 0);
-        SliderHelper.handleWristSlider(this, rightWristYSlider, "Y", "R", 50);
-        SliderHelper.handleWristSlider(this, rightWristZSlider, "Z", "R", 0);
-        SliderHelper.handleFinger1Slider(this, leftFinger1XSlider, "X", "L", 0);
-        SliderHelper.handleFinger1Slider(this, leftFinger1YSlider, "Y", "L", 0);
-        SliderHelper.handleFinger1Slider(this, leftFinger1ZSlider, "Z", "L", 20);
-        SliderHelper.handleFinger1Slider(this, rightFinger1XSlider, "X", "R", 0);
-        SliderHelper.handleFinger1Slider(this, rightFinger1YSlider, "Y", "R", 0);
-        SliderHelper.handleFinger1Slider(this, rightFinger1ZSlider, "Z", "R", -20);
-        SliderHelper.handleFinger2Slider(this, leftFinger2XSlider, "X", "L");
-        SliderHelper.handleFinger2Slider(this, leftFinger2YSlider, "Y", "L");
-        SliderHelper.handleFinger2Slider(this, leftFinger2ZSlider, "Z", "L");
-        SliderHelper.handleFinger2Slider(this, rightFinger2XSlider, "X", "R");
-        SliderHelper.handleFinger2Slider(this, rightFinger2YSlider, "Y", "R");
-        SliderHelper.handleFinger2Slider(this, rightFinger2ZSlider, "Z", "R");
-        SliderHelper.handleFinger3Slider(this, leftFinger3XSlider, "X", "L");
-        SliderHelper.handleFinger3Slider(this, leftFinger3YSlider, "Y", "L");
-        SliderHelper.handleFinger3Slider(this, leftFinger3ZSlider, "Z", "L");
-        SliderHelper.handleFinger3Slider(this, rightFinger3XSlider, "X", "R");
-        SliderHelper.handleFinger3Slider(this, rightFinger3YSlider, "Y", "R");
-        SliderHelper.handleFinger3Slider(this, rightFinger3ZSlider, "Z", "R");
-        SliderHelper.handleFinger4Slider(this, leftFinger4XSlider, "X", "L");
-        SliderHelper.handleFinger4Slider(this, leftFinger4YSlider, "Y", "L");
-        SliderHelper.handleFinger4Slider(this, leftFinger4ZSlider, "Z", "L");
-        SliderHelper.handleFinger4Slider(this, rightFinger4XSlider, "X", "R");
-        SliderHelper.handleFinger4Slider(this, rightFinger4YSlider, "Y", "R");
-        SliderHelper.handleFinger4Slider(this, rightFinger4ZSlider, "Z", "R");
-        SliderHelper.handleDownBodySlider(this, downBodyYSlider, "Y");
-        SliderHelper.handleUpperLegSlider(this, rightUpperLegXSlider, "X", "R");
-        SliderHelper.handleUpperLegSlider(this, rightUpperLegYSlider, "Y", "R");
-        SliderHelper.handleUpperLegSlider(this, rightUpperLegZSlider, "Z", "R");
-        SliderHelper.handleUpperLegSlider(this, leftUpperLegXSlider, "X", "L");
-        SliderHelper.handleUpperLegSlider(this, leftUpperLegYSlider, "Y", "L");
-        SliderHelper.handleUpperLegSlider(this, leftUpperLegZSlider, "Z", "L");
-        SliderHelper.handleForeLegSlider(this, rightForeLegXSlider, "X", "R");
-        SliderHelper.handleForeLegSlider(this, rightForeLegYSlider, "Y", "R");
-        SliderHelper.handleForeLegSlider(this, rightForeLegZSlider, "Z", "R");
-        SliderHelper.handleForeLegSlider(this, leftForeLegXSlider, "X", "L");
-        SliderHelper.handleForeLegSlider(this, leftForeLegYSlider, "Y", "L");
-        SliderHelper.handleForeLegSlider(this, leftForeLegZSlider, "Z", "L");
-
-        OpacityHelper.headOpacityChanger(this, headOpacitySlider);
-        OpacityHelper.hairOpacityChanger(this, hairOpacitySlider);
-        OpacityHelper.bodyOpacityChanger(this, bodyOpacitySlider);
-        OpacityHelper.limbsOpacityChanger(this, limbsOpacitySlider);
-        OpacityHelper.shoesOpacityChanger(this, shoesOpacitySlider);
-        OpacityHelper.lipsOpacityChanger(this, lipsOpacitySlider);
-        OpacityHelper.eyeOpacityChanger(this, eyeOpacitySlider);
-        OpacityHelper.browOpacityChanger(this, browOpacitySlider);
-        OpacityHelper.noseOpacityChanger(this, noseOpacitySlider);
-
-        String background1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
-        bg1.setImage(new Image(background1));
-
-        String background2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
-        bg2.setImage(new Image(background2));
-
-        String background3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
-        bg3.setImage(new Image(background3));
-
-        String background4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
-        bg4.setImage(new Image(background4));
-
-        String background5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
-        bg5.setImage(new Image(background5));
-
-        String background6 = getClass().getClassLoader().getResource("Images/bg6.jpg").toExternalForm();
-        bg6.setImage(new Image(background6));
 
         ExitButton.setOnAction((ActionEvent event) -> {
 //            Stage stage = (Stage) ExitButton.getScene().getWindow();
 //            stage.close();
 //            System.exit(0);
-//            CommandReceiver cr = new CommandReceiver(currentStickman, this);
+//            CommandReceiver cr = new CommandReceiver(currentReeti, this);
 //            cr.start();
-//              Platform.runLater(() -> currentStickman.rightLC(20));
-//            Platform.runLater(() -> currentStickman.leftLC(20));
-//              Platform.runLater(() -> currentStickman.topLip(80));
-              Platform.runLater(() -> currentStickman.rightEyeLid(50));
+//              Platform.runLater(() -> currentReeti.rightLC(20));
+//            Platform.runLater(() -> currentReeti.leftLC(20));
+//              Platform.runLater(() -> currentReeti.topLip(80));
+              Platform.runLater(() -> currentReeti.rightEyeLid(50));
         });
         SaveButton.setOnAction((event) -> {
-            Platform.runLater(() -> currentStickman.rightEyeLid(10));
+            Platform.runLater(() -> currentReeti.rightEyeLid(10));
+        });
+        
+        leftLedOffButton.setOnAction((event) ->
+        {
+            currentReeti.mLeftCheek.getLedGroup().setVisible(false);
+        });
+        
+        rightLedOffButton.setOnAction((event) ->
+        {
+            currentReeti.mRightCheek.getLedGroup().setVisible(false);
+        });
+        
+        bothLedOffButton.setOnAction((event) ->
+        {
+            currentReeti.mLeftCheek.getLedGroup().setVisible(false);
+            currentReeti.mRightCheek.getLedGroup().setVisible(false);
         });
     }
 
@@ -199,7 +124,7 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         OKButton.setOnMouseClicked((event) -> {
             String name = ((TextField) classNamePane.getChildren().get(0)).getText();
 
-            DynamicCompiler.currentStickman = this.currentStickman;
+            DynamicCompiler.currentStickman = this.currentReeti;
             DynamicCompiler.setClassName(name);
             DynamicCompiler.create();
             DynamicCompiler.methodContent.setLength(0);
@@ -229,7 +154,7 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         }
 
         existClasses.valueProperty().addListener((observable, oldValue, newValue) -> {
-            DynamicCompiler.currentStickman = currentStickman;
+            DynamicCompiler.currentStickman = currentReeti;
             DynamicCompiler.runIt(newValue);
             stage.close();
 
@@ -250,54 +175,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         this.mStickmanOnstage = commonStickmansOnStage;
         fillComboForStickman();
 
-    }
-
-    @FXML
-    public void handleBG1() {
-        String background1 = getClass().getClassLoader().getResource("Images/bg1.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background1 + "'); "
-                + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
-        backgroundRecord = "Images/bg1.jpg";
-    }
-
-    @FXML
-    public void handleBG2() {
-        String background2 = getClass().getClassLoader().getResource("Images/bg2.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background2 + "'); "
-                + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
-        backgroundRecord = "Images/bg2.jpg";
-    }
-
-    @FXML
-    public void handleBG3() {
-        String background3 = getClass().getClassLoader().getResource("Images/bg3.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background3 + "'); "
-                + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
-        backgroundRecord = "Images/bg3.jpg";
-    }
-
-    @FXML
-    public void handleBG4() {
-        String background4 = getClass().getClassLoader().getResource("Images/bg4.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background4 + "'); "
-                + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
-        backgroundRecord = "Images/bg4.jpg";
-    }
-
-    @FXML
-    public void handleBG5() {
-        String background5 = getClass().getClassLoader().getResource("Images/bg5.jpg").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + background5 + "'); "
-                + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
-        backgroundRecord = "Images/bg5.jpg";
-    }
-
-    @FXML
-    public void handleBG6() {
-        String bgDefault = getClass().getClassLoader().getResource("Images/bgDefault.png").toExternalForm();
-        stage3D.getmStickmanHBox().setStyle("-fx-background-image: url('" + bgDefault + "'); "
-                + "-fx-background-position: center center; " + "-fx-background-repeat: stretch;");
-        backgroundRecord = "Images/bgDefault.png";
     }
 
     @FXML
@@ -443,94 +320,24 @@ public class ReetiStageController extends AReetiStageController implements ViewC
     }
 
     @FXML
-    public void handleHeadColor() {
-        ColorHelper.headColorChanger(this);
+    public void handleLeftLedColor() {
+        ColorHelper.leftLedColorChanger(this);
     }
 
     @FXML
-    public void handleHairColor() {
-        ColorHelper.hairColorChanger(this);
+    public void handleRightLedColor() {
+        ColorHelper.rightLedColorChanger(this);
     }
 
     @FXML
-    public void handleBodyColor() {
-        ColorHelper.bodyColorChanger(this);
+    public void handleBothLedColor() {
+        ColorHelper.bothLedColorChanger(this);
     }
 
-    @FXML
-    public void handleLimbsColor() {
-        ColorHelper.limbsColorChanger(this);
-    }
-
-    @FXML
-    public void handleShoesColor() {
-        ColorHelper.shoesColorChanger(this);
-    }
-
-    @FXML
-    public void handleLipsColor() {
-        ColorHelper.lipsColorChanger(this);
-    }
-
-    @FXML
-    public void handleEyeColor() {
-        ColorHelper.eyeColorChanger(this);
-    }
-
-    @FXML
-    public void handleBrowColor() {
-        ColorHelper.browColorChanger(this);
-    }
-
-    @FXML
-    public void handleNoseColor() {
-        ColorHelper.noseColorChanger(this);
-    }
-
-    @FXML
-    public void handleHeadColorButtons(MouseEvent ev) {
-        ColorHelper.handleHeadColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleHairColorButtons(MouseEvent ev) {
-        ColorHelper.handleHairColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleBodyColorButtons(MouseEvent ev) {
-        ColorHelper.handleBodyColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleLimbsColorButtons(MouseEvent ev) {
-        ColorHelper.handlelimbsColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleShoesColorButtons(MouseEvent ev) {
-        ColorHelper.handleShoesColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleLipsColorButtons(MouseEvent ev) {
-        ColorHelper.handleLipsColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleEyeColorButtons(MouseEvent ev) {
-        ColorHelper.handleEyeColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleBrowColorButtons(MouseEvent ev) {
-        ColorHelper.handleBrowColorButtons(this, ev);
-    }
-
-    @FXML
-    public void handleNoseColorButtons(MouseEvent ev) {
-        ColorHelper.handleNoseColorButtons(this, ev);
-    }
+//    @FXML
+//    public void handleHeadColorButtons(MouseEvent ev) {
+//        ColorHelper.handleHeadColorButtons(this, ev);
+//    }
 
     private void fillEmotionScrollPane() {
         ArrayList<String> getClassesNames;
@@ -572,16 +379,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         createAndHandleRadioButtons(getClassesNames, environmentScrollPane);
     }
 
-    private void fillPostureScrollPane() {
-        ArrayList<String> getClassesNames;
-        Packageparser parser = new Packageparser(PACKAGE_POSTURE);
-        getClassesNames = parser.getClassNameList();
-        ObservableList<String> classNames = FXCollections.observableArrayList();
-        classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
-
-        createAndHandleRadioButtons(getClassesNames, postureScrollPane);
-    }
-
     private void createAndHandleRadioButtons(ArrayList<String> getClassesNames, ScrollPane container) {
         GridPane gridPane = new GridPane();
         container.setContent(gridPane);
@@ -602,9 +399,9 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
             button.setOnAction((event) -> {
                 currentRadioButton = (RadioButton) event.getSource();
-//                Platform.runLater(() -> currentStickman.rightLC(20));
-//                Platform.runLater(() -> currentStickman.leftLC(20));
-                currentStickman.doAnimation(button.getText(), 500, true);
+//                Platform.runLater(() -> currentReeti.rightLC(20));
+//                Platform.runLater(() -> currentReeti.leftLC(20));
+                currentReeti.doAnimation(button.getText(), 500, true);
             });
             if (i % 3 == 2) {
                 gridPane.add(button, startIndex, endIndex);
@@ -620,45 +417,34 @@ public class ReetiStageController extends AReetiStageController implements ViewC
     public void fillComboForStickman() {
         ObservableList<String> stickmanNames = FXCollections.observableArrayList();
         stickmanNames.addAll(mStickmanOnstage.getStickmanNames().stream().collect(Collectors.toList()));
-        StickmanComboBox.getItems().clear();
-        StickmanComboBox.getItems().addAll(stickmanNames);
+        reetiComboBox.getItems().clear();
+        reetiComboBox.getItems().addAll(stickmanNames);
         if (!stickmanNames.isEmpty()) {
-            StickmanComboBox.setValue(stickmanNames.get(0));
-            currentStickman = (Reeti) mStickmanOnstage.getStickman(stickmanNames.get(0));
+            reetiComboBox.setValue(stickmanNames.get(0));
+            currentReeti = (Reeti) mStickmanOnstage.getStickman(stickmanNames.get(0));
             setComboboxValue((Reeti) mStickmanOnstage.getStickman(stickmanNames.get(0)));
         }
-        mStickmanComboList.clear();
-        mStickmanComboList.addAll(stickmanNames);
+        mReetiComboList.clear();
+        mReetiComboList.addAll(stickmanNames);
     }
 
     // set the setValue of combobox
     private void setComboboxValue(Reeti mStick) {
-        bodyColorPicker.setValue(colorWithoutOpacity(mStick.mBody.mColor));
-        bodyOpacitySlider.setValue(mStick.mBody.mColor.getOpacity());
-
-
-        headColorPicker.setValue(colorWithoutOpacity(mStick.mHead.mColor));
-        headOpacitySlider.setValue(mStick.mHead.mColor.getOpacity());
-
-        browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyelid.mColor));
-        browOpacitySlider.setValue(mStick.mLeftEyelid.mColor.getOpacity());
-
-        lipsColorPicker.setValue(colorWithoutOpacity(mStick.mMouth.mColor));
-        lipsOpacitySlider.setValue(mStick.mMouth.mColor.getOpacity());
-
+        bothLedColorPicker.setValue(colorWithoutOpacity(mStick.mBody.mColor));
+        leftLedColorPicker.setValue(colorWithoutOpacity(mStick.mHead.mColor));
     }
 
     @FXML
     private void handleWithPerlinNoise() {
 
-        currentStickman.doAnimation("StartIdle", 1000, true);
+        currentReeti.doAnimation("StartIdle", 1000, true);
 
     }
 
     @FXML
     private void handleWithoutPerlinNoise() {
 
-        currentStickman.doAnimation("StopIdle", 1000, true);
+        currentReeti.doAnimation("StopIdle", 1000, true);
     }
 
     public ReetiStage getStage3D() {
@@ -681,25 +467,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
     private void resetAllRecordCounter() {
         recCounter0.setText("0");
-        recCounter1.setText("0");
-        recCounter2.setText("0");
-        recCounter3.setText("0");
-        recCounter4.setText("0");
-        recCounter5.setText("0");
-        recCounter6.setText("0");
-        recCounter7.setText("0");
-        recCounter8.setText("0");
-        recCounter9.setText("0");
-        recCounter10.setText("0");
-        recCounter11.setText("0");
-        recCounter12.setText("0");
-        recCounter13.setText("0");
-        recCounter14.setText("0");
-        recCounter15.setText("0");
-        recCounter16.setText("0");
-        recCounter17.setText("0");
-        recCounter18.setText("0");
-        recCounter19.setText("0");
-        recCounter20.setText("0");
     }
+    
 }

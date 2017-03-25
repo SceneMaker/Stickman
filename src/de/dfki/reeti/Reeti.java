@@ -425,9 +425,7 @@ public class Reeti extends Pane implements Stickman
 
     private void addAllParts()
     {
-
         this.getChildren().addAll(mNeck, mHead, mBody, mSpeechBubble);
-
     }
 
     public void setLedColor(String color)
@@ -477,6 +475,22 @@ public class Reeti extends Pane implements Stickman
             }
         }
 
+    }
+
+    public void setLedColor(Color color, LED led)
+    {
+        switch (led)
+        {
+            case LEFTLED:
+                ledON(color, color, color, 0.3f, 0.9f, 0.1f, "L");
+                break;
+            case RIGHTLED:
+                ledON(color, color, color, 0.3f, 0.9f, 0.1f, "R");
+                break;
+            default:
+                ledON(color, color, color, 0.3f, 0.9f, 0.1f, "B");
+                break;
+        }
     }
 
     public void ledON(Color color1, Color color2, Color color3,
