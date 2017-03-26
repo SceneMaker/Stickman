@@ -111,18 +111,19 @@ public class Reeti extends Pane implements Stickman
     // id
     private long mID = 0;
 
+    //Movement
     double mUpperLipOldPos = 0;
     double mDownLipOldPos = 20;
     double mLeftCornerOldPos = 8;
     double mRightCornerOldPos = 8;
     double mLeftEyelidOldPos = 100;
     double mRightEyelidOldPos = 100;
-    
     double mLeftEye_X_OldPos = 30;
     double mLeftEye_Y_OldPos = 40;
-    
     double mRightEye_X_OldPos = 30;
     double mRightEye_Y_OldPos = 60;
+    double mLeftEarOldPos = 50;
+    double mRightEarOldPos = 50;
 
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size)
     {
@@ -770,6 +771,48 @@ public class Reeti extends Pane implements Stickman
         mRightEyelidOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "BlinkRightEyelid", 500, (int) rot, false);
+        try
+        {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        }
+        catch (InterruptedException ex)
+        {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+    
+    public void leftEar(int pos)
+    {
+        if (pos > 100)
+        {
+            pos = 100;
+        }
+        double rot = mLeftEarOldPos - pos;
+        mLeftEarOldPos = pos;
+
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftEarMovement", 500, (int) rot, false);
+        try
+        {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        }
+        catch (InterruptedException ex)
+        {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+    
+    public void rightEar(int pos)
+    {
+        if (pos > 100)
+        {
+            pos = 100;
+        }
+        double rot = mRightEarOldPos - pos;
+        mRightEarOldPos = pos;
+
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightEarMovement", 500, (int) -rot, false);
         try
         {
             mAnimationLaunchControl.acquire();
