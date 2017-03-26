@@ -77,13 +77,17 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 //              Platform.runLater(() -> currentReeti.topLip(80));
                 Platform.runLater(() -> 
                 {
-                     currentReeti.leftEyeTilt(80);
-                     currentReeti.leftEyePan(70);
+                     currentReeti.rightEyeTilt(100);
+                     currentReeti.leftEyeTilt(100);
                 });
               
         });
         SaveButton.setOnAction((event) -> {
-            Platform.runLater(() -> currentReeti.leftEyeTilt(100));
+            Platform.runLater(() -> 
+                {
+                     currentReeti.rightEyePan(0);
+                     currentReeti.leftEyePan(0);
+                });
         });
         
         leftLedOffButton.setOnAction((event) ->
