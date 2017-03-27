@@ -125,6 +125,7 @@ public class Reeti extends Pane implements Stickman
     double mLeftEarOldPos = 50;
     double mRightEarOldPos = 50;
     double neckRotatOldPos = 50;
+    double neckPanOldPos = 50;
 
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size)
     {
@@ -834,7 +835,30 @@ public class Reeti extends Pane implements Stickman
         double rot = neckRotatOldPos - pos;
         neckRotatOldPos = pos;
 
-        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckRotation", 500, (int) -rot, false);
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckRotation", 500, (int) rot, false);
+        try
+        {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        }
+        catch (InterruptedException ex)
+        {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+    
+    public void neckPan(int pos)
+    {
+        if (pos > 100)
+        {
+            pos = 100;
+        }
+        
+        double rot = neckPanOldPos - pos;
+        rot = (rot * 40) / 100;
+        neckPanOldPos = pos;
+
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckPan", 500, (int) rot, false);
         try
         {
             mAnimationLaunchControl.acquire();
