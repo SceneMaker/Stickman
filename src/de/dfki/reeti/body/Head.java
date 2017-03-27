@@ -134,9 +134,9 @@ public class Head extends BodyPartFX {
     @Override
     public void calculate(int step) {
 
-        Rotate rx = new Rotate(mXRotation, 0, 0, -25,  Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, 0, 0, -25, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, 0, 0, -25, Rotate.Z_AXIS);
+        Rotate rx = new Rotate(mXRotation, 0, 25, -25,  Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, 0, 25, -25, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, 0, 25, -25, Rotate.Z_AXIS);
 
         mHead.getTransforms().clear();
         mHead.getTransforms().addAll(rz, ry, rx);
