@@ -21,9 +21,6 @@ import javafx.scene.paint.Color;
  */
 public class DownLip extends AnimationReeti {
 
-    public DownLip() {
-        mAnimType = ANIMTYPE.ON;
-    }
 
     public DownLip(Reeti sm, int duration, int pos, boolean block) {
         super(sm, duration, pos, block);
@@ -37,8 +34,5 @@ public class DownLip extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthDownLip, "shape", "DOWNLIPACTION"));
         playAnimationPart(mDuration);
         
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

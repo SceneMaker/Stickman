@@ -21,9 +21,6 @@ import javafx.scene.paint.Color;
  */
 public class LeftEye_X extends AnimationReeti {
 
-    public LeftEye_X() {
-        mAnimType = ANIMTYPE.ON;
-    }
     
     int rot;
 
@@ -39,8 +36,5 @@ public class LeftEye_X extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", rot));
         playAnimationPart(mDuration);
         
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

@@ -20,9 +20,6 @@ import javafx.scene.paint.Color;
  */
 public class UpperLip extends AnimationReeti {
 
-    public UpperLip() {
-        mAnimType = ANIMTYPE.ON;
-    }
 
     public UpperLip(Reeti sm, int duration, int pos, boolean block) {
         super(sm, duration, pos, block);
@@ -36,8 +33,5 @@ public class UpperLip extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthUpperLip, "shape", "UPPERLIPACTION"));
         playAnimationPart(mDuration);
         
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

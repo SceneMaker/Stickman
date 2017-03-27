@@ -21,9 +21,6 @@ import javafx.scene.paint.Color;
  */
 public class NeckPan extends AnimationReeti {
 
-    public NeckPan() {
-        mAnimType = ANIMTYPE.ON;
-    }
     
     int rot;
 
@@ -39,8 +36,5 @@ public class NeckPan extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", rot));
         playAnimationPart(mDuration);
         
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

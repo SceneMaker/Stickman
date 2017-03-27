@@ -21,9 +21,6 @@ import javafx.scene.paint.Color;
  */
 public class LeftEarMovement extends AnimationReeti {
 
-    public LeftEarMovement() {
-        mAnimType = ANIMTYPE.ON;
-    }
     
     int rot;
 
@@ -39,8 +36,5 @@ public class LeftEarMovement extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "zrotate", rot));
         playAnimationPart(mDuration);
         
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

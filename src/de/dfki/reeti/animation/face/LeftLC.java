@@ -20,9 +20,6 @@ import javafx.scene.paint.Color;
  */
 public class LeftLC extends AnimationReeti {
 
-    public LeftLC() {
-        mAnimType = ANIMTYPE.ON;
-    }
 
     public LeftLC(Reeti sm, int duration, int pos, boolean block) {
         super(sm, duration, pos, block);
@@ -35,15 +32,6 @@ public class LeftLC extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouthLeftCorner, "shape", "LEFTCORNERACTION"));
         playAnimationPart(mDuration);
         
-//        pauseAnimation(2000);
-        // no sad
-//        mAnimationPartFX = new ArrayList<>();
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
-//        playAnimationPart(mDuration);
-        
 
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

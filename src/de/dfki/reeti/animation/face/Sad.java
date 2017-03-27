@@ -51,6 +51,7 @@ public class Sad extends AnimationReeti {
         mReeti.rightEar(0);
         mReeti.rightLC(0);
         mReeti.leftLC(0);
+        mReeti.neckPan(0);
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", 60));
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", 60));
 //        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", 15));

@@ -21,9 +21,6 @@ import javafx.scene.paint.Color;
  */
 public class BlinkRightEyelid extends AnimationReeti {
 
-    public BlinkRightEyelid() {
-        mAnimType = ANIMTYPE.ON;
-    }
     
     int rot;
 
@@ -39,8 +36,5 @@ public class BlinkRightEyelid extends AnimationReeti {
         mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", rot));
         playAnimationPart(mDuration);
         
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
     }
 }

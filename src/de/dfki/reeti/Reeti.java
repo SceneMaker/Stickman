@@ -112,21 +112,21 @@ public class Reeti extends Pane implements Stickman
     private long mID = 0;
 
     //Movement
-    double mUpperLipOldPos = 0;
-    double mDownLipOldPos = 20;
-    double mLeftCornerOldPos = 8;
-    double mRightCornerOldPos = 8;
-    double mLeftEyelidOldPos = 100;
-    double mRightEyelidOldPos = 100;
-    double mLeftEye_X_OldPos = 30;
-    double mLeftEye_Y_OldPos = 40;
-    double mRightEye_X_OldPos = 30;
-    double mRightEye_Y_OldPos = 60;
-    double mLeftEarOldPos = 50;
-    double mRightEarOldPos = 50;
-    double neckRotatOldPos = 50;
-    double neckPanOldPos = 50;
-    double neckTiltOldPos = 50;
+    private double mUpperLipOldPos = 0;
+    private double mDownLipOldPos = 20;
+    private double mLeftCornerOldPos = 8;
+    private double mRightCornerOldPos = 8;
+    private double mLeftEyelidOldPos = 100;
+    private double mRightEyelidOldPos = 100;
+    private double mLeftEye_X_OldPos = 30;
+    private double mLeftEye_Y_OldPos = 40;
+    private double mRightEye_X_OldPos = 30;
+    private double mRightEye_Y_OldPos = 60;
+    private double mLeftEarOldPos = 50;
+    private double mRightEarOldPos = 50;
+    private double mNeckRotatOldPos = 50;
+    private double mNeckPanOldPos = 50;
+    private double mNeckTiltOldPos = 50;
 
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size)
     {
@@ -833,8 +833,8 @@ public class Reeti extends Pane implements Stickman
         {
             pos = 100;
         }
-        double rot = neckRotatOldPos - pos;
-        neckRotatOldPos = pos;
+        double rot = mNeckRotatOldPos - pos;
+        mNeckRotatOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckRotation", 500, (int) rot, false);
         try
@@ -855,9 +855,9 @@ public class Reeti extends Pane implements Stickman
             pos = 100;
         }
         
-        double rot = neckPanOldPos - pos;
+        double rot = mNeckPanOldPos - pos;
         rot = (rot * 40) / 100;
-        neckPanOldPos = pos;
+        mNeckPanOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckPan", 500, (int) rot, false);
         try
@@ -877,9 +877,9 @@ public class Reeti extends Pane implements Stickman
         {
             pos = 100;
         }
-        double rot = neckTiltOldPos - pos;
+        double rot = mNeckTiltOldPos - pos;
         rot = (rot * 40) / 100;
-        neckTiltOldPos = pos;
+        mNeckTiltOldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckTilt", 500, (int) rot, false);
         try
@@ -931,4 +931,83 @@ public class Reeti extends Pane implements Stickman
         }
         return ledColor;
     }
+
+    public double getmUpperLipOldPos()
+    {
+        return mUpperLipOldPos;
+    }
+
+    public double getmLeftCornerOldPos()
+    {
+        return mLeftCornerOldPos;
+    }
+
+    public double getmLeftEyelidOldPos()
+    {
+        return mLeftEyelidOldPos;
+    }
+
+    public double getmRightEyelidOldPos()
+    {
+        return mRightEyelidOldPos;
+    }
+
+    public double getmLeftEye_X_OldPos()
+    {
+        return mLeftEye_X_OldPos;
+    }
+
+    public double getmLeftEye_Y_OldPos()
+    {
+        return mLeftEye_Y_OldPos;
+    }
+
+    public double getmRightEye_X_OldPos()
+    {
+        return mRightEye_X_OldPos;
+    }
+
+    public double getmRightEye_Y_OldPos()
+    {
+        return mRightEye_Y_OldPos;
+    }
+
+    public double getmLeftEarOldPos()
+    {
+        return mLeftEarOldPos;
+    }
+
+    public double getmRightEarOldPos()
+    {
+        return mRightEarOldPos;
+    }
+
+    public double getmNeckRotatOldPos()
+    {
+        return mNeckRotatOldPos;
+    }
+
+    public double getmNeckPanOldPos()
+    {
+        return mNeckPanOldPos;
+    }
+
+    public double getmNeckTiltOldPos()
+    {
+        return mNeckTiltOldPos;
+    }
+
+    public double getmDownLipOldPos()
+    {
+        return mDownLipOldPos;
+    }
+
+    public double getmRightCornerOldPos()
+    {
+        return mRightCornerOldPos;
+    }
+    
+    
+    
+    
 }
