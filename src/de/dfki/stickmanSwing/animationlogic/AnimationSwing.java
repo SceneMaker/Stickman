@@ -152,11 +152,14 @@ public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable
         }
         // send event that AnimationSwing is ended
 
-        // API or TCP-Interface
-        if (!mStickman.getStickmanStageController().ismNetwork()) {
-            mStickman.notifyListeners(mID);
-        } else {
-            mStickman.getStickmanStageController().sendAnimationUpdate("end", getmID());
+        // send event that AnimationSwing is ended - if there is a recipient
+        if (mStickman.getStickmanStageController() != null) {
+            // API or TCP-Interface
+            if (!mStickman.getStickmanStageController().ismNetwork()) {
+                mStickman.notifyListeners(mID);
+            } else {
+                mStickman.getStickmanStageController().sendAnimationUpdate("end", getmID());
+            }
         }
     }
 
