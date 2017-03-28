@@ -65,7 +65,7 @@ public class LeftEyelid extends BodyPartFX {
     @Override
     public void init() {
         super.init();
-        mLeftEyeMesh.setTranslateX(mStart.x + 54);
+        mLeftEyeMesh.setTranslateX(mStart.x + 55);
         mLeftEyeMesh.setTranslateY(mStart.y + 45);
         mLeftEyeMesh.setTranslateZ(-65);
     }

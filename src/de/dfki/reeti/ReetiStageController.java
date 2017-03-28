@@ -85,7 +85,7 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         SaveButton.setOnAction((event) -> {
             Platform.runLater(() -> 
                 {
-                     currentReeti.neckPan(100);
+                     currentReeti.neckTilt(100);
 //                     currentReeti.leftEar(100);
                 });
         });

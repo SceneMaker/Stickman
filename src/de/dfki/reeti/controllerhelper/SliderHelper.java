@@ -20,19 +20,19 @@ import javafx.scene.transform.Rotate;
 public class SliderHelper {
 
     public static void handleHeadSlider(ReetiStageController controller, Slider slider, String achse) {
-        slider.setMin(-180);
-        slider.setMax(180);
+        slider.setMin(-50);
+        slider.setMax(50);
         slider.setValue(0);
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
-                controller.currentReeti.mHead.mXRotation = newValue;
+                controller.currentReeti.mHead.mXRotation = (newValue * 40) / 100;;
                 controller.headXRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderXValue));
             } else if (achse.equalsIgnoreCase("Y")) {
                 controller.currentReeti.mHead.mYRotation = newValue;
                 controller.headYRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderYValue));
             } else {
-                controller.currentReeti.mHead.mZRotation = newValue;
+                controller.currentReeti.mHead.mZRotation =  (newValue * 40) / 100;
                 controller.headZRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderZValue));
             }
 

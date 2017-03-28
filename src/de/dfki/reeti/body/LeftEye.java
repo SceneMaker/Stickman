@@ -55,7 +55,7 @@ public class LeftEye extends BodyPartFX {
         super.init();
         mLeftEarMesh.setTranslateX(mStart.x + 55);
         mLeftEarMesh.setTranslateY(mStart.y + 47);
-        mLeftEarMesh.setTranslateZ(-54);
+        mLeftEarMesh.setTranslateZ(-62);
     }
 
     @Override
