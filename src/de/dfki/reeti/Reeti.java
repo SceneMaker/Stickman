@@ -646,7 +646,7 @@ public class Reeti extends Pane implements Stickman
 
     /**
      *
-     * @param pos a int between 0 and 100 (default value is 20)
+     * @param pos a int between 0 and 100 (default value is 100)
      */
     public void bottomLip(int pos)
     {

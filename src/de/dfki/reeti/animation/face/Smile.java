@@ -8,9 +8,7 @@ import de.dfki.reeti.animationlogic.AnimationReeti;
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
 public class Smile extends AnimationReeti {
 
@@ -24,16 +22,15 @@ public class Smile extends AnimationReeti {
 
     @Override
     public void playAnimation() {
-        // smile
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SMILE"));
-        playAnimationPart(mDuration);
-        pauseAnimation(1200);
 
-        // no smile
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "SMILEEND"));
-        playAnimationPart(mDuration);
+        mReeti.bottomLip(50);
+        mReeti.leftLC(70);
+        mReeti.rightLC(70);
+        mReeti.setLedColor("green", Reeti.LED.LEFTLED);
+        mReeti.setLedColor("red", Reeti.LED.RIGHTLED);
+        mReeti.leftEar(100);
+        mReeti.rightEar(100);
+
 
         if (ReetiStageController.currentRadioButton != null) {
             ReetiStageController.currentRadioButton.setSelected(false);
