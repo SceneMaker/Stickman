@@ -563,8 +563,10 @@ public class Reeti extends Pane implements Stickman
 
     /**
      *
-     * @param pos a int between 0 and 100
+     * @param pos a int between 0 and 100 (default value is 50)
+     *
      */
+
     public void rightLC(int pos)
     {
         if (pos > 100)
@@ -587,6 +589,10 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 50)
+     */
     public void leftLC(int pos)
     {
         if (pos > 100)
@@ -609,6 +615,10 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 0)
+     */
     public void topLip(int pos)
     {
         if (pos > 100)
@@ -634,6 +644,10 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 20)
+     */
     public void bottomLip(int pos)
     {
         if (pos > 100)
@@ -658,7 +672,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 30)
+     */
     public void leftEyePan(int pos)
     {
         if (pos > 100)
@@ -679,7 +697,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 40)
+     */
     public void leftEyeTilt(int pos)
     {
         if (pos > 100)
@@ -700,7 +722,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 30)
+     */
     public void rightEyePan(int pos)
     {
         if (pos > 100)
@@ -721,7 +747,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 60)
+     */
     public void rightEyeTilt(int pos)
     {
         if (pos > 100)
@@ -743,6 +773,10 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 100)
+     */
     public void leftEyeLid(int pos)
     {
         if (pos > 100)
@@ -764,6 +798,10 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 100)
+     */
     public void rightEyeLid(int pos)
     {
         if (pos > 100)
@@ -784,7 +822,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 50)
+     */
     public void leftEar(int pos)
     {
         if (pos > 100)
@@ -805,7 +847,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 50)
+     */
     public void rightEar(int pos)
     {
         if (pos > 100)
@@ -826,7 +872,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 50)
+     */
     public void neckRotat(int pos)
     {
         if (pos > 100)
@@ -847,7 +897,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 50)
+     */
     public void neckPan(int pos)
     {
         if (pos > 100)
@@ -870,7 +924,11 @@ public class Reeti extends Pane implements Stickman
             mLogger.severe(ex.getMessage());
         }
     }
-    
+
+    /**
+     *
+     * @param pos a int between 0 and 100 (default value is 50)
+     */
     public void neckTilt(int pos)
     {
         if (pos > 100)
