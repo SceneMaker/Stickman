@@ -17,28 +17,34 @@ import javafx.scene.transform.Rotate;
  */
 public class SliderHelper {
 
+    final static int HEADSTARTPOSITION = 50;
+    private static double headCurrentXPos;
+    private static double headCurrentYPos;
+    private static double headCurrentZPos;
+
+
     public static void handleHeadSlider(ReetiStageController controller, Slider slider, String achse) {
-        int startPosition = 50;
         slider.setMin(0);
         slider.setMax(100);
         slider.setValue(50);
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
-                controller.currentReeti.mHead.mXRotation = (-(newValue-startPosition) * 40) / 100;
+                headCurrentXPos = (-(newValue- HEADSTARTPOSITION) * 40) / 100;
+                controller.currentReeti.mHead.mXRotation = headCurrentXPos;
                 controller.headXRotationField.setText(Integer.toString((int) newValue));
             } else if (achse.equalsIgnoreCase("Y")) {
-                controller.currentReeti.mHead.mYRotation = -(newValue-startPosition);
+                headCurrentYPos = -(newValue- HEADSTARTPOSITION);
+                controller.currentReeti.mHead.mYRotation = headCurrentYPos;
                 controller.headYRotationField.setText(Integer.toString((int) newValue));
             } else {
-                controller.currentReeti.mHead.mZRotation =  ((newValue-startPosition) * 40) / 100;
+                headCurrentZPos = ((newValue- HEADSTARTPOSITION) * 40) / 100;
+                controller.currentReeti.mHead.mZRotation =  headCurrentZPos;
                 controller.headZRotationField.setText(Integer.toString((int) newValue));
             }
-
             controller.currentReeti.mHead.calculate(0);
         });
     }
-
 
     public static void handleCameraSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(-180);

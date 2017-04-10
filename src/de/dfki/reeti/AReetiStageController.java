@@ -43,11 +43,45 @@ public abstract class AReetiStageController {
     @FXML
     public Button ExitButton;
     @FXML
-    Button startCamera;
+    public Button leftLedOffButton;
     @FXML
-    Button stopCamera;
+    public Button rightLedOffButton;
     @FXML
-    Button resetCamera;
+    public Button bothLedOffButton;
+    @FXML
+    public Button cameraXPlusTranslationButton;
+    @FXML
+    public Button cameraXMinusTranslationButton;
+    @FXML
+    public Button nearClipMinusButton;
+    @FXML
+    public Button nearClipPlusButton;
+    @FXML
+    public Button cameraYPlusTranslationButton;
+    @FXML
+    public Button cameraYMinusTranslationButton;
+    @FXML
+    public Button cameraZMinusTranslationButton;
+    @FXML
+    public Button cameraZPlusTranslationButton;
+    @FXML
+    public Button farClipMinusButton;
+    @FXML
+    public Button farClipPlusButton;
+    @FXML
+    public Button fieldOfViewMinusButton;
+    @FXML
+    public Button fieldOfViewPlusButton;
+    @FXML
+    public Button startCamera;
+    @FXML
+    public Button stopCamera;
+    @FXML
+    public Button resetCamera;
+    @FXML
+    public Button headRotationTest;
+    @FXML
+    public Button headRotationCreate;
     @FXML
     public ColorPicker leftLedColorPicker;
     @FXML
@@ -55,63 +89,21 @@ public abstract class AReetiStageController {
     @FXML
     public ColorPicker bothLedColorPicker;
     @FXML
-    public Button leftLedOffButton;
+    public ScrollPane emotionsScrollPane;
     @FXML
-    public Button rightLedOffButton;
-    @FXML
-    public Button bothLedOffButton;
-    @FXML
-    ScrollPane emotionsScrollPane;
-    @FXML
-    ScrollPane environmentScrollPane;
-    @FXML
-    public Slider cameraXSlider;
-    @FXML
-    public Slider cameraYSlider;
-    @FXML
-    public Slider cameraZSlider;
-    @FXML
-    public Button cameraXPlusTranslationButton;
-    @FXML
-    public Button cameraXMinusTranslationButton;
+    public ScrollPane environmentScrollPane;
     @FXML
     public TextField cameraXTranslationField;
     @FXML
-    public Button cameraYPlusTranslationButton;
-    @FXML
-    public Button cameraYMinusTranslationButton;
-    @FXML
     public TextField cameraYTranslationField;
-    @FXML
-    public Button cameraZPlusTranslationButton;
-    @FXML
-    public Button cameraZMinusTranslationButton;
     @FXML
     public TextField cameraZTranslationField;
     @FXML
-    public Button nearClipMinusButton;
-    @FXML
-    public Button nearClipPlusButton;
-    @FXML
     public TextField nearClipField;
-    @FXML
-    public Button farClipMinusButton;
-    @FXML
-    public Button farClipPlusButton;
     @FXML
     public TextField farClipField;
     @FXML
-    public Button fieldOfViewMinusButton;
-    @FXML
-    public Button fieldOfViewPlusButton;
-    @FXML
     public TextField fieldOfViewField;
-    @FXML
-    public Slider headXSlider;
-    @FXML
-    public Slider headYSlider;
-    @FXML
-    public Slider headZSlider;
     @FXML
     public TextField headXRotationField;
     @FXML
@@ -119,11 +111,17 @@ public abstract class AReetiStageController {
     @FXML
     public TextField headZRotationField;
     @FXML
-    public Label recCounter0;
+    public Slider cameraXSlider;
     @FXML
-    public Button headRotationTest;
+    public Slider cameraYSlider;
     @FXML
-    public Button headRotationCreate;
+    public Slider cameraZSlider;
+    @FXML
+    public Slider headXSlider;
+    @FXML
+    public Slider headYSlider;
+    @FXML
+    public Slider headZSlider;
 
     public final ArrayList<String> mReetiComboList = new ArrayList<>();
 

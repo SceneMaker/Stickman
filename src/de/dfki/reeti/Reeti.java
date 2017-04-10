@@ -949,7 +949,7 @@ public class Reeti extends Pane implements Stickman
         rot = (rot * 40) / 100;
         mNeckTiltOldPos = pos;
 
-        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckTilt", 500, (int) rot, false);
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "NeckTilt", 500, (int) -rot, false);
         try
         {
             mAnimationLaunchControl.acquire();

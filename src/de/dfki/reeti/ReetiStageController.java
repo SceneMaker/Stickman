@@ -377,9 +377,4 @@ public class ReetiStageController extends AReetiStageController implements ViewC
     private Color colorWithoutOpacity(Color color) {
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), 1);
     }
-
-    private void resetAllRecordCounter() {
-        recCounter0.setText("0");
-    }
-    
 }
