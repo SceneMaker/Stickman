@@ -48,7 +48,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         });
 
         fillEmotionScrollPane();
-        fillHeadScrollPane();
         fillEnvironmentScrollPane();
 
         perlinNoiseGroup = new ToggleGroup();
@@ -347,18 +346,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
 
         createAndHandleRadioButtons(getClassesNames, emotionsScrollPane);
-    }
-
-
-
-    private void fillHeadScrollPane() {
-        ArrayList<String> getClassesNames;
-        Packageparser parser = new Packageparser(PACKAGE_HEAD);
-        getClassesNames = parser.getClassNameList();
-        ObservableList<String> classNames = FXCollections.observableArrayList();
-        classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
-
-        createAndHandleRadioButtons(getClassesNames, headScrollPane);
     }
 
     private void fillEnvironmentScrollPane() {

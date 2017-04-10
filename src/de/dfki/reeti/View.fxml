@@ -85,11 +85,6 @@
                                           <ScrollPane fx:id="emotionsScrollPane" prefHeight="200.0" prefWidth="422.0" />
                                       </content>
                                   </Tab>
-                                  <Tab closable="false" text="Head">
-                                      <content>
-                                          <ScrollPane fx:id="headScrollPane" prefHeight="200.0" prefWidth="422.0" />
-                                      </content>
-                                  </Tab>
                                   <Tab closable="false" text="Environment">
                                       <content>
                                           <ScrollPane fx:id="environmentScrollPane" prefHeight="200.0" prefWidth="422.0" />
