@@ -63,6 +63,8 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         SliderHelper.handleHeadSlider(this, headZSlider, "Z");
         SliderHelper.handleLeftEyeXSlider(this);
         SliderHelper.handleLeftEyeYSlider(this);
+        SliderHelper.handleRightEyeXSlider(this);
+        SliderHelper.handleRightEyeYSlider(this);
 
         ExitButton.setOnAction((ActionEvent event) -> {
             Stage stage = (Stage) ExitButton.getScene().getWindow();
