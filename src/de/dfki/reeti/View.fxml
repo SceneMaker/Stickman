@@ -160,6 +160,38 @@
                                                                   </AnchorPane>
                                                               </content>
                                                           </Tab>
+                                          <Tab closable="false" text="LeftEye">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Label layoutX="4.0" layoutY="20.0" text="X" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Slider fx:id="leftEyeYSlider" layoutX="18.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <Label layoutX="4.0" layoutY="65.0" prefHeight="0.0" prefWidth="11.0" text="Y" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Slider fx:id="leftEyeXSlider" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="leftEyeXRotationField" editable="false" layoutX="164.0" layoutY="104.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                      <TextField fx:id="leftEyeYRotationField" editable="false" layoutX="249.0" layoutY="104.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                      <Label layoutX="148.0" layoutY="109.0" text="X:" textFill="#f2f2f2">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="233.0" layoutY="109.0" text="Y:" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
                                                       </tabs>
                                                   </TabPane>
                                               </children>

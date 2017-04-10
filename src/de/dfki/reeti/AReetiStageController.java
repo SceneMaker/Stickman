@@ -6,6 +6,7 @@
 package de.dfki.reeti;
 
 import de.dfki.common.StickmansOnStage;
+import de.dfki.reeti.controllerhelper.SliderHelper;
 import de.dfki.reeti.stage.ReetiStage;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.TextFlow;
 
 /**
  *
@@ -111,6 +113,10 @@ public abstract class AReetiStageController {
     @FXML
     public TextField headZRotationField;
     @FXML
+    public TextField leftEyeXRotationField;
+    @FXML
+    public TextField leftEyeYRotationField;
+    @FXML
     public Slider cameraXSlider;
     @FXML
     public Slider cameraYSlider;
@@ -122,6 +128,10 @@ public abstract class AReetiStageController {
     public Slider headYSlider;
     @FXML
     public Slider headZSlider;
+    @FXML
+    public Slider leftEyeXSlider;
+    @FXML
+    public Slider leftEyeYSlider;
 
     public final ArrayList<String> mReetiComboList = new ArrayList<>();
 
@@ -130,15 +140,9 @@ public abstract class AReetiStageController {
     public ToggleGroup perlinNoiseGroup;
     public StickmansOnStage mStickmanOnstage;
 
-    double xRotateFactor;
-    double yRotateFactor;
-    double zRotateFactor;
 
     public Reeti currentReeti;
     public static RadioButton currentRadioButton;
     public ReetiStage stage3D;
-    public String backgroundRecord = null;
 
-    public AnchorPane classNamePane;
-    public AnchorPane testView;
 }
