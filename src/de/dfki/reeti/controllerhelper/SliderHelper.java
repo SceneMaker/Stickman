@@ -67,6 +67,45 @@ public class SliderHelper {
         });
     }
 
+    public static void handleRightEyeXSlider(ReetiStageController controller) {
+        controller.rightEyeXSlider.setMin(0);
+        controller.rightEyeXSlider.setMax(100);
+        controller.rightEyeXSlider.setValue(50);
+        controller.rightEyeXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            Reeti reeti = controller.currentReeti;
+            double newValue = new_val.doubleValue();
+            controller.currentReeti.mRightEye.mXRotation = (-(newValue- 50) * 90) / 100;
+            controller.rightEyeXRotationField.setText(Integer.toString((int) newValue));
+            controller.currentReeti.mRightEye.calculate(0);
+        });
+    }
+
+    public static void handleRightEyeYSlider(ReetiStageController controller) {
+        controller.rightEyeYSlider.setMin(0);
+        controller.rightEyeYSlider.setMax(100);
+        controller.rightEyeYSlider.setValue(50);
+        controller.rightEyeYSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            Reeti reeti = controller.currentReeti;
+            double newValue = new_val.doubleValue();
+            controller.currentReeti.mRightEye.mYRotation = (-(newValue- 50) * 90) / 100;
+            controller.rightEyeYRotationField.setText(Integer.toString((int) newValue));
+            controller.currentReeti.mRightEye.calculate(0);
+        });
+    }
+
+    public static void handleLeftEyeLidXSlider(ReetiStageController controller) {
+        controller.leftEyeLidXSlider.setMin(0);
+        controller.leftEyeLidXSlider.setMax(100);
+        controller.leftEyeLidXSlider.setValue(100);
+        controller.leftEyeLidXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            Reeti reeti = controller.currentReeti;
+            double newValue = new_val.doubleValue();
+            controller.currentReeti.mLeftEyelid.mXRotation = (-(newValue- 100));
+            controller.leftEyeLidXRotationField.setText(Integer.toString((int) newValue));
+            controller.currentReeti.mLeftEyelid.calculate(0);
+        });
+    }
+
     public static void handleCameraSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(-180);
         slider.setMax(180);
