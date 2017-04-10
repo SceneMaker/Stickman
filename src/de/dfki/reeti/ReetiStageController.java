@@ -48,7 +48,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         });
 
         fillEmotionScrollPane();
-        fillGestureScrollPane();
         fillHeadScrollPane();
         fillEnvironmentScrollPane();
 
@@ -67,20 +66,12 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         SliderHelper.handleHeadSlider(this, headZSlider, "Z");
 
         ExitButton.setOnAction((ActionEvent event) -> {
-//            Stage stage = (Stage) ExitButton.getScene().getWindow();
-//            stage.close();
-//            System.exit(0);
+            Stage stage = (Stage) ExitButton.getScene().getWindow();
+            stage.close();
+            System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentReeti, this);
 //            cr.start();
-//              Platform.runLater(() -> currentReeti.rightLC(20));
-//            Platform.runLater(() -> currentReeti.leftLC(20));
-//              Platform.runLater(() -> currentReeti.topLip(80));
-                Platform.runLater(() -> 
-                {
-                     currentReeti.neckPan(0);
-//                     currentReeti.leftEar(0);
-                });
-              
+
         });
         SaveButton.setOnAction((event) -> {
             Platform.runLater(() -> 
@@ -358,15 +349,7 @@ public class ReetiStageController extends AReetiStageController implements ViewC
         createAndHandleRadioButtons(getClassesNames, emotionsScrollPane);
     }
 
-    private void fillGestureScrollPane() {
-        ArrayList<String> getClassesNames;
-        Packageparser parser = new Packageparser(PACKAGE_GESTURE);
-        getClassesNames = parser.getClassNameList();
-        ObservableList<String> classNames = FXCollections.observableArrayList();
-        classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));
 
-        createAndHandleRadioButtons(getClassesNames, gestureScrollPane);
-    }
 
     private void fillHeadScrollPane() {
         ArrayList<String> getClassesNames;

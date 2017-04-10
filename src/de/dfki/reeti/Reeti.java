@@ -437,6 +437,11 @@ public class Reeti extends Pane implements Stickman
         this.getChildren().addAll(mNeck, mHead, mBody, mSpeechBubble);
     }
 
+    /**
+     *
+     * @param color red, green, lightGreen, blue, darkBlue, turquoise, yellow, violer, white, swop
+     *
+     */
     public void setLedColor(String color)
     {
         Color ledColor = checkColor(color);
@@ -450,6 +455,11 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    /**
+     *
+     * @param color red, green, lightGreen, blue, darkBlue, turquoise, yellow, violer, white, swop
+     * @param led left, right, both
+     */
     public void setLedColor(String color, LED led)
     {
         Color ledColor = checkColor(color);

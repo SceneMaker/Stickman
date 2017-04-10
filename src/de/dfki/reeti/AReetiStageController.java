@@ -27,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
 public abstract class AReetiStageController {
 
     public static final String PACKAGE_EMOTIONEXPRESSION = "de.dfki.reeti.animation.face";
-    public static final String PACKAGE_GESTURE = "de.dfki.reeti.animation.gesture";
+//    public static final String PACKAGE_GESTURE = "de.dfki.reeti.animation.gesture";
     public static final String PACKAGE_HEAD = "de.dfki.reeti.animation.head";
     public static final String PACKAGE_ENVIRONMENT = "de.dfki.reeti.animation.environment";
     public static final String PACKAGE_DYNAMIC_CLASSES = "de.dfki.stickman3D.dynamic.classes";
