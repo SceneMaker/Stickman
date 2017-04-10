@@ -5,8 +5,6 @@
  */
 package de.dfki.reeti.controllerhelper;
 
-import de.dfki.reeti.dynamic.classes.Helper;
-import de.dfki.reeti.Reeti;
 import de.dfki.reeti.ReetiStageController;
 import java.awt.Point;
 import javafx.beans.value.ObservableValue;
@@ -20,20 +18,21 @@ import javafx.scene.transform.Rotate;
 public class SliderHelper {
 
     public static void handleHeadSlider(ReetiStageController controller, Slider slider, String achse) {
-        slider.setMin(-50);
-        slider.setMax(50);
-        slider.setValue(0);
+        int startPosition = 50;
+        slider.setMin(0);
+        slider.setMax(100);
+        slider.setValue(50);
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
-                controller.currentReeti.mHead.mXRotation = (newValue * 40) / 100;;
-                controller.headXRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderXValue));
+                controller.currentReeti.mHead.mXRotation = (-(newValue-startPosition) * 40) / 100;
+                controller.headXRotationField.setText(Integer.toString((int) newValue));
             } else if (achse.equalsIgnoreCase("Y")) {
-                controller.currentReeti.mHead.mYRotation = newValue;
-                controller.headYRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderYValue));
+                controller.currentReeti.mHead.mYRotation = -(newValue-startPosition);
+                controller.headYRotationField.setText(Integer.toString((int) newValue));
             } else {
-                controller.currentReeti.mHead.mZRotation =  (newValue * 40) / 100;
-                controller.headZRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderZValue));
+                controller.currentReeti.mHead.mZRotation =  ((newValue-startPosition) * 40) / 100;
+                controller.headZRotationField.setText(Integer.toString((int) newValue));
             }
 
             controller.currentReeti.mHead.calculate(0);

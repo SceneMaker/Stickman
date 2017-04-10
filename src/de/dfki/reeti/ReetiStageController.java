@@ -4,8 +4,6 @@ import de.dfki.common.StickmansOnStage;
 import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.reeti.controllerhelper.ColorHelper;
 import de.dfki.reeti.controllerhelper.SliderHelper;
-import de.dfki.reeti.dynamic.classes.DynamicCompiler;
-import de.dfki.reeti.dynamic.classes.Helper;
 import de.dfki.reeti.stage.ReetiStage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -95,70 +93,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
             currentReeti.mLeftCheek.getLedGroup().setVisible(false);
             currentReeti.mRightCheek.getLedGroup().setVisible(false);
         });
-    }
-
-    @FXML
-    private void handleRecord(MouseEvent event) {
-        Helper.switchRecordID(((Button) event.getSource()).getId(), this);
-    }
-
-    @FXML
-    private void handleCreate() {
-        Stage stage = new Stage();
-
-        try {
-            classNamePane = FXMLLoader.load(Helper.class.getResource("ClassNameView.fxml"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(ExitButton.getScene().getWindow());
-
-        Scene scene = new Scene(classNamePane, 400, 140);
-        stage.setScene(scene);
-        stage.show();
-
-        Button OKButton = (Button) classNamePane.getChildren().get(2);
-        OKButton.setOnMouseClicked((event) -> {
-            String name = ((TextField) classNamePane.getChildren().get(0)).getText();
-
-            DynamicCompiler.currentStickman = this.currentReeti;
-            DynamicCompiler.setClassName(name);
-            DynamicCompiler.create();
-            DynamicCompiler.methodContent.setLength(0);
-            resetAllRecordCounter();
-            stage.close();
-        });
-    }
-
-    @FXML
-    private void handleTest() throws IOException {
-        Helper.resetAllRotation(this);
-        Packageparser parser = new Packageparser(PACKAGE_DYNAMIC_CLASSES);
-        ArrayList<String> list = parser.getClassNameList();
-
-        Stage stage = new Stage();
-        testView = FXMLLoader.load(Helper.class.getResource("testView.fxml"));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(ExitButton.getScene().getWindow());
-
-        Scene scene = new Scene(testView, 400, 140);
-        stage.setScene(scene);
-
-        ComboBox<String> existClasses = (ComboBox<String>) testView.getChildren().get(1);
-
-        for (int i = 0; i < list.size(); i++) {
-            existClasses.getItems().add(list.get(i));
-        }
-
-        existClasses.valueProperty().addListener((observable, oldValue, newValue) -> {
-            DynamicCompiler.currentStickman = currentReeti;
-            DynamicCompiler.runIt(newValue);
-            stage.close();
-
-        });
-        stage.show();
     }
 
     public Reeti getStickmanAs3D(String mStickmancombobox) {
