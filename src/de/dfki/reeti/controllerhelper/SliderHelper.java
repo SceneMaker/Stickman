@@ -160,6 +160,21 @@ public class SliderHelper {
         });
     }
 
+    public static void handleRightLCSlider(ReetiStageController controller) {
+        controller.rightLCSlider.setMin(-100);
+        controller.rightLCSlider.setMax(0);
+        controller.rightLCSlider.setValue(-50);
+        controller.rightLCSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            double newValue = Math.abs(new_val.doubleValue());
+            controller.currentReeti.mMouthRightCorner.setShape("RIGHTCORNERACTION");
+            double SliderValue = (newValue + 170) * 16 / 100;
+            controller.currentReeti.mMouthRightCorner.setRightCornerRegulator(SliderValue);
+            int fieldValue = (int)Math.abs(newValue - 100);
+            controller.rightLCRotationField.setText(Integer.toString(fieldValue));
+            controller.currentReeti.mMouthRightCorner.calculate(0);
+        });
+    }
+
     public static void handleCameraSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(-180);
         slider.setMax(180);
