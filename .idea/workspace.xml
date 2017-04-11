@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="left/rightEarRotation">
+    <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/AReetiStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/AReetiStageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/View.fxml" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/View.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Test.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Test.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,7 +69,7 @@
       <file leaf-file-name="SliderHelper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
+            <state relative-caret-position="237">
               <caret line="184" column="48" lean-forward="false" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -835,13 +832,6 @@
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
     </task>
-    <task id="LOCAL-00007" summary="First attempt to transform old stickmanStage">
-      <created>1474277666335</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1474277666335</updated>
-    </task>
     <task id="LOCAL-00008" summary="Refactor for stickman Stage">
       <created>1474287851492</created>
       <option name="number" value="00008" />
@@ -1178,7 +1168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491922101594</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="topLipTranslation BUG FIX">
+      <created>1491922142552</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1491922142552</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1262,7 +1259,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Renaming of classes, moving classes" />
     <MESSAGE value="Move css, creating new packages" />
     <MESSAGE value="Text For stickman 3D" />
     <MESSAGE value="Allowing opening 2D FX and 3D at the same time" />
@@ -1287,7 +1283,8 @@
     <MESSAGE value="leftLCTranslation" />
     <MESSAGE value="leftLC/rightLCRotation" />
     <MESSAGE value="topLip Translation" />
-    <option name="LAST_COMMIT_MESSAGE" value="topLip Translation" />
+    <MESSAGE value="topLipTranslation BUG FIX" />
+    <option name="LAST_COMMIT_MESSAGE" value="topLipTranslation BUG FIX" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1803,7 +1800,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
+        <state relative-caret-position="237">
           <caret line="184" column="48" lean-forward="false" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />

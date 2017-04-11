@@ -289,7 +289,7 @@
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
                                                    <children>
                                                       <Slider fx:id="topLipSlider" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
-                                                      <TextField fx:id="topLipRotationField" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                      <TextField fx:id="topLipRotationField" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
