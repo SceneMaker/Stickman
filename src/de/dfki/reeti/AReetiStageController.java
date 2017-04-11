@@ -81,10 +81,6 @@ public abstract class AReetiStageController {
     @FXML
     public Button resetCamera;
     @FXML
-    public Button headRotationTest;
-    @FXML
-    public Button headRotationCreate;
-    @FXML
     public ColorPicker leftLedColorPicker;
     @FXML
     public ColorPicker rightLedColorPicker;
@@ -117,7 +113,25 @@ public abstract class AReetiStageController {
     @FXML
     public TextField leftEyeYRotationField;
     @FXML
+    public TextField rightEyeXRotationField;
+    @FXML
+    public TextField rightEyeYRotationField;
+    @FXML
+    public TextField leftEyeLidXRotationField;
+    @FXML
+    public TextField rightEyeLidXRotationField;
+    @FXML
+    public TextField rightEarRotationField;
+    @FXML
+    public TextField leftLCRotationField;
+    @FXML
+    public TextField rightLCRotationField;
+    @FXML
+    public TextField topLipRotationField;
+    @FXML
     public Slider cameraXSlider;
+    @FXML
+    public TextField leftEarRotationField;
     @FXML
     public Slider cameraYSlider;
     @FXML
@@ -132,6 +146,24 @@ public abstract class AReetiStageController {
     public Slider leftEyeXSlider;
     @FXML
     public Slider leftEyeYSlider;
+    @FXML
+    public Slider rightEyeXSlider;
+    @FXML
+    public Slider rightEyeYSlider;
+    @FXML
+    public Slider leftEyeLidXSlider;
+    @FXML
+    public Slider rightEyeLidXSlider;
+    @FXML
+    public Slider leftEarSlider;
+    @FXML
+    public Slider rightEarSlider;
+    @FXML
+    public Slider leftLCSlider;
+    @FXML
+    public Slider rightLCSlider;
+    @FXML
+    public Slider topLipSlider;
 
     public final ArrayList<String> mReetiComboList = new ArrayList<>();
 
