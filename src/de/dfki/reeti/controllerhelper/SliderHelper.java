@@ -175,6 +175,21 @@ public class SliderHelper {
         });
     }
 
+    public static void handleTopLipSlider(ReetiStageController controller) {
+        controller.topLipSlider.setMin(-100);
+        controller.topLipSlider.setMax(0);
+        controller.topLipSlider.setValue(-100);
+        controller.topLipSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            double newValue = Math.abs(new_val.doubleValue());
+            controller.currentReeti.mMouthUpperLip.setShape("UPPERLIPACTION");
+            double SliderValue = (newValue + 107) * 16 / 100;
+            controller.currentReeti.mMouthUpperLip.setUpperLipRegulator(SliderValue);
+            int fieldValue = (int)Math.abs(newValue - 100);
+            controller.topLipRotationField.setText(Integer.toString(fieldValue));
+            controller.currentReeti.mMouthUpperLip.calculate(0);
+        });
+    }
+
     public static void handleCameraSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(-180);
         slider.setMax(180);
