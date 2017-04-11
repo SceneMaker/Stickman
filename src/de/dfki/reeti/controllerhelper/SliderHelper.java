@@ -106,6 +106,60 @@ public class SliderHelper {
         });
     }
 
+    public static void handleRightEyeLidXSlider(ReetiStageController controller) {
+        controller.rightEyeLidXSlider.setMin(0);
+        controller.rightEyeLidXSlider.setMax(100);
+        controller.rightEyeLidXSlider.setValue(100);
+        controller.rightEyeLidXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            Reeti reeti = controller.currentReeti;
+            double newValue = new_val.doubleValue();
+            controller.currentReeti.mRightEyelid.mXRotation = (-(newValue- 100));
+            controller.rightEyeLidXRotationField.setText(Integer.toString((int) newValue));
+            controller.currentReeti.mRightEyelid.calculate(0);
+        });
+    }
+
+    public static void handleLeftEarSlider(ReetiStageController controller) {
+        controller.leftEarSlider.setMin(0);
+        controller.leftEarSlider.setMax(100);
+        controller.leftEarSlider.setValue(50);
+        controller.leftEarSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            Reeti reeti = controller.currentReeti;
+            double newValue = new_val.doubleValue();
+            controller.currentReeti.mLeftEar.mZRotation = (-(newValue- 50));
+            controller.leftEarRotationField.setText(Integer.toString((int) newValue));
+            controller.currentReeti.mLeftEar.calculate(0);
+        });
+    }
+
+    public static void handleRightEarSlider(ReetiStageController controller) {
+        controller.rightEarSlider.setMin(0);
+        controller.rightEarSlider.setMax(100);
+        controller.rightEarSlider.setValue(50);
+        controller.rightEarSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            Reeti reeti = controller.currentReeti;
+            double newValue = new_val.doubleValue();
+            controller.currentReeti.mRightEar.mZRotation = (-(newValue- 50));
+            controller.rightEarRotationField.setText(Integer.toString((int) newValue));
+            controller.currentReeti.mRightEar.calculate(0);
+        });
+    }
+
+    public static void handleLeftLCSlider(ReetiStageController controller) {
+        controller.leftLCSlider.setMin(-100);
+        controller.leftLCSlider.setMax(0);
+        controller.leftLCSlider.setValue(-50);
+        controller.leftLCSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            double newValue = Math.abs(new_val.doubleValue());
+            controller.currentReeti.mMouthLeftCorner.setShape("LEFTCORNERACTION");
+            double SliderValue = (newValue + 170) * 16 / 100;
+            controller.currentReeti.mMouthLeftCorner.setLeftCornerRegulator(SliderValue);
+            int fieldValue = (int)Math.abs(newValue - 100);
+            controller.leftLCRotationField.setText(Integer.toString(fieldValue));
+            controller.currentReeti.mMouthLeftCorner.calculate(0);
+        });
+    }
+
     public static void handleCameraSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(-180);
         slider.setMax(180);
