@@ -190,6 +190,21 @@ public class SliderHelper {
         });
     }
 
+    public static void handleBottomLipSlider(ReetiStageController controller) {
+        controller.bottomLipSlider.setMin(0);
+        controller.bottomLipSlider.setMax(100);
+        controller.bottomLipSlider.setValue(0);
+        controller.bottomLipSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
+            double newValue = Math.abs(new_val.doubleValue());
+            controller.currentReeti.mMouthDownLip.setShape("DOWNLIPACTION");
+            double SliderValue = (newValue + 217) * 16 / 100;
+            controller.currentReeti.mMouthDownLip.setDownLipRegulator(SliderValue);
+            int fieldValue = (int) (newValue);
+            controller.bottomLipRotationField.setText(Integer.toString(fieldValue));
+            controller.currentReeti.mMouthDownLip.calculate(0);
+        });
+    }
+
     public static void handleCameraSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(-180);
         slider.setMax(180);

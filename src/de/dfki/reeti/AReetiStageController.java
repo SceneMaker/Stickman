@@ -129,6 +129,8 @@ public abstract class AReetiStageController {
     @FXML
     public TextField topLipRotationField;
     @FXML
+    public TextField bottomLipRotationField;
+    @FXML
     public Slider cameraXSlider;
     @FXML
     public TextField leftEarRotationField;
@@ -164,6 +166,8 @@ public abstract class AReetiStageController {
     public Slider rightLCSlider;
     @FXML
     public Slider topLipSlider;
+    @FXML
+    public Slider bottomLipSlider;
 
     public final ArrayList<String> mReetiComboList = new ArrayList<>();
 
