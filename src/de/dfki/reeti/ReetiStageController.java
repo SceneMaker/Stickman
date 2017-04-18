@@ -5,6 +5,7 @@ import de.dfki.common.commonFX3D.ViewController;
 import de.dfki.reeti.controllerhelper.ColorHelper;
 import de.dfki.reeti.controllerhelper.SliderHelper;
 import de.dfki.reeti.stage.ReetiStage;
+import de.dfki.reeti.timeline.TimelineStart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -83,11 +84,17 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
         });
         SaveButton.setOnAction((event) -> {
-            Platform.runLater(() -> 
-                {
-                     currentReeti.neckTilt(100);
-//                     currentReeti.leftEar(100);
-                });
+//            Platform.runLater(() ->
+//                {
+//                     currentReeti.neckTilt(100);
+////                     currentReeti.leftEar(100);
+//                });
+            TimelineStart timelineStart = new TimelineStart();
+            try {
+                timelineStart.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         
         leftLedOffButton.setOnAction((event) ->
