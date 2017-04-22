@@ -61,7 +61,7 @@ public class TimelineController implements Initializable {
     private Animation autoScrollAnimation;
 
     private Reeti reeti;
-    private SequenceBlock s = null;
+    private SequenceBlock sequenceBlock = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,27 +79,7 @@ public class TimelineController implements Initializable {
 //            System.out.println(iterator.next().);
 //        }
 
-        double startTime = iterator.next().getStartTime();
-
-
-        s = new SequenceBlock();
-        s.setId("1");
-        String sequenceName = sequence.getProperty().getName();
-        double sequenceDuration = sequence.getProperty().getDuration();
-        s.setText(sequenceName);
-        s.setTranslateX(Converter.SecondToPixel(startTime));
-        s.setMinWidth(Converter.SecondToPixel(sequenceDuration));
-
-        SequenceBlock s1 = (SequenceBlock) s.clone();
-        SequenceBlock s2 = (SequenceBlock) s.clone();
-        SequenceBlock s3 = (SequenceBlock) s.clone();
-        SequenceBlock s4 = (SequenceBlock) s.clone();
-
-        animationGridPane.add(s, 0, 0);
-        animationGridPane.add(s1, 0, 1);
-        animationGridPane.add(s2, 0, 2);
-        animationGridPane.add(s3, 0, 3);
-        animationGridPane.add(s4, 0, 4);
+        addSequenceBlocks(sequence);
         playButton.setOnMouseClicked(event ->
         {
             isPlayed = !isPlayed;
@@ -120,9 +100,10 @@ public class TimelineController implements Initializable {
 
                 while (timelinePos <= 5980 && isPlayed) {
 
-                    if(timeline.getTranslateX() == s.getTranslateX())
+                    if(timeline.getTranslateX() == sequenceBlock.getTranslateX())
                     {
                         reeti.leftEyeLid(50, 30);
+                        reeti.rightEyeLid(50,30);
                     }
 
                     int c = timelinePos;
@@ -157,5 +138,48 @@ public class TimelineController implements Initializable {
 
     public void setReeti(Reeti reeti) {
         this.reeti = reeti;
+    }
+
+    private SequenceBlock createSequenceBlock(Sequence sequence)
+    {
+        SequenceBlock sBlock = new SequenceBlock();
+        String sequenceName = sequence.getProperty().getName();
+        double startTime = sequence.getPoses().getFirst().getStartTime();
+        double sequenceDuration = sequence.getProperty().getDuration();
+
+        sBlock.setText(sequenceName);
+        sBlock.setTranslateX(Converter.SecondToPixel(startTime));
+        sBlock.setMinWidth(Converter.SecondToPixel(sequenceDuration));
+
+        return sBlock;
+    }
+
+    private void addSequenceBlocks(Sequence sequence)
+    {
+        if(sequence.getProperty().isEarsUsed())
+        {
+            sequenceBlock = createSequenceBlock(sequence);
+            animationGridPane.add(sequenceBlock, 0, 0);
+        }
+        if(sequence.getProperty().isEyesUsed())
+        {
+            sequenceBlock = createSequenceBlock(sequence);
+            animationGridPane.add(sequenceBlock, 0, 1);
+        }
+        if(sequence.getProperty().isMouthUsed())
+        {
+            sequenceBlock = createSequenceBlock(sequence);
+            animationGridPane.add(sequenceBlock, 0, 2);
+        }
+        if(sequence.getProperty().isNeckUsed())
+        {
+            sequenceBlock = createSequenceBlock(sequence);
+            animationGridPane.add(sequenceBlock, 0, 3);
+        }
+        if(sequence.getProperty().isColorUsed())
+        {
+            sequenceBlock = createSequenceBlock(sequence);
+            animationGridPane.add(sequenceBlock, 0, 4);
+        }
     }
 }

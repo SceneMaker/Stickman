@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineStart.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineStart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/timeline.fxml" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/timeline.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +30,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TimelineStart.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TimelineStart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineStart.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
@@ -47,7 +45,7 @@
       <file leaf-file-name="SequenceBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/SequenceBlock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
+            <state relative-caret-position="761">
               <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -96,13 +94,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TimelineController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TimelineController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1159">
-              <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
+            <state relative-caret-position="2040">
+              <caret line="105" column="47" lean-forward="false" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#createSequenceBlock#0;class#TimelineController#0" expanded="false" />
+                <element signature="method#addSequenceBlocks#0;class#TimelineController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -228,10 +228,10 @@
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/Converter.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/SequenceBlock.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/timeline.fxml" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineStart.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
       </list>
     </option>
   </component>
@@ -791,13 +791,6 @@
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
     </task>
-    <task id="LOCAL-00012" summary="Face only">
-      <created>1474349700057</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1474349700057</updated>
-    </task>
     <task id="LOCAL-00013" summary="Fix sitckmans were not shown in stage from configuration window">
       <created>1476033658118</created>
       <option name="number" value="00013" />
@@ -1134,7 +1127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492863132260</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="timeline not resizable. GridPane only 5 rows. added ears, eyes, mouth, neck, color">
+      <created>1492868707373</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1492868707373</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1218,7 +1218,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix error from radiobutton nullpointer" />
     <MESSAGE value="Changes for single face and getting stageimage" />
     <MESSAGE value="Fix launchstickamn configruation for 2D and 3D" />
     <MESSAGE value="sunbathing" />
@@ -1243,7 +1242,8 @@
     <MESSAGE value="BottomLipRot" />
     <MESSAGE value="add Timeline" />
     <MESSAGE value="timeline, Sequence&gt;Block, Converter" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline, Sequence&gt;Block, Converter" />
+    <MESSAGE value="timeline not resizable. GridPane only 5 rows. added ears, eyes, mouth, neck, color" />
+    <option name="LAST_COMMIT_MESSAGE" value="timeline not resizable. GridPane only 5 rows. added ears, eyes, mouth, neck, color" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1696,32 +1696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/SequenceBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-            <element signature="e#893#894#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-            <element signature="e#972#973#0" expanded="true" />
-            <element signature="e#1012#1013#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1088#1089#0" expanded="true" />
-            <element signature="e#1146#1147#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
-            <element signature="e#1234#1235#0" expanded="true" />
-            <element signature="e#1268#1269#0" expanded="true" />
-            <element signature="e#1322#1323#0" expanded="true" />
-            <element signature="e#1368#1369#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -1761,22 +1735,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineStart.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/SequenceBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="67" column="20" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#972#973#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1088#1089#0" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1368#1369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="105" column="47" lean-forward="false" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#createSequenceBlock#0;class#TimelineController#0" expanded="false" />
+            <element signature="method#addSequenceBlocks#0;class#TimelineController#0" expanded="false" />
           </folding>
         </state>
       </provider>
