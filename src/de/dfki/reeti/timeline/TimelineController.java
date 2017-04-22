@@ -1,5 +1,11 @@
 package de.dfki.reeti.timeline;
 
+import de.dfki.reeti.Reeti;
+import de.dfki.reeti.files.filestystem.FileSystemAble;
+import de.dfki.reeti.files.filestystem.rmdl.RMDLFileSystem;
+import de.dfki.reeti.files.readers.rmdl.RMDLReader;
+import de.dfki.reeti.models.Pose;
+import de.dfki.reeti.models.Sequence;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -15,10 +21,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
+import org.junit.Assert;
 
 import java.awt.*;
+import java.io.File;
 import java.net.URL;
+import java.util.ListIterator;
 import java.util.ResourceBundle;
+
+/*
+1 sec = 100px
+ */
 
 public class TimelineController implements Initializable {
 
@@ -47,8 +60,46 @@ public class TimelineController implements Initializable {
 
     private Animation autoScrollAnimation;
 
+    private Reeti reeti;
+    private SequenceBlock s = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        File file = new File("C:\\Users\\EmpaT\\Desktop\\reeti\\ReertiParser\\reeti files\\goodBye.rmdl");
+        FileSystemAble fileSystem = new RMDLFileSystem(file.getAbsolutePath());
+        RMDLReader reader = new RMDLReader(fileSystem);
+        reader.open();
+        reader.read();
+        Sequence sequence = ((RMDLReader)reader).getSequence();
+
+        Assert.assertNotNull(sequence.getProperty());
+        ListIterator<Pose> iterator = (ListIterator<Pose>) sequence.getPoses().iterator();
+//        while (iterator.hasNext())
+//        {
+//            System.out.println(iterator.next().);
+//        }
+
+        double startTime = iterator.next().getStartTime();
+
+
+        s = new SequenceBlock();
+        s.setId("1");
+        String sequenceName = sequence.getProperty().getName();
+        double sequenceDuration = sequence.getProperty().getDuration();
+        s.setText(sequenceName);
+        s.setTranslateX(Converter.SecondToPixel(startTime));
+        s.setMinWidth(Converter.SecondToPixel(sequenceDuration));
+
+        SequenceBlock s1 = (SequenceBlock) s.clone();
+        SequenceBlock s2 = (SequenceBlock) s.clone();
+        SequenceBlock s3 = (SequenceBlock) s.clone();
+        SequenceBlock s4 = (SequenceBlock) s.clone();
+
+        animationGridPane.add(s, 0, 0);
+        animationGridPane.add(s1, 0, 1);
+        animationGridPane.add(s2, 0, 2);
+        animationGridPane.add(s3, 0, 3);
+        animationGridPane.add(s4, 0, 4);
         playButton.setOnMouseClicked(event ->
         {
             isPlayed = !isPlayed;
@@ -60,14 +111,19 @@ public class TimelineController implements Initializable {
         Task<Void> task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                //############AUTOSCROLL PLAY, PAUSE####################
+                //############AUTOSCROLL PLAY/PAUSE BLOCK####################
                 if(!isPlayed)
                     autoScrollAnimation.pause();
                 else if(isPlayed && autoScrollAnimation != null)
                     autoScrollAnimation.play();
-                //############END AUTOSCROLL PLAY, PAUSE################
+                //############END AUTOSCROLL PLAY/PAUSE BLOCK################
 
                 while (timelinePos <= 5980 && isPlayed) {
+
+                    if(timeline.getTranslateX() == s.getTranslateX())
+                    {
+                        reeti.leftEyeLid(50, 30);
+                    }
 
                     int c = timelinePos;
                     if (c >= 700 && !isAutomaticScrollStarted) {
@@ -93,5 +149,13 @@ public class TimelineController implements Initializable {
                 new KeyFrame(Duration.seconds(10000),
                         new KeyValue(animationScrollPane.hvalueProperty(), 230)));
         autoScrollAnimation.play();
+    }
+
+    public Reeti getReeti() {
+        return reeti;
+    }
+
+    public void setReeti(Reeti reeti) {
+        this.reeti = reeti;
     }
 }

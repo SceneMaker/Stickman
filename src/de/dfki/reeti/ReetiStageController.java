@@ -89,12 +89,13 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 //                     currentReeti.neckTilt(100);
 ////                     currentReeti.leftEar(100);
 //                });
-            TimelineStart timelineStart = new TimelineStart();
-            try {
-                timelineStart.start();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            TimelineStart timelineStart = new TimelineStart(this.currentReeti);
+//            timelineStart.setOwnerStage(this.stage3D.getMainStage());
+//            try {
+//                timelineStart.start();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         });
         
         leftLedOffButton.setOnAction((event) ->

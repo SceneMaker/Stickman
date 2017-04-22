@@ -38,6 +38,7 @@ public class ReetiStage extends Application implements StickmanStage {
     private final int mHeight = 0;
     private final int mWidth = 0;
 
+    private Stage mainStage;
     static private ReetiStage sInstance;
     private final HashMap<String, StickmansOnStage> stickamnsOnStage = new HashMap<>();
     private final float sScale;
@@ -103,6 +104,7 @@ public class ReetiStage extends Application implements StickmanStage {
         mStickmanHBox = new HBox();
         mStickmanHBox.setId("StickmanStage3D");
         mStickmanHBox.setAlignment(Pos.CENTER);
+        mainStage = stage;
 
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
@@ -491,5 +493,9 @@ public class ReetiStage extends Application implements StickmanStage {
 
     public SubScene getSubScene() {
         return sSubscene;
+    }
+
+    public Stage getMainStage() {
+        return mainStage;
     }
 }
