@@ -40,6 +40,7 @@ public class TimelineStart {
         timelineStage.setY(600);
         timelineStage.initModality(Modality.APPLICATION_MODAL);
         timelineStage.initOwner(ownerStage);
+        timelineStage.setResizable(false);
         timelineStage.show();
     }
 
