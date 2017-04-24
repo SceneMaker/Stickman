@@ -128,6 +128,11 @@ public class TimelineController implements Initializable
                             reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose());
                             reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose());
                             reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose());
+                            reeti.setLedColor(motorMovement.getColor());
+                            reeti.leftLC((int)motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose());
+                            reeti.rightLC((int)motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose());
+                            reeti.topLip((int)motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose());
+                            reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose());
 
 //                            if(motorMovement.getLeftEar() != -1)
 //                            {
