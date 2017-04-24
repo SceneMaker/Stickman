@@ -9,22 +9,21 @@ import javafx.stage.Stage;
 
 public class TimelineStart {
 
-    private Stage timelineStage = null;
     private Reeti reeti = null;
-    private Stage ownerStage;
+    private Stage ownerStage = null;
 
-    public TimelineStart()
-    {
-
-    }
+    private static final int TIMELINE_X_POSITION = 0;
+    private static final int TIMELINE_Y_POSITION = 600;
+    private static final int TIMELINEWIDTH = 1900;
+    private static final int TIMELINEHEIGHT = 400;
 
     public TimelineStart(Reeti reeti)
     {
         this.reeti = reeti;
     }
 
-    public void start() throws Exception{
-        this.timelineStage = new Stage();
+    public void show() throws Exception{
+        Stage timelineStage = new Stage();
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("timeline.fxml"));
@@ -35,9 +34,9 @@ public class TimelineStart {
 
         Parent root = loader.load();
         timelineStage.setTitle("Reeti Timeline");
-        timelineStage.setScene(new Scene(root, 1900, 400));
-        timelineStage.setX(0);
-        timelineStage.setY(600);
+        timelineStage.setScene(new Scene(root, TIMELINEWIDTH, TIMELINEHEIGHT));
+        timelineStage.setX(TIMELINE_X_POSITION);
+        timelineStage.setY(TIMELINE_Y_POSITION);
         timelineStage.initModality(Modality.APPLICATION_MODAL);
         timelineStage.initOwner(ownerStage);
         timelineStage.setResizable(false);

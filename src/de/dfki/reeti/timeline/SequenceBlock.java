@@ -1,21 +1,26 @@
 package de.dfki.reeti.timeline;
 
 
+import de.dfki.reeti.models.Pose;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.text.TextAlignment;
+
+import java.util.ArrayList;
 
 /**
  * Created by EmpaT on 20.04.2017.
  */
 public class SequenceBlock extends Label implements Cloneable{
 
-    private double startTime;
-    private double duration;
-    private double startPosition;
-    private double endPosition;
+    private double startTime = -1;
+    private double duration = -1;
+    private double startPosition = -1;
+    private double endPosition = -1;
 
     private static final int HEIGHT = 35;
+
+    protected ArrayList<Pose> poseList = null;
 
     public SequenceBlock()
     {
@@ -25,6 +30,7 @@ public class SequenceBlock extends Label implements Cloneable{
         this.setMinHeight(HEIGHT);
         this.setMaxHeight(HEIGHT);
         this.setPadding(new Insets(0, 0, 0, 10));
+        this.poseList = new ArrayList<>();
     }
 
     public double getStartTime() {
@@ -59,6 +65,7 @@ public class SequenceBlock extends Label implements Cloneable{
         this.endPosition = endPosition;
     }
 
+    @Override
     public Object clone(){
         try {
             return super.clone();

@@ -14,7 +14,6 @@ public class Converter {
     public static int SecondToPixel(double sec)
     {
         double pixel = (sec * PIXEL_INTERVAL)/SECOND_INTERVAL;
-        System.out.println((int) pixel);
         return (int) pixel;
     }
 }

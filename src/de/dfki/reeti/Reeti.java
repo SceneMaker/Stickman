@@ -118,10 +118,10 @@ public class Reeti extends Pane implements Stickman
     private double mRightCornerOldPos = 8;
     private double mLeftEyelidOldPos = 100;
     private double mRightEyelidOldPos = 100;
-    private double mLeftEye_X_OldPos = 30;
-    private double mLeftEye_Y_OldPos = 40;
-    private double mRightEye_X_OldPos = 30;
-    private double mRightEye_Y_OldPos = 60;
+    private double mLeftEye_X_OldPos = 40;
+    private double mLeftEye_Y_OldPos = 42;
+    private double mRightEye_X_OldPos = 60;
+    private double mRightEye_Y_OldPos = 42;
     private double mLeftEarOldPos = 50;
     private double mRightEarOldPos = 50;
     private double mNeckRotatOldPos = 50;
@@ -606,6 +606,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void leftLC(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -633,6 +635,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void topLip(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -663,6 +667,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void bottomLip(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -691,15 +697,17 @@ public class Reeti extends Pane implements Stickman
      *
      * @param pos a int between 0 and 100 (default value is 30)
      */
-    public void leftEyePan(int pos, double...duration)
+    public void leftEyeTilt(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
             pos = 100;
         }
-        double rot = mLeftEye_X_OldPos - pos;
-        mLeftEye_X_OldPos = pos;
+        double rot = mLeftEye_Y_OldPos - pos;
+        mLeftEye_Y_OldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftEye_X", (int) dur, (int) rot, false);
         try
@@ -717,15 +725,17 @@ public class Reeti extends Pane implements Stickman
      *
      * @param pos a int between 0 and 100 (default value is 40)
      */
-    public void leftEyeTilt(int pos, double...duration)
+    public void leftEyePan(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
             pos = 100;
         }
-        double rot = mLeftEye_Y_OldPos - pos;
-        mLeftEye_Y_OldPos = pos;
+        double rot = mLeftEye_X_OldPos - pos;
+        mLeftEye_X_OldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "LeftEye_Y", (int) dur, (int) rot, false);
         try
@@ -743,15 +753,17 @@ public class Reeti extends Pane implements Stickman
      *
      * @param pos a int between 0 and 100 (default value is 30)
      */
-    public void rightEyePan(int pos, double...duration)
+    public void rightEyeTilt(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
             pos = 100;
         }
-        double rot = mRightEye_X_OldPos - pos;
-        mRightEye_X_OldPos = pos;
+        double rot = mRightEye_Y_OldPos - pos;
+        mRightEye_Y_OldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightEye_X", (int) dur, (int) rot, false);
         try
@@ -769,15 +781,17 @@ public class Reeti extends Pane implements Stickman
      *
      * @param pos a int between 0 and 100 (default value is 60)
      */
-    public void rightEyeTilt(int pos, double...duration)
+    public void rightEyePan(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
             pos = 100;
         }
-        double rot = mRightEye_Y_OldPos - pos;
-        mRightEye_Y_OldPos = pos;
+        double rot = mRightEye_X_OldPos - pos;
+        mRightEye_X_OldPos = pos;
 
         AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "RightEye_Y", (int) dur, (int) rot, false);
         try
@@ -797,6 +811,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void leftEyeLid(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -823,6 +839,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void rightEyeLid(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -849,6 +867,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void leftEar(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -875,6 +895,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void rightEar(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -901,6 +923,8 @@ public class Reeti extends Pane implements Stickman
      */
     public void neckRotat(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -925,8 +949,11 @@ public class Reeti extends Pane implements Stickman
      *
      * @param pos a int between 0 and 100 (default value is 50)
      */
-    public void neckPan(int pos, double...duration)
+    public void neckTilt(int pos, double...duration)
     {
+        if(pos == -1)
+        return;
+
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {
@@ -953,8 +980,10 @@ public class Reeti extends Pane implements Stickman
      *
      * @param pos a int between 0 and 100 (default value is 50)
      */
-    public void neckTilt(int pos, double...duration)
+    public void neckPan(int pos, double...duration)
     {
+        if(pos == -1)
+            return;
         double dur = (duration.length==0)? 500 : duration[0];
         if (pos > 100)
         {

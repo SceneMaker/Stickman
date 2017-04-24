@@ -4,6 +4,7 @@ import de.dfki.reeti.Reeti;
 import de.dfki.reeti.files.filestystem.FileSystemAble;
 import de.dfki.reeti.files.filestystem.rmdl.RMDLFileSystem;
 import de.dfki.reeti.files.readers.rmdl.RMDLReader;
+import de.dfki.reeti.models.Movement;
 import de.dfki.reeti.models.Pose;
 import de.dfki.reeti.models.Sequence;
 import javafx.animation.Animation;
@@ -23,7 +24,6 @@ import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import org.junit.Assert;
 
-import java.awt.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ListIterator;
@@ -33,7 +33,8 @@ import java.util.ResourceBundle;
 1 sec = 100px
  */
 
-public class TimelineController implements Initializable {
+public class TimelineController implements Initializable
+{
 
     @FXML
     private AnchorPane root;
@@ -54,60 +55,102 @@ public class TimelineController implements Initializable {
     private Line timeline;
 
     private boolean isAutomaticScrollStarted = false;
-    private boolean isPlayed = false;
+    private boolean playButtonON = false;
 
     private int timelinePos = 0;
 
-    private Animation autoScrollAnimation;
+    private Animation autoScrollAnimation = null;
 
-    private Reeti reeti;
+    private Reeti reeti = null;
     private SequenceBlock sequenceBlock = null;
 
+    private static final int TIMELINEWIDTH = 5980;
+    private static final int AUTOSCROLL_START_POS = 700;
+
+
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        File file = new File("C:\\Users\\EmpaT\\Desktop\\reeti\\ReertiParser\\reeti files\\goodBye.rmdl");
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        File file = new File("C:\\Users\\EmpaT\\Desktop\\reeti\\ReertiParser\\reeti files\\Angry.rmdl");
         FileSystemAble fileSystem = new RMDLFileSystem(file.getAbsolutePath());
         RMDLReader reader = new RMDLReader(fileSystem);
         reader.open();
         reader.read();
-        Sequence sequence = ((RMDLReader)reader).getSequence();
+        Sequence sequence = reader.getSequence();
 
         Assert.assertNotNull(sequence.getProperty());
-        ListIterator<Pose> iterator = (ListIterator<Pose>) sequence.getPoses().iterator();
-//        while (iterator.hasNext())
-//        {
-//            System.out.println(iterator.next().);
-//        }
 
         addSequenceBlocks(sequence);
+
+        ListIterator<Pose> iterator = (ListIterator<Pose>) sequence.getPoses().iterator();
+        while (iterator.hasNext())
+            sequenceBlock.poseList.add(iterator.next());
+
         playButton.setOnMouseClicked(event ->
         {
-            isPlayed = !isPlayed;
+            playButtonON = !playButtonON;
             startTimeline();
         });
     }
 
-    synchronized public void startTimeline() {
-        Task<Void> task = new Task<Void>() {
+    synchronized private void startTimeline()
+    {
+        Task<Void> task = new Task<Void>()
+        {
             @Override
-            protected Void call() throws Exception {
+            protected Void call() throws Exception
+            {
                 //############AUTOSCROLL PLAY/PAUSE BLOCK####################
-                if(!isPlayed)
+                if (!playButtonON)
                     autoScrollAnimation.pause();
-                else if(isPlayed && autoScrollAnimation != null)
+                else if (autoScrollAnimation != null)
                     autoScrollAnimation.play();
                 //############END AUTOSCROLL PLAY/PAUSE BLOCK################
 
-                while (timelinePos <= 5980 && isPlayed) {
-
-                    if(timeline.getTranslateX() == sequenceBlock.getTranslateX())
+                while (timelinePos <= TIMELINEWIDTH && playButtonON)
+                {
+                    for(Pose pose : sequenceBlock.poseList)
                     {
-                        reeti.leftEyeLid(50, 30);
-                        reeti.rightEyeLid(50,30);
+
+                        if(timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime()))
+                        {
+//                            System.out.println();
+                            Movement motorMovement = pose.getMotorsMovement();
+                            reeti.rightEar((int)motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose());
+                            reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose());
+                            reeti.rightEyeLid((int)motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose());
+                            reeti.leftEyeLid((int)motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose());
+                            reeti.rightEyeTilt((int)motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose());
+                            reeti.leftEyeTilt((int)motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose());
+                            reeti.rightEyePan((int)motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose());
+                            reeti.leftEyePan((int)motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose());
+                            reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose());
+                            reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose());
+                            reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose());
+
+//                            if(motorMovement.getLeftEar() != -1)
+//                            {
+//                                System.out.println((int)motorMovement.getLeftEar());
+//
+//                                reeti.rightEyeLid(50, 30);
+//                                reeti.rightEar(0, 30);
+//                                reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() * 1000);
+//                            }
+
+
+
+                        }
                     }
+//                    if (timeline.getTranslateX() == sequenceBlock.getTranslateX())
+//                    {
+//                        reeti.leftEyeLid(50, 30);
+//                        reeti.rightEyeLid(50, 30);
+//                    }
 
                     int c = timelinePos;
-                    if (c >= 700 && !isAutomaticScrollStarted) {
+                    if (c >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
+                    {
                         isAutomaticScrollStarted = true;
                         startAutoScroll();
                     }
@@ -132,11 +175,13 @@ public class TimelineController implements Initializable {
         autoScrollAnimation.play();
     }
 
-    public Reeti getReeti() {
+    public Reeti getReeti()
+    {
         return reeti;
     }
 
-    public void setReeti(Reeti reeti) {
+    public void setReeti(Reeti reeti)
+    {
         this.reeti = reeti;
     }
 
@@ -156,27 +201,27 @@ public class TimelineController implements Initializable {
 
     private void addSequenceBlocks(Sequence sequence)
     {
-        if(sequence.getProperty().isEarsUsed())
+        if (sequence.getProperty().isEarsUsed())
         {
             sequenceBlock = createSequenceBlock(sequence);
             animationGridPane.add(sequenceBlock, 0, 0);
         }
-        if(sequence.getProperty().isEyesUsed())
+        if (sequence.getProperty().isEyesUsed())
         {
             sequenceBlock = createSequenceBlock(sequence);
             animationGridPane.add(sequenceBlock, 0, 1);
         }
-        if(sequence.getProperty().isMouthUsed())
+        if (sequence.getProperty().isMouthUsed())
         {
             sequenceBlock = createSequenceBlock(sequence);
             animationGridPane.add(sequenceBlock, 0, 2);
         }
-        if(sequence.getProperty().isNeckUsed())
+        if (sequence.getProperty().isNeckUsed())
         {
             sequenceBlock = createSequenceBlock(sequence);
             animationGridPane.add(sequenceBlock, 0, 3);
         }
-        if(sequence.getProperty().isColorUsed())
+        if (sequence.getProperty().isColorUsed())
         {
             sequenceBlock = createSequenceBlock(sequence);
             animationGridPane.add(sequenceBlock, 0, 4);
