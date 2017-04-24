@@ -122,8 +122,8 @@ public class Reeti extends Pane implements Stickman
     private double mLeftEye_Y_OldPos = 42;
     private double mRightEye_X_OldPos = 60;
     private double mRightEye_Y_OldPos = 42;
-    private double mLeftEarOldPos = 50;
-    private double mRightEarOldPos = 50;
+    private double mLeftEarOldPos = 80;
+    private double mRightEarOldPos = 80;
     private double mNeckRotatOldPos = 50;
     private double mNeckPanOldPos = 50;
     private double mNeckTiltOldPos = 50;
@@ -702,10 +702,12 @@ public class Reeti extends Pane implements Stickman
         if(pos == -1)
             return;
         double dur = (duration.length==0)? 500 : duration[0];
+
         if (pos > 100)
-        {
             pos = 100;
-        }
+        else if(pos < 20)
+            pos = 20;
+
         double rot = mLeftEye_Y_OldPos - pos;
         mLeftEye_Y_OldPos = pos;
 
@@ -758,10 +760,12 @@ public class Reeti extends Pane implements Stickman
         if(pos == -1)
             return;
         double dur = (duration.length==0)? 500 : duration[0];
+
         if (pos > 100)
-        {
             pos = 100;
-        }
+        else if(pos < 23)
+            pos = 23;
+
         double rot = mRightEye_Y_OldPos - pos;
         mRightEye_Y_OldPos = pos;
 

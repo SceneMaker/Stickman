@@ -72,7 +72,7 @@ public class TimelineController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        File file = new File("C:\\Users\\EmpaT\\Desktop\\reeti\\ReertiParser\\reeti files\\Angry.rmdl");
+        File file = new File("C:\\Users\\EmpaT\\Desktop\\reeti\\ReertiParser\\reeti files\\Arrogant.rmdl");
         FileSystemAble fileSystem = new RMDLFileSystem(file.getAbsolutePath());
         RMDLReader reader = new RMDLReader(fileSystem);
         reader.open();
@@ -154,7 +154,7 @@ public class TimelineController implements Initializable
                         isAutomaticScrollStarted = true;
                         startAutoScroll();
                     }
-                    Platform.runLater(() -> timeline.setTranslateX(c));
+                    timeline.setTranslateX(c);
 
                     timelinePos++;
                     Thread.sleep(10);

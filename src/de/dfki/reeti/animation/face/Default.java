@@ -37,10 +37,10 @@ public class Default extends AnimationReeti {
         mReeti.leftLC(50);
         mReeti.topLip(0); 
         mReeti.bottomLip(100);
-        mReeti.rightEyePan(30);
-        mReeti.rightEyeTilt(60);
-        mReeti.leftEyePan(30);
-        mReeti.leftEyeTilt(40);
+        mReeti.rightEyePan(60);
+        mReeti.rightEyeTilt(42);
+        mReeti.leftEyePan(40);
+        mReeti.leftEyeTilt(42);
         mReeti.leftEyeLid(100);
         mReeti.rightEyeLid(100);
         mReeti.rightEar(50);
