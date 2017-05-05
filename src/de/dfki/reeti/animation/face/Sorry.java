@@ -26,12 +26,12 @@ public class Sorry extends AnimationReeti {
 
     @Override
     public void playAnimation() {
-        mReeti.neckTilt(20);
-        mReeti.neckPan(30);
+        mReeti.neckPan(20);
+        mReeti.neckTilt(30);
         mReeti.leftEyeLid(30);
         mReeti.rightEyeLid(30);
-        mReeti.leftEyePan(20);
-        mReeti.rightEyePan(20);
+        mReeti.leftEyeTilt(20);
+        mReeti.rightEyeTilt(20);
         mReeti.setLedColor("lightGreen");
         mReeti.leftEar(20);
         mReeti.rightEar(30);

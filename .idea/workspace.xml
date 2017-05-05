@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad2.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -145,11 +145,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sad2.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sad2.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad2.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="269">
               <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sorry.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -241,7 +251,6 @@
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/XMLCommandParser3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/View.fxml" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sunbathing.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Smile.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Test.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
@@ -261,6 +270,7 @@
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Relaxed.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad2.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java" />
       </list>
     </option>
   </component>
@@ -851,13 +861,6 @@
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
     </task>
-    <task id="LOCAL-00019" summary="Saving xml">
-      <created>1476040002857</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1476040002857</updated>
-    </task>
     <task id="LOCAL-00020" summary="Improvement on fullscreen with path">
       <created>1476092812400</created>
       <option name="number" value="00020" />
@@ -1194,7 +1197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494021990436</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Sad/Sad2">
+      <created>1494022074826</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1494022074826</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1314,7 +1324,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Sad2 and Smile" />
     <MESSAGE value="Delete GesturePackage" />
     <MESSAGE value="Delete headTab from ControlPanel" />
     <MESSAGE value="Head Rotation" />
@@ -1339,7 +1348,8 @@
     <MESSAGE value="add colorAction in Timeline" />
     <MESSAGE value="Relaxed" />
     <MESSAGE value="Tilt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tilt" />
+    <MESSAGE value="Sad/Sad2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sad/Sad2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1532,13 +1542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
           <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1861,6 +1864,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
           <folding />
         </state>
       </provider>
