@@ -28,10 +28,10 @@ public class Sad2 extends AnimationReeti {
     public void playAnimation() {
         mReeti.leftEyeLid(45);
         mReeti.rightEyeLid(45);
-        mReeti.leftEyePan(55);
-        mReeti.leftEyeTilt(25);
-        mReeti.rightEyePan(55);
-        mReeti.rightEyeTilt(75);
+        mReeti.leftEyeTilt(55);
+        mReeti.leftEyePan(25);
+        mReeti.rightEyeTilt(55);
+        mReeti.rightEyePan(75);
         mReeti.leftEar(0);
         mReeti.rightEar(0);
         mReeti.rightLC(0);
