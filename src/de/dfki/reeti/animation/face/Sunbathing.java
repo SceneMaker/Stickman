@@ -28,14 +28,12 @@ public class Sunbathing extends AnimationReeti {
     public void playAnimation() {
         mReeti.leftEyeLid(0);
         mReeti.rightEyeLid(0);
-//        mReeti.leftEyePan(15);
-//        mReeti.rightEyePan(15);
         mReeti.setLedColor("red");
         mReeti.leftEar(0);
         mReeti.rightEar(0);
         mReeti.rightLC(40);
         mReeti.leftLC(80);
-        mReeti.neckPan(85);
+        mReeti.neckTilt(85);
         mReeti.topLip(20);
         mReeti.bottomLip(50);
 
