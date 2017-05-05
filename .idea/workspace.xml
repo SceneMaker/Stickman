@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/View.fxml" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/View.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" />
     </list>
     <ignored path="Stickman.iws" />
@@ -53,8 +51,8 @@
       <file leaf-file-name="SliderHelper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="84" column="46" lean-forward="false" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="46" />
+            <state relative-caret-position="2945">
+              <caret line="203" column="52" lean-forward="true" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -124,6 +122,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -795,13 +794,6 @@
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
     </task>
-    <task id="LOCAL-00022" summary="Merge with latest version">
-      <created>1479473632238</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1479473632238</updated>
-    </task>
     <task id="LOCAL-00023" summary="Adding libraries">
       <created>1479474892964</created>
       <option name="number" value="00023" />
@@ -1138,7 +1130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494022291800</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Rotation: Korrektur">
+      <created>1494024709800</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1494024709800</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1258,7 +1257,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Head Rotation" />
     <MESSAGE value="delete headResetButton" />
     <MESSAGE value="LeftEyeRotation" />
     <MESSAGE value="rightEyeRotation" />
@@ -1283,7 +1281,8 @@
     <MESSAGE value="Sad/Sad2" />
     <MESSAGE value="Sorry" />
     <MESSAGE value="Sunbathing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sunbathing" />
+    <MESSAGE value="Rotation: Korrektur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rotation: Korrektur" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1399,14 +1398,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/animationlogic/AnimationLoader3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="95" column="82" lean-forward="false" selection-start-line="95" selection-start-column="82" selection-end-line="95" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/util/xml/XMLUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1792,10 +1783,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/BlinkLeftEyelid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="84" column="46" lean-forward="false" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="46" />
+        <state relative-caret-position="2945">
+          <caret line="203" column="52" lean-forward="true" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
           <folding />
         </state>
       </provider>

@@ -18,14 +18,11 @@ import javafx.scene.transform.Rotate;
  */
 public class SliderHelper {
 
-    final static int HEADSTARTPOSITION = 50;
-
     public static void handleHeadSlider(ReetiStageController controller, Slider slider, String achse) {
         slider.setMin(0);
         slider.setMax(100);
         slider.setValue(50);
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
                 controller.currentReeti.mHead.mXRotation = (-(newValue- 50) * 40) / 100;
@@ -58,7 +55,6 @@ public class SliderHelper {
         controller.leftEyeYSlider.setMax(100);
         controller.leftEyeYSlider.setValue(42);
         controller.leftEyeYSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mLeftEye.mYRotation = (-(newValue- 42) * 90) / 100;
             controller.leftEyeYRotationField.setText(Integer.toString((int) newValue));
@@ -71,7 +67,6 @@ public class SliderHelper {
         controller.rightEyeXSlider.setMax(100);
         controller.rightEyeXSlider.setValue(47);
         controller.rightEyeXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mRightEye.mXRotation = (-(newValue- 51) * 90) / 100;
             controller.rightEyeXRotationField.setText(Integer.toString((int) newValue));
@@ -84,7 +79,6 @@ public class SliderHelper {
         controller.rightEyeYSlider.setMax(100);
         controller.rightEyeYSlider.setValue(65);
         controller.rightEyeYSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mRightEye.mYRotation = (-(newValue- 65) * 90) / 100;
             controller.rightEyeYRotationField.setText(Integer.toString((int) newValue));
@@ -97,7 +91,6 @@ public class SliderHelper {
         controller.leftEyeLidXSlider.setMax(100);
         controller.leftEyeLidXSlider.setValue(100);
         controller.leftEyeLidXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mLeftEyelid.mXRotation = (-(newValue- 100));
             controller.leftEyeLidXRotationField.setText(Integer.toString((int) newValue));
@@ -110,7 +103,6 @@ public class SliderHelper {
         controller.rightEyeLidXSlider.setMax(100);
         controller.rightEyeLidXSlider.setValue(100);
         controller.rightEyeLidXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mRightEyelid.mXRotation = (-(newValue- 100));
             controller.rightEyeLidXRotationField.setText(Integer.toString((int) newValue));
@@ -123,7 +115,6 @@ public class SliderHelper {
         controller.leftEarSlider.setMax(100);
         controller.leftEarSlider.setValue(50);
         controller.leftEarSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mLeftEar.mZRotation = (-(newValue- 50));
             controller.leftEarRotationField.setText(Integer.toString((int) newValue));
@@ -136,7 +127,6 @@ public class SliderHelper {
         controller.rightEarSlider.setMax(100);
         controller.rightEarSlider.setValue(50);
         controller.rightEarSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
-            Reeti reeti = controller.currentReeti;
             double newValue = new_val.doubleValue();
             controller.currentReeti.mRightEar.mZRotation = (-(newValue- 50));
             controller.rightEarRotationField.setText(Integer.toString((int) newValue));
