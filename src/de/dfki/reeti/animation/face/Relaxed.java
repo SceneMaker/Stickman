@@ -27,11 +27,11 @@ public class Relaxed extends AnimationReeti {
 
     @Override
     public void playAnimation() {
-        mReeti.neckPan(75);
+        mReeti.neckTilt(75);
         mReeti.leftEyeLid(25);
         mReeti.rightEyeLid(25);
-        mReeti.leftEyePan(15);
-        mReeti.rightEyePan(20);
+        mReeti.leftEyeTilt(15);
+        mReeti.rightEyeTilt(20);
         mReeti.setLedColor("green");
         mReeti.leftEar(0);
         mReeti.rightEar(0);
