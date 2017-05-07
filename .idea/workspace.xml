@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,39 +31,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Reeti.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
+      <file leaf-file-name="ReetiStageController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="122" column="24" lean-forward="false" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+            <state relative-caret-position="-5972">
+              <caret line="107" column="11" lean-forward="true" selection-start-line="107" selection-start-column="11" selection-end-line="107" selection-end-column="11" />
               <folding>
-                <element signature="method#setLedColor#0;class#Reeti#0" expanded="false" />
-                <element signature="method#setLedColor#1;class#Reeti#0" expanded="false" />
-                <element signature="method#setLedColor#2;class#Reeti#0" expanded="false" />
-                <element signature="method#ledON#0;class#Reeti#0" expanded="false" />
-                <element signature="method#ledOFF#0;class#Reeti#0" expanded="false" />
-                <element signature="docComment;method#rightLC#0;class#Reeti#0" expanded="false" />
-                <element signature="method#rightLC#0;class#Reeti#0" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SliderHelper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java">
+      <file leaf-file-name="TimelineController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2945">
-              <caret line="203" column="52" lean-forward="true" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReetiStageController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="99" column="37" lean-forward="false" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+            <state relative-caret-position="396">
+              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,9 +86,12 @@
       <find>mai</find>
       <find>System</find>
       <find>mLeftEye_X_OldPos</find>
+      <find>2</find>
     </findStrings>
     <replaceStrings>
       <replace>protected</replace>
+      <replace>2</replace>
+      <replace>sOffset</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\EmpaT\Desktop\Stickman3DNonStaticVersion\Stickman\src\de\dfki\reeti</dir>
@@ -170,14 +158,14 @@
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Grimace.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Default.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Relaxed.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sad2.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sorry.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Sunbathing.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
       </list>
     </option>
   </component>
@@ -235,8 +223,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -311,7 +297,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="timeline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stickman" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stickman" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dfki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reeti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controllerhelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stickman" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stickman" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dfki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reeti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="body" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,6 +411,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -794,13 +834,6 @@
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
     </task>
-    <task id="LOCAL-00023" summary="Adding libraries">
-      <created>1479474892964</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1479474892964</updated>
-    </task>
     <task id="LOCAL-00024" summary="Adding libraries to stickman 3D">
       <created>1479917757345</created>
       <option name="number" value="00024" />
@@ -1137,7 +1170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494024709800</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="CleanCode">
+      <created>1494024935792</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1494024935792</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1164,13 +1204,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24108107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24108107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22708334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17135416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19479166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1257,7 +1297,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="delete headResetButton" />
     <MESSAGE value="LeftEyeRotation" />
     <MESSAGE value="rightEyeRotation" />
     <MESSAGE value="leftEyeLidRotation" />
@@ -1282,7 +1321,8 @@
     <MESSAGE value="Sorry" />
     <MESSAGE value="Sunbathing" />
     <MESSAGE value="Rotation: Korrektur" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rotation: Korrektur" />
+    <MESSAGE value="CleanCode" />
+    <option name="LAST_COMMIT_MESSAGE" value="CleanCode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1359,13 +1399,6 @@
           <properties />
           <option name="timeStamp" value="231" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime()) == true" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java</url>
-          <line>115</line>
-          <properties />
-          <option name="timeStamp" value="264" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/de/dfki/stickman3D/animation/gesture/AbstractConversationHands.java</url>
           <line>16</line>
@@ -1398,13 +1431,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/util/xml/XMLUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="22" column="31" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11310">
@@ -1482,13 +1508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1592,7 +1611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="205" column="22" lean-forward="false" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1617,10 +1635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-441">
           <caret line="269" column="8" lean-forward="false" selection-start-line="269" selection-start-column="8" selection-end-line="269" selection-end-column="8" />
-          <folding>
-            <element signature="e#15059#15060#0" expanded="false" />
-            <element signature="e#15091#15092#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1643,7 +1657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1651,17 +1664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
           <caret line="179" column="38" lean-forward="true" selection-start-line="179" selection-start-column="38" selection-end-line="179" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/SequenceBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1683,9 +1685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1701,19 +1700,6 @@
         <state relative-caret-position="992">
           <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="74" column="99" lean-forward="false" selection-start-line="74" selection-start-column="99" selection-end-line="74" selection-end-column="99" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#startAutoScroll#0;class#TimelineController#0" expanded="false" />
-            <element signature="method#createSequenceBlock#0;class#TimelineController#0" expanded="false" />
-            <element signature="method#addSequenceBlocks#0;class#TimelineController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1757,19 +1743,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="99" column="37" lean-forward="false" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="2325">
           <caret line="122" column="24" lean-forward="false" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
           <folding>
             <element signature="method#setLedColor#0;class#Reeti#0" expanded="false" />
@@ -1793,9 +1769,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2945">
-          <caret line="203" column="52" lean-forward="true" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
+        <state relative-caret-position="6014">
+          <caret line="203" column="52" lean-forward="false" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="101" column="26" lean-forward="false" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/ApplicationLauncherReeti.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/SequenceBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5972">
+          <caret line="107" column="11" lean-forward="true" selection-start-line="107" selection-start-column="11" selection-end-line="107" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

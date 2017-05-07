@@ -66,6 +66,7 @@ public class TimelineController implements Initializable
 
     private static final int TIMELINEWIDTH = 5980;
     private static final int AUTOSCROLL_START_POS = 700;
+    private static int sOffset = 0;
 
 
 
@@ -81,6 +82,10 @@ public class TimelineController implements Initializable
 
         Assert.assertNotNull(sequence.getProperty());
 
+        if(sequence.getPoses().getFirst().getStartTime() < 2)
+            sOffset = 2;
+        else
+            sOffset = 0;
         addSequenceBlocks(sequence);
 
         ListIterator<Pose> iterator = (ListIterator<Pose>) sequence.getPoses().iterator();
@@ -113,45 +118,29 @@ public class TimelineController implements Initializable
                     for(Pose pose : sequenceBlock.poseList)
                     {
 
-                        if(timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime()))
+                        if(timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime() + sOffset))
                         {
-//                            System.out.println();
                             Movement motorMovement = pose.getMotorsMovement();
-                            reeti.rightEar((int)motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose());
-                            reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose());
-                            reeti.rightEyeLid((int)motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose());
-                            reeti.leftEyeLid((int)motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose());
-                            reeti.rightEyeTilt((int)motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose());
-                            reeti.leftEyeTilt((int)motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose());
-                            reeti.rightEyePan((int)motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose());
-                            reeti.leftEyePan((int)motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose());
-                            reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose());
-                            reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose());
-                            reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose());
+                            reeti.rightEar((int)motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.rightEyeLid((int)motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.leftEyeLid((int)motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.rightEyeTilt((int)motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.leftEyeTilt((int)motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.rightEyePan((int)motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.leftEyePan((int)motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
                             reeti.setLedColor(motorMovement.getColor());
-                            reeti.leftLC((int)motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose());
-                            reeti.rightLC((int)motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose());
-                            reeti.topLip((int)motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose());
-                            reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose());
-
-//                            if(motorMovement.getLeftEar() != -1)
-//                            {
-//                                System.out.println((int)motorMovement.getLeftEar());
-//
-//                                reeti.rightEyeLid(50, 30);
-//                                reeti.rightEar(0, 30);
-//                                reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() * 1000);
-//                            }
-
-
-
+                            reeti.leftLC((int)motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.rightLC((int)motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.topLip((int)motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose() + sOffset);
                         }
+
+
                     }
-//                    if (timeline.getTranslateX() == sequenceBlock.getTranslateX())
-//                    {
-//                        reeti.leftEyeLid(50, 30);
-//                        reeti.rightEyeLid(50, 30);
-//                    }
 
                     int c = timelinePos;
                     if (c >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
@@ -198,8 +187,8 @@ public class TimelineController implements Initializable
         double sequenceDuration = sequence.getProperty().getDuration();
 
         sBlock.setText(sequenceName);
-        sBlock.setTranslateX(Converter.SecondToPixel(startTime));
-        sBlock.setMinWidth(Converter.SecondToPixel(sequenceDuration));
+        sBlock.setTranslateX(Converter.SecondToPixel(startTime + sOffset));
+        sBlock.setMinWidth(Converter.SecondToPixel(sequenceDuration + sOffset));
 
         return sBlock;
     }
