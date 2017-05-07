@@ -11,7 +11,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,7 +29,7 @@ import java.util.ListIterator;
 import java.util.ResourceBundle;
 
 /*
-1 sec = 100px
+ *1 sec = 100px
  */
 
 public class TimelineController implements Initializable
@@ -62,6 +61,7 @@ public class TimelineController implements Initializable
     private Animation autoScrollAnimation = null;
 
     private Reeti reeti = null;
+    private Sequence sequence = null;
     private SequenceBlock sequenceBlock = null;
 
     private static final int TIMELINEWIDTH = 5980;
@@ -78,7 +78,7 @@ public class TimelineController implements Initializable
         RMDLReader reader = new RMDLReader(fileSystem);
         reader.open();
         reader.read();
-        Sequence sequence = reader.getSequence();
+        sequence = reader.getSequence();
 
         Assert.assertNotNull(sequence.getProperty());
 
@@ -139,16 +139,31 @@ public class TimelineController implements Initializable
                             reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose() + sOffset);
                         }
 
+                        //Back to neutral
+                        if(timeline.getTranslateX()
+                                == Converter.SecondToPixel(pose.getStartTime() + pose.getDuration().getTimeToReachPose())
+                                && pose.isBackToNeutralOn())
+                        {
+                            reeti.defaultPose();
+                        }
 
+                        //stop and reset timeline
+                        if(timeline.getTranslateX() == Converter.SecondToPixel(sequence.getProperty().getDuration() + 2))
+                        {
+                            timeline.setTranslateX(0);
+                            timelinePos = 0;
+                            playButtonON = false;
+                            autoScrollAnimation.stop();
+                        }
                     }
 
-                    int c = timelinePos;
-                    if (c >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
+//                    int c = timelinePos;
+                    if (timelinePos >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
                     {
                         isAutomaticScrollStarted = true;
                         startAutoScroll();
                     }
-                    timeline.setTranslateX(c);
+                    timeline.setTranslateX(timelinePos);
 
                     timelinePos++;
                     Thread.sleep(10);

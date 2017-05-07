@@ -1009,6 +1009,20 @@ public class Reeti extends Pane implements Stickman
         }
     }
 
+    public void defaultPose()
+    {
+        AnimationReeti a = AnimationLoaderReeti.getInstance().loadAnimation(this, "Default", 100, false);
+        try
+        {
+            mAnimationLaunchControl.acquire();
+            a.start();
+        }
+        catch (InterruptedException ex)
+        {
+            mLogger.severe(ex.getMessage());
+        }
+    }
+
     private Color checkColor(String color)
     {
         Color ledColor = null;
