@@ -107,7 +107,7 @@ public class TimelineController implements Initializable
             protected Void call() throws Exception
             {
                 //############AUTOSCROLL PLAY/PAUSE BLOCK####################
-                if (!playButtonON)
+                if (!playButtonON && autoScrollAnimation != null)
                     autoScrollAnimation.pause();
                 else if (autoScrollAnimation != null)
                     autoScrollAnimation.play();
@@ -120,23 +120,7 @@ public class TimelineController implements Initializable
 
                         if(timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime() + sOffset))
                         {
-                            Movement motorMovement = pose.getMotorsMovement();
-                            reeti.rightEar((int)motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.rightEyeLid((int)motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.leftEyeLid((int)motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.rightEyeTilt((int)motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.leftEyeTilt((int)motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.rightEyePan((int)motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.leftEyePan((int)motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.setLedColor(motorMovement.getColor());
-                            reeti.leftLC((int)motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.rightLC((int)motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.topLip((int)motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose() + sOffset);
-                            reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose() + sOffset);
+                            startMotors(pose);
                         }
 
                         //Back to neutral
@@ -148,25 +132,29 @@ public class TimelineController implements Initializable
                         }
 
                         //stop and reset timeline
-                        if(timeline.getTranslateX() == Converter.SecondToPixel(sequence.getProperty().getDuration() + 2))
+                        if(timeline.getTranslateX() >= Converter.SecondToPixel(sequence.getProperty().getDuration() + 2))
                         {
                             timeline.setTranslateX(0);
                             timelinePos = 0;
                             playButtonON = false;
                             autoScrollAnimation.stop();
+                            autoScrollAnimation = null;
+                            animationScrollPane.setHvalue(0.0);
+                            isAutomaticScrollStarted = false;
+                        }
+                        else
+                        {
+                            if (timelinePos >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
+                            {
+                                isAutomaticScrollStarted = true;
+                                startAutoScroll();
+                            }
+                            timeline.setTranslateX(timelinePos);
+
+                            timelinePos++;
+                            Thread.sleep(10);
                         }
                     }
-
-//                    int c = timelinePos;
-                    if (timelinePos >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
-                    {
-                        isAutomaticScrollStarted = true;
-                        startAutoScroll();
-                    }
-                    timeline.setTranslateX(timelinePos);
-
-                    timelinePos++;
-                    Thread.sleep(10);
                 }
                 return null;
             }
@@ -235,5 +223,26 @@ public class TimelineController implements Initializable
             sequenceBlock = createSequenceBlock(sequence);
             animationGridPane.add(sequenceBlock, 0, 4);
         }
+    }
+
+    private void startMotors(Pose pose)
+    {
+        Movement motorMovement = pose.getMotorsMovement();
+        reeti.rightEar((int)motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEyeLid((int)motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEyeLid((int)motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEyeTilt((int)motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEyeTilt((int)motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEyePan((int)motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEyePan((int)motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.setLedColor(motorMovement.getColor());
+        reeti.leftLC((int)motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightLC((int)motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.topLip((int)motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose() + sOffset);
     }
 }
