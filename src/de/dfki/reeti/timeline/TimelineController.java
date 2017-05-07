@@ -39,7 +39,7 @@ public class TimelineController implements Initializable
     private AnchorPane root;
 
     @FXML
-    private ComboBox<?> animationCombo;
+    private ComboBox<String> animationCombo;
 
     @FXML
     private Button playButton;
@@ -73,24 +73,40 @@ public class TimelineController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        File file = new File("C:\\Users\\EmpaT\\Desktop\\reeti\\ReertiParser\\reeti files\\Arrogant.rmdl");
-        FileSystemAble fileSystem = new RMDLFileSystem(file.getAbsolutePath());
-        RMDLReader reader = new RMDLReader(fileSystem);
-        reader.open();
-        reader.read();
-        sequence = reader.getSequence();
+        File rmdlFolder = new File("rmdl_files");
+        File[] listOfRmdlFiles = rmdlFolder.listFiles();
+        final File[] selectedFile = {null};
+        for(int i = 0; i < listOfRmdlFiles.length; i++)
+        {
+            animationCombo.getItems().add(listOfRmdlFiles[i].getName());
+        }
 
-        Assert.assertNotNull(sequence.getProperty());
+        animationCombo.setOnAction(event ->
+        {
+            int index = animationCombo.getSelectionModel().getSelectedIndex();
+            selectedFile[0] = new File(listOfRmdlFiles[index].getAbsolutePath());
 
-        if(sequence.getPoses().getFirst().getStartTime() < 2)
-            sOffset = 2;
-        else
-            sOffset = 0;
-        addSequenceBlocks(sequence);
+            FileSystemAble fileSystem = new RMDLFileSystem(selectedFile[0].getAbsolutePath());
+            RMDLReader reader = new RMDLReader(fileSystem);
+            reader.open();
+            reader.read();
+            sequence = reader.getSequence();
+            Assert.assertNotNull(sequence.getProperty());
 
-        ListIterator<Pose> iterator = (ListIterator<Pose>) sequence.getPoses().iterator();
-        while (iterator.hasNext())
-            sequenceBlock.poseList.add(iterator.next());
+            animationGridPane.getChildren().clear();
+
+            if(sequence.getPoses().getFirst().getStartTime() < 2)
+                sOffset = 2;
+            else
+                sOffset = 0;
+            addSequenceBlocks(sequence);
+
+            ListIterator<Pose> iterator = (ListIterator<Pose>) sequence.getPoses().iterator();
+            while (iterator.hasNext())
+                sequenceBlock.poseList.add(iterator.next());
+        });
+
+
 
         playButton.setOnMouseClicked(event ->
         {
