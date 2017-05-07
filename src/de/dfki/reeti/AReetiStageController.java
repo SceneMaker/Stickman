@@ -45,11 +45,7 @@ public abstract class AReetiStageController {
     @FXML
     public Button ExitButton;
     @FXML
-    public Button leftLedOffButton;
-    @FXML
-    public Button rightLedOffButton;
-    @FXML
-    public Button bothLedOffButton;
+    public Button ledOff;
     @FXML
     public Button cameraXPlusTranslationButton;
     @FXML

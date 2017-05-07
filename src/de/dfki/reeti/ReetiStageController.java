@@ -106,18 +106,8 @@ public class ReetiStageController extends AReetiStageController implements ViewC
                 e.printStackTrace();
             }
         });
-        
-        leftLedOffButton.setOnAction((event) ->
-        {
-            currentReeti.mLeftCheek.getLedGroup().setVisible(false);
-        });
-        
-        rightLedOffButton.setOnAction((event) ->
-        {
-            currentReeti.mRightCheek.getLedGroup().setVisible(false);
-        });
-        
-        bothLedOffButton.setOnAction((event) ->
+
+        ledOff.setOnAction((event) ->
         {
             currentReeti.mLeftCheek.getLedGroup().setVisible(false);
             currentReeti.mRightCheek.getLedGroup().setVisible(false);

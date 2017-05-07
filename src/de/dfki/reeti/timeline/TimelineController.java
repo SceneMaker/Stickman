@@ -131,7 +131,7 @@ public class TimelineController implements Initializable
                             reeti.defaultPose();
                         }
 
-                        //stop and reset timeline
+                        //stop and reset timeline and autoscroll
                         if(timeline.getTranslateX() >= Converter.SecondToPixel(sequence.getProperty().getDuration() + 2))
                         {
                             timeline.setTranslateX(0);
