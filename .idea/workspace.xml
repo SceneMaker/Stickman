@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/ReetiStageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/timeline/TimelineController.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -834,13 +832,6 @@
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
     </task>
-    <task id="LOCAL-00024" summary="Adding libraries to stickman 3D">
-      <created>1479917757345</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1479917757345</updated>
-    </task>
     <task id="LOCAL-00025" summary="Refactoring: Move interfaces to a new package">
       <created>1480329970781</created>
       <option name="number" value="00025" />
@@ -1177,7 +1168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494024935792</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Duration offset">
+      <created>1494165042803</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1494165042804</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1297,7 +1295,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="LeftEyeRotation" />
     <MESSAGE value="rightEyeRotation" />
     <MESSAGE value="leftEyeLidRotation" />
     <MESSAGE value="rightEyeLidRotation" />
@@ -1322,7 +1319,8 @@
     <MESSAGE value="Sunbathing" />
     <MESSAGE value="Rotation: Korrektur" />
     <MESSAGE value="CleanCode" />
-    <option name="LAST_COMMIT_MESSAGE" value="CleanCode" />
+    <MESSAGE value="Duration offset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Duration offset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
