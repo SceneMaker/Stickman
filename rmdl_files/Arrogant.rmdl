@@ -1,0 +1,42 @@
+name=Arrogant;
+duration=0.9;
+soundUsed=0;
+imageUsed=0;
+functionUsed=0;
+earsUsed=1;
+eyesUsed=1;
+mouthUsed=1;
+neckUsed=1;
+colorUsed=1;
+<description>
+<Pose>
+<name>Arrogant</name>
+<startTime>2.0013039</startTime>
+<duration>0.6;0.2;1</duration>
+<backToNeutral>1</backToNeutral>
+<values>50;90;50;40.5;59.5;50;-1;100;100;26;32.5;60;40;72.5;74.5;stop</values>
+<transition>smooth</transition>
+</Pose>
+
+</description>
+<urbi>
+{sleep(0.0013039s);
+{Global.servo.neckRotat=50 smooth:0.6s,
+Global.servo.neckTilt=90 smooth:0.6s,
+Global.servo.neckPan=50 smooth:0.6s,
+Global.servo.leftLC=40.5 smooth:0.6s,
+Global.servo.rightLC=59.5 smooth:0.6s,
+Global.servo.topLip=50 smooth:0.6s,
+Global.servo.leftEar=100 smooth:0.6s,
+Global.servo.rightEar=100 smooth:0.6s,
+Global.servo.leftEyeTilt=32.5 smooth:0.6s,
+Global.servo.rightEyeTilt=26 smooth:0.6s,
+Global.servo.leftEyePan=40 smooth:0.6s,
+Global.servo.rightEyePan=60 smooth:0.6s,
+Global.servo.leftEyeLid=74.5 smooth:0.6s,
+Global.servo.rightEyeLid=72.5 smooth:0.6s,
+Global.servo.changeColor(0,"stop",1),
+},
+},
+
+</urbi>
