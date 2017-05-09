@@ -29,7 +29,7 @@ import de.dfki.reeti.body.RightEar;
 import de.dfki.reeti.environment.SpeechBubbleFX;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.geom.Point2D;
+
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Affine;
@@ -47,7 +47,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
-import javafx.scene.transform.Scale;
 
 /**
  *
@@ -83,7 +82,7 @@ public class Reeti extends Pane implements Stickman
 
     // amimation stuff
     public Semaphore mAnimationLaunchControl = new Semaphore(1);
-    public AnimationSchedulerReeti mAnimationSchedulerFX;
+    public AnimationSchedulerReeti mAnimationSchedulerReeti;
     private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
 
     // body parts
@@ -236,8 +235,8 @@ public class Reeti extends Pane implements Stickman
         mLogger.addHandler(ch);
         mLogger.setUseParentHandlers(false);
 
-        mAnimationSchedulerFX = new AnimationSchedulerReeti(this);
-        mAnimationSchedulerFX.start();
+        mAnimationSchedulerReeti = new AnimationSchedulerReeti(this);
+        mAnimationSchedulerReeti.start();
     }
 
     public void addListener(AnimationListener al)
@@ -292,7 +291,7 @@ public class Reeti extends Pane implements Stickman
     }
 
     @Override
-    public StageRoom getStickmanStageController()
+    public StageRoom getStageController()
     {
         return stageController;
     }

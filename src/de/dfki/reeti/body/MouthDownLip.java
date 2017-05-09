@@ -11,7 +11,8 @@ import javafx.scene.shape.QuadCurveTo;
  * @author Beka Aptsiauri
  *
  */
-public class MouthDownLip extends BodyPartFX {
+public class MouthDownLip extends BodyPart
+{
 
     public static enum SHAPE {
         DEFAULT, DOWNLIPACTION

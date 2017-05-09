@@ -1,11 +1,10 @@
 package de.dfki.reeti.environment;
 
-import de.dfki.reeti.body.BodyPartFX;
+import de.dfki.reeti.body.BodyPart;
 import de.dfki.reeti.body.Head;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -18,7 +17,8 @@ import java.awt.geom.GeneralPath;
  * @author Beka
  *
  */
-public class SpeechBubbleFX extends BodyPartFX {
+public class SpeechBubbleFX extends BodyPart
+{
 
     public static enum SHAPE {
 

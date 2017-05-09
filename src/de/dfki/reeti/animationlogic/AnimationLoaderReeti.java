@@ -41,7 +41,7 @@ public class AnimationLoaderReeti {
         return "a" + sID;
     }
 
-    private String getAnimationClasspath(Gender.TYPE stickmantype, String name) {
+    private String getAnimationClasspath(Gender.TYPE type, String name) {
         String classPath = "";
 
         for (String s : sAnimationSubPackages) {
@@ -51,13 +51,13 @@ public class AnimationLoaderReeti {
                 Class.forName(classPath);
                 break;
             } catch (ClassNotFoundException ex) {
-                //ex.printStackTrace();
+                //nothing
             }
         }
         return classPath;
     }
 
-    private String getEventAnimationClasspath(Gender.TYPE stickmantype, String name) {
+    private String getEventAnimationClasspath(Gender.TYPE type, String name) {
         String classPath = "";
 
         for (String s : sAnimationSubPackages) {
@@ -67,7 +67,7 @@ public class AnimationLoaderReeti {
                 Class.forName(classPath);
                 break;
             } catch (ClassNotFoundException ex) {
-                //ex.printStackTrace();
+                //nothing
             }
         }
         return classPath;
@@ -83,13 +83,13 @@ public class AnimationLoaderReeti {
             for (Constructor con : constructors) {
                 Class[] params = con.getParameterTypes();
                 if (params.length == 3 && extraParams.size() == 0) {
-                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
+                    if (params[0].getSimpleName().equalsIgnoreCase("reeti")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
                         a = (AnimationReeti) c.getDeclaredConstructor(params).newInstance(sm, duration, block);
                     }
                 }else if(params.length == 4){
-                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
+                    if (params[0].getSimpleName().equalsIgnoreCase("reeti")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")
                             && params[3].getSimpleName().equalsIgnoreCase("hashMap")) {
@@ -181,7 +181,7 @@ public class AnimationLoaderReeti {
                 Class[] params = con.getParameterTypes();
 
                 if (params.length == 3) {
-                    if (params[0].getSimpleName().equalsIgnoreCase("stickman3d")
+                    if (params[0].getSimpleName().equalsIgnoreCase("reeti")
                             && params[1].getSimpleName().equalsIgnoreCase("int")
                             && params[2].getSimpleName().equalsIgnoreCase("boolean")) {
                         a = (EventAnimationReeti) c.getDeclaredConstructor(params).newInstance(sm, duration, block);

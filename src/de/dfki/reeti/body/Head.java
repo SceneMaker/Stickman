@@ -1,6 +1,5 @@
 package de.dfki.reeti.body;
 
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 import de.dfki.reeti.Reeti;
 import javafx.scene.Group;
@@ -13,14 +12,14 @@ import javafx.scene.image.Image;
 
 import java.awt.*;
 import java.net.URL;
-import javafx.scene.transform.Translate;
 
 /**
  *
  * @author Beka Aptsiauri
  *
  */
-public class Head extends BodyPartFX {
+public class Head extends BodyPart
+{
 
     public Dimension mSize = new Dimension(120, 100);
     public Reeti mReeti;

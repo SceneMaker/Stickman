@@ -14,21 +14,21 @@ import java.util.logging.Logger;
  */
 public class AnimationSchedulerReeti extends Thread {
 
-    Reeti mStickmanFX;
+    Reeti mReeti;
     boolean mRunning = true;
     public LinkedBlockingQueue<AnimationReeti> mAnimationQueue = new LinkedBlockingQueue<>();
     public Semaphore mTheBlockOfHell = new Semaphore(1);
 
     public AnimationSchedulerReeti(Reeti s) {
         setName(s.mName + "'s AnimationScheduler");
-        mStickmanFX = s;
+        mReeti = s;
     }
 
     public void introduce(AnimationReeti a) {
         try {
             mAnimationQueue.put(a);
         } catch (InterruptedException ex) {
-            mStickmanFX.mLogger.severe(ex.getMessage());
+            mReeti.mLogger.severe(ex.getMessage());
         }
     }
 
@@ -46,7 +46,7 @@ public class AnimationSchedulerReeti extends Thread {
 
         // throw in a last animation that unblocks the scheduler letting him end
         try {
-            mAnimationQueue.put(new AnimationReeti(mStickmanFX, 1, false) {
+            mAnimationQueue.put(new AnimationReeti(mReeti, 1, false) {
             });
         } catch (InterruptedException ex) {
             Logger.getLogger(AnimationSchedulerReeti.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,18 +61,18 @@ public class AnimationSchedulerReeti extends Thread {
                 mTheBlockOfHell.acquire(1);
 
                 // get the next animation in the animation queue
-                AnimationReeti animationFX = mAnimationQueue.take();
+                AnimationReeti animation = mAnimationQueue.take();
 
                 // tell the animation to render itself
-                animationFX.mAnimationStart.release();
+                animation.mAnimationStart.release();
 
                 // unblock the scheduler if animation is not blocking
-                if (!animationFX.mBlocking) {
+                if (!animation.mBlocking) {
                     mTheBlockOfHell.release();
-                    removeAnimation(animationFX);
+                    removeAnimation(animation);
                 }
             } catch (InterruptedException ex) {
-                mStickmanFX.mLogger.severe(ex.getMessage());
+                mReeti.mLogger.severe(ex.getMessage());
             }
         }
     }

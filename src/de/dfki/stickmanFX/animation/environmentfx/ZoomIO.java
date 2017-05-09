@@ -29,15 +29,15 @@ public class ZoomIO extends AnimationFX {
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: " + nfe.getMessage());
         }
-        String mStageIdentifier = mStickmanFX.getStickmanStageController().getStageIdentifier();
+        String mStageIdentifier = mStickmanFX.getStageController().getStageIdentifier();
         HBox mStickmanPane;
         try {
-            mStickmanPane = mStickmanFX.getStickmanStageController().getStickmanStage()
+            mStickmanPane = mStickmanFX.getStageController().getStickmanStage()
                     .getStickmanBox(mStageIdentifier);
             Platform.runLater(() -> mStickmanPane.getChildren().clear());
             Platform.runLater(() -> {
                 try {
-                    mStickmanFX.getStickmanStageController().getStickmanStage().addStickmanToStage(mStageIdentifier,
+                    mStickmanFX.getStageController().getStickmanStage().addStickmanToStage(mStageIdentifier,
                             mStickmanFX);
                     mStickmanPane.setAlignment(Pos.CENTER);
                 } catch (Exception e) {

@@ -2,7 +2,6 @@ package de.dfki.reeti.body;
 
 import de.dfki.reeti.animationlogic.AnimatorReeti;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
@@ -12,7 +11,8 @@ import javafx.scene.shape.QuadCurveTo;
  * @author Beka Aptsiauri
  *
  */
-public class MouthLeftCorner extends BodyPartFX {
+public class MouthLeftCorner extends BodyPart
+{
 
     public static enum SHAPE {
         DEFAULT, LEFTCORNERACTION 

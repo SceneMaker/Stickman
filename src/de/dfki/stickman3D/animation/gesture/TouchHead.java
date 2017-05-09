@@ -95,10 +95,10 @@ public class TouchHead extends Animation3D {
 			playAnimationPart(500);
 		}
 
-		// mAnimationPartFX = new ArrayList<>();
-		// mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody,
+		// mAnimationPart = new ArrayList<>();
+		// mAnimationPart.add(new AnimationContent3D(mStickmanFX.mUpperBody,
 		// "yrotate", 90));
-		// mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX,
+		// mAnimationPart.add(new AnimationContent3D(mStickmanFX.mHeadFX,
 		// "yrotate", 90));
 		// playAnimationPart(500);
 

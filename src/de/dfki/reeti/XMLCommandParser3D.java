@@ -26,7 +26,7 @@ public class XMLCommandParser3D extends XMLCommandParser {
 
         boolean r = XMLUtilities.parseFromXMLStream(a, new ByteArrayInputStream(cmd.getBytes(Charset.forName("UTF-8"))));
 
-        String stickmanname = a.mStickmanName;
+        String stickmanname = a.mReetiName;
         String animationname = a.mName;
         String id = a.getmID();
         int duration = a.mDuration;

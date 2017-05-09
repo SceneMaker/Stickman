@@ -9,7 +9,6 @@ import de.dfki.reeti.Reeti;
 import de.dfki.reeti.ReetiStageController;
 import de.dfki.reeti.animationlogic.AnimationContentReeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
 import java.util.ArrayList;
 
@@ -32,14 +31,14 @@ public class Test extends AnimationReeti {
     public void playAnimation() {
 //        mReeti.leftLC(70);
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "THREE"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth, "shape", "THREE"));
         playAnimationPart(20);
 
         pauseAnimation(1000);
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth,"shape","DEFAULT"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth,"shape","DEFAULT"));
         playAnimationPart(mDuration);
 
 

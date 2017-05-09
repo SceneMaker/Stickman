@@ -71,7 +71,7 @@ public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable
 
     public void setStickmanName(String stickmanName) {
         mStickmanName = stickmanName;
-        //mStickman = StickmanStageSwing.getStickman(mStickmanName);
+        //mStickman = StickmanStageSwing.getStickman(mReetiName);
         setName(mStickmanName + "'s AnimationSwing " + mName);
     }
 
@@ -153,12 +153,12 @@ public class AnimationSwing extends Thread implements XMLParseable, XMLWriteable
         // send event that AnimationSwing is ended
 
         // send event that AnimationSwing is ended - if there is a recipient
-        if (mStickman.getStickmanStageController() != null) {
+        if (mStickman.getStageController() != null) {
             // API or TCP-Interface
-            if (!mStickman.getStickmanStageController().ismNetwork()) {
+            if (!mStickman.getStageController().ismNetwork()) {
                 mStickman.notifyListeners(mID);
             } else {
-                mStickman.getStickmanStageController().sendAnimationUpdate("end", getmID());
+                mStickman.getStageController().sendAnimationUpdate("end", getmID());
             }
         }
     }

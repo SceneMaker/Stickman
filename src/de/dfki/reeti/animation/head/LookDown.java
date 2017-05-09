@@ -25,18 +25,18 @@ public class LookDown extends AnimationReeti {
     @Override
     public void playAnimation() {
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", 20));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEye, "rotate", 20));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "LOOKDOWN"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", 20));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEye, "rotate", 20));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "LOOKDOWN"));
         playAnimationPart(100);
 
         pauseAnimation(100);
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", -20));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEye, "rotate", -20));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "LOOKDOWNEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mLeftEye, "rotate", -20));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEye, "rotate", -20));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "LOOKDOWNEND"));
         playAnimationPart(100);
 
         if (ReetiStageController.currentRadioButton != null) {

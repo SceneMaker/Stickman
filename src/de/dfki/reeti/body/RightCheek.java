@@ -16,7 +16,8 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class RightCheek extends BodyPartFX {
+public class RightCheek extends BodyPart
+{
 
     Head mHeadFX;
 

@@ -29,14 +29,14 @@ public class EventAnimationReeti extends AnimationReeti {
         super();
     }
 
-    public EventAnimationReeti(Reeti sm, int duration, boolean block) {
-        super(sm, duration, block);
+    public EventAnimationReeti(Reeti reet, int duration, boolean block) {
+        super(reet, duration, block);
         mName = getClass().getSimpleName();
-        setName(sm.mName + "'s Event AnimationSwing " + mName);
+        setName(reet.mName + "'s Event AnimationSwing " + mName);
     }
 
     public void playEventAnimationPart() {
-        mAnimatorFX = new AnimatorReeti(mReeti, this, mAnimationPartFX, mWTS);
+        mAnimatorReeti = new AnimatorReeti(mReeti, this, mAnimationPart, mWTS);
 
         try {
             mAnimationPartStart.acquire();
@@ -47,7 +47,7 @@ public class EventAnimationReeti extends AnimationReeti {
 
     @Override
     public void writeXML(IOSIndentWriter out) throws XMLWriteError {
-        out.println("<StickmanEventAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
+        out.println("<StickmanEventAnimation stickmanname = \"" + mReetiName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
         if (mParameter != null) {
             if (mParameter instanceof WordTimeMarkSequence) {
                 ((WordTimeMarkSequence) mParameter).writeXML(out);
@@ -62,7 +62,7 @@ public class EventAnimationReeti extends AnimationReeti {
 
     @Override
     public void parseXML(final Element element) throws XMLParseError {
-        mStickmanName = element.getAttribute("stickmanname");
+        mReetiName = element.getAttribute("stickmanname");
         mName = element.getAttribute("name");
         mID = element.getAttribute("id");
         mDuration = Integer.parseInt(element.getAttribute("duration"));

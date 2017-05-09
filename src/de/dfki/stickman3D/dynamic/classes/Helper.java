@@ -484,12 +484,12 @@ public class Helper {
     }
 
     private static void appendMethodCommands(String bodypart, int x, int y, int z) {
-        DynamicCompiler.methodContent.append("mAnimationPartFX = new ArrayList<>(); \n");
-        DynamicCompiler.methodContent.append("mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
+        DynamicCompiler.methodContent.append("mAnimationPart = new ArrayList<>(); \n");
+        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
                 .append(",\"rotate\",").append(x).append(")); \n");
-        DynamicCompiler.methodContent.append("mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
+        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
                 .append(",\"yrotate\",").append(y).append(")); \n");
-        DynamicCompiler.methodContent.append("mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
+        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
                 .append(",\"zrotate\",").append(z).append(")); \n");
         DynamicCompiler.methodContent.append("playAnimationPart(mDuration);\n");
     }

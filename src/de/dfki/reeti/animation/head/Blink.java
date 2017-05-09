@@ -29,19 +29,19 @@ public class Blink extends AnimationReeti {
 
     @Override
     public void playAnimation() {
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", 100));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", 100));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "BLINK"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", 100));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", 100));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "BLINK"));
         playAnimationPart(500);
 
         pauseAnimation(300);
 
         //blink up
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", -100));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", -100));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "BLINKEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mLeftEyelid, "rotate", -100));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEyelid, "rotate", -100));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEyeFX, "shape", "BLINKEND"));
         playAnimationPart(500);
 
         if (ReetiStageController.currentRadioButton != null) {

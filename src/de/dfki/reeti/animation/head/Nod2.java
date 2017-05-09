@@ -32,20 +32,20 @@ public class Nod2 extends AnimationReeti {
     public void playAnimation() {
         for (int i = 0; i < 6; i++) {
             if (i == 0) {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 10));
+                mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "rotate", 10));
                 playAnimationPart(200);
             } else if (i == 5) {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", -10));
+                mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "rotate", -10));
                 playAnimationPart(200);
             } else if (i % 2 == 1) {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", -20));
+                mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "rotate", -20));
                 playAnimationPart(200);
             } else {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 20));
+                mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "rotate", 20));
                 playAnimationPart(200);
             }
         }

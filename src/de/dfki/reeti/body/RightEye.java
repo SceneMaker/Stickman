@@ -11,10 +11,6 @@ import java.net.URL;
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import javafx.scene.Group;
 
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
 /**
@@ -22,7 +18,8 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class RightEye extends BodyPartFX {
+public class RightEye extends BodyPart
+{
 
     public static enum SHAPE {
         DEFAULT, FADEIN, FADEOUT

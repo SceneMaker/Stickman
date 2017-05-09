@@ -6,7 +6,6 @@
 package de.dfki.reeti.animation.head;
 
 import de.dfki.reeti.Reeti;
-import de.dfki.reeti.ReetiStageController;
 import de.dfki.reeti.animationlogic.AnimationContentReeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
 
@@ -26,8 +25,8 @@ public class TiltLeftEnd extends AnimationReeti {
     @Override
     public void playAnimation() {
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "zrotate", -10));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "zrotate", -10));
         playAnimationPart(200);
         AnimationReeti.isHeadTiltInAction = false;
 

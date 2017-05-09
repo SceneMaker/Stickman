@@ -39,19 +39,19 @@ public class Muster extends AnimationReeti {
         mReeti.mMouth.setDownRegulator(-10);
 //        mReeti.mMouth.setLeftCornerRegulator(-20);
         
-        mAnimationPartFX = new ArrayList<>();
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "rotate", 60));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", 60));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTION"));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", 60));
+        mAnimationPart = new ArrayList<>();
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mLeftEar, "rotate", 60));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", 60));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTION"));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", 60));
         playAnimationPart(mDuration);
 
         pauseAnimation(2000);
         mReeti.ledOFF("B");
-        mAnimationPartFX = new ArrayList<>();
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mLeftEar, "rotate", -60));
-//        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", -60));
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
+        mAnimationPart = new ArrayList<>();
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mLeftEar, "rotate", -60));
+//        mAnimationPart.add(new AnimationContentReeti(mReeti.mRightEar, "yrotate", -60));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth, "shape", "MOUTHACTIONEND"));
         playAnimationPart(mDuration);
 
         if (ReetiStageController.currentRadioButton != null) {

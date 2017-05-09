@@ -28,13 +28,13 @@ import java.util.concurrent.Semaphore;
 public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable, Animation {
 
     public String mName = "";
-    public ArrayList<AnimationContentReeti> mAnimationPartFX = new ArrayList<>();
+    public ArrayList<AnimationContentReeti> mAnimationPart = new ArrayList<>();
     public Semaphore mAnimationPartStart = new Semaphore(0);
     public Semaphore mAnimationStart = new Semaphore(1);
-    public AnimatorReeti mAnimatorFX;
-    public AnimationPauseReeti mAnimationPauseFX;
+    public AnimatorReeti mAnimatorReeti;
+    public AnimationPauseReeti mAnimationPauseReeti;
     public Reeti mReeti;
-    public String mStickmanName;
+    public String mReetiName;
     public boolean mBlocking = false;
     public int mDuration = -1;
     public int actionDuration = -1;
@@ -55,32 +55,32 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
     public AnimationReeti() {
     }
 
-    public AnimationReeti(Reeti sm, int duration, boolean block) {
+    public AnimationReeti(Reeti reeti, int duration, boolean block) {
         mName = getClass().getSimpleName();
-        mReeti = sm;
-        mStickmanName = mReeti.mName;
-        setName(mStickmanName + "'s AnimationSwing " + mName);
+        mReeti = reeti;
+        mReetiName = mReeti.mName;
+        setName(mReetiName + "'s AnimationSwing " + mName);
         mID = mReeti.getID(); // default ID;
         mBlocking = block;
         mDuration = duration;
     }
 
-    public AnimationReeti(Reeti sm, int duration, int pos, boolean block) {
+    public AnimationReeti(Reeti reeti, int duration, int pos, boolean block) {
         mName = getClass().getSimpleName();
-        mReeti = sm;
-        mStickmanName = mReeti.mName;
-        setName(mStickmanName + "'s AnimationSwing " + mName);
+        mReeti = reeti;
+        mReetiName = mReeti.mName;
+        setName(mReetiName + "'s AnimationSwing " + mName);
         mID = mReeti.getID(); // default ID;
         mBlocking = block;
         mDuration = duration;
         this.actionDuration = actionDuration;
     }
 
-    public AnimationReeti(Reeti sm, int frequent, int actionDuration, boolean block, HashMap<String, String> extraParams) {
+    public AnimationReeti(Reeti reeti, int frequent, int actionDuration, boolean block, HashMap<String, String> extraParams) {
         mName = getClass().getSimpleName();
-        mReeti = sm;
-        mStickmanName = mReeti.mName;
-        setName(mStickmanName + "'s AnimationSwing " + mName);
+        mReeti = reeti;
+        mReetiName = mReeti.mName;
+        setName(mReetiName + "'s AnimationSwing " + mName);
         mID = mReeti.getID(); // default ID;
         mBlocking = block;
         mDuration = frequent;
@@ -109,9 +109,9 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
         return extraParams;
     }
 
-    public void setStickmanName(String stickmanName) {
-        mStickmanName = stickmanName;
-        setName(mStickmanName + "'s AnimationSwing " + mName);
+    public void setReetiName(String stickmanName) {
+        mReetiName = stickmanName;
+        setName(mReetiName + "'s AnimationSwing " + mName);
     }
 
     public void setAnimationName(String animationName) {
@@ -127,7 +127,7 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
     }
 
     public void waitForClearance() {
-        mReeti.mAnimationSchedulerFX.introduce(this);
+        mReeti.mAnimationSchedulerReeti.introduce(this);
         // block this animation for animation - AnimationSheduler will unblock 
         try {
             mAnimationStart.acquire(1);
@@ -155,7 +155,7 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
     }
 
     public void playAnimationPart(int duration) {
-        mAnimatorFX = new AnimatorReeti(mReeti, this, mAnimationPartFX, duration);
+        mAnimatorReeti = new AnimatorReeti(mReeti, this, mAnimationPart, duration);
 
         try {
             mAnimationPartStart.acquire();
@@ -166,7 +166,7 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
     }
 
     public void playAnimationPart(int duration, int step) {
-        mAnimatorFX = new AnimatorReeti(mReeti, this, mAnimationPartFX, duration, step);
+        mAnimatorReeti = new AnimatorReeti(mReeti, this, mAnimationPart, duration, step);
 
         try {
             mAnimationPartStart.acquire();
@@ -177,7 +177,7 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
     }
 
     public void pauseAnimation(int duration) {
-        mAnimationPauseFX = new AnimationPauseReeti(mReeti, this, duration);
+        mAnimationPauseReeti = new AnimationPauseReeti(mReeti, this, duration);
 
         try {
             mAnimationPartStart.acquire();
@@ -189,23 +189,23 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
     public void finalizeAnimation() {
         // unblock AnimationScheduler if animation is a blocking animation
         if (mBlocking) {
-            mReeti.mAnimationSchedulerFX.proceed(this);
+            mReeti.mAnimationSchedulerReeti.proceed(this);
         } else {
-            mReeti.mAnimationSchedulerFX.removeAnimation(this);
+            mReeti.mAnimationSchedulerReeti.removeAnimation(this);
         }
         // send event that AnimationReeti is ended
 
         // API or TCP-Interface
-        if (!mReeti.getStickmanStageController().ismNetwork()) {
+        if (!mReeti.getStageController().ismNetwork()) {
             mReeti.notifyListeners(getmID());
         } else {
-            mReeti.getStickmanStageController().sendAnimationUpdate("end", getmID());
+            mReeti.getStageController().sendAnimationUpdate("end", getmID());
         }
     }
 
     @Override
     public void writeXML(IOSIndentWriter out) throws XMLWriteError {
-        out.println("<StickmanAnimation stickmanname = \"" + mStickmanName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
+        out.println("<StickmanAnimation stickmanname = \"" + mReetiName + "\" name=\"" + mName + "\" id=\"" + mID + "\" duration=\"" + mDuration + "\" blocking=\"" + mBlocking + "\">").push();
         if (mParameter != null) {
             if (mParameter instanceof WordTimeMarkSequence) {
                 ((WordTimeMarkSequence) mParameter).writeXML(out);
@@ -231,7 +231,7 @@ public class AnimationReeti extends Thread implements XMLParseable, XMLWriteable
 
     @Override
     public void parseXML(final Element element) throws XMLParseError {
-        mStickmanName = element.getAttribute("stickmanname");
+        mReetiName = element.getAttribute("stickmanname");
         mName = element.getAttribute("name");
         mID = element.getAttribute("id");
         mDuration = Integer.parseInt(element.getAttribute("duration"));

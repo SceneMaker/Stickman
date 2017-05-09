@@ -275,7 +275,7 @@ public class StickmanSwing extends JComponent implements Stickman {
     }
 
     @Override
-    public StageRoom getStickmanStageController() {
+    public StageRoom getStageController() {
         return stageController;
     }
 

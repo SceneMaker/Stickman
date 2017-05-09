@@ -1,25 +1,20 @@
 package de.dfki.reeti.body;
 
 import de.dfki.reeti.animationlogic.AnimatorReeti;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
-import javafx.scene.effect.Light.Distant;
-import javafx.scene.effect.Lighting;
-import javafx.scene.shape.ClosePath;
+
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.StrokeLineJoin;
 
 /**
  *
  * @author Beka Aptsiauri
  *
  */
-public class MouthRightCorner extends BodyPartFX {
+public class MouthRightCorner extends BodyPart
+{
 
     public static enum SHAPE {
         DEFAULT, RIGHTCORNERACTION 

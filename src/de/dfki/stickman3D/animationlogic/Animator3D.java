@@ -109,7 +109,7 @@ public class Animator3D {
                     // 1) API Call
                     // 2) send to Player
 
-                    mStickmanFX.getStickmanStageController().sendTimeMarkInformation(e.mContent);
+                    mStickmanFX.getStageController().sendTimeMarkInformation(e.mContent);
                 }
             }
         }

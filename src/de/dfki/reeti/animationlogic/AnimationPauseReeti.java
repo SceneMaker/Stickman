@@ -11,13 +11,13 @@ import java.util.concurrent.Semaphore;
  */
 public class AnimationPauseReeti {
 
-    private final Reeti mStickmanFX;
-    private final AnimationReeti mAnimationFX;
+    private final Reeti mReeti;
+    private final AnimationReeti mAnimation;
     public Semaphore mPauseEnd = new Semaphore(0);
 
-    public AnimationPauseReeti(Reeti sm, AnimationReeti a, int duration) {
-        mStickmanFX = sm;
-        mAnimationFX = a;
+    public AnimationPauseReeti(Reeti reeti, AnimationReeti a, int duration) {
+        mReeti = reeti;
+        mAnimation = a;
 
         new WaitThread(duration).start();
 
@@ -25,11 +25,11 @@ public class AnimationPauseReeti {
         try {
             mPauseEnd.acquire(1);
         } catch (InterruptedException ex) {
-            mStickmanFX.mLogger.severe(ex.getMessage());
+            mReeti.mLogger.severe(ex.getMessage());
         }
 
         // tell animation to proceed
-        mAnimationFX.mAnimationPartStart.release();
+        mAnimation.mAnimationPartStart.release();
     }
 
     private class WaitThread extends Thread {
@@ -46,7 +46,7 @@ public class AnimationPauseReeti {
             try {
                 sleep(mSleepTime);
             } catch (InterruptedException ex) {
-                mStickmanFX.mLogger.severe(ex.getMessage());
+                mReeti.mLogger.severe(ex.getMessage());
             }
             mPauseEnd.release();
         }

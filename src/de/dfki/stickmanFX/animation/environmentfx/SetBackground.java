@@ -31,10 +31,10 @@ public class SetBackground extends AnimationFX {
 
         String sParameter = (String) mParameter;
         sParameter = sParameter.toLowerCase().trim();
-        String mStageIdentifier = mStickmanFX.getStickmanStageController().getStageIdentifier();
+        String mStageIdentifier = mStickmanFX.getStageController().getStageIdentifier();
         HBox mStickmanPane;
         try {
-            mStickmanPane = mStickmanFX.getStickmanStageController().getStickmanStage()
+            mStickmanPane = mStickmanFX.getStageController().getStickmanStage()
                     .getStickmanBox(mStageIdentifier);
 
             //Upload the picture

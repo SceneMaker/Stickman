@@ -21,12 +21,12 @@ public class ZoomBack extends AnimationFX {
         // make StickmanSwing to become original size
         mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
 
-        String mStageIdentifier = mStickmanFX.getStickmanStageController().getStageIdentifier();
+        String mStageIdentifier = mStickmanFX.getStageController().getStageIdentifier();
         HBox mStickmanPane;
         try {
             Platform.runLater(() -> {
                 try {
-                    mStickmanFX.getStickmanStageController().getStickmanStage().addStickmanToStage(mStageIdentifier);
+                    mStickmanFX.getStageController().getStickmanStage().addStickmanToStage(mStageIdentifier);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import javafx.scene.Group;
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -22,7 +21,8 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class RightEar extends BodyPartFX {
+public class RightEar extends BodyPart
+{
     
     Head mHeadFX;
 

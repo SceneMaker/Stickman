@@ -401,7 +401,7 @@ public class Stickman3D extends Pane implements Stickman {
     }
 
     @Override
-    public StageRoom getStickmanStageController() {
+    public StageRoom getStageController() {
         return stageController;
     }
 

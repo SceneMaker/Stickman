@@ -326,7 +326,7 @@ public class StickmanFX extends Pane implements Stickman {
     }
 
     @Override
-    public StageRoom getStickmanStageController() {
+    public StageRoom getStageController() {
         return stageController;
     }
 
@@ -540,7 +540,7 @@ public class StickmanFX extends Pane implements Stickman {
             mRightEyeFX.update();
             mMouthFX.update();
             mNeckFX.update();
-            // BodyFX is not BodyPartFX Classe
+            // BodyFX is not BodyPart Classe
             mBodyFX.calculate();
             mLeftShoulderFX.update();
             mLeftUpperArmFX.update();
@@ -592,7 +592,7 @@ public class StickmanFX extends Pane implements Stickman {
             mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
             mMouthFX.rotatePerlinNoise(mWobble, x, y);
             mNeckFX.rotatePerlinNoise(mWobble, x, y);
-            // BodyFX is not BodyPartFX Classe
+            // BodyFX is not BodyPart Classe
             mBodyFX.rotatePerlinNoise(mWobble, x, y);
             mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
             mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);

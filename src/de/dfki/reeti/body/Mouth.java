@@ -19,7 +19,8 @@ import javafx.scene.shape.StrokeLineJoin;
  * @author Beka Aptsiauri
  *
  */
-public class Mouth extends BodyPartFX {
+public class Mouth extends BodyPart
+{
 
     public static enum SHAPE {
         DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN,

@@ -30,12 +30,12 @@ public class Nod extends AnimationReeti {
     @Override
     public void playAnimation() {
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", 10));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "rotate", 10));
         playAnimationPart(200);
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mHead, "rotate", -10));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "rotate", -10));
         playAnimationPart(200);
 
         if (ReetiStageController.currentRadioButton != null) {

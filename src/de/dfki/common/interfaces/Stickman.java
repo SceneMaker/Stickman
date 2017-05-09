@@ -8,7 +8,7 @@ import de.dfki.common.Gender;
  */
 public interface Stickman {
 
-    StageRoom getStickmanStageController();
+    StageRoom getStageController();
 
     void setStageController(StageRoom s);
 

@@ -98,7 +98,7 @@ public class AnimatorFX {
                     // we have 2 options!
                     // 1) API Call
                     // 2) send to Player
-                    mStickmanFX.getStickmanStageController().sendTimeMarkInformation(e.mContent);
+                    mStickmanFX.getStageController().sendTimeMarkInformation(e.mContent);
                 }
             }
         }
@@ -189,7 +189,7 @@ public class AnimatorFX {
                 mAnimationFX.mAnimationPartStart.release();
                 if (mAnimationFX.mParameter instanceof AnimationObserver) {
                     try {
-                        BufferedImage image = mStickmanFX.getStickmanStageController().getStageAsImage();
+                        BufferedImage image = mStickmanFX.getStageController().getStageAsImage();
                         notifyAllObservers(image);
                     } catch (Exception e) {
                         e.printStackTrace();

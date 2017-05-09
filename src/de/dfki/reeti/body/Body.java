@@ -1,8 +1,7 @@
 package de.dfki.reeti.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.common.Gender;
-import de.dfki.reeti.Reeti;
+
 import java.awt.Dimension;
 import java.awt.Point;
 import javafx.scene.Group;
@@ -24,7 +23,8 @@ import javafx.scene.image.Image;
  * @author Beka Aptsiauri
  *
  */
-public class Body extends BodyPartFX {
+public class Body extends BodyPart
+{
 
     Neck mNeckFX;
     Rotate rx;

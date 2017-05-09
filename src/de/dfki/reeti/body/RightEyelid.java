@@ -21,7 +21,8 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class RightEyelid extends BodyPartFX {
+public class RightEyelid extends BodyPart
+{
 
     Head mHeadFX;
 

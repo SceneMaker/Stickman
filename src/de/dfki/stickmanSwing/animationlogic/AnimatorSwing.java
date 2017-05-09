@@ -100,7 +100,7 @@ public class AnimatorSwing {
                     // we have 2 options!
                     // 1) API Call
                     // 2) send to Player
-                    mStickman.getStickmanStageController().sendTimeMarkInformation(e.mContent);
+                    mStickman.getStageController().sendTimeMarkInformation(e.mContent);
 
                 }
             }

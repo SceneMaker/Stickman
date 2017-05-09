@@ -35,11 +35,11 @@ public class Speaking extends AnimationReeti {
 //            mReeti.mSpeechBubble.mText = "dadasdsad ";
         }
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mSpeechBubble, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mSpeechBubble, "shape", SpeechBubbleFX.SHAPE.SPEAK.name()));
         playAnimationPart(mDuration);
 
-        mAnimationPartFX.add(new AnimationContentReeti(mReeti.mSpeechBubble, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+        mAnimationPart.add(new AnimationContentReeti(mReeti.mSpeechBubble, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
         playAnimationPart(20);
 
         if (ReetiStageController.currentRadioButton != null) {

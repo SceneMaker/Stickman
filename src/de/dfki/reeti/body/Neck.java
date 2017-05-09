@@ -20,7 +20,8 @@ import javafx.scene.transform.Translate;
  * @author Beka
  *
  */
-public class Neck extends BodyPartFX {
+public class Neck extends BodyPart
+{
 
     Head mHeadFX;
 
