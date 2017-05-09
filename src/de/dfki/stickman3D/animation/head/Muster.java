@@ -30,7 +30,7 @@ public class Muster extends Animation3D {
     @Override
     public void playAnimation() {
         mAnimationPartFX = new ArrayList<>(); 
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX,"shape","SEVEN")); 
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX,"shape","O"));
         playAnimationPart(mDuration);
         
         pauseAnimation(1000);

@@ -22,7 +22,8 @@ import javafx.scene.shape.StrokeLineJoin;
 public class Mouth extends BodyPartFX {
 
     public static enum SHAPE {
-        DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN
+        DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN,
+        ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY
     };
 
     Head mHeadFX;
@@ -109,16 +110,7 @@ public class Mouth extends BodyPartFX {
 
         switch (mShape) {
             case DEFAULT:
-
-                mLips.getElements().clear();
-                mLips.setStrokeLineJoin(StrokeLineJoin.ROUND);
-                mLips.setStrokeWidth(3);
-                mLips.setStroke(mColor);
-                mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCorner.getY()));
-                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY(), leftCorner.getX(), leftCorner.getY()));
-                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCorner.getY()));
-                mLips.getElements().add(new ClosePath());
-                mLips.setStyle("-fx-color: red");
+                closeMouth();
                 break;
 
             case MOUTHACTION:
@@ -213,13 +205,52 @@ public class Mouth extends BodyPartFX {
                 break;
 
             case OPEN:
-                mLips.getElements().clear();
-                mLips.getElements().add(new MoveTo(leftCorner.getX(), leftCorner.getY()));
-                mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY() - 10, rightCorner.getX(), rightCorner.getY()));
-                mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY() + 10, leftCorner.getX(), leftCorner.getY()));
-                mLips.getElements().add(new ClosePath());
+                openMouth();
                 break;
+            case ONE:
+            case THREE:
+            case FIVE:
+            case SEVEN:
+            case NINE:
+            case ELEVEN:
+            case THIRTEEN:
+            case NINETEEN:
+                openMouth();
+                break;
+            case TWO:
+            case FOUR:
+            case SIX:
+            case EIGHT:
+            case TEN:
+            case TWELVE:
+            case FOURTEEN:
+            case TWENTY:
+                closeMouth();
+                break;
+
         }
+    }
+
+    private void openMouth()
+    {
+        mLips.getElements().clear();
+        mLips.getElements().add(new MoveTo(leftCorner.getX(), leftCorner.getY()));
+        mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY() - 10, rightCorner.getX(), rightCorner.getY()));
+        mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY() + 10, leftCorner.getX(), leftCorner.getY()));
+        mLips.getElements().add(new ClosePath());
+    }
+
+    private void closeMouth()
+    {
+        mLips.getElements().clear();
+        mLips.setStrokeLineJoin(StrokeLineJoin.ROUND);
+        mLips.setStrokeWidth(3);
+        mLips.setStroke(mColor);
+        mLips.getElements().add(new MoveTo(rightCorner.getX(), rightCorner.getY()));
+        mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY(), leftCorner.getX(), leftCorner.getY()));
+        mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCorner.getY()));
+        mLips.getElements().add(new ClosePath());
+        mLips.setStyle("-fx-color: red");
     }
 
     public double getRightCornerRegulator() {
