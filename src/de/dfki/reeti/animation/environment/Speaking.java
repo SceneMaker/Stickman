@@ -32,6 +32,7 @@ public class Speaking extends AnimationReeti {
     public void playAnimation() {
         if (mParameter instanceof String) {
             mReeti.mSpeechBubble.mText = (String) mParameter;
+//            mReeti.mSpeechBubble.mText = "dadasdsad ";
         }
 
         mAnimationPartFX = new ArrayList<>();

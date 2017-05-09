@@ -2,9 +2,14 @@ package de.dfki.reeti.environment;
 
 import de.dfki.reeti.body.BodyPartFX;
 import de.dfki.reeti.body.Head;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.scene.text.Font;
 
 import java.awt.geom.GeneralPath;
 
@@ -18,20 +23,19 @@ public class SpeechBubbleFX extends BodyPartFX {
     public static enum SHAPE {
 
         DEFAULT, SPEAK, THINK
-    };
+    }
 
-    Head mHeadFX;
+    private Head mHeadFX;
     public SpeechBubbleFX.SHAPE mShape = SpeechBubbleFX.SHAPE.DEFAULT;
     public String mText = "";
 
-    GridPane bubblePane;
-    Label message;
+    private Label message;
+    private HBox bubbleBox;
 
     GeneralPath mBubble;
 
     public SpeechBubbleFX(Head head) {
         mHeadFX = head;
-        mColor = Color.rgb(255, 255, 255, (192 * 100 / 255) / 100f);
     }
 
     @Override
@@ -47,41 +51,58 @@ public class SpeechBubbleFX extends BodyPartFX {
 
     @Override
     public void createShape() {
-        mStart = mHeadFX.getSpeechBubbleStartPosition();
-
         clearChildren(this);
 
-        bubblePane = new GridPane();
         message = new Label();
+        Path face;
 
         switch (mShape) {
             case DEFAULT:
                 break;
 
             case SPEAK:
-                message.setMaxWidth(200);
+                bubbleBox = new HBox();
+                bubbleBox.setAlignment(Pos.TOP_CENTER);
+                face = createLeftFace(Color.rgb(222,222,222));
                 message.setText(mText);
+                message.setMaxWidth(200);
+                message.setMinHeight(70);
+                message.setPadding(new Insets(5,5,5,5));
                 message.setWrapText(true);
-                message.getStyleClass().add("message-bubble");
-                this.bubblePane.addRow(0, message);
+                createMessageStyle(message);
+                bubbleBox.getChildren().addAll(face, message);
+                bubbleBox.setTranslateZ(-200);
+                bubbleBox.setTranslateY(-150);
+                bubbleBox.setTranslateX(150);
 
-                this.getStylesheets().add(getClass().getResource("bubbleCSS.css").toExternalForm());
-                this.setLayoutX(mStart.x + 20);
-                this.setLayoutY(mStart.y - this.getHeight());
-                this.setTranslateZ(-120);
-
-                this.getChildren().add(bubblePane);
-
-                //if message is Empty
-                if (this.getHeight() == 0) {
-                    this.setVisible(false);
-                } else {
-                    this.setVisible(true);
-                    this.toFront();
-                }
-
+                this.getChildren().add(bubbleBox);
                 break;
         }
 
+    }
+
+    private Path createLeftFace(Color color)
+    {
+        Path p = new Path();
+        p.setStroke(Color.GRAY.darker());
+        p.setStrokeWidth(2);
+        p.getElements().add(new MoveTo(2, 0));
+        p.getElements().add(new CubicCurveTo(-10, 15, -50, 10, -90, -5));
+        p.getElements().add(new LineTo(2, 50));
+        p.setTranslateX(4);
+        p.setTranslateZ(-1);
+        p.setFill(color);
+
+        return p;
+    }
+
+    private void createMessageStyle(Label message)
+    {
+        message.setStyle("-fx-background-color: #DEDEDE; "
+                + "-fx-border-color: #585858;  " +
+                "-fx-border-width: 2;"
+                + "-fx-border-radius: 10 10 10 10;\n"
+                + "-fx-background-radius: 10 10 10 10;");
+        message.setFont(new Font("Comic Sans MS",16));
     }
 }

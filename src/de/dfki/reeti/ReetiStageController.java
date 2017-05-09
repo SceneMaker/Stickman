@@ -331,8 +331,6 @@ public class ReetiStageController extends AReetiStageController implements ViewC
 
             button.setOnAction((event) -> {
                 currentRadioButton = (RadioButton) event.getSource();
-//                Platform.runLater(() -> currentReeti.rightLC(20));
-//                Platform.runLater(() -> currentReeti.leftLC(20));
                 currentReeti.doAnimation(button.getText(), 500, true);
             });
             if (i % 3 == 2) {
