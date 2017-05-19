@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Stickman:jar">
+  <artifact type="jar" build-on-make="true" name="Stickman:jar">
     <output-path>$PROJECT_DIR$/classes/artifacts/Stickman_jar</output-path>
     <root id="archive" name="Stickman.jar">
       <element id="module-output" name="Stickman" />

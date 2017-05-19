@@ -45,7 +45,7 @@
                                                         <ColorPicker fx:id="leftLedColorPicker" layoutX="95.0" layoutY="25.0" onAction="#handleLeftLedColor" />
                                                         <ColorPicker fx:id="rightLedColorPicker" layoutX="95.0" layoutY="77.0" onAction="#handleRightLedColor" />
                                                         <ColorPicker fx:id="bothLedColorPicker" layoutX="95.0" layoutY="131.0" onAction="#handleBothLedColor" />
-                                    <Button fx:id="ledOff" layoutX="202.0" layoutY="195.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" text="OFF">
+                                    <Button fx:id="ledOff" layoutX="195.0" layoutY="192.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" text="OFF">
                                        <font>
                                           <Font name="System Bold" size="25.0" />
                                        </font>
