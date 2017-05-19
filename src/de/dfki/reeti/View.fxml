@@ -299,6 +299,175 @@
                                           </AnchorPane>
                                       </content>
                                   </Tab>
+                        <Tab closable="false" text="Other">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TabPane prefHeight="298.0" prefWidth="470.0" tabClosingPolicy="UNAVAILABLE">
+                                       <tabs>
+                                          <Tab closable="false" text="Head">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Button fx:id="btnTimeline" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMousePressed="#handleTimelineButton" prefHeight="50.0" prefWidth="90.0" text="Timeline">
+                                                         <font>
+                                                            <Font name="System Bold" size="15.0" />
+                                                         </font>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="LeftEye">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Label layoutX="4.0" layoutY="13.0" text="Tilt" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Slider fx:id="leftEyeYSlider1" layoutX="47.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <Label layoutX="4.0" layoutY="62.0" prefHeight="30.0" prefWidth="40.0" text="Pan" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Slider fx:id="leftEyeXSlider1" layoutX="47.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="leftEyeXRotationField1" editable="false" layoutX="168.0" layoutY="105.0" prefHeight="28.0" prefWidth="61.0" text="42" />
+                                                      <TextField fx:id="leftEyeYRotationField1" editable="false" layoutX="273.0" layoutY="105.0" prefHeight="28.0" prefWidth="61.0" text="42" />
+                                                      <Label layoutX="136.0" layoutY="110.0" text="Tilt" textFill="#f2f2f2">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="239.0" layoutY="110.0" text="Pan" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="RightEye">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Label layoutX="4.0" layoutY="13.0" text="Tilt" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Slider fx:id="rightEyeYSlider1" layoutX="47.0" layoutY="52.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <Label layoutX="4.0" layoutY="62.0" prefHeight="30.0" prefWidth="40.0" text="Pan" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="20.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Slider fx:id="rightEyeXSlider1" layoutX="47.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="rightEyeXRotationField1" editable="false" layoutX="168.0" layoutY="105.0" prefHeight="28.0" prefWidth="61.0" text="47" />
+                                                      <TextField fx:id="rightEyeYRotationField1" editable="false" layoutX="273.0" layoutY="105.0" prefHeight="28.0" prefWidth="61.0" text="65" />
+                                                      <Label layoutX="136.0" layoutY="110.0" text="Tilt" textFill="#f2f2f2">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="239.0" layoutY="110.0" text="Pan" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="LeftEyeLid">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="leftEyeLidXSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="leftEyeLidXRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="RightEyeLid">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="rightEyeLidXSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="rightEyeLidXRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="LeftEar">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="leftEarSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="leftEarRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="RightEar">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="rightEarSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="rightEarRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="LeftLC">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="leftLCSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="leftLCRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="RightLC">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="rightLCSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="rightLCRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="50" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="TopLip">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="topLipSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="topLipRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab closable="false" text="BottomLip">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="470.0">
+                                                   <children>
+                                                      <Slider fx:id="bottomLipSlider1" layoutX="18.0" layoutY="2.0" majorTickUnit="50.0" max="360.0" prefHeight="45.0" prefWidth="422.0" showTickMarks="true" style="-fx-background-color: white;" />
+                                                      <TextField fx:id="bottomLipRotationField1" editable="false" layoutX="207.0" layoutY="54.0" prefHeight="28.0" prefWidth="61.0" text="0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                       </tabs>
+                                    </TabPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
                               </tabs>
                           </TabPane>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="470.0" style="-fx-background-color: #00010B;" AnchorPane.topAnchor="340.0">

@@ -77,6 +77,8 @@ public abstract class AReetiStageController {
     @FXML
     public Button resetCamera;
     @FXML
+    public Button btnTimeline;
+    @FXML
     public ColorPicker leftLedColorPicker;
     @FXML
     public ColorPicker rightLedColorPicker;
