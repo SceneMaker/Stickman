@@ -68,14 +68,14 @@ public class Mouth extends BodyPart
         leftCorner = new Point2D.Double(rightCorner.getX() + mouthLength, rightCorner.getY());
         upperPoint = new Point2D.Double(rightCorner.getX() + mouthLength / 2, rightCorner.getY());
         downPoint = new Point2D.Double(upperPoint.getX(), upperPoint.getY());
-        Distant light = new Distant();
-        light.setAzimuth(-135.0f);
-
-        Lighting l = new Lighting();
-        l.setLight(light);
-        l.setSurfaceScale(5.0f);
-
-        mLips.setEffect(l);
+//        Distant light = new Distant();
+//        light.setAzimuth(-135.0f);
+//
+//        Lighting l = new Lighting();
+//        l.setLight(light);
+//        l.setSurfaceScale(5.0f);
+//
+//        mLips.setEffect(l);
 
         init();
 
@@ -251,7 +251,7 @@ public class Mouth extends BodyPart
         mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY(), leftCorner.getX(), leftCorner.getY()));
         mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCorner.getY()));
         mLips.getElements().add(new ClosePath());
-        mLips.setStyle("-fx-color: red");
+        mLips.setStyle("-fx-effect: dropshadow( one-pass-box , black , 4 , 0.0 , 1 , 0 );");
     }
 
     public double getRightCornerRegulator() {
