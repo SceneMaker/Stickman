@@ -1,7 +1,6 @@
 package de.dfki.util.log;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
@@ -34,11 +33,11 @@ public class LOGLogFileFormat extends Formatter {
 
         // Create The String For Logging
         String message = record.getLevel() + " to " + "LOGFILE" + " on " + date + " by " + name + " in " + thread
-                         + " at " + method;
+                + " at " + method;
 
         // Append The User Message
-        message += System.getProperty("line.separator") + record.getMessage()    // The Message
-                   + System.getProperty("line.separator") + System.getProperty("line.separator");
+        message += System.getProperty("line.separator") + record.getMessage() // The Message
+                + System.getProperty("line.separator") + System.getProperty("line.separator");
 
         // return The Final Log Message
         return message;

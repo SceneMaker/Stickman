@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Stickman>
+    <Stickman3D>
+        <name>bob</name>
+        <bodyColor>#0E867A64</bodyColor>
+        <browsColor>#582C0D64</browsColor>
+        <eyesColor>#00000064</eyesColor>
+        <hairColor>#613A0064</hairColor>
+        <headColor>#00000064</headColor>
+        <limbsColor>#F2E3D964</limbsColor>
+        <lipsColor>#E6AEA164</lipsColor>
+        <noseColor>#F2E3D964</noseColor>
+        <shoesColor>#50505064</shoesColor>
+    </Stickman3D>
+</Stickman>

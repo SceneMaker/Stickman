@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Stickman>
+    <StickmanFX>
+        <name>bob</name>
+        <bodyColor>#0E867A</bodyColor>
+        <bodyColorOpacity>0.94</bodyColorOpacity>
+        <hairColor>#000000</hairColor>
+        <hairColorOpacity>1.0</hairColorOpacity>
+        <headColor>#F2F2F2</headColor>
+        <headColorOpacity>1.0</headColorOpacity>
+        <limbsColor>#000000</limbsColor>
+        <limbsColorOpacity>1.0</limbsColorOpacity>
+    </StickmanFX>
+    <StickmanFX>
+        <name>anna</name>
+        <bodyColor>#9A53C6</bodyColor>
+        <bodyColorOpacity>0.94</bodyColorOpacity>
+        <hairColor>#F0D400</hairColor>
+        <hairColorOpacity>1.0</hairColorOpacity>
+        <headColor>#F2E3D9</headColor>
+        <headColorOpacity>1.0</headColorOpacity>
+        <limbsColor>#505050</limbsColor>
+        <limbsColorOpacity>1.0</limbsColorOpacity>
+    </StickmanFX>
+</Stickman>

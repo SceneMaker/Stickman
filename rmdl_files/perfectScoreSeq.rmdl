@@ -1,0 +1,524 @@
+name=perfectScoreSeq;
+duration=6.27;
+soundUsed=1;
+imageUsed=0;
+functionUsed=0;
+earsUsed=1;
+eyesUsed=1;
+mouthUsed=1;
+neckUsed=1;
+colorUsed=1;
+<description>
+<TTS>
+<name>ouaa ouaa ouaa ! Un Score parfait ! C'est dingue ! Chapeau bas !</name>
+<startTime>0</startTime>
+<duration>6.173</duration>
+<synchro>1</synchro>
+<language>French</language>
+</TTS>
+<Sequence>
+<name>EyesCrazy</name>
+<startTime>0</startTime>
+<duration>2.6</duration>
+<usedTL>0;0;0;1;1;0;1;0</usedTL>
+<urbiscript>
+
+{sleep(0s);
+{Global.servo.leftEar=0 smooth:0.3s,
+Global.servo.rightEar=0 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=0 smooth:0.3s,
+Global.servo.rightEyePan=100 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.neckRotat=27 smooth:1s,
+Global.servo.neckTilt=50.5 smooth:1s,
+Global.servo.neckPan=27 smooth:1s,
+},
+},
+{sleep(0.5s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=100 smooth:0.3s,
+Global.servo.rightEyePan=0 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0.8s);
+{Global.servo.leftEar=40.5 smooth:0.2s,
+Global.servo.rightEar=89 smooth:0.2s,
+},
+},
+{sleep(1s);
+{Global.servo.leftEyeTilt=0 smooth:0.3s,
+Global.servo.rightEyeTilt=0 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.3s);
+{Global.servo.leftEar=0 smooth:0.5s,
+Global.servo.rightEar=0 smooth:0.5s,
+},
+},
+{sleep(1.5s);
+{Global.servo.leftEyeTilt=100 smooth:0.3s,
+Global.servo.rightEyeTilt=100 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.8s);
+{Global.servo.neckRotat=49.5 smooth:0.3s,
+Global.servo.neckTilt=45 smooth:0.3s,
+Global.servo.neckPan=49.5 smooth:0.3s,
+},
+},
+{sleep(2s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=29 smooth:0.3s,
+Global.servo.rightEyePan=45 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+
+</urbiscript>
+<description>
+
+<Pose>
+<name>EarsDown</name>
+<startTime>0</startTime>
+<duration>0.3;0.5;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;0;0;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesRight</name>
+<startTime>0</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;39.5;33.5;100;0;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>NeckRight</name>
+<startTime>0</startTime>
+<duration>1;0.8;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>27;50.5;48.5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesLeft</name>
+<startTime>0.5</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;39.5;33.5;0;100;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EarsMiddle</name>
+<startTime>0.8</startTime>
+<duration>0.2;0.3;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;89;40.5;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesDown</name>
+<startTime>1</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;0;0;40;40.5;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EarsDown</name>
+<startTime>1.3</startTime>
+<duration>0.5;0.6;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;0;0;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesUp</name>
+<startTime>1.5</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;100;100;40;40.5;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>NexckMiddle</name>
+<startTime>1.8</startTime>
+<duration>0.3;0.3;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>49.5;45;48.5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesMiddle</name>
+<startTime>2</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;39.5;33.5;45;29;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+
+
+</description>
+</Sequence>
+<Pose>
+<name>Green</name>
+<startTime>0</startTime>
+<duration>0.1;6;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;green</values>
+<transition>smooth</transition>
+</Pose>
+<Sequence>
+<name>EyesCrazy</name>
+<startTime>2.6</startTime>
+<duration>2.6</duration>
+<usedTL>0;0;0;1;1;0;1;0</usedTL>
+<urbiscript>
+
+{sleep(0s);
+{Global.servo.leftEar=0 smooth:0.3s,
+Global.servo.rightEar=0 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=0 smooth:0.3s,
+Global.servo.rightEyePan=100 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.neckRotat=27 smooth:1s,
+Global.servo.neckTilt=50.5 smooth:1s,
+Global.servo.neckPan=27 smooth:1s,
+},
+},
+{sleep(0.5s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=100 smooth:0.3s,
+Global.servo.rightEyePan=0 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0.8s);
+{Global.servo.leftEar=40.5 smooth:0.2s,
+Global.servo.rightEar=89 smooth:0.2s,
+},
+},
+{sleep(1s);
+{Global.servo.leftEyeTilt=0 smooth:0.3s,
+Global.servo.rightEyeTilt=0 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.3s);
+{Global.servo.leftEar=0 smooth:0.5s,
+Global.servo.rightEar=0 smooth:0.5s,
+},
+},
+{sleep(1.5s);
+{Global.servo.leftEyeTilt=100 smooth:0.3s,
+Global.servo.rightEyeTilt=100 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.8s);
+{Global.servo.neckRotat=49.5 smooth:0.3s,
+Global.servo.neckTilt=45 smooth:0.3s,
+Global.servo.neckPan=49.5 smooth:0.3s,
+},
+},
+{sleep(2s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=29 smooth:0.3s,
+Global.servo.rightEyePan=45 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+
+</urbiscript>
+<description>
+
+<Pose>
+<name>EarsDown</name>
+<startTime>0</startTime>
+<duration>0.3;0.5;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;0;0;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesRight</name>
+<startTime>0</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;39.5;33.5;100;0;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>NeckRight</name>
+<startTime>0</startTime>
+<duration>1;0.8;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>27;50.5;48.5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesLeft</name>
+<startTime>0.5</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;39.5;33.5;0;100;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EarsMiddle</name>
+<startTime>0.8</startTime>
+<duration>0.2;0.3;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;89;40.5;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesDown</name>
+<startTime>1</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;0;0;40;40.5;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EarsDown</name>
+<startTime>1.3</startTime>
+<duration>0.5;0.6;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;0;0;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesUp</name>
+<startTime>1.5</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;100;100;40;40.5;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>NexckMiddle</name>
+<startTime>1.8</startTime>
+<duration>0.3;0.3;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>49.5;45;48.5;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1</values>
+<transition>smooth</transition>
+</Pose>
+<Pose>
+<name>EyesMiddle</name>
+<startTime>2</startTime>
+<duration>0.3;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>-1;-1;-1;-1;-1;-1;-1;-1;-1;39.5;33.5;45;29;87.5;100;-1</values>
+<transition>smooth</transition>
+</Pose>
+
+
+</description>
+</Sequence>
+
+</description>
+<urbi>
+{sleep(0s);
+{Global.tts.sayWithSynchro("\\language=French \\voice=Bernard ouaa ouaa ouaa ! Un Score parfait ! C'est dingue ! Chapeau bas !"),
+},},
+{sleep(0s);
+{
+{sleep(0s);
+{Global.servo.leftEar=0 smooth:0.3s,
+Global.servo.rightEar=0 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=0 smooth:0.3s,
+Global.servo.rightEyePan=100 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.neckRotat=27 smooth:1s,
+Global.servo.neckTilt=50.5 smooth:1s,
+Global.servo.neckPan=27 smooth:1s,
+},
+},
+{sleep(0.5s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=100 smooth:0.3s,
+Global.servo.rightEyePan=0 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0.8s);
+{Global.servo.leftEar=40.5 smooth:0.2s,
+Global.servo.rightEar=89 smooth:0.2s,
+},
+},
+{sleep(1s);
+{Global.servo.leftEyeTilt=0 smooth:0.3s,
+Global.servo.rightEyeTilt=0 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.3s);
+{Global.servo.leftEar=0 smooth:0.5s,
+Global.servo.rightEar=0 smooth:0.5s,
+},
+},
+{sleep(1.5s);
+{Global.servo.leftEyeTilt=100 smooth:0.3s,
+Global.servo.rightEyeTilt=100 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.8s);
+{Global.servo.neckRotat=49.5 smooth:0.3s,
+Global.servo.neckTilt=45 smooth:0.3s,
+Global.servo.neckPan=49.5 smooth:0.3s,
+},
+},
+{sleep(2s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=29 smooth:0.3s,
+Global.servo.rightEyePan=45 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+
+},},
+{sleep(0s);
+{Global.servo.changeColor(0,"green",1),
+},
+},
+{sleep(2.6s);
+{
+{sleep(0s);
+{Global.servo.leftEar=0 smooth:0.3s,
+Global.servo.rightEar=0 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=0 smooth:0.3s,
+Global.servo.rightEyePan=100 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0s);
+{Global.servo.neckRotat=27 smooth:1s,
+Global.servo.neckTilt=50.5 smooth:1s,
+Global.servo.neckPan=27 smooth:1s,
+},
+},
+{sleep(0.5s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=100 smooth:0.3s,
+Global.servo.rightEyePan=0 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(0.8s);
+{Global.servo.leftEar=40.5 smooth:0.2s,
+Global.servo.rightEar=89 smooth:0.2s,
+},
+},
+{sleep(1s);
+{Global.servo.leftEyeTilt=0 smooth:0.3s,
+Global.servo.rightEyeTilt=0 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.3s);
+{Global.servo.leftEar=0 smooth:0.5s,
+Global.servo.rightEar=0 smooth:0.5s,
+},
+},
+{sleep(1.5s);
+{Global.servo.leftEyeTilt=100 smooth:0.3s,
+Global.servo.rightEyeTilt=100 smooth:0.3s,
+Global.servo.leftEyePan=40.5 smooth:0.3s,
+Global.servo.rightEyePan=40 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+{sleep(1.8s);
+{Global.servo.neckRotat=49.5 smooth:0.3s,
+Global.servo.neckTilt=45 smooth:0.3s,
+Global.servo.neckPan=49.5 smooth:0.3s,
+},
+},
+{sleep(2s);
+{Global.servo.leftEyeTilt=33.5 smooth:0.3s,
+Global.servo.rightEyeTilt=39.5 smooth:0.3s,
+Global.servo.leftEyePan=29 smooth:0.3s,
+Global.servo.rightEyePan=45 smooth:0.3s,
+Global.servo.leftEyeLid=100 smooth:0.3s,
+Global.servo.rightEyeLid=87.5 smooth:0.3s,
+},
+},
+
+},},
+
+</urbi>

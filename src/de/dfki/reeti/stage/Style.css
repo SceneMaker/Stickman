@@ -1,0 +1,48 @@
+.button {
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 7 5 7 5;
+    -fx-text-fill: white;
+
+}
+
+.button Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+}
+
+.button:hover{
+    -fx-background-color: 
+        rgba(0,0,0,0.9),
+        linear-gradient(#5a61af, #51536d);
+
+}
+
+.tab {
+    -fx-font-size: 15px;            
+    -fx-pref-height: 35px;          
+    -fx-max-height: 40px;
+}
+
+.tab:selected {                    
+    -fx-background-color: white;    
+}
+
+
+.tab-header-background {           
+    -fx-background-color: black; 
+    -fx-border-color: transparent transparent white transparent;  
+}
+
+
+.slider{
+
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-font-size: 15px;
+    /* top-left, top-right, bottom-right, and bottom-left corners, in that order. */
+}

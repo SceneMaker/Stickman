@@ -1,0 +1,41 @@
+name=Angry;
+duration=0.7999999999999999;
+soundUsed=0;
+imageUsed=0;
+functionUsed=0;
+earsUsed=1;
+eyesUsed=1;
+mouthUsed=1;
+neckUsed=1;
+colorUsed=1;
+<description>
+<Pose>
+<name>Angry1</name>
+<startTime>2</startTime>
+<duration>0.5;0.2;1</duration>
+<backToNeutral>0</backToNeutral>
+<values>48.5;28;-1;0;35;100;-1;0;0;46;46;64;42.5;77;82.5;red</values>
+<transition>smooth</transition>
+</Pose>
+
+</description>
+<urbi>
+{sleep(0s);
+{Global.servo.neckRotat=48.5 smooth:0.5s,
+Global.servo.neckTilt=28 smooth:0.5s,
+Global.servo.leftLC=0 smooth:0.5s,
+Global.servo.rightLC=35 smooth:0.5s,
+Global.servo.topLip=100 smooth:0.5s,
+Global.servo.leftEar=0 smooth:0.5s,
+Global.servo.rightEar=0 smooth:0.5s,
+Global.servo.leftEyeTilt=46 smooth:0.5s,
+Global.servo.rightEyeTilt=46 smooth:0.5s,
+Global.servo.leftEyePan=42.5 smooth:0.5s,
+Global.servo.rightEyePan=64 smooth:0.5s,
+Global.servo.leftEyeLid=82.5 smooth:0.5s,
+Global.servo.rightEyeLid=77 smooth:0.5s,
+Global.servo.changeColor(0,"red",1),
+},
+},
+
+</urbi>

@@ -1,11 +1,9 @@
 package de.dfki.util.ios;
 
 //~--- non-JDK imports --------------------------------------------------------
-
 import de.dfki.util.log.LOGDefaultLogger;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -19,6 +17,7 @@ import javax.swing.ImageIcon;
  * @author Peter Adolphs
  */
 public class ResourceLoader {
+
     private final static LOGDefaultLogger mLogger = LOGDefaultLogger.getInstance();
 
 //  public static File loadFile(String resource) {
@@ -42,7 +41,6 @@ public class ResourceLoader {
 //      }
 //      return file;
 //  }
-
     /**
      * Load an image icon from the specified resource which is resolved relative
      * to this class.
@@ -64,7 +62,7 @@ public class ResourceLoader {
      */
     public static ImageIcon loadImageIcon(Class<?> base, String resource) {
         ImageIcon icon = null;
-        URL       url  = base.getResource(resource);
+        URL url = base.getResource(resource);
 
         if (url != null) {
             icon = new ImageIcon(url);
@@ -96,7 +94,7 @@ public class ResourceLoader {
      */
     public static Image loadImage(Class<?> base, String resource) {
         Image image = null;
-        URL   url   = base.getResource(resource);
+        URL url = base.getResource(resource);
 
         if (url != null) {
             image = Toolkit.getDefaultToolkit().createImage(url);

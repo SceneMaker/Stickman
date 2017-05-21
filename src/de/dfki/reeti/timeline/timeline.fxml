@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" maxHeight="864.0" maxWidth="1152.0" minHeight="337.0" minWidth="1152.0" prefHeight="337.0" prefWidth="1152.0" style="-fx-background-color: #5A5A5A;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="278.0" opacity="0.34" orientation="VERTICAL" prefHeight="864.0" prefWidth="0.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="278.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane prefHeight="864.0" prefWidth="282.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ComboBox fx:id="animationCombo" layoutX="35.0" layoutY="50.0" prefWidth="150.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="50.0" />
+            <Button fx:id="playButton" layoutX="60.0" layoutY="169.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="100.0" text="PLAY" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="169.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
+            <Separator layoutX="199.0" layoutY="-31.0" opacity="0.34" orientation="VERTICAL" prefHeight="864.0" prefWidth="6.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="199.0" AnchorPane.topAnchor="0.0" />
+            <Label layoutX="223.0" layoutY="91.0" text="Ears" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="137.0" text="Eyes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="181.0" text="Mouth" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="224.0" text="Neck" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="270.0" text="Color" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <ScrollPane fx:id="animationScrollPane" layoutX="284.0" prefHeight="864.0" prefWidth="868.0" style="-fx-background-color: #5A5A5A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane maxHeight="324.0" maxWidth="6000.0" minHeight="324.0" minWidth="5789.0" prefHeight="324.0" prefWidth="5789.0" style="-fx-background-color: #5A5A5A;">
+               <children>
+                  <Separator layoutX="-5.0" layoutY="37.0" maxWidth="6000.0" minWidth="6000.0" prefHeight="0.0" prefWidth="6000.0" style="-fx-background-color: #00B3FF;" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="242.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="262.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="282.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="302.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="322.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="342.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="362.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="382.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="402.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="442.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="462.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="482.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="502.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="522.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="542.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="562.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="582.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="602.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="642.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="662.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="682.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="702.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="722.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="742.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="762.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="782.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="802.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="842.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="862.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="882.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="902.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="922.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="942.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="962.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="982.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1002.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1042.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1062.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1082.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1102.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1122.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1142.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1162.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1182.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1202.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1242.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1262.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1282.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1302.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1322.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1342.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1362.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1382.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1402.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1442.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1462.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1482.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1502.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1522.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1542.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1562.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1582.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1602.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1642.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1662.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1682.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1702.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1722.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1742.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1762.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1782.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1802.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1842.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1862.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1882.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1902.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1922.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1942.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1962.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="1982.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2002.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2042.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2062.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2082.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2102.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2122.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2142.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2162.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2182.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2202.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2242.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2262.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2282.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2302.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2322.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2342.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2362.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2382.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2402.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2442.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2462.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2482.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2502.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2522.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2542.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2562.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2582.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2602.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2642.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2662.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2682.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2702.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2722.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2742.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2762.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2782.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2802.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2842.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2862.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2882.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2902.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2922.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2942.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2962.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="2982.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3002.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3042.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3062.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3082.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3102.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3122.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3142.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3162.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3182.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3202.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3242.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3262.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3282.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3302.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3322.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3342.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3362.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3382.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3402.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3442.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3462.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3482.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3502.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3522.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3542.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3562.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3582.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3602.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3642.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3662.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3682.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3702.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3722.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3742.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3762.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3782.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3802.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3842.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3862.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3882.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3902.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3922.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3942.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3962.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="3982.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4002.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4042.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4062.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4082.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4102.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4122.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4142.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4162.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4182.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4202.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4242.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4262.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4282.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4302.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4322.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4342.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4362.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4382.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4402.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4442.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4462.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4482.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4502.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4522.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4542.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4562.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4582.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4602.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4642.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4662.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4682.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4702.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4722.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4742.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4762.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4782.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4802.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4842.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4862.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4882.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4902.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4922.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4942.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4962.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="4982.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5002.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5042.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5062.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5082.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5102.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5122.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5142.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5162.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5182.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5202.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5242.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5262.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5282.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5302.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5322.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5342.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5362.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5382.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5402.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5442.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5462.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5482.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5502.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5522.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5542.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5562.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5582.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5602.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5642.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5662.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5682.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5702.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5722.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5742.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5762.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5782.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5802.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5842.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5862.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5882.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5902.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5922.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5942.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5962.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="5982.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6002.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6042.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6062.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6082.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6102.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6122.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6142.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6162.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6182.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="20.0" fill="BLACK" layoutX="6202.0" layoutY="23.0" startX="-222.0" startY="8.0" stroke="#00b3ff" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <GridPane fx:id="animationGridPane" gridLinesVisible="true" layoutX="4.0" layoutY="75.0" minHeight="324.0" minWidth="5903.0" prefHeight="324.0" prefWidth="5941.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="622.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="1022.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="5622.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="5222.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="4822.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="4422.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="4022.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="1422.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="822.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="5422.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="4622.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="4222.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="1222.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="422.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="5822.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="5022.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="1622.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="1822.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="2022.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="3822.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="3622.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="3422.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="3222.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="3022.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="2822.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="2622.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="2422.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="2222.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Line endX="-222.0" endY="360.0" fill="BLACK" layoutX="6022.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#141414" strokeLineCap="ROUND" strokeType="OUTSIDE" />
+                  <Text fill="#00b3ff" layoutX="182.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:02" />
+                  <Text fill="#00b3ff" layoutX="382.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:04" />
+                  <Text fill="#00b3ff" layoutX="583.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:06" />
+                  <Text fill="#00b3ff" layoutX="782.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:08" />
+                  <Text fill="#00b3ff" layoutX="982.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:10" />
+                  <Text fill="#00b3ff" layoutX="1182.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:12" />
+                  <Text fill="#00b3ff" layoutX="1382.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:14" />
+                  <Text fill="#00b3ff" layoutX="1582.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:16" />
+                  <Text fill="#00b3ff" layoutX="1782.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:18" />
+                  <Text fill="#00b3ff" layoutX="1982.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:20" />
+                  <Text fill="#00b3ff" layoutX="2182.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:22" />
+                  <Text fill="#00b3ff" layoutX="2382.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:24" />
+                  <Text fill="#00b3ff" layoutX="2582.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:26" />
+                  <Text fill="#00b3ff" layoutX="2782.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:28" />
+                  <Text fill="#00b3ff" layoutX="2982.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:30" />
+                  <Text fill="#00b3ff" layoutX="3182.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:32" />
+                  <Text fill="#00b3ff" layoutX="3382.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:34" />
+                  <Text fill="#00b3ff" layoutX="3583.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:36" />
+                  <Text fill="#00b3ff" layoutX="3782.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:38" />
+                  <Text fill="#00b3ff" layoutX="3982.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:40" />
+                  <Text fill="#00b3ff" layoutX="4182.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:42" />
+                  <Text fill="#00b3ff" layoutX="4382.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:44" />
+                  <Text fill="#00b3ff" layoutX="4582.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:46" />
+                  <Text fill="#00b3ff" layoutX="4782.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:48" />
+                  <Text fill="#00b3ff" layoutX="4982.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:50" />
+                  <Text fill="#00b3ff" layoutX="5182.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:52" />
+                  <Text fill="#00b3ff" layoutX="5382.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:54" />
+                  <Text fill="#00b3ff" layoutX="5582.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:56" />
+                  <Text fill="#00b3ff" layoutX="5782.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:58" />
+                  <Line fx:id="timeline" endX="-222.0" endY="360.0" layoutX="222.0" layoutY="23.0" startX="-222.0" startY="3.0" stroke="#00ff0d" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

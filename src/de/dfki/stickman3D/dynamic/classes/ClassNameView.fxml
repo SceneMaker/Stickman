@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="140.0" prefWidth="400.0" style="-fx-border-color: black; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="183.0" layoutY="16.0" prefHeight="39.0" prefWidth="178.0" promptText="Name">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </TextField>
+      <Label layoutX="38.0" layoutY="23.0" text="New class">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="170.0" layoutY="82.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="OK" />
+   </children>
+</AnchorPane>

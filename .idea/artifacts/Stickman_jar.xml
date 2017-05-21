@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Stickman:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/Stickman_jar</output-path>
+    <root id="archive" name="Stickman.jar">
+      <element id="module-output" name="Stickman" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jim3dsModelImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jimColModelImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jimFxmlModelImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jimObjModelImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jimStlMeshImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jimX3dModelImporterJFX.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/ufdw.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/ReetiFileReader.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

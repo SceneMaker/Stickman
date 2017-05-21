@@ -1,7 +1,6 @@
 package de.dfki.util.ios;
 
 //~--- JDK imports ------------------------------------------------------------
-
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -11,10 +10,11 @@ import java.io.PrintWriter;
  * @author Not me
  */
 public class IOSIndentWriter {
-    private String            mIndent  = "  ";
-    private String            mStack   = "";
-    private int               mLine    = 0;
-    private boolean           mNewline = true;
+
+    private String mIndent = "  ";
+    private String mStack = "";
+    private int mLine = 0;
+    private boolean mNewline = true;
     private final PrintWriter mStream;
 
     public IOSIndentWriter(File file) throws IOException {
@@ -38,35 +38,35 @@ public class IOSIndentWriter {
     public IOSIndentWriter print(String s) {
 
         // split the string into lines
-        int start  = 0,
-            i      = 0,
-            length = s.length();
+        int start = 0,
+                i = 0,
+                length = s.length();
 
         for (i = 0; i < length; ++i) {
             switch (s.charAt(i)) {
 
-            // line break
-            case '\n' :
-                ++mLine;
-                mNewline = true;
-                mStream.print(s.substring(start, i));
-                mStream.print('\n');
-                start = i + 1;
+                // line break
+                case '\n':
+                    ++mLine;
+                    mNewline = true;
+                    mStream.print(s.substring(start, i));
+                    mStream.print('\n');
+                    start = i + 1;
 
-                break;
+                    break;
 
-            // ignore carriage-returns
-            case '\r' :
-                mStream.print(s.substring(start, i));
-                start = i + 1;
+                // ignore carriage-returns
+                case '\r':
+                    mStream.print(s.substring(start, i));
+                    start = i + 1;
 
-                break;
+                    break;
 
-            // indent
-            default :
-                indent();
+                // indent
+                default:
+                    indent();
 
-                break;
+                    break;
             }
 
             // print the rest of the string
