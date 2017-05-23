@@ -2,8 +2,6 @@ package de.dfki.stickmanFX.animation.environmentfx;
 
 import de.dfki.stickmanFX.StickmanFX;
 import de.dfki.stickmanFX.animationlogic.AnimationFX;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
@@ -19,18 +17,26 @@ public class SetBackground extends AnimationFX {
         super(sm, duration, block);
     }
 
-    private static List<String> list = new ArrayList<String>() {
-        {
-            add("grassland");
-            add("office");
-        }
-    };
+//    private static List<String> list = new ArrayList<String>() {
+//        {
+//            add("grassland");
+//            add("office");
+//            add("bully1");
+//            add("bully2");
+//            add("oldlivingroom");
+//            add("oldkitchen");
+//            add("door");
+//            add("school");
+//            add("road");
+//            add("classroom");
+//        }
+//    };
 
     @Override
     public void playAnimation() {
 
         String sParameter = (String) mParameter;
-        sParameter = sParameter.toLowerCase().trim();
+        sParameter = sParameter.trim();
         String mStageIdentifier = mStickmanFX.getStageController().getStageIdentifier();
         HBox mStickmanPane;
         try {
@@ -38,9 +44,13 @@ public class SetBackground extends AnimationFX {
                     .getStickmanBox(mStageIdentifier);
 
             //Upload the picture
-            if (list.contains(sParameter)) {
-                mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanFX/image/" + sParameter + ".jpg');"
-                        + "-fx-background-repeat: repeat;-fx-background-position: center center; -fx-background-size: contain;");
+//            if (list.contains(sParameter)) {
+            if (sParameter.contains(".")) {
+//                mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanFX/image/" + sParameter + ".jpg');"
+//                        + "-fx-background-repeat: no-repeat;-fx-background-position: center center; -fx-background-size: contain;-fx-background-size:cover;");
+//                contain;-fx-background-size:cover; auto
+                mStickmanPane.setStyle("-fx-background-image: url('"+ "file:///" + sParameter + "');"
+                        + "-fx-background-repeat: no-repeat;-fx-background-position: center center; -fx-background-size: contain;-fx-background-size:cover;");
             } else {
                 // change the color of the background
                 Color theColor = Color.valueOf(sParameter);
