@@ -31,12 +31,13 @@ public class SetBackground extends AnimationFX {
 //            add("classroom");
 //        }
 //    };
-
     @Override
     public void playAnimation() {
 
         String sParameter = (String) mParameter;
         sParameter = sParameter.trim();
+//        sParameter = sParameter.replace("\\", "\\\\");
+        sParameter = sParameter.replace("\\", "/");
         String mStageIdentifier = mStickmanFX.getStageController().getStageIdentifier();
         HBox mStickmanPane;
         try {
@@ -49,7 +50,7 @@ public class SetBackground extends AnimationFX {
 //                mStickmanPane.setStyle("-fx-background-image: url('/de/dfki/stickmanFX/image/" + sParameter + ".jpg');"
 //                        + "-fx-background-repeat: no-repeat;-fx-background-position: center center; -fx-background-size: contain;-fx-background-size:cover;");
 //                contain;-fx-background-size:cover; auto
-                mStickmanPane.setStyle("-fx-background-image: url('"+ "file:///" + sParameter + "');"
+                mStickmanPane.setStyle("-fx-background-image: url('" + "file:///" + sParameter + "');"
                         + "-fx-background-repeat: no-repeat;-fx-background-position: center center; -fx-background-size: contain;-fx-background-size:cover;");
             } else {
                 // change the color of the background
