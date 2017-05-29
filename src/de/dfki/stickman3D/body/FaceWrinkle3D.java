@@ -8,40 +8,39 @@ import javafx.scene.shape.Polygon;
 import java.awt.*;
 
 /**
- *
  * @author Beka
- *
  */
-public class FaceWrinkleFX extends BodyPartFX {
+public class FaceWrinkle3D extends BodyPartFX
+{
 
-    public static enum SHAPE {
-
+    public enum SHAPE
+    {
         DEFAULT, ANGRY, ANGRYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND
-    };
+    }
 
-    HeadFX mHeadFX;
+    private Polygon currentLeftPolygon;
+    private Polygon currentRightPolygon;
 
-    Polygon currentLeftPolygon;
-    Polygon currentRightPolygon;
+    public FaceWrinkle3D.SHAPE mShape = FaceWrinkle3D.SHAPE.DEFAULT;
 
-    public FaceWrinkleFX.SHAPE mShape = FaceWrinkleFX.SHAPE.DEFAULT;
-
-    public FaceWrinkleFX(HeadFX head) {
-        mHeadFX = head;
+    public FaceWrinkle3D(Head3D head)
+    {
+        mStart = head.getRightEyebrowPostion();
         mColor = Color.rgb(80, 80, 80, 0);
         mSize = new Dimension(mLength, 5);
-        mDefaultRotationPoint = mHeadFX.mDefaultRotationPoint;
+        mDefaultRotationPoint = head.mDefaultRotationPoint;
 
         currentLeftPolygon = new Polygon();
         currentRightPolygon = new Polygon();
 
-        mHeadFX.mHead.getChildren().addAll(currentLeftPolygon, currentRightPolygon);
+        head.getChildren().addAll(currentLeftPolygon, currentRightPolygon);
 
         init();
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
         super.init();
 
         currentLeftPolygon.setTranslateX(3);
@@ -53,23 +52,25 @@ public class FaceWrinkleFX extends BodyPartFX {
     }
 
     @Override
-    public void setShape(String s) {
-        FaceWrinkleFX.SHAPE shape = FaceWrinkleFX.SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : FaceWrinkleFX.SHAPE.DEFAULT;
+    public void setShape(String s)
+    {
+        FaceWrinkle3D.SHAPE shape = FaceWrinkle3D.SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : FaceWrinkle3D.SHAPE.DEFAULT;
     }
 
     @Override
-    public void resetShape() {
-        mShape = FaceWrinkleFX.SHAPE.DEFAULT;
+    public void resetShape()
+    {
+        mShape = FaceWrinkle3D.SHAPE.DEFAULT;
     }
 
     @Override
-    public void calculate(int step) {
-        mStart = mHeadFX.getRightEyebrowPostion();
+    public void calculate(int step)
+    {
+        double colorOpacity;
 
-        double colorOpacity = 0;
-
-        switch (mShape) {
+        switch (mShape)
+        {
             case DEFAULT:
                 break;
 

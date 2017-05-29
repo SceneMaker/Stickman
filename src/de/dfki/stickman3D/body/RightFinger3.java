@@ -6,8 +6,6 @@
 package de.dfki.stickman3D.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.common.Gender;
-import de.dfki.stickman3D.Stickman3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -17,88 +15,86 @@ import java.awt.*;
 import java.net.URL;
 
 /**
- *
  * @author Beka
- *
  */
-public class RightFinger3 extends BodyPartFX {
+public class RightFinger3 extends BodyPartFX
+{
 
-    public static enum SHAPE {
+    public enum SHAPE
+    {
         DEFAULT, FADEIN, FADEOUT
-    };
+    }
 
     public RightFinger3.SHAPE mShape = RightFinger3.SHAPE.DEFAULT;
 
-    RightWrist mRightWrist;
-    int mArmLength = 80;
-    Dimension mSize = new Dimension(mArmLength, mArmLength);
+    private RightWrist3D mRightWrist;
+    private static final int ARMLENGTH = 80;
 
-    URL url;
-    ColModelImporter imorter;
-    public MeshView mRightFinger3;
+    private MeshView mRightFinger3;
+
     PhongMaterial material;
 
-    public RightFinger3(RightWrist rightWrist) {
+    public RightFinger3(RightWrist3D rightWrist)
+    {
         mRightWrist = rightWrist;
-
-        imorter = new ColModelImporter();
+        mSize = new Dimension(ARMLENGTH, ARMLENGTH);
         mColor = Color.rgb(242, 227, 217, 1);
-
-        url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/Finger2_3_4.dae");
-
         mDefaultRotation = -20;
         mZRotation = 0;
         mToDegreeX = mDefaultRotation;
 
-        imorter.read(url);
-        mRightFinger3 = (MeshView) imorter.getImport()[0];
+        ColModelImporter importer = new ColModelImporter();
+        URL url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/Finger2_3_4.dae");
+
+        importer.read(url);
+        mRightFinger3 = (MeshView) importer.getImport()[0];
 
         material = new PhongMaterial();
         material.setDiffuseColor(mColor);
         mRightFinger3.setMaterial(material);
 
-        mRightWrist.rightWristGroup.getChildren().add(mRightFinger3);
+        mRightWrist.getRightWristGroup().getChildren().add(mRightFinger3);
 
         init();
     }
 
     @Override
-    public void setShape(String s) {
+    public void setShape(String s)
+    {
         SHAPE shape = SHAPE.valueOf(s);
         mShape = (shape != null) ? shape : SHAPE.DEFAULT;
     }
 
     @Override
-    public void resetShape() {
+    public void resetShape()
+    {
         mShape = RightFinger3.SHAPE.DEFAULT;
     }
 
     @Override
-    public void calculate(int step) {
+    public void calculate(int step)
+    {
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-        if (mRightWrist.mRightForeArmFX.mUpperArmFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
-            mRightFinger3.setTranslateX(mStart.x - 1);
-            mRightFinger3.setTranslateY(mStart.y + 17);
-            mRightFinger3.setTranslateZ(0);
-        } else {
-            mRightFinger3.setTranslateX(mStart.x - 1);
-            mRightFinger3.setTranslateY(mStart.y + 17);
-            mRightFinger3.setTranslateZ(0);
-        }
+        mRightFinger3.setTranslateX(mStart.x - 1);
+        mRightFinger3.setTranslateY(mStart.y + 17);
+        mRightFinger3.setTranslateZ(0);
 
         mRightFinger3.getTransforms().clear();
         mRightFinger3.getTransforms().addAll(rx, ry, rz);
 
-        switch (mShape) {
+        switch (mShape)
+        {
             case FADEIN:
-                if (step == 2) {
+                if (step == 2)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
                     update();
                     mRightFinger3.setVisible(false);
-                } else if (mColor.getOpacity() != 0.0) {
+                } else if (mColor.getOpacity() != 0.0)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
                     update();
                 }
@@ -107,10 +103,12 @@ public class RightFinger3 extends BodyPartFX {
             case FADEOUT:
                 mRightFinger3.setVisible(true);
 
-                if (step == 2) {
+                if (step == 2)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
                     update();
-                } else if (mColor.getOpacity() != 1.0) {
+                } else if (mColor.getOpacity() != 1.0)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
                     update();
                 }
@@ -119,9 +117,15 @@ public class RightFinger3 extends BodyPartFX {
     }
 
     @Override
-    public void update() {
+    public void update()
+    {
         material.setDiffuseColor(mColor);
         mRightFinger3.setMaterial(material);
+    }
+
+    public MeshView getRightFinger3()
+    {
+        return mRightFinger3;
     }
 
 }

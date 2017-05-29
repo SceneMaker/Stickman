@@ -6,7 +6,6 @@
 package de.dfki.stickman3D.animation.gesture;
 
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
 import java.util.ArrayList;
@@ -33,13 +32,13 @@ public class UnsynchronizedConversationHandsStart extends AbstractConversationHa
     public void playAnimation() {
         if(!movementStarted) {
             mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "rotate", -38));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "yrotate", 13));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArmFX, "zrotate", -18));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "rotate", -38));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "yrotate", 13));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "zrotate", -18));
 
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "rotate", -76));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "yrotate", 35));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", START_LEFT_FORE_ARM_POSITION));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "rotate", -76));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "yrotate", 35));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "zrotate", START_LEFT_FORE_ARM_POSITION));
 
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "rotate", 0));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -54));
@@ -48,13 +47,13 @@ public class UnsynchronizedConversationHandsStart extends AbstractConversationHa
 
 
             //Right Part
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "rotate", -56));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "yrotate", 28));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArmFX, "zrotate", 27));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "rotate", -56));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "yrotate", 28));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "zrotate", 27));
 
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -19));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "yrotate", 27));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", START_RIGHT_FORE_ARM_POSITION));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "rotate", -19));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "yrotate", 27));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "zrotate", START_RIGHT_FORE_ARM_POSITION));
 
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", -8));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 34));

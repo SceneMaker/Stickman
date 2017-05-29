@@ -129,7 +129,7 @@ public class SpeechBubble extends BodyPart {
             AttributedString attributedString = new AttributedString(mText);
             attributedString.addAttribute(TextAttribute.FONT, mFont);
             if (endB > startB) {
-                //mHead.mStickman.mLogger.info("total >" + mText + "< current >" + mCurrentlySpokenText + "< start " + startB + " end " + endB);
+                //mHeadGroup.mStickman.mLogger.info("total >" + mText + "< current >" + mCurrentlySpokenText + "< start " + startB + " end " + endB);
                 //attributedString.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON, startB, endB);
                 //attributedString.addAttribute(TextAttribute.INPUT_METHOD_UNDERLINE, TextAttribute.UNDERLINE_LOW_TWO_PIXEL, startB, endB);
                 attributedString.addAttribute(TextAttribute.FOREGROUND, new Color(92, 31, 32), startB, endB);

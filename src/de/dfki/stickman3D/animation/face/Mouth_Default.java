@@ -26,7 +26,7 @@ public class Mouth_Default extends Animation3D {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "DEFAULT"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "DEFAULT"));
         playAnimationPart(mDuration);
     }
 }

@@ -26,7 +26,7 @@ public class Mouth_FOUR extends Animation3D {
     public void playAnimation() {
         // smile
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "FOUR"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "FOUR"));
         playAnimationPart(20);
     }
 }

@@ -146,7 +146,7 @@ public class CommandReceiver extends Thread {
             case "Gesture":
                  mStickman3D.doAnimation(tail, 500, true);
                 break;
-            case "Head":
+            case "Head3D":
                 if(tail.equalsIgnoreCase("Blink"))
                 {
                     mStickman3D.doAnimation(tail, 20, true);

@@ -69,7 +69,7 @@ public class LeftEyeFX extends BodyPartFX {
 
         switch (mShape) {
             case DEFAULT:
-//            	if (mHeadFX.mStickmanFX.setCharacterInvisible == false) 
+//            	if (mHead.mStickman.setCharacterInvisible == false)
 //            		mColorRecorder = mColor;
                 if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
                     if (mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie

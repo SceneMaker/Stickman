@@ -31,11 +31,11 @@ public class Nod extends Animation3D {
     public void playAnimation() {
 
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 10));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "rotate", 10));
         playAnimationPart(200);
 
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -10));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "rotate", -10));
         playAnimationPart(200);
 
         if (StickmanStageController.currentRadioButton != null) {

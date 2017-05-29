@@ -27,9 +27,9 @@ public class HeadDown1End extends Animation3D {
     public void playAnimation() {
         // blink up
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", -15));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWNEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWNEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "rotate", -15));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "LOOKDOWNEND"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "LOOKDOWNEND"));
         playAnimationPart(mDuration);
 
         Animation3D.isHeadTiltInAction = false;

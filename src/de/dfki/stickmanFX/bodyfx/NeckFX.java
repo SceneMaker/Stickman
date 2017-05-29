@@ -46,7 +46,7 @@ public class NeckFX extends BodyPartFX {
         clearDrawObjects();
         clearChildren(this);
         mPath = new Path();
-//		if(mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//		if(mHead.mStickman.setCharacterInvisible == false)
 //			mColorRecorder = mColor;
         if (mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie

@@ -157,12 +157,12 @@ public class StarsFX extends BodyPartFX {
                     creatStar(30, mStart, path);
 
                     // STAR 2 right side
-//					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftForeLegFX.getLegStartPosition();
+//					mStart = mBodyFX.mNeck.mHead.mStickman.mLeftForeLegFX.getLegStartPosition();
                     mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperArmFX.getRightUpperArmEndPosition();
                     creatStar(15, mStart, path);
 
                     // STAR 3 left side
-//					mStart = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mRightUpperLegFX.getRightUpperLegEndPosition();
+//					mStart = mBodyFX.mNeck.mHead.mStickman.mRightUpperLegFX.getRightUpperLegEndPosition();
                     mStart = mBodyFX.mNeckFX.getBodyStartPosition();
                     creatStar(15, mStart, path);
                 }

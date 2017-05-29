@@ -284,7 +284,7 @@ public class StickmanStageController implements ViewController {
             Color headColor = HeadColorPicker.getValue();
             if ((headColor != null) && (mStickmancombobox != null)) {
                 Platform.runLater(() -> {
-                    // getStickmanAsFx(mStickmancombobox).mHeadFX.mColor =
+                    // getStickmanAsFx(mStickmancombobox).mHead.mColor =
                     // headColor;
                     float mOpacityRecord = getStickmanAsFx(mStickmancombobox).mHeadFX.mColoropacity;
                     getStickmanAsFx(mStickmancombobox).mHeadFX.mColor = new Color(headColor.getRed(),

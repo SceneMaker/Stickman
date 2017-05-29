@@ -559,7 +559,7 @@ public class StickmanFX extends Pane implements Stickman {
             mRightForeLegFX.update();
             mRightFootFX.update();
 
-            // mSpeechBubbleFX.update();
+            // mSpeechBubble.update();
             if (starShowC == true) // Added by Robbie, to show stars or words here.
             {
                 mStarsFX.update();

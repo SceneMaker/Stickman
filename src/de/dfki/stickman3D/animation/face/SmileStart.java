@@ -22,7 +22,7 @@ public class SmileStart extends Animation3D {
         // smile start
         Animation3D.isSmileInAction = true;
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouthFX, "shape", "SMILE"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "SMILE"));
         playAnimationPart(mDuration);
         pauseAnimation(10);
 

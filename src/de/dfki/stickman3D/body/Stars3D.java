@@ -9,38 +9,33 @@ import java.awt.*;
 import java.net.URL;
 
 /**
- *
  * Autor Beka
- *
  */
-public class StarsFX extends BodyPartFX {
+public class Stars3D extends BodyPartFX
+{
 
-    public static enum SHAPE {
+    public enum SHAPE
+    {
 
         DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADEOUT, STARSFADEIN
-    };
+    }
 
-    UpperBody mBodyFX;
+    private MeshView mStarBig;
+    private MeshView mStarMiddle;
+    private MeshView mStarSmall;
+    private PhongMaterial material;
 
-    URL url;
-    ColModelImporter imorter;
-    MeshView mStarBig;
-    MeshView mStarMiddle;
-    MeshView mStarSmall;
-    PhongMaterial material;
+    public Stars3D.SHAPE mShape = Stars3D.SHAPE.DEFAULT;
 
-    public StarsFX.SHAPE mShape = StarsFX.SHAPE.DEFAULT;
-
-    public StarsFX(UpperBody body) {
-
-        mBodyFX = body;
+    public Stars3D(UpperBody3D body)
+    {
         mLength = 150;
         mSize = new Dimension(120, mLength);
-
-        imorter = new ColModelImporter();
+        mStart = body.getLeftLegStartPostion();
         mColor = Color.rgb(255, 255, 0, 0.0);
 
-        url = getClass().getClassLoader().getResource("BodyParts/StarBig.dae");
+        ColModelImporter imorter = new ColModelImporter();
+        URL url = getClass().getClassLoader().getResource("BodyParts/StarBig.dae");
         imorter.read(url);
         mStarBig = (MeshView) imorter.getImport()[0];
 
@@ -58,7 +53,7 @@ public class StarsFX extends BodyPartFX {
         mStarMiddle.setMaterial(material);
         mStarSmall.setMaterial(material);
 
-        mBodyFX.mUpperBodyGroup.getChildren().addAll(mStarBig, mStarMiddle, mStarSmall);
+        body.getChildren().addAll(mStarBig, mStarMiddle, mStarSmall);
 
         mStarBig.setVisible(false);
         mStarMiddle.setVisible(false);
@@ -68,20 +63,21 @@ public class StarsFX extends BodyPartFX {
     }
 
     @Override
-    public void setShape(String s) {
-        StarsFX.SHAPE shape = StarsFX.SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : StarsFX.SHAPE.DEFAULT;
+    public void setShape(String s)
+    {
+        Stars3D.SHAPE shape = Stars3D.SHAPE.valueOf(s);
+        mShape = (shape != null) ? shape : Stars3D.SHAPE.DEFAULT;
     }
 
     @Override
-    public void resetShape() {
-        mShape = StarsFX.SHAPE.DEFAULT;
+    public void resetShape()
+    {
+        mShape = Stars3D.SHAPE.DEFAULT;
     }
 
     @Override
-    public void calculate(int step) {
-        mStart = mBodyFX.getLeftLegStartPostion();
-
+    public void calculate(int step)
+    {
         mStarBig.setTranslateX(-50);
         mStarBig.setTranslateZ(-40);
 
@@ -93,7 +89,8 @@ public class StarsFX extends BodyPartFX {
         mStarSmall.setTranslateY(-145);
         mStarSmall.setTranslateZ(-40);
 
-        switch (mShape) {
+        switch (mShape)
+        {
             case DEFAULT:
                 break;
 
@@ -108,13 +105,15 @@ public class StarsFX extends BodyPartFX {
 
             case STARSFADEOUT:
 
-                if (step == 2) {
+                if (step == 2)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
                     update();
                     mStarBig.setVisible(false);
                     mStarMiddle.setVisible(false);
                     mStarSmall.setVisible(false);
-                } else if (mColor.getOpacity() != 0.0) {
+                } else if (mColor.getOpacity() != 0.0)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
                     update();
                 }
@@ -125,10 +124,12 @@ public class StarsFX extends BodyPartFX {
                 mStarMiddle.setVisible(true);
                 mStarSmall.setVisible(true);
 
-                if (step == 2) {
+                if (step == 2)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
                     update();
-                } else if (mColor.getOpacity() != 1.0) {
+                } else if (mColor.getOpacity() != 1.0)
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
                     update();
                 }
@@ -137,7 +138,8 @@ public class StarsFX extends BodyPartFX {
         }
     }
 
-    public void update() {
+    public void update()
+    {
         material.setDiffuseColor(mColor);
         mStarBig.setMaterial(material);
         mStarMiddle.setMaterial(material);

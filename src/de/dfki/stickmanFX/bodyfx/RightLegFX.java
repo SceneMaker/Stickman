@@ -38,7 +38,7 @@ public class RightLegFX extends BodyPartFX {
 
         clearDrawObjects();
         clearChildren(this);
-//        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//        if (mBodyFX.mNeck.mHead.mStickman.setCharacterInvisible == false)
 //        	mColorRecorder = mColor;
         if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie

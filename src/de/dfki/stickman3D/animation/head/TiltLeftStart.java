@@ -6,7 +6,6 @@
 package de.dfki.stickman3D.animation.head;
 
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 
@@ -28,7 +27,7 @@ public class TiltLeftStart extends Animation3D {
 
         Animation3D.isHeadTiltInAction = true;
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "zrotate", 10));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "zrotate", 10));
         playAnimationPart(200);
 
     }

@@ -21,7 +21,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.*;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -31,13 +30,10 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 
 /**
@@ -170,7 +166,7 @@ public class StickmanStageController extends AStickmanStageController implements
             ((StickmanStage3D) mStickmanOnstage.getStageStickman()).clearStage(((StageRoom3D) mStickmanOnstage.getStageRoom()).CONFIG_STAGE);           
             Stage stage = (Stage) ExitButton.getScene().getWindow();
             stage.close();
-//            System.gc();
+            System.gc();
             
 //            System.exit(0);
 //            CommandReceiver cr = new CommandReceiver(currentStickman, this);
@@ -196,18 +192,18 @@ public class StickmanStageController extends AStickmanStageController implements
 			bodyColor = toHexCode(mStick.mUpperBody.mColor);
 
 			if (mStick.mType == Gender.TYPE.MALE) {
-			    hairColor = toHexCode(mStick.mMaleHairFX.mColor);
+			    hairColor = toHexCode(mStick.mMaleHair.mColor);
 			} else {
-			    hairColor = toHexCode(mStick.mFemaleHairFX.mColor);
+			    hairColor = toHexCode(mStick.mFemaleHair.mColor);
 			}
 
-			headColor = toHexCode(mStick.mHeadFX.mColor);
-			shoesColor = toHexCode(mStick.mLeftFootFX.mColor);
-			lipsColor = toHexCode(mStick.mMouthFX.mColor);
-			eyesColor = toHexCode(mStick.mLeftEyeFX.mColor);
-			browsColor = toHexCode(mStick.mLeftEyebrowFX.mColor);
-			nosesColor = toHexCode(mStick.mNoseFX.mColor);
-			limbsColor = toHexCode(mStick.mLeftUpperArmFX.mColor);
+			headColor = toHexCode(mStick.mHead.mColor);
+			shoesColor = toHexCode(mStick.mLeftFoot.mColor);
+			lipsColor = toHexCode(mStick.mMouth.mColor);
+			eyesColor = toHexCode(mStick.mLeftEye.mColor);
+			browsColor = toHexCode(mStick.mLeftEyebrow.mColor);
+			nosesColor = toHexCode(mStick.mNose.mColor);
+			limbsColor = toHexCode(mStick.mLeftUpperArm.mColor);
 
 			mStickmanData3D.add(new StickmanData3D(name, hairColor, headColor, bodyColor, limbsColor,
 				shoesColor, lipsColor, eyesColor, browsColor, nosesColor, backgroundRecord));
@@ -690,33 +686,33 @@ public class StickmanStageController extends AStickmanStageController implements
 	bodyOpacitySlider.setValue(mStick.mUpperBody.mColor.getOpacity());
 
 	if (mStick.mType == Gender.TYPE.MALE) {
-	    hairColorPicker.setValue(colorWithoutOpacity(mStick.mMaleHairFX.mColor));
-	    hairOpacitySlider.setValue(mStick.mMaleHairFX.mColor.getOpacity());
+	    hairColorPicker.setValue(colorWithoutOpacity(mStick.mMaleHair.mColor));
+	    hairOpacitySlider.setValue(mStick.mMaleHair.mColor.getOpacity());
 	} else {
-	    hairColorPicker.setValue(colorWithoutOpacity(mStick.mFemaleHairFX.mColor));
-	    hairOpacitySlider.setValue(mStick.mFemaleHairFX.mColor.getOpacity());
+	    hairColorPicker.setValue(colorWithoutOpacity(mStick.mFemaleHair.mColor));
+	    hairOpacitySlider.setValue(mStick.mFemaleHair.mColor.getOpacity());
 	}
 
-	headColorPicker.setValue(colorWithoutOpacity(mStick.mHeadFX.mColor));
-	headOpacitySlider.setValue(mStick.mHeadFX.mColor.getOpacity());
+	headColorPicker.setValue(colorWithoutOpacity(mStick.mHead.mColor));
+	headOpacitySlider.setValue(mStick.mHead.mColor.getOpacity());
 
-	noseColorPicker.setValue(colorWithoutOpacity(mStick.mNoseFX.mColor));
-	noseOpacitySlider.setValue(mStick.mNoseFX.mColor.getOpacity());
+	noseColorPicker.setValue(colorWithoutOpacity(mStick.mNose.mColor));
+	noseOpacitySlider.setValue(mStick.mNose.mColor.getOpacity());
 
-	browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyebrowFX.mColor));
-	browOpacitySlider.setValue(mStick.mLeftEyebrowFX.mColor.getOpacity());
+	browColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyebrow.mColor));
+	browOpacitySlider.setValue(mStick.mLeftEyebrow.mColor.getOpacity());
 
-	eyeColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEyeFX.mColor));
-	eyeOpacitySlider.setValue(mStick.mLeftEyeFX.mColor.getOpacity());
+	eyeColorPicker.setValue(colorWithoutOpacity(mStick.mLeftEye.mColor));
+	eyeOpacitySlider.setValue(mStick.mLeftEye.mColor.getOpacity());
 
-	lipsColorPicker.setValue(colorWithoutOpacity(mStick.mMouthFX.mColor));
-	lipsOpacitySlider.setValue(mStick.mMouthFX.mColor.getOpacity());
+	lipsColorPicker.setValue(colorWithoutOpacity(mStick.mMouth.mColor));
+	lipsOpacitySlider.setValue(mStick.mMouth.mColor.getOpacity());
 
-	shoesColorPicker.setValue(colorWithoutOpacity(mStick.mLeftFootFX.mColor));
-	shoesOpacitySlider.setValue(mStick.mLeftFootFX.mColor.getOpacity());
+	shoesColorPicker.setValue(colorWithoutOpacity(mStick.mLeftFoot.mColor));
+	shoesOpacitySlider.setValue(mStick.mLeftFoot.mColor.getOpacity());
 
-	limbsColorPicker.setValue(colorWithoutOpacity(mStick.mLeftUpperLegFX.mColor));
-	limbsOpacitySlider.setValue(mStick.mLeftUpperLegFX.mColor.getOpacity());
+	limbsColorPicker.setValue(colorWithoutOpacity(mStick.mLeftUpperLeg.mColor));
+	limbsOpacitySlider.setValue(mStick.mLeftUpperLeg.mColor.getOpacity());
     }
     
      @FXML

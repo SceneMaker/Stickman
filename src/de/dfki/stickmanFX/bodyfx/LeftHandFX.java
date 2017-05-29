@@ -49,7 +49,7 @@ public class LeftHandFX extends BodyPartFX {
         clearDrawObjects();
         clearChildren(this);
         mHand = new Path();
-//        if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+//        if (mLeftForeArm.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeck.mHead.mStickman.setCharacterInvisible == false) {
 //        	mColorRecorder = mColor;
 //        }
         if (mLeftForeArmFX.mUpperArmFX.mLeftShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
