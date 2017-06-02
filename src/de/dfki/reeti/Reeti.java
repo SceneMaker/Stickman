@@ -60,7 +60,7 @@ import javafx.scene.paint.Stop;
 public class Reeti extends Pane implements Stickman
 {
 
-    public static enum LED
+    public enum LED
     {
         LEFTLED, RIGHTLED, BOTHLED
     }
@@ -68,14 +68,12 @@ public class Reeti extends Pane implements Stickman
     public Gender.TYPE mType = Gender.TYPE.FEMALE;
     public String mName = "StickmanSwing";
     public float mScale = 1.0f;
-    public float mGeneralXTranslation = 0;
-    public float mGeneralYTranslation = 0;
     public double stageHeight;
     public boolean isFullScreen = false;
 
     public static String mbackground = null;
 
-    public static Dimension mDefaultSize = new Dimension(300, 800);
+    private static Dimension mDefaultSize = new Dimension(300, 800);
     public static Dimension mSize = new Dimension(mDefaultSize);
 
     public Blinking mBlinking;
@@ -392,7 +390,8 @@ public class Reeti extends Pane implements Stickman
 
     public void update()
     {
-
+        float mGeneralXTranslation;
+        float mGeneralYTranslation;
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         double StickmanHeight = 500;
         Affine af = new Affine();

@@ -5,54 +5,36 @@
  */
 package de.dfki.reeti.body;
 
-import java.awt.Dimension;
 import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import javafx.scene.Group;
-
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
 public class LeftEye extends BodyPart
 {
+    private Group mLeftEarMesh;
 
-    Head mHeadFX;
-
-    URL url;
-    ColModelImporter imorter;
-    public Group mLeftEarMesh;
-
-    Image im;
-
-    public LeftEye(Head head) {
-        mHeadFX = head;
-        mSize = new Dimension(mLength, mLength);
-
-        imorter = new ColModelImporter();
-        mColor = Color.WHITE;
-
-        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEye.dae");
-
-        imorter.read(url);
-        mLeftEarMesh = (Group) imorter.getImport()[0];
+    public LeftEye(Head head)
+    {
         mXRotation = 5;
+        mStart = head.getLeftEyebrowPostion();
 
-        mStart = mHeadFX.getLeftEyebrowPostion();
+        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEye.dae");
+        ColModelImporter importer = new ColModelImporter();
+        importer.read(url);
+        mLeftEarMesh = (Group) importer.getImport()[0];
 
         init();
 
-        mHeadFX.mHead.getChildren().add(mLeftEarMesh);
+        head.getHeadGroup().getChildren().add(mLeftEarMesh);
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
         super.init();
         mLeftEarMesh.setTranslateX(mStart.x + 55);
         mLeftEarMesh.setTranslateY(mStart.y + 47);
@@ -60,7 +42,8 @@ public class LeftEye extends BodyPart
     }
 
     @Override
-    public void calculate(int step) {
+    public void calculate(int step)
+    {
 
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);

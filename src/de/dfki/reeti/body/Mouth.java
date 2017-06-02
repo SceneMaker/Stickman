@@ -6,8 +6,7 @@ import javafx.scene.shape.Polygon;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import javafx.scene.effect.Light.Distant;
-import javafx.scene.effect.Lighting;
+
 import javafx.scene.shape.ClosePath;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -15,23 +14,19 @@ import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.StrokeLineJoin;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
 public class Mouth extends BodyPart
 {
 
-    public static enum SHAPE {
+    public enum SHAPE
+    {
         DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN,
         ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY
-    };
+    }
 
-    Head mHeadFX;
 
-    public Polygon currentDownLipPolygon;
-    public Polygon currentUpperLipPolygon;
-    Path mLips;
+    private Path mLips;
 
     public Point2D leftCorner;
     public Point2D rightCorner;
@@ -51,39 +46,25 @@ public class Mouth extends BodyPart
 
     public Mouth.SHAPE mShape = Mouth.SHAPE.DEFAULT;
 
-    public Mouth(Head head) {
-        mHeadFX = head;
+    public Mouth(Head head)
+    {
         mSize = new Dimension(mLength * 2, 5);
-
         mColor = Color.DARKGREY;
-
-        currentUpperLipPolygon = new Polygon();
-        currentDownLipPolygon = new Polygon();
-
         mLips = new Path();
-        mLips.setId("upperLip");
+        mStart = head.getMouthPostion();
 
-        mStart = mHeadFX.getMouthPostion();
         rightCorner = new Point2D.Double(-9, 35);
         leftCorner = new Point2D.Double(rightCorner.getX() + mouthLength, rightCorner.getY());
         upperPoint = new Point2D.Double(rightCorner.getX() + mouthLength / 2, rightCorner.getY());
         downPoint = new Point2D.Double(upperPoint.getX(), upperPoint.getY());
-//        Distant light = new Distant();
-//        light.setAzimuth(-135.0f);
-//
-//        Lighting l = new Lighting();
-//        l.setLight(light);
-//        l.setSurfaceScale(5.0f);
-//
-//        mLips.setEffect(l);
 
         init();
-
-        mHeadFX.mHead.getChildren().addAll(mLips);
+        head.getHeadGroup().getChildren().addAll(mLips);
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
         super.init();
         mLips.setTranslateX(mStart.getX() - 7);
         mLips.setTranslateY(mStart.getY() + 28);
@@ -91,31 +72,30 @@ public class Mouth extends BodyPart
     }
 
     @Override
-    public void setShape(String s) {
+    public void setShape(String s)
+    {
         Mouth.SHAPE shape = Mouth.SHAPE.valueOf(s);
         mShape = (shape != null) ? shape : Mouth.SHAPE.DEFAULT;
     }
 
     @Override
-    public void resetShape() {
+    public void resetShape()
+    {
         mShape = Mouth.SHAPE.DEFAULT;
     }
 
     @Override
-    public void calculate(int step) {
-
-        int x;
-        int y;
-
-        double movement;
-
-        switch (mShape) {
+    public void calculate(int step)
+    {
+        switch (mShape)
+        {
             case DEFAULT:
                 closeMouth();
                 break;
 
             case MOUTHACTION:
-                if (step == 20) {
+                if (step == 20)
+                {
                     recordDownRegulator = downRegulator;
                     recordUpRegulator = upRegulator;
                     recordLeftCornerRegulator = leftCornerRegulator;
@@ -125,7 +105,7 @@ public class Mouth extends BodyPart
                     rightCornerRegulator = rightCorner.getY();
                     leftCornerRegulator = leftCorner.getY();
                 }
-                
+
                 downRegulator += recordDownRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
                 upRegulator += recordUpRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
                 rightCornerRegulator += recordRightCornerRegulator / AnimatorReeti.sMAX_ANIM_STEPS;
@@ -135,7 +115,8 @@ public class Mouth extends BodyPart
                 mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upRegulator, leftCorner.getX(), leftCornerRegulator));
                 mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downRegulator, rightCorner.getX(), rightCornerRegulator));
                 mLips.getElements().add(new ClosePath());
-                if (step == 2) {
+                if (step == 2)
+                {
                     downRegulator = 0;
                     upRegulator = 0;
                     rightCornerRegulator = 0;
@@ -144,7 +125,8 @@ public class Mouth extends BodyPart
                 break;
 
             case MOUTHACTIONEND:
-                if (step == 20) {
+                if (step == 20)
+                {
                     downRegulator = recordDownRegulator + downPoint.getY();
                     upRegulator = recordUpRegulator + upperPoint.getY();
                     rightCornerRegulator = recordRightCornerRegulator + leftCorner.getY();
@@ -162,7 +144,8 @@ public class Mouth extends BodyPart
                 mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downRegulator, rightCorner.getX(), rightCornerRegulator));
                 mLips.getElements().add(new ClosePath());
 
-                if (step == 2) {
+                if (step == 2)
+                {
                     downRegulator = 0;
                     upRegulator = 0;
                     rightCornerRegulator = 0;
@@ -171,7 +154,8 @@ public class Mouth extends BodyPart
                 break;
 
             case LEFTCORNERACTION:
-                if (step == 20) {
+                if (step == 20)
+                {
                     recordLeftCornerRegulator = leftCornerRegulator;
                     leftCornerRegulator = leftCorner.getY();
                 }
@@ -183,13 +167,15 @@ public class Mouth extends BodyPart
                 mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCorner.getY()));
                 mLips.getElements().add(new ClosePath());
 
-                if (step == 2) {
+                if (step == 2)
+                {
                     leftCornerRegulator = 0;
                 }
                 break;
 
             case RIGHTCORNERACTION:
-                if (step == 20) {
+                if (step == 20)
+                {
                     recordRightCornerRegulator = rightCornerRegulator;
                     rightCornerRegulator = rightCorner.getY();
                 }
@@ -200,7 +186,8 @@ public class Mouth extends BodyPart
                 mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY(), rightCorner.getX(), rightCornerRegulator));
                 mLips.getElements().add(new ClosePath());
 
-                if (step == 2) {
+                if (step == 2)
+                {
                     rightCornerRegulator = 0;
                 }
                 break;
@@ -254,63 +241,40 @@ public class Mouth extends BodyPart
         mLips.setStyle("-fx-effect: dropshadow( one-pass-box , black , 4 , 0.0 , 1 , 0 );");
     }
 
-    public double getRightCornerRegulator() {
-        return rightCornerRegulator;
-    }
-
-    public void setRightCornerRegulator(int leftCornerRegler) {
-        this.rightCornerRegulator = leftCornerRegler;
-    }
-
-    public double getLeftCornerRegulator() {
-        return leftCornerRegulator;
-    }
-
-    public void setLeftCornerRegulator(int rightCornerRegler) {
-        this.leftCornerRegulator = rightCornerRegler;
-    }
-
-    public double getUpRegulator() {
-        return upRegulator;
-    }
-
-    public void setUpRegulator(int upRegler) {
+    public void setUpRegulator(int upRegler)
+    {
         this.upRegulator = upRegler;
     }
 
-    public double getDownRegulator() {
-        return downRegulator;
-    }
-
-    public void setDownRegulator(int downRegler) {
+    public void setDownRegulator(int downRegler)
+    {
         this.downRegulator = downRegler;
     }
 
-    public Path getmLips() {
+    public Path getLips()
+    {
         return mLips;
     }
 
-    public Point2D getLeftCorner() {
+    public Point2D getLeftCorner()
+    {
         return leftCorner;
     }
 
-    public Point2D getRightCorner() {
+    public Point2D getRightCorner()
+    {
         return rightCorner;
     }
 
-    public Point2D getUpperPoint() {
+    public Point2D getUpperPoint()
+    {
         return upperPoint;
     }
 
-    public Point2D getDownPoint() {
+    public Point2D getDownPoint()
+    {
         return downPoint;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
 }

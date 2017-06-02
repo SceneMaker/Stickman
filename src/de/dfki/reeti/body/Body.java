@@ -4,6 +4,7 @@ import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
 import java.awt.Dimension;
 import java.awt.Point;
+
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -11,6 +12,7 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
 import java.net.URL;
+
 import javafx.scene.image.Image;
 
 /*
@@ -18,83 +20,41 @@ import javafx.scene.image.Image;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
- *
  * @author Beka Aptsiauri
- *
  */
 public class Body extends BodyPart
 {
-
-    Neck mNeckFX;
-    Rotate rx;
-    Rotate ry;
-    Rotate rz;
-
-    Dimension mSize = new Dimension(120, 300);
-
-    int mHalfSizeX = mSize.width / 2;
-    int mHalfSizeY = mSize.height / 2;
-    int mDrawOffset = 20;
-
-    public Group mUpperBodyGroup;
-
-    URL url;
-    ColModelImporter imorter;
-    public MeshView mBodyMeshView;
-    PhongMaterial material;
-
-    URL imageUrl;
-    Image image;
-
-    public Body(Neck neck) {
-        mNeckFX = neck;
-        mStart = mNeckFX.getBodyStartPosition();
-        imorter = new ColModelImporter();
-
-        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiBody.dae");
-        imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
-        image = new javafx.scene.image.Image(imageUrl.toExternalForm());
+    public Body(Neck neck)
+    {
+        mStart = neck.getBodyStartPosition();
+        mSize = new Dimension(120, 300);
         mColor = Color.WHITE;
 
-        imorter.read(url);
-        mUpperBodyGroup = new Group();
-        mBodyMeshView = (MeshView) imorter.getImport()[0];
-        mBodyMeshView.setId("uppeBody");
-        material = new PhongMaterial();
-        material.setDiffuseColor(mColor);
-        material.setDiffuseMap(image);
-        material.setSelfIlluminationMap(image);
-//        mBodyMeshView.setMaterial(material);
-        mUpperBodyGroup.getChildren().add(mBodyMeshView);
-
-        mStart = mNeckFX.getBodyStartPosition();
         init();
-        this.getChildren().addAll(mUpperBodyGroup);
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
         super.init();
-        mUpperBodyGroup.setTranslateX(mStart.x);
-        mUpperBodyGroup.setTranslateY(mStart.y + 290);
-        mUpperBodyGroup.setTranslateZ(-105);
+        ColModelImporter importer = new ColModelImporter();
+        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiBody.dae");
+
+        importer.read(url);
+        Group mBodyGroup = new Group();
+        MeshView mBodyMeshView = (MeshView) importer.getImport()[0];
+        mBodyGroup.getChildren().add(mBodyMeshView);
+        mBodyGroup.setTranslateX(mStart.x);
+        mBodyGroup.setTranslateY(mStart.y + 290);
+        mBodyGroup.setTranslateZ(-105);
+        this.getChildren().addAll(mBodyGroup);
     }
 
-    public Point getUpperBodyPosition() {
+    public Point getUpperBodyPosition()
+    {
         return new Point(mStart.x, mStart.y + 135);
-    }
-
-    @Override
-    public void calculate(int step) {
-
-        rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-        rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-        mUpperBodyGroup.getTransforms().clear();
-        mUpperBodyGroup.getTransforms().addAll(rx, ry, rz);
-
     }
 
 }

@@ -14,30 +14,30 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.*;
 import javafx.scene.shape.Shape;
 import javafx.scene.transform.Affine;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.net.URL;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
-public abstract class BodyPart extends Pane {
-
-    public enum SHAPE {
+public abstract class BodyPart extends Pane
+{
+    public enum SHAPE
+    {
         DEFAULT
-    };
+    }
 
     // variables for size and drawing
     public Dimension mSize = new Dimension(10, 10);
     public Point mStart = new Point(0, 0), mEnd = new Point(0, 0);
     public int mLength = 0;
 
-    public double mAnimationStep = 0;
     public int mShapeAnimationStep = 0;
 
     public int mDefaultTranslation = 0;
@@ -71,9 +71,12 @@ public abstract class BodyPart extends Pane {
     public double mYRotatationRecorder;
     public double mZRotatationRecorder;
 
+    private static PhongMaterial material = null;
+
     public BasicStroke mStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 
-    public void init() {
+    public void init()
+    {
         this.setPrefHeight(mSize.height);
         this.setPrefWidth(mSize.width);
         mColorRecorder = mColor;
@@ -83,49 +86,57 @@ public abstract class BodyPart extends Pane {
         calculate(0);
     }
 
-    public void set_X_Translation(int length) {
+    public void set_X_Translation(int length)
+    {
         mXToTranslation = mXTranslation + length;
         mXTranslationStep = (double) length / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public void set_Y_Translation(int length) {
+    public void set_Y_Translation(int length)
+    {
         mYToTranslation = mYTranslation + length;
         mYTranslationStep = (double) length / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public void set_Z_Translation(int length) {
+    public void set_Z_Translation(int length)
+    {
         mZToTranslation = mZTranslation + length;
         mZTranslationStep = (double) length / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public synchronized void calculate_X_Translation(int step) {
+    public synchronized void calculate_X_Translation(int step)
+    {
         mXTranslation += mXTranslationStep;
         mXTranslation = Math.round(mXTranslation * 1000d) / 1000d;
 
         Platform.runLater(() -> calculate(step));
     }
 
-    public synchronized void calculate_Y_Translation(int step) {
+    public synchronized void calculate_Y_Translation(int step)
+    {
         mYTranslation += mYTranslationStep;
         mYTranslation = Math.round(mYTranslation * 1000d) / 1000d;
 
         Platform.runLater(() -> calculate(step));
     }
 
-    public synchronized void calculate_Z_Translation(int step) {
+    public synchronized void calculate_Z_Translation(int step)
+    {
         mZTranslation += mZTranslationStep;
         mZTranslation = Math.round(mZTranslation * 1000d) / 1000d;
 
         Platform.runLater(() -> calculate(step));
     }
 
-    public void resetTranslation() {
+    public void resetTranslation()
+    {
         mXTranslationStep = 0.0d;
         mYTranslationStep = 0.0d;
         mZTranslationStep = 0.0d;
     }
 
-    public void setDefaulRotation(int degree) {
+    public void setDefaulRotation(int degree)
+    {
         mDefaultRotation = degree;
         mXRotation = mDefaultRotation;
         mYRotation = mDefaultRotation;
@@ -137,41 +148,48 @@ public abstract class BodyPart extends Pane {
         mXRotationStep = 0.0f;
     }
 
-    public void set_X_Rotation(int degree) {
+    public void set_X_Rotation(int degree)
+    {
         mToDegreeX = mXRotation + degree;
         mXRotationStep = (double) degree / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public void set_Y_Rotation(int degree) {
+    public void set_Y_Rotation(int degree)
+    {
         mToDegreeY = mYRotation + degree;
         mYRotationStep = (double) degree / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public void set_Z_Rotation(int degree) {
+    public void set_Z_Rotation(int degree)
+    {
         mToDegreeZ = mZRotation + degree;
         mZRotationStep = (double) degree / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public void setTilt(int degree) {
+    public void setTilt(int degree)
+    {
         mToDegreeX = mXRotation + degree;
         mXRotationStep = (double) degree / AnimatorReeti.sMAX_ANIM_STEPS;
     }
 
-    public synchronized void calculate_X_Rotation(int step) {
+    public synchronized void calculate_X_Rotation(int step)
+    {
         mXRotation += mXRotationStep;
         mXRotation = (double) Math.round(mXRotation * 1000d) / 1000d;
 
         Platform.runLater(() -> calculate(step));
     }
 
-    public synchronized void calculate_Y_Rotation(int step) {
+    public synchronized void calculate_Y_Rotation(int step)
+    {
         mYRotation += mYRotationStep;
         mYRotation = (double) Math.round(mYRotation * 1000d) / 1000d;
 
         Platform.runLater(() -> calculate(step));
     }
 
-    public synchronized void calculate_Z_Rotation(int step) {
+    public synchronized void calculate_Z_Rotation(int step)
+    {
         mZRotation += mZRotationStep;
         mZRotation = (double) Math.round(mZRotation * 1000d) / 1000d;
 
@@ -179,68 +197,82 @@ public abstract class BodyPart extends Pane {
 
     }
 
-    public void resetRotation() {
+    public void resetRotation()
+    {
 //        mTranslationStep = 0.0d;
     }
 
-    public void reset_X_Rotation() {
+    public void reset_X_Rotation()
+    {
         mXRotation += mXRotationStep;
         Platform.runLater(() -> calculate(1));
         mXRotationStep = 0;
     }
 
-    public void reset_Y_Rotation() {
+    public void reset_Y_Rotation()
+    {
         mYRotation += mYRotationStep;
         Platform.runLater(() -> calculate(1));
         mYRotationStep = 0;
     }
 
-    public void reset_Z_Rotation() {
+    public void reset_Z_Rotation()
+    {
         mZRotation += mZRotationStep;
         Platform.runLater(() -> calculate(1));
         mZRotationStep = 0;
     }
 
-    public void setShape(String s) {
+    public void setShape(String s)
+    {
         // place code for setting shape
     }
 
-    public void createShape() {
+    public void createShape()
+    {
         // create the shape
     }
 
-    public synchronized void calculateShape(int step) {
+    public synchronized void calculateShape(int step)
+    {
         mShapeAnimationStep = step;
 
         Platform.runLater(() -> calculate(step));
     }
 
-    public void resetShape() {
+    public void resetShape()
+    {
         mShapeAnimationStep = 0;
     }
 
-    public void clearChildren(BodyPart bodyPartFX) {
+    public void clearChildren(BodyPart bodyPartFX)
+    {
         bodyPartFX.getChildren().clear();
     }
 
-    public synchronized void calculate(int step) {
+    public synchronized void calculate(int step)
+    {
         createShape();
     }
 
-    public void update() {
+    public void update()
+    {
         recordColor();
     }
 
-    protected void recordColor() {
+    protected void recordColor()
+    {
 
     }
 
-    public void showHearts(Head mHeadFX, double xMovement, double yMovement1, double yMovement2) {
+    public void showHearts(Head mHeadFX, double xMovement, double yMovement1, double yMovement2)
+    {
         int numHearts = 7;
 
-        Ellipse path = new Ellipse(mHeadFX.mHalfWidth + 4, mHeadFX.mHalfHeight - 50, 60, 20);
+        Ellipse path = new Ellipse(mHeadFX.getHalfWidth() + 4, mHeadFX.getHalfHeight() - 50, 60, 20);
 
-        for (int i = 0; i < numHearts; i++) {
+        for (int i = 0; i < numHearts; i++)
+        {
             Path heart = new Path();
             heart.getElements().add(new MoveTo(mStart.x - 10, mStart.y));
             heart.getElements().add(new QuadCurveTo(mStart.x - 10 - xMovement - 5, mEnd.y - yMovement2, mStart.x - 10,
@@ -267,7 +299,8 @@ public abstract class BodyPart extends Pane {
 
     }
 
-    private PathTransition createPathTransition(Shape shape, Node node) {
+    private PathTransition createPathTransition(Shape shape, Node node)
+    {
         final PathTransition transition = new PathTransition(Duration.seconds(10), shape, node);
 
         transition.setAutoReverse(false);
@@ -277,11 +310,28 @@ public abstract class BodyPart extends Pane {
         return transition;
     }
 
-    public void rotatePerlinNoise(double mWobble, int x, int y) {
+    public void rotatePerlinNoise(double mWobble, int x, int y)
+    {
         Affine af = new Affine();
         // Out put perlin noise
         af.appendRotation(Math.toRadians(mWobble), x, y);
         this.getTransforms().clear();
         this.getTransforms().add(af);
     }
+
+    protected PhongMaterial getMaterial()
+    {
+        if (material == null)
+        {
+            URL imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
+            javafx.scene.image.Image image = new javafx.scene.image.Image(imageUrl.toExternalForm());
+            material = new PhongMaterial();
+            material.setDiffuseColor(mColor);
+            material.setDiffuseMap(image);
+            material.setSelfIlluminationMap(image);
+        }
+        return material;
+    }
+
+
 }
