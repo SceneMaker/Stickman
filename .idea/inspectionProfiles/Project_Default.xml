@@ -20,7 +20,6 @@
     <inspection_tool class="BooleanParameter" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="BreakStatement" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="BreakStatementWithLabel" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="CastToConcreteClass" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="ClassComplexity" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="m_limit" value="80" />
     </inspection_tool>
