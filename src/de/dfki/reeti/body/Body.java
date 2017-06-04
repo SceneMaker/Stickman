@@ -7,13 +7,9 @@ import java.awt.Point;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
-import javafx.scene.transform.Rotate;
 
 import java.net.URL;
-
-import javafx.scene.image.Image;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,7 +20,7 @@ import javafx.scene.image.Image;
 /**
  * @author Beka Aptsiauri
  */
-public class Body extends BodyPart
+public class Body extends Parts
 {
     public Body(Neck neck)
     {

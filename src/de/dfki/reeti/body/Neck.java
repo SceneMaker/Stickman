@@ -5,21 +5,14 @@
  */
 package de.dfki.reeti.body;
 
-import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
-import javafx.scene.transform.Rotate;
 
 import java.awt.*;
-import java.net.URL;
-
-import javafx.scene.transform.Translate;
 
 /**
  * @author Beka
  */
-public class Neck extends BodyPart
+public class Neck extends Parts
 {
     private MeshView neckMeshView;
 

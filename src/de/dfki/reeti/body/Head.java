@@ -4,11 +4,9 @@ import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 import de.dfki.reeti.Reeti;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
-import javafx.scene.image.Image;
 
 import java.awt.*;
 import java.net.URL;
@@ -18,7 +16,7 @@ import java.net.URL;
  * @author Beka Aptsiauri
  *
  */
-public class Head extends BodyPart
+public class Head extends Parts
 {
     private Group mHeadGroup;
 
@@ -95,15 +93,5 @@ public class Head extends BodyPart
     public Group getHeadGroup()
     {
         return mHeadGroup;
-    }
-
-    public int getHalfHeight()
-    {
-        return mHalfHeight;
-    }
-
-    public int getHalfWidth()
-    {
-        return mHalfWidth;
     }
 }

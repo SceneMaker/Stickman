@@ -13,7 +13,7 @@ import javafx.scene.transform.Rotate;
 /**
  * @author Beka Aptsiauri
  */
-public class LeftEye extends BodyPart
+public class LeftEye extends Parts
 {
     private Group mLeftEarMesh;
 

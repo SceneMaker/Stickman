@@ -5,8 +5,6 @@
  */
 package de.dfki.reeti.body;
 
-import java.awt.Dimension;
-
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 import javafx.scene.transform.Rotate;
@@ -14,7 +12,7 @@ import javafx.scene.transform.Rotate;
 /**
  * @author Beka Aptsiauri
  */
-public class RightCheek extends BodyPart
+public class RightCheek extends Parts
 {
 
     private final Circle mLed;

@@ -5,14 +5,11 @@
  */
 package de.dfki.reeti.body;
 
-import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
@@ -21,7 +18,7 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class LeftEyelid extends BodyPart
+public class LeftEyelid extends Parts
 {
 
     private MeshView mLeftEyeMesh;

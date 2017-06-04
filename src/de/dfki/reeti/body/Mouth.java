@@ -2,7 +2,6 @@ package de.dfki.reeti.body;
 
 import de.dfki.reeti.animationlogic.AnimatorReeti;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -16,7 +15,7 @@ import javafx.scene.shape.StrokeLineJoin;
 /**
  * @author Beka Aptsiauri
  */
-public class Mouth extends BodyPart
+public class Mouth extends Parts
 {
 
     public enum SHAPE

@@ -16,7 +16,7 @@ import java.net.URL;
 /**
  * @author Beka Aptsiauri
  */
-public abstract class BodyPart extends Pane
+public abstract class Parts extends Pane
 {
     public enum SHAPE
     {
@@ -213,7 +213,7 @@ public abstract class BodyPart extends Pane
         mShapeAnimationStep = 0;
     }
 
-    public void clearChildren(BodyPart bodyPartFX)
+    public void clearChildren(Parts bodyPartFX)
     {
         bodyPartFX.getChildren().clear();
     }

@@ -12,7 +12,7 @@ import javafx.scene.transform.Rotate;
 /**
  * @author Beka Aptsiauri
  */
-public class LeftCheek extends BodyPart
+public class LeftCheek extends Parts
 {
     private final Circle mLed;
     private final Group mLedGroup;

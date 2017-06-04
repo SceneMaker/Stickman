@@ -5,21 +5,18 @@
  */
 package de.dfki.reeti.body;
 
-import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
 /**
  * @author Beka Aptsiauri
  */
-public class RightEar extends BodyPart
+public class RightEar extends Parts
 {
 
     private MeshView mRightEarMesh;

@@ -16,7 +16,7 @@ import javafx.scene.transform.Rotate;
 /**
  * @author Beka Aptsiauri
  */
-public class LeftEar extends BodyPart
+public class LeftEar extends Parts
 {
     private MeshView mLeftEarMesh;
 
