@@ -83,7 +83,7 @@ public class TouchHead extends Animation3D {
 			mAnimationPartFX = new ArrayList<>();
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "rotate", 100));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "zrotate", -100));
-			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "rotate", 88));
+			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "rotate", 82));
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -130));
 			playAnimationPart(500);
 		} else {
@@ -94,13 +94,6 @@ public class TouchHead extends Animation3D {
 			mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -170));
 			playAnimationPart(500);
 		}
-
-		// mAnimationPart = new ArrayList<>();
-		// mAnimationPart.add(new AnimationContent3D(mStickman.mUpperBody,
-		// "yrotate", 90));
-		// mAnimationPart.add(new AnimationContent3D(mStickman.mHeadFX,
-		// "yrotate", 90));
-		// playAnimationPart(500);
 
 		if (StickmanStageController.currentRadioButton != null)
 			StickmanStageController.currentRadioButton.setSelected(false);
