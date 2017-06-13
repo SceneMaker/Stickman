@@ -1,5 +1,6 @@
 package de.dfki.test;
 
+import de.dfki.common.decorators.StageRoomFullScreenDecorator;
 import de.dfki.common.interfaces.StageRoom;
 import de.dfki.reeti.stage.StageRoomReeti;
 import de.dfki.stickman3D.stage.StageRoom3D;
@@ -20,15 +21,17 @@ public class testStickmanFX {
 //        stickmanStage.launchStage(true);
 //        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
         StageRoom reeti = new StageRoom3D(0, 0, true);
-//        StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(stickmanStage3D1);
-        reeti.addStickman("Reeti");
+        StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(reeti);
+        stickmanStage3DFull.addStickman("Reeti");
+//        stickmanStage3DFull.addStickman("Reeti1");
+//        stickmanStage3DFull.addStickman("Reeti2");
 
 //        stickmanStage3D1.addStickman("Bob");
 //        stickmanStage3D1.launchStage(true);
-        reeti.launchConfiguration();
+        stickmanStage3DFull.launchStickmanStage(true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, 20, true);
-        //stickmanStage3D1.getStickman("Bob").doAnimation("TiltRightStart", 500, true);      
+        //stickmanStage3D1.getStickman("Bob").doAnimation("TiltRightStart", 500, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartIdle", 500, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("HeadDown1", 500, true);   
         Timeline timeline = new Timeline(new KeyFrame(
@@ -42,7 +45,7 @@ public class testStickmanFX {
         ));
 //        timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-        
+
 //       
 
 //        StageRoom stickmanStage2 = new StageRoomFX(0, 500, true);

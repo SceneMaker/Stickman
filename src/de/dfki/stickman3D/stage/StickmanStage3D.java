@@ -454,7 +454,7 @@ public class StickmanStage3D extends Application implements StickmanStage
             stage.setScene(stageScene);
             stage.setX(x);
             stage.setY(y);
-            stage.setResizable(false);
+            stage.setResizable(true);
             if (!decoration)
             {
                 stage.initStyle(StageStyle.UNDECORATED);

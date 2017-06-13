@@ -490,7 +490,7 @@ public class Stickman3D extends Pane implements Stickman
         if (isFullScreen)
         {
             mGeneralYTranslation = (int) ((dim.getHeight() - StickmanHeight) + shiftFactor + 40);
-            mGeneralXTranslation = 0;
+            mGeneralXTranslation = 150;
         } else
         {
             mGeneralYTranslation = (int) ((this.stageHeight - StickmanHeight) + shiftFactor - 350);
