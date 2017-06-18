@@ -20,15 +20,15 @@ public class testStickmanFX {
 //        //stickmanStage.addStickman("Bob");
 //        stickmanStage.launchStage(true);
 //        stickmanStage.getStickman("Patrick").doAnimation("Smile", 2000, "", true);
-        StageRoom reeti = new StageRoom3D(0, 0, true);
+        StageRoom reeti = new StageRoomReeti(0, 0, true);
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(reeti);
-        stickmanStage3DFull.addStickman("Reeti");
+        reeti.addStickman("Reeti");
 //        stickmanStage3DFull.addStickman("Reeti1");
 //        stickmanStage3DFull.addStickman("Reeti2");
 
 //        stickmanStage3D1.addStickman("Bob");
 //        stickmanStage3D1.launchStage(true);
-        stickmanStage3DFull.launchStickmanStage(true);
+        reeti.launchConfiguration();
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getStickman("Anna").doAnimation("StartBlinking", 3000, 20, true);
         //stickmanStage3D1.getStickman("Bob").doAnimation("TiltRightStart", 500, true);

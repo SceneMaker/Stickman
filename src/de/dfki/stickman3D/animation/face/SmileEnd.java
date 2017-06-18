@@ -13,6 +13,10 @@ import java.util.ArrayList;
  */
 public class SmileEnd extends Animation3D {
 
+    public SmileEnd() {
+        mAnimType = ANIMTYPE.ON;
+    }
+
     public SmileEnd(Stickman3D sm, int duration, boolean block) {
         super(sm, duration, block);
     }

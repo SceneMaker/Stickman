@@ -13,29 +13,19 @@ import de.dfki.reeti.animationlogic.AnimationReeti;
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class TiltLeft extends AnimationReeti {
+public class TiltLeft extends AnimationReeti
+{
 
-    public TiltLeft() {
-        mAnimType = ANIMTYPE.ON;
-    }
-
-    public TiltLeft(Reeti sm, int duration, boolean block) {
+    public TiltLeft(Reeti sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
-
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "zrotate", 10));
-        playAnimationPart(200);
-
-        if (ReetiStageController.currentRadioButton != null) {
-            ReetiStageController.currentRadioButton.setSelected(false);
-        }
+    public void playAnimation()
+    {
+        mReeti.neckPan(20);
     }
 }
