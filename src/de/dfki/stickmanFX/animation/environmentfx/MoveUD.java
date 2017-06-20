@@ -29,8 +29,8 @@ public class MoveUD extends AnimationFX {
     public void playAnimation() {
         //move down slowly
 //        for (int i = 0; i < 16; i++) {
-//                mStickmanFX.voffset = mStickmanFX.voffset + speed;
-//                Platform.runLater(() -> mStickmanFX.update());
+//                mStickman.voffset = mStickman.voffset + speed;
+//                Platform.runLater(() -> mStickman.update());
 //                pauseAnimation(40);
 //        }
 

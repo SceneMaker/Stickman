@@ -51,7 +51,7 @@ public class RightHandFX extends BodyPartFX {
         clearChildren(this);
         mHand = new Path();
 
-//		if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+//		if (mRightForeArm.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeck.mHead.mStickman.setCharacterInvisible == false)
 //			mColorRecorder = mColor;
         if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
             if (mRightForeArmFX.mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added by Robbie

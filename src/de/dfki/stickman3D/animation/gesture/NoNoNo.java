@@ -46,7 +46,7 @@ public class NoNoNo extends Animation3D {
 	@Override
 	public void playAnimation() {
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", -100));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "rotate", -100));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", -60));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -50));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger4, "rotate", 135));
@@ -54,8 +54,8 @@ public class NoNoNo extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger1, "zrotate", 40));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger1, "rotate", 35));
 
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRY"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "ANGRY"));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrow, "shape", "ANGRY"));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrow, "shape", "ANGRY"));
 		playAnimationPart(500);
 
 		pauseAnimation(200);
@@ -64,29 +64,29 @@ public class NoNoNo extends Animation3D {
 			if (i == 0) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "zrotate", -30));
-				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 10));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", 10));
 				playAnimationPart(500);
 			} else if (i == 5) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "zrotate", 30));
-				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -10));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", -10));
 				playAnimationPart(500);
 			} else if (i % 2 == 1) {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "zrotate", 60));
-				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -20));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", -20));
 				playAnimationPart(500);
 			} else {
 				mAnimationPartFX = new ArrayList<>();
 				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "zrotate", -60));
-				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", 20));
+				mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", 20));
 				playAnimationPart(500);
 			}
 
 		}
 
 		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "rotate", 100));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "rotate", 100));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", 60));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 50));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger4, "rotate", -135));
@@ -94,8 +94,8 @@ public class NoNoNo extends Animation3D {
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger1, "zrotate", -40));
 		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightFinger1, "rotate", -35));
 
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrowFX, "shape", "ANGRYEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrowFX, "shape", "ANGRYEND"));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrow, "shape", "ANGRYEND"));
+		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrow, "shape", "ANGRYEND"));
 		playAnimationPart(500);
 
                 if(StickmanStageController.currentRadioButton != null)

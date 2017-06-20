@@ -29,18 +29,8 @@ public class Test extends AnimationReeti {
 
     @Override
     public void playAnimation() {
-//        mReeti.leftLC(70);
 
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth, "shape", "THREE"));
-        playAnimationPart(20);
-
-        pauseAnimation(1000);
-
-        mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth,"shape","DEFAULT"));
-        playAnimationPart(mDuration);
-
+        mReeti.neckPan(80);
 
         if (ReetiStageController.currentRadioButton != null) {
             ReetiStageController.currentRadioButton.setSelected(false);

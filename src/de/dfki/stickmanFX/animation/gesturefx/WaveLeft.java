@@ -28,8 +28,8 @@ public class WaveLeft extends AnimationFX {
 
     @Override
     public void playAnimation() {
-        // mStickmanFX.stopIdleBehavior();
-        // mStickmanFX.startIdleBehavior("TouchHead");
+        // mStickman.stopIdleBehavior();
+        // mStickman.startIdleBehavior("TouchHead");
         int rotationUnit = 10;
 
         // 50 is the sum of all animation parts
@@ -66,7 +66,7 @@ public class WaveLeft extends AnimationFX {
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftHandFX, "rotate", -rotationUnit * 16));
         playAnimationPart(200);
 
-        // mStickmanFX.stopIdleBehavior();
-        // mStickmanFX.startIdleBehavior("TouchHead");
+        // mStickman.stopIdleBehavior();
+        // mStickman.startIdleBehavior("TouchHead");
     }
 }

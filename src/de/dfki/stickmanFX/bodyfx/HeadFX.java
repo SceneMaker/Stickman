@@ -148,10 +148,10 @@ public class HeadFX extends BodyPartFX {
 
         // TODO - This schould be done in all bodyparts
         //????????????????????????????????????????
-//        resizeRelocate(mHead.getLayoutX() + new Float(mStickmanFX.mGeneralXTranslation).intValue(),
-//                mHead.getLayoutY() + new Float(mStickmanFX.mGeneralYTranslation).intValue(),
-//                new Float(mHead.prefWidth(-1) * mStickmanFX.mScale).intValue(),
-//                new Float(mHead.prefHeight(-1) * mStickmanFX.mScale).intValue());
+//        resizeRelocate(mHeadGroup.getLayoutX() + new Float(mStickman.mGeneralXTranslation).intValue(),
+//                mHeadGroup.getLayoutY() + new Float(mStickman.mGeneralYTranslation).intValue(),
+//                new Float(mHeadGroup.prefWidth(-1) * mStickman.mScale).intValue(),
+//                new Float(mHeadGroup.prefHeight(-1) * mStickman.mScale).intValue());
         this.getChildren().addAll(mHead, mLeftEar, mRightEar);
 
         update();

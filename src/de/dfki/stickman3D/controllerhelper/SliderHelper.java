@@ -6,7 +6,6 @@
 package de.dfki.stickman3D.controllerhelper;
 
 import de.dfki.stickman3D.dynamic.classes.Helper;
-import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
 import java.awt.Point;
 import javafx.beans.value.ObservableValue;
@@ -26,17 +25,17 @@ public class SliderHelper {
         slider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
-                controller.currentStickman.mHeadFX.mXRotation = newValue;
+                controller.currentStickman.mHead.mXRotation = newValue;
                 controller.headXRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderXValue));
             } else if (achse.equalsIgnoreCase("Y")) {
-                controller.currentStickman.mHeadFX.mYRotation = newValue;
+                controller.currentStickman.mHead.mYRotation = newValue;
                 controller.headYRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderYValue));
             } else {
-                controller.currentStickman.mHeadFX.mZRotation = newValue;
+                controller.currentStickman.mHead.mZRotation = newValue;
                 controller.headZRotationField.setText(Integer.toString((int) newValue - Helper.recordHeadSliderZValue));
             }
 
-            controller.currentStickman.mHeadFX.calculate(0);
+            controller.currentStickman.mHead.calculate(0);
         });
     }
 
@@ -97,34 +96,34 @@ public class SliderHelper {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftUpperArmFX.mXRotation = newValue;
+                    controller.currentStickman.mLeftUpperArm.mXRotation = newValue;
                     controller.leftUpperArmXRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftUpperArmSliderXValue));
                 } else {
-                    controller.currentStickman.mRightUpperArmFX.mXRotation = newValue;
+                    controller.currentStickman.mRightUpperArm.mXRotation = newValue;
                     controller.rightUpperArmXRotationField.setText(Integer.toString((int) newValue - Helper.recordRightUpperArmSliderXValue));
 
                 }
             } else if (achse.equalsIgnoreCase("Y")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftUpperArmFX.mYRotation = newValue;
+                    controller.currentStickman.mLeftUpperArm.mYRotation = newValue;
                     controller.leftUpperArmYRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftUpperArmSliderYValue));
                 } else {
-                    controller.currentStickman.mRightUpperArmFX.mYRotation = newValue;
+                    controller.currentStickman.mRightUpperArm.mYRotation = newValue;
                     controller.rightUpperArmYRotationField.setText(Integer.toString((int) newValue - Helper.recordRightUpperArmSliderYValue));
                 }
             } else {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftUpperArmFX.mZRotation = newValue;
+                    controller.currentStickman.mLeftUpperArm.mZRotation = newValue;
                     controller.leftUpperArmZRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftUpperArmSliderZValue));
                 } else {
-                    controller.currentStickman.mRightUpperArmFX.mZRotation = newValue;
+                    controller.currentStickman.mRightUpperArm.mZRotation = newValue;
                     controller.rightUpperArmZRotationField.setText(Integer.toString((int) newValue - Helper.recordRightUpperArmSliderZValue));
                 }
             }
             if (arm.equalsIgnoreCase("L")) {
-                controller.currentStickman.mLeftUpperArmFX.calculate(0);
+                controller.currentStickman.mLeftUpperArm.calculate(0);
             } else {
-                controller.currentStickman.mRightUpperArmFX.calculate(0);
+                controller.currentStickman.mRightUpperArm.calculate(0);
             }
         });
     }
@@ -147,33 +146,33 @@ public class SliderHelper {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftForeArmFX.mXRotation = newValue;
+                    controller.currentStickman.mLeftForeArm.mXRotation = newValue;
                     controller.leftForeArmXRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftForeArmSliderXValue));
                 } else {
-                    controller.currentStickman.mRightForeArmFX.mXRotation = newValue;
+                    controller.currentStickman.mRightForeArm.mXRotation = newValue;
                     controller.rightForeArmXRotationField.setText(Integer.toString((int) newValue - Helper.recordRightForeArmSliderXValue));
                 }
             } else if (achse.equalsIgnoreCase("Y")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftForeArmFX.mYRotation = newValue;
+                    controller.currentStickman.mLeftForeArm.mYRotation = newValue;
                     controller.leftForeArmYRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftForeArmSliderYValue));
                 } else {
-                    controller.currentStickman.mRightForeArmFX.mYRotation = newValue;
+                    controller.currentStickman.mRightForeArm.mYRotation = newValue;
                     controller.rightForeArmYRotationField.setText(Integer.toString((int) newValue - Helper.recordRightForeArmSliderYValue));
                 }
             } else {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftForeArmFX.mZRotation = newValue;
+                    controller.currentStickman.mLeftForeArm.mZRotation = newValue;
                     controller.leftForeArmZRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftForeArmSliderZValue));
                 } else {
-                    controller.currentStickman.mRightForeArmFX.mZRotation = newValue;
+                    controller.currentStickman.mRightForeArm.mZRotation = newValue;
                     controller.rightForeArmZRotationField.setText(Integer.toString((int) newValue - Helper.recordRightForeArmSliderZValue));
                 }
             }
             if (arm.equalsIgnoreCase("L")) {
-                controller.currentStickman.mLeftForeArmFX.calculate(0);
+                controller.currentStickman.mLeftForeArm.calculate(0);
             } else {
-                controller.currentStickman.mRightForeArmFX.calculate(0);
+                controller.currentStickman.mRightForeArm.calculate(0);
             }
         });
     }
@@ -394,33 +393,33 @@ public class SliderHelper {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftUpperLegFX.mXRotation = newValue;
+                    controller.currentStickman.mLeftUpperLeg.mXRotation = newValue;
                     controller.leftUpperLegXRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftUpperLegSliderXValue));
                 } else {
-                    controller.currentStickman.mRightUpperLegFX.mXRotation = newValue;
+                    controller.currentStickman.mRightUpperLeg.mXRotation = newValue;
                     controller.rightUpperLegXRotationField.setText(Integer.toString((int) newValue - Helper.recordRightUpperLegSliderXValue));
                 }
             } else if (achse.equalsIgnoreCase("Y")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftUpperLegFX.mYRotation = newValue;
+                    controller.currentStickman.mLeftUpperLeg.mYRotation = newValue;
                     controller.leftUpperLegYRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftUpperLegSliderYValue));
                 } else {
-                    controller.currentStickman.mRightUpperLegFX.mYRotation = newValue;
+                    controller.currentStickman.mRightUpperLeg.mYRotation = newValue;
                     controller.rightUpperLegYRotationField.setText(Integer.toString((int) newValue - Helper.recordRightUpperLegSliderYValue));
                 }
             } else {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftUpperLegFX.mZRotation = newValue;
+                    controller.currentStickman.mLeftUpperLeg.mZRotation = newValue;
                     controller.leftUpperLegZRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftUpperLegSliderZValue));
                 } else {
-                    controller.currentStickman.mRightUpperLegFX.mZRotation = newValue;
+                    controller.currentStickman.mRightUpperLeg.mZRotation = newValue;
                     controller.rightUpperLegZRotationField.setText(Integer.toString((int) newValue - Helper.recordRightUpperLegSliderZValue));
                 }
             }
             if (arm.equalsIgnoreCase("L")) {
-                controller.currentStickman.mLeftUpperLegFX.calculate(0);
+                controller.currentStickman.mLeftUpperLeg.calculate(0);
             } else {
-                controller.currentStickman.mRightUpperLegFX.calculate(0);
+                controller.currentStickman.mRightUpperLeg.calculate(0);
             }
         });
     }
@@ -433,33 +432,33 @@ public class SliderHelper {
             double newValue = new_val.doubleValue();
             if (achse.equalsIgnoreCase("X")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftForeLegFX.mXRotation = newValue;
+                    controller.currentStickman.mLeftForeLeg.mXRotation = newValue;
                     controller.leftForeLegXRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftForeLegSliderXValue));
                 } else {
-                    controller.currentStickman.mRightForeLegFX.mXRotation = newValue;
+                    controller.currentStickman.mRightForeLeg.mXRotation = newValue;
                     controller.rightForeLegXRotationField.setText(Integer.toString((int) newValue - Helper.recordRightForeLegSliderXValue));
                 }
             } else if (achse.equalsIgnoreCase("Y")) {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftForeLegFX.mYRotation = newValue;
+                    controller.currentStickman.mLeftForeLeg.mYRotation = newValue;
                     controller.leftForeLegYRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftForeLegSliderYValue));
                 } else {
-                    controller.currentStickman.mRightForeLegFX.mYRotation = newValue;
+                    controller.currentStickman.mRightForeLeg.mYRotation = newValue;
                     controller.rightForeLegYRotationField.setText(Integer.toString((int) newValue - Helper.recordRightForeLegSliderYValue));
                 }
             } else {
                 if (arm.equalsIgnoreCase("L")) {
-                    controller.currentStickman.mLeftForeLegFX.mZRotation = newValue;
+                    controller.currentStickman.mLeftForeLeg.mZRotation = newValue;
                     controller.leftForeLegZRotationField.setText(Integer.toString((int) newValue - Helper.recordLeftForeLegSliderZValue));
                 } else {
-                    controller.currentStickman.mRightForeLegFX.mZRotation = newValue;
+                    controller.currentStickman.mRightForeLeg.mZRotation = newValue;
                     controller.rightForeLegZRotationField.setText(Integer.toString((int) newValue - Helper.recordRightForeLegSliderZValue));
                 }
             }
             if (arm.equalsIgnoreCase("L")) {
-                controller.currentStickman.mLeftForeLegFX.calculate(0);
+                controller.currentStickman.mLeftForeLeg.calculate(0);
             } else {
-                controller.currentStickman.mRightForeLegFX.calculate(0);
+                controller.currentStickman.mRightForeLeg.calculate(0);
             }
         });
     }

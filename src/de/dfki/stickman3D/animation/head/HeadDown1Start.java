@@ -27,9 +27,9 @@ public class HeadDown1Start extends Animation3D {
     public void playAnimation() {
         Animation3D.isHeadTiltInAction = true;
         mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "rotate", 15));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyeFX, "shape", "LOOKDOWN"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyeFX, "shape", "LOOKDOWN"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "rotate", 15));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "LOOKDOWN"));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "LOOKDOWN"));
         playAnimationPart(mDuration);
 
         pauseAnimation(10);

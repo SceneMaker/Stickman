@@ -7,7 +7,6 @@ package de.dfki.stickman3D.animation.posture;
 
 import de.dfki.common.Gender;
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.StickmanStageController;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 
@@ -35,13 +34,13 @@ public class TurnRightEnd extends Animation3D {
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -40));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -40));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", -40));
             playAnimationPart(500);
         } else {
             mAnimationPartFX = new ArrayList<>();
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", -70));
             mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mUpperBody, "yrotate", -60));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, "yrotate", -40));
+            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", -40));
             playAnimationPart(500);
         }
 

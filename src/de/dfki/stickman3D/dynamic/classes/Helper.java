@@ -11,12 +11,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -150,7 +148,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.headXRotationField,
                         controller.headYRotationField,
                         controller.headZRotationField);
-                appendMethodCommands("mHeadFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mHead", XYZ[0], XYZ[1], XYZ[2]);
                 recordHeadSliderXValue = (int) controller.headXSlider.getValue();
                 recordHeadSliderYValue = (int) controller.headYSlider.getValue();
                 recordHeadSliderZValue = (int) controller.headZSlider.getValue();
@@ -180,7 +178,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.leftUpperArmXRotationField,
                         controller.leftUpperArmYRotationField,
                         controller.leftUpperArmZRotationField);
-                appendMethodCommands("mLeftUpperArmFX", XYZ[0], XYZ[1], XYZ[2] + leftUpperArmZOffset);
+                appendMethodCommands("mLeftUpperArm", XYZ[0], XYZ[1], XYZ[2] + leftUpperArmZOffset);
                 recordLeftUpperArmSliderXValue = (int) controller.leftUpperArmXSlider.getValue();
                 recordLeftUpperArmSliderYValue = (int) controller.leftUpperArmYSlider.getValue();
                 recordLeftUpperArmSliderZValue = (int) controller.leftUpperArmZSlider.getValue();
@@ -196,7 +194,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.leftForeArmXRotationField,
                         controller.leftForeArmYRotationField,
                         controller.leftForeArmZRotationField);
-                appendMethodCommands("mLeftForeArmFX", XYZ[0] + leftForeArmXOffset, XYZ[1], XYZ[2] + leftForeArmZOffset);
+                appendMethodCommands("mLeftForeArm", XYZ[0] + leftForeArmXOffset, XYZ[1], XYZ[2] + leftForeArmZOffset);
                 recordLeftForeArmSliderXValue = (int) controller.leftForeArmXSlider.getValue();
                 recordLeftForeArmSliderYValue = (int) controller.leftForeArmYSlider.getValue();
                 recordLeftForeArmSliderZValue = (int) controller.leftForeArmZSlider.getValue();
@@ -289,7 +287,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.rightUpperArmXRotationField,
                         controller.rightUpperArmYRotationField,
                         controller.rightUpperArmZRotationField);
-                appendMethodCommands("mRightUpperArmFX", XYZ[0], XYZ[1], XYZ[2] + rightUpperArmZOffset);
+                appendMethodCommands("mRightUpperArm", XYZ[0], XYZ[1], XYZ[2] + rightUpperArmZOffset);
                 recordRightUpperArmSliderXValue = (int) controller.rightUpperArmXSlider.getValue();
                 recordRightUpperArmSliderYValue = (int) controller.rightUpperArmYSlider.getValue();
                 recordRightUpperArmSliderZValue = (int) controller.rightUpperArmZSlider.getValue();
@@ -305,7 +303,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.rightForeArmXRotationField,
                         controller.rightForeArmYRotationField,
                         controller.rightForeArmZRotationField);
-                appendMethodCommands("mRightForeArmFX", XYZ[0]  + rightForeArmXOffset, XYZ[1], XYZ[2] + rightForeArmZOffset);
+                appendMethodCommands("mRightForeArm", XYZ[0]  + rightForeArmXOffset, XYZ[1], XYZ[2] + rightForeArmZOffset);
                 recordRightForeArmSliderXValue = (int) controller.rightForeArmXSlider.getValue();
                 recordRightForeArmSliderYValue = (int) controller.rightForeArmYSlider.getValue();
                 recordRightForeArmSliderZValue = (int) controller.rightForeArmZSlider.getValue();
@@ -410,7 +408,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.rightUpperLegXRotationField,
                         controller.rightUpperLegYRotationField,
                         controller.rightUpperLegZRotationField);
-                appendMethodCommands("mRightUpperLegFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mRightUpperLeg", XYZ[0], XYZ[1], XYZ[2]);
                 recordRightUpperLegSliderXValue = (int) controller.rightUpperLegXSlider.getValue();
                 recordRightUpperLegSliderYValue = (int) controller.rightUpperLegYSlider.getValue();
                 recordRightUpperLegSliderZValue = (int) controller.rightUpperLegZSlider.getValue();
@@ -425,7 +423,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.rightForeLegXRotationField,
                         controller.rightForeLegYRotationField,
                         controller.rightForeLegZRotationField);
-                appendMethodCommands("mRightForeLegFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mRightForeLeg", XYZ[0], XYZ[1], XYZ[2]);
                 recordRightForeLegSliderXValue = (int) controller.rightForeLegXSlider.getValue();
                 recordRightForeLegSliderYValue = (int) controller.rightForeLegYSlider.getValue();
                 recordRightForeLegSliderZValue = (int) controller.rightForeLegZSlider.getValue();
@@ -440,7 +438,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.leftUpperLegXRotationField,
                         controller.leftUpperLegYRotationField,
                         controller.leftUpperLegZRotationField);
-                appendMethodCommands("mLeftUpperLegFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mLeftUpperLeg", XYZ[0], XYZ[1], XYZ[2]);
                 recordLeftUpperLegSliderXValue = (int) controller.leftUpperArmXSlider.getValue();
                 recordLeftUpperLegSliderYValue = (int) controller.leftUpperArmYSlider.getValue();
                 recordLeftUpperLegSliderZValue = (int) controller.leftUpperArmZSlider.getValue();
@@ -455,7 +453,7 @@ public class Helper {
                 XYZ = getXYZFromTextField(controller.leftForeLegXRotationField,
                         controller.leftForeLegYRotationField,
                         controller.leftForeLegZRotationField);
-                appendMethodCommands("mLeftForeLegFX", XYZ[0], XYZ[1], XYZ[2]);
+                appendMethodCommands("mLeftForeLeg", XYZ[0], XYZ[1], XYZ[2]);
                 recordLeftForeLegSliderXValue = (int) controller.leftForeLegXSlider.getValue();
                 recordLeftForeLegSliderYValue = (int) controller.leftForeLegYSlider.getValue();
                 recordLeftForeLegSliderZValue = (int) controller.leftForeLegZSlider.getValue();
@@ -485,40 +483,40 @@ public class Helper {
 
     private static void appendMethodCommands(String bodypart, int x, int y, int z) {
         DynamicCompiler.methodContent.append("mAnimationPart = new ArrayList<>(); \n");
-        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
+        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickman.").append(bodypart)
                 .append(",\"rotate\",").append(x).append(")); \n");
-        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
+        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickman.").append(bodypart)
                 .append(",\"yrotate\",").append(y).append(")); \n");
-        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickmanFX.").append(bodypart)
+        DynamicCompiler.methodContent.append("mAnimationPart.add(new AnimationContent3D(mStickman.").append(bodypart)
                 .append(",\"zrotate\",").append(z).append(")); \n");
         DynamicCompiler.methodContent.append("playAnimationPart(mDuration);\n");
     }
     
     public static void resetAllRotation(StickmanStageController controller)
     {
-        reset(controller.currentStickman.mHeadFX);
+        reset(controller.currentStickman.mHead);
         reset(controller.currentStickman.mUpperBody);
         reset(controller.currentStickman.mDownBody);
-        reset(controller.currentStickman.mLeftUpperArmFX);
-        reset(controller.currentStickman.mLeftForeArmFX);
+        reset(controller.currentStickman.mLeftUpperArm);
+        reset(controller.currentStickman.mLeftForeArm);
         reset(controller.currentStickman.mLeftWrist);
         reset(controller.currentStickman.mLeftFinger1);
         reset(controller.currentStickman.mLeftFinger2);
         reset(controller.currentStickman.mLeftFinger3);
         reset(controller.currentStickman.mLeftFinger4);
-        reset(controller.currentStickman.mRightUpperArmFX);
-        reset(controller.currentStickman.mRightForeArmFX);
+        reset(controller.currentStickman.mRightUpperArm);
+        reset(controller.currentStickman.mRightForeArm);
         reset(controller.currentStickman.mRightWrist);
         reset(controller.currentStickman.mRightFinger1);
         reset(controller.currentStickman.mRightFinger2);
         reset(controller.currentStickman.mRightFinger3);
         reset(controller.currentStickman.mRightFinger4);
-        reset(controller.currentStickman.mLeftUpperLegFX);
-        reset(controller.currentStickman.mLeftForeLegFX);
-        reset(controller.currentStickman.mLeftFootFX);
-        reset(controller.currentStickman.mRightUpperLegFX);
-        reset(controller.currentStickman.mRightForeLegFX);
-        reset(controller.currentStickman.mRightFootFX);
+        reset(controller.currentStickman.mLeftUpperLeg);
+        reset(controller.currentStickman.mLeftForeLeg);
+        reset(controller.currentStickman.mLeftFoot);
+        reset(controller.currentStickman.mRightUpperLeg);
+        reset(controller.currentStickman.mRightForeLeg);
+        reset(controller.currentStickman.mRightFoot);
         reset(controller.currentStickman.mUpperBodyAndHead);
     }
     

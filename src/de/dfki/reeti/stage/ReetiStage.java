@@ -21,7 +21,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.ConsoleHandler;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,38 +29,33 @@ import java.util.logging.Logger;
  */
 public class ReetiStage extends Application implements StickmanStage {
 
-    private static final float STICKMAN_SIZE_FACTOR = 0.8f;
+    private static final float REETI_SIZE_FACTOR = 0.8f;
     private static final float HEIGHT_ADJUSTMENT = 3 / 5.0f;
-    private static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
-    private static final String STICKMAN_STAGE = "StickmanStage3D";
-
-    private final int mHeight = 0;
-    private final int mWidth = 0;
-
-    private Stage mainStage;
-    static private ReetiStage sInstance;
-    private final HashMap<String, StickmansOnStage> stickamnsOnStage = new HashMap<>();
-    private final float sScale;
-    private final Map<String, Stage> stickmanStages = new HashMap<>();
-    private final StagePaneHandlerReeti generalConfigStageRoot;
-
-    //logging
-    public static final Logger LOGGER = Logger.getAnonymousLogger();
+    private static final float REETI_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
+    private static final String REETI_STAGE = "ReetiStage3D"; //?????????????
 
     private boolean showControlPanel = false;
+    private final float mScale;
+
+    private Stage mainStage = null;
+    static private ReetiStage sInstance = null;
+    private final Map<String, StickmansOnStage> reetisOnStage = new HashMap<>();
+    private final Map<String, Stage> reetiStages = new HashMap<>();
+
+    private final StagePaneHandlerReeti generalConfigStageRoot;
 
     // Camera
-    private SubScene sSubscene;
-    private PerspectiveCamera mCamera;
-    private HBox mStickmanHBox;
-    private double recordCameraXPosition;
-    private double recordCameraYPosition;
-    private double recordCameraZPosition;
+    private SubScene mSubscene = null;
+    private PerspectiveCamera mCamera = null;
+    private HBox mReetiHBox = null;
+    private double recordCameraXPosition = 0;
+    private double recordCameraYPosition = 0;
+    private double recordCameraZPosition = 0;
 
     public ReetiStage() {
-        this.sScale = 1.0f;
+        this.mScale = 1.0f;
         Platform.setImplicitExit(false);
-        ConsoleHandler ch = new ConsoleHandler();
+        ConsoleHandler ch = new ConsoleHandler(); //????????????????
         sInstance = this;
         generalConfigStageRoot = new StagePaneHandlerReeti();
     }
@@ -71,7 +65,7 @@ public class ReetiStage extends Application implements StickmanStage {
      * @return ReetiStage
      */
     public static ReetiStage getInstance() {
-        if (sInstance == null) {
+        if (null == sInstance) {
             sInstance = new ReetiStage();
         }
         return sInstance;
@@ -79,7 +73,7 @@ public class ReetiStage extends Application implements StickmanStage {
 
     /**
      *
-     * @param stageIdentifier
+     * @param stageIdentifier Stage ID
      */
     @Override
     public void clearStage(String stageIdentifier) {
@@ -87,9 +81,9 @@ public class ReetiStage extends Application implements StickmanStage {
             HBox box = getStickmanBox(stageIdentifier);
             Platform.runLater(() -> {
                 box.getChildren().clear();
-                Stage stage = stickmanStages.get(stageIdentifier);
+                Stage stage = reetiStages.get(stageIdentifier);
                 stage.close();
-                stickmanStages.remove(stageIdentifier);
+                reetiStages.remove(stageIdentifier);
             });
 
         } catch (Exception e) {
@@ -101,23 +95,25 @@ public class ReetiStage extends Application implements StickmanStage {
     @Override
     public void start(Stage stage) throws Exception {
 
-        mStickmanHBox = new HBox();
-        mStickmanHBox.setId("StickmanStage3D");
-        mStickmanHBox.setAlignment(Pos.CENTER);
+        int height = 0;
+        int width = 0;
+        mReetiHBox = new HBox();
+        mReetiHBox.setId("ReetiStage3D");
+        mReetiHBox.setAlignment(Pos.CENTER);
         mainStage = stage;
 
         HBox root = generalConfigStageRoot.getConfigRoot();
-        Scene scene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
+        Scene scene = new Scene(root, width, height, true, SceneAntialiasing.BALANCED);
         scene.getStylesheets().add("de/dfki/reeti/stage/Style.css");
 
         AnchorPane controlPanel = (AnchorPane) scene.lookup("#controlPanel");
 
-        sSubscene = createSubSceneAndCamera(getmStickmanHBox(), getWidth() - controlPanel.getPrefWidth(), getHeight());
-        root.getChildren().add(sSubscene);
+        mSubscene = createSubSceneAndCamera(getmReetiHBox(), getWidth() - controlPanel.getPrefWidth(), getHeight());
+        root.getChildren().add(mSubscene);
 
-        stage.setTitle("Stickman3D");
+        stage.setTitle("Reeti");
         stage.setScene(scene);
-        stickmanStages.put(StageRoomFX.CONFIG_STAGE, stage);
+        reetiStages.put(StageRoomFX.CONFIG_STAGE, stage);
 
         ApplicationLauncherImpl.setIsRunning();
     }
@@ -160,7 +156,7 @@ public class ReetiStage extends Application implements StickmanStage {
      */
     @Override
     public float getFullScreenScale() {
-        return getHeight() / (float) de.dfki.stickmanFX.StickmanFX.mDefaultSize.height * sScale * STICKMAN_SIZE_FACTOR;
+        return getHeight() / (float) de.dfki.stickmanFX.StickmanFX.mDefaultSize.height * mScale * REETI_SIZE_FACTOR;
     }
 
     /**
@@ -169,8 +165,8 @@ public class ReetiStage extends Application implements StickmanStage {
      */
     @Override
     public Dimension getFullScreenDimension() {
-        return new Dimension(new Float(getHeight() * HEIGHT_ADJUSTMENT * sScale).intValue(),
-                new Float(getHeight() * sScale * STICKMAN_IN_BETWEEN_DISTANCE_FACTOR).intValue());
+        return new Dimension(new Float(getHeight() * HEIGHT_ADJUSTMENT * mScale).intValue(),
+                new Float(getHeight() * mScale * REETI_IN_BETWEEN_DISTANCE_FACTOR).intValue());
     }
 
     private float getHeight() {
@@ -185,8 +181,7 @@ public class ReetiStage extends Application implements StickmanStage {
 
     /**
      *
-     * @param stageIdentifier
-     * @throws Exception
+     * @param stageIdentifier Stage ID
      */
     @Override
     public void addStickmanToStage(String stageIdentifier) throws Exception {
@@ -194,8 +189,8 @@ public class ReetiStage extends Application implements StickmanStage {
             final HBox box;
             try {
                 box = getStickmanBox(stageIdentifier);
-                for (String key : stickamnsOnStage.get(stageIdentifier).getStickmanNames()) {
-                    Reeti sman3D = (Reeti) stickamnsOnStage.get(stageIdentifier).getStickmanByKey(key);
+                for (String key : reetisOnStage.get(stageIdentifier).getStickmanNames()) {
+                    Reeti sman3D = (Reeti) reetisOnStage.get(stageIdentifier).getStickmanByKey(key);
 
                     if (isShowControlPanel()) {
                         sman3D.setScale(1.35f);
@@ -233,9 +228,8 @@ public class ReetiStage extends Application implements StickmanStage {
     }
 
     private void setFullScreen(String stageIdentifier, boolean value) {
-        if (stickmanStages.containsKey(stageIdentifier)) {
-            int a = 0;
-            Platform.runLater(() -> stickmanStages.get(stageIdentifier).setFullScreen(value));
+        if (reetiStages.containsKey(stageIdentifier)) {
+            Platform.runLater(() -> reetiStages.get(stageIdentifier).setFullScreen(value));
         }
     }
 
@@ -243,10 +237,11 @@ public class ReetiStage extends Application implements StickmanStage {
      *
      * @param stickamnsOnStage
      * @param identifier
+     *
      */
     @Override
     public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier) {
-        this.stickamnsOnStage.put(identifier, stickamnsOnStage);
+        this.reetisOnStage.put(identifier, stickamnsOnStage);
         generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
     }
 
@@ -259,10 +254,10 @@ public class ReetiStage extends Application implements StickmanStage {
     @Override
     public HBox getStickmanBox(String stageIdentifier) throws Exception {
         HBox box;
-        Stage stage = stickmanStages.get(stageIdentifier);
+        Stage stage = reetiStages.get(stageIdentifier);
 
-        if (stickmanStages.containsKey(stageIdentifier)) {
-            box = (HBox) stickmanStages.get(stageIdentifier).getScene().getRoot();
+        if (reetiStages.containsKey(stageIdentifier)) {
+            box = (HBox) reetiStages.get(stageIdentifier).getScene().getRoot();
             box.setAlignment(Pos.CENTER);
             box.setStyle("-fx-background-color: white");
 
@@ -270,16 +265,16 @@ public class ReetiStage extends Application implements StickmanStage {
                 if (null != event.getCode()) {
                     switch (event.getCode()) {
                         case RIGHT:
-                            mStickmanHBox.setTranslateX(getmStickmanHBox().getTranslateX() + 20);
+                            mReetiHBox.setTranslateX(getmReetiHBox().getTranslateX() + 20);
                             break;
                         case LEFT:
-                            mStickmanHBox.setTranslateX(getmStickmanHBox().getTranslateX() - 20);
+                            mReetiHBox.setTranslateX(getmReetiHBox().getTranslateX() - 20);
                             break;
                         case UP:
-                            mStickmanHBox.setTranslateY(getmStickmanHBox().getTranslateY() - 20);
+                            mReetiHBox.setTranslateY(getmReetiHBox().getTranslateY() - 20);
                             break;
                         case DOWN:
-                            mStickmanHBox.setTranslateY(getmStickmanHBox().getTranslateY() + 20);
+                            mReetiHBox.setTranslateY(getmReetiHBox().getTranslateY() + 20);
                             break;
                         default:
                             break;
@@ -289,17 +284,17 @@ public class ReetiStage extends Application implements StickmanStage {
 
             stage.getScene().setOnScroll((ScrollEvent event) -> {
                 if (event.getDeltaY() < 0) {
-                    mStickmanHBox.setScaleX(getmStickmanHBox().getScaleX() - 0.05);
-                    mStickmanHBox.setScaleY(getmStickmanHBox().getScaleY() - 0.05);
-                    mStickmanHBox.setScaleZ(getmStickmanHBox().getScaleZ() - 0.05);
+                    mReetiHBox.setScaleX(getmReetiHBox().getScaleX() - 0.05);
+                    mReetiHBox.setScaleY(getmReetiHBox().getScaleY() - 0.05);
+                    mReetiHBox.setScaleZ(getmReetiHBox().getScaleZ() - 0.05);
                 } else {
-                    mStickmanHBox.setScaleX(getmStickmanHBox().getScaleX() + 0.05);
-                    mStickmanHBox.setScaleY(getmStickmanHBox().getScaleY() + 0.05);
-                    mStickmanHBox.setScaleZ(getmStickmanHBox().getScaleZ() + 0.05);
+                    mReetiHBox.setScaleX(getmReetiHBox().getScaleX() + 0.05);
+                    mReetiHBox.setScaleY(getmReetiHBox().getScaleY() + 0.05);
+                    mReetiHBox.setScaleZ(getmReetiHBox().getScaleZ() + 0.05);
                 }
             });
 
-            return (box.getId() != null && box.getId().equals(STICKMAN_STAGE)) ? box : findStageBox(box);
+            return (box.getId() != null && box.getId().equals(REETI_STAGE)) ? box : findStageBox(box);
         } else {
             throw new Exception("Stage Not found");
         }
@@ -307,7 +302,7 @@ public class ReetiStage extends Application implements StickmanStage {
 
     private HBox findStageBox(HBox stickmanBox) throws Exception {
         for (Node child : stickmanBox.getChildren()) {
-            if (child instanceof SubScene && ((SubScene) child).getRoot().getId().equals(STICKMAN_STAGE)) {
+            if (child instanceof SubScene && ((SubScene) child).getRoot().getId().equals(REETI_STAGE)) {
                 return (HBox) ((SubScene) child).getRoot();
             }
         }
@@ -350,10 +345,10 @@ public class ReetiStage extends Application implements StickmanStage {
     @Override
     public void showStage(String stageIdentifier) {
         if (stageIdentifier.equals(StageRoomReeti.CONFIG_STAGE)) {
-            Platform.runLater(() -> stickmanStages.get(stageIdentifier).setFullScreen(true));
+            Platform.runLater(() -> reetiStages.get(stageIdentifier).setFullScreen(true));
         }
-        if (stickmanStages.containsKey(stageIdentifier)) {
-            Platform.runLater(() -> stickmanStages.get(stageIdentifier).show());
+        if (reetiStages.containsKey(stageIdentifier)) {
+            Platform.runLater(() -> reetiStages.get(stageIdentifier).show());
         }
     }
 
@@ -385,7 +380,7 @@ public class ReetiStage extends Application implements StickmanStage {
      * @throws InterruptedException
      */
     public void waitForCreatingStage(String uuid) throws InterruptedException {
-        while (!stickmanStages.containsKey(uuid)) {
+        while (!reetiStages.containsKey(uuid)) {
             Thread.sleep(200);
         }
     }
@@ -412,7 +407,7 @@ public class ReetiStage extends Application implements StickmanStage {
             if (!decoration) {
                 stage.initStyle(StageStyle.UNDECORATED);
             }
-            stickmanStages.put(uuid, stage);
+            reetiStages.put(uuid, stage);
         });
     }
 
@@ -427,7 +422,7 @@ public class ReetiStage extends Application implements StickmanStage {
     private HBox getStageRoot() throws java.io.IOException {
         StagePaneHandlerReeti generalStageRoot = new StagePaneHandlerReeti();
         HBox box = generalStageRoot.getStageRoot();
-        box.setId(STICKMAN_STAGE);
+        box.setId(REETI_STAGE);
         return box;
     }
 
@@ -446,17 +441,17 @@ public class ReetiStage extends Application implements StickmanStage {
     }
 
     /**
-     * @return the mStickmanHBox
+     * @return the mReetiHBox
      */
-    public HBox getmStickmanHBox() {
-        return mStickmanHBox;
+    public HBox getmReetiHBox() {
+        return mReetiHBox;
     }
 
     /**
-     * @param mStickmanHBox the mStickmanHBox to set
+     * @param mReetiHBox the mReetiHBox to set
      */
-    public void setmStickmanHBox(HBox mStickmanHBox) {
-        this.mStickmanHBox = mStickmanHBox;
+    public void setmReetiHBox(HBox mReetiHBox) {
+        this.mReetiHBox = mReetiHBox;
     }
 
     /**
@@ -492,7 +487,7 @@ public class ReetiStage extends Application implements StickmanStage {
     }
 
     public SubScene getSubScene() {
-        return sSubscene;
+        return mSubscene;
     }
 
     public Stage getMainStage() {

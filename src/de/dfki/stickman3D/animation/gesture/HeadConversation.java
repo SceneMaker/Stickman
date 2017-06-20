@@ -1,19 +1,11 @@
 package de.dfki.stickman3D.animation.gesture;
 
-import de.dfki.action.sequence.WordTimeMarkSequence;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;
-import de.dfki.util.ios.IOSIndentWriter;
-import de.dfki.util.xml.XMLParseAction;
-import de.dfki.util.xml.XMLParseError;
-import de.dfki.util.xml.XMLWriteError;
-import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 /**
  * Created by alvaro on 1/20/17.
@@ -55,7 +47,7 @@ public class HeadConversation extends Animation3D {
         current_movment+= movement;
         mAnimationPartFX = new ArrayList<>();
         String rotationAxis = getRotationAxisName();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHeadFX, rotationAxis, current_movment));
+        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, rotationAxis, current_movment));
         playAnimationPart(200);
         pauseAnimation(500);
         current_movment = movement * -1;

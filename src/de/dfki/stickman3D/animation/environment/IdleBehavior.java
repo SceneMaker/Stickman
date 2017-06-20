@@ -46,7 +46,7 @@ public class IdleBehavior extends Thread {
                 count2 = 1;
             }
 
-            // mStickmanFX.mWobble = ((mSimplexNoise.getNoise(count2, count1) *
+            // mStickman.mWobble = ((mSimplexNoise.getNoise(count2, count1) *
             // 600)) / 20;
             //// System.out.printf("%.5f",mSimplexNoise.getNoise(count1,count2));
             //// System.out.println();

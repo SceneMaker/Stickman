@@ -5,14 +5,11 @@
  */
 package de.dfki.reeti.body;
 
-import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
@@ -21,46 +18,27 @@ import javafx.scene.transform.Rotate;
  * @author Beka Aptsiauri
  *
  */
-public class LeftEyelid extends BodyPart
+public class LeftEyelid extends Parts
 {
 
-    Head mHeadFX;
-
-    URL url;
-    URL imageUrl;
-    Image image;
-    ColModelImporter imorter;
-    public MeshView mLeftEyeMesh;
-    PhongMaterial material;
+    private MeshView mLeftEyeMesh;
 
     public LeftEyelid(Head head) {
-        mHeadFX = head;
-        mSize = new Dimension(mLength, mLength);
-
+        mStart = head.getLeftEyebrowPostion();
         mZRotation = 30;
         mYRotation = -10;
-
-        imorter = new ColModelImporter();
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEyelid.dae");
-        imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
-        image = new javafx.scene.image.Image(imageUrl.toExternalForm());
+        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEyelid.dae");
+        ColModelImporter importer = new ColModelImporter();
+        importer.read(url);
+        mLeftEyeMesh = (MeshView) importer.getImport()[0];
 
-        imorter.read(url);
-        mLeftEyeMesh = (MeshView) imorter.getImport()[0];
-
-        material = new PhongMaterial();
-        material.setDiffuseColor(mColor);
-        material.setDiffuseMap(image);
-        material.setSelfIlluminationMap(image);
-        mLeftEyeMesh.setMaterial(material);
-
-        mStart = mHeadFX.getLeftEyebrowPostion();
+        mLeftEyeMesh.setMaterial(getMaterial());
 
         init();
 
-        mHeadFX.mHead.getChildren().add(mLeftEyeMesh);
+        head.getHeadGroup().getChildren().add(mLeftEyeMesh);
     }
 
     @Override

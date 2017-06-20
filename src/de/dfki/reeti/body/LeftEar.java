@@ -5,66 +5,42 @@
  */
 package de.dfki.reeti.body;
 
-import java.awt.Dimension;
 import java.net.URL;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
-public class LeftEar extends BodyPart
+public class LeftEar extends Parts
 {
+    private MeshView mLeftEarMesh;
 
-    Head mHeadFX;
-
-    URL url;
-    ColModelImporter imorter;
-    public MeshView mLeftEarMesh;
-    PhongMaterial material;
-    URL imageUrl;
-    Image image;
-
-    Image im;
-
-    private int regulator;
-    
-    public LeftEar(Head head) {
-        mHeadFX = head;
-        mSize = new Dimension(mLength, mLength);
-
-        imorter = new ColModelImporter();
+    public LeftEar(Head head)
+    {
         mColor = Color.WHITE;
 
-        url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiLeftEar.dae");
-        imageUrl = getClass().getClassLoader().getResource("Images/difuseMap2.png");
-        image = new Image(imageUrl.toExternalForm());
+        ColModelImporter importer = new ColModelImporter();
+        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiLeftEar.dae");
 
-        imorter.read(url);
-        mLeftEarMesh = (MeshView) imorter.getImport()[0];
-        material = new PhongMaterial();
-        material.setDiffuseColor(mColor);
-        material.setDiffuseMap(image);
-        material.setSelfIlluminationMap(image);
-        mLeftEarMesh.setMaterial(material);
+        importer.read(url);
+        mLeftEarMesh = (MeshView) importer.getImport()[0];
+        mLeftEarMesh.setMaterial(getMaterial());
 
-        mStart = mHeadFX.getLeftEyebrowPostion();
+        mStart = head.getLeftEyebrowPostion();
 
         init();
 
-        mHeadFX.mHead.getChildren().add(mLeftEarMesh);
+        head.getHeadGroup().getChildren().add(mLeftEarMesh);
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
         super.init();
         mLeftEarMesh.setTranslateX(mStart.x + 80);
         mLeftEarMesh.setTranslateY(mStart.y + 57);
@@ -72,20 +48,13 @@ public class LeftEar extends BodyPart
     }
 
     @Override
-    public void calculate(int step) {
+    public void calculate(int step)
+    {
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
         mLeftEarMesh.getTransforms().clear();
         mLeftEarMesh.getTransforms().addAll(rz, ry, rx);
-    }
-
-    public int getRegulator() {
-        return regulator;
-    }
-
-    public void setRegulator(int regulator) {
-        this.regulator = regulator;
     }
 }

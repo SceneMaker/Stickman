@@ -31,7 +31,7 @@ public final class Breathing {
 
         breathTimeline = new Timeline(new KeyFrame(Duration.millis(breathFrequent), (ActionEvent event) -> {
             ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(actionDuration),
-                    mStickmanFX.mUpperBody.mUpperBodyGroup);
+                    mStickmanFX.mUpperBody);
             scaleTransition.setToX(1.05f);
             scaleTransition.setToZ(1.05f);
             scaleTransition.setToY(1.01f);

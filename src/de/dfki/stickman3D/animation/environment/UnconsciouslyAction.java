@@ -21,7 +21,7 @@ public class UnconsciouslyAction extends Thread {
 
     // Behavior Default Array
     private String[] behaviorArray = {"HeadTilt", "CoverMouth", "Nod", "TouchHead", "HeadLeft", "HeadRight", "Itching",
-        "HeadDown", "HeadDown1"};
+        "TiltDownStart", "HeadDown1"};
     //
     private ArrayList<String> currentBehaviorList;
 

@@ -4,9 +4,7 @@ import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.animationlogic.Animation3D;
 import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Created by alvaro on 1/20/17.
@@ -47,7 +45,7 @@ public abstract class AbstractConversationHands extends Animation3D {
     protected void moveConversationHands(){
         leftForeArmZ = getLeftArmMovement();
         rightForeArmZ = getRightArmMovement();
-        moveArms(new AnimationContent3D(mStickmanFX.mRightForeArmFX, "zrotate", rightForeArmZ), new AnimationContent3D(mStickmanFX.mLeftForeArmFX, "zrotate", leftForeArmZ));
+        moveArms(new AnimationContent3D(mStickmanFX.mRightForeArm, "zrotate", rightForeArmZ), new AnimationContent3D(mStickmanFX.mLeftForeArm, "zrotate", leftForeArmZ));
     }
 
     protected int getMaximumPermitedMovement(){

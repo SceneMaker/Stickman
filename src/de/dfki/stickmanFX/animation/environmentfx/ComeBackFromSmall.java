@@ -34,11 +34,11 @@ public class ComeBackFromSmall extends AnimationFX {
             mScaleRecord = mScaleRecord * 0.95f;
         }
 
-//		mScaleRecord = mStickmanFX.mScale;
+//		mScaleRecord = mStickman.mScale;
         mStickmanFX.starShowControler = true;
 
         // show stars
-//		mStickmanFX.mScale = mStickmanFX.mScaleOriginal;
+//		mStickman.mScale = mStickman.mScaleOriginal;
         mAnimationPartFX = new ArrayList<>();
         mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mStarsFX, "shape", "STARSDISAPPEAR"));
         playAnimationPart(1000);

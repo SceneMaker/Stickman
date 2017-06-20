@@ -20,7 +20,7 @@ public class ZoomIO extends AnimationFX {
     @Override
     public void playAnimation() {
         // make StickmanSwing to become 4 times big. Focus on StickmanSwing's face.
-//        mStickmanFX.mScale = 4f;
+//        mStickman.mScale = 4f;
         String sParameter = (String) mParameter;
         sParameter = sParameter.trim();
 
