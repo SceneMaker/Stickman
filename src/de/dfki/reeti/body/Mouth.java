@@ -32,6 +32,7 @@ public class Mouth extends Parts
     public Point2D upperPoint;
     public Point2D downPoint;
     private final int mouthLength = 32;
+    private boolean openMouth = false;
 
     private double rightCornerRegulator = 0;
     private double leftCornerRegulator = 0;
@@ -192,38 +193,58 @@ public class Mouth extends Parts
                 break;
 
             case OPEN:
-                openMouth();
+                openMouth(1);
                 break;
             case ONE:
-            case THREE:
-            case FIVE:
-            case SEVEN:
-            case NINE:
-            case ELEVEN:
-            case THIRTEEN:
+                openMouth(0.5);
+                break;
+            case SIX:
+            case FOURTEEN:
+                openMouth(1);
+                break;
             case NINETEEN:
-                openMouth();
+                openMouth(0.7);
                 break;
             case TWO:
-            case FOUR:
-            case SIX:
-            case EIGHT:
-            case TEN:
-            case TWELVE:
-            case FOURTEEN:
+                openMouth(1);
+                break;
+            case THREE:
             case TWENTY:
+                openMouth(0.8);
+                break;
+            case FOUR:
+                openMouth(0.9);
+                break;
+            case FIVE:
+            case EIGHT:
+                openMouth(0.9);
+                break;
+            case SEVEN:
                 closeMouth();
+                break;
+            case NINE:
+                openMouth(1);
+                break;
+            case TEN:
+                openMouth(0.9);
+                break;
+            case ELEVEN:
+                openMouth(0.9);
+                break;
+            case THIRTEEN:
+            case TWELVE:
+                openMouth(0.9);
                 break;
 
         }
     }
 
-    private void openMouth()
+    private void openMouth(double factor)
     {
         mLips.getElements().clear();
         mLips.getElements().add(new MoveTo(leftCorner.getX(), leftCorner.getY()));
-        mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY() - 10, rightCorner.getX(), rightCorner.getY()));
-        mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY() + 10, leftCorner.getX(), leftCorner.getY()));
+        mLips.getElements().add(new QuadCurveTo(upperPoint.getX(), upperPoint.getY() - 10 * factor, rightCorner.getX(), rightCorner.getY()));
+        mLips.getElements().add(new QuadCurveTo(downPoint.getX(), downPoint.getY() + 10 * factor, leftCorner.getX(), leftCorner.getY()));
         mLips.getElements().add(new ClosePath());
     }
 
