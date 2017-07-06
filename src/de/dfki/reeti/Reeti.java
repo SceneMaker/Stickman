@@ -125,6 +125,8 @@ public class Reeti extends Pane implements Stickman
     private double mNeckPanOldPos = 50;
     private double mNeckTiltOldPos = 50;
 
+    private static Reeti sReeti;
+
     public Reeti(String name, Gender.TYPE gender, float scale, Dimension size)
     {
         mSize = size;
@@ -154,6 +156,7 @@ public class Reeti extends Pane implements Stickman
         init();
         this.addAllParts();
         update();
+        sReeti = this;
     }
 
     public Reeti(String name, Gender.TYPE gender, float scale, double height)
@@ -185,6 +188,7 @@ public class Reeti extends Pane implements Stickman
         init();
         this.addAllParts();
         update();
+        sReeti = this;
     }
 
     public Reeti(String name, Gender.TYPE gender)
@@ -214,6 +218,7 @@ public class Reeti extends Pane implements Stickman
         init();
         this.addAllParts();
         update();
+        sReeti = this;
     }
 
     private void init()
@@ -1134,8 +1139,97 @@ public class Reeti extends Pane implements Stickman
     {
         return mRightCornerOldPos;
     }
-    
-    
-    
-    
+
+
+    //VSM static stuff
+    public static void vsm_ledOn(String color)
+    {
+        sReeti.setLedColor(color);
+    }
+
+    public static void vsm_ledOf()
+    {
+        sReeti.ledOFF("B");
+    }
+
+    public static void vsm_rightLC(int pos, int duration)
+    {
+        sReeti.rightLC(pos, duration);
+    }
+
+    public static void vsm_leftLC(int pos, int duration)
+    {
+        sReeti.leftLC(pos, duration);
+    }
+
+    public static void vsm_topLip(int pos, int duration)
+    {
+        sReeti.topLip(pos, duration);
+    }
+
+    public static void vsm_bottomLip(int pos, int duration)
+    {
+        sReeti.bottomLip(pos, duration);
+    }
+
+    public static void vsm_leftEyeTilt(int pos, int duration)
+    {
+        sReeti.leftEyeTilt(pos, duration);
+    }
+
+    public static void vsm_rightEyeTilt(int pos, int duration)
+    {
+        sReeti.rightEyeTilt(pos, duration);
+    }
+
+    public static void vsm_leftEyePan(int pos, int duration)
+    {
+        sReeti.leftEyePan(pos, duration);
+    }
+
+    public static void vsm_rightEyePan(int pos, int duration)
+    {
+        sReeti.rightEyePan(pos, duration);
+    }
+
+    public static void vsm_leftEyeLid(int pos, int duration)
+    {
+        sReeti.leftEyeLid(pos, duration);
+    }
+
+    public static void vsm_rightEyeLid(int pos, int duration)
+    {
+        sReeti.rightEyeLid(pos, duration);
+    }
+
+    public static void vsm_leftEar(int pos, int duration)
+    {
+        sReeti.leftEar(pos, duration);
+    }
+
+    public static void vsm_rightEar(int pos, int duration)
+    {
+        sReeti.rightEar(pos, duration);
+    }
+
+    public static void vsm_neckRotat(int pos, int duration)
+    {
+        sReeti.neckRotat(pos, duration);
+    }
+
+    public static void vsm_neckPan(int pos, int duration)
+    {
+        sReeti.neckPan(pos, duration);
+    }
+
+    public static void vsm_neckTilt(int pos, int duration)
+    {
+        sReeti.neckTilt(pos, duration);
+    }
+
+    public static void vsm_defaultPose()
+    {
+        sReeti.defaultPose();
+    }
+
 }

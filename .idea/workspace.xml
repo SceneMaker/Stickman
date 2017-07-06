@@ -9,7 +9,7 @@
     <list default="true" id="c55e3a5f-3a78-4a9a-88c5-64b8042546d9" name="Default" comment="SmileStart, TiltDownStart, TiltLeftStart, TiltRightStart">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/Stickman_jar/Stickman.jar" afterPath="$PROJECT_DIR$/classes/artifacts/Stickman_jar/Stickman.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
     </list>
     <ignored path="Stickman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,33 +43,109 @@
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
+            <state relative-caret-position="600">
               <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#901#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#528#529#0" expanded="false" />
+                <element signature="e#567#568#0" expanded="false" />
+                <element signature="e#625#626#0" expanded="false" />
+                <element signature="e#667#668#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mouth.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="300" column="0" lean-forward="false" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Mouth.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java">
+      <file leaf-file-name="Reeti.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1588">
-              <caret line="300" column="0" lean-forward="false" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="216" column="34" lean-forward="false" selection-start-line="216" selection-start-column="34" selection-end-line="216" selection-end-column="34" />
               <folding>
-                <marker date="1499190555530" expanded="false" signature="9985:10000" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10028:10034" ph=" }" />
-                <marker date="1499190555530" expanded="false" signature="10084:10099" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10131:10137" ph=" }" />
-                <marker date="1499190555530" expanded="false" signature="10164:10179" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10192:10198" ph=" }" />
-                <marker date="1499190555530" expanded="false" signature="10234:10249" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10267:10273" ph=" }" />
-                <marker date="1499190555530" expanded="false" signature="10310:10325" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10344:10350" ph=" }" />
-                <marker date="1499190555530" expanded="false" signature="10386:10401" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10419:10425" ph=" }" />
-                <marker date="1499190555530" expanded="false" signature="10460:10475" ph=" { " />
-                <marker date="1499190555530" expanded="false" signature="10492:10498" ph=" }" />
+                <element signature="method#setLedColor#0;class#Reeti#0" expanded="false" />
+                <element signature="method#setLedColor#1;class#Reeti#0" expanded="false" />
+                <element signature="method#setLedColor#2;class#Reeti#0" expanded="false" />
+                <element signature="method#ledON#0;class#Reeti#0" expanded="false" />
+                <element signature="method#ledOFF#0;class#Reeti#0" expanded="false" />
+                <element signature="method#rightLC#0;class#Reeti#0" expanded="false" />
+                <element signature="method#leftLC#0;class#Reeti#0" expanded="false" />
+                <element signature="method#topLip#0;class#Reeti#0" expanded="false" />
+                <element signature="method#bottomLip#0;class#Reeti#0" expanded="false" />
+                <element signature="method#leftEyeTilt#0;class#Reeti#0" expanded="false" />
+                <element signature="method#leftEyePan#0;class#Reeti#0" expanded="false" />
+                <element signature="method#rightEyeTilt#0;class#Reeti#0" expanded="false" />
+                <element signature="method#rightEyePan#0;class#Reeti#0" expanded="false" />
+                <element signature="method#leftEyeLid#0;class#Reeti#0" expanded="false" />
+                <element signature="method#rightEyeLid#0;class#Reeti#0" expanded="false" />
+                <element signature="method#leftEar#0;class#Reeti#0" expanded="false" />
+                <element signature="method#rightEar#0;class#Reeti#0" expanded="false" />
+                <element signature="method#neckRotat#0;class#Reeti#0" expanded="false" />
+                <element signature="method#neckTilt#0;class#Reeti#0" expanded="false" />
+                <element signature="method#neckPan#0;class#Reeti#0" expanded="false" />
+                <element signature="method#defaultPose#0;class#Reeti#0" expanded="false" />
+                <element signature="method#checkColor#0;class#Reeti#0" expanded="false" />
+                <element signature="e#31009#31010#0" expanded="true" />
+                <element signature="e#31047#31048#0" expanded="true" />
+                <element signature="e#31297#31298#0" expanded="true" />
+                <element signature="e#31338#31339#0" expanded="true" />
+                <element signature="e#31380#31381#0" expanded="true" />
+                <element signature="e#31414#31415#0" expanded="true" />
+                <element signature="e#31479#31480#0" expanded="true" />
+                <element signature="e#31524#31525#0" expanded="true" />
+                <element signature="e#31588#31589#0" expanded="true" />
+                <element signature="e#31632#31633#0" expanded="true" />
+                <element signature="e#31696#31697#0" expanded="true" />
+                <element signature="e#31740#31741#0" expanded="true" />
+                <element signature="e#31807#31808#0" expanded="true" />
+                <element signature="e#31854#31855#0" expanded="true" />
+                <element signature="e#31923#31924#0" expanded="true" />
+                <element signature="e#31972#31973#0" expanded="true" />
+                <element signature="e#32042#32043#0" expanded="true" />
+                <element signature="e#32092#32093#0" expanded="true" />
+                <element signature="e#32160#32161#0" expanded="true" />
+                <element signature="e#32208#32209#0" expanded="true" />
+                <element signature="e#32277#32278#0" expanded="true" />
+                <element signature="e#32326#32327#0" expanded="true" />
+                <element signature="e#32394#32395#0" expanded="true" />
+                <element signature="e#32442#32443#0" expanded="true" />
+                <element signature="e#32511#32512#0" expanded="true" />
+                <element signature="e#32560#32561#0" expanded="true" />
+                <element signature="e#32625#32626#0" expanded="true" />
+                <element signature="e#32670#32671#0" expanded="true" />
+                <element signature="e#32736#32737#0" expanded="true" />
+                <element signature="e#32782#32783#0" expanded="true" />
+                <element signature="e#32849#32850#0" expanded="true" />
+                <element signature="e#32896#32897#0" expanded="true" />
+                <element signature="e#32961#32962#0" expanded="true" />
+                <element signature="e#33006#33007#0" expanded="true" />
+                <element signature="e#33072#33073#0" expanded="true" />
+                <element signature="e#33118#33119#0" expanded="true" />
+                <element signature="e#33166#33167#0" expanded="true" />
+                <element signature="e#33202#33203#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeechBubbleFX.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleFX.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="86" column="33" lean-forward="false" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
+              <folding>
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#778#779#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,9 +154,13 @@
       <file leaf-file-name="MouthFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickmanFX/bodyfx/MouthFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="10620">
               <caret line="366" column="20" lean-forward="false" selection-start-line="366" selection-start-column="17" selection-end-line="366" selection-end-column="20" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1597#1598#0" expanded="false" />
+                <element signature="e#1643#1644#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,18 +168,11 @@
       <file leaf-file-name="testStickmanFX.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
+            <state relative-caret-position="480">
               <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
               <folding>
-                <marker date="1499190537580" expanded="true" signature="316:356" ph="/**...*/" />
-                <marker date="1499190537580" expanded="true" signature="431:3936" ph="{...}" />
-                <marker date="1499190537580" expanded="true" signature="434:713" ph="//..." />
-                <marker date="1499190537580" expanded="true" signature="889:1088" ph="//..." />
+                <element signature="imports" expanded="false" />
                 <marker date="1499190537580" expanded="true" signature="942:1088" ph="//..." />
-                <marker date="1499190537580" expanded="true" signature="1126:1572" ph="//..." />
-                <marker date="1499190537580" expanded="true" signature="1689:2105" ph="{...}" />
-                <marker date="1499190537580" expanded="true" signature="1691:2087" ph="//..." />
-                <marker date="1499190537580" expanded="true" signature="2199:2412" ph="//..." />
               </folding>
             </state>
           </provider>
@@ -117,7 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>righteyepa</find>
       <find>leftear</find>
       <find>leftEar</find>
       <find>r</find>
@@ -147,6 +219,7 @@
       <find>#controlPanel</find>
       <find>start</find>
       <find>stickamnsOnStage</find>
+      <find>neckRota</find>
     </findStrings>
     <replaceStrings>
       <replace>protected</replace>
@@ -179,7 +252,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/RightForeArmFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/RightUpperLegFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/RightForeLegFX.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/RightFootFX.java" />
@@ -211,7 +283,6 @@
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEye.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEye.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEyelid.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/BodyPart.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Parts.java" />
@@ -230,6 +301,8 @@
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/face/SmileStart.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/head/TiltLeftStart.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleFX.java" />
       </list>
     </option>
   </component>
@@ -240,7 +313,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
     <option name="width" value="1938" />
     <option name="height" value="1060" />
   </component>
@@ -278,7 +352,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -411,82 +484,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dfki" />
+              <option name="myItemId" value="artifacts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="reeti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="body" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dfki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reeti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="animation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dfki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reeti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="animation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="face" />
+              <option name="myItemId" value="Stickman_jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -692,6 +706,136 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -706,6 +850,14 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -750,6 +902,22 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -783,6 +951,12 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -809,6 +983,22 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
     <list size="3">
@@ -907,6 +1097,7 @@
       <workItem from="1484905930357" duration="28607000" />
       <workItem from="1485167357639" duration="740000" />
       <workItem from="1485248944422" duration="13000" />
+      <workItem from="1499342736746" duration="4651000" />
     </task>
     <task id="LOCAL-00040" summary="Relaxed">
       <created>1491770082856</created>
@@ -1255,7 +1446,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="297510000" />
+    <option name="totallyTimeSpent" value="302232000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1267,8 +1458,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="1938" height="1060" extended-state="0" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1060" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1279,14 +1469,15 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28874025" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28874025" sideWeight="0.49785176" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28874025" sideWeight="0.49785176" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26852846" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24167562" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19479166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1294,41 +1485,20 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2742475" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28874025" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19479166" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2742475" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="96" y="96" width="1728" height="834" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921588" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28874025" sideWeight="0.49785176" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277592" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34962407" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664436" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1463,7 +1633,7 @@
           <option name="timeStamp" value="225" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="282" />
+      <option name="time" value="283" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1488,13 +1658,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/stage/StagePaneHandlerReeti.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4185">
@@ -1581,13 +1744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31806">
-          <caret line="1141" column="0" lean-forward="false" selection-start-line="1141" selection-start-column="0" selection-end-line="1141" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Body.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1625,24 +1781,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1588">
+        <state relative-caret-position="629">
           <caret line="300" column="0" lean-forward="false" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
-          <folding>
-            <marker date="1499190555530" expanded="false" signature="9985:10000" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10028:10034" ph=" }" />
-            <marker date="1499190555530" expanded="false" signature="10084:10099" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10131:10137" ph=" }" />
-            <marker date="1499190555530" expanded="false" signature="10164:10179" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10192:10198" ph=" }" />
-            <marker date="1499190555530" expanded="false" signature="10234:10249" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10267:10273" ph=" }" />
-            <marker date="1499190555530" expanded="false" signature="10310:10325" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10344:10350" ph=" }" />
-            <marker date="1499190555530" expanded="false" signature="10386:10401" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10419:10425" ph=" }" />
-            <marker date="1499190555530" expanded="false" signature="10460:10475" ph=" { " />
-            <marker date="1499190555530" expanded="false" signature="10492:10498" ph=" }" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1767,18 +1908,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
+        <state relative-caret-position="480">
           <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
           <folding>
-            <marker date="1499190537580" expanded="true" signature="316:356" ph="/**...*/" />
-            <marker date="1499190537580" expanded="true" signature="431:3936" ph="{...}" />
-            <marker date="1499190537580" expanded="true" signature="434:713" ph="//..." />
-            <marker date="1499190537580" expanded="true" signature="889:1088" ph="//..." />
+            <element signature="imports" expanded="false" />
             <marker date="1499190537580" expanded="true" signature="942:1088" ph="//..." />
-            <marker date="1499190537580" expanded="true" signature="1126:1572" ph="//..." />
-            <marker date="1499190537580" expanded="true" signature="1689:2105" ph="{...}" />
-            <marker date="1499190537580" expanded="true" signature="1691:2087" ph="//..." />
-            <marker date="1499190537580" expanded="true" signature="2199:2412" ph="//..." />
           </folding>
         </state>
       </provider>
@@ -1813,9 +1947,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/face/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
+        <state relative-caret-position="600">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#901#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#528#529#0" expanded="false" />
+            <element signature="e#567#568#0" expanded="false" />
+            <element signature="e#625#626#0" expanded="false" />
+            <element signature="e#667#668#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1858,6 +1999,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
           <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="216" column="34" lean-forward="false" selection-start-line="216" selection-start-column="34" selection-end-line="216" selection-end-column="34" />
+          <folding>
+            <element signature="method#setLedColor#0;class#Reeti#0" expanded="false" />
+            <element signature="method#setLedColor#1;class#Reeti#0" expanded="false" />
+            <element signature="method#setLedColor#2;class#Reeti#0" expanded="false" />
+            <element signature="method#ledON#0;class#Reeti#0" expanded="false" />
+            <element signature="method#ledOFF#0;class#Reeti#0" expanded="false" />
+            <element signature="method#rightLC#0;class#Reeti#0" expanded="false" />
+            <element signature="method#leftLC#0;class#Reeti#0" expanded="false" />
+            <element signature="method#topLip#0;class#Reeti#0" expanded="false" />
+            <element signature="method#bottomLip#0;class#Reeti#0" expanded="false" />
+            <element signature="method#leftEyeTilt#0;class#Reeti#0" expanded="false" />
+            <element signature="method#leftEyePan#0;class#Reeti#0" expanded="false" />
+            <element signature="method#rightEyeTilt#0;class#Reeti#0" expanded="false" />
+            <element signature="method#rightEyePan#0;class#Reeti#0" expanded="false" />
+            <element signature="method#leftEyeLid#0;class#Reeti#0" expanded="false" />
+            <element signature="method#rightEyeLid#0;class#Reeti#0" expanded="false" />
+            <element signature="method#leftEar#0;class#Reeti#0" expanded="false" />
+            <element signature="method#rightEar#0;class#Reeti#0" expanded="false" />
+            <element signature="method#neckRotat#0;class#Reeti#0" expanded="false" />
+            <element signature="method#neckTilt#0;class#Reeti#0" expanded="false" />
+            <element signature="method#neckPan#0;class#Reeti#0" expanded="false" />
+            <element signature="method#defaultPose#0;class#Reeti#0" expanded="false" />
+            <element signature="method#checkColor#0;class#Reeti#0" expanded="false" />
+            <element signature="e#31009#31010#0" expanded="true" />
+            <element signature="e#31047#31048#0" expanded="true" />
+            <element signature="e#31297#31298#0" expanded="true" />
+            <element signature="e#31338#31339#0" expanded="true" />
+            <element signature="e#31380#31381#0" expanded="true" />
+            <element signature="e#31414#31415#0" expanded="true" />
+            <element signature="e#31479#31480#0" expanded="true" />
+            <element signature="e#31524#31525#0" expanded="true" />
+            <element signature="e#31588#31589#0" expanded="true" />
+            <element signature="e#31632#31633#0" expanded="true" />
+            <element signature="e#31696#31697#0" expanded="true" />
+            <element signature="e#31740#31741#0" expanded="true" />
+            <element signature="e#31807#31808#0" expanded="true" />
+            <element signature="e#31854#31855#0" expanded="true" />
+            <element signature="e#31923#31924#0" expanded="true" />
+            <element signature="e#31972#31973#0" expanded="true" />
+            <element signature="e#32042#32043#0" expanded="true" />
+            <element signature="e#32092#32093#0" expanded="true" />
+            <element signature="e#32160#32161#0" expanded="true" />
+            <element signature="e#32208#32209#0" expanded="true" />
+            <element signature="e#32277#32278#0" expanded="true" />
+            <element signature="e#32326#32327#0" expanded="true" />
+            <element signature="e#32394#32395#0" expanded="true" />
+            <element signature="e#32442#32443#0" expanded="true" />
+            <element signature="e#32511#32512#0" expanded="true" />
+            <element signature="e#32560#32561#0" expanded="true" />
+            <element signature="e#32625#32626#0" expanded="true" />
+            <element signature="e#32670#32671#0" expanded="true" />
+            <element signature="e#32736#32737#0" expanded="true" />
+            <element signature="e#32782#32783#0" expanded="true" />
+            <element signature="e#32849#32850#0" expanded="true" />
+            <element signature="e#32896#32897#0" expanded="true" />
+            <element signature="e#32961#32962#0" expanded="true" />
+            <element signature="e#33006#33007#0" expanded="true" />
+            <element signature="e#33072#33073#0" expanded="true" />
+            <element signature="e#33118#33119#0" expanded="true" />
+            <element signature="e#33166#33167#0" expanded="true" />
+            <element signature="e#33202#33203#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="86" column="33" lean-forward="false" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
+          <folding>
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
