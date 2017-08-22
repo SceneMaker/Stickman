@@ -1,34 +1,37 @@
 package de.dfki.stickmanFX.animation.facefx;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class ExcitedStart extends AnimationFX {
+public class ExcitedStart extends AnimationStickman2D
+{
 
-    public ExcitedStart() {
+    public ExcitedStart()
+    {
         super();
     }
 
-    public ExcitedStart(StickmanFX sm, int duration, boolean block) {
+    public ExcitedStart(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         // excited
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "EXCITED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "EXCITED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "EXCITED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "EXCITED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "EXCITED"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "shape", "EXCITED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "shape", "EXCITED"));
         playAnimationPart(mDuration);
 
         pauseAnimation(10);

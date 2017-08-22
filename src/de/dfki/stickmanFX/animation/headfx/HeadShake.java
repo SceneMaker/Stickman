@@ -5,101 +5,107 @@
  */
 package de.dfki.stickmanFX.animation.headfx;
 
+import de.dfki.common.animationlogic.AnimationContent;
+import de.dfki.common.enums.Gender;
+import de.dfki.stickmanFX.StickmanFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
+
 import java.util.ArrayList;
 
-import de.dfki.common.Gender;
-import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
-
 /**
- *
  * @author Beka
- *
  */
-public class HeadShake extends AnimationFX {
+public class HeadShake extends AnimationStickman2D
+{
 
-    StickmanFX mStickmanFX;
-
-    public HeadShake(StickmanFX sm, int duration, boolean block) {
+    public HeadShake(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
-        this.mStickmanFX = sm;
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         int rotationUnit = 10;
 
         // Its action is strange for the first time!
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "rotate", -rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "rotate", -rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "rotate", -rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", -rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -rotationUnit));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mHeadFX, "rotate", -rotationUnit));
 
-        if (mStickmanFX.mType == Gender.TYPE.MALE) {
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", -rotationUnit));
-        } else {
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", -rotationUnit));
+        if (agent.mType == Gender.TYPE.MALE)
+        {
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMaleHairFX, "rotate", -rotationUnit));
+        } else
+        {
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mFemaleHairFX, "rotate", -rotationUnit));
         }
 
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "rotate", -rotationUnit));
         playAnimationPart(200);
         pauseAnimation(100);
 
         // shaking head 5 times from Robbie
-        for (int i = 0; i < 3; i++) {
-            mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "rotate", rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "rotate", rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "rotate", rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", rotationUnit * 2));
+        for (int i = 0; i < 3; i++)
+        {
+            mAnimationPart = new ArrayList<>();
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "rotate", rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "rotate", rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "rotate", rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "rotate", rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mHeadFX, "rotate", rotationUnit * 2));
 
-            if (mStickmanFX.mType == Gender.TYPE.MALE) {
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", rotationUnit * 2));
-            } else {
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", rotationUnit * 2));
+            if (agent.mType == Gender.TYPE.MALE)
+            {
+                mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMaleHairFX, "rotate", rotationUnit * 2));
+            } else
+            {
+                mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mFemaleHairFX, "rotate", rotationUnit * 2));
             }
 
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "rotate", rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "rotate", rotationUnit * 2));
             playAnimationPart(200);
             pauseAnimation(100);
 
-            mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "rotate", -rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "rotate", -rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "rotate", -rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", -rotationUnit * 2));
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", -rotationUnit * 2));
+            mAnimationPart = new ArrayList<>();
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "rotate", -rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "rotate", -rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "rotate", -rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "rotate", -rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mHeadFX, "rotate", -rotationUnit * 2));
 
-            if (mStickmanFX.mType == Gender.TYPE.MALE) {
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", -rotationUnit * 2));
-            } else {
-                mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", -rotationUnit * 2));
+            if (agent.mType == Gender.TYPE.MALE)
+            {
+                mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMaleHairFX, "rotate", -rotationUnit * 2));
+            } else
+            {
+                mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mFemaleHairFX, "rotate", -rotationUnit * 2));
             }
 
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "rotate", -rotationUnit * 2));
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "rotate", -rotationUnit * 2));
             playAnimationPart(200);
             pauseAnimation(100);
         }
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "rotate", rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "rotate", rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "rotate", rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "rotate", rotationUnit));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mHeadFX, "rotate", rotationUnit));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mHeadFX, "rotate", rotationUnit));
 
-        if (mStickmanFX.mType == Gender.TYPE.MALE) {
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMaleHairFX, "rotate", rotationUnit));
-        } else {
-            mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mFemaleHairFX, "rotate", rotationUnit));
+        if (agent.mType == Gender.TYPE.MALE)
+        {
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMaleHairFX, "rotate", rotationUnit));
+        } else
+        {
+            mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mFemaleHairFX, "rotate", rotationUnit));
         }
 
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "rotate", rotationUnit));
 
         playAnimationPart(200);
         pauseAnimation(100);

@@ -1,20 +1,23 @@
 <component name="ProjectDictionaryState">
   <dictionary name="EmpaT">
     <words>
-      <w>armlength</w>
-      <w>autoscroll</w>
-      <w>controler</w>
-      <w>dfki</w>
-      <w>dropshadow</w>
-      <w>fadein</w>
-      <w>reeti</w>
-      <w>reetis</w>
-      <w>regler</w>
-      <w>sman</w>
-      <w>steuert</w>
-      <w>subscene</w>
-      <w>timelineheight</w>
-      <w>timelinewidth</w>
+      <w>angryend</w>
+      <w>blinkend</w>
+      <w>contemptend</w>
+      <w>disgustedend</w>
+      <w>embarrassedend</w>
+      <w>excitedend</w>
+      <w>happyend</w>
+      <w>lookdown</w>
+      <w>lookdownend</w>
+      <w>lookleft</w>
+      <w>lookleftend</w>
+      <w>lookright</w>
+      <w>lookrightend</w>
+      <w>lookupend</w>
+      <w>pupile</w>
+      <w>stickmans</w>
+      <w>surprisedend</w>
     </words>
   </dictionary>
 </component>

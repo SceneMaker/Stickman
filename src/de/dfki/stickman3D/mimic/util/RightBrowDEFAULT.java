@@ -2,10 +2,13 @@ package de.dfki.stickman3D.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class RightBrowDEFAULT {
+public class RightBrowDEFAULT
+{
 
-    public static Polygon createMaleBrow(Polygon currentPolygon, float step) {
-        if (step == 20 || step == 0) {
+    public static Polygon createMaleBrow(Polygon currentPolygon, float step)
+    {
+        if (step == 20 || step == 0)
+        {
             currentPolygon.getPoints().clear();
             currentPolygon.getPoints().addAll(
                     //  x   	y   	
@@ -28,8 +31,10 @@ public class RightBrowDEFAULT {
         return currentPolygon;
     }
 
-    public static Polygon createFemaleBrow(Polygon currentPolygon, float step) {
-        if (step == 20 || step == 0) {
+    public static Polygon createFemaleBrow(Polygon currentPolygon, float step)
+    {
+        if (step == 20 || step == 0)
+        {
             currentPolygon.getPoints().clear();
             currentPolygon.getPoints().addAll(
                     //  x   	y   	/////

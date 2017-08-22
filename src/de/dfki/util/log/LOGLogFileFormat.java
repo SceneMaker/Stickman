@@ -1,6 +1,7 @@
 package de.dfki.util.log;
 
 //~--- JDK imports ------------------------------------------------------------
+
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
@@ -8,13 +9,15 @@ import java.util.logging.LogRecord;
 /**
  * @author Not me
  */
-public class LOGLogFileFormat extends Formatter {
+public class LOGLogFileFormat extends Formatter
+{
 
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     @Override
-    public final String format(final LogRecord record) {
+    public final String format(final LogRecord record)
+    {
 
         // Create The Date Of Logging
         Date date = new Date(record.getMillis());

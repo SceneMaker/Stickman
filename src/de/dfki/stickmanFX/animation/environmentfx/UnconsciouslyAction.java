@@ -3,16 +3,15 @@ package de.dfki.stickmanFX.animation.environmentfx;
 import de.dfki.stickmanFX.StickmanFX;
 
 /**
- *
  * @author Patrick Gebhard
- *
  */
-public class UnconsciouslyAction extends Thread {
+public class UnconsciouslyAction extends Thread
+{
 
     private StickmanFX mStickmanFX;
     private SimplexNoise mSimplexNoise;  // generate perlin noise Array 2d
-    private int count1 = 1;    			// index of perlin noise Array
-    private int count2 = 1;    			// index of perlin noise Array
+    private int count1 = 1;                // index of perlin noise Array
+    private int count2 = 1;                // index of perlin noise Array
     private int countCoverMouth = 0;
     private int countTouchHead = 0;
     private int countBlink = 0;
@@ -20,85 +19,113 @@ public class UnconsciouslyAction extends Thread {
     private int NoiseNumber;
     private int mSleepTime = 0;
 
-    public UnconsciouslyAction(StickmanFX s, SimplexNoise noise) {
+    public UnconsciouslyAction(StickmanFX s, SimplexNoise noise)
+    {
         mStickmanFX = s;
         mSimplexNoise = noise;
         mSleepTime = 60;
     }
 
-    private void coverMouth() {
-        if (NoiseNumber == 1) {
+    private void coverMouth()
+    {
+        if (NoiseNumber == 1)
+        {
             countCoverMouth++;
-            if (countCoverMouth == 20) {
+            if (countCoverMouth == 20)
+            {
                 countCoverMouth = 0;
                 countTouchHead = 0;
                 countTileHead = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) // to ignore to many actions put in mAnimationQueue
+                if (mStickmanFX.animationScheduler.mAnimationQueue.isEmpty()) // to ignore to many actions put in mAnimationQueue
                 {
                     mStickmanFX.doAnimation("CoverMouth", 500, true);
                 }
-            } else {
-                try {
+            } else
+            {
+                try
+                {
                     sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException ex)
+                {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
         }
     }
 
-    private void touchHead() {
-        if (NoiseNumber == 2) {
+    private void touchHead()
+    {
+        if (NoiseNumber == 2)
+        {
             countTouchHead++;
-            if (countTouchHead == 20) {
+            if (countTouchHead == 20)
+            {
                 countCoverMouth = 0;
                 countTouchHead = 0;
                 countTileHead = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
+                if (mStickmanFX.animationScheduler.mAnimationQueue.isEmpty())
+                {
                     mStickmanFX.doAnimation("TouchHead", 500, true);
                 }
-            } else {
-                try {
+            } else
+            {
+                try
+                {
                     sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException ex)
+                {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
         }
     }
 
-    private void blink() {
-        if (NoiseNumber == 3) {
+    private void blink()
+    {
+        if (NoiseNumber == 3)
+        {
             countBlink++;
-            if (countBlink == 8) {
+            if (countBlink == 8)
+            {
                 countBlink = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
+                if (mStickmanFX.animationScheduler.mAnimationQueue.isEmpty())
+                {
                     mStickmanFX.doAnimation("Blink", 500, true);
                 }
-            } else {
-                try {
+            } else
+            {
+                try
+                {
                     sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException ex)
+                {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
         }
     }
 
-    private void tileHead() {
-        if (NoiseNumber == 4) {
+    private void tileHead()
+    {
+        if (NoiseNumber == 4)
+        {
             countTileHead++;
-            if (countTileHead == 25) {
+            if (countTileHead == 25)
+            {
                 countCoverMouth = 0;
                 countTouchHead = 0;
                 countTileHead = 0;
-                if (mStickmanFX.mAnimationSchedulerFX.mAnimationQueue.isEmpty()) {
+                if (mStickmanFX.animationScheduler.mAnimationQueue.isEmpty())
+                {
                     mStickmanFX.doAnimation("HeadTilt", 500, true);
                 }
-            } else {
-                try {
+            } else
+            {
+                try
+                {
                     sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException ex)
+                {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
             }
@@ -106,27 +133,35 @@ public class UnconsciouslyAction extends Thread {
     }
 
     @Override
-    public void run() {
-        while (mStickmanFX.mIdleRun) {
+    public void run()
+    {
+        while (mStickmanFX.mIdleRun)
+        {
             count1++;
-            if (count1 == 200) {
+            if (count1 == 200)
+            {
                 count1 = 0;
                 count2++;
             }
 
-            if (count2 == 200) {
+            if (count2 == 200)
+            {
                 count2 = 1;
             }
 
             NoiseNumber = (int) (mSimplexNoise.getNoise(count2, count1) * 100);
 
-            if ((NoiseNumber != 1) && (NoiseNumber != 2) && (NoiseNumber != 3) && (NoiseNumber != 4)) {
-                try {
+            if ((NoiseNumber != 1) && (NoiseNumber != 2) && (NoiseNumber != 3) && (NoiseNumber != 4))
+            {
+                try
+                {
                     sleep(mSleepTime, 0);
-                } catch (InterruptedException ex) {
+                } catch (InterruptedException ex)
+                {
                     mStickmanFX.mLogger.severe(ex.getMessage());
                 }
-            } else {
+            } else
+            {
                 coverMouth();
                 touchHead();
                 blink();

@@ -1,76 +1,37 @@
 package de.dfki.stickman3D.stage;
 
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
-import de.dfki.common.StickmansOnStage;
-import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.common.commonFX3D.FXApplication;
+import de.dfki.common.util.Preferences;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-
-import static de.dfki.stickman3D.stage.StageRoom3D.OldIdentifier;
-
 import de.dfki.stickmanFX.stage.StageRoomFX;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.geometry.*;
+import javafx.geometry.Pos;
 import javafx.scene.*;
-import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.*;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Logger;
 
 /**
  * @author Robbie and Beka
  */
-public class StickmanStage3D extends Application implements StickmanStage
+public class StickmanStage3D extends FXApplication
 {
-
-    private static final float STICKMAN_SIZE_FACTOR = 0.8f;
-    private static final float HEIGHT_ADJUSTMENT = 3 / 5.0f;
-    private static final float STICKMAN_IN_BETWEEN_DISTANCE_FACTOR = 0.9f;
     private static final String STICKMAN_STAGE = "StickmanStage3D";
-
-    private final int mHeight = 0;
-    private final int mWidth = 0;
-
-    static private StickmanStage3D sInstance;
-    private final HashMap<String, StickmansOnStage> stickamnsOnStage = new HashMap<>();
-    private final float sScale;
-    private final Map<String, Stage> stickmanStages = new HashMap<>();
-    private final StagePaneHandler3D generalConfigStageRoot;
-
-    //logging
-    public static final Logger LOGGER = Logger.getAnonymousLogger();
-
-    private boolean showControlPanel = false;
-
-    // Camera
-    private SubScene sSubscene;
-    private PerspectiveCamera mCamera;
-    private HBox mStickmanHBox;
-    private double recordCameraXPosition;
-    private double recordCameraYPosition;
-    private double recordCameraZPosition;
+    private static StickmanStage3D sInstance;
 
     public StickmanStage3D()
     {
-        this.sScale = 1.0f;
-        Platform.setImplicitExit(false);
-        ConsoleHandler ch = new ConsoleHandler();
+        super();
         sInstance = this;
-        generalConfigStageRoot = new StagePaneHandler3D();
+        generalConfigStageRoot = new StagePaneHandlerStickman3D();
     }
 
-    /**
-     * @return StickmanStage3D
-     */
     public static StickmanStage3D getInstance()
     {
         if (sInstance == null)
@@ -80,29 +41,26 @@ public class StickmanStage3D extends Application implements StickmanStage
         return sInstance;
     }
 
-    /**
-     * @param stageIdentifier
-     */
     @Override
     public void clearStage(String stageIdentifier)
     {
         try
         {
-            if (stickmanStages.containsKey(stageIdentifier))
+            if (agentStages.containsKey(stageIdentifier))
             {
                 Platform.runLater(() ->
                 {
-                    mStickmanHBox.getChildren().clear();
-                    if (stickmanStages.containsKey(StageRoom3D.OldIdentifier))
+                    mAgentBox.getChildren().clear();
+                    if (agentStages.containsKey(StageRoom3D.OldIdentifier))
                     {
-                        stickmanStages.get(StageRoom3D.OldIdentifier).getScene().getMnemonics().clear();
-                        stickmanStages.get(StageRoom3D.OldIdentifier).close();
-                        stickmanStages.remove(StageRoom3D.OldIdentifier);
-                        for (String key : stickamnsOnStage.keySet())
+                        agentStages.get(StageRoom3D.OldIdentifier).getScene().getMnemonics().clear();
+                        agentStages.get(StageRoom3D.OldIdentifier).close();
+                        agentStages.remove(StageRoom3D.OldIdentifier);
+                        for (String key : agentsOnStage.keySet())
                         {
-                            stickamnsOnStage.get(key).clearStage();
+                            agentsOnStage.get(key).clearStage();
                         }
-                        stickamnsOnStage.clear();
+                        agentsOnStage.clear();
                     }
                 });
             }
@@ -111,15 +69,18 @@ public class StickmanStage3D extends Application implements StickmanStage
         {
             e.printStackTrace();
         }
-//        sInstance = null;
     }
 
     @Override
     public void start(Stage stage) throws Exception
     {
-        mStickmanHBox = new HBox();
-        mStickmanHBox.setId("StickmanStage3D");
-        mStickmanHBox.setAlignment(Pos.CENTER);
+        mAgentBox = new HBox();
+        mAgentBox.setId("StickmanStage3D");
+        mAgentBox.setAlignment(Pos.BOTTOM_CENTER);
+        mAgentBox.setSpacing(Preferences.DISTANCE_BETWEEN_AGENTS);
+        int mHeight = 0;
+        int mWidth = 0;
+        mainStage = stage;
 
         HBox root = generalConfigStageRoot.getConfigRoot();
         Scene scene = new Scene(root, mWidth, mHeight, true, SceneAntialiasing.BALANCED);
@@ -127,108 +88,54 @@ public class StickmanStage3D extends Application implements StickmanStage
 
         AnchorPane controlPanel = (AnchorPane) scene.lookup("#controlPanel");
 
-        sSubscene = createSubSceneAndCamera(getmStickmanHBox(), getWidth() - controlPanel.getPrefWidth(), getHeight());
-        root.getChildren().add(sSubscene);
+        mSubscene = createSubSceneAndCamera(getAgentBox(), getWidth() - controlPanel.getPrefWidth(), getHeight());
+        root.getChildren().add(mSubscene);
 
         stage.setTitle("Stickman3D");
         stage.setScene(scene);
-        stickmanStages.put(StageRoomFX.CONFIG_STAGE, stage);
+        agentStages.put(StageRoomFX.CONFIG_STAGE, stage);
 
         ApplicationLauncherImpl.setIsRunning();
-    }
-
-    private SubScene createSubSceneAndCamera(HBox root, double width, double height)
-    {
-
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        mCamera = new PerspectiveCamera(true);
-
-        int cameraZPosition = (int) dim.getWidth();
-        if (cameraZPosition < 1400)
-        {
-            cameraZPosition = 1400;
-        }
-
-        mCamera.setTranslateZ(-cameraZPosition);
-        mCamera.setTranslateX(width / 2);
-        mCamera.setTranslateY(height / 2 + 50);
-
-        recordCameraXPosition = mCamera.getTranslateX();
-        recordCameraYPosition = mCamera.getTranslateY();
-        recordCameraZPosition = mCamera.getTranslateZ();
-
-        mCamera.setNearClip(0.8);
-        mCamera.setFarClip(3000.0);
-        mCamera.setFieldOfView(30);
-
-        SubScene subScene = new SubScene(root, width, height, true, SceneAntialiasing.BALANCED);
-        subScene.setFill(javafx.scene.paint.Color.rgb(216, 216, 216));
-        return subScene;
+        createScroll(mainStage, mAgentBox);
     }
 
     @Override
-    public void lauchStickman()
+    public void lauchAgent()
     {
         launch();
     }
 
-    /**
-     * @return FullScreenScale
-     */
     @Override
     public float getFullScreenScale()
     {
-        return getHeight() / (float) de.dfki.stickmanFX.StickmanFX.mDefaultSize.height * sScale * STICKMAN_SIZE_FACTOR;
+        return getHeight() / Preferences.MALE_HEIGHT * mScale * AGENT_SIZE_FACTOR;
     }
 
-    /**
-     * @return FullScreenDimension
-     */
+
     @Override
-    public Dimension getFullScreenDimension()
-    {
-        return new Dimension(new Float(getHeight() * HEIGHT_ADJUSTMENT * sScale).intValue(),
-                new Float(getHeight() * sScale * STICKMAN_IN_BETWEEN_DISTANCE_FACTOR).intValue());
-    }
-
-    private float getHeight()
-    {
-        Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        return size.height;
-    }
-
-    private float getWidth()
-    {
-        Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        return size.width;
-    }
-
-    /**
-     * @param stageIdentifier
-     * @throws Exception
-     */
-    @Override
-    public void addStickmanToStage(String stageIdentifier) throws Exception
+    public void addAgentToStage(String stageIdentifier) throws Exception
     {
         Platform.runLater(() ->
         {
             final HBox box;
             try
             {
-                box = getStickmanBox(stageIdentifier);
-                for (String key : stickamnsOnStage.get(stageIdentifier).getStickmanNames())
+                box = getAgentBox(stageIdentifier);
+                box.setSpacing(Preferences.DISTANCE_BETWEEN_AGENTS);
+                for (String key : agentsOnStage.get(stageIdentifier).getAgentNames())
                 {
-                    Stickman3D sman3D = (Stickman3D) stickamnsOnStage.get(stageIdentifier).getStickmanByKey(key);
+                    Stickman3D sman3D = (Stickman3D) agentsOnStage.get(stageIdentifier).getAgentByKey(key);
 
                     if (isShowControlPanel())
                     {
-                        sman3D.setScale(1.35f);
+//                        sman3D.setScale(1.35f);
+                        sman3D.setScale(getFullScreenScale());
                         sman3D.isFullScreen = true;
                         sman3D.update();
                     }
                     box.getChildren().add((Node) sman3D);
-                    addStickmanName(key);
-                    ((StickmanStageController) generalConfigStageRoot.getmStickmanStageController()).setStage3D(this);
+                    addAgentName(key);
+                    ((StickmanStageController) generalConfigStageRoot.getViewController()).setStage3D(this);
                 }
             } catch (Exception e)
             {
@@ -239,99 +146,26 @@ public class StickmanStage3D extends Application implements StickmanStage
 
     }
 
-    /**
-     * @param stageIdentifier
-     */
     @Override
-    public void setStageFullScreen(String stageIdentifier)
+    public void addAgentToStage(String stageIdentifier, de.dfki.stickmanFX.StickmanFX sman) throws Exception
     {
-        setFullScreen(stageIdentifier, true);
+        HBox stickmanBox;
+        stickmanBox = getAgentBox(stageIdentifier);
+        stickmanBox.getChildren().clear();
+        stickmanBox.getChildren().add(sman);
     }
 
-    /**
-     * @param stageIdentifier
-     */
     @Override
-    public void setStageNonFullScreen(String stageIdentifier)
-    {
-        setFullScreen(stageIdentifier, false);
-    }
-
-    private void setFullScreen(String stageIdentifier, boolean value)
-    {
-        if (stickmanStages.containsKey(stageIdentifier))
-        {
-            int a = 0;
-            Platform.runLater(() -> stickmanStages.get(stageIdentifier).setFullScreen(value));
-        }
-    }
-
-    /**
-     * @param stickamnsOnStage
-     * @param identifier
-     */
-    @Override
-    public void setStickamnsOnStage(StickmansOnStage stickamnsOnStage, String identifier)
-    {
-        this.stickamnsOnStage.put(identifier, stickamnsOnStage);
-        generalConfigStageRoot.setStickmansOnStage(stickamnsOnStage);
-    }
-
-    /**
-     * @param stageIdentifier
-     * @return
-     * @throws Exception
-     */
-    @Override
-    public HBox getStickmanBox(String stageIdentifier) throws Exception
+    public HBox getAgentBox(String stageIdentifier) throws Exception
     {
         HBox box;
-        Stage stage = stickmanStages.get(stageIdentifier);
+//        Stage stage = agentStages.get(stageIdentifier);
 
-        if (stickmanStages.containsKey(stageIdentifier))
+        if (agentStages.containsKey(stageIdentifier))
         {
-            box = (HBox) stickmanStages.get(stageIdentifier).getScene().getRoot();
-            box.setAlignment(Pos.CENTER);
+            box = (HBox) agentStages.get(stageIdentifier).getScene().getRoot();
+            box.setAlignment(Pos.BOTTOM_CENTER);
             box.setStyle("-fx-background-color: white");
-
-            stage.getScene().setOnKeyPressed((KeyEvent event) ->
-            {
-                if (null != event.getCode())
-                {
-                    switch (event.getCode())
-                    {
-                        case RIGHT:
-                            mStickmanHBox.setTranslateX(getmStickmanHBox().getTranslateX() + 20);
-                            break;
-                        case LEFT:
-                            mStickmanHBox.setTranslateX(getmStickmanHBox().getTranslateX() - 20);
-                            break;
-                        case UP:
-                            mStickmanHBox.setTranslateY(getmStickmanHBox().getTranslateY() - 20);
-                            break;
-                        case DOWN:
-                            mStickmanHBox.setTranslateY(getmStickmanHBox().getTranslateY() + 20);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            });
-
-            stage.getScene().setOnScroll((ScrollEvent event) ->
-            {
-                if (event.getDeltaY() < 0)
-                {
-                    mStickmanHBox.setScaleX(getmStickmanHBox().getScaleX() - 0.05);
-                    mStickmanHBox.setScaleY(getmStickmanHBox().getScaleY() - 0.05);
-                    mStickmanHBox.setScaleZ(getmStickmanHBox().getScaleZ() - 0.05);
-                } else
-                {
-                    mStickmanHBox.setScaleX(getmStickmanHBox().getScaleX() + 0.05);
-                    mStickmanHBox.setScaleY(getmStickmanHBox().getScaleY() + 0.05);
-                    mStickmanHBox.setScaleZ(getmStickmanHBox().getScaleZ() + 0.05);
-                }
-            });
 
             return (box.getId() != null && box.getId().equals(STICKMAN_STAGE)) ? box : findStageBox(box);
         } else
@@ -352,104 +186,33 @@ public class StickmanStage3D extends Application implements StickmanStage
         throw new Exception("Stage Not found");
     }
 
-    /**
-     * @param stageIdentifier
-     * @return
-     * @throws Exception
-     */
     @Override
     public BufferedImage getStageAsImage(String stageIdentifier) throws Exception
     {
         return null;
     }
 
-    /**
-     * @param stageIdentifier
-     * @param sman
-     * @throws Exception
-     */
-    @Override
-    public void addStickmanToStage(String stageIdentifier, de.dfki.stickmanFX.StickmanFX sman) throws Exception
-    {
-        HBox stickmanBox;
-        stickmanBox = getStickmanBox(stageIdentifier);
-        stickmanBox.getChildren().clear();
-        stickmanBox.getChildren().add(sman);
-    }
-
-    private void addStickmanName(String key)
-    {
-        generalConfigStageRoot.getmStickmanStageController().fillComboForStickman();
-    }
-
-    /**
-     * @param stageIdentifier
-     */
     @Override
     public void showStage(String stageIdentifier)
     {
         if (stageIdentifier.equals(StageRoom3D.CONFIG_STAGE))
         {
-            Platform.runLater(() -> stickmanStages.get(stageIdentifier).setFullScreen(true));
+            Platform.runLater(() -> agentStages.get(stageIdentifier).setFullScreen(true));
         }
-        if (stickmanStages.containsKey(stageIdentifier))
+        if (agentStages.containsKey(stageIdentifier))
         {
-            Platform.runLater(() -> stickmanStages.get(stageIdentifier).show());
+            Platform.runLater(() -> agentStages.get(stageIdentifier).show());
         }
     }
 
-    /**
-     * @param x
-     * @param y
-     * @param decoration
-     * @return
-     * @throws IOException
-     */
     @Override
-    public String createNewStage(int x, int y, boolean decoration) throws IOException
-    {
-        String uuid = UUID.randomUUID().toString();
-        try
-        {
-            createStage(uuid, x, y, decoration);
-            waitForCreatingStage(uuid);
-        } catch (IOException e)
-        {
-            throw e;
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-        return uuid;
-    }
-
-    /**
-     * @param uuid
-     * @throws InterruptedException
-     */
-    public void waitForCreatingStage(String uuid) throws InterruptedException
-    {
-        while (!stickmanStages.containsKey(uuid))
-        {
-            Thread.sleep(200);
-        }
-    }
-
-    /**
-     * @param uuid
-     * @param x
-     * @param y
-     * @param decoration
-     * @throws IOException
-     */
     public void createStage(String uuid, int x, int y, boolean decoration) throws IOException
     {
         final HBox root = getStageRoot();
         Platform.runLater(() ->
         {
-            root.setAlignment(Pos.BASELINE_CENTER);
-            root.getHeight();
-            Scene stageScene = new Scene(root, 600, 600, true, SceneAntialiasing.BALANCED);
+            root.setAlignment(Pos.BOTTOM_CENTER);
+            Scene stageScene = new Scene(root, 650, 600, true, SceneAntialiasing.BALANCED);
             Stage stage = new Stage();
             stage.setScene(stageScene);
             stage.setX(x);
@@ -459,85 +222,43 @@ public class StickmanStage3D extends Application implements StickmanStage
             {
                 stage.initStyle(StageStyle.UNDECORATED);
             }
-            stickmanStages.put(uuid, stage);
+            agentStages.put(uuid, stage);
         });
-    }
-
-    /**
-     * @param function
-     */
-    public void runLater(Runnable function)
-    {
-        Platform.runLater(function);
     }
 
     private HBox getStageRoot() throws java.io.IOException
     {
-        StagePaneHandler3D generalStageRoot = new StagePaneHandler3D();
+        StagePaneHandlerStickman3D generalStageRoot = new StagePaneHandlerStickman3D();
         HBox box = generalStageRoot.getStageRoot();
         box.setId(STICKMAN_STAGE);
         return box;
     }
 
-    /**
-     * @return the showControlPanel
-     */
-    public boolean isShowControlPanel()
+    public HBox getAgentBox()
     {
-        return showControlPanel;
+        return mAgentBox;
     }
 
-    /**
-     * @param showControlPanel the showControlPanel to set
-     */
-    public void setShowControlPanel(boolean showControlPanel)
+    public void setAgentBox(HBox mAgentBox)
     {
-        this.showControlPanel = showControlPanel;
+        this.mAgentBox = mAgentBox;
     }
 
-    /**
-     * @return the mStickmanHBox
-     */
-    public HBox getmStickmanHBox()
-    {
-        return mStickmanHBox;
-    }
-
-    /**
-     * @param mStickmanHBox the mStickmanHBox to set
-     */
-    public void setmStickmanHBox(HBox mStickmanHBox)
-    {
-        this.mStickmanHBox = mStickmanHBox;
-    }
-
-    /**
-     * @return the recordCameraXPosition
-     */
     public double getRecordCameraXPosition()
     {
         return recordCameraXPosition;
     }
 
-    /**
-     * @param recordCameraXPosition the recordCameraXPosition to set
-     */
     public void setRecordCameraXPosition(double recordCameraXPosition)
     {
         this.recordCameraXPosition = recordCameraXPosition;
     }
 
-    /**
-     * @return the recordCameraYPosition
-     */
     public double getRecordCameraYPosition()
     {
         return recordCameraYPosition;
     }
 
-    /**
-     * @return the recordCameraZPosition
-     */
     public double getRecordCameraZPosition()
     {
         return recordCameraZPosition;
@@ -550,6 +271,6 @@ public class StickmanStage3D extends Application implements StickmanStage
 
     public SubScene getSubScene()
     {
-        return sSubscene;
+        return mSubscene;
     }
 }

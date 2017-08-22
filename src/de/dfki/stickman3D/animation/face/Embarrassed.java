@@ -5,54 +5,57 @@
  */
 package de.dfki.stickman3D.animation.face;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
-public class Embarrassed extends Animation3D {
+public class Embarrassed extends AnimationStickman3D
+{
 
-    public Embarrassed() {
+    public Embarrassed()
+    {
         mAnimType = ANIMTYPE.ON;
     }
 
-    public Embarrassed(Stickman3D sm, int duration, boolean block) {
+    public Embarrassed(Stickman3D sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
 
         // embarrassed
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "EMBARRASSED"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "EMBARRASSED"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrow, "shape", "EMBARRASSED"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "EMBARRASSED"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrow, "shape", "EMBARRASSED"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mMouth, "shape", "EMBARRASSED"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "EMBARRASSED"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEyebrow, "shape", "EMBARRASSED"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mFaceWrinkle, "shape", "EMBARRASSED"));   ///Add by Robbie
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "EMBARRASSED"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEyebrow, "shape", "EMBARRASSED"));
         playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 
         // no embarrassed
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "EMBARRASSEDEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "EMBARRASSEDEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrow, "shape", "EMBARRASSEDEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFaceWrinkle, "shape", "EMBARRASSEDEND"));   ///Add by Robbie
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "EMBARRASSEDEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrow, "shape", "EMBARRASSEDEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mMouth, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEyebrow, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mFaceWrinkle, "shape", "EMBARRASSEDEND"));   ///Add by Robbie
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "EMBARRASSEDEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEyebrow, "shape", "EMBARRASSEDEND"));
         playAnimationPart(mDuration);
 
-        if (StickmanStageController.currentRadioButton != null) {
+        if (StickmanStageController.currentRadioButton != null)
+        {
             StickmanStageController.currentRadioButton.setSelected(false);
         }
     }

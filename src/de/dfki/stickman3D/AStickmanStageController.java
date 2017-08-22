@@ -5,36 +5,30 @@
  */
 package de.dfki.stickman3D;
 
-import de.dfki.common.StickmansOnStage;
+import de.dfki.common.AgentsOnStage;
 import de.dfki.stickman3D.stage.StickmanStage3D;
 import de.dfki.stickman3D.xmlsettings.StickmanData3D;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
  * @author EmpaT
  */
-public abstract class AStickmanStageController {
+public abstract class AStickmanStageController
+{
     public static final String PACKAGE_EMOTIONEXPRESSION = "de.dfki.stickman3D.animation.face";
     public static final String PACKAGE_GESTURE = "de.dfki.stickman3D.animation.gesture";
     public static final String PACKAGE_HEAD = "de.dfki.stickman3D.animation.head";
     public static final String PACKAGE_ENVIRONMENT = "de.dfki.stickman3D.animation.environment";
     public static final String PACKAGE_POSTURE = "de.dfki.stickman3D.animation.posture";
     public static final String PACKAGE_DYNAMIC_CLASSES = "de.dfki.stickman3D.dynamic.classes";
-
+    public static RadioButton currentRadioButton;
+    public final ArrayList<String> mStickmanComboList = new ArrayList<>();
     @FXML
     public RadioButton WithPerlinNoise;
     @FXML
@@ -47,12 +41,6 @@ public abstract class AStickmanStageController {
     public Button SaveButton;
     @FXML
     public Button ExitButton;
-    @FXML
-    Button startCamera;
-    @FXML
-    Button stopCamera;
-    @FXML
-    Button resetCamera;
     @FXML
     public ColorPicker headColorPicker;
     @FXML
@@ -71,16 +59,6 @@ public abstract class AStickmanStageController {
     public ColorPicker browColorPicker;
     @FXML
     public ColorPicker noseColorPicker;
-    @FXML
-    ScrollPane emotionsScrollPane;
-    @FXML
-    ScrollPane gestureScrollPane;
-    @FXML
-    ScrollPane headScrollPane;
-    @FXML
-    ScrollPane environmentScrollPane;
-    @FXML
-    ScrollPane postureScrollPane;
     @FXML
     public Button headColorReset;
     @FXML
@@ -395,7 +373,6 @@ public abstract class AStickmanStageController {
     public TextField rightForeLegYRotationField;
     @FXML
     public TextField rightForeLegZRotationField;
-    
     @FXML
     public Slider hairOpacitySlider;
     @FXML
@@ -445,7 +422,7 @@ public abstract class AStickmanStageController {
     @FXML
     public Slider leftForeLegZSlider;
     @FXML
-    public Label recCounter0; 
+    public Label recCounter0;
     @FXML
     public Label recCounter1;
     @FXML
@@ -486,8 +463,6 @@ public abstract class AStickmanStageController {
     public Label recCounter19;
     @FXML
     public Label recCounter20;
-    
-
     @FXML
     public ImageView bg1;
     @FXML
@@ -500,29 +475,37 @@ public abstract class AStickmanStageController {
     public ImageView bg5;
     @FXML
     public ImageView bg6;
-    
     @FXML
     public Button headRotationTest;
-    @FXML 
+    @FXML
     public Button headRotationCreate;
-
-    public final ArrayList<String> mStickmanComboList = new ArrayList<>();
     public List<StickmanData3D> mStickmanData3D = new ArrayList<StickmanData3D>();
-
     public boolean isCameraStarted = false;
     public String mStickmancombobox = null;
     public ToggleGroup perlinNoiseGroup;
-    public StickmansOnStage mStickmanOnstage;
-
+    public AgentsOnStage mStickmanOnstage;
+    public Stickman3D currentStickman;
+    public StickmanStage3D stage3D;
+    public String backgroundRecord = null;
+    public AnchorPane classNamePane;
+    public AnchorPane testView;
+    @FXML
+    Button startCamera;
+    @FXML
+    Button stopCamera;
+    @FXML
+    Button resetCamera;
+    @FXML
+    ScrollPane emotionsScrollPane;
+    @FXML
+    ScrollPane gestureScrollPane;
+    @FXML
+    ScrollPane headScrollPane;
+    @FXML
+    ScrollPane environmentScrollPane;
+    @FXML
+    ScrollPane postureScrollPane;
     double xRotateFactor;
     double yRotateFactor;
     double zRotateFactor;
-
-    public Stickman3D currentStickman;
-    public static RadioButton currentRadioButton;
-    public StickmanStage3D stage3D;
-    public String backgroundRecord = null;
-    
-    public AnchorPane classNamePane;
-    public AnchorPane testView;  
 }

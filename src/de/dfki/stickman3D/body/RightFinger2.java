@@ -6,68 +6,33 @@
 package de.dfki.stickman3D.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import javafx.scene.paint.Color;
+import de.dfki.common.part.Part3D;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
-import java.awt.*;
 import java.net.URL;
 
 /**
  * @author Beka
  */
-public class RightFinger2 extends BodyPartFX
+public class RightFinger2 extends Finger
 {
-
-    public enum SHAPE
+    public RightFinger2(Part3D rightWrist)
     {
-        DEFAULT, FADEIN, FADEOUT
-    }
-
-
-    public RightFinger2.SHAPE mShape = RightFinger2.SHAPE.DEFAULT;
-
-    private RightWrist3D mRightWrist;
-    private static final int ARMLENGTH = 80;
-
-    private MeshView mRightFinger2;
-    private PhongMaterial material;
-
-    public RightFinger2(RightWrist3D rightWrist)
-    {
-        mRightWrist = rightWrist;
-        mSize = new Dimension(ARMLENGTH, ARMLENGTH);
-        mColor = Color.rgb(242, 227, 217, 1);
-        mDefaultRotation = -20;
-        mZRotation = 0;
-        mToDegreeX = mDefaultRotation;
-
-        ColModelImporter imorter = new ColModelImporter();
+        super(rightWrist);
+        ColModelImporter importer = new ColModelImporter();
         URL url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/Finger2_3_4.dae");
-        imorter.read(url);
-        mRightFinger2 = (MeshView) imorter.getImport()[0];
+        importer.read(url);
+        finger = (MeshView) importer.getImport()[0];
 
         material = new PhongMaterial();
         material.setDiffuseColor(mColor);
-        mRightFinger2.setMaterial(material);
+        finger.setMaterial(material);
 
-        mRightWrist.getRightWristGroup().getChildren().add(mRightFinger2);
+        ((RightWrist3D)rightWrist).getWristPane().getChildren().add(finger);
 
         init();
-    }
-
-    @Override
-    public void setShape(String s)
-    {
-        SHAPE shape = SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-    }
-
-    @Override
-    public void resetShape()
-    {
-        mShape = RightFinger2.SHAPE.DEFAULT;
     }
 
     @Override
@@ -77,54 +42,26 @@ public class RightFinger2 extends BodyPartFX
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
         Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
 
-        mRightFinger2.setTranslateX(mStart.x + 3);
-        mRightFinger2.setTranslateY(mStart.y + 17);
-        mRightFinger2.setTranslateZ(0);
+        finger.setTranslateX(mStart.x + 3);
+        finger.setTranslateY(mStart.y + 17);
+        finger.setTranslateZ(0);
 
-        mRightFinger2.getTransforms().clear();
-        mRightFinger2.getTransforms().addAll(rx, ry, rz);
+        finger.getTransforms().clear();
+        finger.getTransforms().addAll(rx, ry, rz);
 
-        switch (mShape)
-        {
-            case FADEIN:
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-                    update();
-                    mRightFinger2.setVisible(false);
-                } else if (mColor.getOpacity() != 0.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-                    update();
-                }
-                break;
-
-            case FADEOUT:
-                mRightFinger2.setVisible(true);
-
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-                    update();
-                } else if (mColor.getOpacity() != 1.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-                    update();
-                }
-                break;
-        }
+        executeFadeInFadeOut(finger, mShape, step);
     }
 
     @Override
     public void update()
     {
         material.setDiffuseColor(mColor);
-        mRightFinger2.setMaterial(material);
+        finger.setMaterial(material);
     }
 
-    public MeshView getRightFinger2()
+    @Override
+    public MeshView getMeshView()
     {
-        return mRightFinger2;
+        return finger;
     }
-
 }

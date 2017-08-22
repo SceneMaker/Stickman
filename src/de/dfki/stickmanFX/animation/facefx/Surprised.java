@@ -5,46 +5,49 @@
  */
 package de.dfki.stickmanFX.animation.facefx;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class Surprised extends AnimationFX {
+public class Surprised extends AnimationStickman2D
+{
 
-    public Surprised() {
+    public Surprised()
+    {
         mAnimType = ANIMTYPE.EmotionExpression;
     }
 
-    public Surprised(StickmanFX sm, int duration, boolean block) {
+    public Surprised(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
 
         // surprised
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SURPRISED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "SURPRISED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SURPRISED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "SURPRISED"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SURPRISED"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "shape", "SURPRISED"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "shape", "SURPRISED"));
         playAnimationPart(mDuration);
         pauseAnimation(1200);
 
         // no surprised
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "SURPRISEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "SURPRISEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "SURPRISEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "SURPRISEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "SURPRISEDEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "shape", "SURPRISEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "shape", "SURPRISEDEND"));
         playAnimationPart(20);
     }
 }

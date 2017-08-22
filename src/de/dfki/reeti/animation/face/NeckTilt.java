@@ -6,33 +6,34 @@
  */
 package de.dfki.reeti.animation.face;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.reeti.Reeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
-import de.dfki.reeti.animationlogic.AnimationContentReeti;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class NeckTilt extends AnimationReeti {
+public class NeckTilt extends AnimationReeti
+{
 
-    
+
     int rot;
 
-    public NeckTilt(Reeti sm, int duration, int pos, boolean block) {
+    public NeckTilt(Reeti sm, int duration, int pos, boolean block)
+    {
         super(sm, duration, pos, block);
         this.rot = pos;
     }
 
     @Override
-    public void playAnimation() {
-        
+    public void playAnimation()
+    {
+
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContentReeti(mReeti.mHead, "zrotate", rot));
+        mAnimationPart.add(new AnimationContent(((Reeti) agent).mHead, "zrotate", rot));
         playAnimationPart(mDuration);
-        
+
     }
 }

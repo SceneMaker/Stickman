@@ -6,11 +6,7 @@
 package de.dfki.reeti.animation.head;
 
 import de.dfki.reeti.Reeti;
-import de.dfki.reeti.ReetiStageController;
-import de.dfki.reeti.animationlogic.AnimationContentReeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
-
-import java.util.ArrayList;
 
 /**
  * @author Beka
@@ -26,6 +22,6 @@ public class TiltLeft extends AnimationReeti
     @Override
     public void playAnimation()
     {
-        mReeti.neckPan(20);
+        ((Reeti) agent).neckPan(20);
     }
 }

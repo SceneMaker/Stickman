@@ -5,35 +5,38 @@
  */
 package de.dfki.stickmanFX.animation.facefx;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
-public class DisgustedEnd extends AnimationFX {
+public class DisgustedEnd extends AnimationStickman2D
+{
 
-    public DisgustedEnd() {
+    public DisgustedEnd()
+    {
         super();
     }
 
-    public DisgustedEnd(StickmanFX sm, int duration, boolean block) {
+    public DisgustedEnd(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         // no disgusted
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "DISGUSTEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "DISGUSTEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyebrowFX, "shape", "DISGUSTEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "DISGUSTEDEND"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyebrowFX, "shape", "DISGUSTEDEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyebrowFX, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "shape", "DISGUSTEDEND"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyebrowFX, "shape", "DISGUSTEDEND"));
         playAnimationPart(20);
 
         pauseAnimation(10);

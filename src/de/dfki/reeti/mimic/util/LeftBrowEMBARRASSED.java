@@ -2,14 +2,18 @@ package de.dfki.reeti.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class LeftBrowEMBARRASSED {
+public class LeftBrowEMBARRASSED
+{
 
-    public static Polygon getEMBARRASSED(Polygon currentPolygon, float step, String sign, boolean isMALE) {
+    public static Polygon getEMBARRASSED(Polygon currentPolygon, float step, String sign, boolean isMALE)
+    {
         int sig;
 
-        if (sign.equalsIgnoreCase("PLUS")) {
+        if (sign.equalsIgnoreCase("PLUS"))
+        {
             sig = 1;
-        } else {
+        } else
+        {
             sig = -1;
         }
 
@@ -19,12 +23,14 @@ public class LeftBrowEMBARRASSED {
         currentPolygon.getPoints().set(9, currentPolygon.getPoints().get(9) + (sig * 0.237));
         currentPolygon.getPoints().set(11, currentPolygon.getPoints().get(11) + (sig * 0.263));
 
-        if (!isMALE) {
+        if (!isMALE)
+        {
             currentPolygon.getPoints().set(13, currentPolygon.getPoints().get(13) + (sig * 0.105));
             currentPolygon.getPoints().set(19, currentPolygon.getPoints().get(19) + (sig * 0.105));
             currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.158));
             currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.158));
-        } else {
+        } else
+        {
             currentPolygon.getPoints().set(15, currentPolygon.getPoints().get(15) - (sig * 0.263));
             currentPolygon.getPoints().set(17, currentPolygon.getPoints().get(17) - (sig * 0.263));
         }

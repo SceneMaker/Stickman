@@ -2,14 +2,18 @@ package de.dfki.stickman3D.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class LeftBrowEXCITED {
+public class LeftBrowEXCITED
+{
 
-    public static Polygon getANGRY(Polygon currentPolygon, float step, String sign) {
+    public static Polygon getANGRY(Polygon currentPolygon, float step, String sign)
+    {
         int sig;
 
-        if (sign.equalsIgnoreCase("PLUS")) {
+        if (sign.equalsIgnoreCase("PLUS"))
+        {
             sig = 1;
-        } else {
+        } else
+        {
             sig = -1;
         }
 

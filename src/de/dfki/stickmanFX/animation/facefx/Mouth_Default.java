@@ -5,31 +5,34 @@
  */
 package de.dfki.stickmanFX.animation.facefx;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
+
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class Mouth_Default extends AnimationFX {
+public class Mouth_Default extends AnimationStickman2D
+{
 
-    public Mouth_Default() {
+    public Mouth_Default()
+    {
         super();
     }
 
-    public Mouth_Default(StickmanFX sm, int duration, boolean block) {
+    public Mouth_Default(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         // smile
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mMouthFX, "shape", "DEFAULT"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mMouthFX, "shape", "DEFAULT"));
         playAnimationPart(20);
     }
 }

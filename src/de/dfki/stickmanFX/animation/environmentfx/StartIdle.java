@@ -1,12 +1,10 @@
 package de.dfki.stickmanFX.animation.environmentfx;
 
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
 
 /**
- *
  * @author Robbie
- *
  */
 
 /*
@@ -14,18 +12,22 @@ import de.dfki.stickmanFX.animationlogic.AnimationFX;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class StartIdle extends AnimationFX {
+public class StartIdle extends AnimationStickman2D
+{
 
-    public StartIdle(StickmanFX sm, int duration, boolean block) {
+    public StartIdle(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
-        if (!mStickmanFX.mIdleBehavior.isAlive()) {
-            mStickmanFX.mIdleRun = true;
-            mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX, mStickmanFX.simplexNoise);
-            mStickmanFX.mIdleBehavior.start();
+    public void playAnimation()
+    {
+        if (!((StickmanFX) agent).mIdleBehavior.isAlive())
+        {
+            ((StickmanFX) agent).mIdleRun = true;
+            ((StickmanFX) agent).mIdleBehavior = new IdleBehavior(((StickmanFX) agent), ((StickmanFX) agent).simplexNoise);
+            ((StickmanFX) agent).mIdleBehavior.start();
         }
     }
 }

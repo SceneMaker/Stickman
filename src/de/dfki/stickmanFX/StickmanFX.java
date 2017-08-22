@@ -1,249 +1,153 @@
 package de.dfki.stickmanFX;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
-import de.dfki.common.Gender;
-import de.dfki.common.interfaces.Animation;
-import de.dfki.common.interfaces.StageRoom;
-import de.dfki.common.interfaces.Stickman;
-import de.dfki.stickmanFX.bodyfx.*;
-import de.dfki.stickmanSwing.StickmanSwing;
-import de.dfki.stickmanSwing.animationlogic.listener.AnimationListener;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Semaphore;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-
+import de.dfki.common.agent.Agent2D;
+import de.dfki.common.animationlogic.AnimationScheduler;
+import de.dfki.common.animationlogic.IAnimation;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.enums.Orientation;
+import de.dfki.common.part.Part2D;
 import de.dfki.stickmanFX.animation.environmentfx.IdleBehavior;
 import de.dfki.stickmanFX.animation.environmentfx.SimplexNoise;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
 import de.dfki.stickmanFX.animationlogic.AnimationLoaderFX;
-import de.dfki.stickmanFX.animationlogic.AnimationSchedulerFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
 import de.dfki.stickmanFX.animationlogic.EventAnimationFX;
-import de.dfki.stickmanFX.bodyfx.BodyFX;
-import de.dfki.stickmanFX.bodyfx.BombeFX;
-import de.dfki.stickmanFX.bodyfx.FaceWrinkleFX;
-import de.dfki.stickmanFX.bodyfx.FemaleHairFX;
-import de.dfki.stickmanFX.bodyfx.HeadFX;
-import de.dfki.stickmanFX.bodyfx.LeftEyeFX;
-import de.dfki.stickmanFX.bodyfx.LeftEyebrowFX;
-import de.dfki.stickmanFX.bodyfx.LeftFootFX;
-import de.dfki.stickmanFX.bodyfx.LeftForeArmFX;
-import de.dfki.stickmanFX.bodyfx.LeftForeLegFX;
-import de.dfki.stickmanFX.bodyfx.LeftHandFX;
-import de.dfki.stickmanFX.bodyfx.LeftShoulderFX;
-import de.dfki.stickmanFX.bodyfx.LeftUpperArmFX;
-import de.dfki.stickmanFX.bodyfx.LeftUpperLegFX;
-import de.dfki.stickmanFX.bodyfx.MaleHairFX;
-import de.dfki.stickmanFX.bodyfx.MouthFX;
-import de.dfki.stickmanFX.bodyfx.NeckFX;
-import de.dfki.stickmanFX.bodyfx.RightEyeFX;
-import de.dfki.stickmanFX.bodyfx.RightEyebrowFX;
-import de.dfki.stickmanFX.bodyfx.RightFootFX;
-import de.dfki.stickmanFX.bodyfx.RightForeArmFX;
-import de.dfki.stickmanFX.bodyfx.RightForeLegFX;
-import de.dfki.stickmanFX.bodyfx.RightHandFX;
-import de.dfki.stickmanFX.bodyfx.RightShoulderFX;
-import de.dfki.stickmanFX.bodyfx.RightUpperArmFX;
-import de.dfki.stickmanFX.bodyfx.RightUpperLegFX;
-import de.dfki.stickmanFX.bodyfx.StarsFX;
-import de.dfki.stickmanFX.bodyfx.ThinkFX;
-import de.dfki.stickmanFX.environmentfx.SpeechBubbleFX;
+import de.dfki.stickmanFX.bodyfx.*;
+import de.dfki.stickmanFX.environmentfx.SpeechBubbleStickman2D;
 import de.dfki.util.observers.AnimationObserver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.transform.Affine;
 
+import java.awt.*;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- *
  * @author Beka Aptsiauri
- *
- * This work is inspired by the stickmans drawn by Sarah Johnson
- * (www.sarah-johnson.com) in the Valentine music video from Kina Grannis shot
- * by Ross Ching in 2012
- *
+ *         <p>
+ *         This work is inspired by the stickmans drawn by Sarah Johnson
+ *         (www.sarah-johnson.com) in the Valentine music video from Kina Grannis shot
+ *         by Ross Ching in 2012
  */
-public class StickmanFX extends Pane implements Stickman {
-
-    @Override
-    public Animation doAnimation(String name, int frequent, int actionDuration, boolean block) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    // general stuff
-    public static enum ORIENTATION {
-        FRONT, LEFT, RIGHT
-    };
-
-    public final static Color sFOREGROUND = Color.rgb(188, 188, 188, (128 * 100 / 255) / 100f);
+public class StickmanFX extends Agent2D
+{
     //Used to change the backgroundRecord(pic) of the stickmanSwing
-    public final static ObservableList<String> backgroundList = FXCollections.observableArrayList("office",
-            "grassland");
+    public final static ObservableList<String> backgroundList =
+            FXCollections.observableArrayList("office", "grassland");
+    // Control IdleBehavior start(mStart == true) or not(mStart == false).
+    private static boolean isAnimationTimerStartet = false;
     // record the backgroundRecord(pic or color) of the stickmanSwing
     public String backgroundRecord = null;
-    public Gender.TYPE mType = Gender.TYPE.FEMALE;
-    public String mName = "StickmanSwing";
-    public ORIENTATION mOrientation = ORIENTATION.FRONT;
-    public float mScale = 1.0f;
+    public Orientation mOrientation = Orientation.FRONT;
     // Record mScale in DisappearToSmall and ComeBackFromSmall
     public float mScaleOriginal = mScale;
-    public boolean mShowBackground = true;
-    public boolean mShowStage = true;
-    public boolean mShowName = true;
-    public float mGeneralXTranslation = 0;
-    public float mGeneralYTranslation = 0;
-    private Label nameLabel;
-
-    // public static Dimension mDefaultSize = new Dimension(1000, 800); // 400
-    public static Dimension mDefaultSize = new Dimension(300, 550);
-    public static Dimension mSize = new Dimension(mDefaultSize);
-    FontMetrics mFontMetrics;
-    Font mFont;
-
-    // Added by Robbie, to control the speed of leaving
+    //control the speed of leaving
     public double hoffset = 0;
     public double voffset = 0;
-    // Added by Robbie, to control the star appear or not
+    //to control the star appear or not
     public boolean starShowControler = false;
-    // Added by Robbie, star with character appear at the same time or not
+    //star with character appear at the same time or not
     public boolean starShowC = false;
-    // Added by Robbie, to control the character to fade out or fade in. true:
-    // Fade out
+    //control the character to fade out or fade in. true: Fade out
     public boolean fadeControler = false;
-    // Added by Robbie, to control the character to fade out.
+    //control the character to fade out.
     public boolean setCharacterInvisible = false;
-    // True: visible False:invisible
     public double mWobble = 0;
     // the shared variable to decide the while loop in IdleBehavior break or not
     public Boolean mIdleRun = false;
-    public IdleBehavior mIdleBehavior;
+    public IdleBehavior mIdleBehavior = null;
     // Perlin noise
-    public SimplexNoise simplexNoise;
+    public SimplexNoise simplexNoise = null;
+    public Part2D mMaleHairFX = null;
+    public Part2D mFemaleHairFX = null;
+    public Part2D mLeftEyebrowFX = null;
+    public Part2D mFaceWrinkleFX = null;
+    public Part2D mRightEyebrowFX = null;
+    public Part2D mLeftShoulderFX = null;
+    public Part2D mLeftUpperArmFX = null;
+    public Part2D mLeftForeArmFX = null;
+    public Part2D mLeftHandFX = null;
+    public Part2D mRightShoulderFX = null;
+    public Part2D mRightUpperArmFX = null;
+    public Part2D mRightForeArmFX = null;
+    public Part2D mRightHandFX = null;
+    public Part2D mLeftUpperLegFX = null;
+    public Part2D mLeftForeLegFX = null;
+    public Part2D mLeftFootFX = null;
+    public Part2D mStarsFX = null;
+    public Part2D mRightUpperLegFX = null;
+    public Part2D mRightForeLegFX = null;
+    public Part2D mRightFootFX = null;
+    public Part2D mNose = null;
 
-    // amimation stuff
-    public Semaphore mAnimationLaunchControl = new Semaphore(1);
-    public AnimationSchedulerFX mAnimationSchedulerFX;
-    private final List<AnimationListener> mAnimationListeners = new CopyOnWriteArrayList<AnimationListener>();
-
-    // body parts
-    public HeadFX mHeadFX;
-    public MaleHairFX mMaleHairFX;
-    public FemaleHairFX mFemaleHairFX;
-    public LeftEyebrowFX mLeftEyebrowFX;
-    // added by Robbie FaceWrinkle
-    public FaceWrinkleFX mFaceWrinkleFX;
-    public LeftEyeFX mLeftEyeFX;
-    public RightEyebrowFX mRightEyebrowFX;
-    public RightEyeFX mRightEyeFX;
-    public MouthFX mMouthFX;
-    public NeckFX mNeckFX;
-    public BodyFX mBodyFX;
-    public LeftShoulderFX mLeftShoulderFX;
-    public LeftUpperArmFX mLeftUpperArmFX;
-    public LeftForeArmFX mLeftForeArmFX;
-    public LeftHandFX mLeftHandFX;
-    public RightShoulderFX mRightShoulderFX;
-    public RightUpperArmFX mRightUpperArmFX;
-    public RightForeArmFX mRightForeArmFX;
-    public RightHandFX mRightHandFX;
-    // public LeftLegFX mLeftLegFX;
-    public LeftUpperLegFX mLeftUpperLegFX;
-    public LeftForeLegFX mLeftForeLegFX;
-    public LeftFootFX mLeftFootFX;
-    // added by Robbie Create Say bye or hi
-    public StarsFX mStarsFX;
-    // public RightLegFX mRightLegFX;
-    public RightUpperLegFX mRightUpperLegFX;
-    public RightForeLegFX mRightForeLegFX;
-    public RightFootFX mRightFootFX;
-    public ThinkFX mThinkFX;
-    public BombeFX mBombeFX;
-    // environment
-    public SpeechBubbleFX mSpeechBubbleFX;
-    private StageRoom stageController;
-    public NoseFX mNose;
-    private boolean faceOnly = false;
-
-    // logging
-    public final Logger mLogger = Logger.getAnonymousLogger();
-    // id
-    private long mID = 0;
-
-    public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size) {
-        mSize = size;
-        mScale = scale;
+    public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size)
+    {
+        super(name, gender, scale, size);
         mScaleOriginal = scale;
 
-        mName = name;
-        mType = gender;
-
-        initBodyParts();
-
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
-        this.addAllParts();
+        addAllParts();
         update();
     }
 
-    public StickmanFX(String name, Gender.TYPE gender, float scale) {
-        mScale = scale;
+    public StickmanFX(String name, Gender.TYPE gender, float scale)
+    {
+        super(name, gender, scale);
         mScaleOriginal = scale;
 
-        mName = name;
-        mType = gender;
-
-        initBodyParts();
-
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
-        this.addAllParts();
+        addAllParts();
         update();
     }
 
-    public StickmanFX(String name, Gender.TYPE gender, float scale, boolean faceOnly) {
-        mScale = scale;
+    public StickmanFX(String name, Gender.TYPE gender, float scale, boolean faceOnly)
+    {
+        super(name, gender, scale, faceOnly);
         mScaleOriginal = scale;
 
-        mName = name;
-        mType = gender;
-        this.faceOnly = faceOnly;
-
-        initBodyParts();
-
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
-        if (faceOnly) {
-            this.addOnlyHeadParts();
-        } else {
-            this.addAllParts();
+
+        if (faceOnly)
+        {
+            addOnlyHeadParts();
+        } else
+        {
+            addAllParts();
         }
         update();
     }
 
-    public StickmanFX(String name, Gender.TYPE gender) {
-        mName = name;
-        mType = gender;
+    public StickmanFX(String name, Gender.TYPE gender)
+    {
+        super(name, gender);
 
-        initBodyParts();
-
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
         init();
-        this.addAllParts();
+        addAllParts();
         update();
     }
 
-    public void initBodyParts() {
+    public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size, boolean faceOnly)
+    {
+        super(name, gender, scale, size, faceOnly);
+        mScaleOriginal = scale;
+
+        init();
+        if (faceOnly)
+        {
+            addOnlyHeadParts();
+        } else
+        {
+            addAllParts();
+        }
+        update();
+    }
+
+    public void initBodyParts()
+    {
         mHeadFX = new HeadFX(this);
         mMaleHairFX = new MaleHairFX(this);
         mFemaleHairFX = new FemaleHairFX(this);
@@ -263,203 +167,114 @@ public class StickmanFX extends Pane implements Stickman {
         mRightUpperArmFX = new RightUpperArmFX(mRightShoulderFX);
         mRightForeArmFX = new RightForeArmFX(mRightUpperArmFX);
         mRightHandFX = new RightHandFX(mRightForeArmFX);
-        // mLeftLegFX = new LeftLegFX(mBodyFX);
         mLeftUpperLegFX = new LeftUpperLegFX(mBodyFX);
         mLeftForeLegFX = new LeftForeLegFX(mLeftUpperLegFX);
         mLeftFootFX = new LeftFootFX(mLeftForeLegFX);
-        // added by Robbie
         mStarsFX = new StarsFX(mBodyFX);
-        // mRightLegFX = new RightLegFX(mBodyFX);
         mRightUpperLegFX = new RightUpperLegFX(mBodyFX);
         mRightForeLegFX = new RightForeLegFX(mRightUpperLegFX);
         mRightFootFX = new RightFootFX(mRightForeLegFX);
-        mThinkFX = new ThinkFX(mHeadFX);
-        mBombeFX = new BombeFX(mHeadFX);
         mNose = new NoseFX(mHeadFX);
+        mSpeechBubbleFX = new SpeechBubbleStickman2D(mHeadFX);
     }
 
-    public StickmanFX(String name, Gender.TYPE gender, float scale, Dimension size, boolean faceOnly) {
-        mSize = size;
-        mScale = scale;
-        mScaleOriginal = scale;
-        mName = name;
-        mType = gender;
+    public void init()
+    {
         initBodyParts();
-        mSpeechBubbleFX = new SpeechBubbleFX(mHeadFX);
-        init();
-        if (faceOnly) {
-            this.addOnlyHeadParts();
-        } else {
-            this.addAllParts();
-        }
-        update();
-    }
-
-    private void init() {
-        nameLabel = new Label();
-        this.setPrefHeight(mSize.height);
-        this.setPrefWidth(mSize.width);
-        this.setMinHeight(mSize.height);
-        this.setMinWidth(mSize.width);
-        // this.setStyle("-fx-border-color: black");
+        super.init();
+        agentNameLabel = new Label();
 
         // font stuff
         Map<TextAttribute, Object> map = new HashMap<>();
         map.put(TextAttribute.KERNING, TextAttribute.KERNING_ON);
         map.put(TextAttribute.FAMILY, Font.SANS_SERIF);
-        // map.put(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
         map.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
         map.put(TextAttribute.SIZE, 14);
 
-        ConsoleHandler ch = new ConsoleHandler();
-        ch.setFormatter(new StickmanLogFormatter());
-
-        mLogger.addHandler(ch);
-        mLogger.setUseParentHandlers(false);
-
-        mAnimationSchedulerFX = new AnimationSchedulerFX(this);
-        mAnimationSchedulerFX.start();
+        animationScheduler = new AnimationScheduler(this);
+        animationScheduler.start();
 
         simplexNoise = new SimplexNoise(8, 0.1, (int) (Math.random() * 100));
         mIdleBehavior = new IdleBehavior(this, simplexNoise);
 
     }
 
-    @Override
-    public StageRoom getStageController() {
-        return stageController;
-    }
-
-    @Override
-    public void setStageController(StageRoom s) {
-        stageController = s;
-    }
-
-    @Override
-    public void setShowName(boolean show) {
-        mShowName = show;
-    }
-
-    @Override
-    public boolean isShowName() {
-        return mShowName;
-    }
-
-    @Override
-    public void endAnimationScheduler() {
-        mAnimationSchedulerFX.end();
-    }
-
-    @Override
-    public Gender.TYPE getType() {
-        return mType;
-    }
-
-    public void addListener(AnimationListener al) {
-        mAnimationListeners.add(al);
-    }
-
-    public void removeListener(AnimationListener al) {
-        synchronized (mAnimationListeners) {
-            if (mAnimationListeners.contains(al)) {
-                mAnimationListeners.remove(al);
-            }
-        }
-    }
-
-    public void notifyListeners(String animationId) {
-        synchronized (mAnimationListeners) {
-            mAnimationListeners.stream().forEach((al) -> {
-                al.update(animationId);
-            });
-        }
-    }
-
-    public String getID() {
-        return (new StringBuffer()).append(mName).append(" AnimationSwing ").append(mID++).toString();
-    }
-
     // Sets the orientation of the character, allowed values are: LEFT, RIGHT,
     // FRONT
-    public void setOrientation(String orientation) {
-        if (orientation.equalsIgnoreCase(ORIENTATION.LEFT.toString())) {
-            mOrientation = ORIENTATION.LEFT;
-        } else if (orientation.equalsIgnoreCase(ORIENTATION.RIGHT.toString())) {
-            mOrientation = ORIENTATION.RIGHT;
-        } else {
-            mOrientation = ORIENTATION.FRONT;
+    public void setOrientation(String orientation)
+    {
+        if (orientation.equalsIgnoreCase(Orientation.LEFT.toString()))
+        {
+            mOrientation = Orientation.LEFT;
+        } else if (orientation.equalsIgnoreCase(Orientation.RIGHT.toString()))
+        {
+            mOrientation = Orientation.RIGHT;
+        } else
+        {
+            mOrientation = Orientation.FRONT;
         }
     }
 
-    public AnimationFX doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block) {
+    @Override
+    public AnimationStickman2D doEventFeedbackAnimation(String name, int duration, WordTimeMarkSequence wts, boolean block)
+    {
         EventAnimationFX a = AnimationLoaderFX.getInstance().loadEventAnimation(this, name, duration, block);
 
         a.setParameter(wts);
 
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
         return a;
     }
 
-    public AnimationFX doAnimationAsImage(String name, int duration, boolean block, AnimationObserver obs) {
+    public AnimationStickman2D doAnimationAsImage(String name, int duration, boolean block, AnimationObserver obs)
+    {
         return doAnimation(name, duration, obs, block);
     }
 
-    public AnimationFX doAnimation(String name, int duration, boolean block) {
-        return doAnimation(name, duration, "", block);
+    @Override
+    public IAnimation doAnimation(String name, int frequent, int actionDuration, boolean block)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public AnimationFX doAnimation(String name, Object param, boolean block) {
-        return doAnimation(name, -1, param, block);
-    }
-
-    public AnimationFX doAnimation(String name, boolean block) {
-        return doAnimation(name, -1, "", block);
-    }
-
-    public AnimationFX doAnimation(String name, int duration, Object param, boolean block) {
-        AnimationFX a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
+    @Override
+    public AnimationStickman2D doAnimation(String name, int duration, Object param, boolean block)
+    {
+        AnimationStickman2D a = AnimationLoaderFX.getInstance().loadAnimation(this, name, duration, block);
 
         // this is for now only used by the Speech Bubble
         a.setParameter(param);
 
-        try {
+        try
+        {
             mAnimationLaunchControl.acquire();
             a.start();
-        } catch (InterruptedException ex) {
+        } catch (InterruptedException ex)
+        {
             mLogger.severe(ex.getMessage());
         }
 
         return a;
     }
 
-    public void playAnimation(AnimationFX a) {
-        try {
-            mAnimationLaunchControl.acquire();
-            a.start();
-        } catch (InterruptedException ex) {
-            mLogger.severe(ex.getMessage());
-        }
-    }
-
-    // Control IdleBehavior start(mStart == true) or not(mStart == false).
-    private static boolean isAnimationTimerStartet = false;
-
-    public void update() {
-        Color currColor = sFOREGROUND;
-        int width = new Float(mSize.width).intValue();
-        int height = new Float(mSize.height).intValue();
+    public void update()
+    {
+        float mGeneralXTranslation;
+        float mGeneralYTranslation;
 
         // draw everthing in the middle and scaled
         Affine af = new Affine();
         mGeneralXTranslation = mSize.width / 2 - mHeadFX.mSize.width * mScale;
         mGeneralYTranslation = (float) (mSize.height / 5);
-        // mGeneralYTranslation = (float) (mSize.height - 550 * mScale);
-        if (this.faceOnly) {
+        if (this.faceOnly)
+        {
             mGeneralYTranslation = -250;
         }
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
@@ -470,78 +285,84 @@ public class StickmanFX extends Pane implements Stickman {
         this.getTransforms().add(af);
 
         // Out put perlin noise
-        implimentPerlinNoise(mWobble, (mBodyFX.getRightLegStartPostion().x + mBodyFX.getLeftLegStartPostion().x) / 2,
-                mBodyFX.getRightLegStartPostion().y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
+        Point rightLegStartPostion = ((BodyFX) mBodyFX).getRightLegStartPostion();
+        Point leftLegStartPostion = ((BodyFX) mBodyFX).getLeftLegStartPostion();
+        implimentPerlinNoise(mWobble, (rightLegStartPostion.x + leftLegStartPostion.x) / 2,
+                rightLegStartPostion.y + mLeftUpperLegFX.mLength + mLeftForeLegFX.mLength);
 
-        if (mShowName) {
-            nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY() * 21 / 20);
-            nameLabel.setText(mName);
-        } else {
-            nameLabel.setTranslateY(mRightForeLegFX.getLegStartPosition().getY() * 21 / 20);
-            nameLabel.setText("");
+        RightForeLegFX rightForeLegFX = (RightForeLegFX) mRightForeLegFX;
+        if (mShowName)
+        {
+            agentNameLabel.setTranslateY(rightForeLegFX.getLegStartPosition().getY() * 21 / 20);
+            agentNameLabel.setText(mName);
+        } else
+        {
+            agentNameLabel.setTranslateY(rightForeLegFX.getLegStartPosition().getY() * 21 / 20);
+            agentNameLabel.setText("");
         }
 
         updateAll();
     }
 
-    private static class StickmanLogFormatter extends Formatter {
-
-        @Override
-        public String format(LogRecord record) {
-            return ((new StringBuffer()).append(record.getLevel()).append(": ").append(record.getMessage())
-                    .append("\n")).toString();
-        }
-    }
-
-    private void addOnlyHeadParts() {
+    private void addOnlyHeadParts()
+    {
         this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX,
                 mFaceWrinkleFX, mSpeechBubbleFX, mNose);
-        if (this.mType == Gender.TYPE.MALE) {
+        if (this.mType == Gender.TYPE.MALE)
+        {
             this.getChildren().add(mMaleHairFX);
-        } else {
+        } else
+        {
             this.getChildren().add(mFemaleHairFX);
         }
     }
 
-    private void addAllParts() {
+    private void addAllParts()
+    {
         this.getChildren().addAll(mHeadFX, mLeftEyebrowFX, mLeftEyeFX, mRightEyebrowFX, mRightEyeFX, mMouthFX, mNeckFX,
                 mBodyFX, mLeftShoulderFX, mLeftUpperArmFX, mLeftForeArmFX, mLeftHandFX, mRightShoulderFX,
                 mRightUpperArmFX, mRightForeArmFX, mRightHandFX, /* mLeftLegFX, */ mLeftUpperLegFX, mLeftForeLegFX,
                 mLeftFootFX, /* mRightLegFX, */ mRightUpperLegFX, mRightForeLegFX, mRightFootFX, mFaceWrinkleFX,
-                mStarsFX, mSpeechBubbleFX, mThinkFX, mBombeFX, nameLabel);
-        if (this.mType == Gender.TYPE.MALE) {
+                mStarsFX, mSpeechBubbleFX, agentNameLabel);
+        if (this.mType == Gender.TYPE.MALE)
+        {
             this.getChildren().add(mMaleHairFX);
-        } else {
+        } else
+        {
             this.getChildren().add(mFemaleHairFX);
         }
     }
 
-    private void updateAll() {
+    private void updateAll()
+    {
         // draw body parts
-        if (starShowControler == true) {
+        if (starShowControler == true)
+        {
             // Added by Robbie, to show stars or words here.
             mStarsFX.update();
-        } else {
-            if (starShowC == true) {
+        } else
+        {
+            if (starShowC == true)
+            {
                 mStarsFX.update();
             }
             mHeadFX.update();
 
-            if (this.mType == Gender.TYPE.MALE) {
+            if (this.mType == Gender.TYPE.MALE)
+            {
                 mMaleHairFX.update();
-            } else {
+            } else
+            {
                 mFemaleHairFX.update();
             }
             mLeftEyebrowFX.update();
             mLeftEyeFX.update();
             mRightEyebrowFX.update();
-            // added by Robbie
             mFaceWrinkleFX.update();
             mRightEyeFX.update();
             mMouthFX.update();
             mNeckFX.update();
-            // BodyFX is not Parts Classe
-            mBodyFX.calculate();
+            mBodyFX.calculate(0);
             mLeftShoulderFX.update();
             mLeftUpperArmFX.update();
             mLeftForeArmFX.update();
@@ -550,39 +371,39 @@ public class StickmanFX extends Pane implements Stickman {
             mRightUpperArmFX.update();
             mRightForeArmFX.update();
             mRightHandFX.update();
-            // mLeftLegFX.update();
             mLeftUpperLegFX.update();
             mLeftForeLegFX.update();
             mLeftFootFX.update();
-            // mRightLegFX.update();
             mRightUpperLegFX.update();
             mRightForeLegFX.update();
             mRightFootFX.update();
 
-            // mSpeechBubble.update();
             if (starShowC == true) // Added by Robbie, to show stars or words here.
             {
                 mStarsFX.update();
             }
         }
-
-        // draw environment
-        // mSpeechBubble.update(g);
     }
 
-    private void implimentPerlinNoise(double mWobble, int x, int y) {
-        if (starShowControler == true) {
+    private void implimentPerlinNoise(double mWobble, int x, int y)
+    {
+        if (starShowControler == true)
+        {
             // Added by Robbie, to show stars or words here
             mStarsFX.rotatePerlinNoise(mWobble, x, y);
-        } else {
-            if (starShowC == true) {
+        } else
+        {
+            if (starShowC == true)
+            {
                 mStarsFX.rotatePerlinNoise(mWobble, x, y);
             }
             mHeadFX.rotatePerlinNoise(mWobble, x, y);
 
-            if (this.mType == Gender.TYPE.MALE) {
+            if (this.mType == Gender.TYPE.MALE)
+            {
                 mMaleHairFX.rotatePerlinNoise(mWobble, x, y);
-            } else {
+            } else
+            {
                 mFemaleHairFX.rotatePerlinNoise(mWobble, x, y);
             }
             mLeftEyebrowFX.rotatePerlinNoise(mWobble, x, y);
@@ -592,7 +413,6 @@ public class StickmanFX extends Pane implements Stickman {
             mRightEyeFX.rotatePerlinNoise(mWobble, x, y);
             mMouthFX.rotatePerlinNoise(mWobble, x, y);
             mNeckFX.rotatePerlinNoise(mWobble, x, y);
-            // BodyFX is not Parts Classe
             mBodyFX.rotatePerlinNoise(mWobble, x, y);
             mLeftShoulderFX.rotatePerlinNoise(mWobble, x, y);
             mLeftUpperArmFX.rotatePerlinNoise(mWobble, x, y);
@@ -602,11 +422,9 @@ public class StickmanFX extends Pane implements Stickman {
             mRightUpperArmFX.rotatePerlinNoise(mWobble, x, y);
             mRightForeArmFX.rotatePerlinNoise(mWobble, x, y);
             mRightHandFX.rotatePerlinNoise(mWobble, x, y);
-            // mLeftLegFX.update();
             mLeftUpperLegFX.rotatePerlinNoise(mWobble, x, y);
             mLeftForeLegFX.rotatePerlinNoise(mWobble, x, y);
             mLeftFootFX.rotatePerlinNoise(mWobble, x, y);
-            // mRightLegFX.update();
             mRightUpperLegFX.rotatePerlinNoise(mWobble, x, y);
             mRightForeLegFX.rotatePerlinNoise(mWobble, x, y);
             mRightFootFX.rotatePerlinNoise(mWobble, x, y);
@@ -618,16 +436,21 @@ public class StickmanFX extends Pane implements Stickman {
         }
     }
 
-    public void hideAllPartsWithout(Pane p) {
-        this.getChildren().forEach(child -> {
-            if (!child.equals(p)) {
+    public void hideAllPartsWithout(Pane p)
+    {
+        this.getChildren().forEach(child ->
+        {
+            if (!child.equals(p))
+            {
                 child.setVisible(false);
             }
         });
     }
 
-    public void showAllParts() {
-        this.getChildren().forEach(child -> {
+    public void showAllParts()
+    {
+        this.getChildren().forEach(child ->
+        {
             child.setVisible(true);
         });
     }

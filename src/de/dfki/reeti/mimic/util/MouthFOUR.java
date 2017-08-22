@@ -2,11 +2,14 @@ package de.dfki.reeti.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class MouthFOUR {
+public class MouthFOUR
+{
 
-    public static Polygon modifyUpperLip(Polygon currentDownLipPolygon, float step) {
+    public static Polygon modifyUpperLip(Polygon currentDownLipPolygon, float step)
+    {
         System.out.println("dsdsd");
-        if (step == 20 || step == 0) {
+        if (step == 20 || step == 0)
+        {
             currentDownLipPolygon.getPoints().clear();
             currentDownLipPolygon.getPoints().addAll(
                     // x 	y 
@@ -27,9 +30,11 @@ public class MouthFOUR {
         return currentDownLipPolygon;
     }
 
-    public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step) {
+    public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step)
+    {
 
-        if (step == 20 || step == 0) {
+        if (step == 20 || step == 0)
+        {
             currentDownLipPolygon.getPoints().clear();
             currentDownLipPolygon.getPoints().addAll(
                     // x 	y 

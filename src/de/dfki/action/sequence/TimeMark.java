@@ -13,35 +13,39 @@ import de.dfki.util.xml.XMLWriteable;
 import org.w3c.dom.Element;
 
 /**
- *
  * @author Patrick Gebhard
- *
  */
-public class TimeMark extends Entry implements XMLParseable, XMLWriteable {
+public class TimeMark extends Entry implements XMLParseable, XMLWriteable
+{
 
-    public TimeMark() {
+    public TimeMark()
+    {
         mType = TYPE.TIMEMARK;
     }
 
-    public TimeMark(String content) {
+    public TimeMark(String content)
+    {
         mType = TYPE.TIMEMARK;
         mContent = content;
     }
 
     @Override
-    public void writeXML(IOSIndentWriter out) throws XMLWriteError {
+    public void writeXML(IOSIndentWriter out) throws XMLWriteError
+    {
         out.println("<TimeMarkEntry>").push();
         out.println(mContent);
         out.pop().println("</TimeMarkEntry>");
     }
 
     @Override
-    public final void parseXML(final Element element) throws XMLParseError {
+    public final void parseXML(final Element element) throws XMLParseError
+    {
         mContent = element.getTextContent().trim();
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return mContent;
     }
 }

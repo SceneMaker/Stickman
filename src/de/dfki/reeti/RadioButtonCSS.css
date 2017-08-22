@@ -2,15 +2,14 @@
     -fx-font-size: 16pt;
     -fx-font-family: "Courier New";
     -fx-base: white;
-    -fx-background-color: 
-        #000000,
-        linear-gradient(#7ebcea, #2f4b8f),
-        linear-gradient(#426ab7, #263e75),
-        linear-gradient(#395cab, #223768);
+    -fx-background-color: #000000,
+    linear-gradient(#7ebcea, #2f4b8f),
+    linear-gradient(#426ab7, #263e75),
+    linear-gradient(#395cab, #223768);
 }
 
 .radio-button .dot {
-    -fx-mark-highlight-color: white ;
-    -fx-mark-color: white ;
+    -fx-mark-highlight-color: white;
+    -fx-mark-color: white;
 }
 

@@ -5,31 +5,32 @@
  */
 package de.dfki.reeti.animation.face;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.reeti.Reeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
-import de.dfki.reeti.animationlogic.AnimationContentReeti;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class UpperLip extends AnimationReeti {
+public class UpperLip extends AnimationReeti
+{
 
 
-    public UpperLip(Reeti sm, int duration, int pos, boolean block) {
+    public UpperLip(Reeti sm, int duration, int pos, boolean block)
+    {
         super(sm, duration, pos, block);
     }
 
     @Override
-    public void playAnimation() {
-        
-        
+    public void playAnimation()
+    {
+
+
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouthUpperLip, "shape", "UPPERLIPACTION"));
+        mAnimationPart.add(new AnimationContent(((Reeti) agent).mMouthUpperLip, "shape", "UPPERLIPACTION"));
         playAnimationPart(mDuration);
-        
+
     }
 }

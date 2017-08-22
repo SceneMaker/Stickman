@@ -8,41 +8,40 @@ package de.dfki.reeti.animation.face;
 import de.dfki.reeti.Reeti;
 import de.dfki.reeti.ReetiStageController;
 import de.dfki.reeti.animationlogic.AnimationReeti;
-import de.dfki.reeti.animationlogic.AnimationContentReeti;
-
-import java.util.ArrayList;
-import javafx.scene.paint.Color;
 
 /**
- *
  * @author Beka
- *
  */
-public class Sad extends AnimationReeti {
+public class Sad extends AnimationReeti
+{
 
-    public Sad() {
+    public Sad()
+    {
         mAnimType = ANIMTYPE.ON;
     }
 
-    public Sad(Reeti sm, int duration, boolean block) {
+    public Sad(Reeti sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
-        mReeti.leftEyeLid(60);
-        mReeti.rightEyeLid(60);
-        mReeti.leftEyeTilt(15);
-        mReeti.rightEyeTilt(15);
-        mReeti.setLedColor("violet");
-        mReeti.leftEar(0);
-        mReeti.rightEar(0);
-        mReeti.rightLC(0);
-        mReeti.leftLC(0);
-        mReeti.neckTilt(0);
+    public void playAnimation()
+    {
+        ((Reeti) agent).leftEyeLid(60);
+        ((Reeti) agent).rightEyeLid(60);
+        ((Reeti) agent).leftEyeTilt(15);
+        ((Reeti) agent).rightEyeTilt(15);
+        ((Reeti) agent).setLedColor("violet");
+        ((Reeti) agent).leftEar(0);
+        ((Reeti) agent).rightEar(0);
+        ((Reeti) agent).rightLC(0);
+        ((Reeti) agent).leftLC(0);
+        ((Reeti) agent).neckTilt(0);
 
 
-        if (ReetiStageController.currentRadioButton != null) {
+        if (ReetiStageController.currentRadioButton != null)
+        {
             ReetiStageController.currentRadioButton.setSelected(false);
         }
     }

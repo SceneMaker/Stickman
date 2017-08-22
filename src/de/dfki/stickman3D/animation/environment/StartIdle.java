@@ -1,12 +1,10 @@
 package de.dfki.stickman3D.animation.environment;
 
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
 
 /**
- *
  * @author Robbie
- *
  */
 
 /*
@@ -14,25 +12,30 @@ import de.dfki.stickman3D.animationlogic.Animation3D;
  * To change this template file, choose Tools | Templates and open the template
  * in the editor.
  */
-public class StartIdle extends Animation3D {
+public class StartIdle extends AnimationStickman3D
+{
 
     int frequent;
 
-    public StartIdle(Stickman3D sm, int duration, boolean block) {
+    public StartIdle(Stickman3D sm, int duration, boolean block)
+    {
         super(sm, duration, block);
-        mStickmanFX = sm;
+        agent = sm;
 
         frequent = duration / 1000;
-        if (frequent <= 0) {
+        if (frequent <= 0)
+        {
             frequent = 1;
         }
     }
 
     @Override
-    public void playAnimation() {
-        if (mStickmanFX.mIdleBehavior == null) {
-            mStickmanFX.mIdleRun = true;
-            mStickmanFX.mIdleBehavior = new IdleBehavior(mStickmanFX);
+    public void playAnimation()
+    {
+        if (((Stickman3D) agent).mIdleBehavior == null)
+        {
+            ((Stickman3D) agent).mIdleRun = true;
+            ((Stickman3D) agent).mIdleBehavior = new IdleBehavior(((Stickman3D) agent));
         }
     }
 }

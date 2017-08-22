@@ -5,9 +5,9 @@
  */
 package de.dfki.stickman3D.animation.face;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
 
 import java.util.ArrayList;
 
@@ -17,18 +17,19 @@ import java.util.ArrayList;
  * receives a new command.
  *
  * @author Beka Aptsiauri
- *
  */
-public class AngryEnd extends Animation3D {
+public class AngryEnd extends AnimationStickman3D
+{
 
     /**
-     * @param sm StickmanSwing
+     * @param sm       StickmanSwing
      * @param duration Control the speed of the movement from one emotion state
-     * to another emotion state.
-     * @param block block or not the others movements, when one movement is not
-     * finished.
+     *                 to another emotion state.
+     * @param block    block or not the others movements, when one movement is not
+     *                 finished.
      */
-    public AngryEnd(Stickman3D sm, int duration, boolean block) {
+    public AngryEnd(Stickman3D sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
@@ -36,17 +37,18 @@ public class AngryEnd extends Animation3D {
      * This method creates the angry facial movement.
      */
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         // angry end
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mFaceWrinkle, "shape", "ANGRYEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEyebrow, "shape", "ANGRYEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "ANGRYEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEyebrow, "shape", "ANGRYEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "ANGRYEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "ANGRYEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mFaceWrinkle, "shape", "ANGRYEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEyebrow, "shape", "ANGRYEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "ANGRYEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEyebrow, "shape", "ANGRYEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "ANGRYEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mMouth, "shape", "ANGRYEND"));
         playAnimationPart(mDuration);
-        Animation3D.isAngryInAction = false;
+        AnimationStickman3D.isAngryInAction = false;
         pauseAnimation(10);
 
     }

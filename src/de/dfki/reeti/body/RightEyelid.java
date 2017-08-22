@@ -5,25 +5,24 @@
  */
 package de.dfki.reeti.body;
 
-import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-
+import de.dfki.common.part.Part3D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
+import java.net.URL;
+
 /**
- *
  * @author Beka Aptsiauri
- *
  */
-public class RightEyelid extends Parts
+public class RightEyelid extends PartReeti
 {
     private MeshView mLeftEyeMesh;
 
-    public RightEyelid(Head head) {
-        mStart = head.getLeftEyebrowPostion();
+    public RightEyelid(Part3D head)
+    {
+        mStart = ((Head) head).getLeftEyebrowPostion();
         mZRotation = -30;
         mYRotation = 15;
         mColor = Color.WHITE;
@@ -37,11 +36,12 @@ public class RightEyelid extends Parts
 
         init();
 
-        head.getHeadGroup().getChildren().add(mLeftEyeMesh);
+        ((Head) head).getHeadGroup().getChildren().add(mLeftEyeMesh);
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
         super.init();
         mLeftEyeMesh.setTranslateX(mStart.x - 50);
         mLeftEyeMesh.setTranslateY(mStart.y + 45);
@@ -49,7 +49,8 @@ public class RightEyelid extends Parts
     }
 
     @Override
-    public void calculate(int step) {
+    public void calculate(int step)
+    {
 
         Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
         Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
@@ -57,6 +58,12 @@ public class RightEyelid extends Parts
 
         mLeftEyeMesh.getTransforms().clear();
         mLeftEyeMesh.getTransforms().addAll(rz, ry, rx);
+
+    }
+
+    @Override
+    public void setShape(String s)
+    {
 
     }
 

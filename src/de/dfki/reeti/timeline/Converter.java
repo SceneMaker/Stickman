@@ -1,11 +1,10 @@
 package de.dfki.reeti.timeline;
 
-import org.jetbrains.annotations.Contract;
-
 /**
  * Created by EmpaT on 20.04.2017.
  */
-public class Converter {
+public class Converter
+{
 
     //Pixelanzahl zwischen jeden 2 Sekunden beträgt 200 pixel
     private static final int PIXEL_INTERVAL = 200;
@@ -13,7 +12,7 @@ public class Converter {
 
     public static int SecondToPixel(double sec)
     {
-        double pixel = (sec * PIXEL_INTERVAL)/SECOND_INTERVAL;
+        double pixel = (sec * PIXEL_INTERVAL) / SECOND_INTERVAL;
         return (int) pixel;
     }
 }

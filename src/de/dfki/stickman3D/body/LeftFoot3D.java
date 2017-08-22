@@ -6,127 +6,62 @@
 package de.dfki.stickman3D.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.common.Gender;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.part.Part3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
-import javafx.scene.transform.Rotate;
 
 import java.net.URL;
 
 /**
  * @author Beka
  */
-public class LeftFoot3D extends BodyPartFX
+public class LeftFoot3D extends Foot
 {
-
-    public enum SHAPE
+    public LeftFoot3D(Part3D leftForeLeg)
     {
-        DEFAULT, FADEIN, FADEOUT
-    }
-
-    public LeftFoot3D.SHAPE mShape = LeftFoot3D.SHAPE.DEFAULT;
-
-    private LeftForeLeg3D mLeftForeLeg;
-    private MeshView mLeftFootMeshView;
-    private PhongMaterial material;
-
-    public LeftFoot3D(LeftForeLeg3D leftForeLeg)
-    {
-        mLeftForeLeg = leftForeLeg;
-        mLength = 20;
-        if (mLeftForeLeg.getUpperLeg().getDownBody().getUpperBody().getNeck().getHead().getStickman().mType == Gender.TYPE.MALE)
+        super(leftForeLeg);
+        LeftForeLeg3D foreLeg = (LeftForeLeg3D) leftForeLeg;
+        if (foreLeg.getUpperLeg().getDownBody().getUpperBody().getNeck().getHead().getStickman().mType == Gender.TYPE.MALE)
             mColor = Color.rgb(80, 80, 80, 1);
-         else
+        else
             mColor = Color.rgb(154, 83, 198, 1);
-        setDefaulRotation(0);
         mYRotation = 50;
-        mXRotation = 0;
 
         URL url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/foot.dae");
         ColModelImporter im = new ColModelImporter();
         im.read(url);
-        mLeftFootMeshView = (MeshView) im.getImport()[0];
+        footMeshView = (MeshView) im.getImport()[0];
 
         material = new PhongMaterial();
         material.setDiffuseColor(mColor.darker());
-        mLeftFootMeshView.setMaterial(material);
+        footMeshView.setMaterial(material);
 
-        mLeftForeLeg.getLeftForeLegGroup().getChildren().add(mLeftFootMeshView);
+        this.getChildren().add(footMeshView);
+        foreLeg.getForeLegBox().getChildren().add(this);
 
         init();
     }
 
     @Override
-    public void setShape(String s)
+    public void init()
     {
-        SHAPE shape = SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-    }
-
-    @Override
-    public void resetShape()
-    {
-        mShape = LeftFoot3D.SHAPE.DEFAULT;
-    }
-
-    @Override
-    public void calculate(int step)
-    {
-        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-        mLeftFootMeshView.setTranslateX(mStart.x + 3);
-        if (mLeftForeLeg.getUpperLeg().getDownBody().getUpperBody().getNeck().getHead().getStickman().mType == Gender.TYPE.MALE)
-            mLeftFootMeshView.setTranslateY(mStart.y + 85);
-         else
-            mLeftFootMeshView.setTranslateY(mStart.y + 79);
-        mLeftFootMeshView.setTranslateZ(0);
-
-        mLeftFootMeshView.getTransforms().clear();
-        mLeftFootMeshView.getTransforms().addAll(rx, ry, rz);
-
-        switch (mShape)
-        {
-            case FADEIN:
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-                    update();
-                    mLeftFootMeshView.setVisible(false);
-                } else if (mColor.getOpacity() != 0.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-                    update();
-                }
-                break;
-
-            case FADEOUT:
-                mLeftFootMeshView.setVisible(true);
-
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-                    update();
-                } else if (mColor.getOpacity() != 1.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-                    update();
-                }
-                break;
-        }
+        super.init();
+        this.setTranslateY(-5);
+        this.setTranslateX(7);
     }
 
     @Override
     public void update()
     {
         material.setDiffuseColor(mColor);
-        mLeftFootMeshView.setMaterial(material);
+        footMeshView.setMaterial(material);
     }
 
-    public MeshView getLeftFootMeshView()
+    @Override
+    public MeshView getMeshView()
     {
-        return mLeftFootMeshView;
+        return footMeshView;
     }
 }

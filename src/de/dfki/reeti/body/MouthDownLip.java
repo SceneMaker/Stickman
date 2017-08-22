@@ -1,35 +1,29 @@
 package de.dfki.reeti.body;
 
+import de.dfki.common.part.Part3D;
 import de.dfki.reeti.animationlogic.AnimatorReeti;
-
-import java.awt.geom.Point2D;
-
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
+
+import java.awt.geom.Point2D;
 
 /**
  * @author Beka Aptsiauri
  */
-public class MouthDownLip extends Parts
+public class MouthDownLip extends PartReeti
 {
 
-    public enum SHAPE
-    {
-        DEFAULT, DOWNLIPACTION
-    }
-
+    public MouthDownLip.SHAPE mShape = MouthDownLip.SHAPE.DEFAULT;
     private Point2D downPoint;
     private Path mLips;
 
     private double downLipRegulator = 0;
     private double recorDownLipRegulator;
 
-    public MouthDownLip.SHAPE mShape = MouthDownLip.SHAPE.DEFAULT;
-
-    public MouthDownLip(Mouth mouth)
+    public MouthDownLip(Part3D mouth)
     {
-        mLips = mouth.getLips();
-        downPoint = mouth.getDownPoint();
+        mLips = ((Mouth) mouth).getLips();
+        downPoint = ((Mouth) mouth).getDownPoint();
     }
 
     @Override
@@ -76,5 +70,10 @@ public class MouthDownLip extends Parts
     public void setDownLipRegulator(double downLipRegulator)
     {
         this.downLipRegulator = downLipRegulator;
+    }
+
+    public enum SHAPE
+    {
+        DEFAULT, DOWNLIPACTION
     }
 }

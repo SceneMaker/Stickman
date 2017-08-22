@@ -5,45 +5,47 @@
  */
 package de.dfki.stickman3D.animation.head;
 
-import java.util.ArrayList;
-
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
+
+import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class HeadLeft extends Animation3D {
-	public HeadLeft() {
-		mAnimType = ANIMTYPE.ON;
-	}
+public class HeadLeft extends AnimationStickman3D
+{
+    public HeadLeft()
+    {
+        mAnimType = ANIMTYPE.ON;
+    }
 
-	public HeadLeft(Stickman3D sm, int duration, boolean block) {
-		super(sm, duration, block);
-	}
+    public HeadLeft(Stickman3D sm, int duration, boolean block)
+    {
+        super(sm, duration, block);
+    }
 
-	@Override
-	public void playAnimation() {
+    @Override
+    public void playAnimation()
+    {
 
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", -30));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "LOOKLEFT"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "LOOKLEFT"));
-		playAnimationPart(mDuration);
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mHead, "yrotate", -30));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "LOOKLEFT"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "LOOKLEFT"));
+        playAnimationPart(mDuration);
 
-		pauseAnimation(1000);
+        pauseAnimation(1000);
 
-		mAnimationPartFX = new ArrayList<>();
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mHead, "yrotate", 30));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "LOOKLEFTEND"));
-		mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "LOOKLEFTEND"));
-		playAnimationPart(mDuration);
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mHead, "yrotate", 30));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "LOOKLEFTEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "LOOKLEFTEND"));
+        playAnimationPart(mDuration);
 
-		if (StickmanStageController.currentRadioButton != null)
-			StickmanStageController.currentRadioButton.setSelected(false);
-	}
+        if (StickmanStageController.currentRadioButton != null)
+            StickmanStageController.currentRadioButton.setSelected(false);
+    }
 }

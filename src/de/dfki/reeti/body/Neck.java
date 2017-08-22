@@ -5,6 +5,7 @@
  */
 package de.dfki.reeti.body;
 
+import de.dfki.common.part.Part3D;
 import javafx.scene.shape.MeshView;
 
 import java.awt.*;
@@ -12,18 +13,30 @@ import java.awt.*;
 /**
  * @author Beka
  */
-public class Neck extends Parts
+public class Neck extends PartReeti
 {
     private MeshView neckMeshView;
 
-    public Neck(Head head)
+    public Neck(Part3D head)
     {
-        mStart = head.getNeckStartPosition();
+        mStart = ((Head) head).getNeckStartPosition();
         mEnd = new Point(mStart.x, mStart.y + mLength);
     }
 
     public Point getBodyStartPosition()
     {
         return new Point(mEnd.x, mEnd.y + 10);
+    }
+
+    @Override
+    public void calculate(int step)
+    {
+
+    }
+
+    @Override
+    public void setShape(String s)
+    {
+
     }
 }

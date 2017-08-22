@@ -3,13 +3,15 @@ package de.dfki.common;
 /**
  * Created by alvaro on 9/12/16.
  */
-public abstract class XMLCommandParser {
+public abstract class XMLCommandParser
+{
 
-    protected StickmansOnStage onStage;
+    protected AgentsOnStage onStage;
 
-    public XMLCommandParser(StickmansOnStage stage) {
+    public XMLCommandParser(AgentsOnStage stage)
+    {
         onStage = stage;
     }
 
-    public abstract void parseStickmanXMLCmd(String cmd);
+    public abstract void parseAgentXMLCmd(String cmd);
 }

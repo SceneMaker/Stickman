@@ -1,18 +1,19 @@
 package de.dfki.stickman3D.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.common.Gender;
-import de.dfki.stickman3D.Stickman3D;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.enums.Orientation;
+import de.dfki.common.part.Part3D;
+import de.dfki.common.util.Preferences;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Affine;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 import java.awt.*;
 import java.net.URL;
-
-import javafx.scene.transform.Translate;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,34 +24,18 @@ import javafx.scene.transform.Translate;
 /**
  * @author Beka Aptsiauri
  */
-public class UpperBody3D extends BodyPartFX
+public class UpperBody3D extends PartStickman3D
 {
 
-    public enum SHAPE
-    {
-        DEFAULT, FADEIN, FADEOUT
-    }
-
-    public UpperBody3D.SHAPE mShape = UpperBody3D.SHAPE.DEFAULT;
-
+    public SHAPE mShape = SHAPE.DEFAULT;
     private Neck3D mNeck;
-
-
-    private Dimension mSize;
-
-    private int mHalfSizeX;
-    private static final int DRAWOFFSET = 20;
-
     private MeshView mBodyMeshView;
     private PhongMaterial material;
 
-    public UpperBody3D(Neck3D neck)
+    public UpperBody3D(Part3D neck)
     {
-        mNeck = neck;
-        mSize = new Dimension(120, 300);
-        mStart = mNeck.getBodyStartPosition();
-        mHalfSizeX = mSize.width / 2;
-
+        mNeck = (Neck3D) neck;
+        mStart = mNeck.getUpperBodyStartPosition();
         init();
     }
 
@@ -59,10 +44,7 @@ public class UpperBody3D extends BodyPartFX
     {
         super.init();
         this.setTranslateX(mStart.x);
-        if (mNeck.getHead().getStickman().mType == Gender.TYPE.MALE)
-            this.setTranslateY(mStart.y + 155);
-         else
-            this.setTranslateY(mStart.y + 135);
+        this.setTranslateY(mStart.y);
         this.setTranslateZ(-105);
 
         ColModelImporter importer = new ColModelImporter();
@@ -87,14 +69,13 @@ public class UpperBody3D extends BodyPartFX
 
     public Point getUpperBodyPosition()
     {
-        return new Point(mStart.x, mStart.y + 135);
+        return new Point(mStart.x, mStart.y);
     }
 
     @Override
     public void setShape(String s)
     {
-        SHAPE shape = SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
+        mShape = SHAPE.valueOf(s);
     }
 
     @Override
@@ -106,86 +87,69 @@ public class UpperBody3D extends BodyPartFX
     @Override
     public void calculate(int step)
     {
-
-        // Setze PivotElement entsprechend der Y-Translation
-        Rotate rx = new Rotate(mXRotation, 0, mYTranslation, 0, Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, 0, mYTranslation, 0, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, 0, mYTranslation, 0, Rotate.Z_AXIS);
+        float pivotX;
+        if(mNeck.getHead().getStickman().mType == Gender.TYPE.MALE)
+        {
+            pivotX = Preferences.MALE_UPPER_BODY_WIDTH/2;
+        }
+        else
+        {
+            pivotX = Preferences.FEMALE_UPPER_BODY_WIDTH/2;
+        }
+        Rotate rx = new Rotate(mXRotation, pivotX, mYTranslation, 0, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, pivotX, mYTranslation, 0, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, pivotX, mYTranslation, 0, Rotate.Z_AXIS);
 
         Translate translation = new Translate(mXTranslation, mYTranslation, mZTranslation);
 
         this.getTransforms().clear();
         this.getTransforms().addAll(rx, ry, rz, translation);
 
-        switch (mShape)
-        {
-            case FADEIN:
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-                    update();
-                    mBodyMeshView.setVisible(false);
-                } else if (mColor.getOpacity() != 0.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-                    update();
-                }
-                break;
-
-            case FADEOUT:
-                mBodyMeshView.setVisible(true);
-
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-                    update();
-                } else if (mColor.getOpacity() != 1.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-                    update();
-                }
-                break;
-        }
-    }
-
-    public Point getLeftArmStartPostion()
-    {
-        return new Point(mStart.x - 39, mStart.y - 178);
+        executeFadeInFadeOut(mBodyMeshView, mShape, step);
     }
 
     public Point getDownBodyPosition()
     {
-        return new Point(mStart.x, mStart.y);
+        if(mNeck.getHead().getStickman().mType == Gender.TYPE.MALE)
+            return new Point(mStart.x - 5, mStart.y + Preferences.MALE_UPPER_BODY_HEIGHT);
+        else
+            return new Point(mStart.x - 42, mStart.y + Preferences.FEMALE_UPPER_BODY_HEIGHT);
     }
 
-    public Point getRightArmStartPostion()
+    public Point getLeftArmStartPosition()
     {
-        return new Point(mStart.x - 90, mStart.y - 178);
-    }
-
-    public Point getLeftLegStartPostion()
-    {
-        if (mNeck.getHead().getStickman().mOrientation == Stickman3D.ORIENTATION.LEFT)
+        int x;
+        int y;
+        if(mNeck.getHead().getStickman().mType == Gender.TYPE.MALE)
         {
-            return new Point(mStart.x + mHalfSizeX - DRAWOFFSET, mSize.height);
-        } else
-        {
-            return new Point(mStart.x + mHalfSizeX - DRAWOFFSET - 20,
-                    (mNeck.getHead().getStickman().mType == Gender.TYPE.FEMALE) ? mSize.height + 3 : mSize.height);
+            x = mStart.x + Preferences.MALE_UPPER_BODY_WIDTH/2 - 7;
+            y = mStart.y/22 + 7;
         }
+        else
+        {
+            x = mStart.x - Preferences.FEMALE_UPPER_BODY_WIDTH/2 + 68;
+            y = mStart.y/22 + 2;
+        }
+        return new Point(x,y);
     }
 
-    public Point getRightLegStartPostion()
+    public Point getRightArmStartPosition()
     {
-        if (mNeck.getHead().getStickman().mOrientation == Stickman3D.ORIENTATION.RIGHT)
+        int x;
+        int y;
+        if(mNeck.getHead().getStickman().mType == Gender.TYPE.MALE)
         {
-            return new Point(mStart.x, mSize.height);
-        } else
-        {
-            return new Point(mStart.x - mHalfSizeX + DRAWOFFSET + 20,
-                    (mNeck.getHead().getStickman().mType == Gender.TYPE.FEMALE) ? mSize.height + 5 : mSize.height);
+             x = mStart.x - Preferences.MALE_UPPER_BODY_WIDTH/2 + 6;
+             y = mStart.y/22 + 7;
         }
+        else
+        {
+            x = mStart.x - Preferences.FEMALE_UPPER_BODY_WIDTH/2 + 32;
+            y = mStart.y/22 + 3;
+        }
+        return new Point(x,y);
     }
+
 
     @Override
     public void update()
@@ -210,8 +174,10 @@ public class UpperBody3D extends BodyPartFX
         return mNeck;
     }
 
-    public MeshView getBodyMeshView()
+    @Override
+    public MeshView getMeshView()
     {
         return mBodyMeshView;
     }
+
 }

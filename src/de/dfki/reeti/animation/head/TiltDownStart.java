@@ -6,7 +6,6 @@
 package de.dfki.reeti.animation.head;
 
 import de.dfki.reeti.Reeti;
-import de.dfki.reeti.ReetiStageController;
 import de.dfki.reeti.animationlogic.AnimationReeti;
 
 /**
@@ -22,6 +21,6 @@ public class TiltDownStart extends AnimationReeti
     @Override
     public void playAnimation()
     {
-        mReeti.neckTilt(20);
+        ((Reeti) agent).neckTilt(20);
     }
 }

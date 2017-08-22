@@ -5,22 +5,22 @@
  */
 package de.dfki.reeti.body;
 
-import java.net.URL;
-
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-
+import de.dfki.common.part.Part3D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 
+import java.net.URL;
+
 /**
  * @author Beka Aptsiauri
  */
-public class LeftEar extends Parts
+public class LeftEar extends PartReeti
 {
     private MeshView mLeftEarMesh;
 
-    public LeftEar(Head head)
+    public LeftEar(Part3D head)
     {
         mColor = Color.WHITE;
 
@@ -31,11 +31,11 @@ public class LeftEar extends Parts
         mLeftEarMesh = (MeshView) importer.getImport()[0];
         mLeftEarMesh.setMaterial(getMaterial());
 
-        mStart = head.getLeftEyebrowPostion();
+        mStart = ((Head) head).getLeftEyebrowPostion();
 
         init();
 
-        head.getHeadGroup().getChildren().add(mLeftEarMesh);
+        ((Head) head).getHeadGroup().getChildren().add(mLeftEarMesh);
     }
 
     @Override
@@ -56,5 +56,11 @@ public class LeftEar extends Parts
 
         mLeftEarMesh.getTransforms().clear();
         mLeftEarMesh.getTransforms().addAll(rz, ry, rx);
+    }
+
+    @Override
+    public void setShape(String s)
+    {
+
     }
 }

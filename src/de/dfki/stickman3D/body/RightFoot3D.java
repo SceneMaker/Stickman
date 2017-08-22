@@ -6,128 +6,63 @@
 package de.dfki.stickman3D.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
-import de.dfki.common.Gender;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.part.Part3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
-import javafx.scene.transform.Rotate;
 
 import java.net.URL;
 
 /**
  * @author Beka
  */
-public class RightFoot3D extends BodyPartFX
+public class RightFoot3D extends Foot
 {
-
-    public enum SHAPE
+    public RightFoot3D(Part3D rightForeLeg)
     {
-        DEFAULT, FADEIN, FADEOUT
-    }
-
-    public RightFoot3D.SHAPE mShape = RightFoot3D.SHAPE.DEFAULT;
-
-    private RightForeLeg3D mRightForeLeg;
-    private MeshView mRightFootMeshView;
-    private PhongMaterial material;
-
-    public RightFoot3D(RightForeLeg3D rightForeLeg)
-    {
-        mRightForeLeg = rightForeLeg;
-        mLength = 20;
-        if (mRightForeLeg.getUpperLeg().getDownBody().getUpperBody().getNeck().getHead().getStickman().mType == Gender.TYPE.MALE)
+        super(rightForeLeg);
+        RightForeLeg3D foreLeg = (RightForeLeg3D) rightForeLeg;
+//        mSize = new Dimension(Preferences.FOOT_WIDTH, Preferences.FOOT_HEIGHT);
+        if (foreLeg.getUpperLeg().getDownBody().getUpperBody().getNeck().getHead().getStickman().mType == Gender.TYPE.MALE)
             mColor = Color.rgb(80, 80, 80, 1);
         else
             mColor = Color.rgb(154, 83, 198, 1);
-        setDefaulRotation(0);
         mYRotation = 130;
-        mXRotation = 0;
 
         URL url = getClass().getClassLoader().getResource("BodyParts/Stickman3D/foot.dae");
         ColModelImporter im = new ColModelImporter();
         im.read(url);
-        mRightFootMeshView = (MeshView) im.getImport()[0];
+        footMeshView = (MeshView) im.getImport()[0];
 
         material = new PhongMaterial();
         material.setDiffuseColor(mColor.darker());
-        mRightFootMeshView.setMaterial(material);
+        footMeshView.setMaterial(material);
 
-        mRightForeLeg.rightForeLegGroup.getChildren().add(mRightFootMeshView);
+        this.getChildren().add(footMeshView);
+        foreLeg.foreLegBox.getChildren().add(this);
 
         init();
     }
 
     @Override
-    public void setShape(String s)
+    public void init()
     {
-        SHAPE shape = SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : SHAPE.DEFAULT;
-    }
-
-    @Override
-    public void resetShape()
-    {
-        mShape = RightFoot3D.SHAPE.DEFAULT;
-    }
-
-    @Override
-    public void calculate(int step)
-    {
-
-        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-        mRightFootMeshView.setTranslateX(mStart.x);
-        if (mRightForeLeg.getUpperLeg().getDownBody().getUpperBody().getNeck().getHead().getStickman().mType == Gender.TYPE.MALE)
-            mRightFootMeshView.setTranslateY(mStart.y + 85);
-         else
-            mRightFootMeshView.setTranslateY(mStart.y + 80);
-        mRightFootMeshView.setTranslateZ(0);
-
-        mRightFootMeshView.getTransforms().clear();
-        mRightFootMeshView.getTransforms().addAll(rx, ry, rz);
-
-        switch (mShape)
-        {
-            case FADEIN:
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 0.0);
-                    update();
-                    mRightFootMeshView.setVisible(false);
-                } else if (mColor.getOpacity() != 0.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() - 0.052);
-                    update();
-                }
-                break;
-
-            case FADEOUT:
-                mRightFootMeshView.setVisible(true);
-
-                if (step == 2)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), 1.0);
-                    update();
-                } else if (mColor.getOpacity() != 1.0)
-                {
-                    mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), mColor.getOpacity() + 0.052);
-                    update();
-                }
-                break;
-        }
+        super.init();
+        this.setTranslateY(-5);
+        this.setTranslateX(7);
     }
 
     @Override
     public void update()
     {
         material.setDiffuseColor(mColor);
-        mRightFootMeshView.setMaterial(material);
+        footMeshView.setMaterial(material);
     }
 
-    public MeshView getRightFootMeshView()
+    @Override
+    public MeshView getMeshView()
     {
-        return mRightFootMeshView;
+        return footMeshView;
     }
 }

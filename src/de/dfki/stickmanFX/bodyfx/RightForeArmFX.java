@@ -5,23 +5,18 @@
  */
 package de.dfki.stickmanFX.bodyfx;
 
-import java.awt.Dimension;
-import java.awt.Point;
-
+import de.dfki.common.part.Part2D;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.shape.*;
 import javafx.scene.transform.Affine;
 
+import java.awt.*;
+
 /**
- *
  * @author Beka
- *
  */
-public class RightForeArmFX extends BodyPartFX {
+public class RightForeArmFX extends PartStickman2D
+{
 
     RightUpperArmFX mUpperArmFX;
     int mArmLength = 80;
@@ -32,8 +27,9 @@ public class RightForeArmFX extends BodyPartFX {
 
     Path mArm;
 
-    public RightForeArmFX(RightUpperArmFX arm) {
-        mUpperArmFX = arm;
+    public RightForeArmFX(Part2D arm)
+    {
+        mUpperArmFX = (RightUpperArmFX) arm;
         mColor = Color.rgb(80, 80, 80);
         mDefaultRotation = -20;
         mRotation = mDefaultRotation;
@@ -45,22 +41,29 @@ public class RightForeArmFX extends BodyPartFX {
         calculate(0);
     }
 
-    public Point getHandStartPosition() {
+    public Point getHandStartPosition()
+    {
         //return (mArm != null) ? new Point((int) mArm.boundsInParentProperty().get().getMaxX(), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-        if (mRotation >= 0 && mRotation <= 90) {
+        if (mRotation >= 0 && mRotation <= 90)
+        {
             return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-        } else if (mRotation > 90 && mRotation <= 180) {
+        } else if (mRotation > 90 && mRotation <= 180)
+        {
             return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMinX()), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-        } else if (mRotation < 0 && mRotation >= -90) {
+        } else if (mRotation < 0 && mRotation >= -90)
+        {
             return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()), (int) mArm.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-        } else {
+        } else
+        {
             return (mArm != null) ? new Point((int) (mArm.boundsInParentProperty().get().getMaxX()), (int) mArm.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
         }
     }
 
     @Override
-    public void calculate(int step) {
-        clearChildren(this);
+    public void calculate(int step)
+    {
+        this.getChildren().clear();
+        ;
         mArm = new Path();
         mStart = mUpperArmFX.getRightUpperArmEndPosition();
         mEnd = new Point(mStart.x, mStart.y + mArmLength);
@@ -81,29 +84,42 @@ public class RightForeArmFX extends BodyPartFX {
     }
 
     @Override
-    public void update() {
+    public void setShape(String s)
+    {
+
+    }
+
+    @Override
+    public void update()
+    {
         this.toFront();
 //		Color currentColor = Color.rgb(80, 80, 80);
         // draw outlines
-        if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+        if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+        {
             mColorRecorder = mColor;
         }
-        if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+        if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true)
+        {
             if (mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) // Added byRobbie
             {
                 int fadeFactor = mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep
                         * 12;
-                if (fadeFactor <= 24) {
+                if (fadeFactor <= 24)
+                {
                     fadeFactor = 0;
                 }
                 mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 // g2.setColor(new Color(80, 80, 80, fadeFactor));
-            } else {
+            } else
+            {
                 int fadeFactor = (20 - mUpperArmFX.mRightShoulderFX.mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) {
+                if (fadeFactor >= 216)
+                {
                     mColor = mColorRecorder;
-                } else {
+                } else
+                {
                     mColor = new Color(mColor.getRed(), mColor.getGreen(), mColor.getBlue(), (fadeFactor * 100 / 255) / 100f);
                 }
                 //mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);

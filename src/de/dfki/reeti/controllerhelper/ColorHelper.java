@@ -1,11 +1,7 @@
 package de.dfki.reeti.controllerhelper;
 
-import de.dfki.common.Gender;
-import de.dfki.reeti.Reeti;
+import de.dfki.common.enums.Led;
 import de.dfki.reeti.ReetiStageController;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 public class ColorHelper
@@ -16,7 +12,7 @@ public class ColorHelper
         if (controller.currentReeti != null)
         {
             Color color = controller.leftLedColorPicker.getValue();
-            controller.currentReeti.setLedColor(color, Reeti.LED.LEFTLED);
+            controller.currentReeti.setLedColor(color, Led.LEFTLED);
         }
     }
 
@@ -25,16 +21,16 @@ public class ColorHelper
         if (controller.currentReeti != null)
         {
             Color color = controller.rightLedColorPicker.getValue();
-            controller.currentReeti.setLedColor(color, Reeti.LED.RIGHTLED);
+            controller.currentReeti.setLedColor(color, Led.RIGHTLED);
         }
     }
-    
+
     public static void bothLedColorChanger(ReetiStageController controller)
     {
         if (controller.currentReeti != null)
         {
             Color color = controller.bothLedColorPicker.getValue();
-            controller.currentReeti.setLedColor(color, Reeti.LED.BOTHLED);
+            controller.currentReeti.setLedColor(color, Led.BOTHLED);
         }
     }
 }

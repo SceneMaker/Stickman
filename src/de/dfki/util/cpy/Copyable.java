@@ -7,7 +7,8 @@ import java.io.Serializable;
  *
  * @author Not me
  */
-public interface Copyable extends Serializable {
+public interface Copyable extends Serializable
+{
 
     /**
      * Create a deep copy of the copyable object.

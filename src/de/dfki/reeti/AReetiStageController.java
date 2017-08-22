@@ -5,33 +5,24 @@
  */
 package de.dfki.reeti;
 
-import de.dfki.common.StickmansOnStage;
-import de.dfki.reeti.controllerhelper.SliderHelper;
+import de.dfki.common.AgentsOnStage;
 import de.dfki.reeti.stage.ReetiStage;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.TextFlow;
+import javafx.scene.control.*;
+
+import java.util.ArrayList;
 
 /**
- *
  * @author EmpaT
  */
-public abstract class AReetiStageController {
+public abstract class AReetiStageController
+{
 
     public static final String PACKAGE_EMOTIONEXPRESSION = "de.dfki.reeti.animation.face";
     public static final String PACKAGE_ENVIRONMENT = "de.dfki.reeti.animation.environment";
     public static final String PACKAGE_DYNAMIC_CLASSES = "de.dfki.stickman3D.dynamic.classes";
-
+    public static RadioButton currentRadioButton;
+    public final ArrayList<String> mReetiComboList = new ArrayList<>();
     @FXML
     public RadioButton WithPerlinNoise;
     @FXML
@@ -166,17 +157,11 @@ public abstract class AReetiStageController {
     public Slider topLipSlider;
     @FXML
     public Slider bottomLipSlider;
-
-    public final ArrayList<String> mReetiComboList = new ArrayList<>();
-
     public boolean isCameraStarted = false;
     public String mReetiComboBox = null;
     public ToggleGroup perlinNoiseGroup;
-    public StickmansOnStage mStickmanOnstage;
-
-
+    public AgentsOnStage mStickmanOnstage;
     public Reeti currentReeti;
-    public static RadioButton currentRadioButton;
     public ReetiStage stage3D;
 
 }

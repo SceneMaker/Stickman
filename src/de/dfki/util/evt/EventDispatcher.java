@@ -1,18 +1,21 @@
 package de.dfki.util.evt;
 
 //~--- non-JDK imports --------------------------------------------------------
+
 import de.dfki.util.log.LOGDefaultLogger;
 
-//~--- JDK imports ------------------------------------------------------------
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+//~--- JDK imports ------------------------------------------------------------
+
 /**
  * @author Not me
  */
-public class EventDispatcher {
+public class EventDispatcher
+{
 
     // The Singelton Instance
     private static EventDispatcher sInstance = null;
@@ -27,12 +30,15 @@ public class EventDispatcher {
     private final Timer mTimer = new Timer("EventCasterTimer");
 
     // Construct The Instance
-    private EventDispatcher() {
+    private EventDispatcher()
+    {
     }
 
     // Get The Singelton Instance
-    public final static synchronized EventDispatcher getInstance() {
-        if (sInstance == null) {
+    public final static synchronized EventDispatcher getInstance()
+    {
+        if (sInstance == null)
+        {
             sInstance = new EventDispatcher();
         }
 
@@ -40,36 +46,44 @@ public class EventDispatcher {
     }
 
     // Cancel The Timer Thread
-    public final /*synchronized*/ void cancel() {
+    public final /*synchronized*/ void cancel()
+    {
         mTimer.cancel();
     }
 
     // Add An Event Listener
-    public final /*synchronized*/ void register(final EventListener listener) {
+    public final /*synchronized*/ void register(final EventListener listener)
+    {
         //mLogger.message("Registering '" + listener + "'");
         mListenerList.add(listener);
     }
 
-    public final /*synchronized*/ void remove(final EventListener listener) {
+    public final /*synchronized*/ void remove(final EventListener listener)
+    {
         //mLogger.message("Remove '" + listener + "'");
         mListenerList.remove(listener);
     }
 
-    public final /*synchronized*/ void convey(final EventObject event) {
+    public final /*synchronized*/ void convey(final EventObject event)
+    {
 
-        for (final EventListener listener : mListenerList) {
+        for (final EventListener listener : mListenerList)
+        {
             //mLogger.message("Conveying '" + event + "' To '" + listener + "'");
             listener.update(event);
         }
 
     }
 
-    public final /*synchronized*/ void schedule(final EventObject event, final long timeout) {
+    public final /*synchronized*/ void schedule(final EventObject event, final long timeout)
+    {
 
         // Create The Timer Task
-        final TimerTask timer = new TimerTask() {
+        final TimerTask timer = new TimerTask()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 convey(event);
             }
         };

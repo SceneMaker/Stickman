@@ -13,35 +13,39 @@ import de.dfki.util.xml.XMLWriteable;
 import org.w3c.dom.Element;
 
 /**
- *
  * @author Patrick Gebhard
- *
  */
-public class Word extends Entry implements XMLParseable, XMLWriteable {
+public class Word extends Entry implements XMLParseable, XMLWriteable
+{
 
-    public Word() {
+    public Word()
+    {
         mType = TYPE.WORD;
     }
 
-    public Word(String content) {
+    public Word(String content)
+    {
         mType = TYPE.WORD;
         mContent = content;
     }
 
     @Override
-    public void writeXML(IOSIndentWriter out) throws XMLWriteError {
+    public void writeXML(IOSIndentWriter out) throws XMLWriteError
+    {
         out.println("<WordEntry>").push();
         out.println(mContent);
         out.pop().println("</WordEntry>");
     }
 
     @Override
-    public final void parseXML(final Element element) throws XMLParseError {
+    public final void parseXML(final Element element) throws XMLParseError
+    {
         mContent = element.getTextContent().trim();
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return mContent;
     }
 }

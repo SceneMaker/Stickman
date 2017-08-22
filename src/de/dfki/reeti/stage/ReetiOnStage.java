@@ -1,78 +1,90 @@
 package de.dfki.reeti.stage;
 
-import de.dfki.common.Gender;
-import de.dfki.common.interfaces.StageRoom;
-import de.dfki.common.interfaces.Stickman;
-import de.dfki.common.StickmansOnStage;
+import de.dfki.common.AgentsOnStage;
 import de.dfki.common.XmlTransform;
-import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.common.agent.IAgent;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.interfaces.AgentStage;
+import de.dfki.common.interfaces.StageRoom;
 import de.dfki.reeti.Reeti;
-import de.dfki.stickmanSwing.StickmanSwing;
+import javafx.scene.layout.HBox;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.layout.HBox;
 
 /**
  * Created by alvaro on 9/19/16.
  */
-public class ReetiOnStage extends StickmansOnStage {
-
-    private String identifier;
-
-    public ReetiOnStage(StickmanStage stickmanStage) {
-        super(stickmanStage);
+public class ReetiOnStage extends AgentsOnStage
+{
+    public ReetiOnStage(AgentStage agentStage)
+    {
+        super(agentStage);
     }
 
-    public ReetiOnStage(StickmanStage stickmanStageFX, StageRoom controllerFX) {
-        super(stickmanStageFX, controllerFX);
+    public ReetiOnStage(AgentStage agentStage, StageRoom stageRoom)
+    {
+        super(agentStage, stageRoom);
     }
 
-    public ReetiOnStage(StickmanStage stickmanStageFX, StageRoom controllerFX, String identifier) {
-        super(stickmanStageFX, controllerFX);
+    public ReetiOnStage(AgentStage agentStage, StageRoom stageRoom, String identifier)
+    {
+        super(agentStage, stageRoom);
         this.identifier = identifier;
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender) {
-        if (fullScreen) {
-            Stickman stickman = new Reeti(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
-            putFullStickmanOnStage(name, stickman);
-        } else {
-
-            createNonFullStickman(name, gender, DEFAULT_SCALE);
+    protected void addAgentToStage(String name, boolean fullScreen, Gender.TYPE gender)
+    {
+        if (fullScreen)
+        {
+            IAgent agent = new Reeti(name, gender, agentStage.getFullScreenScale(), agentStage.getFullScreenDimension());
+            putFullAgentOnStage(name, agent);
+        } else
+        {
+            createNonFullAgent(name, gender, DEFAULT_SCALE);
         }
     }
 
     @Override
-    protected void addStickmanToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace) {
-        if (fullScreen) {
-            Stickman stickman = new Reeti(name, gender, stickmanStage.getFullScreenScale(), stickmanStage.getFullScreenDimension());
-            putFullStickmanOnStage(name, stickman);
-        } else {
+    protected void addAgentToStage(String name, boolean fullScreen, Gender.TYPE gender, boolean onlyFace)
+    {
+        if (fullScreen)
+        {
+            IAgent agent = new Reeti(name, gender, agentStage.getFullScreenScale(), agentStage.getFullScreenDimension());
+            putFullAgentOnStage(name, agent);
+        } else
+        {
             float scale = DEFAULT_SCALE;
-            if (onlyFace) {
+            if (onlyFace)
+            {
                 scale = 1.0f;
             }
-            createNonFullStickman(name, gender, scale);
+            createNonFullAgent(name, gender, scale);
 
         }
     }
 
-    private void createNonFullStickman(String name, Gender.TYPE gender, float scale) {
-        if (!identifier.equals("")) {
-            try {
-                HBox h = stickmanStage.getStickmanBox(identifier);
+    private void createNonFullAgent(String name, Gender.TYPE gender, float scale)
+    {
+        if (!identifier.equals(""))
+        {
+            try
+            {
+                HBox h = agentStage.getAgentBox(identifier);
 
-                Stickman stickman = new Reeti(name, gender, scale, h.getPrefHeight());
-                putFullStickmanOnStage(name, stickman);
-            } catch (Exception ex) {
+                IAgent agent = new Reeti(name, gender, scale, h.getPrefHeight());
+                putFullAgentOnStage(name, agent);
+            } catch (Exception ex)
+            {
                 Logger.getLogger(ReetiOnStage.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
     @Override
-    public XmlTransform getmXmlTransform() {
+    public XmlTransform getXmlTransform()
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

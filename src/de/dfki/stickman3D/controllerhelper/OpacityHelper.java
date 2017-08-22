@@ -1,79 +1,105 @@
 package de.dfki.stickman3D.controllerhelper;
 
-import de.dfki.common.Gender;
+import de.dfki.common.enums.Gender;
 import de.dfki.stickman3D.StickmanStageController;
+import de.dfki.stickman3D.body.Head3D;
+import de.dfki.stickman3D.body.LeftEye3D;
+import de.dfki.stickman3D.body.Mouth3D;
+import de.dfki.stickman3D.body.RightEye3D;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 
-public class OpacityHelper {
+public class OpacityHelper
+{
 
-    public static void headOpacityChanger(StickmanStageController controller, Slider headOpacitySlider) {
-        headOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void headOpacityChanger(StickmanStageController controller, Slider headOpacitySlider)
+    {
+        headOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mHead.getHeadMeshView().setVisible(false);
-                } else {
-                    controller.currentStickman.mHead.getHeadMeshView().setVisible(true);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    controller.currentStickman.mHead.getMeshView().setVisible(false);
+                } else
+                {
+                    controller.currentStickman.mHead.getMeshView().setVisible(true);
                 }
                 Color col = controller.currentStickman.mHead.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
                 controller.currentStickman.mHead.mColor = col;
-                controller.currentStickman.mHead.update();
+                ((Head3D) controller.currentStickman.mHead).update();
             }
         });
     }
 
-    public static void hairOpacityChanger(StickmanStageController controller, Slider hairOpacitySlider) {
-        hairOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void hairOpacityChanger(StickmanStageController controller, Slider hairOpacitySlider)
+    {
+        hairOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    if (controller.currentStickman.mType == Gender.TYPE.FEMALE) {
-                        controller.currentStickman.mFemaleHair.getFemaleHairMeshView().setVisible(false);
-                    } else {
-                        controller.currentStickman.mMaleHair.getMaleHairMeshView().setVisible(false);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    if (controller.currentStickman.mType == Gender.TYPE.FEMALE)
+                    {
+                        controller.currentStickman.mHair.getMeshView().setVisible(false);
+                    } else
+                    {
+                        controller.currentStickman.mHair.getMeshView().setVisible(false);
                     }
-                } else {
-                    if (controller.currentStickman.mType == Gender.TYPE.FEMALE) {
-                        controller.currentStickman.mFemaleHair.getFemaleHairMeshView().setVisible(true);
-                    } else {
-                        controller.currentStickman.mMaleHair.getMaleHairMeshView().setVisible(true);
+                } else
+                {
+                    if (controller.currentStickman.mType == Gender.TYPE.FEMALE)
+                    {
+                        controller.currentStickman.mHair.getMeshView().setVisible(true);
+                    } else
+                    {
+                        controller.currentStickman.mHair.getMeshView().setVisible(true);
                     }
                 }
 
                 Color col = null;
-                if (controller.currentStickman.mType == Gender.TYPE.FEMALE) {
-                    col = controller.currentStickman.mFemaleHair.mColor;
+                if (controller.currentStickman.mType == Gender.TYPE.FEMALE)
+                {
+                    col = controller.currentStickman.mHair.mColor;
                     col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
-                    controller.currentStickman.mFemaleHair.mColor = col;
-                    controller.currentStickman.mFemaleHair.update();
-                } else {
-                    col = controller.currentStickman.mMaleHair.mColor;
+                    controller.currentStickman.mHair.mColor = col;
+                    controller.currentStickman.mHair.update();
+                } else
+                {
+                    col = controller.currentStickman.mHair.mColor;
                     col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());
-                    controller.currentStickman.mMaleHair.mColor = col;
-                    controller.currentStickman.mMaleHair.update();
+                    controller.currentStickman.mHair.mColor = col;
+                    controller.currentStickman.mHair.update();
                 }
 
             }
         });
     }
 
-    public static void bodyOpacityChanger(StickmanStageController controller, Slider bodyOpacitySlider) {
-        bodyOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void bodyOpacityChanger(StickmanStageController controller, Slider bodyOpacitySlider)
+    {
+        bodyOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mDownBody.getBodyMeshView().setVisible(false);
-                    controller.currentStickman.mUpperBody.getBodyMeshView().setVisible(false);
-                } else {
-                    controller.currentStickman.mDownBody.getBodyMeshView().setVisible(true);
-                    controller.currentStickman.mUpperBody.getBodyMeshView().setVisible(true);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    controller.currentStickman.mDownBody.getMeshView().setVisible(false);
+                    controller.currentStickman.mUpperBody.getMeshView().setVisible(false);
+                } else
+                {
+                    controller.currentStickman.mDownBody.getMeshView().setVisible(true);
+                    controller.currentStickman.mUpperBody.getMeshView().setVisible(true);
                 }
 
                 Color col = controller.currentStickman.mDownBody.mColor;
@@ -88,63 +114,67 @@ public class OpacityHelper {
         });
     }
 
-    public static void limbsOpacityChanger(StickmanStageController controller, Slider limbsOpacitySlider) {
-        limbsOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void limbsOpacityChanger(StickmanStageController controller, Slider limbsOpacitySlider)
+    {
+        limbsOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mNeck.getNeckMeshView().setVisible(false);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    controller.currentStickman.mNeck.getMeshView().setVisible(false);
 
-                    controller.currentStickman.mLeftUpperLeg.getLeftUpperLegMesh().setVisible(false);
-                    controller.currentStickman.mLeftForeLeg.getLeftForeLegMesh().setVisible(false);
+                    controller.currentStickman.mLeftUpperLeg.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftForeLeg.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftUpperArm.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftForeArm.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftWrist.getMeshView().setVisible(false);
 
-                    controller.currentStickman.mLeftUpperArm.getLeftUpperArmMesh().setVisible(false);
-                    controller.currentStickman.mLeftForeArm.getLeftForeArmMesh().setVisible(false);
-                    controller.currentStickman.mLeftWrist.getLeftWristMesh().setVisible(false);
+                    controller.currentStickman.mLeftFinger1.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftFinger2.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftFinger3.getMeshView().setVisible(false);
+                    controller.currentStickman.mLeftFinger4.getMeshView().setVisible(false);
 
-                    controller.currentStickman.mLeftFinger1.getLeftFinger1().setVisible(false);
-                    controller.currentStickman.mLeftFinger2.getLeftFinger2().setVisible(false);
-                    controller.currentStickman.mLeftFinger3.getLeftFinger3().setVisible(false);
-                    controller.currentStickman.mLeftFinger4.getLeftFinger4().setVisible(false);
+                    controller.currentStickman.mRightUpperLeg.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightForeLeg.getMeshView().setVisible(false);
 
-                    controller.currentStickman.mRightUpperLeg.getRightUpperLegMesh().setVisible(false);
-                    controller.currentStickman.mRightForeLeg.mRightForeLegMesh.setVisible(false);
+                    controller.currentStickman.mRightUpperArm.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightForeArm.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightWrist.getMeshView().setVisible(false);
 
-                    controller.currentStickman.mRightUpperArm.getRightpperArmMesh().setVisible(false);
-                    controller.currentStickman.mRightForeArm.getRightForeArmMesh().setVisible(false);
-                    controller.currentStickman.mRightWrist.getRightWristMesh().setVisible(false);
+                    controller.currentStickman.mRightFinger1.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightFinger2.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightFinger3.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightFinger4.getMeshView().setVisible(false);
+                } else
+                {
+                    controller.currentStickman.mNeck.getMeshView().setVisible(true);
 
-                    controller.currentStickman.mRightFinger1.getRightFinger1().setVisible(false);
-                    controller.currentStickman.mRightFinger2.getRightFinger2().setVisible(false);
-                    controller.currentStickman.mRightFinger3.getRightFinger3().setVisible(false);
-                    controller.currentStickman.mRightFinger4.getRightFinger4().setVisible(false);
-                } else {
-                    controller.currentStickman.mNeck.getNeckMeshView().setVisible(true);
+                    controller.currentStickman.mLeftUpperLeg.getMeshView().setVisible(true);
+                    controller.currentStickman.mLeftForeLeg.getMeshView().setVisible(true);
 
-                    controller.currentStickman.mLeftUpperLeg.getLeftUpperLegMesh().setVisible(true);
-                    controller.currentStickman.mLeftForeLeg.getLeftForeLegMesh().setVisible(true);
+                    controller.currentStickman.mLeftUpperArm.getMeshView().setVisible(true);
+                    controller.currentStickman.mLeftForeArm.getMeshView().setVisible(true);
+                    controller.currentStickman.mLeftWrist.getMeshView().setVisible(true);
 
-                    controller.currentStickman.mLeftUpperArm.getLeftUpperArmMesh().setVisible(true);
-                    controller.currentStickman.mLeftForeArm.getLeftForeArmMesh().setVisible(true);
-                    controller.currentStickman.mLeftWrist.getLeftWristMesh().setVisible(true);
+                    controller.currentStickman.mLeftFinger1.getMeshView().setVisible(true);
+                    controller.currentStickman.mLeftFinger2.getMeshView().setVisible(true);
+                    controller.currentStickman.mLeftFinger3.getMeshView().setVisible(true);
+                    controller.currentStickman.mLeftFinger4.getMeshView().setVisible(true);
 
-                    controller.currentStickman.mLeftFinger1.getLeftFinger1().setVisible(true);
-                    controller.currentStickman.mLeftFinger2.getLeftFinger2().setVisible(true);
-                    controller.currentStickman.mLeftFinger3.getLeftFinger3().setVisible(true);
-                    controller.currentStickman.mLeftFinger4.getLeftFinger4().setVisible(true);
+                    controller.currentStickman.mRightUpperLeg.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightForeLeg.getMeshView().setVisible(true);
 
-                    controller.currentStickman.mRightUpperLeg.getRightUpperLegMesh().setVisible(true);
-                    controller.currentStickman.mRightForeLeg.mRightForeLegMesh.setVisible(true);
+                    controller.currentStickman.mRightUpperArm.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightForeArm.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightWrist.getMeshView().setVisible(true);
 
-                    controller.currentStickman.mRightUpperArm.getRightpperArmMesh().setVisible(true);
-                    controller.currentStickman.mRightForeArm.getRightForeArmMesh().setVisible(true);
-                    controller.currentStickman.mRightWrist.getRightWristMesh().setVisible(true);
-
-                    controller.currentStickman.mRightFinger1.getRightFinger1().setVisible(true);
-                    controller.currentStickman.mRightFinger2.getRightFinger2().setVisible(true);
-                    controller.currentStickman.mRightFinger3.getRightFinger3().setVisible(true);
-                    controller.currentStickman.mRightFinger4.getRightFinger4().setVisible(true);
+                    controller.currentStickman.mRightFinger1.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightFinger2.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightFinger3.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightFinger4.getMeshView().setVisible(true);
                 }
 
                 Color col = controller.currentStickman.mNeck.mColor;
@@ -205,17 +235,22 @@ public class OpacityHelper {
         });
     }
 
-    public static void shoesOpacityChanger(StickmanStageController controller, Slider shoesOpacitySlider) {
-        shoesOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void shoesOpacityChanger(StickmanStageController controller, Slider shoesOpacitySlider)
+    {
+        shoesOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mLeftFoot.getLeftFootMeshView().setVisible(false);
-                    controller.currentStickman.mRightFoot.getRightFootMeshView().setVisible(false);
-                } else {
-                    controller.currentStickman.mLeftFoot.getLeftFootMeshView().setVisible(true);
-                    controller.currentStickman.mRightFoot.getRightFootMeshView().setVisible(true);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    controller.currentStickman.mLeftFoot.getMeshView().setVisible(false);
+                    controller.currentStickman.mRightFoot.getMeshView().setVisible(false);
+                } else
+                {
+                    controller.currentStickman.mLeftFoot.getMeshView().setVisible(true);
+                    controller.currentStickman.mRightFoot.getMeshView().setVisible(true);
                 }
 
                 Color col = controller.currentStickman.mLeftFoot.mColor;
@@ -230,17 +265,23 @@ public class OpacityHelper {
         });
     }
 
-    public static void lipsOpacityChanger(StickmanStageController controller, Slider lipsOpacitySlider) {
-        lipsOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void lipsOpacityChanger(StickmanStageController controller, Slider lipsOpacitySlider)
+    {
+        lipsOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mMouth.currentDownLipPolygon.setVisible(false);
-                    controller.currentStickman.mMouth.currentUpperLipPolygon.setVisible(false);
-                } else {
-                    controller.currentStickman.mMouth.currentDownLipPolygon.setVisible(true);
-                    controller.currentStickman.mMouth.currentUpperLipPolygon.setVisible(true);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                Mouth3D mouth3D = (Mouth3D) controller.currentStickman.mMouth;
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    mouth3D.currentDownLipPolygon.setVisible(false);
+                    mouth3D.currentUpperLipPolygon.setVisible(false);
+                } else
+                {
+                    mouth3D.currentDownLipPolygon.setVisible(true);
+                    mouth3D.currentUpperLipPolygon.setVisible(true);
                 }
 
                 Color col = controller.currentStickman.mMouth.mColor;
@@ -253,27 +294,34 @@ public class OpacityHelper {
         });
     }
 
-    public static void eyeOpacityChanger(StickmanStageController controller, Slider eyeOpacitySlider) {
-        eyeOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void eyeOpacityChanger(StickmanStageController controller, Slider eyeOpacitySlider)
+    {
+        eyeOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mLeftEye.bigPupile.setVisible(false);
-                    controller.currentStickman.mLeftEye.smallPupile.setVisible(false);
-                    controller.currentStickman.mLeftEye.border.setVisible(false);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                LeftEye3D leftEye3D = (LeftEye3D) controller.currentStickman.mLeftEye;
+                RightEye3D rightEye3D = (RightEye3D) controller.currentStickman.mRightEye;
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    leftEye3D.bigPupile.setVisible(false);
+                    leftEye3D.smallPupile.setVisible(false);
+                    leftEye3D.border.setVisible(false);
 
-                    controller.currentStickman.mRightEye.bigPupile.setVisible(false);
-                    controller.currentStickman.mRightEye.smallPupile.setVisible(false);
-                    controller.currentStickman.mRightEye.border.setVisible(false);
-                } else {
-                    controller.currentStickman.mLeftEye.bigPupile.setVisible(true);
-                    controller.currentStickman.mLeftEye.smallPupile.setVisible(true);
-                    controller.currentStickman.mLeftEye.border.setVisible(true);
+                    rightEye3D.bigPupile.setVisible(false);
+                    rightEye3D.smallPupile.setVisible(false);
+                    rightEye3D.border.setVisible(false);
+                } else
+                {
+                    leftEye3D.bigPupile.setVisible(true);
+                    leftEye3D.smallPupile.setVisible(true);
+                    leftEye3D.border.setVisible(true);
 
-                    controller.currentStickman.mRightEye.bigPupile.setVisible(true);
-                    controller.currentStickman.mRightEye.smallPupile.setVisible(true);
-                    controller.currentStickman.mRightEye.border.setVisible(true);
+                    rightEye3D.bigPupile.setVisible(true);
+                    rightEye3D.smallPupile.setVisible(true);
+                    rightEye3D.border.setVisible(true);
                 }
 
                 Color col = controller.currentStickman.mLeftEye.mColor;
@@ -287,11 +335,14 @@ public class OpacityHelper {
         });
     }
 
-    public static void browOpacityChanger(StickmanStageController controller, Slider browOpacitySlider) {
-        browOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void browOpacityChanger(StickmanStageController controller, Slider browOpacitySlider)
+    {
+        browOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
 
                 Color col = controller.currentStickman.mLeftEyebrow.mColor;
 //                Color col1 = controller.currentStickman.mNose.mColor;
@@ -312,15 +363,20 @@ public class OpacityHelper {
 
     }
 
-    public static void noseOpacityChanger(StickmanStageController controller, Slider noseOpacitySlider) {
-        noseOpacitySlider.valueProperty().addListener(new ChangeListener<Number>() {
+    public static void noseOpacityChanger(StickmanStageController controller, Slider noseOpacitySlider)
+    {
+        noseOpacitySlider.valueProperty().addListener(new ChangeListener<Number>()
+        {
 
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (newValue.doubleValue() <= 0.1) {
-                    controller.currentStickman.mNose.getNose().setVisible(false);
-                } else {
-                    controller.currentStickman.mNose.getNose().setVisible(true);
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+            {
+                if (newValue.doubleValue() <= 0.1)
+                {
+                    controller.currentStickman.mNose.getMeshView().setVisible(false);
+                } else
+                {
+                    controller.currentStickman.mNose.getMeshView().setVisible(true);
                 }
                 Color col = controller.currentStickman.mNose.mColor;
                 col = new Color(col.getRed(), col.getGreen(), col.getBlue(), newValue.doubleValue());

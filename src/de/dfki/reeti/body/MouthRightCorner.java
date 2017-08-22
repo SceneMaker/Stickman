@@ -1,36 +1,30 @@
 package de.dfki.reeti.body;
 
+import de.dfki.common.part.Part3D;
 import de.dfki.reeti.animationlogic.AnimatorReeti;
-
-import java.awt.geom.Point2D;
-
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.QuadCurveTo;
 
+import java.awt.geom.Point2D;
+
 /**
  * @author Beka Aptsiauri
  */
-public class MouthRightCorner extends Parts
+public class MouthRightCorner extends PartReeti
 {
 
-    public enum SHAPE
-    {
-        DEFAULT, RIGHTCORNERACTION
-    }
-
+    public MouthRightCorner.SHAPE mShape = MouthRightCorner.SHAPE.DEFAULT;
     private Path mLips;
     private Point2D rightCorner;
 
     private double rightCornerRegulator = 0;
     private double recordRightCornerRegulator;
 
-    public MouthRightCorner.SHAPE mShape = MouthRightCorner.SHAPE.DEFAULT;
-
-    public MouthRightCorner(Mouth mouth)
+    public MouthRightCorner(Part3D mouth)
     {
-        mLips = mouth.getLips();
-        rightCorner = mouth.getRightCorner();
+        mLips = ((Mouth) mouth).getLips();
+        rightCorner = ((Mouth) mouth).getRightCorner();
     }
 
     @Override
@@ -80,5 +74,10 @@ public class MouthRightCorner extends Parts
     public void setRightCornerRegulator(double rightCornerRegler)
     {
         this.rightCornerRegulator = rightCornerRegler;
+    }
+
+    public enum SHAPE
+    {
+        DEFAULT, RIGHTCORNERACTION
     }
 }

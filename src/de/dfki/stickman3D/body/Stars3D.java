@@ -1,6 +1,7 @@
 package de.dfki.stickman3D.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
+import de.dfki.common.part.Part3D;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
@@ -11,27 +12,20 @@ import java.net.URL;
 /**
  * Autor Beka
  */
-public class Stars3D extends BodyPartFX
+public class Stars3D extends PartStickman3D
 {
 
-    public enum SHAPE
-    {
-
-        DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADEOUT, STARSFADEIN
-    }
-
+    public Stars3D.SHAPE mShape = Stars3D.SHAPE.DEFAULT;
     private MeshView mStarBig;
     private MeshView mStarMiddle;
     private MeshView mStarSmall;
     private PhongMaterial material;
 
-    public Stars3D.SHAPE mShape = Stars3D.SHAPE.DEFAULT;
-
-    public Stars3D(UpperBody3D body)
+    public Stars3D(Part3D body)
     {
         mLength = 150;
         mSize = new Dimension(120, mLength);
-        mStart = body.getLeftLegStartPostion();
+        mStart = ((UpperBody3D) body).getDownBodyPosition();
         mColor = Color.rgb(255, 255, 0, 0.0);
 
         ColModelImporter imorter = new ColModelImporter();
@@ -83,7 +77,7 @@ public class Stars3D extends BodyPartFX
 
         mStarMiddle.setTranslateX(50);
         mStarMiddle.setTranslateY(-100);
-        mStarMiddle.setTranslateZ(-15);
+        mStarMiddle.setTranslateZ(-50);
 
         mStarSmall.setTranslateX(5);
         mStarSmall.setTranslateY(-145);
@@ -144,6 +138,12 @@ public class Stars3D extends BodyPartFX
         mStarBig.setMaterial(material);
         mStarMiddle.setMaterial(material);
         mStarSmall.setMaterial(material);
+    }
+
+    public enum SHAPE
+    {
+
+        DEFAULT, SAYBYE, SAYHI, STARSDISAPPEAR, STARSFADEOUT, STARSFADEIN
     }
 
 }

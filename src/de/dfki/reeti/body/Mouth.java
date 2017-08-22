@@ -1,37 +1,26 @@
 package de.dfki.reeti.body;
 
+import de.dfki.common.part.Part3D;
 import de.dfki.reeti.animationlogic.AnimatorReeti;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-import javafx.scene.shape.ClosePath;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.StrokeLineJoin;
-
 /**
  * @author Beka Aptsiauri
  */
-public class Mouth extends Parts
+public class Mouth extends PartReeti
 {
 
-    public enum SHAPE
-    {
-        DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN,
-        ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY
-    }
-
-
-    private Path mLips;
-
+    private final int mouthLength = 32;
     public Point2D leftCorner;
     public Point2D rightCorner;
     public Point2D upperPoint;
     public Point2D downPoint;
-    private final int mouthLength = 32;
+    public Mouth.SHAPE mShape = Mouth.SHAPE.DEFAULT;
+    private Path mLips;
     private boolean openMouth = false;
 
     private double rightCornerRegulator = 0;
@@ -44,14 +33,12 @@ public class Mouth extends Parts
     private double recordUpRegulator;
     private double recordDownRegulator;
 
-    public Mouth.SHAPE mShape = Mouth.SHAPE.DEFAULT;
-
-    public Mouth(Head head)
+    public Mouth(Part3D head)
     {
         mSize = new Dimension(mLength * 2, 5);
         mColor = Color.DARKGREY;
         mLips = new Path();
-        mStart = head.getMouthPostion();
+        mStart = ((Head) head).getMouthPostion();
 
         rightCorner = new Point2D.Double(-9, 35);
         leftCorner = new Point2D.Double(rightCorner.getX() + mouthLength, rightCorner.getY());
@@ -59,7 +46,7 @@ public class Mouth extends Parts
         downPoint = new Point2D.Double(upperPoint.getX(), upperPoint.getY());
 
         init();
-        head.getHeadGroup().getChildren().addAll(mLips);
+        ((Head) head).getHeadGroup().getChildren().addAll(mLips);
     }
 
     @Override
@@ -294,6 +281,12 @@ public class Mouth extends Parts
     public Point2D getDownPoint()
     {
         return downPoint;
+    }
+
+    public enum SHAPE
+    {
+        DEFAULT, MOUTHACTION, MOUTHACTIONEND, LEFTCORNERACTION, LEFTCORNERACTIONEND, RIGHTCORNERACTION, RIGHTCORNERACTIONEND, OPEN,
+        ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY
     }
 
 

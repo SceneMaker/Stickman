@@ -5,77 +5,82 @@
  */
 package de.dfki.stickman3D.animation.gesture;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickman3D.Stickman3D;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
  * @author Beka
- *
  */
-public class UnsynchronizedConversationHandsStart extends AbstractConversationHands {
+public class UnsynchronizedConversationHandsStart extends AbstractConversationHands
+{
 
-    private  static   boolean movementStarted = false;
+    private static boolean movementStarted = false;
 
-    public UnsynchronizedConversationHandsStart(Stickman3D sm, int duration, boolean block) {
+    public UnsynchronizedConversationHandsStart(Stickman3D sm, int duration, boolean block)
+    {
         super(sm, duration, block);
         intensity = 10;
     }
-    public UnsynchronizedConversationHandsStart(Stickman3D sm, int duration, boolean block, HashMap<String, String> extraParams) {
+
+    public UnsynchronizedConversationHandsStart(Stickman3D sm, int duration, boolean block, HashMap<String, String> extraParams)
+    {
         super(sm, duration, block, extraParams);
     }
 
     @Override
-    public void playAnimation() {
-        if(!movementStarted) {
-            mAnimationPartFX = new ArrayList<>();
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "rotate", -38));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "yrotate", 13));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "zrotate", -18));
+    public void playAnimation()
+    {
+        if (!movementStarted)
+        {
+            mAnimationPart = new ArrayList<>();
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftUpperArm, "rotate", -38));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftUpperArm, "yrotate", 13));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftUpperArm, "zrotate", -18));
 
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "rotate", -76));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "yrotate", 35));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "zrotate", START_LEFT_FORE_ARM_POSITION));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "rotate", -76));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "yrotate", 35));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "zrotate", START_LEFT_FORE_ARM_POSITION));
 
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "rotate", 0));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "yrotate", -54));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftWrist, "zrotate", 7));
-
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftWrist, "rotate", 0));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftWrist, "yrotate", -54));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftWrist, "zrotate", 7));
 
 
             //Right Part
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "rotate", -56));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "yrotate", 28));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightUpperArm, "zrotate", 27));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightUpperArm, "rotate", -56));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightUpperArm, "yrotate", 28));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightUpperArm, "zrotate", 27));
 
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "rotate", -19));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "yrotate", 27));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightForeArm, "zrotate", START_RIGHT_FORE_ARM_POSITION));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightForeArm, "rotate", -19));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightForeArm, "yrotate", 27));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightForeArm, "zrotate", START_RIGHT_FORE_ARM_POSITION));
 
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "rotate", -8));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "yrotate", 34));
-            mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightWrist, "zrotate", 0));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightWrist, "rotate", -8));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightWrist, "yrotate", 34));
+            mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightWrist, "zrotate", 0));
             playAnimationPart(200);
             pauseAnimation(mDuration);
             movementStarted = true;
         }
 
-        mAnimationPartFX = new ArrayList<>();
+        mAnimationPart = new ArrayList<>();
         moveConversationHands();
         playAnimationPart(200);
     }
 
 
-    protected int getLeftArmMovement(){
+    protected int getLeftArmMovement()
+    {
         int leftForeArmZ;
         leftForeArmZ = START_LEFT_FORE_ARM_POSITION - getMovementDistance();
         return leftForeArmZ;
     }
 
-    protected int getRightArmMovement(){
+    protected int getRightArmMovement()
+    {
         int rightForeArmZ;
         rightForeArmZ = START_RIGHT_FORE_ARM_POSITION + getMovementDistance();
         return rightForeArmZ;

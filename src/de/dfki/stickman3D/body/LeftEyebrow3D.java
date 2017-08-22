@@ -5,7 +5,9 @@
  */
 package de.dfki.stickman3D.body;
 
-import de.dfki.common.Gender;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.part.Part3D;
+import de.dfki.common.util.Preferences;
 import de.dfki.stickman3D.mimic.util.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
@@ -15,56 +17,23 @@ import java.awt.*;
 /**
  * @author Beka Aptsiauri
  */
-public class LeftEyebrow3D extends BodyPartFX
+public class LeftEyebrow3D extends Brow
 {
-
-    public enum SHAPE
+    public LeftEyebrow3D(Part3D head)
     {
-        DEFAULT, FADEIN, FADEOUT, ANGRY, ANGRYEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, SURPRISED, SURPRISEDEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, SAD, SADEND
-    }
+        super(head);
+        mStart = mHead.getLeftEyebrowPosition();
 
-    Head3D mHead;
 
-    Polygon currentPolygon;
-
-    public LeftEyebrow3D.SHAPE mShape = LeftEyebrow3D.SHAPE.DEFAULT;
-
-    public LeftEyebrow3D(Head3D head)
-    {
-        mHead = head;
-        mSize = new Dimension(mLength, mLength);
-
-        if (mHead.getStickman().mType == Gender.TYPE.MALE)
-        {
-            mColor = Color.rgb(88, 44, 13, 1);
-        } else
-        {
-            mColor = Color.rgb(204, 163, 0, 1);
-        }
-
-        currentPolygon = new Polygon();
-
-        mStart = mHead.getLeftEyebrowPostion();
-
+        this.getChildren().add(currentPolygon);
+        mHead.getChildren().add(this);
         init();
-
-        mHead.getChildren().add(currentPolygon);
-    }
-
-    @Override
-    public void init()
-    {
-        super.init();
-        currentPolygon.setTranslateX(mStart.x + 9);
-        currentPolygon.setTranslateY(mStart.y + 85);
-        currentPolygon.setTranslateZ(-17);
     }
 
     @Override
     public void setShape(String s)
     {
-        SHAPE shape = LeftEyebrow3D.SHAPE.valueOf(s);
-        mShape = (shape != null) ? shape : LeftEyebrow3D.SHAPE.DEFAULT;
+        mShape = SHAPE.valueOf(s);
     }
 
     @Override
@@ -262,7 +231,7 @@ public class LeftEyebrow3D extends BodyPartFX
 
     protected void recordColor()
     {
-        if (mHead.getStickman().setCharacterInvisible == false)
+        if (!mHead.getStickman().setCharacterInvisible)
         {
             mColorRecorder = mColor;
         }

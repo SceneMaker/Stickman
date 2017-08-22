@@ -1,30 +1,31 @@
 package de.dfki.stickmanFX.animation.headfx;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
-import de.dfki.stickmanFX.animationlogic.AnimationFX;
+import de.dfki.stickmanFX.animationlogic.AnimationStickman2D;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Patrick Gebhard
- *
  */
-public class LookLeft extends AnimationFX {
+public class LookLeft extends AnimationStickman2D
+{
 
-    public LookLeft(StickmanFX sm, int duration, boolean block) {
+    public LookLeft(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         int translationUnit = 3;
 
         // look left
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mLeftEyeFX, "shape", "LOOKLEFT"));
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mRightEyeFX, "shape", "LOOKLEFT"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mLeftEyeFX, "shape", "LOOKLEFT"));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mRightEyeFX, "shape", "LOOKLEFT"));
         playAnimationPart(20);
 
 //		// blink up

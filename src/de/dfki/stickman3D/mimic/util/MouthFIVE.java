@@ -2,10 +2,13 @@ package de.dfki.stickman3D.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class MouthFIVE {
+public class MouthFIVE
+{
 
-    public static Polygon modifyUpperLip(Polygon currentUpperLipPolygone, float step) {
-        if (step == 20 || step == 0) {
+    public static Polygon modifyUpperLip(Polygon currentUpperLipPolygone, float step)
+    {
+        if (step == 20 || step == 0)
+        {
             currentUpperLipPolygone.getPoints().clear();
             currentUpperLipPolygone.getPoints().addAll(
                     // x 	y 
@@ -26,9 +29,11 @@ public class MouthFIVE {
         return currentUpperLipPolygone;
     }
 
-    public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step) {
+    public static Polygon modifyDownLip(Polygon currentDownLipPolygon, float step)
+    {
 
-        if (step == 20 || step == 0) {
+        if (step == 20 || step == 0)
+        {
             currentDownLipPolygon.getPoints().clear();
             currentDownLipPolygon.getPoints().addAll(
                     // x 	y 

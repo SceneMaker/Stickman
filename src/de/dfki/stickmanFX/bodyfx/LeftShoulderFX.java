@@ -5,25 +5,19 @@
  */
 package de.dfki.stickmanFX.bodyfx;
 
-import java.awt.Dimension;
-import java.awt.Point;
-
-import de.dfki.common.Gender;
-import de.dfki.stickmanSwing.StickmanSwing;
+import de.dfki.common.enums.Gender;
+import de.dfki.common.part.Part2D;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.QuadCurveTo;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.shape.*;
 import javafx.scene.transform.Affine;
 
+import java.awt.*;
+
 /**
- *
  * @author Beka
- *
  */
-public class LeftShoulderFX extends BodyPartFX {
+public class LeftShoulderFX extends PartStickman2D
+{
 
     BodyFX mBodyFX;
 
@@ -35,11 +29,14 @@ public class LeftShoulderFX extends BodyPartFX {
 
     Path mShoulder;
 
-    public LeftShoulderFX(BodyFX body) {
-        mBodyFX = body;
-        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE) {
+    public LeftShoulderFX(Part2D body)
+    {
+        mBodyFX = (BodyFX) body;
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mType == Gender.TYPE.MALE)
+        {
             mShoulderLength = 25;
-        } else {
+        } else
+        {
             mShoulderLength = 15;
         }
         mColor = Color.rgb(80, 80, 80);
@@ -54,25 +51,32 @@ public class LeftShoulderFX extends BodyPartFX {
         calculate(0);
     }
 
-    public Point getLeftShoulderEndPosition() {
+    public Point getLeftShoulderEndPosition()
+    {
         //return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() - 1), (int) mShoulder.boundsInParentProperty().get().getMaxY() - 1) : new Point(0, 0);
-        if (mRotation >= 0 && mRotation <= 90) {
+        if (mRotation >= 0 && mRotation <= 90)
+        {
             return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMaxY()) : new Point(0, 0);
-        } else if (mRotation > 90 && mRotation <= 180) {
+        } else if (mRotation > 90 && mRotation <= 180)
+        {
             return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMinX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
-        } else if (mRotation < 0 && mRotation >= -90) {
+        } else if (mRotation < 0 && mRotation >= -90)
+        {
             return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX() - 1), (int) mShoulder.boundsInParentProperty().get().getMaxY() - 2) : new Point(0, 0);
-        } else {
+        } else
+        {
             return (mShoulder != null) ? new Point((int) (mShoulder.boundsInParentProperty().get().getMaxX()), (int) mShoulder.boundsInParentProperty().get().getMinY()) : new Point(0, 0);
         }
 
     }
 
     @Override
-    public void calculate(int step) {
+    public void calculate(int step)
+    {
         mStart = mBodyFX.getLeftArmStartPostion();
         mEnd = new Point(mStart.x, mStart.y + mShoulderLength);
-        clearChildren(this);
+        this.getChildren().clear();
+        ;
 
         mShoulder.getElements().add(new MoveTo(mStart.x, mStart.y + 2));
         mShoulder.getElements().add(new QuadCurveTo(mStart.x, (mStart.y + mEnd.y) / 2, mEnd.x, mEnd.y));
@@ -86,34 +90,48 @@ public class LeftShoulderFX extends BodyPartFX {
         update();
 
         //calculate and update bodyfx (left shoulder area)
-        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftShoulderFX != null) {
-            mBodyFX.calculate();
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mLeftShoulderFX != null)
+        {
+            mBodyFX.calculate(0);
         }
     }
 
     @Override
-    public void update() {
+    public void setShape(String s)
+    {
+
+    }
+
+    @Override
+    public void update()
+    {
         //create();
         // draw outlines
 
 //        Color currenColor = Color.rgb(80, 80, 80);
-        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false) {
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == false)
+        {
             mColorRecorder = mColor;
         }
-        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true) {
+        if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.setCharacterInvisible == true)
+        {
             if (mBodyFX.mNeckFX.mHeadFX.mStickmanFX.fadeControler == true) //Added by Robbie
             {
                 int fadeFactor = mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep * 12;
-                if (fadeFactor <= 24) {
+                if (fadeFactor <= 24)
+                {
                     fadeFactor = 0;
                 }
                 mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));
-            } else {
+            } else
+            {
                 int fadeFactor = (20 - mBodyFX.mNeckFX.mHeadFX.mStickmanFX.mMouthFX.mShapeAnimationStep) * 12;
-                if (fadeFactor >= 216) {
+                if (fadeFactor >= 216)
+                {
                     mColor = mColorRecorder;
-                } else {
+                } else
+                {
                     mColor = Color.rgb(80, 80, 80, (fadeFactor * 100 / 255) / 100f);
                 }
                 //g2.setColor(new Color(80, 80, 80,fadeFactor));

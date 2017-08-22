@@ -10,14 +10,17 @@ import java.io.ObjectOutputStream;
 /**
  * @author Not me
  */
-public abstract class CopyTool {
+public abstract class CopyTool
+{
 
     // The Logger Instance
     private final static LOGDefaultLogger sLogger = LOGDefaultLogger.getInstance();
 
     // Return A Deep Copy 
-    public final static Copyable copy(final Copyable obj) {
-        try {
+    public final static Copyable copy(final Copyable obj)
+    {
+        try
+        {
             // Write Out The Object
             final ByteArrayOutputStream bos = new ByteArrayOutputStream();
             final ObjectOutputStream oos = new ObjectOutputStream(bos);
@@ -30,7 +33,8 @@ public abstract class CopyTool {
             final Copyable copy = (Copyable) ois.readObject();
             // Return The Copy Now
             return copy;
-        } catch (Exception exc) {
+        } catch (Exception exc)
+        {
             // Print Some Information
             sLogger.failure(exc.toString());
             // Return The Null Object

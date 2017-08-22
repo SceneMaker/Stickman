@@ -8,45 +8,44 @@ package de.dfki.reeti.animation.face;
 import de.dfki.reeti.Reeti;
 import de.dfki.reeti.ReetiStageController;
 import de.dfki.reeti.animationlogic.AnimationReeti;
-import de.dfki.reeti.animationlogic.AnimationContentReeti;
-
-import java.util.ArrayList;
-import javafx.scene.paint.Color;
 
 /**
- *
  * @author Beka
- *
  */
-public class Default extends AnimationReeti {
+public class Default extends AnimationReeti
+{
 
-    public Default() {
+    public Default()
+    {
         mAnimType = ANIMTYPE.ON;
     }
 
-    public Default(Reeti sm, int duration, boolean block) {
+    public Default(Reeti sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
-        mReeti.neckRotat(50);
-        mReeti.neckPan(50);
-        mReeti.neckTilt(50);
-        mReeti.rightLC(50);        
-        mReeti.leftLC(50);
-        mReeti.topLip(0); 
-        mReeti.bottomLip(100);
-        mReeti.rightEyePan(60);
-        mReeti.rightEyeTilt(42);
-        mReeti.leftEyePan(40);
-        mReeti.leftEyeTilt(42);
-        mReeti.leftEyeLid(100);
-        mReeti.rightEyeLid(100);
-        mReeti.rightEar(50);
-        mReeti.leftEar(50);
-        mReeti.setLedColor("stop");
-        if (ReetiStageController.currentRadioButton != null) {
+    public void playAnimation()
+    {
+        ((Reeti) agent).neckRotat(50);
+        ((Reeti) agent).neckPan(50);
+        ((Reeti) agent).neckTilt(50);
+        ((Reeti) agent).rightLC(50);
+        ((Reeti) agent).leftLC(50);
+        ((Reeti) agent).topLip(0);
+        ((Reeti) agent).bottomLip(100);
+        ((Reeti) agent).rightEyePan(60);
+        ((Reeti) agent).rightEyeTilt(42);
+        ((Reeti) agent).leftEyePan(40);
+        ((Reeti) agent).leftEyeTilt(42);
+        ((Reeti) agent).leftEyeLid(100);
+        ((Reeti) agent).rightEyeLid(100);
+        ((Reeti) agent).rightEar(50);
+        ((Reeti) agent).leftEar(50);
+        ((Reeti) agent).setLedColor("stop");
+        if (ReetiStageController.currentRadioButton != null)
+        {
             ReetiStageController.currentRadioButton.setSelected(false);
         }
     }

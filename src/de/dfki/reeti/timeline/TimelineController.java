@@ -35,40 +35,28 @@ import java.util.ResourceBundle;
 public class TimelineController implements Initializable
 {
 
-    @FXML
-    private AnchorPane root;
-
-    @FXML
-    private ComboBox<String> animationCombo;
-
-    @FXML
-    private Button playButton;
-
-    @FXML
-    private ScrollPane animationScrollPane;
-
-    @FXML
-    private GridPane animationGridPane;
-
-    @FXML
-    private Line timeline;
-
-    private boolean isAutomaticScrollStarted = false;
-    private boolean playButtonON = false;
-
-    private int timelinePos = 0;
-
-    private Animation autoScrollAnimation = null;
-
-    private Reeti reeti = null;
-    private Sequence sequence = null;
-    private SequenceBlock sequenceBlock = null;
-
     private static final int TIMELINEWIDTH = 5980;
     private static final int AUTOSCROLL_START_POS = 700;
     private static int sOffset = 0;
-
-
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private ComboBox<String> animationCombo;
+    @FXML
+    private Button playButton;
+    @FXML
+    private ScrollPane animationScrollPane;
+    @FXML
+    private GridPane animationGridPane;
+    @FXML
+    private Line timeline;
+    private boolean isAutomaticScrollStarted = false;
+    private boolean playButtonON = false;
+    private int timelinePos = 0;
+    private Animation autoScrollAnimation = null;
+    private Reeti reeti = null;
+    private Sequence sequence = null;
+    private SequenceBlock sequenceBlock = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -76,7 +64,7 @@ public class TimelineController implements Initializable
         File rmdlFolder = new File("rmdl_files");
         File[] listOfRmdlFiles = rmdlFolder.listFiles();
         final File[] selectedFile = {null};
-        for(int i = 0; i < listOfRmdlFiles.length; i++)
+        for (int i = 0; i < listOfRmdlFiles.length; i++)
         {
             animationCombo.getItems().add(listOfRmdlFiles[i].getName());
         }
@@ -95,7 +83,7 @@ public class TimelineController implements Initializable
 
             animationGridPane.getChildren().clear();
 
-            if(sequence.getPoses().getFirst().getStartTime() < 2)
+            if (sequence.getPoses().getFirst().getStartTime() < 2)
                 sOffset = 2;
             else
                 sOffset = 0;
@@ -105,7 +93,6 @@ public class TimelineController implements Initializable
             while (iterator.hasNext())
                 sequenceBlock.poseList.add(iterator.next());
         });
-
 
 
         playButton.setOnMouseClicked(event ->
@@ -131,16 +118,16 @@ public class TimelineController implements Initializable
 
                 while (timelinePos <= TIMELINEWIDTH && playButtonON)
                 {
-                    for(Pose pose : sequenceBlock.poseList)
+                    for (Pose pose : sequenceBlock.poseList)
                     {
 
-                        if(timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime() + sOffset))
+                        if (timeline.getTranslateX() == Converter.SecondToPixel(pose.getStartTime() + sOffset))
                         {
                             startMotors(pose);
                         }
 
                         //Back to neutral
-                        if(timeline.getTranslateX()
+                        if (timeline.getTranslateX()
                                 == Converter.SecondToPixel(pose.getStartTime() + pose.getDuration().getTimeToReachPose())
                                 && pose.isBackToNeutralOn())
                         {
@@ -148,7 +135,7 @@ public class TimelineController implements Initializable
                         }
 
                         //stop and reset timeline and autoscroll
-                        if(timeline.getTranslateX() >= Converter.SecondToPixel(sequence.getProperty().getDuration() + 2))
+                        if (timeline.getTranslateX() >= Converter.SecondToPixel(sequence.getProperty().getDuration() + 2))
                         {
                             timeline.setTranslateX(0);
                             timelinePos = 0;
@@ -157,8 +144,7 @@ public class TimelineController implements Initializable
                             autoScrollAnimation = null;
                             animationScrollPane.setHvalue(0.0);
                             isAutomaticScrollStarted = false;
-                        }
-                        else
+                        } else
                         {
                             if (timelinePos >= AUTOSCROLL_START_POS && !isAutomaticScrollStarted)
                             {
@@ -244,21 +230,21 @@ public class TimelineController implements Initializable
     private void startMotors(Pose pose)
     {
         Movement motorMovement = pose.getMotorsMovement();
-        reeti.rightEar((int)motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.leftEar((int)motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.rightEyeLid((int)motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.leftEyeLid((int)motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.rightEyeTilt((int)motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.leftEyeTilt((int)motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.rightEyePan((int)motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.leftEyePan((int)motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.neckPan((int)motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.neckRotat((int)motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.neckTilt((int)motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEar((int) motorMovement.getRightEar(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEar((int) motorMovement.getLeftEar(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEyeLid((int) motorMovement.getRightEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEyeLid((int) motorMovement.getLeftEyeLid(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEyeTilt((int) motorMovement.getRightEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEyeTilt((int) motorMovement.getLeftEyeTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightEyePan((int) motorMovement.getRightEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftEyePan((int) motorMovement.getLeftEyePan(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.neckPan((int) motorMovement.getNeckPan(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.neckRotat((int) motorMovement.getNeckRotat(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.neckTilt((int) motorMovement.getNeckTilt(), pose.getDuration().getTimeToReachPose() + sOffset);
         reeti.setLedColor(motorMovement.getColor());
-        reeti.leftLC((int)motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.rightLC((int)motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.topLip((int)motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose() + sOffset);
-        reeti.bottomLip((int)motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.leftLC((int) motorMovement.getLeftLC(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.rightLC((int) motorMovement.getRightLC(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.topLip((int) motorMovement.getTopLip(), pose.getDuration().getTimeToReachPose() + sOffset);
+        reeti.bottomLip((int) motorMovement.getBottomLip(), pose.getDuration().getTimeToReachPose() + sOffset);
     }
 }

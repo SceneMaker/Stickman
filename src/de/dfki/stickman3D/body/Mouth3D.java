@@ -1,59 +1,52 @@
 package de.dfki.stickman3D.body;
 
+import de.dfki.common.part.Part3D;
+import de.dfki.common.util.Preferences;
 import de.dfki.stickman3D.mimic.util.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Polygon;
-
-import java.awt.*;
-
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.QuadCurveTo;
+
+import java.awt.*;
 
 /**
  * @author Beka Aptsiauri
  */
-public class Mouth3D extends BodyPartFX
+public class Mouth3D extends PartStickman3D
 {
-
-    public enum SHAPE
-    {
-        DEFAULT, FADEIN, FADEOUT, SMILE, SMILEEND, SAD, SADEND, ANGRY, ANGRYEND, ANGRYSMALLMOUTH, ANGRYSMALLMOUTHEND, SURPRISED, SURPRISEDEND, HAPPY, HAPPYEND, DISGUSTED, DISGUSTEDEND, CONTEMPT, CONTEMPTEND, EXCITED, EXCITEDEND, EMBARRASSED, EMBARRASSEDEND, FEAR, FEAREND, O, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, NINETEEN, TWENTY,
-    }
-
-    private Head3D mHead;
 
     public Polygon currentDownLipPolygon;
     public Polygon currentUpperLipPolygon;
-
     public Mouth3D.SHAPE mShape = Mouth3D.SHAPE.DEFAULT;
+    private Head3D mHead;
 
-    public Mouth3D(Head3D head)
+    public Mouth3D(Part3D head)
     {
-        mHead = head;
-        mSize = new Dimension(mLength * 2, 5);
+        mHead = (Head3D) head;
+        mSize = new Dimension(Preferences.MOUTH_WIDTH, Preferences.MOUTH_HEIGHT * 2);
+        mStart = mHead.getMouthPosition();
         mColor = Color.rgb(230, 174, 161, 1.0);
 
         currentUpperLipPolygon = new Polygon();
         currentDownLipPolygon = new Polygon();
-        mStart = mHead.getMouthPostion();
+        currentUpperLipPolygon.setTranslateY(Preferences.MOUTH_HEIGHT);
+        currentDownLipPolygon.setTranslateY(Preferences.MOUTH_HEIGHT);
+        this.getChildren().addAll(currentUpperLipPolygon, currentDownLipPolygon);
 
         init();
 
-        mHead.getChildren().addAll(currentUpperLipPolygon, currentDownLipPolygon);
+        mHead.getChildren().add(this);
     }
 
     @Override
     public void init()
     {
         super.init();
-        currentUpperLipPolygon.setTranslateX(mStart.x - 15);
-        currentUpperLipPolygon.setTranslateY(mStart.y + 95);
-        currentUpperLipPolygon.setTranslateZ(-17);
-
-        currentDownLipPolygon.setTranslateX(mStart.x - 15);
-        currentDownLipPolygon.setTranslateY(mStart.y + 94);
-        currentDownLipPolygon.setTranslateZ(-17);
+        this.setTranslateX(mStart.x);
+        this.setTranslateY(mStart.y);
+        this.setTranslateZ(Preferences.FACE_PARTS_Z_POS);
     }
 
     @Override
@@ -86,11 +79,8 @@ public class Mouth3D extends BodyPartFX
                 currentDownLipPolygon = MouthDEFAULT.modifyDownLip(currentDownLipPolygon, step);
                 currentUpperLipPolygon.setFill(mColor);
                 currentDownLipPolygon.setFill(mColor);
-                if (mHead.getChildren().size() >= 10)
-                {
-                    mHead.getChildren().set(9, currentUpperLipPolygon);
-                    mHead.getChildren().set(10, currentDownLipPolygon);
-                }
+                this.getChildren().set(0, currentUpperLipPolygon);
+                this.getChildren().set(1, currentDownLipPolygon);
 
                 break;
 
@@ -324,8 +314,8 @@ public class Mouth3D extends BodyPartFX
 
             case ONE:
                 upperLip = new Path();
-                x = mStart.x - 11;
-                y = mStart.y + 95;
+                x = 4;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -339,8 +329,8 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 12, y + 5, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
             case SIX:
             case FOURTEEN:
             case NINETEEN:
@@ -348,8 +338,8 @@ public class Mouth3D extends BodyPartFX
 
             case TWO:
                 upperLip = new Path();
-                x = mStart.x - 11;
-                y = mStart.y + 95;
+                x = 4;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -363,14 +353,14 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 12, y + 15, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
                 break;
 
             case THREE:
                 upperLip = new Path();
-                x = mStart.x - 8;
-                y = mStart.y + 95;
+                x = 7;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -384,15 +374,15 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 9, y + 12, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
             case TWENTY:
                 break;
 
             case FOUR:
                 upperLip = new Path();
-                x = mStart.x - 11;
-                y = mStart.y + 95;
+                x = 4;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -406,14 +396,14 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 12, y + 10, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
                 break;
 
             case FIVE:
                 upperLip = new Path();
-                x = mStart.x - 11;
-                y = mStart.y + 95;
+                x = 4;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -427,12 +417,12 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 12, y + 10, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
             case EIGHT:
                 upperLip = new Path();
-                x = mStart.x - 11;
-                y = mStart.y + 95;
+                x = 4;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -446,14 +436,14 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 12, y + 10, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
                 break;
 
             case SEVEN:
                 upperLip = new Path();
-                x = mStart.x - 8;
-                y = mStart.y + 95;
+                x = 7;
+                y = 5;
                 upperLip.setStrokeWidth(3);
                 upperLip.setStroke(mColor);
                 upperLip.getElements().add(new MoveTo(x, y));
@@ -467,8 +457,8 @@ public class Mouth3D extends BodyPartFX
                 downLip.getElements().add(new QuadCurveTo(x + 9, y + 3, x, y));
                 downLip.setTranslateZ(-18);
 
-                mHead.getChildren().set(9, upperLip);
-                mHead.getChildren().set(10, downLip);
+                this.getChildren().set(0, upperLip);
+                this.getChildren().set(1, downLip);
                 break;
 
             case NINE:
@@ -492,7 +482,7 @@ public class Mouth3D extends BodyPartFX
     @Override
     protected void recordColor()
     {
-        if (mHead.getStickman().setCharacterInvisible == false)
+        if (!mHead.getStickman().setCharacterInvisible)
         {
             mColorRecorder = mColor;
         }

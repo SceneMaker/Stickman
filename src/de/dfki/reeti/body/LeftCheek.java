@@ -5,6 +5,7 @@
  */
 package de.dfki.reeti.body;
 
+import de.dfki.common.part.Part3D;
 import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 import javafx.scene.transform.Rotate;
@@ -12,18 +13,17 @@ import javafx.scene.transform.Rotate;
 /**
  * @author Beka Aptsiauri
  */
-public class LeftCheek extends Parts
+public class LeftCheek extends PartReeti
 {
+    private static final int SIZE = 70;
     private final Circle mLed;
     private final Group mLedGroup;
 
-    private static final int SIZE = 70;
-
-    public LeftCheek(Head head)
+    public LeftCheek(Part3D head)
     {
         mLed = new Circle(SIZE);
         mLedGroup = new Group();
-        mStart = head.getLeftEyebrowPostion();
+        mStart = ((Head) head).getLeftEyebrowPostion();
 
         mYRotation = -25;
         mXRotation = -10;
@@ -36,7 +36,7 @@ public class LeftCheek extends Parts
         mLedGroup.setVisible(false);
         init();
 
-        head.getHeadGroup().getChildren().add(mLedGroup);
+        ((Head) head).getHeadGroup().getChildren().add(mLedGroup);
     }
 
     @Override
@@ -46,6 +46,18 @@ public class LeftCheek extends Parts
         mLed.setTranslateX(mStart.x - 28);
         mLed.setTranslateY(mStart.y + 106.5);
         mLed.setTranslateZ(-133.6);
+    }
+
+    @Override
+    public void calculate(int step)
+    {
+
+    }
+
+    @Override
+    public void setShape(String s)
+    {
+
     }
 
     public int getSize()

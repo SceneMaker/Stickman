@@ -5,81 +5,91 @@
  */
 package de.dfki.stickman3D.animation.environment;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class ComeUp extends Animation3D {
+public class ComeUp extends AnimationStickman3D
+{
 
-    public ComeUp() {
-        mAnimType = ANIMTYPE.ON;
-    }
     double recordOriginLeaveSpeed;
 
-    public ComeUp(Stickman3D sm, int duration, boolean block) {
+    public ComeUp()
+    {
+        mAnimType = ANIMTYPE.ON;
+    }
+
+    public ComeUp(Stickman3D sm, int duration, boolean block)
+    {
         super(sm, duration, block);
-        mStickmanFX = sm;
-        recordOriginLeaveSpeed = mStickmanFX.leaveSpeed;
+        agent = sm;
+        recordOriginLeaveSpeed = ((Stickman3D) agent).leaveSpeed;
     }
 
     // WaveLeft
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         int rotationUnit = 5;
         int speed = 4;
 
-        mStickmanFX.leaveSpeed = 480;
+        ((Stickman3D) agent).leaveSpeed = 480;
 
         // bring upper arm and fore arm in position
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "rotate", -rotationUnit ));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "rotate", -rotationUnit * 30));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftUpperArm, "rotate", -rotationUnit));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "rotate", -rotationUnit * 30));
         playAnimationPart(100);
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++)
+        {
             // wave right
-            for (int j = 0; j < 10; j++) {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "zrotate", -rotationUnit));
+            for (int j = 0; j < 10; j++)
+            {
+                mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "zrotate", -rotationUnit));
                 playComeSpeed(speed);
                 playAnimationPart(20);
             }
             // wave left
-            for (int j = 0; j < 10; j++) {
-                mAnimationPartFX = new ArrayList<>();
-                mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "zrotate", rotationUnit));
+            for (int j = 0; j < 10; j++)
+            {
+                mAnimationPart = new ArrayList<>();
+                mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "zrotate", rotationUnit));
                 playComeSpeed(speed);
                 playAnimationPart(20);
             }
         }
 
         // go back in the default position
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftUpperArm, "rotate", rotationUnit ));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftForeArm, "rotate", rotationUnit * 30));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftUpperArm, "rotate", rotationUnit));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftForeArm, "rotate", rotationUnit * 30));
         playAnimationPart(200);
 
-        if (StickmanStageController.currentRadioButton != null) {
+        if (StickmanStageController.currentRadioButton != null)
+        {
             StickmanStageController.currentRadioButton.setSelected(false);
         }
 
     }
 
-    private void playComeSpeed(int Speed) {
-        if (mStickmanFX.leaveSpeed > recordOriginLeaveSpeed) {
-            mStickmanFX.leaveSpeed = mStickmanFX.leaveSpeed - Speed;
-        } else {
-            mStickmanFX.leaveSpeed = recordOriginLeaveSpeed;
+    private void playComeSpeed(int Speed)
+    {
+        if (((Stickman3D) agent).leaveSpeed > recordOriginLeaveSpeed)
+        {
+            ((Stickman3D) agent).leaveSpeed = ((Stickman3D) agent).leaveSpeed - Speed;
+        } else
+        {
+            ((Stickman3D) agent).leaveSpeed = recordOriginLeaveSpeed;
         }
-        Platform.runLater(() -> mStickmanFX.update());
+        Platform.runLater(() -> ((Stickman3D) agent).update());
     }
 }

@@ -2,10 +2,13 @@ package de.dfki.reeti.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class MouthO {
+public class MouthO
+{
 
-    public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step) {
-        if (step == 20 || step == 0) {
+    public static Polygon modifyUpperLip(Polygon currentUpperLipPolygon, float step)
+    {
+        if (step == 20 || step == 0)
+        {
             currentUpperLipPolygon.getPoints().clear();
             currentUpperLipPolygon.getPoints().addAll(
                     // x 	y 
@@ -26,8 +29,10 @@ public class MouthO {
         return currentUpperLipPolygon;
     }
 
-    public static Polygon modifyDownLip(Polygon currentDownLipPolygone, float step) {
-        if (step == 20 || step == 0) {
+    public static Polygon modifyDownLip(Polygon currentDownLipPolygone, float step)
+    {
+        if (step == 20 || step == 0)
+        {
             currentDownLipPolygone.getPoints().clear();
             currentDownLipPolygone.getPoints().addAll(
                     // x 	y 

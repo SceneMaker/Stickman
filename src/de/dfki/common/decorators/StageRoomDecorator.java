@@ -1,99 +1,118 @@
 package de.dfki.common.decorators;
 
-import de.dfki.common.interfaces.Stickman;
-import de.dfki.common.interfaces.StickmanStage;
+import de.dfki.common.AgentsOnStage;
+import de.dfki.common.agent.IAgent;
+import de.dfki.common.interfaces.AgentStage;
 import de.dfki.common.interfaces.StageRoom;
-import de.dfki.common.StickmansOnStage;
 
 import java.awt.image.BufferedImage;
 
 /**
  * Created by alvaro on 9/17/16.
  */
-public abstract class StageRoomDecorator implements StageRoom {
+public abstract class StageRoomDecorator implements StageRoom
+{
 
-    protected StageRoom controllerFX;
+    protected StageRoom stageRoom;
 
-    public StageRoomDecorator(StageRoom wrappedController) {
-        controllerFX = wrappedController;
+    public StageRoomDecorator(StageRoom wrappedController)
+    {
+        stageRoom = wrappedController;
     }
 
     @Override
-    public boolean ismNetwork() {
-        return controllerFX.ismNetwork();
+    public boolean ismNetwork()
+    {
+        return stageRoom.ismNetwork();
     }
 
     @Override
-    public void clearStage() {
-        controllerFX.clearStage();
+    public void clearStage()
+    {
+        stageRoom.clearStage();
     }
 
     @Override
-    public void sendTimeMarkInformation(String timemark) {
-        controllerFX.sendTimeMarkInformation(timemark);
+    public void sendTimeMarkInformation(String timemark)
+    {
+        stageRoom.sendTimeMarkInformation(timemark);
     }
 
     @Override
-    public void sendAnimationUpdate(String state, String id) {
-        controllerFX.sendAnimationUpdate(state, id);
+    public void sendAnimationUpdate(String state, String id)
+    {
+        stageRoom.sendAnimationUpdate(state, id);
     }
 
     @Override
-    public void launchStickmanStage(boolean show) {
-        controllerFX.launchStickmanStage(show);
+    public void launchAgentStage(boolean show)
+    {
+        stageRoom.launchAgentStage(show);
     }
 
-    public void addStickman(String name) {
-        controllerFX.addStickman(name);
+    public void addAgent(String name)
+    {
+        stageRoom.addAgent(name);
     }
 
-    public void addStickman(String name, boolean onlyFace) {
-        controllerFX.addStickman(name, onlyFace);
-    }
-
-    @Override
-    public void animate(String stickmanname, String name, int duration, String text, boolean block) {
-        controllerFX.animate(stickmanname, name, duration, text, block);
-    }
-
-    @Override
-    public Stickman getStickman(String name) {
-        return controllerFX.getStickman(name);
-    }
-
-    public StickmansOnStage getCommonStickmansOnStage() {
-        return controllerFX.getCommonStickmansOnStage();
-    }
-
-    public StickmanStage getStickmanStage() {
-        return controllerFX.getStickmanStage();
-    }
-
-    public String getStageIdentifier() {
-        return controllerFX.getStageIdentifier();
-    }
-
-    public void setFullScreen(boolean fullScreen) {
-        controllerFX.setFullScreen(fullScreen);
+    public void addAgent(String name, boolean onlyFace)
+    {
+        stageRoom.addAgent(name, onlyFace);
     }
 
     @Override
-    public BufferedImage getStageAsImage() throws Exception {
-        return controllerFX.getStageAsImage();
+    public void animate(String agentName, String name, int duration, String text, boolean block)
+    {
+        stageRoom.animate(agentName, name, duration, text, block);
     }
 
     @Override
-    public void launchConfiguration() {
+    public IAgent getAgent(String name)
+    {
+        return stageRoom.getAgent(name);
+    }
+
+    public AgentsOnStage getAgentsOnStage()
+    {
+        return stageRoom.getAgentsOnStage();
+    }
+
+    public AgentStage getAgentStage()
+    {
+        return stageRoom.getAgentStage();
+    }
+
+    public String getStageIdentifier()
+    {
+        return stageRoom.getStageIdentifier();
+    }
+
+    public void setFullScreen(boolean fullScreen)
+    {
+        stageRoom.setFullScreen(fullScreen);
     }
 
     @Override
-    public void launchConfiguration(String filepath) {
+    public BufferedImage getStageAsImage() throws Exception
+    {
+        return stageRoom.getStageAsImage();
+    }
+
+    @Override
+    public void launchConfiguration()
+    {
+    }
+
+    @Override
+    public void launchConfiguration(String filepath)
+    {
 
     }
 
     @Override
-    public void launchStage(boolean show, String filepath) {
-        controllerFX.launchStage(show, filepath);
+    public void launchStage(boolean show, String filepath)
+    {
+        stageRoom.launchStage(show, filepath);
     }
 
 }

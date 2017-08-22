@@ -2,7 +2,8 @@ package de.dfki.stickmanFX.animation.environmentfx;
 
 import java.util.Random;
 
-public class SimplexNoise {
+public class SimplexNoise
+{
 
     SimplexNoise_octave[] octaves;
     double[] frequencys;
@@ -12,7 +13,8 @@ public class SimplexNoise {
     double persistence;
     int seed;
 
-    public SimplexNoise(int largestFeature, double persistence, int seed) {
+    public SimplexNoise(int largestFeature, double persistence, int seed)
+    {
         this.largestFeature = largestFeature;
         this.persistence = persistence;
         this.seed = seed;
@@ -26,7 +28,8 @@ public class SimplexNoise {
 
         Random rnd = new Random(seed);
 
-        for (int i = 0; i < numberOfOctaves; i++) {
+        for (int i = 0; i < numberOfOctaves; i++)
+        {
             octaves[i] = new SimplexNoise_octave(rnd.nextInt());
 
             frequencys[i] = Math.pow(2, i);
@@ -34,11 +37,13 @@ public class SimplexNoise {
         }
     }
 
-    public double getNoise(double x, double y) {
+    public double getNoise(double x, double y)
+    {
 
         double result = 0;
 
-        for (int i = 0; i < octaves.length; i++) {
+        for (int i = 0; i < octaves.length; i++)
+        {
             //double frequency = Math.pow(2,i);
             //double amplitude = Math.pow(persistence,octaves.length-i);
 

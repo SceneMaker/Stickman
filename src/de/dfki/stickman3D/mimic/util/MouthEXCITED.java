@@ -2,14 +2,18 @@ package de.dfki.stickman3D.mimic.util;
 
 import javafx.scene.shape.Polygon;
 
-public class MouthEXCITED {
+public class MouthEXCITED
+{
 
-    public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign) {
+    public static Polygon modifyUpperLip(Polygon currentUpperLipMesh, float step, String sign)
+    {
         int sig;
 
-        if (sign.equalsIgnoreCase("PLUS")) {
+        if (sign.equalsIgnoreCase("PLUS"))
+        {
             sig = 1;
-        } else {
+        } else
+        {
             sig = -1;
         }
 
@@ -24,12 +28,15 @@ public class MouthEXCITED {
         return currentUpperLipMesh;
     }
 
-    public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign) {
+    public static Polygon modifyDownLip(Polygon currentDownLipMesh, float step, String sign)
+    {
         int sig;
 
-        if (sign.equalsIgnoreCase("PLUS")) {
+        if (sign.equalsIgnoreCase("PLUS"))
+        {
             sig = 1;
-        } else {
+        } else
+        {
             sig = -1;
         }
 

@@ -3,11 +3,12 @@ package de.dfki.common.interfaces;
 /**
  * Created by alvaro on 11/13/16.
  */
-public interface ApplicationLauncher {
+public interface ApplicationLauncher
+{
 
-    void launchStickmanAndWait();
+    void launchAgentAndWait();
 
     void waitForApplicationToStart();
 
-    Thread getLaunchStickmanThread(final StickmanStage fx);
+    Thread getLaunchAgentThread(final AgentStage fx);
 }

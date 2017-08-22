@@ -6,40 +6,43 @@
 package de.dfki.stickmanFX.animation.environmentfx.event;
 
 import de.dfki.action.sequence.WordTimeMarkSequence;
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickmanFX.StickmanFX;
-import de.dfki.stickmanFX.animationlogic.AnimationContentFX;
 import de.dfki.stickmanFX.animationlogic.EventAnimationFX;
-import de.dfki.stickmanFX.environmentfx.SpeechBubbleFX;
+import de.dfki.stickmanFX.environmentfx.SpeechBubbleStickman2D;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class Speaking extends EventAnimationFX {
+public class Speaking extends EventAnimationFX
+{
 
-    public Speaking() {
+    public Speaking()
+    {
         super();
     }
 
-    public Speaking(StickmanFX sm, int duration, boolean block) {
+    public Speaking(StickmanFX sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
-        if (mParameter instanceof WordTimeMarkSequence) {
+    public void playAnimation()
+    {
+        if (mParameter instanceof WordTimeMarkSequence)
+        {
             mWTS = (WordTimeMarkSequence) mParameter;
         }
 
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.SPEAK.name(), mWTS));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mSpeechBubbleFX, "shape", SpeechBubbleStickman2D.SHAPE.SPEAK.name(), mWTS));
 
         playEventAnimationPart();
 
-        mAnimationPartFX.add(new AnimationContentFX(mStickmanFX.mSpeechBubbleFX, "shape", SpeechBubbleFX.SHAPE.DEFAULT.name()));
+        mAnimationPart.add(new AnimationContent(((StickmanFX) agent).mSpeechBubbleFX, "shape", SpeechBubbleStickman2D.SHAPE.DEFAULT.name()));
         playAnimationPart(20);
 
     }

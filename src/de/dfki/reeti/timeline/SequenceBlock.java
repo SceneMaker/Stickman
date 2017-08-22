@@ -11,16 +11,15 @@ import java.util.ArrayList;
 /**
  * Created by EmpaT on 20.04.2017.
  */
-public class SequenceBlock extends Label implements Cloneable{
+public class SequenceBlock extends Label implements Cloneable
+{
 
+    private static final int HEIGHT = 35;
+    protected ArrayList<Pose> poseList = null;
     private double startTime = -1;
     private double duration = -1;
     private double startPosition = -1;
     private double endPosition = -1;
-
-    private static final int HEIGHT = 35;
-
-    protected ArrayList<Pose> poseList = null;
 
     public SequenceBlock()
     {
@@ -33,43 +32,54 @@ public class SequenceBlock extends Label implements Cloneable{
         this.poseList = new ArrayList<>();
     }
 
-    public double getStartTime() {
+    public double getStartTime()
+    {
         return startTime;
     }
 
-    public void setStartTime(double startTime) {
+    public void setStartTime(double startTime)
+    {
         this.startTime = startTime;
     }
 
-    public double getDuration() {
+    public double getDuration()
+    {
         return duration;
     }
 
-    public void setDuration(double duration) {
+    public void setDuration(double duration)
+    {
         this.duration = duration;
     }
 
-    public double getStartPosition() {
+    public double getStartPosition()
+    {
         return startPosition;
     }
 
-    public void setStartPosition(double startPosition) {
+    public void setStartPosition(double startPosition)
+    {
         this.startPosition = startPosition;
     }
 
-    public double getEndPosition() {
+    public double getEndPosition()
+    {
         return endPosition;
     }
 
-    public void setEndPosition(double endPosition) {
+    public void setEndPosition(double endPosition)
+    {
         this.endPosition = endPosition;
     }
 
     @Override
-    public Object clone(){
-        try {
+    public Object clone()
+    {
+        try
+        {
             return super.clone();
-        } catch (CloneNotSupportedException e) {
+        } catch (CloneNotSupportedException e)
+        {
             e.printStackTrace();
         }
         return null;

@@ -5,47 +5,50 @@
  */
 package de.dfki.stickman3D.animation.face;
 
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.stickman3D.Stickman3D;
 import de.dfki.stickman3D.StickmanStageController;
-import de.dfki.stickman3D.animationlogic.AnimationContent3D;
-import de.dfki.stickman3D.animationlogic.Animation3D;
+import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka Aptsiauri
- *
  */
-public class Contempt extends Animation3D {
+public class Contempt extends AnimationStickman3D
+{
 
-    public Contempt() {
+    public Contempt()
+    {
         mAnimType = ANIMTYPE.ON;
     }
 
-    public Contempt(Stickman3D sm, int duration, boolean block) {
+    public Contempt(Stickman3D sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         // Contempt
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "CONTEMPT"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "CONTEMPT"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "CONTEMPT"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mMouth, "shape", "CONTEMPT"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "CONTEMPT"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "CONTEMPT"));
         playAnimationPart(mDuration);
 
         pauseAnimation(1200);
 
         // no Contempt
-        mAnimationPartFX = new ArrayList<>();
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mMouth, "shape", "CONTEMPTEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mLeftEye, "shape", "CONTEMPTEND"));
-        mAnimationPartFX.add(new AnimationContent3D(mStickmanFX.mRightEye, "shape", "CONTEMPTEND"));
+        mAnimationPart = new ArrayList<>();
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mMouth, "shape", "CONTEMPTEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mLeftEye, "shape", "CONTEMPTEND"));
+        mAnimationPart.add(new AnimationContent(((Stickman3D) agent).mRightEye, "shape", "CONTEMPTEND"));
         playAnimationPart(mDuration);
 
-        if (StickmanStageController.currentRadioButton != null) {
+        if (StickmanStageController.currentRadioButton != null)
+        {
             StickmanStageController.currentRadioButton.setSelected(false);
         }
     }

@@ -5,28 +5,30 @@ package de.dfki.reeti.animation.face;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+import de.dfki.common.animationlogic.AnimationContent;
 import de.dfki.reeti.Reeti;
-import de.dfki.reeti.animationlogic.AnimationContentReeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Beka
- *
  */
-public class Mouth_ONE extends AnimationReeti {
+public class Mouth_ONE extends AnimationReeti
+{
 
-    public Mouth_ONE(Reeti sm, int duration, boolean block) {
+    public Mouth_ONE(Reeti sm, int duration, boolean block)
+    {
         super(sm, duration, block);
     }
 
     @Override
-    public void playAnimation() {
+    public void playAnimation()
+    {
         // smile
         mAnimationPart = new ArrayList<>();
-        mAnimationPart.add(new AnimationContentReeti(mReeti.mMouth, "shape", "ONE"));
+        mAnimationPart.add(new AnimationContent(((Reeti) agent).mMouth, "shape", "ONE"));
         playAnimationPart(20);
     }
 }
