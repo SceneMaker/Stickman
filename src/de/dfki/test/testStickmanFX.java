@@ -2,6 +2,7 @@ package de.dfki.test;
 
 import de.dfki.common.decorators.StageRoomFullScreenDecorator;
 import de.dfki.common.interfaces.StageRoom;
+import de.dfki.reeti.stage.StageRoomReeti;
 import de.dfki.stickman3D.stage.StageRoom3D;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -21,7 +22,7 @@ public class testStickmanFX
 //        //agentStage.addAgent("Bob");
 //        agentStage.launchStage(true);
 //        agentStage.getAgent("Patrick").doAnimation("Smile", 2000, "", true);
-        StageRoom reeti = new StageRoom3D(0, 0, true);
+        StageRoom reeti = new StageRoomReeti(0, 0, true);
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(reeti);
 //        reeti.addAgent("Anna");
         stickmanStage3DFull.addAgent("Anna");

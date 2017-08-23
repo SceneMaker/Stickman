@@ -15,6 +15,7 @@ import de.dfki.stickman3D.animationlogic.AnimationStickman3D;
 import de.dfki.stickman3D.animationlogic.EventAnimation3D;
 import de.dfki.stickman3D.body.*;
 import de.dfki.stickman3D.environment.SpeechBubbleStickman3D;
+import javafx.scene.control.Control;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -116,6 +117,9 @@ public class Stickman3D extends Agent3D
     @Override
     public void init()
     {
+        this.setMaxHeight(Preferences.MALE_HEIGHT);
+        this.setMinHeight(Preferences.MALE_HEIGHT);
+        this.setPrefWidth(Control.USE_COMPUTED_SIZE);
         super.init();
         mHead = new Head3D(this);
         if (mType == Gender.TYPE.MALE)
