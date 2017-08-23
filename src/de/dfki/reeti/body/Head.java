@@ -117,6 +117,13 @@ public class Head extends PartReeti
         return new Point(x,y);
     }
 
+    public Point getSpeechBubbleStartPosition()
+    {
+        int x = Preferences.REETI_HEAD_WIDTH - 40;
+        int y = Preferences.REETI_HEAD_HEIGHT /2 + 40;
+        return new Point(x,y);
+    }
+
     @Override
     public void calculate(int step)
     {

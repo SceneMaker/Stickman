@@ -200,7 +200,7 @@ public class ReetiStage extends FXApplication
         Platform.runLater(() ->
         {
             root.setAlignment(Pos.BOTTOM_CENTER);
-            Scene stageScene = new Scene(root, 600, 700, true, SceneAntialiasing.BALANCED);
+            Scene stageScene = new Scene(root, 700, 700, true, SceneAntialiasing.BALANCED);
             Stage stage = new Stage();
             stage.setScene(stageScene);
             stage.setX(x);

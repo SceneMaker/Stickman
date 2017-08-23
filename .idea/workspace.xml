@@ -2,45 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75be4ba3-e595-490f-bde7-3eff2ba8778f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/BodyParts/Reeti/ReetiEyelid.dae" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/BodyParts/Reeti/ReetiEyelid.dae" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/common/util/Preferences.class" afterPath="$PROJECT_DIR$/bin/de/dfki/common/util/Preferences.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/Reeti$1.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/Reeti$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/Reeti.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/Reeti.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/Body.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/Body.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/animation/environment/Speaking.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/animation/environment/Speaking.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/Head.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/Head.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftCheek.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftCheek.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftEar.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftEar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftEye.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftEye.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftEyelid.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/LeftEyelid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/Mouth.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/Mouth.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightCheek.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightCheek.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightEar.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightEar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightEye.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightEye.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightEyelid.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/body/RightEyelid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/controllerhelper/SliderHelper.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/controllerhelper/SliderHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/environment/SpeechBubbleReeti$1.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/environment/SpeechBubbleReeti$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/environment/SpeechBubbleReeti$SHAPE.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/environment/SpeechBubbleReeti$SHAPE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/environment/SpeechBubbleReeti.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/environment/SpeechBubbleReeti.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/reeti/stage/ReetiStage.class" afterPath="$PROJECT_DIR$/bin/de/dfki/reeti/stage/ReetiStage.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/de/dfki/test/testStickmanFX.class" afterPath="$PROJECT_DIR$/bin/de/dfki/test/testStickmanFX.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/Stickman_jar/Stickman.jar" afterPath="$PROJECT_DIR$/classes/artifacts/Stickman_jar/Stickman.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/BodyParts/Reeti/ReetiBody.dae" afterPath="$PROJECT_DIR$/bin/BodyParts/Reeti/ReetiBody.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/BodyParts/Reeti/ReetiEye.dae" afterPath="$PROJECT_DIR$/bin/BodyParts/Reeti/ReetiEye.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/BodyParts/Reeti/ReetiBody.dae" afterPath="$PROJECT_DIR$/res/BodyParts/Reeti/ReetiBody.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/BodyParts/Reeti/ReetiEye.dae" afterPath="$PROJECT_DIR$/res/BodyParts/Reeti/ReetiEye.dae" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/common/util/Preferences.java" afterPath="$PROJECT_DIR$/src/de/dfki/common/util/Preferences.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/Body.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/Body.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/animation/environment/Speaking.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/animation/environment/Speaking.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftCheek.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftCheek.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEar.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEye.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEye.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEyelid.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftEyelid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightCheek.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightCheek.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEar.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEye.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEye.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEyelid.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEyelid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/controllerhelper/SliderHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleReeti.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleReeti.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java" afterPath="$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" afterPath="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
     </list>
@@ -61,66 +36,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Preferences.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/util/Preferences.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="103" column="89" lean-forward="false" selection-start-line="103" selection-start-column="89" selection-end-line="103" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stickman3D.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="255" column="88" lean-forward="false" selection-start-line="255" selection-start-column="8" selection-end-line="255" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reeti.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3093">
-              <caret line="284" column="40" lean-forward="false" selection-start-line="284" selection-start-column="40" selection-end-line="284" selection-end-column="40" />
-              <folding>
-                <element signature="e#8185#8186#0" expanded="true" />
-                <element signature="e#8255#8256#0" expanded="true" />
-                <element signature="e#26768#26769#0" expanded="true" />
-                <element signature="e#26807#26808#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Agent.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/agent/Agent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="58" column="31" lean-forward="false" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testStickmanFX.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StickmanStage3D.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="213" column="49" lean-forward="false" selection-start-line="213" selection-start-column="12" selection-end-line="213" selection-end-column="49" />
+            <state relative-caret-position="620">
+              <caret line="90" column="61" lean-forward="true" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -129,18 +49,81 @@
       <file leaf-file-name="ReetiStage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="202" column="55" lean-forward="false" selection-start-line="202" selection-start-column="55" selection-end-line="202" selection-end-column="55" />
+            <state relative-caret-position="1980">
+              <caret line="81" column="63" lean-forward="false" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Agent3D.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/dfki/common/agent/Agent3D.java">
+      <file leaf-file-name="Reeti.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="343">
+              <caret line="289" column="46" lean-forward="false" selection-start-line="289" selection-start-column="46" selection-end-line="289" selection-end-column="46" />
+              <folding>
+                <element signature="e#8185#8186#0" expanded="true" />
+                <element signature="e#8240#8241#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeechBubbleStickman3D.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/environment/SpeechBubbleStickman3D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1170">
+              <caret line="102" column="4" lean-forward="false" selection-start-line="102" selection-start-column="4" selection-end-line="110" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeechBubbleReeti.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleReeti.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Speaking.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/animation/environment/Speaking.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="36" column="76" lean-forward="false" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Speaking.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/environment/Speaking.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Head3D.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/Head3D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="126" column="5" lean-forward="false" selection-start-line="121" selection-start-column="4" selection-end-line="126" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stickman3D.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="263" column="37" lean-forward="true" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -213,9 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/LeftWrist3D.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/RightWrist3D.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/PartStickman3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/Nose3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/Ear.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/LeftEar3D.java" />
@@ -223,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/Stars3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/FaceWrinkle3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/Mouth3D.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/animation/environment/Speaking.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/animation/head/Muster.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/Hair3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/body/MaleHair3D.java" />
@@ -245,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/StickmanStageController.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/View_old.fxml" />
-        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/LeftCheek.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/common/part/Part3D.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/RightEyelid.java" />
@@ -258,12 +236,17 @@
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Mouth.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/RightCheek.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Body.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/common/util/Preferences.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
-        <option value="$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java" />
         <option value="$PROJECT_DIR$/src/de/dfki/common/agent/Agent.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/environment/SpeechBubbleStickman3D.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleReeti.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/animation/environment/Speaking.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java" />
+        <option value="$PROJECT_DIR$/src/de/dfki/reeti/animation/environment/Speaking.java" />
       </list>
     </option>
   </component>
@@ -477,7 +460,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="body" />
+              <option name="myItemId" value="animation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -499,33 +482,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stickman" />
+              <option name="myItemId" value="reeti" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="animation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dfki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent" />
+              <option name="myItemId" value="environment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1017,15 +982,16 @@
       <workItem from="1503101912680" duration="2782000" />
       <workItem from="1503143033277" duration="1906000" />
       <workItem from="1503311567727" duration="766000" />
-      <workItem from="1503496732382" duration="19023000" />
+      <workItem from="1503496732382" duration="20819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205307000" />
+    <option name="totallyTimeSpent" value="207103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1938" height="1042" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1042,14 +1008,14 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2669173" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2669173" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3979933" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19453925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1058,6 +1024,38 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972129" sideWeight="0.5021482" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19453925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25142208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19112629" sideWeight="0.49785176" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2669173" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992035" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -1092,8 +1090,14 @@
           <properties />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleReeti.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="46" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1102,41 +1106,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/LeftUpperLeg3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="17" column="38" lean-forward="false" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/UpperBodyAndHead3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="37" column="12" lean-forward="false" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/DownBody3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="93" column="35" lean-forward="false" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/Brow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/LeftEyebrow3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/UpperBody3D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -1176,13 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StageRoom3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1229,13 +1191,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmansOnStage3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="56" column="81" lean-forward="false" selection-start-line="56" selection-start-column="81" selection-end-line="56" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -1317,33 +1272,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/part/Part.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/PartReeti.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="e#488#489#0" expanded="false" />
-            <element signature="e#516#517#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/Head3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1807">
-          <caret line="94" column="47" lean-forward="false" selection-start-line="94" selection-start-column="47" selection-end-line="94" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/Eye.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
@@ -1368,14 +1296,6 @@
             <element signature="e#991#992#0" expanded="false" />
             <element signature="e#1050#1051#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/part/Part3D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="20" column="47" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1483,14 +1403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="114" column="50" lean-forward="false" selection-start-line="114" selection-start-column="50" selection-end-line="114" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/common/util/Preferences.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
@@ -1499,10 +1411,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/agent/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="255" column="88" lean-forward="false" selection-start-line="255" selection-start-column="8" selection-end-line="255" selection-end-column="88" />
+        <state relative-caret-position="270">
+          <caret line="58" column="31" lean-forward="false" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1510,44 +1422,138 @@
     <entry file="file://$PROJECT_DIR$/src/de/dfki/test/testStickmanFX.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
-          <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/Head.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="119" column="45" lean-forward="false" selection-start-line="119" selection-start-column="17" selection-end-line="119" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/body/Head3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="126" column="5" lean-forward="false" selection-start-line="121" selection-start-column="4" selection-end-line="126" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/animation/environment/Speaking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="76" lean-forward="false" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/part/Part.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/part/Part3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/body/PartReeti.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StageRoom3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2130">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmansOnStage3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="56" column="81" lean-forward="false" selection-start-line="56" selection-start-column="81" selection-end-line="56" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/environment/SpeechBubbleStickman3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="102" column="4" lean-forward="false" selection-start-line="102" selection-start-column="4" selection-end-line="110" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/commonFX3D/FXApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="89" column="20" lean-forward="false" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/stage/StickmanStage3D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="213" column="49" lean-forward="false" selection-start-line="213" selection-start-column="12" selection-end-line="213" selection-end-column="49" />
+        <state relative-caret-position="620">
+          <caret line="90" column="61" lean-forward="true" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/stage/ReetiStage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="202" column="55" lean-forward="false" selection-start-line="202" selection-start-column="55" selection-end-line="202" selection-end-column="55" />
+        <state relative-caret-position="1980">
+          <caret line="81" column="63" lean-forward="false" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/stickman3D/Stickman3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="263" column="37" lean-forward="true" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/Reeti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3093">
-          <caret line="284" column="40" lean-forward="false" selection-start-line="284" selection-start-column="40" selection-end-line="284" selection-end-column="40" />
+        <state relative-caret-position="343">
+          <caret line="289" column="46" lean-forward="false" selection-start-line="289" selection-start-column="46" selection-end-line="289" selection-end-column="46" />
           <folding>
             <element signature="e#8185#8186#0" expanded="true" />
-            <element signature="e#8255#8256#0" expanded="true" />
-            <element signature="e#26768#26769#0" expanded="true" />
-            <element signature="e#26807#26808#0" expanded="true" />
+            <element signature="e#8240#8241#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/dfki/common/agent/Agent.java">
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/environment/SpeechBubbleReeti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="58" column="31" lean-forward="false" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+        <state relative-caret-position="120">
+          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/dfki/reeti/animation/environment/Speaking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
           <folding />
         </state>
       </provider>

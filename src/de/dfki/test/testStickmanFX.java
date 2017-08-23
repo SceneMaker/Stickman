@@ -33,7 +33,7 @@ public class testStickmanFX
 
 //        stickmanStage3D1.addAgent("Bob");
 //        stickmanStage3D1.launchStage(true);
-        reeti.launchAgentStage(true);
+        reeti.launchConfiguration();
 //        stickmanStage3DFull.launchAgentStage(true);
 //        stickmanStage3D1.getAgent("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getAgent("Anna").doAnimation("StartBlinking", 3000, 20, true);

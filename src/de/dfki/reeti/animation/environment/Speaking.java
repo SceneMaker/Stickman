@@ -35,7 +35,7 @@ public class Speaking extends AnimationReeti
         if (mParameter instanceof String)
         {
             agent.getSpeechBubble().mSpeechBubbleText = (String) mParameter;
-//            agent.mSpeechBubble.mSpeechBubbleText = "dadasdsad ";
+//            agent.getSpeechBubble().mSpeechBubbleText = "efrrewrwrew wr ewrew rewrewrewrw ";
         }
 
         mAnimationPart = new ArrayList<>();

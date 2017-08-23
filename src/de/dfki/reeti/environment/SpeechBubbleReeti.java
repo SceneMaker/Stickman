@@ -24,12 +24,21 @@ public class SpeechBubbleReeti extends PartReeti
 
     public SpeechBubbleReeti.SHAPE mShape = SpeechBubbleReeti.SHAPE.DEFAULT;
     private Head mHeadFX;
+    Path face;
     private Label message;
     private HBox bubbleBox;
 
     public SpeechBubbleReeti(Part3D head)
     {
         mHeadFX = (Head) head;
+        mStart = mHeadFX.getSpeechBubbleStartPosition();
+        bubbleBox = new HBox();
+        bubbleBox.setVisible(false);
+        message = new Label();
+        face = createLeftFace(Color.rgb(222, 222, 222));
+        this.getChildren().add(bubbleBox);
+        mHeadFX.getChildren().add(this);
+
     }
 
     @Override
@@ -48,10 +57,9 @@ public class SpeechBubbleReeti extends PartReeti
     @Override
     public void calculate(int step)
     {
-        this.getChildren().clear();
 
+        bubbleBox.setVisible(false);
         message = new Label();
-        Path face;
 
         switch (mShape)
         {
@@ -59,21 +67,19 @@ public class SpeechBubbleReeti extends PartReeti
                 break;
 
             case SPEAK:
-                bubbleBox = new HBox();
                 bubbleBox.setAlignment(Pos.TOP_CENTER);
-                face = createLeftFace(Color.rgb(222, 222, 222));
                 message.setText(mSpeechBubbleText);
                 message.setMaxWidth(200);
                 message.setMinHeight(70);
                 message.setPadding(new Insets(5, 5, 5, 5));
                 message.setWrapText(true);
                 createMessageStyle(message);
-                bubbleBox.getChildren().addAll(face, message);
                 bubbleBox.setTranslateZ(-200);
-                bubbleBox.setTranslateY(-150);
-                bubbleBox.setTranslateX(150);
-
-                this.getChildren().add(bubbleBox);
+                bubbleBox.setTranslateY(mStart.y);
+                bubbleBox.setTranslateX(mStart.x);
+                bubbleBox.getChildren().clear();
+                bubbleBox.getChildren().addAll(face, message);
+                bubbleBox.setVisible(true);
                 break;
         }
 

@@ -287,7 +287,7 @@ public class Reeti extends Agent3D
 
     private void addAllParts()
     {
-        this.getChildren().addAll(mHead, mBody, mSpeechBubble);
+        this.getChildren().addAll(mHead, mBody);
     }
 
     /**
