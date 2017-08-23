@@ -34,20 +34,20 @@ public class RightEar extends PartReeti
         mRightEarMesh = (MeshView) importer.getImport()[0];
         mRightEarMesh.setMaterial(getMaterial());
 
-        mStart = ((Head) head).getLeftEyebrowPostion();
+        mStart = ((Head) head).getRightEarStartPosition();
 
         init();
 
-        ((Head) head).getHeadGroup().getChildren().add(mRightEarMesh);
+        ((Head) head).getChildren().add(mRightEarMesh);
     }
 
     @Override
     public void init()
     {
         super.init();
-        mRightEarMesh.setTranslateX(mStart.x - 80);
-        mRightEarMesh.setTranslateY(mStart.y + 57);
-        mRightEarMesh.setTranslateZ(0);
+        mRightEarMesh.setTranslateX(mStart.x);
+        mRightEarMesh.setTranslateY(mStart.y);
+        mRightEarMesh.setTranslateZ(10);
     }
 
     @Override

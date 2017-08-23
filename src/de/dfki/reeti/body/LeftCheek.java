@@ -23,7 +23,7 @@ public class LeftCheek extends PartReeti
     {
         mLed = new Circle(SIZE);
         mLedGroup = new Group();
-        mStart = ((Head) head).getLeftEyebrowPostion();
+        mStart = ((Head) head).getLeftEyeStartPosition();
 
         mYRotation = -25;
         mXRotation = -10;
@@ -36,7 +36,7 @@ public class LeftCheek extends PartReeti
         mLedGroup.setVisible(false);
         init();
 
-        ((Head) head).getHeadGroup().getChildren().add(mLedGroup);
+        ((Head) head).getChildren().add(mLedGroup);
     }
 
     @Override

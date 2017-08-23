@@ -108,7 +108,7 @@ public class SliderHelper
         controller.leftEyeLidXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) ->
         {
             double newValue = new_val.doubleValue();
-            controller.currentReeti.mLeftEyelid.mXRotation = (-(newValue - 100));
+            controller.currentReeti.mLeftEyelid.mXRotation = (-(newValue - 100) + 20);
             controller.leftEyeLidXRotationField.setText(Integer.toString((int) newValue));
             controller.currentReeti.mLeftEyelid.calculate(0);
         });
@@ -122,7 +122,7 @@ public class SliderHelper
         controller.rightEyeLidXSlider.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) ->
         {
             double newValue = new_val.doubleValue();
-            controller.currentReeti.mRightEyelid.mXRotation = (-(newValue - 100));
+            controller.currentReeti.mRightEyelid.mXRotation = (-(newValue - 100) + 20);
             controller.rightEyeLidXRotationField.setText(Integer.toString((int) newValue));
             controller.currentReeti.mRightEyelid.calculate(0);
         });

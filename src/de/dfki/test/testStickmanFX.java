@@ -25,16 +25,16 @@ public class testStickmanFX
         StageRoom reeti = new StageRoomReeti(0, 0, true);
         StageRoom stickmanStage3DFull = new StageRoomFullScreenDecorator(reeti);
 //        reeti.addAgent("Anna");
-        stickmanStage3DFull.addAgent("Anna");
+//        stickmanStage3DFull.addAgent("Anna");
 //        stickmanStage3DFull.addAgent("Anna");
 //        reeti.addAgent("Bob1");
-//        reeti.addAgent("Reeti1");
+        reeti.addAgent("Reeti1");
 //        reeti.addAgent("Reeti2");
 
 //        stickmanStage3D1.addAgent("Bob");
 //        stickmanStage3D1.launchStage(true);
-//        reeti.launchConfiguration();
-        stickmanStage3DFull.launchAgentStage(true);
+        reeti.launchAgentStage(true);
+//        stickmanStage3DFull.launchAgentStage(true);
 //        stickmanStage3D1.getAgent("Anna").doAnimation("StartBreathing", 1200, 600, true);
 //        stickmanStage3D1.getAgent("Anna").doAnimation("StartBlinking", 3000, 20, true);
         //stickmanStage3D1.getAgent("Bob").doAnimation("TiltRightStart", 500, true);

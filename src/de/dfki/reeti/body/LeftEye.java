@@ -7,9 +7,11 @@ package de.dfki.reeti.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import de.dfki.common.part.Part3D;
+import de.dfki.common.util.Preferences;
 import javafx.scene.Group;
 import javafx.scene.transform.Rotate;
 
+import java.awt.*;
 import java.net.URL;
 
 /**
@@ -17,41 +19,43 @@ import java.net.URL;
  */
 public class LeftEye extends PartReeti
 {
-    private Group mLeftEarMesh;
-
     public LeftEye(Part3D head)
     {
         mXRotation = 5;
-        mStart = ((Head) head).getLeftEyebrowPostion();
+        mStart = ((Head) head).getLeftEyeStartPosition();
 
         URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEye.dae");
         ColModelImporter importer = new ColModelImporter();
         importer.read(url);
-        mLeftEarMesh = (Group) importer.getImport()[0];
+        Group leftEyeGroup = (Group) importer.getImport()[0];
 
         init();
 
-        ((Head) head).getHeadGroup().getChildren().add(mLeftEarMesh);
+        this.getChildren().add(leftEyeGroup);
+        head.getChildren().add(this);
     }
 
     @Override
     public void init()
     {
         super.init();
-        mLeftEarMesh.setTranslateX(mStart.x + 55);
-        mLeftEarMesh.setTranslateY(mStart.y + 47);
-        mLeftEarMesh.setTranslateZ(-62);
+        this.setTranslateX(mStart.x);
+        this.setTranslateY(mStart.y);
+        this.setTranslateZ(-37);
     }
 
     @Override
     public void calculate(int step)
     {
-        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
+        double pivotX = Preferences.REETI_EYE_WIDTH/2;
+        double pivotY = Preferences.REETI_EYE_HEIGHT/2;
 
-        mLeftEarMesh.getTransforms().clear();
-        mLeftEarMesh.getTransforms().addAll(rz, ry, rx);
+        Rotate rx = new Rotate(mXRotation, pivotX, pivotY, 0, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, pivotX, pivotY, 0, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, pivotX, pivotY, 0, Rotate.Z_AXIS);
+
+        this.getTransforms().clear();
+        this.getTransforms().addAll(rz, ry, rx);
     }
 
     @Override

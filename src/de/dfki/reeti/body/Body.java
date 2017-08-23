@@ -20,9 +20,9 @@ import java.net.URL;
  */
 public class Body extends PartReeti
 {
-    public Body(Part3D neck)
+    public Body(Part3D head)
     {
-        mStart = ((Neck) neck).getBodyStartPosition();
+        mStart = ((Head) head).getBodyStartPosition();
         mSize = new Dimension(120, 300);
         mColor = Color.WHITE;
 
@@ -37,13 +37,11 @@ public class Body extends PartReeti
         URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiBody.dae");
 
         importer.read(url);
-        Group mBodyGroup = new Group();
         MeshView mBodyMeshView = (MeshView) importer.getImport()[0];
-        mBodyGroup.getChildren().add(mBodyMeshView);
-        mBodyGroup.setTranslateX(mStart.x);
-        mBodyGroup.setTranslateY(mStart.y + 290);
-        mBodyGroup.setTranslateZ(-105);
-        this.getChildren().addAll(mBodyGroup);
+        this.setTranslateX(mStart.x);
+        this.setTranslateY(mStart.y);
+        this.setTranslateZ(-105);
+        this.getChildren().add(mBodyMeshView);
     }
 
     @Override

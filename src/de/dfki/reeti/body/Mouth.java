@@ -46,16 +46,16 @@ public class Mouth extends PartReeti
         downPoint = new Point2D.Double(upperPoint.getX(), upperPoint.getY());
 
         init();
-        ((Head) head).getHeadGroup().getChildren().addAll(mLips);
+        ((Head) head).getChildren().addAll(mLips);
     }
 
     @Override
     public void init()
     {
         super.init();
-        mLips.setTranslateX(mStart.getX() - 7);
-        mLips.setTranslateY(mStart.getY() + 28);
-        mLips.setTranslateZ(-135.5);
+        mLips.setTranslateX(mStart.getX());
+        mLips.setTranslateY(mStart.getY());
+        mLips.setTranslateZ(-105);
     }
 
     @Override

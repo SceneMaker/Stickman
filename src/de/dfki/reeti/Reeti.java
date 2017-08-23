@@ -6,12 +6,14 @@ import de.dfki.common.animationlogic.AnimationScheduler;
 import de.dfki.common.enums.Gender;
 import de.dfki.common.enums.Led;
 import de.dfki.common.part.Part3D;
+import de.dfki.common.util.Preferences;
 import de.dfki.reeti.animation.environment.Blinking;
 import de.dfki.reeti.animationlogic.AnimationLoaderReeti;
 import de.dfki.reeti.animationlogic.AnimationReeti;
 import de.dfki.reeti.animationlogic.EventAnimationReeti;
 import de.dfki.reeti.body.*;
 import de.dfki.reeti.environment.SpeechBubbleReeti;
+import javafx.scene.control.Control;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -20,6 +22,7 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.transform.Affine;
+import javafx.scene.transform.Scale;
 
 import java.awt.*;
 
@@ -190,6 +193,9 @@ public class Reeti extends Agent3D
     @Override
     public void init()
     {
+        this.setMaxHeight(Preferences.REETI_HEIGHT);
+        this.setMinHeight(Preferences.REETI_HEIGHT);
+        this.setPrefWidth(Control.USE_COMPUTED_SIZE);
         super.init();
         mHead = new Head(this);
         mLeftEyelid = new LeftEyelid(mHead);
@@ -205,8 +211,8 @@ public class Reeti extends Agent3D
         mMouthRightCorner = new MouthRightCorner(mMouth);
         mMouthUpperLip = new MouthUpperLip(mMouth);
         mMouthDownLip = new MouthDownLip(mMouth);
-        mNeck = new Neck(mHead);
-        mBody = new Body(mNeck);
+//        mNeck = new Neck(mHead);
+        mBody = new Body(mHead);
         mSpeechBubble = new SpeechBubbleReeti(mHead);
         sReeti = this;
 
@@ -272,32 +278,16 @@ public class Reeti extends Agent3D
 
     public void update()
     {
-        float mGeneralXTranslation;
-        float mGeneralYTranslation;
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        double StickmanHeight = 500;
-        Affine af = new Affine();
-        int shiftFactor = (int) (StickmanHeight - (StickmanHeight * mScale));
-        if (isFullScreen)
-        {
-            mGeneralYTranslation = (int) ((dim.getHeight() - StickmanHeight) + shiftFactor + 100);
-            mGeneralXTranslation = 0;
-        } else
-        {
-            mGeneralYTranslation = (int) ((this.stageHeight - StickmanHeight) + shiftFactor - 350);
-            mGeneralXTranslation = 100;
-        }
-//        Scale s = new Scale(0.5, 0.5, 0.5, 50, 50, 50);
-        af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-        af.appendScale(mScale, mScale);
-        this.getTransforms().clear();
-        this.getTransforms().add(af);
-//        this.getTransforms().add(af);
+        int scale_X_Pivot = (int) (Preferences.REETI_BODY_WIDTH/2);
+
+        Scale scale = new Scale(mScale, mScale, scale_X_Pivot, Preferences.REETI_HEIGHT);
+
+        this.getTransforms().add(scale);
     }
 
     private void addAllParts()
     {
-        this.getChildren().addAll(mNeck, mHead, mBody, mSpeechBubble);
+        this.getChildren().addAll(mHead, mBody, mSpeechBubble);
     }
 
     /**

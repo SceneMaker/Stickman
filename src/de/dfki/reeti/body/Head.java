@@ -1,7 +1,9 @@
 package de.dfki.reeti.body;
 
+import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 import de.dfki.common.agent.Agent3D;
+import de.dfki.common.util.Preferences;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MeshView;
@@ -17,36 +19,26 @@ import java.net.URL;
 public class Head extends PartReeti
 {
     private static final int EARWITDH = 10;
-    private Group mHeadGroup;
     private int mHalfHeight;
     private int mHalfWidth;
 
     public Head(Agent3D reeti)
     {
-        mSize = new Dimension(120, 100);
         mHalfHeight = mSize.height / 2;
         mHalfWidth = mSize.width / 2;
         mDefaultRotationPoint = new Point(mSize.width / 2, mSize.height);
         mColor = Color.WHITE;
 
-        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/v1.stl");
-        StlMeshImporter im = new StlMeshImporter();
+        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/head.dae");
+        ColModelImporter im = new ColModelImporter();
         im.read(url);
 
-        mHeadGroup = new Group();
-        TriangleMesh mHeadTriangleMesh = im.getImport();
-        MeshView mHeadMeshView = new MeshView(mHeadTriangleMesh);
+        MeshView mHeadMeshView = (MeshView) im.getImport()[0];
 
         mHeadMeshView.setMaterial(getMaterial());
 
-        mHeadMeshView.setRotationAxis(Rotate.X_AXIS);
-        mHeadMeshView.setRotate(-92);
-
-        mHeadGroup.getChildren().add(mHeadMeshView);
-
         init();
-        this.getChildren().add(mHeadGroup);
-        calculate(0);
+        this.getChildren().add(mHeadMeshView);
     }
 
 
@@ -55,24 +47,59 @@ public class Head extends PartReeti
     {
         super.init();
         int mZTranslate = -105;
-        mHeadGroup.setTranslateX(mHalfWidth + 6);
-        mHeadGroup.setTranslateY(mHalfHeight - 200);
-        mHeadGroup.setTranslateZ(mZTranslate + 28);
+        this.setTranslateZ(mZTranslate + 28);
     }
 
-    public Point getLeftEyebrowPostion()
+    public Point getLeftEyeStartPosition()
     {
-        return new Point(mHalfWidth - 60, mHalfHeight - 152);
+        int x = Preferences.REETI_HEAD_WIDTH/2  + 8;
+        int y = Preferences.REETI_HEAD_HEIGHT/2 - 95;
+        return new Point(x,y);
     }
 
-    public Point getRightEyebrowPostion()
+    public Point getRightEyeStartPosition()
     {
-        return new Point(mHalfWidth - 60, mHalfHeight - 105);
+        int x = (int) (Preferences.REETI_HEAD_WIDTH/2  - Preferences.REETI_EYE_WIDTH - 8);
+        int y = Preferences.REETI_HEAD_HEIGHT/2 - 95;
+        return new Point(x,y);
+    }
+
+    public Point getLeftEyeLidStartPosition()
+    {
+        Point p = new Point((int)(Preferences.REETI_HEAD_WIDTH/2 + 8),
+                Preferences.REETI_HEAD_HEIGHT/2 - 100);
+        return p;
+    }
+
+    public Point getRightEyeLidStartPosition()
+    {
+        Point p = new Point((int)(Preferences.REETI_HEAD_WIDTH/2  - Preferences.REETI_EYE_WIDTH - 12),
+                Preferences.REETI_HEAD_HEIGHT/2 - 100);
+        return p;
+    }
+
+    public Point getLeftEarStartPosition()
+    {
+        int x = Preferences.REETI_HEAD_WIDTH/2 + 80;
+        int y = Preferences.REETI_HEAD_HEIGHT/2 - 50;
+
+        return new Point(x,y);
+    }
+
+    public Point getRightEarStartPosition()
+    {
+        int x = Preferences.REETI_HEAD_WIDTH/2 - 80;
+        int y = Preferences.REETI_HEAD_HEIGHT/2 - 50;
+
+        return new Point(x,y);
     }
 
     public Point getMouthPostion()
     {
-        return new Point(mHalfWidth - 60, mHalfHeight - 110);
+        int x = Preferences.REETI_HEAD_WIDTH/2 - 7;
+        int y = Preferences.REETI_HEAD_HEIGHT/2 - 27;
+        return new Point(x,y);
+//        return new Point(mHalfWidth - 60, mHalfHeight - 110);
     }
 
     public Point getNeckStartPosition()
@@ -82,26 +109,31 @@ public class Head extends PartReeti
         return new Point(mSize.width / 2 + mXCenterOffset, mSize.height + mYCenterOffset + 4);
     }
 
+    public Point getBodyStartPosition()
+    {
+        int x = (int) (Preferences.REETI_HEAD_WIDTH/2 - Preferences.REETI_BODY_WIDTH/2);
+        int y = Preferences.REETI_HEAD_HEIGHT - 30;
+
+        return new Point(x,y);
+    }
+
     @Override
     public void calculate(int step)
     {
+        double pivotX = Preferences.REETI_HEAD_WIDTH/2;
+        double pivotY = Preferences.REETI_HEAD_HEIGHT/2;
 
-        Rotate rx = new Rotate(mXRotation, 0, 25, -25, Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, 0, 25, -25, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, 0, 25, -25, Rotate.Z_AXIS);
+        Rotate rx = new Rotate(mXRotation,  pivotX, pivotY + 50, 0, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation,  pivotX, pivotY, 0, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation,  pivotX, pivotY, 0, Rotate.Z_AXIS);
 
-        mHeadGroup.getTransforms().clear();
-        mHeadGroup.getTransforms().addAll(rz, ry, rx);
+        this.getTransforms().clear();
+        this.getTransforms().addAll(rz, ry, rx);
     }
 
     @Override
     public void setShape(String s)
     {
 
-    }
-
-    public Group getHeadGroup()
-    {
-        return mHeadGroup;
     }
 }

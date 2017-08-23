@@ -2,6 +2,7 @@ package de.dfki.reeti.stage;
 
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.common.commonFX3D.FXApplication;
+import de.dfki.common.util.Preferences;
 import de.dfki.reeti.Reeti;
 import de.dfki.reeti.ReetiStageController;
 import de.dfki.stickmanFX.stage.StageRoomFX;
@@ -68,7 +69,8 @@ public class ReetiStage extends FXApplication
         int width = 0;
         mAgentBox = new HBox();
         mAgentBox.setId("ReetiStage3D");
-        mAgentBox.setAlignment(Pos.CENTER);
+        mAgentBox.setAlignment(Pos.BOTTOM_CENTER);
+        mAgentBox.setSpacing(Preferences.DISTANCE_BETWEEN_AGENTS);
         mainStage = stage;
 
         HBox root = generalConfigStageRoot.getConfigRoot();
@@ -97,7 +99,7 @@ public class ReetiStage extends FXApplication
     @Override
     public float getFullScreenScale()
     {
-        return getHeight() / (float) de.dfki.stickmanFX.StickmanFX.mDefaultSize.height * mScale * AGENT_SIZE_FACTOR;
+        return (float) (getHeight() / Preferences.REETI_HEIGHT * mScale * AGENT_SIZE_FACTOR);
     }
 
     @Override
@@ -109,13 +111,14 @@ public class ReetiStage extends FXApplication
             try
             {
                 box = getAgentBox(stageIdentifier);
+                box.setSpacing(Preferences.DISTANCE_BETWEEN_AGENTS);
                 for (String key : agentsOnStage.get(stageIdentifier).getAgentNames())
                 {
                     Reeti reeti = (Reeti) agentsOnStage.get(stageIdentifier).getAgentByKey(key);
 
                     if (isShowControlPanel())
                     {
-                        reeti.setScale(1.35f);
+                        reeti.setScale(getFullScreenScale());
                         reeti.isFullScreen = true;
                         reeti.update();
                     }
@@ -149,7 +152,7 @@ public class ReetiStage extends FXApplication
         if (agentStages.containsKey(stageIdentifier))
         {
             box = (HBox) agentStages.get(stageIdentifier).getScene().getRoot();
-            box.setAlignment(Pos.CENTER);
+            box.setAlignment(Pos.BOTTOM_CENTER);
             box.setStyle("-fx-background-color: white");
 
             return (box.getId() != null && box.getId().equals(REETI_STAGE)) ? box : findStageBox(box);
@@ -196,13 +199,13 @@ public class ReetiStage extends FXApplication
         final HBox root = getStageRoot();
         Platform.runLater(() ->
         {
-            root.setAlignment(Pos.BASELINE_CENTER);
-            Scene stageScene = new Scene(root, 600, 600, true, SceneAntialiasing.BALANCED);
+            root.setAlignment(Pos.BOTTOM_CENTER);
+            Scene stageScene = new Scene(root, 600, 700, true, SceneAntialiasing.BALANCED);
             Stage stage = new Stage();
             stage.setScene(stageScene);
             stage.setX(x);
             stage.setY(y);
-            stage.setResizable(false);
+            stage.setResizable(true);
             if (!decoration)
             {
                 stage.initStyle(StageStyle.UNDECORATED);

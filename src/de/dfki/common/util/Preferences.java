@@ -88,4 +88,19 @@ public class Preferences
     public static final int FEMALE_HAIR_X_POS = 60;
     public static final int FEMALE_HAIR_Y_POS = 60;
     public static final int FEMALE_HAIR_Z_POS = 0;
+
+
+    /////////////////////////////////////////////////////////
+    /////////////////////REETI STUFF/////////////////////////
+    /////////////////////////////////////////////////////////
+    public static final int REETI_HEAD_WIDTH = 222;
+    public static final int REETI_HEAD_HEIGHT = 220;
+    public static final double REETI_EYE_WIDTH = 91;
+    public static final double REETI_EYE_HEIGHT = 91;
+    public static final double REETI_LID_WIDTH = 95;
+    public static final double REETI_LID_HEIGHT = 93;
+    public static final double REETI_BODY_WIDTH = 336;
+    public static final double REETI_BODY_HEIGHT = 492;
+    public static final double REETI_HEIGHT = REETI_HEAD_HEIGHT + REETI_BODY_HEIGHT - 30;
+
 }

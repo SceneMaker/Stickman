@@ -7,6 +7,7 @@ package de.dfki.reeti.body;
 
 import com.interactivemesh.jfx.importer.col.ColModelImporter;
 import de.dfki.common.part.Part3D;
+import de.dfki.common.util.Preferences;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
@@ -18,46 +19,49 @@ import java.net.URL;
  */
 public class RightEyelid extends PartReeti
 {
-    private MeshView mLeftEyeMesh;
-
     public RightEyelid(Part3D head)
     {
-        mStart = ((Head) head).getLeftEyebrowPostion();
+        mStart = ((Head) head).getRightEyeLidStartPosition();
         mZRotation = -30;
-        mYRotation = 15;
+        mYRotation = 5;
+        mXRotation = 20;
         mColor = Color.WHITE;
 
-        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEyelid.dae");
+        URL url = getClass().getClassLoader().getResource("BodyParts/Reeti/ReetiEyelid1.dae");
         ColModelImporter imorter = new ColModelImporter();
         imorter.read(url);
-        mLeftEyeMesh = (MeshView) imorter.getImport()[0];
+        MeshView mRightEyeMesh = (MeshView) imorter.getImport()[0];
 
-        mLeftEyeMesh.setMaterial(getMaterial());
+        mRightEyeMesh.setMaterial(getMaterial());
 
         init();
 
-        ((Head) head).getHeadGroup().getChildren().add(mLeftEyeMesh);
+        this.getChildren().add(mRightEyeMesh);
+        head.getChildren().add(this);
     }
 
     @Override
     public void init()
     {
         super.init();
-        mLeftEyeMesh.setTranslateX(mStart.x - 50);
-        mLeftEyeMesh.setTranslateY(mStart.y + 45);
-        mLeftEyeMesh.setTranslateZ(-65);
+        this.setTranslateX(mStart.x);
+        this.setTranslateY(mStart.y);
+        this.setTranslateZ(-60);
     }
 
     @Override
     public void calculate(int step)
     {
+        double pivotX = Preferences.REETI_LID_WIDTH/2;
+        double pivotY = Preferences.REETI_LID_HEIGHT/2;
+        double pivotZ = 17;
+        System.out.println(mXRotation + " " + mYRotation + " " + mZRotation);
+        Rotate rx = new Rotate(mXRotation, pivotX, pivotY, pivotZ, Rotate.X_AXIS);
+        Rotate ry = new Rotate(mYRotation, pivotX, pivotY, pivotZ, Rotate.Y_AXIS);
+        Rotate rz = new Rotate(mZRotation, pivotX, pivotY, pivotZ, Rotate.Z_AXIS);
 
-        Rotate rx = new Rotate(mXRotation, Rotate.X_AXIS);
-        Rotate ry = new Rotate(mYRotation, Rotate.Y_AXIS);
-        Rotate rz = new Rotate(mZRotation, Rotate.Z_AXIS);
-
-        mLeftEyeMesh.getTransforms().clear();
-        mLeftEyeMesh.getTransforms().addAll(rz, ry, rx);
+        this.getTransforms().clear();
+        this.getTransforms().addAll(rz, ry, rx);
 
     }
 
