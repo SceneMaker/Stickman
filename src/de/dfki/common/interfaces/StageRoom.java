@@ -3,6 +3,7 @@ package de.dfki.common.interfaces;
 import de.dfki.common.StickmansOnStage;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  * Created by alvaro on 9/12/16.
@@ -42,4 +43,6 @@ public interface StageRoom {
     void launchConfiguration(String filepath);
 
     void launchStage(boolean show, String filepath);
+    
+    ArrayList<String> getAnimations();
 }

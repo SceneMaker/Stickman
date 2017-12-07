@@ -6,6 +6,7 @@ import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.stickman3D.ApplicationLauncher3D;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by alvaro on 9/12/16.
@@ -94,5 +95,10 @@ public class StageRoom3D extends StageRoomImpl {
         loader.initialStickmanWithXml();
         launchStickmanStage(show);
 //        loader.initialStickmanWithXml();
+    }
+    
+    @Override
+    public ArrayList<String> getAnimations() {
+        return new ArrayList<>();
     }
 }

@@ -6,6 +6,7 @@ import de.dfki.common.interfaces.StageRoom;
 import de.dfki.common.StickmansOnStage;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  * Created by alvaro on 9/17/16.
@@ -94,6 +95,11 @@ public abstract class StageRoomDecorator implements StageRoom {
     @Override
     public void launchStage(boolean show, String filepath) {
         controllerFX.launchStage(show, filepath);
+    }
+    
+    @Override
+    public ArrayList<String> getAnimations() {
+         return controllerFX.getAnimations();
     }
 
 }

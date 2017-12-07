@@ -4,8 +4,11 @@ import de.dfki.common.commonFX3D.StageRoomImpl;
 import de.dfki.stickmanFX.utils.XmlStickmanLoader;
 import de.dfki.common.commonFX3D.ApplicationLauncherImpl;
 import de.dfki.stickmanFX.ApplicationLauncherFX;
+import de.dfki.stickmanFX.StickmanStageController;
+import de.dfki.util.IntrsopecterForAnimations;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by alvaro on 9/12/16.
@@ -93,5 +96,15 @@ public class StageRoomFX extends StageRoomImpl {
         loader.initialStickmanWithXml();
         launchStickmanStage(show);
 //        loader.initialStickmanWithXml();
+    }
+    
+    @Override
+    public ArrayList<String> getAnimations() {
+        ArrayList<String> animations = new ArrayList<>();
+        IntrsopecterForAnimations faceIntrospecter = new IntrsopecterForAnimations(StickmanStageController.packEmotionExpression);
+        IntrsopecterForAnimations gesturesIntrospecter = new IntrsopecterForAnimations(StickmanStageController.packGesture);
+        animations.addAll(faceIntrospecter.getComboList());
+        animations.addAll(gesturesIntrospecter.getComboList());
+        return animations;
     }
 }

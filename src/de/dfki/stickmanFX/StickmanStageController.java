@@ -13,7 +13,7 @@ import de.dfki.stickmanFX.stage.StickmanStageFX;
 import de.dfki.stickmanFX.stage.StageRoomFX;
 import de.dfki.stickmanFX.stage.StickmansOnStageFX;
 import de.dfki.stickmanFX.xmlsettings.StickmanDataFX;
-import de.dfki.util.StickmanFillCombo;
+import de.dfki.util.IntrsopecterForAnimations;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -41,8 +41,8 @@ import javafx.scene.control.Slider;
  */
 public class StickmanStageController implements ViewController {
 
-    private static String packEmotionExpression = "de.dfki.stickmanFX.animation.facefx";
-    private static String packGesture = "de.dfki.stickmanFX.animation.esturefx";
+    public static String packEmotionExpression = "de.dfki.stickmanFX.animation.facefx";
+    public static String packGesture = "de.dfki.stickmanFX.animation.gesturefx";
     private ArrayList<String> mStickmanComboList = new ArrayList<>();
     private StickmansOnStage mStickmanOnstage;
     private String mStickmancombobox = null;
@@ -565,7 +565,7 @@ public class StickmanStageController implements ViewController {
 
     private void fillComboForEmotionExpression() {
         ArrayList<String> getClassesNames;
-        StickmanFillCombo mStickmanFillCombo = new StickmanFillCombo(packEmotionExpression);
+        IntrsopecterForAnimations mStickmanFillCombo = new IntrsopecterForAnimations(packEmotionExpression);
         getClassesNames = mStickmanFillCombo.getComboList();
         ObservableList<String> classNames = FXCollections.observableArrayList();
         classNames.addAll(getClassesNames.stream().collect(Collectors.toList()));

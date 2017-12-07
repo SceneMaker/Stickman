@@ -7,6 +7,7 @@ import de.dfki.common.StickmansOnStage;
 import de.dfki.stickmanSwing.StickmanSwing;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  * Created by alvaro on 9/19/16.
@@ -108,5 +109,10 @@ public class StageRoomSwing implements StageRoom {
     @Override
     public void launchStage(boolean show, String filepath) {
 
+    }
+    
+    @Override
+    public ArrayList<String> getAnimations() {
+        return new ArrayList<>();
     }
 }

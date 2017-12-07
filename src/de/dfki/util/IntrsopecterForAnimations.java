@@ -15,7 +15,7 @@ import java.util.jar.JarFile;
 import de.dfki.stickmanFX.animationlogic.AnimationFX;
 import de.dfki.stickmanFX.animationlogic.AnimationFX.ANIMTYPE;
 
-public class StickmanFillCombo {
+public class IntrsopecterForAnimations {
 
     ArrayList<String> mComboList = new ArrayList<>();
     String packName = "de.dfki.stickmanFX.animation.facefx";
@@ -23,7 +23,7 @@ public class StickmanFillCombo {
     Enumeration<URL> dir;
     ClassLoader loaderjar;
 
-    public StickmanFillCombo(String packName) {
+    public IntrsopecterForAnimations(String packName) {
         this.packName = packName;
         ScanPackage();
 
@@ -78,7 +78,7 @@ public class StickmanFillCombo {
                         }
 
                         if (class1 != null && class1.mAnimType == ANIMTYPE.EmotionExpression) {
-                            mComboList.add(className);
+                            addToList(className);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -132,12 +132,20 @@ public class StickmanFillCombo {
                 if (class1 != null && class1.mAnimType == ANIMTYPE.EmotionExpression) {
                     String className = entryName.substring(0, entryName.length() - 6);
                     className = className.substring(className.lastIndexOf('.') + 1, className.length());
-                    mComboList.add(className);
+                    addToList(className);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void addToList(String className) {
+        if(!mComboList.contains(className)){
+            mComboList.add(className);
+        }
+       
+        
     }
 
     public ArrayList getComboList() {
