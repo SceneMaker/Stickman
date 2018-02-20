@@ -396,10 +396,11 @@ public class Reeti extends Pane implements Stickman
         double StickmanHeight = 500;
         Affine af = new Affine();
         int shiftFactor = (int) (StickmanHeight - (StickmanHeight * mScale));
+
         if (isFullScreen)
         {
             mGeneralYTranslation = (int) ((dim.getHeight() - StickmanHeight) + shiftFactor + 100);
-            mGeneralXTranslation = 0;
+            mGeneralXTranslation = (int) (dim.getWidth()/7);
         }
         else
         {
@@ -408,7 +409,8 @@ public class Reeti extends Pane implements Stickman
         }
 //        Scale s = new Scale(0.5, 0.5, 0.5, 50, 50, 50);
         af.appendTranslation(mGeneralXTranslation, mGeneralYTranslation);
-        af.appendScale(mScale, mScale);
+        //af.appendScale(mScale*0.8, mScale*0.8); // This value varies widely on different platforms.
+        af.appendScale(1.1, 1.1);
         this.getTransforms().clear();
         this.getTransforms().add(af);
 //        this.getTransforms().add(af);
